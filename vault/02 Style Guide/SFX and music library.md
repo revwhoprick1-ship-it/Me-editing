@@ -29,6 +29,9 @@ Meme SFX downloaded from myinstants.com (user-uploaded meme sounds; fine for mem
 | rizz-sound-effect.mp3 | 1.9 s | 190 ms | smooth/aura moment |
 | anime-wow.mp3 | 4.2 s | 180 ms | impressive moment |
 | spongebob-boowomp.mp3 | 1.4 s | 180 ms | sad ending / outro |
+| cha-ching.mp3 | 2.1 s | 180 ms (peak 640) | price appears |
+| air-horn.mp3 | 3.0 s | 30 ms | hype / everyone screams |
+| crowd-cheer.mp3 | 11.8 s | 380 ms | under real celebrations (trim ~6 s) |
 
 ## Music: `public/music/`
 User wants **ONE meme song for the whole video** (no switching tracks), **loud**, and recognisable meme music (recognisable meme tracks beat generic royalty-free) and wants it **clearly audible**: bed ≈ 0.38–0.4 in gaps and ≈ 0.18–0.2 under speech (v3 used 0.2/0.08 and it was too quiet).

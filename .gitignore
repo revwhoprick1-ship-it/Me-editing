@@ -3,3 +3,5 @@ whisper.cpp
 out
 public/*.mp4
 public/*.wav
+footage/
+public/flagg/input.mp4

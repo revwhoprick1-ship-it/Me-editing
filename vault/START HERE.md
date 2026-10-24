@@ -15,20 +15,25 @@ Edit podcast/streamer clips into viral vertical Shorts in a **meme / brainrot cl
 
 - **Podcast clips:** use the Ref C layout (black bars, video box, plain top caption "Do you agree with this? 💀", cut-out photos of people mentioned) **on top of** our normal edit style. See [[Reference Shorts#Ref C: podcast layout (user: "for podcast style videos make it like this")]].
 
+- **Card pulls (stream clips from the Backyard Breaks sheet):** follow [[Card pull playbook]] (white banner hook, whip transitions, tracked red circle + arrow, card title stack with price).
+
 ## Map
 - **Research**
   - [[Shorts analysis - 50 clips]]: the 50 Shorts, views, format, hook and edit notes for each
   - [[Hooks and retention]]: how they hook and keep viewers watching
   - [[Editing playbook]]: what SFX, effects and memes go when and where
-  - [[Reference Shorts]]: the two Shorts the user asked to copy (Ref A = same show as their footage)
+  - [[Reference Shorts]]: Refs A–C (A = same show as their footage, C = podcast layout)
+  - [[Card pull and clip refs D-G]]: SFX, red circle/arrow tracking, transitions (round 2 training)
 - **Style guide**
   - [[Caption style]]: font (Montserrat 800 + glow), keyword colors, iOS emoji
   - [[SFX and music library]]: every sound/music file, when to use it, licensing
+  - [[Card pull playbook]]: template for card-pull stream clips
 - **Workflow**
   - [[Edit workflow]]: step by step, from Drive link to rendered MP4
   - [[Environment notes]]: cloud-box gotchas (blocked hosts, Chrome path, fonts)
 - **Projects**
-  - [[NBA GOAT pick]]: current video: seat map, verified timings, **feedback log**
+  - [[NBA GOAT pick]]: Trevor Lawrence podcast clip: seat map, verified timings, **feedback log**
+  - [[Cooper Flagg Arrivals 1-1]]: card pull from the sheet
 
 ## Quick start (new session)
 1. Read [[NBA GOAT pick]] (feedback log) and [[Caption style]].

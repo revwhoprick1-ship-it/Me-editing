@@ -1,0 +1,410 @@
+[
+ {
+  "text": "Redemption,",
+  "startMs": 2500,
+  "endMs": 3160,
+  "p": 0.75
+ },
+ {
+  "text": "come",
+  "startMs": 3160,
+  "endMs": 3820,
+  "p": 0.49
+ },
+ {
+  "text": "on,",
+  "startMs": 3820,
+  "endMs": 5380,
+  "p": 0.98
+ },
+ {
+  "text": "come",
+  "startMs": 5380,
+  "endMs": 5760,
+  "p": 0.92
+ },
+ {
+  "text": "on,",
+  "startMs": 5760,
+  "endMs": 6100,
+  "p": 1.0
+ },
+ {
+  "text": "come",
+  "startMs": 6540,
+  "endMs": 6800,
+  "p": 0.85
+ },
+ {
+  "text": "on,",
+  "startMs": 6800,
+  "endMs": 6940,
+  "p": 0.99
+ },
+ {
+  "text": "come",
+  "startMs": 6940,
+  "endMs": 6940,
+  "p": 0.29
+ },
+ {
+  "text": "on,",
+  "startMs": 6940,
+  "endMs": 7060,
+  "p": 1.0
+ },
+ {
+  "text": "we",
+  "startMs": 7060,
+  "endMs": 7160,
+  "p": 0.34
+ },
+ {
+  "text": "have",
+  "startMs": 7160,
+  "endMs": 7680,
+  "p": 0.99
+ },
+ {
+  "text": "shot,",
+  "startMs": 7680,
+  "endMs": 7980,
+  "p": 0.65
+ },
+ {
+  "text": "Joan",
+  "startMs": 8280,
+  "endMs": 9300,
+  "p": 0.99
+ },
+ {
+  "text": "Berringer,",
+  "startMs": 9300,
+  "endMs": 10080,
+  "p": 0.7
+ },
+ {
+  "text": "Larry",
+  "startMs": 10220,
+  "endMs": 11180,
+  "p": 1.0
+ },
+ {
+  "text": "Bird,",
+  "startMs": 11180,
+  "endMs": 11660,
+  "p": 0.98
+ },
+ {
+  "text": "Larry",
+  "startMs": 11980,
+  "endMs": 12600,
+  "p": 0.44
+ },
+ {
+  "text": "Bird,",
+  "startMs": 12600,
+  "endMs": 12880,
+  "p": 1.0
+ },
+ {
+  "text": "BJ",
+  "startMs": 13180,
+  "endMs": 15080,
+  "p": 0.6
+ },
+ {
+  "text": "Edgecombe",
+  "startMs": 15080,
+  "endMs": 16500,
+  "p": 0.9
+ },
+ {
+  "text": "on",
+  "startMs": 16500,
+  "endMs": 16720,
+  "p": 0.99
+ },
+ {
+  "text": "the",
+  "startMs": 16720,
+  "endMs": 16880,
+  "p": 1.0
+ },
+ {
+  "text": "first,",
+  "startMs": 16880,
+  "endMs": 17200,
+  "p": 1.0
+ },
+ {
+  "text": "nice",
+  "startMs": 17280,
+  "endMs": 17520,
+  "p": 1.0
+ },
+ {
+  "text": "hit",
+  "startMs": 17520,
+  "endMs": 17880,
+  "p": 1.0
+ },
+ {
+  "text": "there,",
+  "startMs": 17880,
+  "endMs": 18220,
+  "p": 1.0
+ },
+ {
+  "text": "that",
+  "startMs": 18380,
+  "endMs": 18960,
+  "p": 1.0
+ },
+ {
+  "text": "is",
+  "startMs": 18960,
+  "endMs": 19220,
+  "p": 1.0
+ },
+ {
+  "text": "going",
+  "startMs": 19220,
+  "endMs": 19500,
+  "p": 1.0
+ },
+ {
+  "text": "to",
+  "startMs": 19500,
+  "endMs": 20620,
+  "p": 0.99
+ },
+ {
+  "text": "the",
+  "startMs": 20620,
+  "endMs": 21600,
+  "p": 1.0
+ },
+ {
+  "text": "Sixers,",
+  "startMs": 21600,
+  "endMs": 22240,
+  "p": 1.0
+ },
+ {
+  "text": "I",
+  "startMs": 22260,
+  "endMs": 22560,
+  "p": 0.78
+ },
+ {
+  "text": "poised,",
+  "startMs": 22560,
+  "endMs": 23420,
+  "p": 0.51
+ },
+ {
+  "text": "oh",
+  "startMs": 23420,
+  "endMs": 24120,
+  "p": 0.07
+ },
+ {
+  "text": "boy,",
+  "startMs": 24120,
+  "endMs": 24120,
+  "p": 0.0
+ },
+ {
+  "text": "oh",
+  "startMs": 24120,
+  "endMs": 24880,
+  "p": 0.78
+ },
+ {
+  "text": "my",
+  "startMs": 24880,
+  "endMs": 30240,
+  "p": 0.56
+ },
+ {
+  "text": "gosh,",
+  "startMs": 30240,
+  "endMs": 30860,
+  "p": 0.33
+ },
+ {
+  "text": "oh",
+  "startMs": 31160,
+  "endMs": 31640,
+  "p": 0.85
+ },
+ {
+  "text": "my",
+  "startMs": 31640,
+  "endMs": 32000,
+  "p": 0.98
+ },
+ {
+  "text": "gosh,",
+  "startMs": 32000,
+  "endMs": 32440,
+  "p": 0.33
+ },
+ {
+  "text": "one",
+  "startMs": 32500,
+  "endMs": 32700,
+  "p": 0.12
+ },
+ {
+  "text": "of",
+  "startMs": 32700,
+  "endMs": 32760,
+  "p": 0.24
+ },
+ {
+  "text": "one,",
+  "startMs": 32760,
+  "endMs": 33220,
+  "p": 0.81
+ },
+ {
+  "text": "two,",
+  "startMs": 33220,
+  "endMs": 33420,
+  "p": 0.77
+ },
+ {
+  "text": "three,",
+  "startMs": 33520,
+  "endMs": 33800,
+  "p": 0.7
+ },
+ {
+  "text": "four,",
+  "startMs": 34080,
+  "endMs": 34380,
+  "p": 0.92
+ },
+ {
+  "text": "let's",
+  "startMs": 34380,
+  "endMs": 35540,
+  "p": 0.62
+ },
+ {
+  "text": "go,",
+  "startMs": 35540,
+  "endMs": 35740,
+  "p": 1.0
+ },
+ {
+  "text": "oh",
+  "startMs": 35740,
+  "endMs": 36540,
+  "p": 0.64
+ },
+ {
+  "text": "my",
+  "startMs": 36540,
+  "endMs": 36700,
+  "p": 0.83
+ },
+ {
+  "text": "gosh,",
+  "startMs": 36700,
+  "endMs": 37220,
+  "p": 0.82
+ },
+ {
+  "text": "let's",
+  "startMs": 37380,
+  "endMs": 37580,
+  "p": 0.91
+ },
+ {
+  "text": "go,",
+  "startMs": 37580,
+  "endMs": 37780,
+  "p": 1.0
+ },
+ {
+  "text": "oh",
+  "startMs": 37940,
+  "endMs": 38260,
+  "p": 0.78
+ },
+ {
+  "text": "I'm",
+  "startMs": 38260,
+  "endMs": 38500,
+  "p": 0.81
+ },
+ {
+  "text": "glad,",
+  "startMs": 38500,
+  "endMs": 38720,
+  "p": 0.96
+ },
+ {
+  "text": "I'm",
+  "startMs": 39060,
+  "endMs": 39560,
+  "p": 0.63
+ },
+ {
+  "text": "joining,",
+  "startMs": 39560,
+  "endMs": 39920,
+  "p": 0.28
+ },
+ {
+  "text": "this",
+  "startMs": 40280,
+  "endMs": 41860,
+  "p": 0.44
+ },
+ {
+  "text": "is",
+  "startMs": 41860,
+  "endMs": 42540,
+  "p": 1.0
+ },
+ {
+  "text": "why",
+  "startMs": 42540,
+  "endMs": 42660,
+  "p": 0.9
+ },
+ {
+  "text": "Antoine",
+  "startMs": 42660,
+  "endMs": 43200,
+  "p": 0.94
+ },
+ {
+  "text": "stayed",
+  "startMs": 43200,
+  "endMs": 43420,
+  "p": 0.97
+ },
+ {
+  "text": "in",
+  "startMs": 43420,
+  "endMs": 43740,
+  "p": 1.0
+ },
+ {
+  "text": "the",
+  "startMs": 43740,
+  "endMs": 43840,
+  "p": 1.0
+ },
+ {
+  "text": "room.",
+  "startMs": 43840,
+  "endMs": 44160,
+  "p": 1.0
+ }
+]
