@@ -76,11 +76,22 @@ export const CAPTIONS: CaptionGroup[] = [
   {words: [w('THE', 17980), w('TENSION', 18140, RED)], to: 18810, emoji: '1f62c'},
 ];
 
-// Persistent hook at the top; swaps (red) at the twist, like "THIS ONE" / "ARE YOU SURE?".
-export const HOOK = {text: 'WAIT FOR HIS NBA GOAT PICK...', twistAt: 14414, twist: 'BRO REALLY SAID THAT', twistEmoji: '1f480'};
+// Plain caption on the top black bar for the whole video (podcast reference).
+export const HOOK = {text: 'Do you agree with this?', emoji: '1f480'};
+
+// Cut-out photos (Wikimedia Commons, CC BY / CC BY-SA, see vault) that pop up
+// at the bottom of the video box when someone is named, like the podcast reference.
+export const CUTOUTS = [
+  {from: 2800, to: 3560, images: [
+    {file: 'kobe.png', h: 520, x: -20}, {file: 'lebron.png', h: 560, x: 330}, {file: 'jordan.png', h: 420, x: 640}]},
+  {from: 5560, to: 7400, images: [
+    {file: 'kobe.png', h: 520, x: -20}, {file: 'lebron.png', h: 560, x: 330}, {file: 'jordan.png', h: 420, x: 640}]},
+  {from: 14414, to: 17450, images: [
+    {file: 'delly3.png', h: 470, x: 40}, {file: 'delly1.png', h: 500, x: 520}]},
+];
 
 // Punchline: vine boom, green flash + bokeh, 💀 slam on the table, label on the split.
-export const PUNCH = {at: 14414, to: 14950, label: '*MATTHEW DELLAVEDOVA*', sticker: '1f480'};
+export const PUNCH = {at: 14414, to: 14950, label: '', sticker: '1f480'};
 
 // B&W reaction meme counter.
 export const AURA = {at: 15100, to: 15700, text: 'AURA -10000', emoji: '1f480'};

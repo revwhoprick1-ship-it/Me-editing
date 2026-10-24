@@ -26,3 +26,12 @@ https://youtube.com/shorts/H_5vKixarGA · frames: `assets/references/H_5vKixarGA
 - **One word at a time**, lowercase, **teal serif with teal glow** (soft bold serif, think "DM Serif Display").
 - **iOS emoji** above the word that names a thing (🎹 piano, 🕰 before, 🎬, 🚫 nobody, ⌛ now).
 - B-roll changes on nearly every noun (AI images of the cat/piano), glitch effect on the last one.
+
+## Ref C: podcast layout (user: "for podcast style videos make it like this")
+https://youtube.com/shorts/TpwR9FMWQg4 · frames: `assets/references/TpwR9FMWQg4_hi.jpg`. It's the same NBA GOAT clip edited by someone else.
+- **Black bars** top and bottom; the video sits in a box (~1080×1150, top at y≈390).
+- **Plain caption on the top bar**: sentence case, white, bold, no glow, + iOS 💀: "Do you agree with this? 💀". It stays the whole video.
+- Small lowercase one-word captions (teal/yellow/green) near face height.
+- **Cut-out photos** of the people mentioned pop up at the bottom of the box: Kobe/LeBron/Jordan on "NBA GOAT", Dellavedova when he's named, overlapping into the bottom bar.
+
+**How we apply it (user's instruction):** keep OUR edit style (glow captions, iOS emoji, flash, SFX, music, aura etc.) and ADD Ref C's black bars + box, plain top caption, and cut-out photos. Don't switch to Ref C's small captions.

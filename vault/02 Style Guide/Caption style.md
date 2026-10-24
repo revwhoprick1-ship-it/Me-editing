@@ -34,3 +34,14 @@ Back to [[START HERE]] · Source: [[Reference Shorts]]
   `curl -o public/emoji-ios/1f480.png https://em-content.zobj.net/source/apple/391/skull_1f480.png`
   (slug = Emojipedia name + `_` + codepoint).
 - Above the caption for nouns (🐐 GOAT, 🏀 NBA), or as stickers that slam in on beats (💀).
+
+## Podcast layout extras (Ref C)
+- Top-bar caption: Montserrat 800, 56 px, **sentence case, white, no glow**, iOS emoji after it, bottom edge ~28 px above the video box.
+- Video box: `BOX_TOP = 390`, `BOX_H = 1150` in `src/ShortEdit.tsx`; captions at y 900 so they sit above the cut-outs.
+- Cut-outs: `public/cutouts/*.png` (made with `rembg`, model isnet-general-use), listed in `CUTOUTS` in `src/edit.ts`. Sources (Wikimedia Commons; credit if required):
+  - kobe.png: "Kobe Bryant 2015.jpg", CC BY-SA 2.0
+  - lebron.png: "LeBron James Lakers.jpg", CC BY-SA 2.0
+  - jordan.png: "Michael Jordan.jpg", CC BY-SA 2.0
+  - delly1.png: "Matt Dellavedova Cavs 2014.jpg", CC BY 2.0
+  - delly3.png: "Matthew Dellavedova (49166301537) (cropped).jpg", CC BY 2.0
+  - Find more: Commons API search, `gsrnamespace=6`, then `rembg`.

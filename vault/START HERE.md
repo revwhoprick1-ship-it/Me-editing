@@ -13,6 +13,8 @@ Edit podcast/streamer clips into viral vertical Shorts in a **meme / brainrot cl
 - iOS emoji only; Ref A glow font; whoosh = `fast-whoosh.mp3`, ding = `ding-2.mp3`.
 - Music: **one meme song looped through the whole video, loud** (currently `du-bist-gut-genug.mp3`).
 
+- **Podcast clips:** use the Ref C layout (black bars, video box, plain top caption "Do you agree with this? 💀", cut-out photos of people mentioned) **on top of** our normal edit style. See [[Reference Shorts#Ref C: podcast layout (user: "for podcast style videos make it like this")]].
+
 ## Map
 - **Research**
   - [[Shorts analysis - 50 clips]]: the 50 Shorts, views, format, hook and edit notes for each

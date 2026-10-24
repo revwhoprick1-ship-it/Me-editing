@@ -5,8 +5,8 @@ import {
   staticFile, useCurrentFrame, useVideoConfig,
 } from 'remotion';
 import {
-  AURA, CAPTIONS, CUTS, HOOK, LAUGH, MUSIC, PUNCH, SFX, SHOTS, SPEECH, YELLOW,
-  type CaptionGroup, type Shot,
+  AURA, CAPTIONS, CUTOUTS, CUTS, HOOK, LAUGH, MUSIC, PUNCH, SFX, SHOTS, SPEECH, YELLOW,
+  type CaptionGroup, type Shot, type Sfx,
 } from './edit';
 
 const fontFamily = 'Montserrat';
@@ -19,30 +19,35 @@ const OUT_W = 1080;
 const OUT_H = 1920;
 // Height of the wide shot in the stacked layout (full source width).
 const STACK_TOP = Math.round((OUT_W * SRC_H) / SRC_W);
-const CAPTION_Y = 1130;
+const CAPTION_Y = 900;
+// Podcast layout (TpwR9FMWQg4): black bars, video in a box, plain caption on the top bar.
+const BOX_TOP = 390;
+const BOX_H = 1150;
+// Source y of the hosts' faces (centre of the close-up under the stacked wide shot).
+const FACE_Y = 470;
 
-const f = (ms: number) => Math.round((ms / 1000) * FPS);
+export const f = (ms: number) => Math.round((ms / 1000) * FPS);
 
 // ---- source time <-> output time ---------------------------------------
 const cutStarts = CUTS.reduce<number[]>((acc, [a, b], i) => [...acc, i === 0 ? 0 : acc[i - 1] + (CUTS[i - 1][1] - CUTS[i - 1][0])], []);
 export const OUT_MS = CUTS.reduce((t, [a, b]) => t + b - a, 0);
 
 // Output ms for a source ms, or null if that moment was cut.
-const outMs = (src: number): number | null => {
+export const outMs = (src: number): number | null => {
   for (let i = 0; i < CUTS.length; i++) {
     const [a, b] = CUTS[i];
     if (src >= a && src <= b) return cutStarts[i] + src - a;
   }
   return null;
 };
-const srcMs = (out: number): number => {
+export const srcMs = (out: number): number => {
   for (let i = CUTS.length - 1; i >= 0; i--) {
     if (out >= cutStarts[i]) return CUTS[i][0] + out - cutStarts[i];
   }
   return out;
 };
 // Output frame range for a source range (clipped to what survives the cuts).
-const outRange = (from: number, to: number) => {
+export const outRange = (from: number, to: number) => {
   const a = outMs(from) ?? outMs(CUTS.find(([s]) => s > from)?.[0] ?? from);
   const b = outMs(to) ?? outMs(CUTS.filter(([, e]) => e < to).pop()?.[1] ?? to);
   if (a === null || b === null || b <= a) return null;
@@ -66,6 +71,8 @@ const CropVideo = ({src, trim, x, y, h, boxW, boxH, style}: {
   src: string; trim: number; x: number; y: number; h: number; boxW: number; boxH: number; style?: CSSProperties;
 }) => {
   const k = boxH / h;
+  const half = boxW / k / 2;
+  x = Math.min(Math.max(x, half), SRC_W - half);
   return (
     <div style={{position: 'absolute', width: boxW, height: boxH, overflow: 'hidden', ...style}}>
       <OffthreadVideo src={src} muted trimBefore={trim} style={{
@@ -120,7 +127,7 @@ const ShotView = ({shot, src, trim}: {shot: Shot; src: string; trim: number}) =>
       <AbsoluteFill>
         <OffthreadVideo src={src} muted trimBefore={trim} style={{position: 'absolute', top: 0, width: OUT_W, height: STACK_TOP}} />
         {shot.circleX !== undefined && <RedCircle x={shot.circleX} />}
-        <CropVideo src={src} trim={trim} x={shot.x} y={shot.y} h={shot.h} boxW={OUT_W} boxH={OUT_H - STACK_TOP}
+        <CropVideo src={src} trim={trim} x={shot.x} y={FACE_Y - (shot.h * (BOX_H - STACK_TOP) / (OUT_H - STACK_TOP)) / 2} h={shot.h * (BOX_H - STACK_TOP) / (OUT_H - STACK_TOP)} boxW={OUT_W} boxH={BOX_H - STACK_TOP}
           style={{top: STACK_TOP, transform: `scale(${drift})`, transformOrigin: 'center top'}} />
         <div style={{position: 'absolute', top: STACK_TOP - 3, width: OUT_W, height: 6, background: 'black'}} />
       </AbsoluteFill>
@@ -131,7 +138,7 @@ const ShotView = ({shot, src, trim}: {shot: Shot; src: string; trim: number}) =>
   const punch = bw ? interpolate(spring({frame, fps, config: {damping: 200}}), [0, 1], [1.3, 1.12]) : drift;
   return (
     <AbsoluteFill style={{transform: `scale(${punch})`}}>
-      <CropVideo src={src} trim={trim} x={shot.x} y={shot.y} h={shot.h} boxW={OUT_W} boxH={OUT_H}
+      <CropVideo src={src} trim={trim} x={shot.x} y={shot.y} h={shot.h} boxW={OUT_W} boxH={BOX_H}
         style={bw ? {filter: 'grayscale(1) contrast(1.35) brightness(0.85)'} : undefined} />
     </AbsoluteFill>
   );
@@ -176,23 +183,35 @@ const Caption = ({c}: {c: CaptionGroup}) => {
   );
 };
 
-const Hook = () => {
+// Plain sentence-case caption on the top black bar (podcast reference).
+const TopCaption = () => (
+  <AbsoluteFill style={{alignItems: 'center', justifyContent: 'flex-end', height: BOX_TOP - 28}}>
+    <div style={{
+      fontFamily, fontWeight: 800, fontSize: 56, color: 'white', textAlign: 'center',
+      padding: '0 60px', display: 'flex', alignItems: 'center', gap: 14,
+    }}>
+      {HOOK.text}
+      <Img src={emojiSrc(HOOK.emoji)} style={{width: 64, height: 64}} />
+    </div>
+  </AbsoluteFill>
+);
+
+// Cut-out photos popping up from the bottom of the video box.
+const Cutouts = ({images}: {images: {file: string; h: number; x: number}[]}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
-  const twistFrame = f(outMs(HOOK.twistAt)!);
-  const twisted = frame >= twistFrame;
-  const enter = spring({frame: twisted ? frame - twistFrame : frame, fps, config: {damping: 12}});
-  const color = twisted ? '#FF4D4D' : YELLOW;
   return (
-    <AbsoluteFill style={{alignItems: 'center', top: 120}}>
-      <div style={{
-        ...textStyle, fontSize: twisted ? 60 : 50, color, textShadow: glow(color), padding: '0 60px',
-        display: 'flex', alignItems: 'center', gap: 14,
-        transform: `scale(${interpolate(enter, [0, 1], [0.6, 1])})`,
-      }}>
-        {twisted ? HOOK.twist : HOOK.text}
-        {twisted && <Img src={emojiSrc(HOOK.twistEmoji)} style={{width: 72, height: 72}} />}
-      </div>
+    <AbsoluteFill>
+      {images.map((im, i) => {
+        const pop = spring({frame: frame - i * 3, fps, config: {damping: 11, stiffness: 200}});
+        return (
+          <Img key={i} src={staticFile(`cutouts/${im.file}`)} style={{
+            position: 'absolute', height: im.h, left: im.x, bottom: OUT_H - (BOX_TOP + BOX_H) - 40,
+            transform: `translateY(${interpolate(pop, [0, 1], [400, 0])}px)`,
+            filter: 'drop-shadow(0 10px 16px rgba(0,0,0,0.6))',
+          }} />
+        );
+      })}
     </AbsoluteFill>
   );
 };
@@ -255,11 +274,11 @@ const Punchline = () => {
         transform: `scale(${interpolate(slam, [0, 1], [3, 1])}) rotate(${interpolate(slam, [0, 1], [-30, 8])}deg)`,
         filter: 'drop-shadow(0 8px 14px rgba(0,0,0,0.5))',
       }} />
-      <AbsoluteFill style={{alignItems: 'center', top: STACK_TOP - 44}}>
+      {PUNCH.label && <AbsoluteFill style={{alignItems: 'center', top: STACK_TOP - 44}}>
         <div style={{...textStyle, fontSize: 52, color: YELLOW, textShadow: glow(YELLOW), transform: `scale(${pop})`}}>
           {PUNCH.label}
         </div>
-      </AbsoluteFill>
+      </AbsoluteFill>}
     </AbsoluteFill>
   );
 };
@@ -304,6 +323,7 @@ export const ShortEdit = ({src}: {src: string}) => {
   return (
     <AbsoluteFill style={{backgroundColor: 'black'}}>
       <Shake at={f(outMs(PUNCH.at)!)}>
+        <div style={{position: 'absolute', top: BOX_TOP, width: OUT_W, height: BOX_H, overflow: 'hidden'}}>
         {pieces.map((p, i) => {
           const r = outRange(p.from, p.to)!;
           return (
@@ -317,6 +337,11 @@ export const ShortEdit = ({src}: {src: string}) => {
           const r = outRange(PUNCH.at, PUNCH.to)!;
           return <Sequence from={r.from} durationInFrames={r.dur}><Punchline /></Sequence>;
         })()}
+        </div>
+        {CUTOUTS.map((c, i) => {
+          const r = outRange(c.from, c.to);
+          return r && <Sequence key={`c${i}`} from={r.from} durationInFrames={r.dur}><Cutouts images={c.images} /></Sequence>;
+        })}
       </Shake>
 
       {(() => {
@@ -336,8 +361,16 @@ export const ShortEdit = ({src}: {src: string}) => {
           </Sequence>
         );
       })}
-      <Hook />
+      <TopCaption />
 
+      <AudioMix video={video} sfx={SFX} />
+    </AbsoluteFill>
+  );
+};
+
+// Dialogue + music + SFX, shared by every layout.
+export const AudioMix = ({video, sfx}: {video: string; sfx: Sfx[]}) => (
+  <>
       {/* Dialogue: one Audio per kept range, with a 2-frame fade at the joins. */}
       {CUTS.map(([a, b], i) => {
         const r = outRange(a, b)!;
@@ -362,7 +395,7 @@ export const ShortEdit = ({src}: {src: string}) => {
         );
       })}
 
-      {SFX.map((s, i) => {
+      {sfx.map((s, i) => {
         const o = outMs(s.at);
         if (o === null) return null;
         const from = Math.max(0, f(o - s.onset));
@@ -372,6 +405,5 @@ export const ShortEdit = ({src}: {src: string}) => {
           </Sequence>
         );
       })}
-    </AbsoluteFill>
-  );
-};
+  </>
+);

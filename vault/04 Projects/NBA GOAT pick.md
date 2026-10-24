@@ -41,7 +41,8 @@ Back to [[START HERE]]
 4. User: different ding → `ding-2.mp3`; **louder background music** → bed volume roughly doubled.
 5. User: **more memey music** → Jeopardy think music under the question/silence, Curb Your Enthusiasm credits from the laugh to the end.
 6. User: **only one bg song throughout, louder**, try the **Du bist gut genug** meme song → looped for the whole video.
-7. **v3 (first render):** see the edit plan in `src/edit.ts` and the summary below.
+7. User: **podcast layout like TpwR9FMWQg4** (black bars + plain top caption), but **keep our edit style** → added the box, "Do you agree with this? 💀", and Kobe/LeBron/Jordan + Dellavedova cut-outs. Dropped the hook title swap and the `*MATTHEW DELLAVEDOVA*` label (it overlapped the caption).
+8. **v3 (first render):** see the edit plan in `src/edit.ts` and the summary below.
 
 ## v3 edit summary (16.0 s)
 | Out time | Source | What happens |
