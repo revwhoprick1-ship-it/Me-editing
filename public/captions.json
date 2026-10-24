@@ -1,0 +1,415 @@
+[
+  {
+    "text": "-",
+    "startMs": 20,
+    "endMs": 70,
+    "timestampMs": 0,
+    "confidence": 0.529818
+  },
+  {
+    "text": " Bring",
+    "startMs": 70,
+    "endMs": 410,
+    "timestampMs": 140,
+    "confidence": 0.736364
+  },
+  {
+    "text": " it",
+    "startMs": 410,
+    "endMs": 550,
+    "timestampMs": 220,
+    "confidence": 0.996972
+  },
+  {
+    "text": " up",
+    "startMs": 550,
+    "endMs": 690,
+    "timestampMs": 340,
+    "confidence": 0.982167
+  },
+  {
+    "text": ",",
+    "startMs": 690,
+    "endMs": 860,
+    "timestampMs": 400,
+    "confidence": 0.582121
+  },
+  {
+    "text": " but",
+    "startMs": 860,
+    "endMs": 860,
+    "timestampMs": 440,
+    "confidence": 0.923004
+  },
+  {
+    "text": " I",
+    "startMs": 860,
+    "endMs": 890,
+    "timestampMs": 520,
+    "confidence": 0.996595
+  },
+  {
+    "text": " wanna",
+    "startMs": 890,
+    "endMs": 890,
+    "timestampMs": 620,
+    "confidence": 0.532723
+  },
+  {
+    "text": " ask",
+    "startMs": 890,
+    "endMs": 910,
+    "timestampMs": 840,
+    "confidence": 0.996322
+  },
+  {
+    "text": " you",
+    "startMs": 910,
+    "endMs": 960,
+    "timestampMs": 960,
+    "confidence": 0.996191
+  },
+  {
+    "text": " the",
+    "startMs": 960,
+    "endMs": 1120,
+    "timestampMs": 1100,
+    "confidence": 0.952944
+  },
+  {
+    "text": " question",
+    "startMs": 1120,
+    "endMs": 1570,
+    "timestampMs": 1320,
+    "confidence": 0.997697
+  },
+  {
+    "text": " before",
+    "startMs": 1570,
+    "endMs": 1880,
+    "timestampMs": 1760,
+    "confidence": 0.994941
+  },
+  {
+    "text": ".",
+    "startMs": 1880,
+    "endMs": 2080,
+    "timestampMs": 2080,
+    "confidence": 0.685486
+  },
+  {
+    "text": " Who",
+    "startMs": 2080,
+    "endMs": 2440,
+    "timestampMs": 2420,
+    "confidence": 0.992615
+  },
+  {
+    "text": " is",
+    "startMs": 2440,
+    "endMs": 2670,
+    "timestampMs": 2640,
+    "confidence": 0.999005
+  },
+  {
+    "text": " your",
+    "startMs": 2670,
+    "endMs": 3160,
+    "timestampMs": 2840,
+    "confidence": 0.994954
+  },
+  {
+    "text": " NBA",
+    "startMs": 3160,
+    "endMs": 3520,
+    "timestampMs": 3320,
+    "confidence": 0.998355
+  },
+  {
+    "text": " GO",
+    "startMs": 3520,
+    "endMs": 3660,
+    "timestampMs": 3580,
+    "confidence": 0.531367
+  },
+  {
+    "text": "AT",
+    "startMs": 3660,
+    "endMs": 4400,
+    "timestampMs": 3840,
+    "confidence": 0.999051
+  },
+  {
+    "text": "?",
+    "startMs": 4400,
+    "endMs": 4400,
+    "timestampMs": 4060,
+    "confidence": 0.983931
+  },
+  {
+    "text": " -",
+    "startMs": 4400,
+    "endMs": 4500,
+    "timestampMs": 4060,
+    "confidence": 0.994476
+  },
+  {
+    "text": " NBA",
+    "startMs": 4500,
+    "endMs": 4800,
+    "timestampMs": 4860,
+    "confidence": 0.995778
+  },
+  {
+    "text": " GO",
+    "startMs": 4800,
+    "endMs": 5010,
+    "timestampMs": 5220,
+    "confidence": 0.983882
+  },
+  {
+    "text": "AT",
+    "startMs": 5010,
+    "endMs": 5200,
+    "timestampMs": 5420,
+    "confidence": 0.999106
+  },
+  {
+    "text": "?",
+    "startMs": 5200,
+    "endMs": 5520,
+    "timestampMs": 5460,
+    "confidence": 0.928022
+  },
+  {
+    "text": " -",
+    "startMs": 5520,
+    "endMs": 5590,
+    "timestampMs": 5660,
+    "confidence": 0.995858
+  },
+  {
+    "text": " Greatest",
+    "startMs": 5590,
+    "endMs": 6180,
+    "timestampMs": 5820,
+    "confidence": 0.976839
+  },
+  {
+    "text": " of",
+    "startMs": 6180,
+    "endMs": 6350,
+    "timestampMs": 6060,
+    "confidence": 0.98043
+  },
+  {
+    "text": " all",
+    "startMs": 6350,
+    "endMs": 6540,
+    "timestampMs": 6220,
+    "confidence": 0.92889
+  },
+  {
+    "text": " time",
+    "startMs": 6540,
+    "endMs": 6830,
+    "timestampMs": 6440,
+    "confidence": 0.818071
+  },
+  {
+    "text": " NBA",
+    "startMs": 6830,
+    "endMs": 7040,
+    "timestampMs": 7060,
+    "confidence": 0.683627
+  },
+  {
+    "text": " player",
+    "startMs": 7040,
+    "endMs": 7420,
+    "timestampMs": 7420,
+    "confidence": 0.985374
+  },
+  {
+    "text": ".",
+    "startMs": 7420,
+    "endMs": 7740,
+    "timestampMs": 8900,
+    "confidence": 0.805963
+  },
+  {
+    "text": " (",
+    "startMs": 7740,
+    "endMs": 8200,
+    "timestampMs": 9960,
+    "confidence": 0.771329
+  },
+  {
+    "text": "s",
+    "startMs": 8200,
+    "endMs": 8710,
+    "timestampMs": 9960,
+    "confidence": 0.522801
+  },
+  {
+    "text": "igh",
+    "startMs": 8710,
+    "endMs": 10000,
+    "timestampMs": 9960,
+    "confidence": 0.986577
+  },
+  {
+    "text": "s",
+    "startMs": 10000,
+    "endMs": 10470,
+    "timestampMs": 9960,
+    "confidence": 0.78099
+  },
+  {
+    "text": ")",
+    "startMs": 10470,
+    "endMs": 10960,
+    "timestampMs": 10520,
+    "confidence": 0.915601
+  },
+  {
+    "text": " -",
+    "startMs": 10960,
+    "endMs": 11110,
+    "timestampMs": 13500,
+    "confidence": 0.960825
+  },
+  {
+    "text": " G",
+    "startMs": 11110,
+    "endMs": 11260,
+    "timestampMs": 13600,
+    "confidence": 0.957658
+  },
+  {
+    "text": "otta",
+    "startMs": 11260,
+    "endMs": 11890,
+    "timestampMs": 13700,
+    "confidence": 0.995704
+  },
+  {
+    "text": " be",
+    "startMs": 11890,
+    "endMs": 12200,
+    "timestampMs": 13860,
+    "confidence": 0.995664
+  },
+  {
+    "text": " Matthew",
+    "startMs": 12200,
+    "endMs": 13480,
+    "timestampMs": 14240,
+    "confidence": 0.867667
+  },
+  {
+    "text": " Del",
+    "startMs": 13480,
+    "endMs": 13770,
+    "timestampMs": 14400,
+    "confidence": 0.612855
+  },
+  {
+    "text": "ver",
+    "startMs": 13770,
+    "endMs": 14240,
+    "timestampMs": 14560,
+    "confidence": 0.0169696
+  },
+  {
+    "text": "d",
+    "startMs": 14240,
+    "endMs": 14390,
+    "timestampMs": 14760,
+    "confidence": 0.888165
+  },
+  {
+    "text": "ova",
+    "startMs": 14390,
+    "endMs": 14920,
+    "timestampMs": 14820,
+    "confidence": 0.311051
+  },
+  {
+    "text": ".",
+    "startMs": 14920,
+    "endMs": 15040,
+    "timestampMs": 14940,
+    "confidence": 0.544191
+  },
+  {
+    "text": " (",
+    "startMs": 15040,
+    "endMs": 15350,
+    "timestampMs": 15540,
+    "confidence": 0.453209
+  },
+  {
+    "text": "laughs",
+    "startMs": 15350,
+    "endMs": 17200,
+    "timestampMs": 16000,
+    "confidence": 0.488668
+  },
+  {
+    "text": ")",
+    "startMs": 17200,
+    "endMs": 17500,
+    "timestampMs": 16000,
+    "confidence": 0.929317
+  },
+  {
+    "text": " -",
+    "startMs": 17500,
+    "endMs": 17560,
+    "timestampMs": 17600,
+    "confidence": 0.865461
+  },
+  {
+    "text": " I",
+    "startMs": 17560,
+    "endMs": 17620,
+    "timestampMs": 17620,
+    "confidence": 0.998544
+  },
+  {
+    "text": " can",
+    "startMs": 17620,
+    "endMs": 17840,
+    "timestampMs": 17760,
+    "confidence": 0.697263
+  },
+  {
+    "text": " feel",
+    "startMs": 17840,
+    "endMs": 18060,
+    "timestampMs": 18020,
+    "confidence": 0.994643
+  },
+  {
+    "text": " the",
+    "startMs": 18060,
+    "endMs": 18250,
+    "timestampMs": 18280,
+    "confidence": 0.986139
+  },
+  {
+    "text": " tension",
+    "startMs": 18250,
+    "endMs": 18720,
+    "timestampMs": 18660,
+    "confidence": 0.998776
+  },
+  {
+    "text": ".",
+    "startMs": 18720,
+    "endMs": 18760,
+    "timestampMs": 18740,
+    "confidence": 0.671258
+  }
+]

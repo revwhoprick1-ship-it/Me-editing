@@ -1,84 +1,116 @@
-import {useEffect, useState} from 'react';
+import {loadFont} from '@remotion/fonts';
 import {
-  AbsoluteFill, OffthreadVideo, Sequence, continueRender, delayRender,
-  interpolate, spring, staticFile, useCurrentFrame, useVideoConfig,
+  AbsoluteFill, Audio, OffthreadVideo, Sequence, interpolate, spring, staticFile,
+  useCurrentFrame, useVideoConfig,
 } from 'remotion';
-import {createTikTokStyleCaptions, type Caption, type TikTokPage} from '@remotion/captions';
+import {CAPTIONS, HOOK, SHOTS, type CaptionGroup, type Shot} from './edit';
 
-// Shorts-style edit: punch-in zooms on every caption page, bold
-// word-by-word captions with the active word highlighted and popped.
-const HIGHLIGHT = '#FFE600';
+const fontFamily = 'Montserrat';
+loadFont({family: fontFamily, url: staticFile('Montserrat-Black.woff2'), weight: '900'});
 
-const Page = ({page}: {page: TikTokPage}) => {
+const SRC_W = 1920;
+const SRC_H = 1080;
+const OUT_W = 1080;
+const OUT_H = 1920;
+
+const textStyle = {
+  fontFamily, fontWeight: 900, textTransform: 'uppercase' as const,
+  WebkitTextStroke: '10px black', paintOrder: 'stroke' as const,
+  textShadow: '0 10px 24px rgba(0,0,0,0.55)', textAlign: 'center' as const,
+};
+
+const ShotView = ({shot, src}: {shot: Shot; src: string}) => {
   const frame = useCurrentFrame();
-  const {fps} = useVideoConfig();
-  const nowMs = page.startMs + (frame / fps) * 1000;
-  const enter = spring({frame, fps, config: {damping: 12, stiffness: 200}});
+  // Slow push-in within every shot keeps it moving between cuts.
+  const drift = interpolate(frame, [0, 90], [1, 1.04], {extrapolateRight: 'clamp'});
+
+  if (shot.wide) {
+    const w = OUT_W * 1.25;
+    const h = (w * SRC_H) / SRC_W;
+    return (
+      <AbsoluteFill>
+        <OffthreadVideo src={src} muted style={{
+          width: '100%', height: '100%', objectFit: 'cover',
+          filter: 'blur(40px) brightness(0.6)', transform: 'scale(1.2)',
+        }} />
+        <AbsoluteFill style={{justifyContent: 'center', alignItems: 'center'}}>
+          <OffthreadVideo src={src} muted style={{width: w, height: h, transform: `scale(${drift})`}} />
+        </AbsoluteFill>
+      </AbsoluteFill>
+    );
+  }
+
+  const k = OUT_H / shot.h!;
   return (
-    <AbsoluteFill style={{justifyContent: 'center', alignItems: 'center', top: '35%'}}>
-      <div style={{
-        transform: `scale(${interpolate(enter, [0, 1], [0.6, 1])})`,
-        fontFamily: 'Montserrat, Arial Black, sans-serif', fontWeight: 900,
-        fontSize: 96, textAlign: 'center', textTransform: 'uppercase',
-        padding: '0 60px', lineHeight: 1.1, WebkitTextStroke: '6px black',
-        paintOrder: 'stroke', textShadow: '0 8px 20px rgba(0,0,0,0.6)',
-      }}>
-        {page.tokens.map((t) => {
-          const active = nowMs >= t.fromMs && nowMs < t.toMs;
-          return (
-            <span key={t.fromMs} style={{
-              color: active ? HIGHLIGHT : 'white',
-              display: 'inline-block',
-              transform: active ? 'scale(1.15) rotate(-2deg)' : 'none',
-              whiteSpace: 'pre',
-            }}>{t.text}</span>
-          );
-        })}
-      </div>
+    <AbsoluteFill style={{overflow: 'hidden', transform: `scale(${drift})`}}>
+      <OffthreadVideo src={src} muted style={{
+        position: 'absolute', width: SRC_W * k, height: SRC_H * k,
+        left: OUT_W / 2 - shot.x! * k, top: -shot.y! * k,
+      }} />
     </AbsoluteFill>
   );
 };
 
-export const ShortEdit = ({src, captions}: {src: string; captions: string}) => {
+const Caption = ({c}: {c: CaptionGroup}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
-  const [pages, setPages] = useState<TikTokPage[] | null>(null);
-  const [handle] = useState(() => delayRender('captions'));
+  const pop = spring({frame, fps, config: {damping: 10, stiffness: 260}});
+  const long = c.text.length > 12;
+  return (
+    <AbsoluteFill style={{justifyContent: 'flex-start', alignItems: 'center', top: '62%'}}>
+      <div style={{
+        ...textStyle, fontSize: long ? 96 : 120, color: c.key ?? 'white',
+        padding: '0 50px', lineHeight: 1.05,
+        transform: `scale(${interpolate(pop, [0, 1], [0.5, 1])})`,
+      }}>{c.text}</div>
+    </AbsoluteFill>
+  );
+};
 
-  useEffect(() => {
-    fetch(staticFile(captions))
-      .then((r) => (r.ok ? r.json() : []))
-      .catch(() => [])
-      .then((c: Caption[]) => {
-        setPages(createTikTokStyleCaptions({captions: c, combineTokensWithinMilliseconds: 900}).pages);
-        continueRender(handle);
-      });
-  }, [captions, handle]);
+const Hook = () => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const enter = spring({frame, fps, config: {damping: 14}});
+  return (
+    <AbsoluteFill style={{alignItems: 'center', top: 170}}>
+      <div style={{
+        ...textStyle, fontSize: 64, color: '#FFE600', WebkitTextStroke: '8px black',
+        padding: '0 60px', transform: `translateY(${interpolate(enter, [0, 1], [-60, 0])}px)`,
+        opacity: enter,
+      }}>{HOOK.text}</div>
+    </AbsoluteFill>
+  );
+};
 
-  // Alternate punch-in zoom on each caption page (jump-cut feel).
-  const idx = pages?.findIndex((p, i) => {
-    const next = pages[i + 1];
-    const ms = (frame / fps) * 1000;
-    return ms >= p.startMs && (!next || ms < next.startMs);
-  }) ?? -1;
-  const zoom = idx >= 0 && idx % 2 === 1 ? 1.15 : 1.0;
+export const ShortEdit = ({src}: {src: string}) => {
+  const {fps, durationInFrames} = useVideoConfig();
+  const f = (ms: number) => Math.round((ms / 1000) * fps);
+  const video = staticFile(src);
 
   return (
     <AbsoluteFill style={{backgroundColor: 'black'}}>
-      <AbsoluteFill style={{transform: `scale(${zoom})`}}>
-        <OffthreadVideo src={staticFile(src)} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
-      </AbsoluteFill>
-      {pages?.map((page, i) => {
-        const next = pages[i + 1];
-        const from = Math.round((page.startMs / 1000) * fps);
-        const end = next ? next.startMs : page.startMs + page.durationMs;
-        const dur = Math.max(1, Math.round((end / 1000) * fps) - from);
+      {SHOTS.map((shot, i) => {
+        const from = f(shot.from);
+        const to = i + 1 < SHOTS.length ? f(SHOTS[i + 1].from) : durationInFrames;
         return (
-          <Sequence key={i} from={from} durationInFrames={dur}>
-            <Page page={page} />
+          <Sequence key={i} from={from} durationInFrames={to - from}>
+            {/* Offset into the source so each shot plays the right moment. */}
+            <Sequence from={-from}>
+              <ShotView shot={shot} src={video} />
+            </Sequence>
           </Sequence>
         );
       })}
+      {/* Audio from one continuous track so cuts never pop. */}
+      <Audio src={video} />
+      {CAPTIONS.map((c, i) => (
+        <Sequence key={i} from={f(c.from)} durationInFrames={Math.max(1, f(c.to) - f(c.from))}>
+          <Caption c={c} />
+        </Sequence>
+      ))}
+      <Sequence durationInFrames={f(HOOK.to)}>
+        <Hook />
+      </Sequence>
     </AbsoluteFill>
   );
 };

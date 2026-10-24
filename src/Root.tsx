@@ -12,7 +12,7 @@ export const RemotionRoot = () => (
     width={1080}
     height={1920}
     durationInFrames={FPS * 30}
-    defaultProps={{src: 'input.mp4', captions: 'captions.json'}}
+    defaultProps={{src: 'input.mp4'}}
     calculateMetadata={async ({props}) => {
       const meta = await getVideoMetadata(staticFile(props.src));
       return {durationInFrames: Math.ceil(meta.durationInSeconds * FPS)};
