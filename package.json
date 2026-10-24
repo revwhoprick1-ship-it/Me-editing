@@ -1,0 +1,35 @@
+{
+  "name": "me-editing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "transcribe": "node scripts/transcribe.mjs",
+    "studio": "remotion studio src/index.ts",
+    "render": "remotion render src/index.ts ShortEdit out/edited.mp4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/revwhoprick1-ship-it/Me-editing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/revwhoprick1-ship-it/Me-editing/issues"
+  },
+  "homepage": "https://github.com/revwhoprick1-ship-it/Me-editing#readme",
+  "dependencies": {
+    "@remotion/captions": "^4.0.538",
+    "@remotion/cli": "^4.0.538",
+    "@remotion/install-whisper-cpp": "^4.0.538",
+    "@remotion/media-utils": "^4.0.538",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.538"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "typescript": "^7.0.2"
+  }
+}

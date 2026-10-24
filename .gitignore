@@ -1,0 +1,5 @@
+node_modules
+whisper.cpp
+out
+public/*.mp4
+public/*.wav
