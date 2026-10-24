@@ -7,7 +7,7 @@ import {
 import {
   AURA, CAPTIONS, CUTOUTS, CUTS, HOOK, LAUGH, MUSIC, PUNCH, SFX, SHOTS, SPEECH, YELLOW,
   type CaptionGroup, type Shot, type Sfx,
-} from './edit';
+} from './activePod';
 
 const fontFamily = 'Montserrat';
 loadFont({family: fontFamily, url: staticFile('Montserrat-Black.woff2'), weight: '800'});
@@ -269,14 +269,14 @@ const Punchline = () => {
       <AbsoluteFill style={{backgroundColor: '#1EFF3C', opacity: flash, mixBlendMode: 'multiply'}} />
       <AbsoluteFill style={{backgroundColor: '#1EFF3C', opacity: flash * 0.25}} />
       <Bokeh count={22} seed="punch" />
-      <Img src={emojiSrc(PUNCH.sticker)} style={{
+      <Img src={emojiSrc(PUNCH!.sticker)} style={{
         position: 'absolute', width: 190, height: 190, left: OUT_W / 2 - 95, top: 190,
         transform: `scale(${interpolate(slam, [0, 1], [3, 1])}) rotate(${interpolate(slam, [0, 1], [-30, 8])}deg)`,
         filter: 'drop-shadow(0 8px 14px rgba(0,0,0,0.5))',
       }} />
-      {PUNCH.label && <AbsoluteFill style={{alignItems: 'center', top: STACK_TOP - 44}}>
+      {PUNCH!.label && <AbsoluteFill style={{alignItems: 'center', top: STACK_TOP - 44}}>
         <div style={{...textStyle, fontSize: 52, color: YELLOW, textShadow: glow(YELLOW), transform: `scale(${pop})`}}>
-          {PUNCH.label}
+          {PUNCH!.label}
         </div>
       </AbsoluteFill>}
     </AbsoluteFill>
@@ -289,9 +289,9 @@ const Aura = () => {
   const pop = spring({frame, fps, config: {damping: 9, stiffness: 260}});
   return (
     <AbsoluteFill style={{alignItems: 'center', top: 520, background: 'radial-gradient(circle, transparent 45%, rgba(0,0,0,0.7))'}}>
-      <Img src={emojiSrc(AURA.emoji)} style={{width: 150, height: 150, transform: `scale(${pop})`}} />
+      <Img src={emojiSrc(AURA!.emoji)} style={{width: 150, height: 150, transform: `scale(${pop})`}} />
       <div style={{...textStyle, fontSize: 84, color: '#FF3B3B', textShadow: glow('#FF3B3B'), transform: `scale(${pop})`}}>
-        {AURA.text}
+        {AURA!.text}
       </div>
     </AbsoluteFill>
   );
@@ -322,7 +322,7 @@ export const ShortEdit = ({src}: {src: string}) => {
 
   return (
     <AbsoluteFill style={{backgroundColor: 'black'}}>
-      <Shake at={f(outMs(PUNCH.at)!)}>
+      <Shake at={PUNCH ? f(outMs(PUNCH.at)!) : -999}>
         <div style={{position: 'absolute', top: BOX_TOP, width: OUT_W, height: BOX_H, overflow: 'hidden'}}>
         {pieces.map((p, i) => {
           const r = outRange(p.from, p.to)!;
@@ -333,7 +333,7 @@ export const ShortEdit = ({src}: {src: string}) => {
           );
         })}
 
-        {(() => {
+        {PUNCH && (() => {
           const r = outRange(PUNCH.at, PUNCH.to)!;
           return <Sequence from={r.from} durationInFrames={r.dur}><Punchline /></Sequence>;
         })()}
@@ -344,11 +344,11 @@ export const ShortEdit = ({src}: {src: string}) => {
         })}
       </Shake>
 
-      {(() => {
+      {AURA && (() => {
         const r = outRange(AURA.at, AURA.to)!;
         return <Sequence from={r.from} durationInFrames={r.dur}><Aura /></Sequence>;
       })()}
-      {(() => {
+      {LAUGH && (() => {
         const r = outRange(LAUGH.from, LAUGH.to)!;
         return <Sequence from={r.from} durationInFrames={r.dur}><FloatingEmoji emoji={LAUGH.emoji} count={12} seed="laugh" /></Sequence>;
       })()}

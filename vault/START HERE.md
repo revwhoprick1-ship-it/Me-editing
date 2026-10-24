@@ -39,18 +39,28 @@ Edit podcast/streamer clips into viral vertical Shorts in a **meme / brainrot cl
 - **Projects**
   - [[NBA GOAT pick]]: Trevor Lawrence podcast clip: seat map, verified timings, **feedback log**
   - [[Cooper Flagg Arrivals 1-1]]: card pull from the sheet
+  - [[Batch 1 - 6 big pulls + 6 Trevor clips]]: 12 Shorts from the sheet, how the batch pipeline works, titles/descriptions
 
 ## Quick start (new session)
 1. Read [[NBA GOAT pick]] (feedback log) and [[Caption style]].
 2. `npm install` (and `pip install faster-whisper` if transcribing).
-3. Download the footage to `public/input.mp4` (see [[Edit workflow#1. Get the footage]]).
-4. Change `src/edit.ts`, then render (see [[Edit workflow#4. Preview & render]]).
+3. Download footage one file at a time with `scripts/drive_dl.sh` (parallel Drive pulls get blocked).
+4. Transcribe with `scripts/batch_transcribe.py`.
+5. Write a plan:
+   - card pull → `src/plans/card/<name>.ts` with `makeCardPlan`;
+   - podcast → `src/plans/pod/<name>.ts` with `makePodPlan`.
+   Copy an existing plan as the template.
+6. Check stills (`scripts/stills.sh`), then render with `scripts/render_card.sh <name>` / `scripts/render_pod.sh <name>`.
+7. Send the MP4s in chat, plus titles and descriptions (see [[Batch 1 - 6 big pulls + 6 Trevor clips#Titles + descriptions (sent to user)]]).
 
 ## Repo layout
 | Path | What |
 |---|---|
-| `src/edit.ts` | the edit decision list: cuts, shots, captions, SFX, music (all in source ms) |
-| `src/ShortEdit.tsx` | the Remotion renderer for that list |
+| `src/plans/pod/*.ts` | podcast edit plans (`make.ts` = `makePodPlan` factory: captions, shots, SFX, music from a short spec) |
+| `src/plans/card/*.ts` | card-pull edit plans (`make.ts` = `makeCardPlan` factory: suspense, reveal, narration, banner) |
+| `src/activePod.ts`, `src/activeCard.ts` | which plan renders; switch with `node scripts/use-plan.mjs pod\|card <name>` |
+| `src/ShortEdit.tsx`, `src/CardPull.tsx` | the Remotion renderers (podcast layout / card-pull layout) |
+| `scripts/drive_dl.sh`, `batch_transcribe.py`, `prep_narr.py`, `track.py`, `seat_motion.py`, `stills.sh`, `render_*.sh` | batch pipeline (see [[Batch 1 - 6 big pulls + 6 Trevor clips#How it was built (reuse this)]]) |
 | `scripts/transcribe_words.py` | faster-whisper word timestamps → `public/words.json` |
 | `scripts/speech_segments.py` | real speech on/off times from the audio (to fix whisper timing) |
 | `public/emoji-ios/` | Apple emoji PNGs (160 px) |

@@ -91,13 +91,13 @@ export const CUTOUTS = [
 ];
 
 // Punchline: vine boom, green flash + bokeh, 💀 slam on the table, label on the split.
-export const PUNCH = {at: 14414, to: 14950, label: '', sticker: '1f480'};
+export const PUNCH: {at: number; to: number; label: string; sticker: string} | null = {at: 14414, to: 14950, label: '', sticker: '1f480'};
 
 // B&W reaction meme counter.
-export const AURA = {at: 15100, to: 15700, text: 'AURA -10000', emoji: '1f480'};
+export const AURA: {at: number; to: number; text: string; emoji: string} | null = {at: 15100, to: 15700, text: 'AURA -10000', emoji: '1f480'};
 
 // Floating emoji while everyone laughs.
-export const LAUGH = {from: 15700, to: 17450, emoji: ['1f602', '1f62d', '1f480']};
+export const LAUGH: {from: number; to: number; emoji: string[]} | null = {from: 15700, to: 17450, emoji: ['1f602', '1f62d', '1f480']};
 
 // at = the moment the sound should hit; onset (ms of silence at the start of the file)
 // is subtracted automatically. maxMs trims long files.
@@ -130,3 +130,4 @@ export const MUSIC: MusicBed[] = [
 export const SPEECH: [number, number][] = [
   [20, 1800], [2300, 3560], [4400, 5340], [5560, 7400], [13480, 14950], [17500, 18700],
 ];
+export const SRC = 'input.mp4';

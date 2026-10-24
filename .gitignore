@@ -5,3 +5,6 @@ public/*.mp4
 public/*.wav
 footage/
 public/flagg/input.mp4
+public/cards/*.mp4
+public/cards/full_*.png
+public/pod/*.mp4

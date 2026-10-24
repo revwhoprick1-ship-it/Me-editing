@@ -5,6 +5,18 @@
 
 export const SRC = 'flagg/input.mp4';
 
+// Stream layout geometry (source px): hosts cam crop for the reaction layout,
+// top of the card cam, where our banner covers the burned-in one.
+export const GEOM = {
+  srcW: 1080, srcH: 1920, topH: 427,
+  hosts: {x: 0, y: 0, w: 1080, h: 427}, // hosts cam (top of the stream layout)
+  card: {x: 0, y: 607, w: 1080, h: 1313}, // card cam (under the burned-in banner)
+  react: {x: 230, y: 0, w: 660, h: 420}, // hosts close-up for the reaction layout
+  ringR: 125,
+};
+export const CARD_STILL = {file: 'flagg/card.png', w: 440, h: 640};
+export const STAMP = '1 OF 1';
+
 // Hook: open on the screaming (plays first, before the main cuts).
 export const HOOK_CUT: [number, number] = [32300, 33900];
 // Main story, in order.
@@ -49,6 +61,7 @@ export const CARD = {
   revealAt: 29400, // unblur + flash + money + music drop (card swipes in at 29.0)
   center: {x: 550, y: 1460}, // card centre in the source frame at the reveal
   serial: {x: 705, y: 1385}, // where the 1/1 is printed (the arrow points here)
+  zoom: 1.5, // hold zoom on the card at the reveal
 };
 
 // Cards stay blurred until they're named / revealed (source ms + box in source px).
@@ -210,3 +223,5 @@ export const MUSIC = {file: 'montagem-alquimia.mp3', dropAt: 3920, bodyFrom: 460
 export const SPEECH: [number, number][] = [
   [5080, 7300], [9200, 12100], [14980, 18400], [30000, 45400],
 ];
+
+export const HOOK_BLUR: [number, number, number, number] | null = null;

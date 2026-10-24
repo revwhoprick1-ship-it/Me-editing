@@ -1,0 +1,297 @@
+[
+ {
+  "text": "One",
+  "startMs": 0,
+  "endMs": 200
+ },
+ {
+  "text": "of",
+  "startMs": 200,
+  "endMs": 400
+ },
+ {
+  "text": "one",
+  "startMs": 400,
+  "endMs": 660
+ },
+ {
+  "text": "gold",
+  "startMs": 660,
+  "endMs": 1040
+ },
+ {
+  "text": "vinyl",
+  "startMs": 1040,
+  "endMs": 1500
+ },
+ {
+  "text": "order",
+  "startMs": 1500,
+  "endMs": 1920
+ },
+ {
+  "text": "of",
+  "startMs": 1920,
+  "endMs": 3540
+ },
+ {
+  "text": "a",
+  "startMs": 3540,
+  "endMs": 3680
+ },
+ {
+  "text": "rookie.",
+  "startMs": 3680,
+  "endMs": 3940
+ },
+ {
+  "text": "Rucky.",
+  "startMs": 4180,
+  "endMs": 4240
+ },
+ {
+  "text": "Oh",
+  "startMs": 5100,
+  "endMs": 5120
+ },
+ {
+  "text": "my",
+  "startMs": 5120,
+  "endMs": 5580
+ },
+ {
+  "text": "God.",
+  "startMs": 5580,
+  "endMs": 5820
+ },
+ {
+  "text": "No,",
+  "startMs": 6120,
+  "endMs": 6120
+ },
+ {
+  "text": "no,",
+  "startMs": 6300,
+  "endMs": 6300
+ },
+ {
+  "text": "no,",
+  "startMs": 6460,
+  "endMs": 6460
+ },
+ {
+  "text": "no.",
+  "startMs": 7100,
+  "endMs": 7100
+ },
+ {
+  "text": "No,",
+  "startMs": 7160,
+  "endMs": 7380
+ },
+ {
+  "text": "this",
+  "startMs": 7640,
+  "endMs": 7640
+ },
+ {
+  "text": "can't",
+  "startMs": 7640,
+  "endMs": 7920
+ },
+ {
+  "text": "be",
+  "startMs": 7920,
+  "endMs": 8000
+ },
+ {
+  "text": "possible,",
+  "startMs": 8000,
+  "endMs": 8620
+ },
+ {
+  "text": "right?",
+  "startMs": 8880,
+  "endMs": 8880
+ },
+ {
+  "text": "I'm",
+  "startMs": 9280,
+  "endMs": 9400
+ },
+ {
+  "text": "going",
+  "startMs": 9400,
+  "endMs": 9600
+ },
+ {
+  "text": "in",
+  "startMs": 9600,
+  "endMs": 9760
+ },
+ {
+  "text": "the",
+  "startMs": 9760,
+  "endMs": 9860
+ },
+ {
+  "text": "trash",
+  "startMs": 9860,
+  "endMs": 10160
+ },
+ {
+  "text": "can",
+  "startMs": 10160,
+  "endMs": 10380
+ },
+ {
+  "text": "if",
+  "startMs": 10380,
+  "endMs": 10500
+ },
+ {
+  "text": "it's",
+  "startMs": 10500,
+  "endMs": 10680
+ },
+ {
+  "text": "hurt.",
+  "startMs": 10680,
+  "endMs": 10840
+ },
+ {
+  "text": "There's",
+  "startMs": 11180,
+  "endMs": 11420
+ },
+ {
+  "text": "no",
+  "startMs": 11420,
+  "endMs": 11600
+ },
+ {
+  "text": "way.",
+  "startMs": 11600,
+  "endMs": 12020
+ },
+ {
+  "text": "Oh!",
+  "startMs": 16860,
+  "endMs": 17380
+ },
+ {
+  "text": "No",
+  "startMs": 19840,
+  "endMs": 20360
+ },
+ {
+  "text": "way!",
+  "startMs": 20360,
+  "endMs": 20880
+ },
+ {
+  "text": "No",
+  "startMs": 21340,
+  "endMs": 21340
+ },
+ {
+  "text": "way!",
+  "startMs": 21340,
+  "endMs": 21520
+ },
+ {
+  "text": "No",
+  "startMs": 21520,
+  "endMs": 21520
+ },
+ {
+  "text": "way!",
+  "startMs": 21520,
+  "endMs": 22820
+ },
+ {
+  "text": "No!",
+  "startMs": 23260,
+  "endMs": 23780
+ },
+ {
+  "text": "No!",
+  "startMs": 25920,
+  "endMs": 26000
+ },
+ {
+  "text": "No",
+  "startMs": 27700,
+  "endMs": 28020
+ },
+ {
+  "text": "way!",
+  "startMs": 28020,
+  "endMs": 28300
+ },
+ {
+  "text": "No",
+  "startMs": 28300,
+  "endMs": 28460
+ },
+ {
+  "text": "way!",
+  "startMs": 28460,
+  "endMs": 29540
+ },
+ {
+  "text": "Get",
+  "startMs": 30000,
+  "endMs": 30360
+ },
+ {
+  "text": "me",
+  "startMs": 30360,
+  "endMs": 31360
+ },
+ {
+  "text": "out!",
+  "startMs": 31360,
+  "endMs": 32000
+ },
+ {
+  "text": "Get",
+  "startMs": 33200,
+  "endMs": 33340
+ },
+ {
+  "text": "me",
+  "startMs": 33340,
+  "endMs": 33700
+ },
+ {
+  "text": "out!",
+  "startMs": 33700,
+  "endMs": 34040
+ },
+ {
+  "text": "This",
+  "startMs": 35500,
+  "endMs": 35660
+ },
+ {
+  "text": "wall...",
+  "startMs": 35660,
+  "endMs": 36200
+ },
+ {
+  "text": "You're",
+  "startMs": 36200,
+  "endMs": 36560
+ },
+ {
+  "text": "right.",
+  "startMs": 36560,
+  "endMs": 36640
+ },
+ {
+  "text": "Yes!",
+  "startMs": 37080,
+  "endMs": 37620
+ }
+]

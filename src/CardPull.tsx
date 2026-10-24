@@ -7,9 +7,9 @@ import {
 import {
   BANNER_AFTER, BANNER_BEFORE, BLURS, CAPTIONS, CARD, CUTS, DIALOGUE_GAIN, HOOK_CAPTIONS, HOOK_CUT, HOOK_SFX,
   HOOK_TITLE, LAYOUTS, MONEY_MS, MUSIC, NARRATION, NARRATION_CHUNK, NARRATION_FILE, OUT_SFX, QUESTION, SFX,
-  SPEECH, SRC, SUSPENSE, TRACK, TRACK_UNTIL, WHIPS, ZOOMS,
+  SPEECH, SRC, SUSPENSE, GEOM, HOOK_BLUR, CARD_STILL, STAMP, TRACK, TRACK_UNTIL, WHIPS, ZOOMS,
   type BannerPart, type Cap, type Layout, type Sfx,
-} from './flagg';
+} from './activeCard';
 
 const fontFamily = 'Montserrat';
 loadFont({family: fontFamily, url: staticFile('Montserrat-Black.woff2'), weight: '800'});
@@ -56,7 +56,7 @@ const layoutAt = (src: number): Layout =>
 // Punch-in zoom at a source moment: eases in/out over ~150 ms.
 const zoomAt = (src: number) => {
   const z = ZOOMS.find((q) => src >= q.from - 150 && src <= q.to + 150);
-  if (!z) return {scale: 1, x: 540, y: 1300};
+  if (!z) return {scale: 1, x: GEOM.card.x + GEOM.card.w / 2, y: GEOM.card.y + GEOM.card.h / 2};
   const k = Math.min(1, (src - z.from + 150) / 150, (z.to + 150 - src) / 150);
   const e = 1 - Math.pow(1 - Math.max(0, k), 3);
   return {scale: 1 + (z.scale - 1) * e, x: z.x, y: z.y};
@@ -70,14 +70,51 @@ const text: CSSProperties = {
   fontFamily, fontWeight: 800, textTransform: 'uppercase', textAlign: 'center', color: 'white', lineHeight: 1.1,
 };
 
-// Reaction layout geometry: hosts cam crop scaled up on top.
-const CAM = {x0: 230, x1: 890, h: 420};
-const CAM_K = W / (CAM.x1 - CAM.x0);
-const CAM_H = Math.round(CAM.h * CAM_K);
-// Top of the card cam in the source layout (under the burned-in banner).
-const CARD_CAM_TOP = 607;
-const bannerTop = (l: Layout) => (l === 'reaction' ? CAM_H + 10 : 427);
-const captionY = (l: Layout) => (l === 'full' ? 1000 : l === 'reveal' ? 250 : CAM_H - 210);
+// ---- layout geometry ---------------------------------------------------
+// GEOM (plan) gives source rects: `hosts` (top of the normal layout), `card`
+// (bottom), `react` (hosts close-up for the reaction layout), plus `topH`, the
+// height of the hosts box on screen. Our banner sits right under it.
+type Rect = {x: number; y: number; w: number; h: number};
+type Pt = {x: number; y: number};
+const BANNER_H = 180;
+const TOP_H = GEOM.topH;
+const HOSTS_BOX: Rect = {x: 0, y: 0, w: W, h: TOP_H};
+const CARD_BOX: Rect = {x: 0, y: TOP_H + BANNER_H, w: W, h: H - TOP_H - BANNER_H};
+const CAM_H = Math.round((W * GEOM.react.h) / GEOM.react.w);
+const REACT_BOX: Rect = {x: 0, y: 0, w: W, h: CAM_H};
+const bannerTop = (l: Layout) => (l === 'reaction' ? CAM_H + 10 : TOP_H);
+const captionY = (l: Layout) => (l === 'full' ? CARD_BOX.y + 150 : l === 'reveal' ? (TOP_H < 200 ? CARD_BOX.y + 300 : Math.round(TOP_H * 0.55)) : CAM_H - 210);
+
+// Where source rect `rect` lands in screen box `box` (cover-fit), zoomed by
+// `zoom` around source point `focus`.
+const camXform = (rect: Rect, box: Rect, zoom = 1, focus?: Pt) => {
+  const k = Math.max(box.w / rect.w, box.h / rect.h);
+  const c = {x: rect.x + rect.w / 2, y: rect.y + rect.h / 2};
+  const F = focus ?? c;
+  const s = k * zoom;
+  return {s, tx: (F.x - c.x) * k + box.w / 2 - F.x * s, ty: (F.y - c.y) * k + box.h / 2 - F.y * s};
+};
+const mapPt = (P: Pt, rect: Rect, box: Rect, zoom = 1, focus?: Pt): Pt => {
+  const {s, tx, ty} = camXform(rect, box, zoom, focus);
+  return {x: box.x + tx + P.x * s, y: box.y + ty + P.y * s};
+};
+
+// Shows a source rect in a screen box; children are positioned in SOURCE px.
+const Cam = ({rect, box, trim, rate = 1, zoom = 1, focus, style, innerStyle, children}: {
+  rect: Rect; box: Rect; trim: number; rate?: number; zoom?: number; focus?: Pt;
+  style?: CSSProperties; innerStyle?: CSSProperties; children?: ReactNode;
+}) => {
+  const {s, tx, ty} = camXform(rect, box, zoom, focus);
+  return (
+    <div style={{position: 'absolute', left: box.x, top: box.y, width: box.w, height: box.h, overflow: 'hidden', ...style}}>
+      <div style={{position: 'absolute', left: 0, top: 0, width: GEOM.srcW, height: GEOM.srcH, transformOrigin: '0 0',
+        transform: `translate(${tx}px, ${ty}px) scale(${s})`, ...innerStyle}}>
+        <OffthreadVideo src={staticFile(SRC)} muted trimBefore={trim} playbackRate={rate} style={{width: GEOM.srcW, height: GEOM.srcH}} />
+        {children}
+      </div>
+    </div>
+  );
+};
 
 // Motion-blur whip on the first frames of a scene (Refs D/E/F).
 const Whip = ({children}: {children: ReactNode}) => {
@@ -132,16 +169,16 @@ const Arrow = ({x, y, from = 'right'}: {x: number; y: number; from?: 'right' | '
 };
 
 // Red ring that follows TRACK (source px) in the reaction layout.
-const TrackedCircle = ({outStartMs}: {outStartMs: number}) => {
+const TrackedCircle = ({outStartMs, zoom, focus}: {outStartMs: number; zoom: number; focus: Pt}) => {
   const frame = useCurrentFrame();
   const src = srcAtOut(outStartMs + (frame / FPS) * 1000);
-  if (src > TRACK_UNTIL || src < TRACK[0].at) return null;
+  if (!TRACK.length || src > TRACK_UNTIL || src < TRACK[0].at) return null;
   const xs = TRACK.map((t) => t.at);
   const sx = interpolate(src, xs, TRACK.map((t) => t.x), {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   const sy = interpolate(src, xs, TRACK.map((t) => t.y), {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
-  const x = (sx - CAM.x0) * CAM_K;
-  const y = sy * CAM_K;
-  const r = 125;
+  const {x, y: y0} = mapPt({x: sx, y: sy}, GEOM.react, REACT_BOX, zoom, focus);
+  const r = GEOM.ringR ?? 125;
+  const y = Math.max(r * 0.55, y0);
   const len = 2 * Math.PI * r;
   const draw = interpolate(frame, [0, 10], [len, 0], {extrapolateRight: 'clamp'});
   return (
@@ -151,7 +188,7 @@ const TrackedCircle = ({outStartMs}: {outStartMs: number}) => {
           strokeDasharray={len} strokeDashoffset={draw} transform={`rotate(-90 ${x} ${y})`}
           style={{filter: 'drop-shadow(3px 4px 0 rgba(0,0,0,0.6))'}} />
       </svg>
-      <Arrow x={x + 95} y={y + 95} />
+      <Arrow x={x + r * 0.76} y={y + r * 0.76} />
     </>
   );
 };
@@ -196,18 +233,14 @@ const FullView = ({trim, srcStart, rate, outStart}: {trim: number; srcStart: num
   const amp = sp * sp * 12;
   const z = zoomAt(src);
   const b = blurAt(src);
-  // Hosts cam stays still; only the card cam (below the burned banner) pushes/zooms.
   return (
     <AbsoluteFill>
-      <OffthreadVideo src={staticFile(SRC)} muted trimBefore={trim} playbackRate={rate} style={{width: W, height: H}} />
-      <div style={{position: 'absolute', top: CARD_CAM_TOP, width: W, height: H - CARD_CAM_TOP, overflow: 'hidden'}}>
-        <div style={{position: 'absolute', top: -CARD_CAM_TOP, width: W, height: H,
-          transform: `translate(${Math.sin(frame * 2.3) * amp}px, ${Math.cos(frame * 3.1) * amp}px) scale(${push * z.scale})`,
-          transformOrigin: `${z.x}px ${z.y}px`, filter: sp > 0 ? `saturate(${1 - 0.6 * sp}) contrast(${1 + 0.25 * sp})` : undefined}}>
-          <OffthreadVideo src={staticFile(SRC)} muted trimBefore={trim} playbackRate={rate} style={{width: W, height: H}} />
-          {b && <BlurBox box={b.box} />}
-        </div>
-      </div>
+      <Cam rect={GEOM.hosts} box={HOSTS_BOX} trim={trim} rate={rate} />
+      <Cam rect={GEOM.card} box={CARD_BOX} trim={trim} rate={rate} zoom={push * z.scale} focus={{x: z.x, y: z.y}}
+        style={{transform: `translate(${Math.sin(frame * 2.3) * amp}px, ${Math.cos(frame * 3.1) * amp}px)`}}
+        innerStyle={sp > 0 ? {filter: `saturate(${1 - 0.6 * sp}) contrast(${1 + 0.25 * sp})`} : undefined}>
+        {b && <BlurBox box={b.box} />}
+      </Cam>
     </AbsoluteFill>
   );
 };
@@ -215,24 +248,16 @@ const FullView = ({trim, srcStart, rate, outStart}: {trim: number; srcStart: num
 const RevealView = ({trim}: {trim: number}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
-  // Slam: starts way in (2.2x) and snaps back to 1.5x.
-  const z = interpolate(spring({frame, fps, config: {damping: 11, stiffness: 260}}), [0, 1], [2.2, 1.5]);
-  const {x, y} = CARD.center;
-  // Only the card cam (below the burned banner) zooms; hosts cam stays put.
-  const camTop = CARD_CAM_TOP;
-  const sx = x + (CARD.serial.x - x) * 1.5;
-  const sy = y + (CARD.serial.y - y) * 1.5;
+  // Slam: starts way in and snaps back to the hold zoom.
+  const hold = CARD.zoom ?? 1.5;
+  const z = interpolate(spring({frame, fps, config: {damping: 11, stiffness: 260}}), [0, 1], [hold * 1.45, hold]);
+  const arrow = mapPt(CARD.serial, GEOM.card, CARD_BOX, hold, CARD.center);
   return (
     <AbsoluteFill>
-      <OffthreadVideo src={staticFile(SRC)} muted trimBefore={trim} style={{width: W, height: H}} />
-      <div style={{position: 'absolute', top: camTop, width: W, height: H - camTop, overflow: 'hidden'}}>
-        <div style={{position: 'absolute', top: -camTop, width: W, height: H,
-          transform: `scale(${z})`, transformOrigin: `${x}px ${y}px`}}>
-          <OffthreadVideo src={staticFile(SRC)} muted trimBefore={trim} style={{width: W, height: H}} />
-        </div>
-      </div>
-      <Arrow x={sx} y={sy} />
-      <TitleStack top={650} start={4} />
+      <Cam rect={GEOM.hosts} box={HOSTS_BOX} trim={trim} />
+      <Cam rect={GEOM.card} box={CARD_BOX} trim={trim} zoom={z} focus={CARD.center} />
+      <Arrow x={arrow.x} y={arrow.y} />
+      <TitleStack top={TOP_H + BANNER_H + 40} start={4} />
     </AbsoluteFill>
   );
 };
@@ -242,29 +267,25 @@ const ReactionView = ({trim, outStartMs, srcStart, hook, showQuestion}: {
 }) => {
   const frame = useCurrentFrame();
   const z = zoomAt(srcStart + (frame / FPS) * 1000);
+  const focus = {x: z.x, y: z.y};
   const {fps} = useVideoConfig();
   const cardPop = spring({frame, fps, config: {damping: 12, stiffness: 160}});
   const cardH = H - (CAM_H + 200) - 250 - 40;
+  const cardW = (cardH * CARD_STILL.w) / CARD_STILL.h;
   const q = showQuestion(frame);
   return (
     <AbsoluteFill style={{background: 'black'}}>
-      <OffthreadVideo src={staticFile(SRC)} muted trimBefore={trim} style={{
-        width: W, height: H, filter: 'blur(36px) brightness(0.45)', transform: 'scale(1.15)',
-      }} />
-      <div style={{position: 'absolute', top: 0, width: W, height: CAM_H, overflow: 'hidden'}}>
-        <div style={{position: 'absolute', inset: 0, transform: `scale(${z.scale})`,
-          transformOrigin: `${(z.x - CAM.x0) * CAM_K}px ${z.y * CAM_K}px`}}>
-          <OffthreadVideo src={staticFile(SRC)} muted trimBefore={trim} style={{
-            position: 'absolute', width: W * CAM_K, height: H * CAM_K, left: -CAM.x0 * CAM_K, top: 0,
-          }} />
-          <TrackedCircle outStartMs={outStartMs} />
-        </div>
-      </div>
+      <Cam rect={{x: 0, y: 0, w: GEOM.srcW, h: GEOM.srcH}} box={{x: 0, y: 0, w: W, h: H}} trim={trim}
+        innerStyle={{filter: 'blur(36px) brightness(0.45)'}} />
+      <Cam rect={GEOM.react} box={REACT_BOX} trim={trim} zoom={z.scale} focus={z.scale === 1 ? undefined : focus}>
+        {hook && HOOK_BLUR && <BlurBox box={HOOK_BLUR} />}
+      </Cam>
+      <TrackedCircle outStartMs={outStartMs} zoom={z.scale} focus={z.scale === 1 ? {x: GEOM.react.x + GEOM.react.w / 2, y: GEOM.react.y + GEOM.react.h / 2} : focus} />
       {q ? <QuestionText top={CAM_H + 210} /> : <TitleStack top={CAM_H + 200} start={0} title={hook ? HOOK_TITLE : CARD} />}
-      <div style={{position: 'absolute', height: cardH, width: (cardH * 440) / 640, left: W / 2 - (cardH * 440) / 640 / 2,
+      <div style={{position: 'absolute', height: cardH, width: cardW, left: W / 2 - cardW / 2,
         top: H - cardH - 50, transform: `scale(${cardPop}) rotate(${Math.sin(frame / 20) * 2}deg)`}}>
-        <Img src={staticFile('flagg/card.png')} style={{
-          width: '100%', height: '100%', borderRadius: 18,
+        <Img src={staticFile(CARD_STILL.file)} style={{
+          width: '100%', height: '100%', borderRadius: 18, objectFit: 'cover',
           boxShadow: '0 0 40px rgba(255,255,255,0.35), 0 20px 40px rgba(0,0,0,0.7)',
           filter: hook ? 'blur(34px) saturate(0.7)' : 'none',
         }} />
@@ -319,7 +340,7 @@ const SuspenseOverlay = () => {
     <AbsoluteFill>
       <AbsoluteFill style={{background: `radial-gradient(ellipse at 50% 60%, transparent ${55 - 30 * sp}%, rgba(0,0,0,${0.35 + 0.55 * sp}) 100%)`}} />
       {wait && (
-        <div style={{position: 'absolute', top: 700, width: W, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 14,
+        <div style={{position: 'absolute', top: H - 330, width: W, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 14,
           opacity: Math.floor(frame / 5) % 2 === 0 ? 1 : 0.35}}>
           <div style={{...text, fontSize: 84, color: '#FFE14D', textShadow: `${glow('#FFE14D')}, 0 5px 0 rgba(0,0,0,0.8)`}}>WAIT FOR IT...</div>
           <Img src={emojiSrc('23f3')} style={{width: 96, height: 96}} />
@@ -344,7 +365,7 @@ const Impact = () => {
           <div style={{...text, fontSize: 230, color: '#FF2A2A', lineHeight: 1,
             WebkitTextStroke: '10px white', paintOrder: 'stroke',
             textShadow: '0 0 40px rgba(255,40,40,0.9), 0 14px 0 rgba(0,0,0,0.85)',
-            transform: `scale(${interpolate(stamp, [0, 1], [3.2, 1])}) rotate(-10deg)`}}>1 OF 1</div>
+            transform: `scale(${interpolate(stamp, [0, 1], [3.2, 1])}) rotate(-10deg)`}}>{STAMP}</div>
         </AbsoluteFill>
       )}
     </AbsoluteFill>
@@ -472,7 +493,7 @@ export const CardPull = () => {
 
       {narrCaps.map(({c, out, end}, i) => (
         <Sequence key={`n${i}`} from={f(out)} durationInFrames={Math.max(1, f(end) - f(out))}>
-          <Caption c={c} y={captionY(layoutAt(srcAtOut(out)))} />
+          <Caption c={layoutAt(srcAtOut(out)) !== 'full' ? {...c, emoji: undefined} : c} y={captionY(layoutAt(srcAtOut(out)))} />
         </Sequence>
       ))}
       {NARRATION.map((l, i) => (
@@ -485,6 +506,8 @@ export const CardPull = () => {
         const a = outMs(c.words[0].at, hook);
         const b = outMs(c.to, hook);
         if (a === null || b === null) return null;
+        // Never stack host captions on top of narration captions.
+        if (NARR_RANGES.some(([na, nb]) => a < nb && b > na)) return null;
         const y = captionY(hook ? 'reaction' : layoutAt(c.words[0].at));
         return (
           <Sequence key={`c${i}`} from={f(a)} durationInFrames={Math.max(1, f(b) - f(a))}>
