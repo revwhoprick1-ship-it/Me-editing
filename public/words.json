@@ -1,0 +1,206 @@
+[
+ {
+  "text": "bring",
+  "startMs": 0,
+  "endMs": 80,
+  "p": 0.07
+ },
+ {
+  "text": "it",
+  "startMs": 80,
+  "endMs": 180,
+  "p": 1.0
+ },
+ {
+  "text": "up",
+  "startMs": 180,
+  "endMs": 260,
+  "p": 0.98
+ },
+ {
+  "text": "but",
+  "startMs": 260,
+  "endMs": 380,
+  "p": 0.92
+ },
+ {
+  "text": "i",
+  "startMs": 380,
+  "endMs": 440,
+  "p": 0.57
+ },
+ {
+  "text": "want",
+  "startMs": 440,
+  "endMs": 520,
+  "p": 0.99
+ },
+ {
+  "text": "to",
+  "startMs": 520,
+  "endMs": 600,
+  "p": 1.0
+ },
+ {
+  "text": "ask",
+  "startMs": 600,
+  "endMs": 780,
+  "p": 1.0
+ },
+ {
+  "text": "you",
+  "startMs": 780,
+  "endMs": 880,
+  "p": 1.0
+ },
+ {
+  "text": "the",
+  "startMs": 880,
+  "endMs": 980,
+  "p": 1.0
+ },
+ {
+  "text": "question",
+  "startMs": 980,
+  "endMs": 1220,
+  "p": 1.0
+ },
+ {
+  "text": "before",
+  "startMs": 1220,
+  "endMs": 1560,
+  "p": 1.0
+ },
+ {
+  "text": "who",
+  "startMs": 1560,
+  "endMs": 2260,
+  "p": 0.98
+ },
+ {
+  "text": "is",
+  "startMs": 2260,
+  "endMs": 2500,
+  "p": 1.0
+ },
+ {
+  "text": "your",
+  "startMs": 2500,
+  "endMs": 2700,
+  "p": 1.0
+ },
+ {
+  "text": "nba",
+  "startMs": 2700,
+  "endMs": 3220,
+  "p": 0.98
+ },
+ {
+  "text": "goat",
+  "startMs": 3220,
+  "endMs": 3540,
+  "p": 0.98
+ },
+ {
+  "text": "nba",
+  "startMs": 4200,
+  "endMs": 4680,
+  "p": 0.99
+ },
+ {
+  "text": "goat",
+  "startMs": 4680,
+  "endMs": 5080,
+  "p": 0.96
+ },
+ {
+  "text": "greatest",
+  "startMs": 5080,
+  "endMs": 5720,
+  "p": 1.0
+ },
+ {
+  "text": "of",
+  "startMs": 5720,
+  "endMs": 5940,
+  "p": 1.0
+ },
+ {
+  "text": "all",
+  "startMs": 5940,
+  "endMs": 6100,
+  "p": 1.0
+ },
+ {
+  "text": "time",
+  "startMs": 6100,
+  "endMs": 6340,
+  "p": 0.84
+ },
+ {
+  "text": "nba",
+  "startMs": 6340,
+  "endMs": 6880,
+  "p": 0.75
+ },
+ {
+  "text": "player",
+  "startMs": 6880,
+  "endMs": 7340,
+  "p": 0.99
+ },
+ {
+  "text": "gotta",
+  "startMs": 13040,
+  "endMs": 13520,
+  "p": 0.94
+ },
+ {
+  "text": "be",
+  "startMs": 13520,
+  "endMs": 13740,
+  "p": 1.0
+ },
+ {
+  "text": "matthew",
+  "startMs": 13740,
+  "endMs": 14120,
+  "p": 0.99
+ },
+ {
+  "text": "delvedova",
+  "startMs": 14120,
+  "endMs": 14740,
+  "p": 0.69
+ },
+ {
+  "text": "i",
+  "startMs": 14740,
+  "endMs": 15020,
+  "p": 0.66
+ },
+ {
+  "text": "could",
+  "startMs": 15020,
+  "endMs": 17620,
+  "p": 0.83
+ },
+ {
+  "text": "feel",
+  "startMs": 17620,
+  "endMs": 17920,
+  "p": 1.0
+ },
+ {
+  "text": "the",
+  "startMs": 17920,
+  "endMs": 18080,
+  "p": 1.0
+ },
+ {
+  "text": "tension",
+  "startMs": 18080,
+  "endMs": 18340,
+  "p": 0.94
+ }
+]
