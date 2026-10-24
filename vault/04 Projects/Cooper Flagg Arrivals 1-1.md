@@ -32,3 +32,6 @@ Banner: "ONLY **1** OF THIS **$13,725** / COOPER FLAGG ROOKIE!" covers the burne
    - Zooms on COME ON / names / NICE HIT (card cam only) and ONE OF ONE / LET'S GO / GOSH (hosts cam).
    - Montagem Alquimia: intro build under "*NEXT CARD...*", drop on the reveal; green flash + 💵💸💰 rain + ka-ching + vine boom on the same frame.
    - No audio beep added: no player name is said before its card is shown.
+2. **v2 → v3** user: no suspense before the reveal, the reveal isn't shocking, use AI narration.
+   - Added the suspense build + impact from [[Card pull playbook#Suspense → reveal recipe (user: "no suspense", "reveal isn't shocking", v3)]]. Output is now 30.0 s; the reveal is at 14.0 s.
+   - AI narration: `public/flagg/narration/full.mp3` (5 lines), placed by `NARRATION` in `src/flagg.ts`.

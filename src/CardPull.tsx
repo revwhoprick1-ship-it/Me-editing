@@ -6,7 +6,8 @@ import {
 } from 'remotion';
 import {
   BANNER_AFTER, BANNER_BEFORE, BLURS, CAPTIONS, CARD, CUTS, DIALOGUE_GAIN, HOOK_CAPTIONS, HOOK_CUT, HOOK_SFX,
-  HOOK_TITLE, LAYOUTS, MONEY_MS, MUSIC, QUESTION, SFX, SPEECH, SRC, TRACK, TRACK_UNTIL, WHIPS, ZOOMS,
+  HOOK_TITLE, LAYOUTS, MONEY_MS, MUSIC, NARRATION, NARRATION_CHUNK, NARRATION_FILE, OUT_SFX, QUESTION, SFX,
+  SPEECH, SRC, SUSPENSE, TRACK, TRACK_UNTIL, WHIPS, ZOOMS,
   type BannerPart, type Cap, type Layout, type Sfx,
 } from './flagg';
 
@@ -19,27 +20,36 @@ const H = 1920;
 const f = (ms: number) => Math.round((ms / 1000) * FPS);
 
 // ---- timeline: hook first, then the main cuts --------------------------
-type Seg = {src: [number, number]; out: number; hook: boolean};
+// rate < 1 = slow motion: a source ms lasts 1/rate output ms.
+type Seg = {src: [number, number]; out: number; hook: boolean; rate: number};
 const SEGS: Seg[] = [];
 {
   let t = 0;
-  for (const [i, c] of [HOOK_CUT, ...CUTS].entries()) {
-    SEGS.push({src: c, out: t, hook: i === 0});
-    t += c[1] - c[0];
+  for (const [i, c] of [{src: HOOK_CUT, rate: 1}, ...CUTS].entries()) {
+    const rate = c.rate ?? 1;
+    SEGS.push({src: c.src, out: t, hook: i === 0, rate});
+    t += (c.src[1] - c.src[0]) / rate;
   }
 }
-export const CARD_OUT_MS = SEGS.reduce((t, s) => t + s.src[1] - s.src[0], 0);
+const segLen = (s: Seg) => (s.src[1] - s.src[0]) / s.rate;
+export const CARD_OUT_MS = SEGS.reduce((t, s) => t + segLen(s), 0);
 
 // Output ms of a source moment (main cuts, or the hook when hook=true).
 const outMs = (src: number, hook = false): number | null => {
   const s = SEGS.find((g) => g.hook === hook && src >= g.src[0] && src <= g.src[1]);
-  return s ? s.out + src - s.src[0] : null;
+  return s ? s.out + (src - s.src[0]) / s.rate : null;
 };
 const segAtOut = (out: number) => [...SEGS].reverse().find((s) => out >= s.out)!;
 const srcAtOut = (out: number) => {
   const s = segAtOut(out);
-  return s.src[0] + out - s.out;
+  return s.src[0] + (out - s.out) * s.rate;
 };
+const REVEAL_OUT = outMs(CARD.revealAt)!;
+// 0 → 1 across the suspense build (output time).
+const suspenseAt = (out: number) =>
+  Math.min(1, Math.max(0, (out - SUSPENSE.from) / (REVEAL_OUT - SUSPENSE.from)));
+const NARR_RANGES = NARRATION.map((l) => [l.out, l.out + l.file[1] - l.file[0]] as const);
+const narratingAt = (out: number) => NARR_RANGES.some(([a, b]) => out >= a - 100 && out <= b + 100);
 const layoutAt = (src: number): Layout =>
   [...LAYOUTS].reverse().find((l) => src >= l.from)!.layout;
 
@@ -177,20 +187,24 @@ const BlurBox = ({box}: {box: [number, number, number, number]}) => {
   );
 };
 
-const FullView = ({trim, srcStart}: {trim: number; srcStart: number}) => {
+const FullView = ({trim, srcStart, rate, outStart}: {trim: number; srcStart: number; rate: number; outStart: number}) => {
   const frame = useCurrentFrame();
-  const src = srcStart + (frame / FPS) * 1000;
-  const push = interpolate(frame, [0, 150], [1, 1.05], {extrapolateRight: 'clamp'});
+  const src = srcStart + (frame / FPS) * 1000 * rate;
+  const sp = suspenseAt(outStart + (frame / FPS) * 1000);
+  // Suspense: card cam creeps in and trembles harder and harder.
+  const push = interpolate(frame, [0, 150], [1, 1.05], {extrapolateRight: 'clamp'}) * (1 + 0.35 * Math.pow(sp, 1.4));
+  const amp = sp * sp * 12;
   const z = zoomAt(src);
   const b = blurAt(src);
   // Hosts cam stays still; only the card cam (below the burned banner) pushes/zooms.
   return (
     <AbsoluteFill>
-      <OffthreadVideo src={staticFile(SRC)} muted trimBefore={trim} style={{width: W, height: H}} />
+      <OffthreadVideo src={staticFile(SRC)} muted trimBefore={trim} playbackRate={rate} style={{width: W, height: H}} />
       <div style={{position: 'absolute', top: CARD_CAM_TOP, width: W, height: H - CARD_CAM_TOP, overflow: 'hidden'}}>
         <div style={{position: 'absolute', top: -CARD_CAM_TOP, width: W, height: H,
-          transform: `scale(${push * z.scale})`, transformOrigin: `${z.x}px ${z.y}px`}}>
-          <OffthreadVideo src={staticFile(SRC)} muted trimBefore={trim} style={{width: W, height: H}} />
+          transform: `translate(${Math.sin(frame * 2.3) * amp}px, ${Math.cos(frame * 3.1) * amp}px) scale(${push * z.scale})`,
+          transformOrigin: `${z.x}px ${z.y}px`, filter: sp > 0 ? `saturate(${1 - 0.6 * sp}) contrast(${1 + 0.25 * sp})` : undefined}}>
+          <OffthreadVideo src={staticFile(SRC)} muted trimBefore={trim} playbackRate={rate} style={{width: W, height: H}} />
           {b && <BlurBox box={b.box} />}
         </div>
       </div>
@@ -201,7 +215,8 @@ const FullView = ({trim, srcStart}: {trim: number; srcStart: number}) => {
 const RevealView = ({trim}: {trim: number}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
-  const z = interpolate(spring({frame, fps, config: {damping: 14, stiffness: 120}}), [0, 1], [1, 1.5]);
+  // Slam: starts way in (2.2x) and snaps back to 1.5x.
+  const z = interpolate(spring({frame, fps, config: {damping: 11, stiffness: 260}}), [0, 1], [2.2, 1.5]);
   const {x, y} = CARD.center;
   // Only the card cam (below the burned banner) zooms; hosts cam stays put.
   const camTop = CARD_CAM_TOP;
@@ -294,6 +309,60 @@ const MoneyRain = () => {
   );
 };
 
+// Vignette closing in + "WAIT FOR IT..." during the suspense build.
+const SuspenseOverlay = () => {
+  const frame = useCurrentFrame();
+  const out = SUSPENSE.from + (frame / FPS) * 1000;
+  const sp = suspenseAt(out);
+  const wait = out >= SUSPENSE.waitText;
+  return (
+    <AbsoluteFill>
+      <AbsoluteFill style={{background: `radial-gradient(ellipse at 50% 60%, transparent ${55 - 30 * sp}%, rgba(0,0,0,${0.35 + 0.55 * sp}) 100%)`}} />
+      {wait && (
+        <div style={{position: 'absolute', top: 700, width: W, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 14,
+          opacity: Math.floor(frame / 5) % 2 === 0 ? 1 : 0.35}}>
+          <div style={{...text, fontSize: 84, color: '#FFE14D', textShadow: `${glow('#FFE14D')}, 0 5px 0 rgba(0,0,0,0.8)`}}>WAIT FOR IT...</div>
+          <Img src={emojiSrc('23f3')} style={{width: 96, height: 96}} />
+        </div>
+      )}
+    </AbsoluteFill>
+  );
+};
+
+// Reveal impact: white flash, then a giant "1 OF 1" stamp slams on.
+const Impact = () => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const white = interpolate(frame, [0, 2, 6], [1, 0.9, 0], {extrapolateRight: 'clamp'});
+  const stamp = spring({frame: frame - 3, fps, config: {damping: 9, stiffness: 320}});
+  const out = interpolate(frame, [36, 46], [1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+  return (
+    <AbsoluteFill style={{pointerEvents: 'none'}}>
+      <AbsoluteFill style={{background: 'white', opacity: white}} />
+      {frame >= 3 && (
+        <AbsoluteFill style={{alignItems: 'center', justifyContent: 'center', top: 120, opacity: out}}>
+          <div style={{...text, fontSize: 230, color: '#FF2A2A', lineHeight: 1,
+            WebkitTextStroke: '10px white', paintOrder: 'stroke',
+            textShadow: '0 0 40px rgba(255,40,40,0.9), 0 14px 0 rgba(0,0,0,0.85)',
+            transform: `scale(${interpolate(stamp, [0, 1], [3.2, 1])}) rotate(-10deg)`}}>1 OF 1</div>
+        </AbsoluteFill>
+      )}
+    </AbsoluteFill>
+  );
+};
+
+// Big shake right on the reveal.
+const Shake = ({at, children}: {at: number; children: ReactNode}) => {
+  const frame = useCurrentFrame();
+  const t = frame - at;
+  const amp = t >= 0 && t < 16 ? (16 - t) * 2.6 : 0;
+  return (
+    <AbsoluteFill style={{transform: `translate(${Math.sin(t * 2.9) * amp}px, ${Math.cos(t * 3.7) * amp}px)`}}>
+      {children}
+    </AbsoluteFill>
+  );
+};
+
 // ---- captions ----------------------------------------------------------
 const Caption = ({c, y}: {c: Cap; y: number}) => {
   const frame = useCurrentFrame();
@@ -325,15 +394,15 @@ export const CardPull = () => {
   const qOut = outMs(QUESTION.from)!;
 
   // Pieces = segments split at layout changes.
-  const pieces: {src: [number, number]; out: number; layout: Layout; whip: boolean; hook: boolean}[] = [];
+  const pieces: {src: [number, number]; out: number; layout: Layout; whip: boolean; hook: boolean; rate: number}[] = [];
   for (const s of SEGS) {
     const bounds = [s.src[0], ...LAYOUTS.map((l) => l.from).filter((t) => t > s.src[0] && t < s.src[1]), s.src[1]];
     for (let i = 0; i < bounds.length - 1; i++) {
       const a = bounds[i];
       pieces.push({
-        src: [a, bounds[i + 1]], out: s.out + a - s.src[0],
+        src: [a, bounds[i + 1]], out: s.out + (a - s.src[0]) / s.rate,
         layout: s.hook ? 'reaction' : layoutAt(a),
-        whip: i === 0 || WHIPS.includes(a), hook: s.hook,
+        whip: i === 0 || WHIPS.includes(a), hook: s.hook, rate: s.rate,
       });
     }
   }
@@ -346,30 +415,44 @@ export const CardPull = () => {
     ...HOOK_SFX.map((s) => ({s, o: outMs(s.at, true)})),
     ...sfx.map((s) => ({s, o: outMs(s.at)})),
     // whoosh on every cut boundary (peak lands on the cut)
-    ...SEGS.slice(1).map((g) => ({s: {file: 'fast-whoosh.mp3', at: 0, volume: 0.5, onset: 550} as Sfx, o: g.out})),
+    ...SEGS.slice(1).filter((g) => g.src[0] !== CARD.revealAt)
+      .map((g) => ({s: {file: 'fast-whoosh.mp3', at: 0, volume: 0.5, onset: 550} as Sfx, o: g.out})),
+    ...OUT_SFX.map((s) => ({s, o: s.at as number | null})),
   ];
+  // Narration captions: each line split into chunks of NARRATION_CHUNK words.
+  const narrCaps = NARRATION.flatMap((l) => {
+    const chunks: Cap[] = [];
+    for (let i = 0; i < l.words.length; i += NARRATION_CHUNK) {
+      const words = l.words.slice(i, i + NARRATION_CHUNK);
+      const next = l.words[i + NARRATION_CHUNK];
+      chunks.push({words, to: next ? next.at : l.file[1], emoji: i === 0 ? l.emoji : undefined});
+    }
+    return chunks.map((c) => ({c, out: l.out + c.words[0].at - l.file[0], end: l.out + c.to - l.file[0]}));
+  });
   const isSpeech = (src: number) => SPEECH.some(([a, b]) => src >= a - 150 && src <= b + 150);
   const total = f(CARD_OUT_MS);
   const revealOut = outMs(CARD.revealAt)!;
   const hookEnd = HOOK_CUT[1] - HOOK_CUT[0];
-  const buildStart = revealOut - MUSIC.dropAt;
+  const buildEnd = revealOut - MUSIC.gapBeforeDrop; // a beat of silence right before the drop
+  const buildStart = buildEnd - MUSIC.dropAt;
   const afterDrop = MUSIC.length - MUSIC.dropAt;
   // [out from, out to, file offset, volume rule]
   const musicPlan: [number, number, number, 'loud' | 'talk' | 'build'][] = [
     [0, hookEnd, 8000, 'loud'],
     [hookEnd, buildStart, MUSIC.bodyFrom, 'talk'],
-    [buildStart, revealOut, 0, 'build'], // intro builds...
+    [buildStart, buildEnd, 0, 'build'], // intro builds... (then silence)
     [revealOut, revealOut + afterDrop, MUSIC.dropAt, 'loud'], // ...drop on the reveal
     [revealOut + afterDrop, CARD_OUT_MS, MUSIC.bodyFrom, 'loud'],
   ];
 
   return (
     <AbsoluteFill style={{background: 'black'}}>
+      <Shake at={f(revealOut)}>
       {pieces.map((p, i) => {
         const from = f(p.out);
-        const dur = f(p.out + p.src[1] - p.src[0]) - from;
+        const dur = f(p.out + (p.src[1] - p.src[0]) / p.rate) - from;
         const outStartMs = p.out;
-        const body = p.layout === 'full' ? <FullView trim={f(p.src[0])} srcStart={p.src[0]} />
+        const body = p.layout === 'full' ? <FullView trim={f(p.src[0])} srcStart={p.src[0]} rate={p.rate} outStart={p.out} />
           : p.layout === 'reveal' ? <RevealView trim={f(p.src[0])} />
           : <ReactionView trim={f(p.src[0])} outStartMs={outStartMs} srcStart={p.src[0]} hook={p.hook}
               showQuestion={(fr) => !p.hook && f(outStartMs) + fr >= f(qOut)} />;
@@ -382,7 +465,21 @@ export const CardPull = () => {
         );
       })}
 
+      </Shake>
+      <Sequence from={f(SUSPENSE.from)} durationInFrames={f(revealOut) - f(SUSPENSE.from)}><SuspenseOverlay /></Sequence>
       <Sequence from={f(revealOut)} durationInFrames={f(MONEY_MS)}><MoneyRain /></Sequence>
+      <Sequence from={f(revealOut)} durationInFrames={50}><Impact /></Sequence>
+
+      {narrCaps.map(({c, out, end}, i) => (
+        <Sequence key={`n${i}`} from={f(out)} durationInFrames={Math.max(1, f(end) - f(out))}>
+          <Caption c={c} y={captionY(layoutAt(srcAtOut(out)))} />
+        </Sequence>
+      ))}
+      {NARRATION.map((l, i) => (
+        <Sequence key={`na${i}`} from={f(l.out)} durationInFrames={f(l.file[1] - l.file[0])}>
+          <Audio src={staticFile(NARRATION_FILE)} trimBefore={f(l.file[0])} volume={1} />
+        </Sequence>
+      ))}
 
       {caps.map(({c, hook}, i) => {
         const a = outMs(c.words[0].at, hook);
@@ -397,13 +494,14 @@ export const CardPull = () => {
       })}
 
       {/* dialogue */}
-      {SEGS.map((s, i) => {
+      {SEGS.filter((s) => s.rate === 1).map((s, i) => {
         const from = f(s.out);
-        const dur = f(s.out + s.src[1] - s.src[0]) - from;
+        const dur = f(s.out + segLen(s)) - from;
         return (
           <Sequence key={`a${i}`} from={from} durationInFrames={dur}>
             <Audio src={video} trimBefore={f(s.src[0])} volume={(fr) =>
-              DIALOGUE_GAIN(s.src[0] + (fr / FPS) * 1000) * Math.min(1, fr / 2, (dur - fr) / 2)} />
+              DIALOGUE_GAIN(s.src[0] + (fr / FPS) * 1000) * Math.min(1, fr / 2, (dur - fr) / 2)
+              * (narratingAt(((from + fr) / FPS) * 1000) ? 0.35 : 1)} />
           </Sequence>
         );
       })}
@@ -415,8 +513,10 @@ export const CardPull = () => {
           <Sequence key={`mu${i}`} from={from} durationInFrames={dur}>
             <Audio src={staticFile(`music/${MUSIC.file}`)} trimBefore={f(off)} loop volume={(fr) => {
               const fade = Math.min(1, (fr + 1) / 3, (dur - fr) / 3, (total - from - fr) / 6);
-              if (rule === 'loud') return MUSIC.loud * fade;
-              if (rule === 'build') return MUSIC.build * fade;
+              const narr = narratingAt(((from + fr) / FPS) * 1000);
+              if (rule === 'loud') return (narr ? 0.17 : MUSIC.loud) * fade;
+              if (rule === 'build') return MUSIC.build * (0.35 + 0.65 * (fr / dur)) * fade;
+              if (narr) return MUSIC.underNarration * fade;
               const src = srcAtOut(((from + fr) / FPS) * 1000);
               return (isSpeech(src) ? MUSIC.quiet : MUSIC.gap) * fade;
             }} />

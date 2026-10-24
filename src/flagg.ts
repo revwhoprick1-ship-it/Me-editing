@@ -8,12 +8,20 @@ export const SRC = 'flagg/input.mp4';
 // Hook: open on the screaming (plays first, before the main cuts).
 export const HOOK_CUT: [number, number] = [32300, 33900];
 // Main story, in order.
-export const CUTS: [number, number][] = [
-  [4900, 7300], // "come on, come on"
-  [9100, 12100], // Joan Beringer, Larry Bird
-  [14900, 18400], // VJ Edgecombe "First", nice hit
-  [27400, 45400], // next card... ARRIVALS 1/1 → reaction
+// rate < 1 = slow motion (that part's dialogue is muted).
+export const CUTS: {src: [number, number]; rate?: number}[] = [
+  {src: [4900, 7300]}, // "come on, come on"
+  {src: [9100, 12100]}, // Joan Beringer, Larry Bird
+  {src: [14900, 18400]}, // VJ Edgecombe "First", nice hit
+  {src: [27400, 28400]}, // next card...
+  {src: [28400, 29400], rate: 0.4}, // SUSPENSE: blurred card slides in, slow-mo 2.5 s
+  {src: [29400, 45400]}, // ARRIVALS 1/1 → reaction
 ];
+
+// Suspense build before the reveal (OUTPUT ms): vignette closes in, card cam
+// creeps in, screen trembles harder, heartbeat + riser, music cuts out right
+// before the drop. "WAIT FOR IT..." flashes in the last second.
+export const SUSPENSE = {from: 10500, waitText: 12900};
 
 export type Layout = 'full' | 'reveal' | 'reaction';
 export const LAYOUTS: {from: number; layout: Layout}[] = [
@@ -48,7 +56,7 @@ export const BLURS: {from: number; to: number; box: [number, number, number, num
   {from: 5600, to: 7300, box: [170, 820, 720, 1060]}, // Joan Beringer card before it's named
   {from: 9100, to: 9250, box: [170, 820, 720, 1060]},
   {from: 10150, to: 11040, box: [170, 820, 720, 1060]}, // Larry Bird before "Larry Bird"
-  {from: 28950, to: 29400, box: [170, 900, 760, 1000]}, // the Flagg card swiping in
+  {from: 28600, to: 29400, box: [150, 860, 800, 1060]}, // the Flagg card swiping in (slow-mo)
 ];
 
 // Small punch-in zooms on the beats that matter (source ms; x,y = focus in source px).
@@ -132,20 +140,11 @@ export const HOOK_CAPTIONS: Cap[] = [
 ];
 
 // Word times: whisper, snapped to speech onsets (scripts/speech_segments.py).
+// Host captions (source ms). Where the AI narration talks, the narration is captioned instead.
 export const CAPTIONS: Cap[] = [
-  {words: [w('COME', 5080), w('ON', 5250, G)], to: 5700},
-  {words: [w('COME', 5780), w('ON', 5950, G)], to: 6600},
-  {words: [w('COME', 6720), w('ON!', 6880, G)], to: 7300},
-  {words: [w('JOAN', 9200, Y), w('BERINGER', 9500, Y)], to: 10900},
   {words: [w('LARRY', 11040, Y), w('BIRD', 11450, Y)], to: 12100, emoji: '1f410'},
-  {words: [w('VJ', 14980, Y), w('EDGECOMBE', 15420, Y)], to: 16500},
-  {words: [w('ON', 16600), w('THE', 16800), w('FIRST', 17000, G)], to: 17600},
-  {words: [w('NICE', 17700), w('HIT', 17900, G), w('THERE', 18160)], to: 18400, emoji: '1f525'},
-  {words: [w('*NEXT CARD...*', 27600)], to: 29000, action: true, emoji: '1f440'},
-  {words: [w('OH', 30020), w('MY', 30300), w('GOSH', 30600, G)], to: 31400, emoji: '1f631'},
-  {words: [w('ONE', 32500, R), w('OF', 32700, R), w('ONE!', 32760, R)], to: 33300, emoji: '1f48e'},
-  {words: [w('*SCREAMING*', 33300)], to: 34380, action: true},
-  {words: [w("LET'S", 34380), w('GO!', 35540, G)], to: 35740},
+  {words: [w('VJ', 14980, Y), w('EDGECOMBE', 15420, Y)], to: 15600},
+  {words: [w('OH', 30020), w('MY', 30300), w('GOSH', 30600, G)], to: 30900, emoji: '1f631'},
   {words: [w('OH', 35740), w('MY', 36540), w('GOSH', 36700, G)], to: 37380},
   {words: [w("LET'S", 37380), w('GO!', 37580, G)], to: 37940},
   {words: [w('OH', 37940), w("I'M", 38260), w('GLAD', 38500, Y)], to: 39060},
@@ -155,23 +154,49 @@ export const CAPTIONS: Cap[] = [
   {words: [w('IN', 43420), w('THE', 43740), w('ROOM', 43840, G)], to: 45400},
 ];
 
+// ---- AI narration (ElevenLabs, voice "Grant – The Premium Narrator", eleven_v4) ----
+// public/flagg/narration/full.mp3 holds all 5 lines; each line is placed at an
+// OUTPUT time. Word times are ms inside the narration file (faster-whisper,
+// snapped to the real onsets).
+export const NARRATION_FILE = 'flagg/narration/full.mp3';
+export type Line = {out: number; file: [number, number]; words: Word[]; emoji?: string};
+export const NARRATION: Line[] = [
+  {out: 1700, file: [0, 4150], words: [w('BACKYARD', 60), w('BREAKS', 340), w('WAS', 700), w('RIPPING', 960),
+    w('TOPPS', 1380, Y), w('FINEST...', 1800, Y), w('HUNTING', 2900), w('FOR', 3200), w('ONE', 3400, G), w('CARD', 3650, G)]},
+  {out: 7650, file: [5250, 8150], words: [w('BIG', 5300, Y), w('NAMES...', 5560, Y), w('BUT', 6500), w('NOT', 6700, R),
+    w('THE', 6900), w('ONE', 7060), w('THEY', 7260), w('WERE', 7440), w('CHASING', 7560, G)]},
+  {out: 10950, file: [9150, 11150], words: [w('THEN...', 9200), w('THE', 9920), w('NEXT', 10000, Y), w('CARD', 10250, Y),
+    w('CAME', 10540), w('OUT', 10800)], emoji: '1f440'},
+  {out: 15000, file: [12150, 17400], words: [w('COOPER', 12220, Y), w('FLAGG!', 12500, Y), w('ARRIVALS!', 12900, R),
+    w('ONE', 13880, R), w('OF', 14260, R), w('ONE!', 14460, R), w('A', 15420), w('$13,000', 15500, G), w('ROOKIE!', 16750)], emoji: '1f48e'},
+  {out: 24700, file: [18080, 19800], words: [w('WOULD', 18120), w('YOU', 18250), w('KEEP', 18340, G), w('IT...', 18560, G),
+    w('OR', 18780), w('SELL', 19200, R), w('IT?', 19380, R)]},
+];
+// Group a line's words into caption chunks of up to 3.
+export const NARRATION_CHUNK = 3;
+
+// Extra SFX placed at OUTPUT ms (suspense + reveal impact).
+export const OUT_SFX: Sfx[] = [
+  {file: 'cinematic-suspense-riser.mp3', at: 14000, volume: 0.55, onset: 6200, maxMs: 6200}, // peaks on the reveal
+  {file: 'heartbeat-loud.mp3', at: 10500, volume: 0.9, onset: 280, maxMs: 3450},
+  {file: 'bass-boosted-vine-boom.mp3', at: 14000, volume: 0.35, onset: 20},
+  {file: '808-boom.mp3', at: 14000, volume: 0.45, onset: 0},
+];
+
 export type Sfx = {file: string; at: number; volume: number; onset: number; maxMs?: number};
 // `at` in source ms of the MAIN cuts; hook SFX are in HOOK_SFX.
 export const HOOK_SFX: Sfx[] = [
   {file: 'air-horn.mp3', at: 32300, volume: 0.3, onset: 30, maxMs: 1500},
 ];
 export const SFX: Sfx[] = [
-  {file: 'ding-2.mp3', at: 9200, volume: 0.3, onset: 140, maxMs: 1200},
   {file: 'ding-2.mp3', at: 11040, volume: 0.3, onset: 140, maxMs: 1200},
   {file: 'ding-2.mp3', at: 14980, volume: 0.3, onset: 140, maxMs: 1200},
   {file: 'fast-whoosh.mp3', at: 29400, volume: 0.6, onset: 550},
-  {file: 'vine-boom.mp3', at: 29400, volume: 0.55, onset: 80},
   {file: 'cha-ching.mp3', at: 29420, volume: 0.9, onset: 640}, // ka-ching with the money drop
-  {file: 'ding-2.mp3', at: 29550, volume: 0.3, onset: 140, maxMs: 1200},
   {file: 'cha-ching.mp3', at: 30000, volume: 0.6, onset: 640}, // price line pops
   {file: 'fast-whoosh.mp3', at: 30600, volume: 0.6, onset: 550},
   {file: 'air-horn.mp3', at: 31700, volume: 0.35, onset: 30},
-  {file: 'crowd-cheer.mp3', at: 31700, volume: 0.3, onset: 380, maxMs: 6000},
+  {file: 'crowd-cheer.mp3', at: 31700, volume: 0.22, onset: 380, maxMs: 6000},
   {file: 'ding-2.mp3', at: 40000, volume: 0.35, onset: 140, maxMs: 1200},
 ];
 // Every cut boundary also gets a whoosh + motion-blur whip (added in code).
@@ -181,7 +206,7 @@ export const DIALOGUE_GAIN = (src: number) => (src < 30000 ? 1.9 : 0.85);
 // Non-podcast music (user's phonk list). Montagem Alquimia: intro build 0–3.92 s,
 // bass drop at 3.92 s (librosa: 107.7 BPM). The drop lands exactly on the reveal.
 export const MUSIC = {file: 'montagem-alquimia.mp3', dropAt: 3920, bodyFrom: 4600, length: 14990,
-  quiet: 0.12, gap: 0.18, build: 0.24, loud: 0.3};
+  quiet: 0.12, gap: 0.18, build: 0.28, loud: 0.3, underNarration: 0.1, gapBeforeDrop: 250};
 export const SPEECH: [number, number][] = [
   [5080, 7300], [9200, 12100], [14980, 18400], [30000, 45400],
 ];
