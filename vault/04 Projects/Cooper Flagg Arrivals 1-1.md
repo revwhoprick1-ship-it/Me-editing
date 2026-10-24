@@ -35,3 +35,4 @@ Banner: "ONLY **1** OF THIS **$13,725** / COOPER FLAGG ROOKIE!" covers the burne
 2. **v2 → v3** user: no suspense before the reveal, the reveal isn't shocking, use AI narration.
    - Added the suspense build + impact from [[Card pull playbook#Suspense → reveal recipe (user: "no suspense", "reveal isn't shocking", v3)]]. Output is now 30.0 s; the reveal is at 14.0 s.
    - AI narration: `public/flagg/narration/full.mp3` (5 lines), placed by `NARRATION` in `src/flagg.ts`.
+3. **v3 → v3.1** user: narration too quiet → compressed + loudnormed it (-11 LUFS); hosts 18 % and music 0.06–0.09 under it; air horn/crowd lowered.

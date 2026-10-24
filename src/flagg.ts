@@ -158,7 +158,7 @@ export const CAPTIONS: Cap[] = [
 // public/flagg/narration/full.mp3 holds all 5 lines; each line is placed at an
 // OUTPUT time. Word times are ms inside the narration file (faster-whisper,
 // snapped to the real onsets).
-export const NARRATION_FILE = 'flagg/narration/full.mp3';
+export const NARRATION_FILE = 'flagg/narration/full_loud.mp3'; // compressed + loudnorm'd (-11 LUFS)
 export type Line = {out: number; file: [number, number]; words: Word[]; emoji?: string};
 export const NARRATION: Line[] = [
   {out: 1700, file: [0, 4150], words: [w('BACKYARD', 60), w('BREAKS', 340), w('WAS', 700), w('RIPPING', 960),
@@ -195,8 +195,8 @@ export const SFX: Sfx[] = [
   {file: 'cha-ching.mp3', at: 29420, volume: 0.9, onset: 640}, // ka-ching with the money drop
   {file: 'cha-ching.mp3', at: 30000, volume: 0.6, onset: 640}, // price line pops
   {file: 'fast-whoosh.mp3', at: 30600, volume: 0.6, onset: 550},
-  {file: 'air-horn.mp3', at: 31700, volume: 0.35, onset: 30},
-  {file: 'crowd-cheer.mp3', at: 31700, volume: 0.22, onset: 380, maxMs: 6000},
+  {file: 'air-horn.mp3', at: 31700, volume: 0.15, onset: 30},
+  {file: 'crowd-cheer.mp3', at: 31700, volume: 0.1, onset: 380, maxMs: 6000},
   {file: 'ding-2.mp3', at: 40000, volume: 0.35, onset: 140, maxMs: 1200},
 ];
 // Every cut boundary also gets a whoosh + motion-blur whip (added in code).
@@ -206,7 +206,7 @@ export const DIALOGUE_GAIN = (src: number) => (src < 30000 ? 1.9 : 0.85);
 // Non-podcast music (user's phonk list). Montagem Alquimia: intro build 0–3.92 s,
 // bass drop at 3.92 s (librosa: 107.7 BPM). The drop lands exactly on the reveal.
 export const MUSIC = {file: 'montagem-alquimia.mp3', dropAt: 3920, bodyFrom: 4600, length: 14990,
-  quiet: 0.12, gap: 0.18, build: 0.28, loud: 0.3, underNarration: 0.1, gapBeforeDrop: 250};
+  quiet: 0.12, gap: 0.18, build: 0.28, loud: 0.3, underNarration: 0.06, gapBeforeDrop: 250};
 export const SPEECH: [number, number][] = [
   [5080, 7300], [9200, 12100], [14980, 18400], [30000, 45400],
 ];

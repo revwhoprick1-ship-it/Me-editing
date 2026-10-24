@@ -501,7 +501,7 @@ export const CardPull = () => {
           <Sequence key={`a${i}`} from={from} durationInFrames={dur}>
             <Audio src={video} trimBefore={f(s.src[0])} volume={(fr) =>
               DIALOGUE_GAIN(s.src[0] + (fr / FPS) * 1000) * Math.min(1, fr / 2, (dur - fr) / 2)
-              * (narratingAt(((from + fr) / FPS) * 1000) ? 0.35 : 1)} />
+              * (narratingAt(((from + fr) / FPS) * 1000) ? 0.18 : 1)} />
           </Sequence>
         );
       })}
@@ -514,7 +514,7 @@ export const CardPull = () => {
             <Audio src={staticFile(`music/${MUSIC.file}`)} trimBefore={f(off)} loop volume={(fr) => {
               const fade = Math.min(1, (fr + 1) / 3, (dur - fr) / 3, (total - from - fr) / 6);
               const narr = narratingAt(((from + fr) / FPS) * 1000);
-              if (rule === 'loud') return (narr ? 0.17 : MUSIC.loud) * fade;
+              if (rule === 'loud') return (narr ? 0.09 : MUSIC.loud) * fade;
               if (rule === 'build') return MUSIC.build * (0.35 + 0.65 * (fr / dur)) * fade;
               if (narr) return MUSIC.underNarration * fade;
               const src = srcAtOut(((from + fr) / FPS) * 1000);

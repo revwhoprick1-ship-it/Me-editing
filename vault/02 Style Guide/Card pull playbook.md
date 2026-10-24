@@ -37,6 +37,7 @@ The Google Sheet ("Backyard Breaks" clip list) has tabs; card pulls are in **�
 ## AI narration
 - ElevenLabs (this connector), voice **"Grant – The Premium Narrator"** (`W2cdBod56VIbm57Ma8I9`), model `eleven_v4`, tags `[confident]`, `[intrigued]`, `[whispering]`, `[excited]`, `[playful]`.
 - Generate **all lines in one take** with `[long pause]` between them, then place each line by its file range (find the ranges with `scripts/speech_segments.py file -40`, word times with `scripts/transcribe_words.py`).
-- Narrator explains the moment, the hosts' mic is ducked to 35 % under it, and the narration gets the captions (in chunks of 3 words). Keep the hosts' own captions only where the narrator is quiet.
+- **Loudness (user: "voice can't be heard"):** run the narration through `acompressor=threshold=-30dB:ratio=6:makeup=10dB,loudnorm=I=-11:TP=-1` (→ `full_loud.mp3`) so the whisper is as loud as the hype. Under the narrator: hosts at **18 %**, music at **0.06–0.09**, and hype SFX (air horn, crowd) kept low.
+- Narrator explains the moment, the hosts' mic is ducked under it, and the narration gets the captions (in chunks of 3 words). Keep the hosts' own captions only where the narrator is quiet.
 - Line pattern: setup ("…hunting for one card") → near misses ("big names… but not the one") → whispered tease before the reveal → hype reveal (player, parallel, 1/1, price) → question at the end.
 - ⚠️ 2026-10-24: ElevenLabs disabled the user's **free tier** ("unusual activity… proxy/VPN"). One take succeeded and the second failed. More narration needs a paid plan.
