@@ -1,8 +1,5 @@
-import {Composition, staticFile} from 'remotion';
-import {getVideoMetadata} from '@remotion/media-utils';
-import {ShortEdit} from './ShortEdit';
-
-const FPS = 30;
+import {Composition} from 'remotion';
+import {FPS, OUT_MS, ShortEdit} from './ShortEdit';
 
 export const RemotionRoot = () => (
   <Composition
@@ -11,11 +8,7 @@ export const RemotionRoot = () => (
     fps={FPS}
     width={1080}
     height={1920}
-    durationInFrames={FPS * 30}
+    durationInFrames={Math.round((OUT_MS / 1000) * FPS)}
     defaultProps={{src: 'input.mp4'}}
-    calculateMetadata={async ({props}) => {
-      const meta = await getVideoMetadata(staticFile(props.src));
-      return {durationInFrames: Math.ceil(meta.durationInSeconds * FPS)};
-    }}
   />
 );

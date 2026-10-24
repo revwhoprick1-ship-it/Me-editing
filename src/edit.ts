@@ -1,69 +1,120 @@
 // Edit decision list for public/input.mp4 (1920x1080 source).
-// Times are in ms, taken from the whisper transcript (public/captions.json).
+// ALL TIMES ARE SOURCE MILLISECONDS. Word times come from faster-whisper,
+// snapped to real speech onsets from scripts/speech_segments.py
+// (see vault/04 Projects/NBA GOAT pick.md for the verified table).
 
-type Crop = {x: number; y: number; h: number};
-
-// crop  = full-screen 9:16 close-up (smaller h = tighter punch-in)
-// stack = wide shot on top, close-up underneath (reference #2 layout)
-// wide  = full frame over a blurred fill
-// bw    = black & white reaction punch-in
-export type Shot =
-  | ({from: number; kind: 'crop' | 'bw'} & Crop)
-  | ({from: number; kind: 'stack'} & Crop)
-  | {from: number; kind: 'wide'};
+// Source ranges to keep. The 6 s thinking silence is cut down to ~3.3 s.
+export const CUTS: [number, number][] = [
+  [0, 9700],
+  [12500, 18810],
+];
 
 const LEFT = 370;
 const MID = 960;
 const RIGHT = 1490;
 
+type Crop = {x: number; y: number; h: number};
+// crop  = full-screen close-up (smaller h = tighter)
+// stack = wide shot top third + close-up underneath (Ref A)
+// wide  = full frame over a blurred fill
+// bw    = black & white reaction punch-in
+export type Shot =
+  | ({from: number; kind: 'crop' | 'bw'} & Crop)
+  | ({from: number; kind: 'stack'; circleX?: number} & Crop)
+  | {from: number; kind: 'wide'};
+
 export const SHOTS: Shot[] = [
-  {from: 0, kind: 'crop', x: LEFT, y: 0, h: 900},
-  {from: 2080, kind: 'crop', x: LEFT, y: 60, h: 720},
-  {from: 3160, kind: 'stack', x: LEFT, y: 60, h: 700},
-  {from: 4400, kind: 'crop', x: MID, y: 0, h: 860},
-  {from: 5520, kind: 'crop', x: LEFT, y: 40, h: 800},
-  {from: 7700, kind: 'stack', x: MID, y: 40, h: 760},
-  {from: 9500, kind: 'crop', x: MID, y: 80, h: 680},
-  {from: 11000, kind: 'crop', x: MID, y: 60, h: 760},
-  {from: 12200, kind: 'crop', x: MID, y: 90, h: 640},
-  {from: 13480, kind: 'stack', x: MID, y: 110, h: 560},
-  {from: 14300, kind: 'bw', x: LEFT, y: 60, h: 640},
-  {from: 15040, kind: 'wide'},
-  {from: 16200, kind: 'crop', x: LEFT, y: 0, h: 1000},
-  {from: 17500, kind: 'crop', x: RIGHT, y: 40, h: 800},
+  {from: 0, kind: 'stack', x: LEFT, y: 40, h: 760, circleX: MID}, // circle who's about to be asked
+  {from: 2300, kind: 'crop', x: LEFT, y: 50, h: 760}, // "who is your"
+  {from: 3250, kind: 'crop', x: LEFT, y: 90, h: 600}, // punch on "GOAT?"
+  {from: 3560, kind: 'crop', x: MID, y: 20, h: 820}, // his reaction
+  {from: 4400, kind: 'crop', x: MID, y: 70, h: 640}, // "NBA GOAT?" (disbelief)
+  {from: 5560, kind: 'crop', x: LEFT, y: 40, h: 800},
+  {from: 7400, kind: 'stack', x: MID, y: 40, h: 760}, // thinking...
+  {from: 8850, kind: 'crop', x: MID, y: 90, h: 620}, // sigh
+  {from: 12500, kind: 'crop', x: MID, y: 30, h: 820}, // after the jump cut
+  {from: 13480, kind: 'crop', x: MID, y: 60, h: 720}, // "gotta be"
+  {from: 14085, kind: 'crop', x: MID, y: 100, h: 580}, // "Matthew"
+  {from: 14414, kind: 'stack', x: MID, y: 110, h: 560}, // the pick: flash + label
+  {from: 14950, kind: 'bw', x: LEFT, y: 40, h: 700}, // asker's reaction
+  {from: 15700, kind: 'wide'}, // everyone loses it
+  {from: 17450, kind: 'crop', x: RIGHT, y: 40, h: 800}, // "I can feel the tension"
 ];
 
-export type Word = {text: string; from: number};
-// Words on screen together; `to` is when the group leaves.
-export type CaptionGroup = {words: Word[]; to: number; color?: string; emoji?: string};
+export const YELLOW = '#FFE14D';
+export const GREEN = '#5CFF5C';
+export const RED = '#FF4D4D';
 
-const YELLOW = '#FFE600';
-const GREEN = '#3DFF6E';
+export type Word = {text: string; at: number; color?: string};
+export type CaptionGroup = {
+  words: Word[];
+  to: number;
+  emoji?: string; // public/emoji-ios/<code>.png, shown above the line
+  action?: boolean; // *ASTERISK* sound/action caption
+  big?: boolean;
+};
 
-const w = (text: string, from: number): Word => ({text, from});
+const w = (text: string, at: number, color?: string): Word => ({text, at, color});
 
 export const CAPTIONS: CaptionGroup[] = [
-  {words: [w('BRING', 70), w('IT', 410), w('UP', 550)], to: 860},
-  {words: [w('BUT', 860), w('I', 900), w('WANNA', 940), w('ASK', 1000)], to: 1060},
-  {words: [w('YOU', 1060), w('THE', 1100), w('QUESTION', 1120)], to: 1570},
-  {words: [w('BEFORE', 1570)], to: 2080},
-  {words: [w('WHO', 2080), w('IS', 2440), w('YOUR', 2670)], to: 3160},
-  {words: [w('NBA', 3160), w('GOAT?', 3520)], to: 4400, emoji: '1f410'},
-  {words: [w('NBA', 4500), w('GOAT?', 4800)], to: 5520, emoji: '1f410'},
-  {words: [w('GREATEST', 5590), w('OF', 6180), w('ALL', 6350), w('TIME', 6540)], to: 6830},
-  {words: [w('NBA', 6830), w('PLAYER', 7040)], to: 7700, emoji: '1f3c0'},
-  {words: [w('HMM...', 8000)], to: 11000, emoji: '1f914'},
-  {words: [w('GOTTA', 11110), w('BE', 11890)], to: 12200},
-  {words: [w('MATTHEW', 12200)], to: 13480, emoji: '1f440'},
-  {words: [w('DELLAVEDOVA', 13480)], to: 15040, color: GREEN, emoji: '1f633'},
-  {words: [w('I', 17560), w('CAN', 17620), w('FEEL', 17840), w('THE', 18060), w('TENSION', 18250)], to: 18810, emoji: '1f62c'},
-].map((g) => ({color: YELLOW, ...g}));
+  {words: [w('BRING', 20), w('IT', 111), w('UP', 225)], to: 317},
+  {words: [w('BUT', 317), w('I', 454), w('WANT', 522), w('TO', 613)], to: 704},
+  {words: [w('ASK', 704), w('YOU', 910), w('THE', 1024), w('QUESTION', 1138, YELLOW)], to: 1412},
+  {words: [w('BEFORE', 1412)], to: 2000},
+  {words: [w('WHO', 2300), w('IS', 2470), w('YOUR', 2620)], to: 2800},
+  {words: [w('NBA', 2800, YELLOW), w('GOAT?', 3250, GREEN)], to: 3800, emoji: '1f410'},
+  {words: [w('NBA', 4400, YELLOW), w('GOAT?', 4800, GREEN)], to: 5400, emoji: '1f62e'},
+  {words: [w('GREATEST', 5560, YELLOW), w('OF', 6081), w('ALL', 6260), w('TIME', 6390)], to: 6586},
+  {words: [w('NBA', 6586, YELLOW), w('PLAYER', 7025)], to: 7400, emoji: '1f3c0'},
+  {words: [w('*THINKING...*', 7600)], to: 8850, action: true, emoji: '1f914'},
+  {words: [w('*SIGHS*', 8850)], to: 9700, action: true, emoji: '23f3'},
+  {words: [w('GOTTA', 13480), w('BE', 13895)], to: 14085},
+  {words: [w('MATTHEW', 14085, YELLOW)], to: 14414},
+  {words: [w('DELLAVEDOVA', 14414, GREEN)], to: 15000, big: true},
+  {words: [w('*LAUGHS*', 15700)], to: 17400, action: true},
+  {words: [w('I', 17500), w('CAN', 17640), w('FEEL', 17780)], to: 17980},
+  {words: [w('THE', 17980), w('TENSION', 18140, RED)], to: 18810, emoji: '1f62c'},
+];
 
-// Persistent hook at the top, like "WAIT FOR PICK #1..." in the reference.
-export const HOOK = 'WAIT FOR HIS NBA GOAT PICK...';
+// Persistent hook at the top; swaps (red) at the twist, like "THIS ONE" / "ARE YOU SURE?".
+export const HOOK = {text: 'WAIT FOR HIS NBA GOAT PICK...', twistAt: 14414, twist: 'BRO REALLY SAID THAT', twistEmoji: '1f480'};
 
-// The punchline: green flash, floating emoji and a label on the split line.
-export const PUNCH = {from: 13480, to: 15040, label: '*MATTHEW DELLAVEDOVA*', emoji: ['1f3c0', '1f525', '1f410']};
+// Punchline: vine boom, green flash + bokeh, 💀 slam on the table, label on the split.
+export const PUNCH = {at: 14414, to: 14950, label: '*MATTHEW DELLAVEDOVA*', sticker: '1f480'};
 
-// Emoji that float up during the laugh.
-export const LAUGH = {from: 15040, to: 17500, emoji: ['1f923']};
+// B&W reaction meme counter.
+export const AURA = {at: 15100, to: 15700, text: 'AURA -10000', emoji: '1f480'};
+
+// Floating emoji while everyone laughs.
+export const LAUGH = {from: 15700, to: 17450, emoji: ['1f602', '1f62d', '1f480']};
+
+// at = the moment the sound should hit; onset (ms of silence at the start of the file)
+// is subtracted automatically. maxMs trims long files.
+export type Sfx = {file: string; at: number; volume: number; onset: number; maxMs?: number};
+export const SFX: Sfx[] = [
+  {file: 'whoosh.mp3', at: 0, volume: 0.35, onset: 70, maxMs: 600},
+  {file: 'whoosh.mp3', at: 2300, volume: 0.2, onset: 70, maxMs: 500},
+  {file: 'ding.mp3', at: 3250, volume: 0.35, onset: 120},
+  {file: 'record-scratch.mp3', at: 4400, volume: 0.45, onset: 40},
+  {file: 'whoosh.mp3', at: 5560, volume: 0.15, onset: 70, maxMs: 500},
+  {file: 'crickets.mp3', at: 7550, volume: 0.5, onset: 120, maxMs: 2150},
+  {file: 'whoosh.mp3', at: 12500, volume: 0.3, onset: 70, maxMs: 500},
+  {file: 'vine-boom.mp3', at: 14414, volume: 0.6, onset: 80},
+  {file: 'camera-shutter.mp3', at: 14950, volume: 0.6, onset: 10},
+  {file: 'error.mp3', at: 15100, volume: 0.5, onset: 110},
+  {file: 'whoosh.mp3', at: 15700, volume: 0.2, onset: 70, maxMs: 500},
+];
+
+// Music beds (Kevin MacLeod, CC BY 4.0 — credit in the description).
+// Suspense under the question, cut to silence right before the answer,
+// goofy track back in for the laugh. `duck` = volume while someone talks.
+export type MusicBed = {file: string; from: number; to: number; volume: number; duck: number};
+export const MUSIC: MusicBed[] = [
+  {file: 'Sneaky_Snitch.mp3', from: 0, to: 13480, volume: 0.2, duck: 0.08},
+  {file: 'Monkeys_Spinning_Monkeys.mp3', from: 14950, to: 18810, volume: 0.22, duck: 0.1},
+];
+
+// Speech ranges (source ms) for ducking the music.
+export const SPEECH: [number, number][] = [
+  [20, 1800], [2300, 3560], [4400, 5340], [5560, 7400], [13480, 14950], [17500, 18700],
+];

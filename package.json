@@ -6,7 +6,8 @@
   "scripts": {
     "transcribe": "node scripts/transcribe.mjs",
     "studio": "remotion studio src/index.ts",
-    "render": "remotion render src/index.ts ShortEdit out/edited.mp4"
+    "render": "remotion render src/index.ts ShortEdit out/raw.mp4 && npm run limit",
+    "limit": "ffmpeg -y -v error -i out/raw.mp4 -c:v copy -af alimiter=limit=0.89:level=disabled -c:a aac -b:a 192k out/edited.mp4"
   },
   "repository": {
     "type": "git",
