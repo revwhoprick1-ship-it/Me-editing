@@ -94,7 +94,7 @@ export type Sfx = {file: string; at: number; volume: number; onset: number; maxM
 export const SFX: Sfx[] = [
   {file: 'fast-whoosh.mp3', at: 0, volume: 0.63, onset: 550},
   {file: 'fast-whoosh.mp3', at: 2300, volume: 0.36, onset: 550},
-  {file: 'ding.mp3', at: 3250, volume: 0.35, onset: 120},
+  {file: 'ding-2.mp3', at: 3250, volume: 0.5, onset: 140, maxMs: 1500},
   {file: 'record-scratch.mp3', at: 4400, volume: 0.45, onset: 40},
   {file: 'fast-whoosh.mp3', at: 5560, volume: 0.27, onset: 550},
   {file: 'crickets.mp3', at: 7550, volume: 0.5, onset: 120, maxMs: 2150},
@@ -110,8 +110,8 @@ export const SFX: Sfx[] = [
 // goofy track back in for the laugh. `duck` = volume while someone talks.
 export type MusicBed = {file: string; from: number; to: number; volume: number; duck: number};
 export const MUSIC: MusicBed[] = [
-  {file: 'Sneaky_Snitch.mp3', from: 0, to: 13480, volume: 0.2, duck: 0.08},
-  {file: 'Monkeys_Spinning_Monkeys.mp3', from: 14950, to: 18810, volume: 0.22, duck: 0.1},
+  {file: 'Sneaky_Snitch.mp3', from: 0, to: 13480, volume: 0.38, duck: 0.18},
+  {file: 'Monkeys_Spinning_Monkeys.mp3', from: 14950, to: 18810, volume: 0.4, duck: 0.2},
 ];
 
 // Speech ranges (source ms) for ducking the music.
