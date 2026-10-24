@@ -92,17 +92,17 @@ export const LAUGH = {from: 15700, to: 17450, emoji: ['1f602', '1f62d', '1f480']
 // is subtracted automatically. maxMs trims long files.
 export type Sfx = {file: string; at: number; volume: number; onset: number; maxMs?: number};
 export const SFX: Sfx[] = [
-  {file: 'whoosh.mp3', at: 0, volume: 0.35, onset: 70, maxMs: 600},
-  {file: 'whoosh.mp3', at: 2300, volume: 0.2, onset: 70, maxMs: 500},
+  {file: 'fast-whoosh.mp3', at: 0, volume: 0.63, onset: 550},
+  {file: 'fast-whoosh.mp3', at: 2300, volume: 0.36, onset: 550},
   {file: 'ding.mp3', at: 3250, volume: 0.35, onset: 120},
   {file: 'record-scratch.mp3', at: 4400, volume: 0.45, onset: 40},
-  {file: 'whoosh.mp3', at: 5560, volume: 0.15, onset: 70, maxMs: 500},
+  {file: 'fast-whoosh.mp3', at: 5560, volume: 0.27, onset: 550},
   {file: 'crickets.mp3', at: 7550, volume: 0.5, onset: 120, maxMs: 2150},
-  {file: 'whoosh.mp3', at: 12500, volume: 0.3, onset: 70, maxMs: 500},
+  {file: 'fast-whoosh.mp3', at: 12500, volume: 0.54, onset: 550},
   {file: 'vine-boom.mp3', at: 14414, volume: 0.6, onset: 80},
   {file: 'camera-shutter.mp3', at: 14950, volume: 0.6, onset: 10},
   {file: 'error.mp3', at: 15100, volume: 0.5, onset: 110},
-  {file: 'whoosh.mp3', at: 15700, volume: 0.2, onset: 70, maxMs: 500},
+  {file: 'fast-whoosh.mp3', at: 15700, volume: 0.36, onset: 550},
 ];
 
 // Music beds (Kevin MacLeod, CC BY 4.0 — credit in the description).

@@ -37,7 +37,8 @@ Back to [[START HERE]]
    - **add music**, **add SFX**
    - use **the same font as the reference (the glowing one)** and its **keyword colors**
    - before editing: research 50 meme/brainrot/clipping Shorts and save everything in this vault
-3. **v3:** see the edit plan in `src/edit.ts` and the summary below.
+3. **v3:** user: whoosh sound "not good" → swapped to `fast-whoosh.mp3`, peak lined up on the cut. **Always send the finished video file directly in chat.**
+4. **v3 (first render):** see the edit plan in `src/edit.ts` and the summary below.
 
 ## v3 edit summary (16.0 s)
 | Out time | Source | What happens |

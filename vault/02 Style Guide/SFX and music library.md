@@ -12,7 +12,8 @@ Meme SFX downloaded from myinstants.com (user-uploaded meme sounds; fine for mem
 | File | Length | Onset | Use for |
 |---|---|---|---|
 | vine-boom.mp3 | 1.3 s | 80 ms | the punchline / big reveal |
-| whoosh.mp3 | 4.1 s (use first 0.5 s) | 70 ms | cuts, layout changes, intro |
+| fast-whoosh.mp3 | 1.2 s | 380 ms (peak 550 ms) | **default whoosh** for cuts/intro; code lines up the peak on the cut |
+| whoosh.mp3 | 4.1 s | 70 ms | ❌ user disliked it, don't use |
 | record-scratch.mp3 | 0.9 s | 40 ms | "wait what?" / disbelief |
 | crickets.mp3 | 5.3 s | 120 ms | awkward silence / thinking |
 | ding.mp3 | 0.8 s | 120 ms | emoji pop, ranking reveal |

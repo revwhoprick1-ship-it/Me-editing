@@ -8,6 +8,10 @@ This repo is a **Remotion + Whisper Shorts editing setup**, and this `vault/` fo
 ## What the user wants
 Edit podcast/streamer clips into viral vertical Shorts in a **meme / brainrot clipping style**, copying the references they gave and the patterns from researching 50 top Shorts. They give feedback on each version, so check the feedback log in the project note before editing again.
 
+## User preferences
+- **Always send the finished video file directly in chat** (SendUserFile) so they can download it.
+- iOS emoji only; Ref A glow font; whoosh = `fast-whoosh.mp3`.
+
 ## Map
 - **Research**
   - [[Shorts analysis - 50 clips]]: the 50 Shorts, views, format, hook and edit notes for each
