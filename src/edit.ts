@@ -108,10 +108,11 @@ export const SFX: Sfx[] = [
 // Music beds (Kevin MacLeod, CC BY 4.0 — credit in the description).
 // Suspense under the question, cut to silence right before the answer,
 // goofy track back in for the laugh. `duck` = volume while someone talks.
-export type MusicBed = {file: string; from: number; to: number; volume: number; duck: number};
+// offset = ms to skip at the start of the file (leading silence).
+export type MusicBed = {file: string; from: number; to: number; volume: number; duck: number; offset?: number};
 export const MUSIC: MusicBed[] = [
-  {file: 'Sneaky_Snitch.mp3', from: 0, to: 13480, volume: 0.38, duck: 0.18},
-  {file: 'Monkeys_Spinning_Monkeys.mp3', from: 14950, to: 18810, volume: 0.4, duck: 0.2},
+  {file: 'Jeopardy_Think.mp3', from: 0, to: 13480, volume: 0.45, duck: 0.2, offset: 150},
+  {file: 'Curb_Credits.mp3', from: 14950, to: 18810, volume: 0.42, duck: 0.22, offset: 600},
 ];
 
 // Speech ranges (source ms) for ducking the music.

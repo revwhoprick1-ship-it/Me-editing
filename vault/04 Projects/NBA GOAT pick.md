@@ -39,7 +39,8 @@ Back to [[START HERE]]
    - before editing: research 50 meme/brainrot/clipping Shorts and save everything in this vault
 3. **v3:** user: whoosh sound "not good" → swapped to `fast-whoosh.mp3`, peak lined up on the cut. **Always send the finished video file directly in chat.**
 4. User: different ding → `ding-2.mp3`; **louder background music** → bed volume roughly doubled.
-5. **v3 (first render):** see the edit plan in `src/edit.ts` and the summary below.
+5. User: **more memey music** → Jeopardy think music under the question/silence, Curb Your Enthusiasm credits from the laugh to the end.
+6. **v3 (first render):** see the edit plan in `src/edit.ts` and the summary below.
 
 ## v3 edit summary (16.0 s)
 | Out time | Source | What happens |

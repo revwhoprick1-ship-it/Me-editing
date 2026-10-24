@@ -31,13 +31,15 @@ Meme SFX downloaded from myinstants.com (user-uploaded meme sounds; fine for mem
 | spongebob-boowomp.mp3 | 1.4 s | 180 ms | sad ending / outro |
 
 ## Music: `public/music/`
-User wants the music **clearly audible**: bed ≈ 0.38–0.4 in gaps and ≈ 0.18–0.2 under speech (v3 used 0.2/0.08 and it was too quiet).
+User wants **meme music** (recognisable meme tracks beat generic royalty-free) and wants it **clearly audible**: bed ≈ 0.38–0.4 in gaps and ≈ 0.18–0.2 under speech (v3 used 0.2/0.08 and it was too quiet).
 
 Kevin MacLeod (incompetech.com), **CC BY 4.0**. Put this in the video description when posting:
 > Music: "Track Name" Kevin MacLeod (incompetech.com), Licensed under Creative Commons: By Attribution 4.0 License, http://creativecommons.org/licenses/by/4.0/
 
 | File | Mood | Use |
 |---|---|---|
+| Jeopardy_Think.mp3 | **meme**: Final Jeopardy think music (myinstants, copyrighted) | **default** for questions / thinking silence (skip 150 ms) |
+| Curb_Credits.mp3 | **meme**: Curb Your Enthusiasm credits (myinstants, copyrighted) | **default** for the awkward punchline / laugh (skip 600 ms) |
 | Sneaky_Snitch.mp3 | sneaky suspense | the build-up / question |
 | Investigations.mp3 | tense, mysterious | long silences |
 | Monkeys_Spinning_Monkeys.mp3 | goofy | laughter / payoff |
