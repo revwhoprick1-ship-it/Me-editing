@@ -154,23 +154,23 @@ export const CAPTIONS: Cap[] = [
   {words: [w('IN', 43420), w('THE', 43740), w('ROOM', 43840, G)], to: 45400},
 ];
 
-// ---- AI narration (ElevenLabs, voice "Grant – The Premium Narrator", eleven_v4) ----
+// ---- AI narration (ElevenLabs, voice "Alex - Young American Male" yl2ZDV1MzN4HbQJbMihG, eleven_v4) ----
 // public/flagg/narration/full.mp3 holds all 5 lines; each line is placed at an
 // OUTPUT time. Word times are ms inside the narration file (faster-whisper,
 // snapped to the real onsets).
-export const NARRATION_FILE = 'flagg/narration/full_loud.mp3'; // compressed + loudnorm'd (-11 LUFS)
+export const NARRATION_FILE = 'flagg/narration/alex_loud.mp3'; // compressed + loudnorm'd (-11 LUFS)
 export type Line = {out: number; file: [number, number]; words: Word[]; emoji?: string};
 export const NARRATION: Line[] = [
-  {out: 1700, file: [0, 4150], words: [w('BACKYARD', 60), w('BREAKS', 340), w('WAS', 700), w('RIPPING', 960),
-    w('TOPPS', 1380, Y), w('FINEST...', 1800, Y), w('HUNTING', 2900), w('FOR', 3200), w('ONE', 3400, G), w('CARD', 3650, G)]},
-  {out: 7650, file: [5250, 8150], words: [w('BIG', 5300, Y), w('NAMES...', 5560, Y), w('BUT', 6500), w('NOT', 6700, R),
-    w('THE', 6900), w('ONE', 7060), w('THEY', 7260), w('WERE', 7440), w('CHASING', 7560, G)]},
-  {out: 10950, file: [9150, 11150], words: [w('THEN...', 9200), w('THE', 9920), w('NEXT', 10000, Y), w('CARD', 10250, Y),
-    w('CAME', 10540), w('OUT', 10800)], emoji: '1f440'},
-  {out: 15000, file: [12150, 17400], words: [w('COOPER', 12220, Y), w('FLAGG!', 12500, Y), w('ARRIVALS!', 12900, R),
-    w('ONE', 13880, R), w('OF', 14260, R), w('ONE!', 14460, R), w('A', 15420), w('$13,000', 15500, G), w('ROOKIE!', 16750)], emoji: '1f48e'},
-  {out: 24700, file: [18080, 19800], words: [w('WOULD', 18120), w('YOU', 18250), w('KEEP', 18340, G), w('IT...', 18560, G),
-    w('OR', 18780), w('SELL', 19200, R), w('IT?', 19380, R)]},
+  {out: 1700, file: [0, 4450], words: [w('BACKYARD', 60), w('BREAKS', 420), w('WAS', 760), w('RIPPING', 940),
+    w('TOPPS', 1420, Y), w('FINEST...', 1960, Y), w('HUNTING', 2820), w('FOR', 2990), w('ONE', 3260, G), w('CARD', 3580, G)]},
+  {out: 7650, file: [4850, 8050], words: [w('BIG', 4880, Y), w('NAMES...', 5100, Y), w('BUT', 5780), w('NOT', 6220, R),
+    w('THE', 6500), w('ONE', 6680), w('THEY', 6880), w('WERE', 7060), w('CHASING', 7180, G)]},
+  {out: 11000, file: [8420, 10650], words: [w('THEN...', 8460), w('THE', 9200), w('NEXT', 9350, Y), w('CARD', 9520, Y),
+    w('CAME', 9820), w('OUT', 10040)], emoji: '1f440'},
+  {out: 15000, file: [11050, 16450], words: [w('COOPER', 11080, Y), w('FLAGG!', 11300, Y), w('ARRIVALS!', 12080, R),
+    w('ONE', 12960, R), w('OF', 13220, R), w('ONE!', 13400, R), w('A', 13880), w('$13,000', 14120, G), w('ROOKIE!', 15460)], emoji: '1f48e'},
+  {out: 24700, file: [16880, 18750], words: [w('WOULD', 16900), w('YOU', 17000), w('KEEP', 17100, G), w('IT...', 17380, G),
+    w('OR', 17560), w('SELL', 18000, R), w('IT?', 18340, R)]},
 ];
 // Group a line's words into caption chunks of up to 3.
 export const NARRATION_CHUNK = 3;

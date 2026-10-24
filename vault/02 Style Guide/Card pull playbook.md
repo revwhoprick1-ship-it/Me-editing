@@ -35,7 +35,7 @@ The Google Sheet ("Backyard Breaks" clip list) has tabs; card pulls are in **�
 - Sound: the **music drop**, a bass-boosted vine boom, an 808 boom, ka-ching, then the hosts screaming.
 
 ## AI narration
-- ElevenLabs (this connector), voice **"Grant – The Premium Narrator"** (`W2cdBod56VIbm57Ma8I9`), model `eleven_v4`, tags `[confident]`, `[intrigued]`, `[whispering]`, `[excited]`, `[playful]`.
+- ElevenLabs (this connector). **User: "only use Alex voice"** → voice **"Alex - Young American Male"** (`yl2ZDV1MzN4HbQJbMihG`, saved in the user's own ElevenLabs workspace). Never use another voice, model `eleven_v4`, tags `[confident]`, `[intrigued]`, `[whispering]`, `[excited]`, `[playful]`.
 - Generate **all lines in one take** with `[long pause]` between them, then place each line by its file range (find the ranges with `scripts/speech_segments.py file -40`, word times with `scripts/transcribe_words.py`).
 - **Loudness (user: "voice can't be heard"):** run the narration through `acompressor=threshold=-30dB:ratio=6:makeup=10dB,loudnorm=I=-11:TP=-1` (→ `full_loud.mp3`) so the whisper is as loud as the hype. Under the narrator: hosts at **18 %**, music at **0.06–0.09**, and hype SFX (air horn, crowd) kept low.
 - Narrator explains the moment, the hosts' mic is ducked under it, and the narration gets the captions (in chunks of 3 words). Keep the hosts' own captions only where the narrator is quiet.
