@@ -10,7 +10,8 @@ Edit podcast/streamer clips into viral vertical Shorts in a **meme / brainrot cl
 
 ## User preferences
 - **Always send the finished video file directly in chat** (SendUserFile) so they can download it.
-- iOS emoji only; Ref A glow font; whoosh = `fast-whoosh.mp3`.
+- iOS emoji only; Ref A glow font; whoosh = `fast-whoosh.mp3`, ding = `ding-2.mp3`.
+- Music: **one meme song looped through the whole video, loud** (currently `du-bist-gut-genug.mp3`).
 
 ## Map
 - **Research**

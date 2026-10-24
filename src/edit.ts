@@ -109,10 +109,10 @@ export const SFX: Sfx[] = [
 // Suspense under the question, cut to silence right before the answer,
 // goofy track back in for the laugh. `duck` = volume while someone talks.
 // offset = ms to skip at the start of the file (leading silence).
-export type MusicBed = {file: string; from: number; to: number; volume: number; duck: number; offset?: number};
+export type MusicBed = {file: string; from: number; to: number; volume: number; duck: number; offset?: number; loop?: boolean};
 export const MUSIC: MusicBed[] = [
-  {file: 'Jeopardy_Think.mp3', from: 0, to: 13480, volume: 0.45, duck: 0.2, offset: 150},
-  {file: 'Curb_Credits.mp3', from: 14950, to: 18810, volume: 0.42, duck: 0.22, offset: 600},
+  // One song for the whole video (looped): the "Du bist gut genug" meme.
+  {file: 'du-bist-gut-genug.mp3', from: 0, to: 18810, volume: 0.32, duck: 0.17, loop: true},
 ];
 
 // Speech ranges (source ms) for ducking the music.

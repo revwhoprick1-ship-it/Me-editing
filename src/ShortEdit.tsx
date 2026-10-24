@@ -353,7 +353,7 @@ export const ShortEdit = ({src}: {src: string}) => {
         const r = outRange(m.from, m.to)!;
         return (
           <Sequence key={`m${i}`} from={r.from} durationInFrames={r.dur}>
-            <Audio src={staticFile(`music/${m.file}`)} trimBefore={f(m.offset ?? 0)} volume={(fr) => {
+            <Audio src={staticFile(`music/${m.file}`)} trimBefore={f(m.offset ?? 0)} loop={m.loop} volume={(fr) => {
               const src = srcMs(((r.from + fr) / FPS) * 1000);
               const fade = Math.min(1, fr / 6, (r.dur - fr) / 3);
               return (isSpeech(src) ? m.duck : m.volume) * fade;
