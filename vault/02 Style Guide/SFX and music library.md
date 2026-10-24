@@ -33,6 +33,18 @@ Meme SFX downloaded from myinstants.com (user-uploaded meme sounds; fine for mem
 | air-horn.mp3 | 3.0 s | 30 ms | hype / everyone screams |
 | crowd-cheer.mp3 | 11.8 s | 380 ms | under real celebrations (trim ~6 s) |
 
+## Music for NON-podcast clips (user's phonk list)
+User's list (YouTube, slowed Brazilian phonk/montagem): Montagem Pegadora (Slowed) · Funk Abnormal (Slowed) · Montagem Alquimia · Pinky Smash – Eclipser (Super Slowed) · Acido III (Super Slowed) · Amor Na Praia (Slowed + Reverb) · Vem Pere Reka (Slowed) · Funk do Balkan (Slowed + Reverb) · Tipo Insta do Buzeira (Slowed) · Montagem Uranium (Slowed) · L.P. Rhythm – Versatile (Hardstylish Remix, slowed) · HIMXN, Nulteex – TAK TAK (Super Slowed) · Montagem Pegadora · fennecxx, DJ ALEX – Spooky (Super Slowed) · Funk Sigilo (Slowed).
+YouTube audio can't be downloaded from the cloud box; only these were found on myinstants (copyrighted, short loops):
+| File | Length | Analysis (librosa) | Use |
+|---|---|---|---|
+| montagem-alquimia.mp3 | 15.0 s | 107.7 BPM, intro build 0–3.92 s, **bass drop at 3.92 s**, body loops well from 4.6 s | **default**: play the intro so the drop lands exactly on the reveal |
+| spooky-phonk-fennecxx(-spooky).mp3 | 11–12 s | 129 BPM, no intro (full energy from 0) | alt. hype bed |
+| acido / acido_1e6rXyW.mp3 | 4–5 s | 172 BPM fragment | stinger only |
+To use the others, the user can drop the MP3s into `public/music/`.
+
+**Timing rule:** music drop = reveal frame (flash + money + ka-ching + vine boom all on the same frame). Quiet body under talk, intro build during the last ~4 s before the reveal.
+
 ## Music: `public/music/`
 User wants **ONE meme song for the whole video** (no switching tracks), **loud**, and recognisable meme music (recognisable meme tracks beat generic royalty-free) and wants it **clearly audible**: bed ≈ 0.38–0.4 in gaps and ≈ 0.18–0.2 under speech (v3 used 0.2/0.08 and it was too quiet).
 

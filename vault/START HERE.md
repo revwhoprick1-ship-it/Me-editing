@@ -11,7 +11,11 @@ Edit podcast/streamer clips into viral vertical Shorts in a **meme / brainrot cl
 ## User preferences
 - **Always send the finished video file directly in chat** (SendUserFile) so they can download it.
 - iOS emoji only; Ref A glow font; whoosh = `fast-whoosh.mp3`, ding = `ding-2.mp3`.
-- Music: **one meme song looped through the whole video, loud** (currently `du-bist-gut-genug.mp3`).
+- Music: **podcasts** → one meme song looped, loud (`du-bist-gut-genug.mp3`). **Non-podcasts** → the user's slowed Brazilian phonk list, drop timed to the big reveal (see [[SFX and music library#Music for NON-podcast clips (user's phonk list)]]).
+- **Blur (and/or beep) cards until they're revealed**: makes viewers curious who was pulled. Don't name the player in the banner/hook before the reveal.
+- Red circle must **really track** the face: use `scripts/track.py` (OpenCV CSRT), never hand-guessed keyframes.
+- Add small punch-in zooms on key words (1.1–1.18×), only the relevant part of the frame.
+- Big reveal = **green screen flash + falling money (💵💸💰) + ka-ching**.
 
 - **Podcast clips:** use the Ref C layout (black bars, video box, plain top caption "Do you agree with this? 💀", cut-out photos of people mentioned) **on top of** our normal edit style. See [[Reference Shorts#Ref C: podcast layout (user: "for podcast style videos make it like this")]].
 

@@ -26,4 +26,9 @@ Hook (screams + "ONE OF ONE!", tracked red circle, card + title) → whip → ri
 Banner: "ONLY **1** OF THIS **$13,725** / COOPER FLAGG ROOKIE!" covers the burned-in banner.
 
 ## Feedback log
-(none yet)
+1. **v1 → v2** user: blur/beep cards before they're revealed (curiosity) · fix the tracking · add a few appropriate zooms · non-podcast music = their phonk list, timed to the reveal · green flash + falling money overlay + ka-ching at the reveal.
+   - Cards blurred (with ❓) until named: Joan Beringer, Larry Bird, and the Flagg card from 28.95 s until the reveal at 29.4 s. Hook shows the card blurred with "WHO IS IT? / 1/1 / $13,725"; banner says "ROOKIE... WHO IS IT? 👀" until the reveal, then "COOPER FLAGG ROOKIE! 💎".
+   - Tracking redone with `scripts/track.py` (CSRT head + torso fallback); the old hand keyframes were ~80 px off.
+   - Zooms on COME ON / names / NICE HIT (card cam only) and ONE OF ONE / LET'S GO / GOSH (hosts cam).
+   - Montagem Alquimia: intro build under "*NEXT CARD...*", drop on the reveal; green flash + 💵💸💰 rain + ka-ching + vine boom on the same frame.
+   - No audio beep added: no player name is said before its card is shown.

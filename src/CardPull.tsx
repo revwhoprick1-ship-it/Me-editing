@@ -5,9 +5,9 @@ import {
   useCurrentFrame, useVideoConfig,
 } from 'remotion';
 import {
-  BANNER, CAPTIONS, CARD, CUTS, DIALOGUE_GAIN, HOOK_CAPTIONS, HOOK_CUT, HOOK_SFX, LAYOUTS,
-  MUSIC, QUESTION, SFX, SPEECH, SRC, TRACK, TRACK_UNTIL, WHIPS,
-  type Cap, type Layout, type Sfx,
+  BANNER_AFTER, BANNER_BEFORE, BLURS, CAPTIONS, CARD, CUTS, DIALOGUE_GAIN, HOOK_CAPTIONS, HOOK_CUT, HOOK_SFX,
+  HOOK_TITLE, LAYOUTS, MONEY_MS, MUSIC, QUESTION, SFX, SPEECH, SRC, TRACK, TRACK_UNTIL, WHIPS, ZOOMS,
+  type BannerPart, type Cap, type Layout, type Sfx,
 } from './flagg';
 
 const fontFamily = 'Montserrat';
@@ -43,6 +43,16 @@ const srcAtOut = (out: number) => {
 const layoutAt = (src: number): Layout =>
   [...LAYOUTS].reverse().find((l) => src >= l.from)!.layout;
 
+// Punch-in zoom at a source moment: eases in/out over ~150 ms.
+const zoomAt = (src: number) => {
+  const z = ZOOMS.find((q) => src >= q.from - 150 && src <= q.to + 150);
+  if (!z) return {scale: 1, x: 540, y: 1300};
+  const k = Math.min(1, (src - z.from + 150) / 150, (z.to + 150 - src) / 150);
+  const e = 1 - Math.pow(1 - Math.max(0, k), 3);
+  return {scale: 1 + (z.scale - 1) * e, x: z.x, y: z.y};
+};
+const blurAt = (src: number) => BLURS.find((b) => src >= b.from && src < b.to);
+
 // ---- shared bits -------------------------------------------------------
 const glow = (c: string) => `0 0 10px ${c}cc, 0 0 26px ${c}88, 0 4px 10px rgba(0,0,0,0.6)`;
 const emojiSrc = (code: string) => staticFile(`emoji-ios/${code}.png`);
@@ -54,6 +64,8 @@ const text: CSSProperties = {
 const CAM = {x0: 230, x1: 890, h: 420};
 const CAM_K = W / (CAM.x1 - CAM.x0);
 const CAM_H = Math.round(CAM.h * CAM_K);
+// Top of the card cam in the source layout (under the burned-in banner).
+const CARD_CAM_TOP = 607;
 const bannerTop = (l: Layout) => (l === 'reaction' ? CAM_H + 10 : 427);
 const captionY = (l: Layout) => (l === 'full' ? 1000 : l === 'reveal' ? 250 : CAM_H - 210);
 
@@ -74,14 +86,16 @@ const Whip = ({children}: {children: ReactNode}) => {
   );
 };
 
-const Banner = ({layout}: {layout: Layout}) => (
+const Banner = ({layout, parts}: {layout: Layout; parts: BannerPart[]}) => (
   <div style={{
     position: 'absolute', top: bannerTop(layout), left: 0, width: W, height: 180, background: 'white',
     display: 'flex', alignItems: 'center', justifyContent: 'center',
     boxShadow: '0 6px 18px rgba(0,0,0,0.35)',
   }}>
     <div style={{...text, color: 'black', fontSize: 58, lineHeight: 1.05, whiteSpace: 'pre-line'}}>
-      {BANNER.map((b, i) => <span key={i} style={{color: b.color}}>{b.text}</span>)}
+      {parts.map((b, i) => b.emoji
+        ? <Img key={i} src={emojiSrc(b.emoji)} style={{width: 58, height: 58, verticalAlign: '-8px'}} />
+        : <span key={i} style={{color: b.color ?? 'black'}}>{b.text}</span>)}
     </div>
   </div>
 );
@@ -116,7 +130,7 @@ const TrackedCircle = ({outStartMs}: {outStartMs: number}) => {
   const sx = interpolate(src, xs, TRACK.map((t) => t.x), {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   const sy = interpolate(src, xs, TRACK.map((t) => t.y), {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
   const x = (sx - CAM.x0) * CAM_K;
-  const y = sy * CAM_K + 40;
+  const y = sy * CAM_K;
   const r = 125;
   const len = 2 * Math.PI * r;
   const draw = interpolate(frame, [0, 10], [len, 0], {extrapolateRight: 'clamp'});
@@ -132,11 +146,12 @@ const TrackedCircle = ({outStartMs}: {outStartMs: number}) => {
   );
 };
 
-const TitleStack = ({top, start}: {top: number; start: number}) => {
+type Title = {name: string; parallel: string; price: string};
+const TitleStack = ({top, start, title = CARD}: {top: number; start: number; title?: Title}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const pops = [0, 6, 18].map((d) => spring({frame: frame - start - d, fps, config: {damping: 9, stiffness: 260}}));
-  const lines: [string, string, number][] = [[CARD.name, 'white', 62], [CARD.parallel, '#FF3B3B', 62], [CARD.price, '#5CFF5C', 84]];
+  const lines: [string, string, number][] = [[title.name, 'white', 62], [title.parallel, '#FF3B3B', 62], [title.price, '#5CFF5C', 84]];
   return (
     <div style={{position: 'absolute', top, width: W, display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
       {lines.map(([t, c, s], i) => (
@@ -148,12 +163,37 @@ const TitleStack = ({top, start}: {top: number; start: number}) => {
 };
 
 // ---- layouts -----------------------------------------------------------
-const FullView = ({trim}: {trim: number}) => {
+// Blurs a not-yet-revealed card (curiosity) with a ❓ on top.
+const BlurBox = ({box}: {box: [number, number, number, number]}) => {
   const frame = useCurrentFrame();
-  const push = interpolate(frame, [0, 150], [1, 1.05], {extrapolateRight: 'clamp'});
+  const [x, y, w, h] = box;
   return (
-    <AbsoluteFill style={{transform: `scale(${push})`, transformOrigin: '50% 60%'}}>
+    <div style={{position: 'absolute', left: x, top: y, width: w, height: h, borderRadius: 40,
+      backdropFilter: 'blur(38px) saturate(0.6)', WebkitBackdropFilter: 'blur(38px)', background: 'rgba(0,0,0,0.15)',
+      display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+      <Img src={emojiSrc('2753')} style={{width: 220, height: 220, transform: `scale(${1 + Math.sin(frame / 4) * 0.06})`,
+        filter: 'drop-shadow(0 8px 14px rgba(0,0,0,0.6))'}} />
+    </div>
+  );
+};
+
+const FullView = ({trim, srcStart}: {trim: number; srcStart: number}) => {
+  const frame = useCurrentFrame();
+  const src = srcStart + (frame / FPS) * 1000;
+  const push = interpolate(frame, [0, 150], [1, 1.05], {extrapolateRight: 'clamp'});
+  const z = zoomAt(src);
+  const b = blurAt(src);
+  // Hosts cam stays still; only the card cam (below the burned banner) pushes/zooms.
+  return (
+    <AbsoluteFill>
       <OffthreadVideo src={staticFile(SRC)} muted trimBefore={trim} style={{width: W, height: H}} />
+      <div style={{position: 'absolute', top: CARD_CAM_TOP, width: W, height: H - CARD_CAM_TOP, overflow: 'hidden'}}>
+        <div style={{position: 'absolute', top: -CARD_CAM_TOP, width: W, height: H,
+          transform: `scale(${push * z.scale})`, transformOrigin: `${z.x}px ${z.y}px`}}>
+          <OffthreadVideo src={staticFile(SRC)} muted trimBefore={trim} style={{width: W, height: H}} />
+          {b && <BlurBox box={b.box} />}
+        </div>
+      </div>
     </AbsoluteFill>
   );
 };
@@ -164,7 +204,7 @@ const RevealView = ({trim}: {trim: number}) => {
   const z = interpolate(spring({frame, fps, config: {damping: 14, stiffness: 120}}), [0, 1], [1, 1.5]);
   const {x, y} = CARD.center;
   // Only the card cam (below the burned banner) zooms; hosts cam stays put.
-  const camTop = 607;
+  const camTop = CARD_CAM_TOP;
   const sx = x + (CARD.serial.x - x) * 1.5;
   const sy = y + (CARD.serial.y - y) * 1.5;
   return (
@@ -182,8 +222,11 @@ const RevealView = ({trim}: {trim: number}) => {
   );
 };
 
-const ReactionView = ({trim, outStartMs, showQuestion}: {trim: number; outStartMs: number; showQuestion: (frame: number) => boolean}) => {
+const ReactionView = ({trim, outStartMs, srcStart, hook, showQuestion}: {
+  trim: number; outStartMs: number; srcStart: number; hook: boolean; showQuestion: (frame: number) => boolean;
+}) => {
   const frame = useCurrentFrame();
+  const z = zoomAt(srcStart + (frame / FPS) * 1000);
   const {fps} = useVideoConfig();
   const cardPop = spring({frame, fps, config: {damping: 12, stiffness: 160}});
   const cardH = H - (CAM_H + 200) - 250 - 40;
@@ -194,17 +237,25 @@ const ReactionView = ({trim, outStartMs, showQuestion}: {trim: number; outStartM
         width: W, height: H, filter: 'blur(36px) brightness(0.45)', transform: 'scale(1.15)',
       }} />
       <div style={{position: 'absolute', top: 0, width: W, height: CAM_H, overflow: 'hidden'}}>
-        <OffthreadVideo src={staticFile(SRC)} muted trimBefore={trim} style={{
-          position: 'absolute', width: W * CAM_K, height: H * CAM_K, left: -CAM.x0 * CAM_K, top: 0,
-        }} />
+        <div style={{position: 'absolute', inset: 0, transform: `scale(${z.scale})`,
+          transformOrigin: `${(z.x - CAM.x0) * CAM_K}px ${z.y * CAM_K}px`}}>
+          <OffthreadVideo src={staticFile(SRC)} muted trimBefore={trim} style={{
+            position: 'absolute', width: W * CAM_K, height: H * CAM_K, left: -CAM.x0 * CAM_K, top: 0,
+          }} />
+          <TrackedCircle outStartMs={outStartMs} />
+        </div>
       </div>
-      <TrackedCircle outStartMs={outStartMs} />
-      {q ? <QuestionText top={CAM_H + 210} /> : <TitleStack top={CAM_H + 200} start={0} />}
-      <Img src={staticFile('flagg/card.png')} style={{
-        position: 'absolute', height: cardH, left: W / 2 - (cardH * 440) / 640 / 2, top: H - cardH - 50,
-        borderRadius: 18, transform: `scale(${cardPop}) rotate(${Math.sin(frame / 20) * 2}deg)`,
-        boxShadow: '0 0 40px rgba(255,255,255,0.35), 0 20px 40px rgba(0,0,0,0.7)',
-      }} />
+      {q ? <QuestionText top={CAM_H + 210} /> : <TitleStack top={CAM_H + 200} start={0} title={hook ? HOOK_TITLE : CARD} />}
+      <div style={{position: 'absolute', height: cardH, width: (cardH * 440) / 640, left: W / 2 - (cardH * 440) / 640 / 2,
+        top: H - cardH - 50, transform: `scale(${cardPop}) rotate(${Math.sin(frame / 20) * 2}deg)`}}>
+        <Img src={staticFile('flagg/card.png')} style={{
+          width: '100%', height: '100%', borderRadius: 18,
+          boxShadow: '0 0 40px rgba(255,255,255,0.35), 0 20px 40px rgba(0,0,0,0.7)',
+          filter: hook ? 'blur(34px) saturate(0.7)' : 'none',
+        }} />
+        {hook && <Img src={emojiSrc('2753')} style={{position: 'absolute', left: '50%', top: '50%', width: 260, height: 260,
+          transform: `translate(-50%, -50%) scale(${1 + Math.sin(frame / 4) * 0.06})`}} />}
+      </div>
     </AbsoluteFill>
   );
 };
@@ -217,6 +268,29 @@ const QuestionText = ({top}: {top: number}) => {
         transform: `scale(${1 + Math.sin(frame / 6) * 0.03})`}}>{QUESTION.text}</div>
       <Img src={emojiSrc(QUESTION.emoji)} style={{width: 96, height: 96}} />
     </div>
+  );
+};
+
+// Green flash + falling money at the reveal.
+const MoneyRain = () => {
+  const frame = useCurrentFrame();
+  const flash = interpolate(frame, [0, 2, 14], [0.85, 0.7, 0], {extrapolateRight: 'clamp'});
+  const bills = ['1f4b5', '1f4b8', '1f4b5', '1f4b0'];
+  return (
+    <AbsoluteFill style={{pointerEvents: 'none'}}>
+      <AbsoluteFill style={{background: '#1EFF3C', opacity: flash, mixBlendMode: 'screen'}} />
+      <AbsoluteFill style={{background: '#1EFF3C', opacity: flash * 0.45, mixBlendMode: 'multiply'}} />
+      {Array.from({length: 34}).map((_, i) => {
+        const seed = (n: number) => { const v = Math.sin(i * 9301 + n * 49297) * 233280; return v - Math.floor(v); };
+        const t = frame - seed(1) * 30;
+        if (t < 0) return null;
+        const size = 90 + seed(2) * 90;
+        const x = seed(3) * W + Math.sin(t / 7 + i) * 50 - size / 2;
+        const y = -size + t * (22 + seed(4) * 16);
+        return <Img key={i} src={emojiSrc(bills[i % bills.length])} style={{position: 'absolute', left: x, top: y,
+          width: size, height: size, transform: `rotate(${Math.sin(t / 9 + i) * 35 + seed(5) * 40}deg)`}} />;
+      })}
+    </AbsoluteFill>
   );
 };
 
@@ -276,6 +350,18 @@ export const CardPull = () => {
   ];
   const isSpeech = (src: number) => SPEECH.some(([a, b]) => src >= a - 150 && src <= b + 150);
   const total = f(CARD_OUT_MS);
+  const revealOut = outMs(CARD.revealAt)!;
+  const hookEnd = HOOK_CUT[1] - HOOK_CUT[0];
+  const buildStart = revealOut - MUSIC.dropAt;
+  const afterDrop = MUSIC.length - MUSIC.dropAt;
+  // [out from, out to, file offset, volume rule]
+  const musicPlan: [number, number, number, 'loud' | 'talk' | 'build'][] = [
+    [0, hookEnd, 8000, 'loud'],
+    [hookEnd, buildStart, MUSIC.bodyFrom, 'talk'],
+    [buildStart, revealOut, 0, 'build'], // intro builds...
+    [revealOut, revealOut + afterDrop, MUSIC.dropAt, 'loud'], // ...drop on the reveal
+    [revealOut + afterDrop, CARD_OUT_MS, MUSIC.bodyFrom, 'loud'],
+  ];
 
   return (
     <AbsoluteFill style={{background: 'black'}}>
@@ -283,17 +369,20 @@ export const CardPull = () => {
         const from = f(p.out);
         const dur = f(p.out + p.src[1] - p.src[0]) - from;
         const outStartMs = p.out;
-        const body = p.layout === 'full' ? <FullView trim={f(p.src[0])} />
+        const body = p.layout === 'full' ? <FullView trim={f(p.src[0])} srcStart={p.src[0]} />
           : p.layout === 'reveal' ? <RevealView trim={f(p.src[0])} />
-          : <ReactionView trim={f(p.src[0])} outStartMs={outStartMs}
+          : <ReactionView trim={f(p.src[0])} outStartMs={outStartMs} srcStart={p.src[0]} hook={p.hook}
               showQuestion={(fr) => !p.hook && f(outStartMs) + fr >= f(qOut)} />;
+        const parts = p.hook || p.src[0] < CARD.revealAt ? BANNER_BEFORE : BANNER_AFTER;
         return (
           <Sequence key={i} from={from} durationInFrames={dur}>
             {p.whip ? <Whip>{body}</Whip> : body}
-            <Banner layout={p.layout} />
+            <Banner layout={p.layout} parts={parts} />
           </Sequence>
         );
       })}
+
+      <Sequence from={f(revealOut)} durationInFrames={f(MONEY_MS)}><MoneyRain /></Sequence>
 
       {caps.map(({c, hook}, i) => {
         const a = outMs(c.words[0].at, hook);
@@ -318,15 +407,22 @@ export const CardPull = () => {
           </Sequence>
         );
       })}
-      {/* one song, looped, ducked under talk */}
-      <Audio src={staticFile(`music/${MUSIC.file}`)} loop volume={(fr) => {
-        const out = (fr / FPS) * 1000;
-        const s = segAtOut(out);
-        const src = srcAtOut(out);
-        const fade = Math.min(1, fr / 6, (total - fr) / 6);
-        if (s.hook || src >= MUSIC.loudFrom) return MUSIC.loud * fade;
-        return (isSpeech(src) ? MUSIC.quiet : MUSIC.gap) * fade;
-      }} />
+      {/* one phonk song, its drop landing exactly on the reveal */}
+      {musicPlan.filter(([a, b]) => b > a).map(([a, b, off, rule], i) => {
+        const from = f(a);
+        const dur = f(b) - from;
+        return (
+          <Sequence key={`mu${i}`} from={from} durationInFrames={dur}>
+            <Audio src={staticFile(`music/${MUSIC.file}`)} trimBefore={f(off)} loop volume={(fr) => {
+              const fade = Math.min(1, (fr + 1) / 3, (dur - fr) / 3, (total - from - fr) / 6);
+              if (rule === 'loud') return MUSIC.loud * fade;
+              if (rule === 'build') return MUSIC.build * fade;
+              const src = srcAtOut(((from + fr) / FPS) * 1000);
+              return (isSpeech(src) ? MUSIC.quiet : MUSIC.gap) * fade;
+            }} />
+          </Sequence>
+        );
+      })}
       {sfxOut.map(({s, o}, i) => o === null ? null : (
         <Sequence key={`s${i}`} from={Math.max(0, f(o - s.onset))} durationInFrames={s.maxMs ? f(s.maxMs) : undefined}>
           <Audio src={staticFile(`sfx/${s.file}`)} volume={s.volume} />

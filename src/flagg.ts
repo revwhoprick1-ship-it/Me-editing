@@ -18,40 +18,111 @@ export const CUTS: [number, number][] = [
 export type Layout = 'full' | 'reveal' | 'reaction';
 export const LAYOUTS: {from: number; layout: Layout}[] = [
   {from: 0, layout: 'full'},
-  {from: 29000, layout: 'reveal'},
+  {from: 29400, layout: 'reveal'},
   {from: 30600, layout: 'reaction'},
 ];
 
 // In-place whip (motion blur) where there's no cut but the scene changes.
-export const WHIPS = [29000, 30600];
+export const WHIPS = [29400, 30600];
 
-export const BANNER = [
-  {text: 'ONLY ', color: 'black'}, {text: '1', color: '#E8231F'}, {text: ' OF THIS ', color: 'black'},
-  {text: '$13,725', color: '#16B83E'}, {text: '\nCOOPER FLAGG ROOKIE!', color: 'black'},
+// Banner hides who it is until the reveal (curiosity), then names him.
+export type BannerPart = {text?: string; color?: string; emoji?: string};
+export const BANNER_BEFORE: BannerPart[] = [
+  {text: 'ONLY '}, {text: '1', color: '#E8231F'}, {text: ' OF THIS '}, {text: '$13,725', color: '#16B83E'},
+  {text: '\nROOKIE... WHO IS IT? '}, {emoji: '1f440'},
+];
+export const BANNER_AFTER: BannerPart[] = [
+  {text: 'ONLY '}, {text: '1', color: '#E8231F'}, {text: ' OF THIS '}, {text: '$13,725', color: '#16B83E'},
+  {text: '\nCOOPER FLAGG ROOKIE! '}, {emoji: '1f48e'},
 ];
 
 export const CARD = {
   name: 'COOPER FLAGG', parallel: 'ARRIVALS 1/1', price: '$13,725',
-  revealAt: 29000, // card swipes in
+  revealAt: 29400, // unblur + flash + money + music drop (card swipes in at 29.0)
   center: {x: 550, y: 1460}, // card centre in the source frame at the reveal
   serial: {x: 705, y: 1385}, // where the 1/1 is printed (the arrow points here)
 };
 
+// Cards stay blurred until they're named / revealed (source ms + box in source px).
+export const BLURS: {from: number; to: number; box: [number, number, number, number]}[] = [
+  {from: 5600, to: 7300, box: [170, 820, 720, 1060]}, // Joan Beringer card before it's named
+  {from: 9100, to: 9250, box: [170, 820, 720, 1060]},
+  {from: 10150, to: 11040, box: [170, 820, 720, 1060]}, // Larry Bird before "Larry Bird"
+  {from: 28950, to: 29400, box: [170, 900, 760, 1000]}, // the Flagg card swiping in
+];
+
+// Small punch-in zooms on the beats that matter (source ms; x,y = focus in source px).
+export const ZOOMS: {from: number; to: number; scale: number; x: number; y: number}[] = [
+  {from: 5080, to: 5700, scale: 1.1, x: 540, y: 1300},
+  {from: 6720, to: 7300, scale: 1.15, x: 540, y: 1300},
+  {from: 9200, to: 10100, scale: 1.12, x: 470, y: 1250},
+  {from: 11040, to: 12100, scale: 1.15, x: 500, y: 1250},
+  {from: 14980, to: 16500, scale: 1.12, x: 520, y: 1250},
+  {from: 17900, to: 18400, scale: 1.18, x: 520, y: 1250},
+  // reaction layout: focus is in hosts-cam source px
+  {from: 32500, to: 33300, scale: 1.18, x: 640, y: 120},
+  {from: 35540, to: 36300, scale: 1.12, x: 620, y: 140},
+  {from: 36700, to: 37380, scale: 1.12, x: 600, y: 140},
+];
+
+// Reveal: green flash + falling money (iOS 💵💸💰) for this long.
+export const MONEY_MS = 2600;
+
 export const QUESTION = {from: 40000, text: 'KEEP IT OR SELL IT?', emoji: '1f914'};
 
 // Red circle tracking the host who loses it (source px, hosts cam).
+// From scripts/track.py (OpenCV CSRT on his head, torso fallback when he jumps
+// out of frame); y clamped so the ring stays on screen.
 export const TRACK: {at: number; x: number; y: number}[] = [
-  {at: 30600, x: 580, y: 135}, {at: 31000, x: 615, y: 110}, {at: 31400, x: 640, y: 80}, {at: 32000, x: 560, y: 80}, {at: 32500, x: 615, y: 50},
-  {at: 33000, x: 585, y: 55}, {at: 33500, x: 630, y: 45}, {at: 34000, x: 750, y: 85},
-  {at: 34500, x: 570, y: 85}, {at: 35000, x: 540, y: 110}, {at: 35500, x: 600, y: 110},
-  {at: 36000, x: 630, y: 110}, {at: 36500, x: 630, y: 110}, {at: 37000, x: 600, y: 110},
-  {at: 37500, x: 525, y: 95}, {at: 38000, x: 540, y: 100},
+  {at: 30600, x: 658, y: 178},
+  {at: 30800, x: 658, y: 180},
+  {at: 31000, x: 658, y: 186},
+  {at: 31200, x: 654, y: 189},
+  {at: 31400, x: 656, y: 169},
+  {at: 31633, x: 660, y: 80},
+  {at: 31833, x: 678, y: 45},
+  {at: 32067, x: 684, y: 45},
+  {at: 32300, x: 658, y: 45},
+  {at: 32533, x: 642, y: 45},
+  {at: 32733, x: 624, y: 45},
+  {at: 32933, x: 626, y: 45},
+  {at: 33133, x: 626, y: 45},
+  {at: 33333, x: 644, y: 45},
+  {at: 33567, x: 656, y: 45},
+  {at: 33800, x: 670, y: 45},
+  {at: 34033, x: 680, y: 45},
+  {at: 34233, x: 696, y: 45},
+  {at: 34433, x: 694, y: 45},
+  {at: 34633, x: 680, y: 45},
+  {at: 34833, x: 639, y: 84},
+  {at: 35033, x: 622, y: 118},
+  {at: 35233, x: 612, y: 94},
+  {at: 35433, x: 604, y: 94},
+  {at: 35633, x: 598, y: 95},
+  {at: 35833, x: 604, y: 96},
+  {at: 36033, x: 600, y: 97},
+  {at: 36233, x: 588, y: 98},
+  {at: 36433, x: 582, y: 98},
+  {at: 36633, x: 580, y: 98},
+  {at: 36833, x: 582, y: 100},
+  {at: 37033, x: 582, y: 100},
+  {at: 37233, x: 582, y: 100},
+  {at: 37433, x: 586, y: 98},
+  {at: 37633, x: 594, y: 95},
+  {at: 37833, x: 596, y: 92},
+  {at: 38033, x: 594, y: 91},
+  {at: 38233, x: 584, y: 96},
+  {at: 38433, x: 578, y: 100},
+  {at: 38633, x: 576, y: 108}
+
 ];
-export const TRACK_UNTIL = 38200;
+export const TRACK_UNTIL = 38600;
 
 const Y = '#FFE14D';
 const G = '#5CFF5C';
 const R = '#FF4D4D';
+export const HOOK_TITLE = {name: 'WHO IS IT?', parallel: '1/1', price: '$13,725'};
+
 export type Word = {text: string; at: number; color?: string};
 export type Cap = {words: Word[]; to: number; emoji?: string; action?: boolean};
 const w = (text: string, at: number, color?: string): Word => ({text, at, color});
@@ -87,16 +158,17 @@ export const CAPTIONS: Cap[] = [
 export type Sfx = {file: string; at: number; volume: number; onset: number; maxMs?: number};
 // `at` in source ms of the MAIN cuts; hook SFX are in HOOK_SFX.
 export const HOOK_SFX: Sfx[] = [
-  {file: 'air-horn.mp3', at: 32300, volume: 0.35, onset: 30, maxMs: 1500},
+  {file: 'air-horn.mp3', at: 32300, volume: 0.3, onset: 30, maxMs: 1500},
 ];
 export const SFX: Sfx[] = [
   {file: 'ding-2.mp3', at: 9200, volume: 0.3, onset: 140, maxMs: 1200},
   {file: 'ding-2.mp3', at: 11040, volume: 0.3, onset: 140, maxMs: 1200},
   {file: 'ding-2.mp3', at: 14980, volume: 0.3, onset: 140, maxMs: 1200},
-  {file: 'fast-whoosh.mp3', at: 29000, volume: 0.6, onset: 550},
-  {file: 'vine-boom.mp3', at: 29050, volume: 0.6, onset: 80},
-  {file: 'ding-2.mp3', at: 29300, volume: 0.35, onset: 140, maxMs: 1200},
-  {file: 'cha-ching.mp3', at: 29900, volume: 0.9, onset: 640},
+  {file: 'fast-whoosh.mp3', at: 29400, volume: 0.6, onset: 550},
+  {file: 'vine-boom.mp3', at: 29400, volume: 0.55, onset: 80},
+  {file: 'cha-ching.mp3', at: 29420, volume: 0.9, onset: 640}, // ka-ching with the money drop
+  {file: 'ding-2.mp3', at: 29550, volume: 0.3, onset: 140, maxMs: 1200},
+  {file: 'cha-ching.mp3', at: 30000, volume: 0.6, onset: 640}, // price line pops
   {file: 'fast-whoosh.mp3', at: 30600, volume: 0.6, onset: 550},
   {file: 'air-horn.mp3', at: 31700, volume: 0.35, onset: 30},
   {file: 'crowd-cheer.mp3', at: 31700, volume: 0.3, onset: 380, maxMs: 6000},
@@ -106,7 +178,10 @@ export const SFX: Sfx[] = [
 
 // Quiet stream mic before the pull → boost it; music sits lower there.
 export const DIALOGUE_GAIN = (src: number) => (src < 30000 ? 1.9 : 0.85);
-export const MUSIC = {file: 'du-bist-gut-genug.mp3', quiet: 0.13, gap: 0.2, loud: 0.3, loudFrom: 30000};
+// Non-podcast music (user's phonk list). Montagem Alquimia: intro build 0–3.92 s,
+// bass drop at 3.92 s (librosa: 107.7 BPM). The drop lands exactly on the reveal.
+export const MUSIC = {file: 'montagem-alquimia.mp3', dropAt: 3920, bodyFrom: 4600, length: 14990,
+  quiet: 0.12, gap: 0.18, build: 0.24, loud: 0.3};
 export const SPEECH: [number, number][] = [
   [5080, 7300], [9200, 12100], [14980, 18400], [30000, 45400],
 ];
