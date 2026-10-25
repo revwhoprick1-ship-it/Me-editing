@@ -3,6 +3,7 @@ import {CARD_OUT_MS, CardPull} from './CardPull';
 import {SRC as POD_SRC} from './activePod';
 import {FPS, OUT_MS, ShortEdit} from './ShortEdit';
 import {MG_FPS, MG_OUT_MS, MotionPod} from './MotionPod';
+import {E2_FPS, E2_OUT_MS, Edit2} from './Edit2';
 
 export const RemotionRoot = () => (
   <>
@@ -30,6 +31,14 @@ export const RemotionRoot = () => (
     width={1080}
     height={1920}
     durationInFrames={Math.round((MG_OUT_MS / 1000) * MG_FPS)}
+  />
+  <Composition
+    id="Edit2"
+    component={Edit2}
+    fps={E2_FPS}
+    width={1080}
+    height={1920}
+    durationInFrames={Math.round((E2_OUT_MS / 1000) * E2_FPS)}
   />
   </>
 );

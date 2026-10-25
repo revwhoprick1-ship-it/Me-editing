@@ -4,7 +4,6 @@
 // on a light background, clean white UI scenes, a glowing stat scene, small plain subtitles between.
 // Clip: Trevor Lawrence on calling Peyton Manning as a rookie (public/pod2/u4_peyton.mp4).
 // ALL SPEC TIMES BELOW ARE SOURCE MS unless named out*.
-import {loadFont} from '@remotion/fonts';
 import type {CSSProperties, ReactNode} from 'react';
 import {
   AbsoluteFill, Audio, Easing, Img, OffthreadVideo, Sequence, interpolate, spring, staticFile,
@@ -13,14 +12,7 @@ import {
 import track from './plans/data/u4_peyton.seats.json';
 import words from './plans/data/u4_peyton.words.json';
 
-const SANS = 'Inter';
-const SERIF = 'Instrument Serif';
-loadFont({family: SANS, url: staticFile('fonts/inter-latin-500-normal.woff2'), weight: '500'});
-loadFont({family: SANS, url: staticFile('fonts/inter-latin-700-normal.woff2'), weight: '700'});
-loadFont({family: SANS, url: staticFile('fonts/inter-latin-800-normal.woff2'), weight: '800'});
-loadFont({family: SANS, url: staticFile('fonts/inter-latin-800-italic.woff2'), weight: '800', style: 'italic'});
-loadFont({family: SERIF, url: staticFile('fonts/instrument-serif-latin-400-normal.woff2'), weight: '400'});
-loadFont({family: SERIF, url: staticFile('fonts/instrument-serif-latin-400-italic.woff2'), weight: '400', style: 'italic'});
+import {SANS, SERIF} from './mgFonts';
 
 export const MG_FPS = 30;
 const W = 1080;
