@@ -2,6 +2,7 @@ import {Composition} from 'remotion';
 import {CARD_OUT_MS, CardPull} from './CardPull';
 import {SRC as POD_SRC} from './activePod';
 import {FPS, OUT_MS, ShortEdit} from './ShortEdit';
+import {MG_FPS, MG_OUT_MS, MotionPod} from './MotionPod';
 
 export const RemotionRoot = () => (
   <>
@@ -21,6 +22,14 @@ export const RemotionRoot = () => (
     width={1080}
     height={1920}
     durationInFrames={Math.round((CARD_OUT_MS / 1000) * FPS)}
+  />
+  <Composition
+    id="MotionPod"
+    component={MotionPod}
+    fps={MG_FPS}
+    width={1080}
+    height={1920}
+    durationInFrames={Math.round((MG_OUT_MS / 1000) * MG_FPS)}
   />
   </>
 );
