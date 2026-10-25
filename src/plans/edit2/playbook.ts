@@ -37,7 +37,7 @@ export const PLAN: Edit2Plan = {
     ]},
     {type: 'field', from: 41860, to: 47700, variant: 'formation', title: 'This week we might change…',
       events: {formation: 43780, motion: 44640, route: 46100, progression: 47480}},
-    {type: 'stat', from: 48820, to: 55000, at: 52580, kicker: 'EVERY WEEK', value: 10,
+    {type: 'stat', from: 48820, to: 55000, at: 51600, kicker: 'EVERY WEEK', value: 10,
       label: 'new plays.', chip: 'GIVE OR TAKE · 8–10'},
   ],
   punches: [[17000, 17900, 1.12]],

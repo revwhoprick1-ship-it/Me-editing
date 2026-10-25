@@ -266,7 +266,7 @@ const Stat = ({s}: {s: Extract<SceneO, {type: 'stat'}>}) => {
       ))}
       <div style={{position: 'absolute', top: 520, width: W, textAlign: 'center', fontFamily: SANS, fontWeight: 700, fontSize: 40,
         letterSpacing: '0.3em', color: 'rgba(255,255,255,0.75)', ...reveal(frame, 2)}}>{s.kicker}</div>
-      <div style={{position: 'absolute', top: 600, width: W, ...reveal(frame, 4)}}>
+      <div style={{position: 'absolute', top: 600, width: W, ...reveal(frame, Math.max(4, st - 3))}}>
         <div style={{textAlign: 'center', fontFamily: SANS, fontWeight: 800, fontSize: 380, letterSpacing: '-0.06em', color: 'white', lineHeight: 1,
           transform: `scale(${frame >= st + 24 ? 0.92 + 0.08 * land : 1})`,
           textShadow: '0 0 60px rgba(190,120,255,0.8), 0 0 140px rgba(150,80,255,0.6)'}}>{s.prefix ?? ''}{n}</div>
