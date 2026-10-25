@@ -26,6 +26,7 @@ Edit podcast/streamer clips into viral vertical Shorts in a **meme / brainrot cl
   - serious → phonk. (2026-10-25)
 - **Podcast captions must not cover the speakers' faces**, but stay where viewers look easily (lower part of the video box, under the faces). (2026-10-25)
 - **Podcast: motion-track the speakers** (the crop follows the speaker's face, using real face tracking). (2026-10-25)
+- **ElevenLabs retries: don't wait long.** If a call is rate-limited, retry after a couple of minutes, not 15–30. On 2026-10-25 an immediate retry worked and two back-to-back calls went through. (2026-10-25)
 - **Podcast clips:** use the Ref C layout (black bars, video box, plain top caption "Do you agree with this? 💀", cut-out photos of people mentioned) **on top of** our normal edit style. See [[Reference Shorts#Ref C: podcast layout (user: "for podcast style videos make it like this")]].
 
 - **Card pulls (stream clips from the Backyard Breaks sheet):** follow [[Card pull playbook]] (white banner hook, whip transitions, tracked red circle + arrow, card title stack with price).

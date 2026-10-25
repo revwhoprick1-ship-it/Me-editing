@@ -1,0 +1,118 @@
+[
+ {
+  "file": [
+   40,
+   4280
+  ],
+  "words": [
+   {
+    "text": "A",
+    "at": 100
+   },
+   {
+    "text": "triple",
+    "at": 220
+   },
+   {
+    "text": "auto",
+    "at": 740
+   },
+   {
+    "text": "from",
+    "at": 1360
+   },
+   {
+    "text": "a",
+    "at": 2000
+   },
+   {
+    "text": "galaxy",
+    "at": 2200
+   },
+   {
+    "text": "far,",
+    "at": 2600
+   },
+   {
+    "text": "far",
+    "at": 3420
+   },
+   {
+    "text": "away.",
+    "at": 3520
+   }
+  ]
+ },
+ {
+  "file": [
+   4680,
+   7050
+  ],
+  "words": [
+   {
+    "text": "Wait,",
+    "at": 4740
+   },
+   {
+    "text": "look",
+    "at": 5600
+   },
+   {
+    "text": "at",
+    "at": 5700
+   },
+   {
+    "text": "the",
+    "at": 5820
+   },
+   {
+    "text": "number.",
+    "at": 5920
+   }
+  ]
+ },
+ {
+  "file": [
+   7020,
+   11340
+  ],
+  "words": [
+   {
+    "text": "Anakin,",
+    "at": 7080
+   },
+   {
+    "text": "Obi-Wan,",
+    "at": 7580
+   },
+   {
+    "text": "and",
+    "at": 8440
+   },
+   {
+    "text": "Padme!",
+    "at": 8440
+   },
+   {
+    "text": "Triple",
+    "at": 9240
+   },
+   {
+    "text": "Auto!",
+    "at": 9540
+   },
+   {
+    "text": "One",
+    "at": 10360
+   },
+   {
+    "text": "of",
+    "at": 10500
+   },
+   {
+    "text": "one!",
+    "at": 10680
+   }
+  ]
+ }
+]

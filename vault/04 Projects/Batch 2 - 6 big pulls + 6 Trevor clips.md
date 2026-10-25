@@ -62,7 +62,7 @@ These are 22 Backyard Breaks Shorts. Each opens on a green-screen scream or hype
 | u6_coen_duo.mp4 | what Liam Coen changed | wholesome, W Speed | Blue |
 
 ## Gotchas hit this batch
-- **ElevenLabs:** calls about 4 minutes apart still got blocked ("unusual activity") or returned a 429. **Wait 10+ minutes between generations.**
+- **ElevenLabs:** calls about 4 minutes apart still got blocked ("unusual activity") or returned a 429. At first I waited 10–30 minutes between calls. **The user said not to wait that long**: retry after a few minutes. Two back-to-back calls at 03:21 both succeeded.
 - AbsoluteFill + `top` needs `height: 'auto'`, or column-reverse content renders off-screen.
 - The face-tracked crop must clamp y, or a black band shows when people stand.
 - Warriors stream is 17 min long, so it was trimmed to a 60 s source (`public/cards2/warriors_logoman.mp4` from 425 s; plan times = stream time − 425000).

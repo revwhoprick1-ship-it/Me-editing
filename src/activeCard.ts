@@ -1,1 +1,1 @@
-export * from './plans/card/flagg2';
+export * from './plans/card/warriors';
