@@ -318,51 +318,76 @@ const Aura = () => {
   );
 };
 
-// W Speed slam (wholesome): the source is frozen here (insert_freeze.py); the frame goes gray and
-// "W TREVOR ❤️‍🩹" pulses, changing colour on every beat, while the moonlight-skies lyric plays.
+// W Speed (ref VWrem8guI90): on the "I'd" of "I'd imagine we fell in love" a green flash + zoom-blur
+// whip hits the frozen frame, it goes gray, a big ❤️‍🩹 pops on the chest (pulsing on the beat) and
+// "*W TREVOR*" types out under it in green glow. Sparkles fall at the end.
 const WSpeedSlam = () => {
   const frame = useCurrentFrame();
-  const {fps} = useVideoConfig();
+  const {fps, durationInFrames} = useVideoConfig();
   const w = WSPEED!;
   const beatF = (w.beatMs / 1000) * fps;
-  const beat = Math.floor(frame / beatF);
-  const inBeat = frame - beat * beatF;
-  const colors = ['#FF3B3B', '#3BFF5C', '#3BE8FF'];
-  const color = colors[beat % 3];
-  const pulse = interpolate(inBeat, [0, 3, beatF], [1.25, 1, 0.97], {extrapolateRight: 'clamp'});
-  const flash = interpolate(frame, [0, 4], [0.85, 0], {extrapolateRight: 'clamp'});
-  const gray = interpolate(frame, [0, 6], [0, 1], {extrapolateRight: 'clamp'});
+  const inBeat = frame % beatF;
+  const flash = interpolate(frame, [0, 2, 7], [0.75, 0.6, 0], {extrapolateRight: 'clamp'});
+  const whip = interpolate(frame, [0, 8], [1, 0], {extrapolateRight: 'clamp'});
+  const gray = interpolate(frame, [2, 10], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+  const pop = spring({frame: frame - 3, fps, config: {damping: 9, stiffness: 220}});
+  const pulse = interpolate(inBeat, [0, 3, beatF], [1.12, 1, 0.98], {extrapolateRight: 'clamp'});
+  const label = `*${w.text}*`;
+  const typed = label.slice(0, Math.max(0, Math.floor((frame - 6) / 2)));
+  const green = '#3BFF5C';
   return (
     <AbsoluteFill>
-      {/* gray overlay on the paused frame */}
-      <div style={{position: 'absolute', top: BOX_TOP, width: OUT_W, height: BOX_H, opacity: gray,
-        backdropFilter: 'grayscale(1) brightness(0.8)', WebkitBackdropFilter: 'grayscale(1) brightness(0.8)',
-        background: 'rgba(90,90,90,0.35)'}} />
-      <AbsoluteFill style={{backgroundColor: 'white', opacity: flash}} />
-      <AbsoluteFill style={{top: BOX_TOP + BOX_H * 0.66, bottom: 'auto', height: 'auto', alignItems: 'center', flexDirection: 'row',
-        justifyContent: 'center', gap: 18, transform: `scale(${pulse})`}}>
-        <div style={{...textStyle, fontSize: 118, color, fontStyle: 'italic', textShadow: glow(color),
-          WebkitTextStroke: '3px rgba(0,0,0,0.35)'}}>{w.text}</div>
-        <Img src={emojiSrc('2764-fe0f-200d-1fa79')} style={{width: 120, height: 120}} />
+      {/* zoom-blur whip + gray on the paused frame */}
+      <div style={{position: 'absolute', top: BOX_TOP, width: OUT_W, height: BOX_H, overflow: 'hidden',
+        backdropFilter: `grayscale(${0.85 * gray}) brightness(${1 - 0.15 * gray}) blur(${whip * 14}px)`,
+        WebkitBackdropFilter: `grayscale(${0.85 * gray}) blur(${whip * 14}px)`,
+        background: `rgba(70,70,70,${0.25 * gray})`, transform: `scale(${1 + whip * 0.25})`}} />
+      <div style={{position: 'absolute', top: BOX_TOP, width: OUT_W, height: BOX_H, background: green, opacity: flash, mixBlendMode: 'screen'}} />
+      {/* heart on the chest */}
+      <AbsoluteFill style={{top: BOX_TOP + BOX_H * 0.36, bottom: 'auto', height: 'auto', alignItems: 'center'}}>
+        <Img src={emojiSrc('2764-fe0f-200d-1fa79')} style={{width: 300, height: 300,
+          transform: `scale(${pop * pulse})`, filter: 'drop-shadow(0 0 30px rgba(255,60,60,0.8)) drop-shadow(0 10px 18px rgba(0,0,0,0.5))'}} />
       </AbsoluteFill>
+      <AbsoluteFill style={{top: BOX_TOP + BOX_H * 0.66, bottom: 'auto', height: 'auto', alignItems: 'center'}}>
+        <div style={{...textStyle, fontSize: 96, color: green, fontStyle: 'italic', textShadow: glow(green), whiteSpace: 'nowrap'}}>
+          {typed}<span style={{opacity: 0}}>{label.slice(typed.length)}</span>
+        </div>
+      </AbsoluteFill>
+      <Sparkles from={durationInFrames - 30} />
     </AbsoluteFill>
   );
 };
 
-// *TREVOR WALKS IN*: narrated action text, typed on word by word, name in red.
-const ActionText = ({name, text}: {name: string; text: string}) => {
+// Little white sparkles drifting down at the end (ref outro).
+const Sparkles = ({from}: {from: number}) => {
   const frame = useCurrentFrame();
-  const words = [name, ...text.split(' ')];
+  const t = frame - from;
+  if (t < 0) return null;
   return (
-    <AbsoluteFill style={{top: BOX_TOP + 70, bottom: 'auto', height: 'auto', alignItems: 'center'}}>
-      <div style={{...textStyle, fontSize: 60, fontStyle: 'italic', padding: '0 60px'}}>
-        {words.map((wd, i) => {
-          const shown = frame >= i * 4;
-          const red = i === 0;
-          const tx = `${i === 0 ? '*' : ''}${wd}${i === words.length - 1 ? '*' : ''}`;
-          return <span key={i} style={{opacity: shown ? 1 : 0, margin: '0 0.18em', color: red ? '#FF3B3B' : 'white',
-            textShadow: glow(red ? '#FF3B3B' : '#ffffff')}}>{tx}</span>;
-        })}
+    <AbsoluteFill style={{opacity: Math.min(1, t / 8)}}>
+      {Array.from({length: 40}).map((_, i) => {
+        const x = random(`sx${i}`) * OUT_W;
+        const y = BOX_TOP + random(`sy${i}`) * BOX_H + t * (2 + random(`sv${i}`) * 3);
+        const s = 4 + random(`ss${i}`) * 8;
+        return <div key={i} style={{position: 'absolute', left: x, top: y, width: s, height: s, borderRadius: '50%',
+          background: 'white', boxShadow: '0 0 12px white', opacity: 0.5 + 0.5 * Math.sin(t / 3 + i)}} />;
+      })}
+    </AbsoluteFill>
+  );
+};
+
+// *TREVOR WALKS IN*: narrated action text (ref VWrem8guI90): italic, in asterisks, glowing, typed letter by
+// letter (keyboard SFX), a new colour for every line, sitting on the subject's chest.
+const ACTION_COLORS = ['#FF3B3B', '#FFE14D', '#3BA7FF', '#3BFF5C'];
+const ActionText = ({name, text, index}: {name: string; text: string; index: number}) => {
+  const frame = useCurrentFrame();
+  const label = `*${name} ${text}*`;
+  const typed = label.slice(0, Math.floor(frame / 2) + 1);
+  const color = ACTION_COLORS[index % ACTION_COLORS.length];
+  return (
+    <AbsoluteFill style={{top: BOX_TOP + BOX_H * 0.5, bottom: 'auto', height: 'auto', alignItems: 'center'}}>
+      <div style={{...textStyle, fontSize: 64, fontStyle: 'italic', color, textShadow: glow(color), padding: '0 50px'}}>
+        {typed}<span style={{opacity: 0}}>{label.slice(typed.length)}</span>
       </div>
     </AbsoluteFill>
   );
@@ -394,7 +419,8 @@ export const ShortEdit = ({src}: {src: string}) => {
   return (
     <AbsoluteFill style={{backgroundColor: 'black'}}>
       <Shake at={PUNCH ? f(outMs(PUNCH.at)!) : -999}>
-        <div style={{position: 'absolute', top: BOX_TOP, width: OUT_W, height: BOX_H, overflow: 'hidden'}}>
+        <div style={{position: 'absolute', top: BOX_TOP, width: OUT_W, height: BOX_H, overflow: 'hidden',
+          filter: WSPEED ? 'contrast(1.14) saturate(1.35) brightness(1.03)' : undefined}}>
         {pieces.map((p, i) => {
           const r = outRange(p.from, p.to)!;
           return (
@@ -404,6 +430,7 @@ export const ShortEdit = ({src}: {src: string}) => {
           );
         })}
 
+        {WSPEED && <AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 45%, transparent 55%, rgba(0,0,0,0.45) 100%)'}} />}
         {PUNCH && (() => {
           const r = outRange(PUNCH.at, PUNCH.to)!;
           return <Sequence from={r.from} durationInFrames={r.dur}><Punchline /></Sequence>;
@@ -426,7 +453,7 @@ export const ShortEdit = ({src}: {src: string}) => {
 
       {ACTIONS.map((a, i) => {
         const r = outRange(a.at, a.to);
-        return r && <Sequence key={`act${i}`} from={r.from} durationInFrames={r.dur}><ActionText name={a.name} text={a.text} /></Sequence>;
+        return r && <Sequence key={`act${i}`} from={r.from} durationInFrames={r.dur}><ActionText name={a.name} text={a.text} index={i} /></Sequence>;
       })}
       {WSPEED && (() => {
         const o = outMs(WSPEED.at)!;

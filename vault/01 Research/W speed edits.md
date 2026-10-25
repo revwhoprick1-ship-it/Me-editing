@@ -29,3 +29,16 @@ Analysed: `vWrSsM8JBhc` ("Ishowspeed Picks Up Water - W Speed ❤️‍🩹 Edit
   - put the freeze at the end of the story, so the speaker finishes first;
   - make it 8 beats × 740 ms = 5.92 s;
   - the music offset puts song 59.9 s on the freeze, so "I'd imagine we fell in love" plays under the last sentence.
+
+## Ref VWrem8guI90 (user, 2026-10-25): this is the target look
+- **Timing:** the W moment hits on the **"I'd"** of "I'd imagine we fell in love". In blue-yung-kai.mp3, "I'd" is at **58.27 s**: a quiet gap from 57.4 to 58.2 s, then the voice. Whisper's 55.8 s guess was wrong, so check the onset with librosa.
+- **Action text:** `*TASTES THE FOOD*`, italic, in asterisks, glowing, **typed letter by letter**. Each line gets a new colour (red, yellow, blue, green) and sits on the subject's chest. Add keyboard SFX.
+- **Ring:** a teal glow ring on objects (the water bottle).
+- **W moment:**
+  - a green flash, then a zoom-blur whip into the paused frame;
+  - the frame goes gray;
+  - a **big heart emoji pops on the chest** and pulses on the beat;
+  - glowing green `*KINDEST STREAMER*` types out under it;
+  - white sparkles drift at the end.
+- **Grade:** punchy contrast and colour, a slight glow and a vignette across the whole clip.
+- **Our build:** `WSpeedSlam`, `ActionText` and `Sparkles` in `ShortEdit.tsx`. The grade and vignette apply when the plan has `wspeed`.

@@ -55,7 +55,7 @@ export type PodSpec = {
 // Default song per mood (drop = ms in the song where the beat comes in).
 const MOOD_MUSIC: Record<Mood, {file: string; drop: number[]; volume: number; duck: number; loop: boolean}> = {
   funny: {file: 'du-bist-gut-genug.mp3', drop: [], volume: 0.32, duck: 0.17, loop: true},
-  wholesome: {file: 'blue-yung-kai.mp3', drop: [59900], volume: 0.42, duck: 0.15, loop: false}, // 59.9 s = "under moonlight skies with you"
+  wholesome: {file: 'blue-yung-kai.mp3', drop: [58270], volume: 0.42, duck: 0.15, loop: false}, // 58.27 s = "I'd" in "I'd imagine we fell in love"
   serious: {file: 'montagem-uranium.mp3', drop: [9300, 37000, 73800], volume: 0.3, duck: 0.13, loop: false},
 };
 
@@ -157,7 +157,7 @@ export const makePodPlan = (s: PodSpec) => {
       {file: 'error.mp3', at: s.aura.at, volume: 0.5, onset: 110}] : []),
     // keyboard typing while the narrated action text types itself out (W Speed)
     ...(s.actions ?? []).map((a) => ({file: 'keyboard-typing.mp3', at: a.at, volume: 0.55, onset: 100,
-      maxMs: (a.name.split(' ').length + a.text.split(' ').length) * 133 + 350})),
+      maxMs: (a.name.length + a.text.length + 3) * 67 + 300})), // types 1 letter per 2 frames
     ...(s.extraSfx ?? []),
   ];
   const lastEnd = Math.max(...s.cuts.map(([, b]) => b));
