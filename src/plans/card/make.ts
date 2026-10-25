@@ -22,7 +22,11 @@ export type CardSpec = {
   still: {file: string; w: number; h: number};
   card: {name: string; parallel: string; price: string; revealAt: number; center: Pt; serial: Pt; zoom?: number};
   stamp?: string;
-  hook: [number, number]; // reaction moment shown first (card blurred)
+  hook?: [number, number]; // reaction moment from this clip shown first (card blurred)
+  // Hook clip from the user's hooks folder (public/hooks/*.mp4, 720x1280) shown first instead of `hook`.
+  // Times are hook-file ms; `cover` = their burned-in caption box (hook px) to blur out.
+  hookClip?: {file: string; from: number; to: number; cover?: Box; words: Word[]};
+  music?: {file: string; drop: number; length: number}; // phonk: drop (song ms) lands on the reveal
   hookBlur?: Box; // blur this source box during the hook (card visible in the reaction shot)
   hookWords?: Word[]; // optional big caption over the hook
   cuts: [number, number][]; // story before the reveal (source ms, in order)
@@ -45,7 +49,7 @@ const Y = '#FFE14D';
 const G = '#5CFF5C';
 const R = '#FF4D4D';
 const FIX: Record<string, string> = {
-  BRAKES: 'BREAKS', LAMB: 'LAMBO', 'LAMB?': 'LAMBO?', JAYMO: 'J-MO', 'JAYMO.': 'J-MO.', MELLOW: 'MELO', TUDAH: 'TODAY', WIMBANYAMA: 'WEMBANYAMA', 'WIMBANYAMA!': 'WEMBANYAMA!', RAPPER: 'WRAPPER', WEMBEES: 'WEMBY', WEMBE: 'WEMBY', 'WEMBE.': 'WEMBY.', CONE: 'KON', CANOOPAL: 'KNUEPPEL', 'CANOOPAL,': 'KNUEPPEL,', CALCBRUNNER: 'COOPER FLAGG', CALCBRON: 'COOPER FLAGG', CHOMARANTA: 'CHROME', OTTO: 'AUTO', JACKSON: 'JAXSON', 'FUCK': 'F*CK', 'FUCKING': 'F*CKING', 'SHIT': 'SH*T',
+  BRAKES: 'BREAKS', LAMB: 'LAMBO', 'LAMB?': 'LAMBO?', JAYMO: 'J-MO', 'JAYMO.': 'J-MO.', MELLOW: 'MELO', TUDAH: 'TODAY', WIMBANYAMA: 'WEMBANYAMA', 'WIMBANYAMA!': 'WEMBANYAMA!', RAPPER: 'WRAPPER', WEMBEES: 'WEMBY', WEMBE: 'WEMBY', 'WEMBE.': 'WEMBY.', CONE: 'KON', CANOOPAL: 'KNUEPPEL', 'CANOOPAL,': 'KNUEPPEL,', CALCBRUNNER: 'COOPER FLAGG', CALCBRON: 'COOPER FLAGG', CHOMARANTA: 'CHROME', OTTO: 'AUTO', SHOHEY: 'SHOHEI', OBEY: 'OBI-WAN', 'OBEY,': 'OBI-WAN,', BADMEY: 'PADME', 'BADMEY.': 'PADME.', BADMAY: 'PADME', 'BADMAY,': 'PADME,', ANKIN: 'ANAKIN', 'ANKIN,': 'ANAKIN,', GOALS: 'GOAT', 'GOALS!': 'GOAT!', OTANI: 'OHTANI', FRACTOR: 'FRACTOR', JACKSON: 'JAXSON', 'FUCK': 'F*CK', 'FUCKING': 'F*CKING', 'SHIT': 'SH*T',
   'SHIT.': 'SH*T.', 'SHIT!': 'SH*T!', 'FUCK!': 'F*CK!', 'FUCKIN': 'F*CKIN', 'BITCH': 'B*TCH',
 };
 const clean = (t: string) => {
@@ -54,7 +58,8 @@ const clean = (t: string) => {
 };
 
 export const makeCardPlan = (s: CardSpec) => {
-  const HOOK_CUT = s.hook;
+  const HOOK_CUT: [number, number] = s.hookClip ? [s.hookClip.from, s.hookClip.to] : s.hook!;
+  const HOOK_CLIP = s.hookClip ? {file: s.hookClip.file, cover: s.hookClip.cover ?? null} : null;
   const CUTS: {src: [number, number]; rate?: number}[] = [
     ...s.cuts.map((c) => ({src: c})),
     {src: s.suspense, rate: 0.4},
@@ -62,7 +67,7 @@ export const makeCardPlan = (s: CardSpec) => {
   ];
   // output time helpers (hook first)
   const segs: {src: [number, number]; out: number; rate: number}[] = [];
-  let t = s.hook[1] - s.hook[0];
+  let t = HOOK_CUT[1] - HOOK_CUT[0];
   for (const c of CUTS) {
     const rate = c.rate ?? 1;
     segs.push({src: c.src, out: t, rate});
@@ -75,7 +80,7 @@ export const makeCardPlan = (s: CardSpec) => {
   };
   const revealOut = out(s.card.revealAt)!;
   const reactOut = out(s.reactionAt)!;
-  const hookLen = s.hook[1] - s.hook[0];
+  const hookLen = HOOK_CUT[1] - HOOK_CUT[0];
 
   const LAYOUTS: {from: number; layout: Layout}[] = [
     {from: 0, layout: 'full'},
@@ -125,9 +130,11 @@ export const makeCardPlan = (s: CardSpec) => {
   };
   // quietBefore: 0 = the hosts give the player away before the reveal: mute them and drop their captions.
   const CAPTIONS = capsFrom((ms) => kept(ms) && !(ms >= s.suspense[0] && ms < s.card.revealAt) && (s.quietBefore !== 0 || ms >= s.card.revealAt), s.after[s.after.length - 1][1]);
-  const HOOK_CAPTIONS: Cap[] = s.hookWords
-    ? [{words: s.hookWords, to: s.hook[1], emoji: '1f631'}]
-    : capsFrom((ms) => ms >= s.hook[0] && ms < s.hook[1], s.hook[1]);
+  const HOOK_CAPTIONS: Cap[] = s.hookClip
+    ? [{words: s.hookClip.words, to: s.hookClip.to, emoji: '1f631'}]
+    : s.hookWords
+    ? [{words: s.hookWords, to: HOOK_CUT[1], emoji: '1f631'}]
+    : capsFrom((ms) => ms >= HOOK_CUT[0] && ms < HOOK_CUT[1], HOOK_CUT[1]);
 
   // ---- narration placement (output ms) ----
   const NARRATION: Line[] = [];
@@ -137,7 +144,18 @@ export const makeCardPlan = (s: CardSpec) => {
       acc[acc.length - 1] = {...acc[acc.length - 1], text: acc[acc.length - 1].text + w.text.trim()};
     } else acc.push(w);
     return acc;
-  }, [])}));
+  }, []).filter((w, i, ws) => i === 0 || w.text !== ws[i - 1].text)})); // whisper sometimes doubles the last word
+  if (n.length === 3) {
+    // short format (15-25 s Shorts): tease after the hook, whisper right before the reveal, hype on it
+    const len = (l: NarrLine) => l.file[1] - l.file[0];
+    const color = (tx: string) => s.narrColors?.[tx.replace(/[!?.,]/g, '')];
+    const mk = (l: NarrLine, at: number, emoji?: string): Line => ({
+      out: Math.round(at), file: [l.file[0], l.file[1]], emoji,
+      words: l.words.map((w) => ({text: clean(w.text), at: w.at, color: color(clean(w.text))})),
+    });
+    const l2at = revealOut - 250 - len(n[1]);
+    NARRATION.push(mk(n[0], Math.min(hookLen + 200, l2at - len(n[0]) - 150)), mk(n[1], l2at, '1f440'), mk(n[2], revealOut + 500, '1f48e'));
+  }
   if (n.length >= 5) {
     const len = (l: NarrLine) => l.file[1] - l.file[0];
     const color = (tx: string) => s.narrColors?.[tx.replace(/[!?.,]/g, '')];
@@ -161,7 +179,7 @@ export const makeCardPlan = (s: CardSpec) => {
     {file: 'bass-boosted-vine-boom.mp3', at: revealOut, volume: 0.35, onset: 20},
     {file: '808-boom.mp3', at: revealOut, volume: 0.45, onset: 0},
   ];
-  const HOOK_SFX: Sfx[] = [{file: 'air-horn.mp3', at: s.hook[0] + 150, volume: 0.25, onset: 30, maxMs: 1400}];
+  const HOOK_SFX: Sfx[] = [{file: 'air-horn.mp3', at: HOOK_CUT[0] + 150, volume: s.hookClip ? 0.12 : 0.25, onset: 30, maxMs: 1400}];
   const SFX: Sfx[] = [
     {file: 'fast-whoosh.mp3', at: s.card.revealAt, volume: 0.6, onset: 550},
     {file: 'cha-ching.mp3', at: s.card.revealAt + 20, volume: 0.9, onset: 640},
@@ -173,13 +191,14 @@ export const makeCardPlan = (s: CardSpec) => {
   ];
   const quiet = s.quietBefore ?? 1;
   const DIALOGUE_GAIN = (src: number) => (src < s.card.revealAt ? quiet : 0.85);
-  const MUSIC = {file: 'montagem-alquimia.mp3', dropAt: 3920, bodyFrom: 4600, length: 14990,
+  const MUSIC = {file: s.music?.file ?? 'montagem-alquimia.mp3', dropAt: s.music?.drop ?? 3920,
+    bodyFrom: s.music ? s.music.drop : 4600, length: s.music?.length ?? 14990,
     quiet: 0.12, gap: 0.18, build: 0.28, loud: 0.3, underNarration: 0.06, gapBeforeDrop: 250};
   const SPEECH: [number, number][] = s.words.map((w) => [w.startMs, w.endMs]);
 
   return {
     SRC: s.src, GEOM: s.geom, CARD_STILL: s.still, STAMP: s.stamp ?? '1 OF 1',
-    HOOK_CUT, HOOK_BLUR: s.hookBlur ?? null, CUTS, SUSPENSE, LAYOUTS, WHIPS, BANNER_BEFORE, BANNER_AFTER, CARD,
+    HOOK_CUT, HOOK_CLIP, HOOK_BLUR: s.hookBlur ?? null, CUTS, SUSPENSE, LAYOUTS, WHIPS, BANNER_BEFORE, BANNER_AFTER, CARD,
     BLURS: s.blurs, ZOOMS: s.zooms ?? [], MONEY_MS: 2600, QUESTION,
     TRACK: s.track ?? [], TRACK_UNTIL: s.track?.length ? s.track[s.track.length - 1].at : 0,
     HOOK_TITLE, HOOK_CAPTIONS, CAPTIONS,

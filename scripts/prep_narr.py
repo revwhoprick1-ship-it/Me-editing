@@ -44,6 +44,21 @@ for i, l in enumerate(lines):
         lines[i:i + 1] = [{"file": [l["file"][0], cut - 40], "words": l["words"][:k]},
                           {"file": [cut - 40, l["file"][1]], "words": l["words"][k:]}]
         break
+# Short format: `prep_narr.py name wait shohei` = one line per given first word (lines 2..n).
+if len(sys.argv) > 2:
+    keys = [k.lower() for k in sys.argv[2:]]
+    words = [w for w in words if w["at"] < len(a) / 16]
+    cuts, ki = [], 0
+    for i, w in enumerate(words):
+        if ki < len(keys) and i > 0 and w["text"].lower().strip(",.!?").startswith(keys[ki]):
+            cuts.append(i); ki += 1
+    assert ki == len(keys), f"line starts not found: {keys[ki:]}"
+    lines = []
+    for j, (s0, s1) in enumerate(zip([0] + cuts, cuts + [len(words)])):
+        lw = words[s0:s1]
+        nxt = words[s1]["at"] if s1 < len(words) else len(on) * 20
+        end_f = max((i for i in range(lw[-1]["at"] // 20, min(len(on), nxt // 20)) if on[i]), default=lw[-1]["at"] // 20)
+        lines.append({"file": [max(0, lw[0]["at"] - 60), min(nxt - 30, end_f * 20 + 120)], "words": lw})
 json.dump(lines, open(f"public/narr/{name}.json", "w"), indent=1)
 for l in lines:
     print(l["file"], " ".join(w["text"] for w in l["words"]))

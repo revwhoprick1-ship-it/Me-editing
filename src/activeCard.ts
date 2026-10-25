@@ -1,1 +1,1 @@
-export * from './plans/card/cade';
+export * from './plans/card/lebron2';

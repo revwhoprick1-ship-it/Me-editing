@@ -5,7 +5,7 @@ import {
   useCurrentFrame, useVideoConfig,
 } from 'remotion';
 import {
-  BANNER_AFTER, BANNER_BEFORE, BLURS, CAPTIONS, CARD, CUTS, DIALOGUE_GAIN, HOOK_CAPTIONS, HOOK_CUT, HOOK_SFX,
+  BANNER_AFTER, BANNER_BEFORE, BLURS, CAPTIONS, CARD, CUTS, DIALOGUE_GAIN, HOOK_CAPTIONS, HOOK_CUT, HOOK_CLIP, HOOK_SFX,
   HOOK_TITLE, LAYOUTS, MONEY_MS, MUSIC, NARRATION, NARRATION_CHUNK, NARRATION_FILE, OUT_SFX, QUESTION, SFX,
   SPEECH, SRC, SUSPENSE, GEOM, HOOK_BLUR, CARD_STILL, STAMP, TRACK, TRACK_UNTIL, WHIPS, ZOOMS,
   type BannerPart, type Cap, type Layout, type Sfx,
@@ -83,7 +83,7 @@ const CARD_BOX: Rect = {x: 0, y: TOP_H + BANNER_H, w: W, h: H - TOP_H - BANNER_H
 const CAM_H = Math.round((W * GEOM.react.h) / GEOM.react.w);
 const REACT_BOX: Rect = {x: 0, y: 0, w: W, h: CAM_H};
 const bannerTop = (l: Layout) => (l === 'reaction' ? CAM_H + 10 : TOP_H);
-const captionY = (l: Layout) => (l === 'full' ? CARD_BOX.y + 150 : l === 'reveal' ? (TOP_H < 200 ? CARD_BOX.y + 300 : Math.round(TOP_H * 0.55)) : CAM_H - 210);
+const captionY = (l: Layout) => (l === 'full' ? CARD_BOX.y + 150 : l === 'reveal' ? (TOP_H < 200 ? CARD_BOX.y + 300 : Math.round(TOP_H * 0.55)) : CAM_H - (CAM_H < 900 ? 150 : 210));
 
 // Where source rect `rect` lands in screen box `box` (cover-fit), zoomed by
 // `zoom` around source point `focus`.
@@ -133,9 +133,9 @@ const Whip = ({children}: {children: ReactNode}) => {
   );
 };
 
-const Banner = ({layout, parts}: {layout: Layout; parts: BannerPart[]}) => (
+const Banner = ({layout, parts, top}: {layout: Layout; parts: BannerPart[]; top?: number}) => (
   <div style={{
-    position: 'absolute', top: bannerTop(layout), left: 0, width: W, height: 180, background: 'white',
+    position: 'absolute', top: top ?? bannerTop(layout), left: 0, width: W, height: 180, background: 'white',
     display: 'flex', alignItems: 'center', justifyContent: 'center',
     boxShadow: '0 6px 18px rgba(0,0,0,0.35)',
   }}>
@@ -291,6 +291,26 @@ const ReactionView = ({trim, outStartMs, srcStart, hook, showQuestion}: {
         }} />
         {hook && <Img src={emojiSrc('2753')} style={{position: 'absolute', left: '50%', top: '50%', width: 260, height: 260,
           transform: `translate(-50%, -50%) scale(${1 + Math.sin(frame / 4) * 0.06})`}} />}
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+// Hook from the user's hooks folder: their green-screen scream, full screen, their own caption blurred out.
+const HookClipView = ({trim}: {trim: number}) => {
+  const frame = useCurrentFrame();
+  const k = H / 1280;
+  const push = interpolate(frame, [0, 90], [1.04, 1.12], {extrapolateRight: 'clamp'});
+  return (
+    <AbsoluteFill style={{background: 'black', overflow: 'hidden'}}>
+      <div style={{position: 'absolute', left: (W - 720 * k) / 2, top: 0, width: 720, height: 1280, transformOrigin: '0 0',
+        transform: `scale(${k * push})`}}>
+        <OffthreadVideo src={staticFile(HOOK_CLIP!.file)} muted trimBefore={trim} style={{width: 720, height: 1280}} />
+        {HOOK_CLIP!.cover && (() => {
+          const [x, y, w, h] = HOOK_CLIP!.cover!;
+          return <div style={{position: 'absolute', left: x, top: y, width: w, height: h, borderRadius: 16,
+            backdropFilter: 'blur(26px)', WebkitBackdropFilter: 'blur(26px)', background: 'rgba(0,0,0,0.25)'}} />;
+        })()}
       </div>
     </AbsoluteFill>
   );
@@ -455,13 +475,15 @@ export const CardPull = () => {
   const revealOut = outMs(CARD.revealAt)!;
   const hookEnd = HOOK_CUT[1] - HOOK_CUT[0];
   const buildEnd = revealOut - MUSIC.gapBeforeDrop; // a beat of silence right before the drop
-  const buildStart = buildEnd - MUSIC.dropAt;
+  // the build plays the song's run-up into the drop (as much of it as fits after the hook)
+  const buildLen = Math.min(MUSIC.dropAt, buildEnd - hookEnd);
+  const buildStart = buildEnd - buildLen;
   const afterDrop = MUSIC.length - MUSIC.dropAt;
   // [out from, out to, file offset, volume rule]
   const musicPlan: [number, number, number, 'loud' | 'talk' | 'build'][] = [
-    [0, hookEnd, 8000, 'loud'],
+    [0, hookEnd, MUSIC.bodyFrom + 8000, 'loud'],
     [hookEnd, buildStart, MUSIC.bodyFrom, 'talk'],
-    [buildStart, buildEnd, 0, 'build'], // intro builds... (then silence)
+    [buildStart, buildEnd, MUSIC.dropAt - buildLen, 'build'], // run-up builds... (then silence)
     [revealOut, revealOut + afterDrop, MUSIC.dropAt, 'loud'], // ...drop on the reveal
     [revealOut + afterDrop, CARD_OUT_MS, MUSIC.bodyFrom, 'loud'],
   ];
@@ -473,7 +495,8 @@ export const CardPull = () => {
         const from = f(p.out);
         const dur = f(p.out + (p.src[1] - p.src[0]) / p.rate) - from;
         const outStartMs = p.out;
-        const body = p.layout === 'full' ? <FullView trim={f(p.src[0])} srcStart={p.src[0]} rate={p.rate} outStart={p.out} />
+        const body = p.hook && HOOK_CLIP ? <HookClipView trim={f(p.src[0])} />
+          : p.layout === 'full' ? <FullView trim={f(p.src[0])} srcStart={p.src[0]} rate={p.rate} outStart={p.out} />
           : p.layout === 'reveal' ? <RevealView trim={f(p.src[0])} />
           : <ReactionView trim={f(p.src[0])} outStartMs={outStartMs} srcStart={p.src[0]} hook={p.hook}
               showQuestion={(fr) => !p.hook && f(outStartMs) + fr >= f(qOut)} />;
@@ -481,7 +504,7 @@ export const CardPull = () => {
         return (
           <Sequence key={i} from={from} durationInFrames={dur}>
             {p.whip ? <Whip>{body}</Whip> : body}
-            <Banner layout={p.layout} parts={parts} />
+            {p.hook && HOOK_CLIP ? <Banner layout="full" parts={parts} top={90} /> : <Banner layout={p.layout} parts={parts} />}
           </Sequence>
         );
       })}
@@ -508,7 +531,7 @@ export const CardPull = () => {
         if (a === null || b === null) return null;
         // Never stack host captions on top of narration captions.
         if (NARR_RANGES.some(([na, nb]) => a < nb && b > na)) return null;
-        const y = captionY(hook ? 'reaction' : layoutAt(c.words[0].at));
+        const y = hook && HOOK_CLIP ? Math.round(H * 0.6) : captionY(hook ? 'reaction' : layoutAt(c.words[0].at));
         return (
           <Sequence key={`c${i}`} from={f(a)} durationInFrames={Math.max(1, f(b) - f(a))}>
             <Caption c={c} y={y} />
@@ -522,8 +545,8 @@ export const CardPull = () => {
         const dur = f(s.out + segLen(s)) - from;
         return (
           <Sequence key={`a${i}`} from={from} durationInFrames={dur}>
-            <Audio src={video} trimBefore={f(s.src[0])} volume={(fr) =>
-              DIALOGUE_GAIN(s.src[0] + (fr / FPS) * 1000) * Math.min(1, fr / 2, (dur - fr) / 2)
+            <Audio src={s.hook && HOOK_CLIP ? staticFile(HOOK_CLIP.file) : video} trimBefore={f(s.src[0])} volume={(fr) =>
+              (s.hook && HOOK_CLIP ? 1 : DIALOGUE_GAIN(s.src[0] + (fr / FPS) * 1000)) * Math.min(1, fr / 2, (dur - fr) / 2)
               * (narratingAt(((from + fr) / FPS) * 1000) ? 0.18 : 1)} />
           </Sequence>
         );

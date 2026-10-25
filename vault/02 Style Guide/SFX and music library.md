@@ -62,3 +62,26 @@ Kevin MacLeod (incompetech.com), **CC BY 4.0**. Put this in the video descriptio
 | Fluffing_a_Duck.mp3 | goofy, bouncy | alternative comedy bed |
 
 Trending phonk/pop songs are what many brainrot edits use, but they're copyrighted. Add them yourself in the upload app if you want that.
+
+
+## Full songs (2026-10-25, from SoundCloud via yt-dlp; YouTube downloads are blocked)
+Drop times (s) from `scripts/find_drops.py`; the first one ≥ the run-up you need is used.
+
+| file | song | drops (s) | use |
+|---|---|---|---|
+| montagem-pegadora.mp3 | Montagem Pegadora (Slowed) | 15.7, 60.1 | card |
+| funk-abnormal.mp3 | Funk Abnormal (Slowed + Reverb) | 2.9, 10.8, 43.7 | card |
+| eclipser.mp3 | Pinky Smash – Eclipser (Super Slowed) | 8.4, 15.8, 21.1 | card |
+| acido-iii.mp3 | Acido III (Super Slowed) | 21.7, 64.2 | card |
+| amor-na-praia.mp3 | Amor Na Praia (Slowed) | 6.6, 13.5 | card |
+| vem-pere-reka.mp3 | DJ Kinn – Vem Pere Reka (Slowed) | 21.1, 63.5 | card |
+| funk-do-balkan.mp3 | Funk do Balkan (Slowed + Reverb) | 2.0, 11.9, 42.0 | card |
+| tipo-insta-buzeira.mp3 | Tipo Insta do Buzeira (Slowed) | 19.3, 47.8 | serious podcast |
+| montagem-uranium.mp3 | Montagem Uranium (Slowed) | 9.3, 37.0, 73.8 | card / serious |
+| versatile.mp3 | L.P. Rhythm – Versatile (Hardstylish, slowed) | weak drops | spare |
+| tak-tak.mp3 | HIMXN – TAK TAK (Super Slowed) | 2.0 (30 s clip) | spare |
+| funk-sigilo.mp3 | Funk Sigilo (Slowed) | 5.4, 36.9 | card / serious |
+| du-bist-full.mp3 | Du bist gut genug (full) | 2.0, 42.5 | funny podcast |
+| blue-yung-kai.mp3 | Yung Kai – Blue (official audio) | beat in at **23.5** (≈80 BPM, 0.74 s per 2 beats) | wholesome podcast / W Speed |
+
+**Rule (user, 2026-10-25): never use the same song for every video.** Rotate card phonk, and pick podcast music by mood.

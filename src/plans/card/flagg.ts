@@ -225,3 +225,4 @@ export const SPEECH: [number, number][] = [
 ];
 
 export const HOOK_BLUR: [number, number, number, number] | null = null;
+export const HOOK_CLIP: {file: string; cover: [number, number, number, number] | null} | null = null;

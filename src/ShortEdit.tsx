@@ -5,7 +5,7 @@ import {
   staticFile, useCurrentFrame, useVideoConfig,
 } from 'remotion';
 import {
-  AURA, CAPTIONS, CUTOUTS, CUTS, HOOK, LAUGH, MUSIC, PUNCH, SFX, SHOTS, SPEECH, YELLOW,
+  ACTIONS, AURA, CAPTIONS, CUTOUTS, CUTS, HOOK, LAUGH, MUSIC, PUNCH, SFX, SHOTS, SPEECH, TRACK, WSPEED, YELLOW,
   type CaptionGroup, type Shot, type Sfx,
 } from './activePod';
 
@@ -19,7 +19,6 @@ const OUT_W = 1080;
 const OUT_H = 1920;
 // Height of the wide shot in the stacked layout (full source width).
 const STACK_TOP = Math.round((OUT_W * SRC_H) / SRC_W);
-const CAPTION_Y = 900;
 // Podcast layout (TpwR9FMWQg4): black bars, video in a box, plain caption on the top bar.
 const BOX_TOP = 390;
 const BOX_H = 1150;
@@ -73,6 +72,7 @@ const CropVideo = ({src, trim, x, y, h, boxW, boxH, style}: {
   const k = boxH / h;
   const half = boxW / k / 2;
   x = Math.min(Math.max(x, half), SRC_W - half);
+  y = Math.min(Math.max(y, 0), SRC_H - h);
   return (
     <div style={{position: 'absolute', width: boxW, height: boxH, overflow: 'hidden', ...style}}>
       <OffthreadVideo src={src} muted trimBefore={trim} style={{
@@ -99,9 +99,25 @@ const RedCircle = ({x}: {x: number}) => {
   );
 };
 
-const ShotView = ({shot, src, trim}: {shot: Shot; src: string; trim: number}) => {
+// Tracked face [x, y] of a seat at a source ms (null when there's no track).
+const faceAt = (who: Shot['who'], ms: number): [number, number] | null => {
+  const tr = who && TRACK ? TRACK[who] : undefined;
+  if (!TRACK || !tr || !tr.length) return null;
+  const i = (ms - TRACK.fromMs) / TRACK.stepMs;
+  const a = tr[Math.max(0, Math.min(tr.length - 1, Math.floor(i)))];
+  const b = tr[Math.max(0, Math.min(tr.length - 1, Math.floor(i) + 1))];
+  const t = Math.min(1, Math.max(0, i - Math.floor(i)));
+  return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
+};
+
+const ShotView = ({shot, src, trim, srcFrom}: {shot: Shot; src: string; trim: number; srcFrom: number}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
+  // Motion tracking: the crop follows the speaker's face (face sits a third of the way down).
+  const face = shot.kind === 'wide' ? null : faceAt(shot.who, srcFrom + (frame / fps) * 1000);
+  if (face && shot.kind !== 'wide') {
+    shot = {...shot, x: face[0], y: face[1] - shot.h * (shot.kind === 'stack' ? 0.5 : 0.36)};
+  }
   // Slow push-in inside every shot.
   const drift = interpolate(frame, [0, 120], [1, 1.06], {extrapolateRight: 'clamp'});
 
@@ -127,7 +143,7 @@ const ShotView = ({shot, src, trim}: {shot: Shot; src: string; trim: number}) =>
       <AbsoluteFill>
         <OffthreadVideo src={src} muted trimBefore={trim} style={{position: 'absolute', top: 0, width: OUT_W, height: STACK_TOP}} />
         {shot.circleX !== undefined && <RedCircle x={shot.circleX} />}
-        <CropVideo src={src} trim={trim} x={shot.x} y={FACE_Y - (shot.h * (BOX_H - STACK_TOP) / (OUT_H - STACK_TOP)) / 2} h={shot.h * (BOX_H - STACK_TOP) / (OUT_H - STACK_TOP)} boxW={OUT_W} boxH={BOX_H - STACK_TOP}
+        <CropVideo src={src} trim={trim} x={shot.x} y={(face ? face[1] : FACE_Y) - (shot.h * (BOX_H - STACK_TOP) / (OUT_H - STACK_TOP)) * (face ? 0.42 : 0.5)} h={shot.h * (BOX_H - STACK_TOP) / (OUT_H - STACK_TOP)} boxW={OUT_W} boxH={BOX_H - STACK_TOP}
           style={{top: STACK_TOP, transform: `scale(${drift})`, transformOrigin: 'center top'}} />
         <div style={{position: 'absolute', top: STACK_TOP - 3, width: OUT_W, height: 6, background: 'black'}} />
       </AbsoluteFill>
@@ -146,19 +162,30 @@ const ShotView = ({shot, src, trim}: {shot: Shot; src: string; trim: number}) =>
 
 // ---- captions ------------------------------------------------------------
 // Words appear as they're spoken (Ref A); keywords glow in their color.
+// Where captions go so they never cover a face: under the faces in close-ups (emoji below the
+// words), on the seam between the wide shot and the close-up in stacked shots (emoji above).
+const captionPlace = (at: number) => {
+  const shot = [...SHOTS].reverse().find((s) => s.from <= at) ?? SHOTS[0];
+  return shot.kind === 'stack'
+    ? {top: BOX_TOP + STACK_TOP - 78, emojiBelow: false}
+    : {top: BOX_TOP + Math.round(BOX_H * 0.68), emojiBelow: true};
+};
+
 const Caption = ({c}: {c: CaptionGroup}) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const start = c.words[0].at;
   const nowSrc = start + (frame / fps) * 1000;
   const pop = spring({frame, fps, config: {damping: 12, stiffness: 240}});
-  const size = c.big ? 92 : c.action ? 58 : 74;
+  const size = c.big ? 92 : c.action ? 58 : 70;
+  const place = captionPlace(start);
 
   return (
-    <AbsoluteFill style={{alignItems: 'center', top: CAPTION_Y - (c.emoji ? 150 : 0)}}>
+    <AbsoluteFill style={{alignItems: 'center', top: place.top - (c.emoji && !place.emojiBelow ? 146 : 0),
+      flexDirection: place.emojiBelow ? 'column-reverse' : 'column', justifyContent: 'flex-end', bottom: 'auto', height: 'auto'}}>
       {c.emoji && (
         <Img src={emojiSrc(c.emoji)} style={{
-          width: 128, height: 128, marginBottom: 18,
+          width: 116, height: 116, marginBottom: place.emojiBelow ? 0 : 18, marginTop: place.emojiBelow ? 10 : 0,
           transform: `scale(${pop}) rotate(${interpolate(pop, [0, 1], [-25, 0])}deg) translateY(${Math.sin(frame / 5) * 5}px)`,
           filter: 'drop-shadow(0 6px 10px rgba(0,0,0,0.45))',
         }} />
@@ -297,6 +324,60 @@ const Aura = () => {
   );
 };
 
+// W Speed slam (wholesome): on every beat the colour of "W TREVOR ❤️‍🩹" changes and the text
+// pulses; every other beat cuts to a crowd/celebration clip (vWrSsM8JBhc pattern).
+const WSpeedSlam = () => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const w = WSPEED!;
+  const beatF = (w.beatMs / 1000) * fps;
+  const beat = Math.floor(frame / beatF);
+  const inBeat = frame - beat * beatF;
+  const colors = ['#FF3B3B', '#3BFF5C', '#3BE8FF'];
+  const color = colors[beat % 3];
+  const pulse = interpolate(inBeat, [0, 3, beatF], [1.25, 1, 0.97], {extrapolateRight: 'clamp'});
+  const crowd = beat % 2 === 1 ? w.crowd[Math.floor(beat / 2) % w.crowd.length] : null;
+  const flash = interpolate(frame, [0, 4], [0.85, 0], {extrapolateRight: 'clamp'});
+  return (
+    <AbsoluteFill>
+      {crowd && (
+        <div style={{position: 'absolute', top: BOX_TOP, width: OUT_W, height: BOX_H, overflow: 'hidden'}}>
+          <Sequence from={beat * beatF} layout="none">
+            <OffthreadVideo src={staticFile(crowd.file)} muted trimBefore={f(crowd.from)}
+              style={{width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top'}} />
+          </Sequence>
+        </div>
+      )}
+      <AbsoluteFill style={{backgroundColor: 'white', opacity: flash}} />
+      <AbsoluteFill style={{top: BOX_TOP + BOX_H * 0.66, bottom: 'auto', height: 'auto', alignItems: 'center', flexDirection: 'row',
+        justifyContent: 'center', gap: 18, transform: `scale(${pulse})`}}>
+        <div style={{...textStyle, fontSize: 118, color, fontStyle: 'italic', textShadow: glow(color),
+          WebkitTextStroke: '3px rgba(0,0,0,0.35)'}}>{w.text}</div>
+        <Img src={emojiSrc('2764-fe0f-200d-1fa79')} style={{width: 120, height: 120}} />
+      </AbsoluteFill>
+    </AbsoluteFill>
+  );
+};
+
+// *TREVOR WALKS IN*: narrated action text, typed on word by word, name in red.
+const ActionText = ({name, text}: {name: string; text: string}) => {
+  const frame = useCurrentFrame();
+  const words = [name, ...text.split(' ')];
+  return (
+    <AbsoluteFill style={{top: BOX_TOP + 70, bottom: 'auto', height: 'auto', alignItems: 'center'}}>
+      <div style={{...textStyle, fontSize: 60, fontStyle: 'italic', padding: '0 60px'}}>
+        {words.map((wd, i) => {
+          const shown = frame >= i * 4;
+          const red = i === 0;
+          const tx = `${i === 0 ? '*' : ''}${wd}${i === words.length - 1 ? '*' : ''}`;
+          return <span key={i} style={{opacity: shown ? 1 : 0, margin: '0 0.18em', color: red ? '#FF3B3B' : 'white',
+            textShadow: glow(red ? '#FF3B3B' : '#ffffff')}}>{tx}</span>;
+        })}
+      </div>
+    </AbsoluteFill>
+  );
+};
+
 // Shakes its children for a few frames (vine boom hit).
 const Shake = ({at, children}: {at: number; children: React.ReactNode}) => {
   const frame = useCurrentFrame();
@@ -328,7 +409,7 @@ export const ShortEdit = ({src}: {src: string}) => {
           const r = outRange(p.from, p.to)!;
           return (
             <Sequence key={i} from={r.from} durationInFrames={r.dur}>
-              <ShotView shot={p.shot} src={video} trim={f(p.from)} />
+              <ShotView shot={p.shot} src={video} trim={f(p.from)} srcFrom={p.from} />
             </Sequence>
           );
         })}
@@ -353,7 +434,16 @@ export const ShortEdit = ({src}: {src: string}) => {
         return <Sequence from={r.from} durationInFrames={r.dur}><FloatingEmoji emoji={LAUGH.emoji} count={12} seed="laugh" /></Sequence>;
       })()}
 
-      {CAPTIONS.map((c, i) => {
+      {ACTIONS.map((a, i) => {
+        const r = outRange(a.at, a.to);
+        return r && <Sequence key={`act${i}`} from={r.from} durationInFrames={r.dur}><ActionText name={a.name} text={a.text} /></Sequence>;
+      })}
+      {WSPEED && (() => {
+        const o = outMs(WSPEED.at)!;
+        return <Sequence from={f(o)} durationInFrames={Math.round((WSPEED.beats * WSPEED.beatMs / 1000) * FPS)}><WSpeedSlam /></Sequence>;
+      })()}
+
+      {CAPTIONS.filter((c) => !WSPEED || c.to <= WSPEED.at || c.words[0].at >= WSPEED.at + WSPEED.beats * WSPEED.beatMs).map((c, i) => {
         const r = outRange(c.words[0].at, c.to);
         return r && (
           <Sequence key={i} from={r.from} durationInFrames={r.dur}>

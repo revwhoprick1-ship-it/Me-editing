@@ -1,0 +1,82 @@
+[
+ {
+  "text": "All",
+  "startMs": 0,
+  "endMs": 680
+ },
+ {
+  "text": "hail",
+  "startMs": 680,
+  "endMs": 1220
+ },
+ {
+  "text": "the",
+  "startMs": 1220,
+  "endMs": 1460
+ },
+ {
+  "text": "king.",
+  "startMs": 1460,
+  "endMs": 1920
+ },
+ {
+  "text": "All",
+  "startMs": 2200,
+  "endMs": 2480
+ },
+ {
+  "text": "hail",
+  "startMs": 2480,
+  "endMs": 3680
+ },
+ {
+  "text": "the",
+  "startMs": 3680,
+  "endMs": 3960
+ },
+ {
+  "text": "king.",
+  "startMs": 3960,
+  "endMs": 4420
+ },
+ {
+  "text": "All",
+  "startMs": 5220,
+  "endMs": 5520
+ },
+ {
+  "text": "hail",
+  "startMs": 5520,
+  "endMs": 5980
+ },
+ {
+  "text": "the",
+  "startMs": 5980,
+  "endMs": 6280
+ },
+ {
+  "text": "king.",
+  "startMs": 6280,
+  "endMs": 6660
+ },
+ {
+  "text": "Boys.",
+  "startMs": 9840,
+  "endMs": 10360
+ },
+ {
+  "text": "Here",
+  "startMs": 12820,
+  "endMs": 12880
+ },
+ {
+  "text": "you",
+  "startMs": 12880,
+  "endMs": 12940
+ },
+ {
+  "text": "go.",
+  "startMs": 12940,
+  "endMs": 13100
+ }
+]

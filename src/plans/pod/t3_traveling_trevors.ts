@@ -19,4 +19,4 @@ const P = makePodPlan({
   circle: {at: 57400, who: 'M'},
   extraSfx: [{file: 'rizz-sound-effect.mp3', at: 50900, volume: 0.35, onset: 60, maxMs: 1800}],
 });
-export const {SRC, CUTS, SHOTS, CAPTIONS, HOOK, CUTOUTS, PUNCH, AURA, LAUGH, SFX, MUSIC, SPEECH} = P;
+export const {SRC, CUTS, SHOTS, CAPTIONS, HOOK, CUTOUTS, PUNCH, AURA, LAUGH, SFX, MUSIC, SPEECH, TRACK, WSPEED, ACTIONS} = P;

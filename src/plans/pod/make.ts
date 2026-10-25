@@ -10,9 +10,16 @@ export const RED = '#FF4D4D';
 
 type Crop = {x: number; y: number; h: number};
 export type Shot =
-  | ({from: number; kind: 'crop' | 'bw'} & Crop)
-  | ({from: number; kind: 'stack'; circleX?: number} & Crop)
-  | {from: number; kind: 'wide'};
+  | ({from: number; kind: 'crop' | 'bw'; who?: 'L' | 'M' | 'R'} & Crop)
+  | ({from: number; kind: 'stack'; circleX?: number; who?: 'L' | 'M' | 'R'} & Crop)
+  | {from: number; kind: 'wide'; who?: undefined};
+// Face track per seat from scripts/seat_track.py: [x, y, faceH] in source px every stepMs from fromMs.
+export type SeatTrack = {stepMs: number; fromMs: number} & Partial<Record<'L' | 'M' | 'R', [number, number, number][]>>;
+// W Speed slam (wholesome clips): big "W TREVOR ❤️‍🩹" on the Blue beat, cutting to crowd reactions.
+export type WSpeed = {at: number; text: string; beatMs: number; beats: number; crowd: {file: string; from: number}[]};
+// Narrated action text, W Speed style: *TREVOR WALKS IN* (italic, name in red).
+export type Action = {at: number; to: number; name: string; text: string};
+export type Mood = 'funny' | 'wholesome' | 'serious';
 export type Word = {text: string; at: number; color?: string};
 export type CaptionGroup = {words: Word[]; to: number; emoji?: string; action?: boolean; big?: boolean};
 export type Sfx = {file: string; at: number; volume: number; onset: number; maxMs?: number};
@@ -36,6 +43,18 @@ export type PodSpec = {
   circle?: {at: number; who: Seat}; // red circle in a stacked shot (who it's about)
   extraSfx?: Sfx[];
   seats?: Partial<Record<'L' | 'M' | 'R', number>>; // per-clip seat x (source px) when people sit elsewhere
+  track?: SeatTrack; // face track: crops follow each seat's face
+  mood?: Mood; // music: funny = Du bist gut genug, wholesome = Blue (W Speed), serious = phonk
+  music?: {file: string; drop?: number[]; dropAt?: number; volume?: number; duck?: number}; // drop (song ms) lands on dropAt (src ms)
+  wspeed?: WSpeed;
+  actions?: Action[];
+};
+
+// Default song per mood (drop = ms in the song where the beat comes in).
+const MOOD_MUSIC: Record<Mood, {file: string; drop: number[]; volume: number; duck: number; loop: boolean}> = {
+  funny: {file: 'du-bist-gut-genug.mp3', drop: [], volume: 0.32, duck: 0.17, loop: true},
+  wholesome: {file: 'blue-yung-kai.mp3', drop: [23500, 58300], volume: 0.34, duck: 0.16, loop: false},
+  serious: {file: 'montagem-uranium.mp3', drop: [9300, 37000, 73800], volume: 0.3, duck: 0.13, loop: false},
 };
 
 const SEAT = {L: 370, M: 960, R: 1490};
@@ -100,7 +119,8 @@ export const makePodPlan = (s: PodSpec) => {
         const x = SEAT_X[seg.who];
         const framings: Crop[] = [{x, y: 40, h: 800}, {x, y: 80, h: 680}, {x, y: 30, h: 860}];
         const f = framings[k % 3];
-        SHOTS.push(k % 4 === 3 ? {from: t, kind: 'stack', ...f} : {from: t, kind: 'crop', ...f});
+        const who = seg.who as 'L' | 'M' | 'R';
+        SHOTS.push(k % 4 === 3 ? {from: t, kind: 'stack', who, ...f} : {from: t, kind: 'crop', who, ...f});
       }
       t += 1800;
       k++;
@@ -111,9 +131,9 @@ export const makePodPlan = (s: PodSpec) => {
     const who = [...sp].reverse().find((q) => q.from <= s.punch!.at)?.who ?? 'M';
     const x = who === 'W' ? SEAT_X.M : SEAT_X[who];
     const idx = SHOTS.findIndex((q) => q.from > s.punch!.at);
-    const shot: Shot = {from: s.punch.at, kind: 'stack', x, y: 110, h: 560};
+    const shot: Shot = {from: s.punch.at, kind: 'stack', x, y: 110, h: 560, who: who === 'W' ? 'M' : who};
     SHOTS.splice(idx < 0 ? SHOTS.length : idx, 0, shot);
-    if (s.aura) SHOTS.splice(SHOTS.findIndex((q) => q.from > s.aura!.at), 0, {from: s.aura.at, kind: 'bw', x: SEAT_X.M, y: 60, h: 640});
+    if (s.aura) SHOTS.splice(SHOTS.findIndex((q) => q.from > s.aura!.at), 0, {from: s.aura.at, kind: 'bw', x: SEAT_X.M, y: 60, h: 640, who: 'M'});
   }
   if (s.circle) {
     const first = SHOTS.find((q) => q.from <= s.circle!.at) ?? SHOTS[0];
@@ -136,12 +156,26 @@ export const makePodPlan = (s: PodSpec) => {
     ...(s.extraSfx ?? []),
   ];
   const lastEnd = Math.max(...s.cuts.map(([, b]) => b));
-  const MUSIC: MusicBed[] = [{file: 'du-bist-gut-genug.mp3', from: s.cuts[0][0], to: lastEnd, volume: 0.32, duck: 0.17, loop: true}];
+  // music by mood; the song's drop lands on dropAt (default: the W slam or the punch)
+  const mm = MOOD_MUSIC[s.mood ?? 'funny'];
+  const song = {...mm, ...(s.music ?? {})};
+  const outOf = (src: number) => {
+    let t = 0;
+    for (const [a, b] of s.cuts) { if (src >= a && src <= b) return t + src - a; t += b - a; }
+    return 0;
+  };
+  const dropAt = s.music?.dropAt ?? s.wspeed?.at ?? s.punch?.at;
+  // first drop late enough to line up (song can't start before 0)
+  const drop = dropAt === undefined ? undefined : song.drop.find((d) => d >= outOf(dropAt));
+  const offset = drop === undefined ? 0 : drop - outOf(dropAt!);
+  const MUSIC: MusicBed[] = [{file: song.file, from: s.cuts[0][0], to: lastEnd, volume: song.volume, duck: song.duck,
+    loop: mm.loop, offset: Math.max(0, offset)}];
   const SPEECH: [number, number][] = s.words.map((w) => [w.startMs, w.endMs]);
 
   return {
     SRC: s.src, CUTS: s.cuts, SHOTS, CAPTIONS, HOOK: s.hook,
     CUTOUTS: s.cutouts ?? [], PUNCH: s.punch ? {at: s.punch.at, to: s.punch.to, label: s.punch.label ?? '', sticker: s.punch.sticker} : null,
     AURA: s.aura ?? null, LAUGH: s.laugh ?? null, SFX, MUSIC, SPEECH,
+    TRACK: s.track ?? null, WSPEED: s.wspeed ?? null, ACTIONS: s.actions ?? [],
   };
 };

@@ -8,3 +8,7 @@ public/flagg/input.mp4
 public/cards/*.mp4
 public/cards/full_*.png
 public/pod/*.mp4
+public/cards2/*.mp4
+public/pod2/*.mp4
+public/hooks/*.mp4
+models/

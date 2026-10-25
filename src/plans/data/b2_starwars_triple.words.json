@@ -1,0 +1,927 @@
+[
+ {
+  "text": "Already",
+  "startMs": 4000,
+  "endMs": 4600
+ },
+ {
+  "text": "it",
+  "startMs": 4600,
+  "endMs": 4820
+ },
+ {
+  "text": "red",
+  "startMs": 4820,
+  "endMs": 5080
+ },
+ {
+  "text": "to",
+  "startMs": 5080,
+  "endMs": 5300
+ },
+ {
+  "text": "five",
+  "startMs": 5300,
+  "endMs": 5740
+ },
+ {
+  "text": "too.",
+  "startMs": 5740,
+  "endMs": 6400
+ },
+ {
+  "text": "Shinati",
+  "startMs": 6960,
+  "endMs": 7560
+ },
+ {
+  "text": "be",
+  "startMs": 7560,
+  "endMs": 7780
+ },
+ {
+  "text": "going",
+  "startMs": 7780,
+  "endMs": 8000
+ },
+ {
+  "text": "crazy,",
+  "startMs": 8000,
+  "endMs": 8440
+ },
+ {
+  "text": "no",
+  "startMs": 8500,
+  "endMs": 8600
+ },
+ {
+  "text": "count.",
+  "startMs": 8600,
+  "endMs": 8940
+ },
+ {
+  "text": "For",
+  "startMs": 9440,
+  "endMs": 9580
+ },
+ {
+  "text": "199.",
+  "startMs": 9580,
+  "endMs": 10080
+ },
+ {
+  "text": "Can",
+  "startMs": 10640,
+  "endMs": 10740
+ },
+ {
+  "text": "I",
+  "startMs": 10740,
+  "endMs": 10820
+ },
+ {
+  "text": "get",
+  "startMs": 10820,
+  "endMs": 10980
+ },
+ {
+  "text": "some",
+  "startMs": 10980,
+  "endMs": 11180
+ },
+ {
+  "text": "oral",
+  "startMs": 11180,
+  "endMs": 11460
+ },
+ {
+  "text": "eyes",
+  "startMs": 11460,
+  "endMs": 11720
+ },
+ {
+  "text": "in",
+  "startMs": 11720,
+  "endMs": 11840
+ },
+ {
+  "text": "the",
+  "startMs": 11840,
+  "endMs": 11940
+ },
+ {
+  "text": "chat?",
+  "startMs": 11940,
+  "endMs": 12240
+ },
+ {
+  "text": "If",
+  "startMs": 12740,
+  "endMs": 12840
+ },
+ {
+  "text": "you're",
+  "startMs": 12840,
+  "endMs": 12960
+ },
+ {
+  "text": "not",
+  "startMs": 12960,
+  "endMs": 13100
+ },
+ {
+  "text": "having",
+  "startMs": 13100,
+  "endMs": 13400
+ },
+ {
+  "text": "fun",
+  "startMs": 13400,
+  "endMs": 13620
+ },
+ {
+  "text": "to",
+  "startMs": 13620,
+  "endMs": 13800
+ },
+ {
+  "text": "this,",
+  "startMs": 13800,
+  "endMs": 14000
+ },
+ {
+  "text": "I",
+  "startMs": 14260,
+  "endMs": 14400
+ },
+ {
+  "text": "don't",
+  "startMs": 14400,
+  "endMs": 14600
+ },
+ {
+  "text": "know",
+  "startMs": 14600,
+  "endMs": 14820
+ },
+ {
+  "text": "what",
+  "startMs": 14820,
+  "endMs": 15060
+ },
+ {
+  "text": "is",
+  "startMs": 15060,
+  "endMs": 15260
+ },
+ {
+  "text": "fun.",
+  "startMs": 15260,
+  "endMs": 15600
+ },
+ {
+  "text": "Shinati",
+  "startMs": 16360,
+  "endMs": 16900
+ },
+ {
+  "text": "it",
+  "startMs": 16900,
+  "endMs": 17100
+ },
+ {
+  "text": "better",
+  "startMs": 17100,
+  "endMs": 17360
+ },
+ {
+  "text": "than",
+  "startMs": 17360,
+  "endMs": 17580
+ },
+ {
+  "text": "DK.",
+  "startMs": 17580,
+  "endMs": 17980
+ },
+ {
+  "text": "Metcalf",
+  "startMs": 18320,
+  "endMs": 18520
+ },
+ {
+  "text": "double",
+  "startMs": 18520,
+  "endMs": 18840
+ },
+ {
+  "text": "diamond.",
+  "startMs": 18840,
+  "endMs": 19300
+ },
+ {
+  "text": "Think",
+  "startMs": 19540,
+  "endMs": 20140
+ },
+ {
+  "text": "about",
+  "startMs": 20140,
+  "endMs": 20580
+ },
+ {
+  "text": "it.",
+  "startMs": 20580,
+  "endMs": 20940
+ },
+ {
+  "text": "Think",
+  "startMs": 21800,
+  "endMs": 22040
+ },
+ {
+  "text": "about",
+  "startMs": 22040,
+  "endMs": 22440
+ },
+ {
+  "text": "it.",
+  "startMs": 22440,
+  "endMs": 22960
+ },
+ {
+  "text": "Blue",
+  "startMs": 25040,
+  "endMs": 25640
+ },
+ {
+  "text": "eyes,",
+  "startMs": 25640,
+  "endMs": 26240
+ },
+ {
+  "text": "Ezra,",
+  "startMs": 26820,
+  "endMs": 27220
+ },
+ {
+  "text": "Mace,",
+  "startMs": 27840,
+  "endMs": 28220
+ },
+ {
+  "text": "Jedi,",
+  "startMs": 28840,
+  "endMs": 29180
+ },
+ {
+  "text": "Jedi,",
+  "startMs": 29420,
+  "endMs": 29420
+ },
+ {
+  "text": "To",
+  "startMs": 30000,
+  "endMs": 30400
+ },
+ {
+  "text": "10.",
+  "startMs": 30400,
+  "endMs": 30800
+ },
+ {
+  "text": "L",
+  "startMs": 31140,
+  "endMs": 31160
+ },
+ {
+  "text": ".O.",
+  "startMs": 31160,
+  "endMs": 31300
+ },
+ {
+  "text": "Nasty.",
+  "startMs": 31820,
+  "endMs": 32020
+ },
+ {
+  "text": "L",
+  "startMs": 34120,
+  "endMs": 34280
+ },
+ {
+  "text": ".O.",
+  "startMs": 34280,
+  "endMs": 34460
+ },
+ {
+  "text": "Rat",
+  "startMs": 34880,
+  "endMs": 34880
+ },
+ {
+  "text": "Boy",
+  "startMs": 34880,
+  "endMs": 35140
+ },
+ {
+  "text": "to",
+  "startMs": 35140,
+  "endMs": 35440
+ },
+ {
+  "text": "10.",
+  "startMs": 35440,
+  "endMs": 35740
+ },
+ {
+  "text": "Gersabor",
+  "startMs": 37880,
+  "endMs": 38480
+ },
+ {
+  "text": "Alias.",
+  "startMs": 38480,
+  "endMs": 38900
+ },
+ {
+  "text": "There",
+  "startMs": 39720,
+  "endMs": 40320
+ },
+ {
+  "text": "is",
+  "startMs": 40320,
+  "endMs": 40620
+ },
+ {
+  "text": "the",
+  "startMs": 40620,
+  "endMs": 40800
+ },
+ {
+  "text": "legend",
+  "startMs": 40800,
+  "endMs": 41160
+ },
+ {
+  "text": "himself.",
+  "startMs": 41160,
+  "endMs": 41880
+ },
+ {
+  "text": "C3P",
+  "startMs": 42860,
+  "endMs": 43460
+ },
+ {
+  "text": ".O.",
+  "startMs": 43460,
+  "endMs": 43680
+ },
+ {
+  "text": "to",
+  "startMs": 43940,
+  "endMs": 43940
+ },
+ {
+  "text": "25.",
+  "startMs": 43940,
+  "endMs": 44460
+ },
+ {
+  "text": "Carson",
+  "startMs": 46880,
+  "endMs": 47180
+ },
+ {
+  "text": "Teva.",
+  "startMs": 47180,
+  "endMs": 47760
+ },
+ {
+  "text": "Yo,",
+  "startMs": 48760,
+  "endMs": 48820
+ },
+ {
+  "text": "this",
+  "startMs": 49100,
+  "endMs": 49100
+ },
+ {
+  "text": "is",
+  "startMs": 49100,
+  "endMs": 49240
+ },
+ {
+  "text": "bro,",
+  "startMs": 49240,
+  "endMs": 49540
+ },
+ {
+  "text": "bro,",
+  "startMs": 49680,
+  "endMs": 49840
+ },
+ {
+  "text": "bro.",
+  "startMs": 49980,
+  "endMs": 50120
+ },
+ {
+  "text": "Yo,",
+  "startMs": 50780,
+  "endMs": 51380
+ },
+ {
+  "text": "I",
+  "startMs": 51580,
+  "endMs": 51580
+ },
+ {
+  "text": "think",
+  "startMs": 51580,
+  "endMs": 51740
+ },
+ {
+  "text": "we",
+  "startMs": 51740,
+  "endMs": 51860
+ },
+ {
+  "text": "got",
+  "startMs": 51860,
+  "endMs": 52040
+ },
+ {
+  "text": "dual",
+  "startMs": 52040,
+  "endMs": 52280
+ },
+ {
+  "text": "auto.",
+  "startMs": 52280,
+  "endMs": 52660
+ },
+ {
+  "text": "Tool",
+  "startMs": 53580,
+  "endMs": 53780
+ },
+ {
+  "text": "or",
+  "startMs": 53780,
+  "endMs": 54000
+ },
+ {
+  "text": "trip",
+  "startMs": 54000,
+  "endMs": 54280
+ },
+ {
+  "text": "auto",
+  "startMs": 54280,
+  "endMs": 54540
+ },
+ {
+  "text": "incoming,",
+  "startMs": 54540,
+  "endMs": 55060
+ },
+ {
+  "text": "guys.",
+  "startMs": 55420,
+  "endMs": 55420
+ },
+ {
+  "text": "Yo,",
+  "startMs": 56300,
+  "endMs": 56500
+ },
+ {
+  "text": "yo,",
+  "startMs": 56760,
+  "endMs": 56840
+ },
+ {
+  "text": "yo.",
+  "startMs": 57100,
+  "endMs": 57100
+ },
+ {
+  "text": "Yo,",
+  "startMs": 57100,
+  "endMs": 57320
+ },
+ {
+  "text": "Ankin,",
+  "startMs": 59860,
+  "endMs": 60160
+ },
+ {
+  "text": "Obey,",
+  "startMs": 60360,
+  "endMs": 60780
+ },
+ {
+  "text": "and",
+  "startMs": 61040,
+  "endMs": 61040
+ },
+ {
+  "text": "Badmey.",
+  "startMs": 61040,
+  "endMs": 62000
+ },
+ {
+  "text": "One",
+  "startMs": 62940,
+  "endMs": 63180
+ },
+ {
+  "text": "of",
+  "startMs": 63180,
+  "endMs": 63320
+ },
+ {
+  "text": "one!",
+  "startMs": 63320,
+  "endMs": 63680
+ },
+ {
+  "text": "One",
+  "startMs": 64620,
+  "endMs": 64660
+ },
+ {
+  "text": "of",
+  "startMs": 64660,
+  "endMs": 65140
+ },
+ {
+  "text": "one!",
+  "startMs": 65140,
+  "endMs": 65300
+ },
+ {
+  "text": "What",
+  "startMs": 66520,
+  "endMs": 66700
+ },
+ {
+  "text": "a",
+  "startMs": 66700,
+  "endMs": 67060
+ },
+ {
+  "text": "one!",
+  "startMs": 67060,
+  "endMs": 67260
+ },
+ {
+  "text": "Oh",
+  "startMs": 67260,
+  "endMs": 67260
+ },
+ {
+  "text": "my",
+  "startMs": 67260,
+  "endMs": 68940
+ },
+ {
+  "text": "God!",
+  "startMs": 68940,
+  "endMs": 69400
+ },
+ {
+  "text": "There",
+  "startMs": 69660,
+  "endMs": 69880
+ },
+ {
+  "text": "is",
+  "startMs": 69880,
+  "endMs": 70100
+ },
+ {
+  "text": "no",
+  "startMs": 70100,
+  "endMs": 70400
+ },
+ {
+  "text": "way.",
+  "startMs": 70400,
+  "endMs": 70840
+ },
+ {
+  "text": "I",
+  "startMs": 70860,
+  "endMs": 71040
+ },
+ {
+  "text": "don't",
+  "startMs": 71040,
+  "endMs": 71180
+ },
+ {
+  "text": "know",
+  "startMs": 71180,
+  "endMs": 71360
+ },
+ {
+  "text": "Star",
+  "startMs": 71360,
+  "endMs": 71720
+ },
+ {
+  "text": "Wars,",
+  "startMs": 71720,
+  "endMs": 72060
+ },
+ {
+  "text": "but",
+  "startMs": 72240,
+  "endMs": 72260
+ },
+ {
+  "text": "that's",
+  "startMs": 72260,
+  "endMs": 72560
+ },
+ {
+  "text": "that.",
+  "startMs": 72560,
+  "endMs": 72940
+ },
+ {
+  "text": "There",
+  "startMs": 73600,
+  "endMs": 73920
+ },
+ {
+  "text": "is",
+  "startMs": 73920,
+  "endMs": 74140
+ },
+ {
+  "text": "no",
+  "startMs": 74140,
+  "endMs": 74520
+ },
+ {
+  "text": "way.",
+  "startMs": 74520,
+  "endMs": 75040
+ },
+ {
+  "text": "That's",
+  "startMs": 75260,
+  "endMs": 75500
+ },
+ {
+  "text": "Wade",
+  "startMs": 75500,
+  "endMs": 75760
+ },
+ {
+  "text": "Bosch",
+  "startMs": 75760,
+  "endMs": 76340
+ },
+ {
+  "text": "LeBron.",
+  "startMs": 76340,
+  "endMs": 76920
+ },
+ {
+  "text": "Literally.",
+  "startMs": 77240,
+  "endMs": 77620
+ },
+ {
+  "text": "Wade",
+  "startMs": 78040,
+  "endMs": 78140
+ },
+ {
+  "text": "Bosch",
+  "startMs": 78140,
+  "endMs": 78740
+ },
+ {
+  "text": "LeBron.",
+  "startMs": 78740,
+  "endMs": 79280
+ },
+ {
+  "text": "That's",
+  "startMs": 80180,
+  "endMs": 80360
+ },
+ {
+  "text": "major.",
+  "startMs": 80360,
+  "endMs": 80860
+ },
+ {
+  "text": "Yo,",
+  "startMs": 81700,
+  "endMs": 81820
+ },
+ {
+  "text": "that",
+  "startMs": 82060,
+  "endMs": 82240
+ },
+ {
+  "text": "is",
+  "startMs": 82240,
+  "endMs": 82660
+ },
+ {
+  "text": "crazy.",
+  "startMs": 82660,
+  "endMs": 83380
+ },
+ {
+  "text": "One",
+  "startMs": 83780,
+  "endMs": 83960
+ },
+ {
+  "text": "of",
+  "startMs": 83960,
+  "endMs": 84140
+ },
+ {
+  "text": "one,",
+  "startMs": 84140,
+  "endMs": 84380
+ },
+ {
+  "text": "Obey,",
+  "startMs": 84620,
+  "endMs": 84900
+ },
+ {
+  "text": "Badmay,",
+  "startMs": 85040,
+  "endMs": 85560
+ },
+ {
+  "text": "Anakin.",
+  "startMs": 85780,
+  "endMs": 86080
+ },
+ {
+  "text": "Triple",
+  "startMs": 87480,
+  "endMs": 87820
+ },
+ {
+  "text": "auto",
+  "startMs": 87820,
+  "endMs": 88160
+ },
+ {
+  "text": "Oh",
+  "startMs": 90160,
+  "endMs": 90500
+ },
+ {
+  "text": "my",
+  "startMs": 90500,
+  "endMs": 90840
+ },
+ {
+  "text": "good",
+  "startMs": 90840,
+  "endMs": 91340
+ },
+ {
+  "text": "y",
+  "startMs": 91340,
+  "endMs": 91520
+ },
+ {
+  "text": "'all.",
+  "startMs": 91520,
+  "endMs": 91720
+ },
+ {
+  "text": "I'm",
+  "startMs": 91740,
+  "endMs": 91780
+ },
+ {
+  "text": "a",
+  "startMs": 91780,
+  "endMs": 91900
+ },
+ {
+  "text": "buyer.",
+  "startMs": 91900,
+  "endMs": 92180
+ },
+ {
+  "text": "I'm",
+  "startMs": 92300,
+  "endMs": 92340
+ },
+ {
+  "text": "a",
+  "startMs": 92340,
+  "endMs": 92460
+ },
+ {
+  "text": "buyer.",
+  "startMs": 92460,
+  "endMs": 92660
+ },
+ {
+  "text": "I'm",
+  "startMs": 92800,
+  "endMs": 92820
+ },
+ {
+  "text": "a",
+  "startMs": 92820,
+  "endMs": 92900
+ },
+ {
+  "text": "buyer.",
+  "startMs": 92900,
+  "endMs": 93140
+ },
+ {
+  "text": "So",
+  "startMs": 93320,
+  "endMs": 93360
+ },
+ {
+  "text": "you",
+  "startMs": 93360,
+  "endMs": 93460
+ },
+ {
+  "text": "guys",
+  "startMs": 93460,
+  "endMs": 93640
+ },
+ {
+  "text": "don't",
+  "startMs": 93640,
+  "endMs": 93780
+ },
+ {
+  "text": "have",
+  "startMs": 93780,
+  "endMs": 93940
+ },
+ {
+  "text": "to",
+  "startMs": 93940,
+  "endMs": 94060
+ },
+ {
+  "text": "split",
+  "startMs": 94060,
+  "endMs": 94340
+ },
+ {
+  "text": "it.",
+  "startMs": 94340,
+  "endMs": 94500
+ },
+ {
+  "text": "Let",
+  "startMs": 94820,
+  "endMs": 94940
+ },
+ {
+  "text": "me",
+  "startMs": 94940,
+  "endMs": 95060
+ },
+ {
+  "text": "solve",
+  "startMs": 95060,
+  "endMs": 95320
+ },
+ {
+  "text": "all",
+  "startMs": 95320,
+  "endMs": 95520
+ },
+ {
+  "text": "your",
+  "startMs": 95520,
+  "endMs": 95680
+ },
+ {
+  "text": "problems.",
+  "startMs": 95680,
+  "endMs": 96140
+ }
+]

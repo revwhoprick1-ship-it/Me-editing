@@ -19,9 +19,9 @@ type Crop = {x: number; y: number; h: number};
 // wide  = full frame over a blurred fill
 // bw    = black & white reaction punch-in
 export type Shot =
-  | ({from: number; kind: 'crop' | 'bw'} & Crop)
-  | ({from: number; kind: 'stack'; circleX?: number} & Crop)
-  | {from: number; kind: 'wide'};
+  | ({from: number; kind: 'crop' | 'bw'; who?: 'L' | 'M' | 'R'} & Crop)
+  | ({from: number; kind: 'stack'; circleX?: number; who?: 'L' | 'M' | 'R'} & Crop)
+  | {from: number; kind: 'wide'; who?: undefined};
 
 export const SHOTS: Shot[] = [
   {from: 0, kind: 'stack', x: LEFT, y: 40, h: 760, circleX: MID}, // circle who's about to be asked
@@ -131,3 +131,8 @@ export const SPEECH: [number, number][] = [
   [20, 1800], [2300, 3560], [4400, 5340], [5560, 7400], [13480, 14950], [17500, 18700],
 ];
 export const SRC = 'input.mp4';
+
+// No face track / W Speed / action text in this older plan.
+export const TRACK: import('./make').SeatTrack | null = null;
+export const WSPEED: import('./make').WSpeed | null = null;
+export const ACTIONS: import('./make').Action[] = [];

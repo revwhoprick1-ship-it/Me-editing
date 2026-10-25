@@ -5,7 +5,8 @@ import numpy as np
 from faster_whisper import WhisperModel
 
 model = WhisperModel("distil-large-v3", device="cpu", compute_type="int8", cpu_threads=4)
-for mp4 in sorted(pathlib.Path("footage/work").glob("*.mp4")):
+DIR = sys.argv[1] if len(sys.argv) > 1 else "footage/work"
+for mp4 in sorted(pathlib.Path(DIR).glob("*.mp4")):
     out = mp4.with_suffix(".words.json")
     if out.exists():
         continue

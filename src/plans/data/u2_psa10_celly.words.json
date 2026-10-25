@@ -1,0 +1,682 @@
+[
+ {
+  "text": "Like",
+  "startMs": 0,
+  "endMs": 180
+ },
+ {
+  "text": "even",
+  "startMs": 180,
+  "endMs": 640
+ },
+ {
+  "text": "Bashal,",
+  "startMs": 640,
+  "endMs": 1060
+ },
+ {
+  "text": "the",
+  "startMs": 1240,
+  "endMs": 1240
+ },
+ {
+  "text": "tiptoe,",
+  "startMs": 1240,
+  "endMs": 1860
+ },
+ {
+  "text": "like,",
+  "startMs": 2120,
+  "endMs": 2180
+ },
+ {
+  "text": "you're",
+  "startMs": 2300,
+  "endMs": 2420
+ },
+ {
+  "text": "not",
+  "startMs": 2420,
+  "endMs": 2580
+ },
+ {
+  "text": "a",
+  "startMs": 2580,
+  "endMs": 2720
+ },
+ {
+  "text": "selly",
+  "startMs": 2720,
+  "endMs": 3060
+ },
+ {
+  "text": "guy.",
+  "startMs": 3060,
+  "endMs": 3380
+ },
+ {
+  "text": "No.",
+  "startMs": 3600,
+  "endMs": 3760
+ },
+ {
+  "text": "Do",
+  "startMs": 3960,
+  "endMs": 4020
+ },
+ {
+  "text": "you",
+  "startMs": 4020,
+  "endMs": 4060
+ },
+ {
+  "text": "think",
+  "startMs": 4060,
+  "endMs": 4260
+ },
+ {
+  "text": "if",
+  "startMs": 4260,
+  "endMs": 4460
+ },
+ {
+  "text": "we",
+  "startMs": 4460,
+  "endMs": 4600
+ },
+ {
+  "text": "gave",
+  "startMs": 4600,
+  "endMs": 4920
+ },
+ {
+  "text": "you",
+  "startMs": 4920,
+  "endMs": 5040
+ },
+ {
+  "text": "a",
+  "startMs": 5040,
+  "endMs": 5200
+ },
+ {
+  "text": "selly",
+  "startMs": 5200,
+  "endMs": 5500
+ },
+ {
+  "text": "right",
+  "startMs": 5500,
+  "endMs": 5680
+ },
+ {
+  "text": "now,",
+  "startMs": 5680,
+  "endMs": 5880
+ },
+ {
+  "text": "you'd",
+  "startMs": 6000,
+  "endMs": 6120
+ },
+ {
+  "text": "like",
+  "startMs": 6120,
+  "endMs": 6280
+ },
+ {
+  "text": "one",
+  "startMs": 6280,
+  "endMs": 6880
+ },
+ {
+  "text": "touchdown,",
+  "startMs": 6880,
+  "endMs": 7320
+ },
+ {
+  "text": "you'd",
+  "startMs": 7480,
+  "endMs": 7560
+ },
+ {
+  "text": "just",
+  "startMs": 7560,
+  "endMs": 7660
+ },
+ {
+  "text": "throw",
+  "startMs": 7660,
+  "endMs": 7860
+ },
+ {
+  "text": "it",
+  "startMs": 7860,
+  "endMs": 8000
+ },
+ {
+  "text": "up?",
+  "startMs": 8000,
+  "endMs": 8180
+ },
+ {
+  "text": "Maybe.",
+  "startMs": 8480,
+  "endMs": 8800
+ },
+ {
+  "text": "Difference",
+  "startMs": 9100,
+  "endMs": 9160
+ },
+ {
+  "text": "what",
+  "startMs": 9160,
+  "endMs": 9300
+ },
+ {
+  "text": "it",
+  "startMs": 9300,
+  "endMs": 9400
+ },
+ {
+  "text": "is.",
+  "startMs": 9400,
+  "endMs": 9460
+ },
+ {
+  "text": "Like,",
+  "startMs": 9500,
+  "endMs": 9660
+ },
+ {
+  "text": "you",
+  "startMs": 9680,
+  "endMs": 9740
+ },
+ {
+  "text": "guys,",
+  "startMs": 9740,
+  "endMs": 10000
+ },
+ {
+  "text": "I",
+  "startMs": 10000,
+  "endMs": 10000
+ },
+ {
+  "text": "want",
+  "startMs": 10000,
+  "endMs": 10020
+ },
+ {
+  "text": "it",
+  "startMs": 10020,
+  "endMs": 10220
+ },
+ {
+  "text": "to",
+  "startMs": 10220,
+  "endMs": 10220
+ },
+ {
+  "text": "think",
+  "startMs": 10220,
+  "endMs": 10620
+ },
+ {
+  "text": "of",
+  "startMs": 10620,
+  "endMs": 10780
+ },
+ {
+  "text": "like",
+  "startMs": 10780,
+  "endMs": 10920
+ },
+ {
+  "text": "an",
+  "startMs": 10920,
+  "endMs": 11060
+ },
+ {
+  "text": "easy",
+  "startMs": 11060,
+  "endMs": 11400
+ },
+ {
+  "text": "one.",
+  "startMs": 11400,
+  "endMs": 11720
+ },
+ {
+  "text": "Like",
+  "startMs": 11980,
+  "endMs": 11980
+ },
+ {
+  "text": "say",
+  "startMs": 11980,
+  "endMs": 12200
+ },
+ {
+  "text": "you",
+  "startMs": 12200,
+  "endMs": 12240
+ },
+ {
+  "text": "throw",
+  "startMs": 12240,
+  "endMs": 12360
+ },
+ {
+  "text": "a",
+  "startMs": 12360,
+  "endMs": 12620
+ },
+ {
+  "text": "tutti.",
+  "startMs": 12620,
+  "endMs": 12880
+ },
+ {
+  "text": "I",
+  "startMs": 12960,
+  "endMs": 13020
+ },
+ {
+  "text": "can't",
+  "startMs": 13020,
+  "endMs": 13500
+ },
+ {
+  "text": "be",
+  "startMs": 13500,
+  "endMs": 13520
+ },
+ {
+  "text": "like",
+  "startMs": 13520,
+  "endMs": 13720
+ },
+ {
+  "text": "choreographed.",
+  "startMs": 13720,
+  "endMs": 14440
+ },
+ {
+  "text": "I'm",
+  "startMs": 14500,
+  "endMs": 14540
+ },
+ {
+  "text": "not",
+  "startMs": 14540,
+  "endMs": 14620
+ },
+ {
+  "text": "good.",
+  "startMs": 14620,
+  "endMs": 14780
+ },
+ {
+  "text": "No",
+  "startMs": 15060,
+  "endMs": 15060
+ },
+ {
+  "text": "choreograph.",
+  "startMs": 15060,
+  "endMs": 15420
+ },
+ {
+  "text": "Just",
+  "startMs": 15660,
+  "endMs": 15800
+ },
+ {
+  "text": "you",
+  "startMs": 15800,
+  "endMs": 15980
+ },
+ {
+  "text": "have",
+  "startMs": 15980,
+  "endMs": 16120
+ },
+ {
+  "text": "like",
+  "startMs": 16120,
+  "endMs": 16340
+ },
+ {
+  "text": "you",
+  "startMs": 16340,
+  "endMs": 16460
+ },
+ {
+  "text": "like,",
+  "startMs": 16460,
+  "endMs": 16740
+ },
+ {
+  "text": "say",
+  "startMs": 16820,
+  "endMs": 16920
+ },
+ {
+  "text": "we're",
+  "startMs": 16920,
+  "endMs": 17120
+ },
+ {
+  "text": "in",
+  "startMs": 17120,
+  "endMs": 17180
+ },
+ {
+  "text": "the",
+  "startMs": 17180,
+  "endMs": 17320
+ },
+ {
+  "text": "stadium.",
+  "startMs": 17320,
+  "endMs": 17560
+ },
+ {
+  "text": "It's",
+  "startMs": 17740,
+  "endMs": 17780
+ },
+ {
+  "text": "like",
+  "startMs": 17780,
+  "endMs": 18040
+ },
+ {
+  "text": "a",
+  "startMs": 18040,
+  "endMs": 18040
+ },
+ {
+  "text": "point.",
+  "startMs": 18040,
+  "endMs": 18360
+ },
+ {
+  "text": "And",
+  "startMs": 18880,
+  "endMs": 18880
+ },
+ {
+  "text": "like",
+  "startMs": 18880,
+  "endMs": 19060
+ },
+ {
+  "text": "so",
+  "startMs": 19060,
+  "endMs": 19240
+ },
+ {
+  "text": "we",
+  "startMs": 19240,
+  "endMs": 19720
+ },
+ {
+  "text": "are,",
+  "startMs": 19720,
+  "endMs": 19900
+ },
+ {
+  "text": "we're",
+  "startMs": 20000,
+  "endMs": 20000
+ },
+ {
+  "text": "collectors.",
+  "startMs": 20000,
+  "endMs": 20460
+ },
+ {
+  "text": "So",
+  "startMs": 20840,
+  "endMs": 20840
+ },
+ {
+  "text": "on",
+  "startMs": 20840,
+  "endMs": 21340
+ },
+ {
+  "text": "some",
+  "startMs": 21340,
+  "endMs": 21500
+ },
+ {
+  "text": "of",
+  "startMs": 21500,
+  "endMs": 21640
+ },
+ {
+  "text": "our",
+  "startMs": 21640,
+  "endMs": 21740
+ },
+ {
+  "text": "cards,",
+  "startMs": 21740,
+  "endMs": 22080
+ },
+ {
+  "text": "you",
+  "startMs": 22380,
+  "endMs": 22420
+ },
+ {
+  "text": "get",
+  "startMs": 22420,
+  "endMs": 22560
+ },
+ {
+  "text": "a",
+  "startMs": 22560,
+  "endMs": 22660
+ },
+ {
+  "text": "PSA",
+  "startMs": 22660,
+  "endMs": 23120
+ },
+ {
+  "text": "1010",
+  "startMs": 23120,
+  "endMs": 23720
+ },
+ {
+  "text": "is",
+  "startMs": 23720,
+  "endMs": 23920
+ },
+ {
+  "text": "like",
+  "startMs": 23920,
+  "endMs": 24120
+ },
+ {
+  "text": "the",
+  "startMs": 24120,
+  "endMs": 24560
+ },
+ {
+  "text": "best",
+  "startMs": 24560,
+  "endMs": 24800
+ },
+ {
+  "text": "grade",
+  "startMs": 24800,
+  "endMs": 25020
+ },
+ {
+  "text": "you",
+  "startMs": 25020,
+  "endMs": 25160
+ },
+ {
+  "text": "could",
+  "startMs": 25160,
+  "endMs": 25280
+ },
+ {
+  "text": "get.",
+  "startMs": 25280,
+  "endMs": 25400
+ },
+ {
+  "text": "So",
+  "startMs": 25500,
+  "endMs": 25560
+ },
+ {
+  "text": "it's",
+  "startMs": 25560,
+  "endMs": 25720
+ },
+ {
+  "text": "almost",
+  "startMs": 25720,
+  "endMs": 25880
+ },
+ {
+  "text": "like",
+  "startMs": 25880,
+  "endMs": 26100
+ },
+ {
+  "text": "this",
+  "startMs": 26100,
+  "endMs": 26200
+ },
+ {
+  "text": "you",
+  "startMs": 26200,
+  "endMs": 26340
+ },
+ {
+  "text": "point",
+  "startMs": 26340,
+  "endMs": 26540
+ },
+ {
+  "text": "and",
+  "startMs": 26540,
+  "endMs": 26680
+ },
+ {
+  "text": "go",
+  "startMs": 26680,
+  "endMs": 26700
+ },
+ {
+  "text": "like",
+  "startMs": 26700,
+  "endMs": 26840
+ },
+ {
+  "text": "just",
+  "startMs": 26840,
+  "endMs": 27580
+ },
+ {
+  "text": "10",
+  "startMs": 27580,
+  "endMs": 27840
+ },
+ {
+  "text": "10",
+  "startMs": 27840,
+  "endMs": 28000
+ },
+ {
+  "text": "10.",
+  "startMs": 28000,
+  "endMs": 28100
+ },
+ {
+  "text": "It's",
+  "startMs": 28620,
+  "endMs": 28660
+ },
+ {
+  "text": "easy.",
+  "startMs": 28660,
+  "endMs": 28940
+ },
+ {
+  "text": "That's",
+  "startMs": 29400,
+  "endMs": 29580
+ },
+ {
+  "text": "it.",
+  "startMs": 29580,
+  "endMs": 29640
+ },
+ {
+  "text": "I",
+  "startMs": 29800,
+  "endMs": 29800
+ },
+ {
+  "text": "like.",
+  "startMs": 29800,
+  "endMs": 29980
+ },
+ {
+  "text": "You",
+  "startMs": 30000,
+  "endMs": 30180
+ },
+ {
+  "text": "like",
+  "startMs": 30180,
+  "endMs": 30360
+ },
+ {
+  "text": "that?",
+  "startMs": 30360,
+  "endMs": 30600
+ },
+ {
+  "text": "All",
+  "startMs": 30740,
+  "endMs": 30740
+ },
+ {
+  "text": "right,",
+  "startMs": 30740,
+  "endMs": 30960
+ },
+ {
+  "text": "I",
+  "startMs": 31000,
+  "endMs": 31080
+ },
+ {
+  "text": "like",
+  "startMs": 31080,
+  "endMs": 31300
+ },
+ {
+  "text": "that.",
+  "startMs": 31300,
+  "endMs": 31620
+ },
+ {
+  "text": "Yo!",
+  "startMs": 31920,
+  "endMs": 32080
+ }
+]

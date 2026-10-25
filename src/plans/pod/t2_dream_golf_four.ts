@@ -20,4 +20,4 @@ const P = makePodPlan({
   circle: {at: 11200, who: 'M'},
   extraSfx: [{file: 'crowd-cheer.mp3', at: 102500, volume: 0.25, onset: 100, maxMs: 2500}],
 });
-export const {SRC, CUTS, SHOTS, CAPTIONS, HOOK, CUTOUTS, PUNCH, AURA, LAUGH, SFX, MUSIC, SPEECH} = P;
+export const {SRC, CUTS, SHOTS, CAPTIONS, HOOK, CUTOUTS, PUNCH, AURA, LAUGH, SFX, MUSIC, SPEECH, TRACK, WSPEED, ACTIONS} = P;

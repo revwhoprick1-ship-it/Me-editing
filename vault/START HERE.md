@@ -18,6 +18,14 @@ Edit podcast/streamer clips into viral vertical Shorts in a **meme / brainrot cl
 - Big reveal = **green screen flash + falling money (💵💸💰) + ka-ching**, and it has to be **shocking**: white flash, shake, zoom slam, "1 OF 1" stamp. Before it, **build suspense** (slow-mo, heartbeat, riser, trembling zoom, vignette, "WAIT FOR IT", music cut right before the drop).
 - **AI narration** (ElevenLabs) on card pulls, **ONLY the "Alex - Young American Male" voice** (`yl2ZDV1MzN4HbQJbMihG`); see [[Card pull playbook#AI narration]].
 
+- **Length: every Short 15–25 s** (30 s is too long, never under 15 s; go a bit over only if the moment really needs it). (2026-10-25)
+- **Card edits: open with a hook clip from the user's hooks folder** (Drive `1DnNI_zX5q7eWpiDOP75SnCMDWNC5xYkI`, local `public/hooks/`). (2026-10-25)
+- **Music variety: don't reuse one song for every video.** Rotate through the user's phonk list for card pulls. Podcast music by mood:
+  - funny → Du bist gut genug;
+  - wholesome → "Blue" (Yung Kai), edited as a **W speed edit** in our usual style;
+  - serious → phonk. (2026-10-25)
+- **Podcast captions must not cover the speakers' faces**, but stay where viewers look easily (lower part of the video box, under the faces). (2026-10-25)
+- **Podcast: motion-track the speakers** (the crop follows the speaker's face, using real face tracking). (2026-10-25)
 - **Podcast clips:** use the Ref C layout (black bars, video box, plain top caption "Do you agree with this? 💀", cut-out photos of people mentioned) **on top of** our normal edit style. See [[Reference Shorts#Ref C: podcast layout (user: "for podcast style videos make it like this")]].
 
 - **Card pulls (stream clips from the Backyard Breaks sheet):** follow [[Card pull playbook]] (white banner hook, whip transitions, tracked red circle + arrow, card title stack with price).

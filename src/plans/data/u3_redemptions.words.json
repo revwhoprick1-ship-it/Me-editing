@@ -1,0 +1,592 @@
+[
+ {
+  "text": "this",
+  "startMs": 0,
+  "endMs": 200
+ },
+ {
+  "text": "card",
+  "startMs": 200,
+  "endMs": 520
+ },
+ {
+  "text": "i",
+  "startMs": 520,
+  "endMs": 660
+ },
+ {
+  "text": "promise",
+  "startMs": 660,
+  "endMs": 1020
+ },
+ {
+  "text": "you",
+  "startMs": 1020,
+  "endMs": 1140
+ },
+ {
+  "text": "20",
+  "startMs": 1140,
+  "endMs": 1440
+ },
+ {
+  "text": "000",
+  "startMs": 1440,
+  "endMs": 1780
+ },
+ {
+  "text": "what",
+  "startMs": 1780,
+  "endMs": 2280
+ },
+ {
+  "text": "is",
+  "startMs": 2280,
+  "endMs": 2460
+ },
+ {
+  "text": "it",
+  "startMs": 2460,
+  "endMs": 2580
+ },
+ {
+  "text": "now",
+  "startMs": 2580,
+  "endMs": 2940
+ },
+ {
+  "text": "200",
+  "startMs": 2940,
+  "endMs": 4240
+ },
+ {
+  "text": "500",
+  "startMs": 4240,
+  "endMs": 5080
+ },
+ {
+  "text": "bucks",
+  "startMs": 5080,
+  "endMs": 5520
+ },
+ {
+  "text": "maybe",
+  "startMs": 5520,
+  "endMs": 6040
+ },
+ {
+  "text": "so",
+  "startMs": 6040,
+  "endMs": 7020
+ },
+ {
+  "text": "why",
+  "startMs": 7020,
+  "endMs": 7280
+ },
+ {
+  "text": "is",
+  "startMs": 7280,
+  "endMs": 7720
+ },
+ {
+  "text": "it",
+  "startMs": 7720,
+  "endMs": 7880
+ },
+ {
+  "text": "uh",
+  "startMs": 7880,
+  "endMs": 8080
+ },
+ {
+  "text": "why",
+  "startMs": 8080,
+  "endMs": 8260
+ },
+ {
+  "text": "do",
+  "startMs": 8260,
+  "endMs": 8340
+ },
+ {
+  "text": "you",
+  "startMs": 8340,
+  "endMs": 8400
+ },
+ {
+  "text": "have",
+  "startMs": 8400,
+  "endMs": 8740
+ },
+ {
+  "text": "to",
+  "startMs": 8740,
+  "endMs": 8840
+ },
+ {
+  "text": "redeem",
+  "startMs": 8840,
+  "endMs": 9100
+ },
+ {
+  "text": "it",
+  "startMs": 9100,
+  "endMs": 9180
+ },
+ {
+  "text": "to",
+  "startMs": 9180,
+  "endMs": 9300
+ },
+ {
+  "text": "get",
+  "startMs": 9300,
+  "endMs": 9380
+ },
+ {
+  "text": "it",
+  "startMs": 9380,
+  "endMs": 9500
+ },
+ {
+  "text": "here",
+  "startMs": 9500,
+  "endMs": 9660
+ },
+ {
+  "text": "because",
+  "startMs": 9660,
+  "endMs": 10000
+ },
+ {
+  "text": "sometimes",
+  "startMs": 10000,
+  "endMs": 10660
+ },
+ {
+  "text": "the",
+  "startMs": 10660,
+  "endMs": 10880
+ },
+ {
+  "text": "players",
+  "startMs": 10880,
+  "endMs": 11300
+ },
+ {
+  "text": "if",
+  "startMs": 11300,
+  "endMs": 11560
+ },
+ {
+  "text": "you",
+  "startMs": 11560,
+  "endMs": 11700
+ },
+ {
+  "text": "know",
+  "startMs": 11700,
+  "endMs": 11860
+ },
+ {
+  "text": "do",
+  "startMs": 11860,
+  "endMs": 12080
+ },
+ {
+  "text": "you",
+  "startMs": 12080,
+  "endMs": 12260
+ },
+ {
+  "text": "sign",
+  "startMs": 12260,
+  "endMs": 12520
+ },
+ {
+  "text": "like",
+  "startMs": 12520,
+  "endMs": 12760
+ },
+ {
+  "text": "on",
+  "startMs": 12760,
+  "endMs": 12940
+ },
+ {
+  "text": "time",
+  "startMs": 12940,
+  "endMs": 13300
+ },
+ {
+  "text": "i",
+  "startMs": 13300,
+  "endMs": 14000
+ },
+ {
+  "text": "see",
+  "startMs": 14000,
+  "endMs": 14400
+ },
+ {
+  "text": "uh",
+  "startMs": 14400,
+  "endMs": 14720
+ },
+ {
+  "text": "you've",
+  "startMs": 14720,
+  "endMs": 15060
+ },
+ {
+  "text": "done",
+  "startMs": 15060,
+  "endMs": 15260
+ },
+ {
+  "text": "that",
+  "startMs": 15260,
+  "endMs": 15600
+ },
+ {
+  "text": "so",
+  "startMs": 15600,
+  "endMs": 17160
+ },
+ {
+  "text": "if",
+  "startMs": 17160,
+  "endMs": 17440
+ },
+ {
+  "text": "they",
+  "startMs": 17440,
+  "endMs": 17540
+ },
+ {
+  "text": "don't",
+  "startMs": 17540,
+  "endMs": 17780
+ },
+ {
+  "text": "finish",
+  "startMs": 17780,
+  "endMs": 17980
+ },
+ {
+  "text": "on",
+  "startMs": 17980,
+  "endMs": 18260
+ },
+ {
+  "text": "time",
+  "startMs": 18260,
+  "endMs": 18600
+ },
+ {
+  "text": "and",
+  "startMs": 18600,
+  "endMs": 18680
+ },
+ {
+  "text": "they're",
+  "startMs": 18680,
+  "endMs": 19120
+ },
+ {
+  "text": "they're",
+  "startMs": 19120,
+  "endMs": 19120
+ },
+ {
+  "text": "produced",
+  "startMs": 19120,
+  "endMs": 19400
+ },
+ {
+  "text": "like",
+  "startMs": 19400,
+  "endMs": 19580
+ },
+ {
+  "text": "say",
+  "startMs": 19580,
+  "endMs": 19800
+ },
+ {
+  "text": "a",
+  "startMs": 19800,
+  "endMs": 19940
+ },
+ {
+  "text": "product",
+  "startMs": 19940,
+  "endMs": 20220
+ },
+ {
+  "text": "releases",
+  "startMs": 20220,
+  "endMs": 20700
+ },
+ {
+  "text": "so",
+  "startMs": 20700,
+  "endMs": 21040
+ },
+ {
+  "text": "they",
+  "startMs": 21040,
+  "endMs": 21160
+ },
+ {
+  "text": "just",
+  "startMs": 21160,
+  "endMs": 21300
+ },
+ {
+  "text": "don't",
+  "startMs": 21300,
+  "endMs": 21560
+ },
+ {
+  "text": "have",
+  "startMs": 21560,
+  "endMs": 21760
+ },
+ {
+  "text": "it",
+  "startMs": 21760,
+  "endMs": 21880
+ },
+ {
+  "text": "yet",
+  "startMs": 21880,
+  "endMs": 22000
+ },
+ {
+  "text": "they",
+  "startMs": 22000,
+  "endMs": 22100
+ },
+ {
+  "text": "don't",
+  "startMs": 22100,
+  "endMs": 22200
+ },
+ {
+  "text": "have",
+  "startMs": 22200,
+  "endMs": 22360
+ },
+ {
+  "text": "it",
+  "startMs": 22360,
+  "endMs": 22560
+ },
+ {
+  "text": "yet",
+  "startMs": 22560,
+  "endMs": 22860
+ },
+ {
+  "text": "they",
+  "startMs": 22860,
+  "endMs": 23260
+ },
+ {
+  "text": "haven't",
+  "startMs": 23260,
+  "endMs": 23560
+ },
+ {
+  "text": "packed",
+  "startMs": 23560,
+  "endMs": 23800
+ },
+ {
+  "text": "yet",
+  "startMs": 23800,
+  "endMs": 23980
+ },
+ {
+  "text": "so",
+  "startMs": 23980,
+  "endMs": 24180
+ },
+ {
+  "text": "then",
+  "startMs": 24180,
+  "endMs": 24320
+ },
+ {
+  "text": "people",
+  "startMs": 24320,
+  "endMs": 24760
+ },
+ {
+  "text": "actually",
+  "startMs": 24760,
+  "endMs": 25200
+ },
+ {
+  "text": "very",
+  "startMs": 25200,
+  "endMs": 25640
+ },
+ {
+  "text": "much",
+  "startMs": 25640,
+  "endMs": 25940
+ },
+ {
+  "text": "dislike",
+  "startMs": 25940,
+  "endMs": 26460
+ },
+ {
+  "text": "that",
+  "startMs": 26460,
+  "endMs": 26680
+ },
+ {
+  "text": "in",
+  "startMs": 26680,
+  "endMs": 26800
+ },
+ {
+  "text": "the",
+  "startMs": 26800,
+  "endMs": 26900
+ },
+ {
+  "text": "hobby",
+  "startMs": 26900,
+  "endMs": 27100
+ },
+ {
+  "text": "oh",
+  "startMs": 27100,
+  "endMs": 27260
+ },
+ {
+  "text": "really",
+  "startMs": 27260,
+  "endMs": 27560
+ },
+ {
+  "text": "yeah",
+  "startMs": 27560,
+  "endMs": 28120
+ },
+ {
+  "text": "because",
+  "startMs": 28120,
+  "endMs": 28900
+ },
+ {
+  "text": "because",
+  "startMs": 28900,
+  "endMs": 29060
+ },
+ {
+  "text": "this",
+  "startMs": 29060,
+  "endMs": 29320
+ },
+ {
+  "text": "stay",
+  "startMs": 29320,
+  "endMs": 29620
+ },
+ {
+  "text": "on",
+  "startMs": 29620,
+  "endMs": 29820
+ },
+ {
+  "text": "time",
+  "startMs": 29820,
+  "endMs": 30000
+ },
+ {
+  "text": "this",
+  "startMs": 30000,
+  "endMs": 30260
+ },
+ {
+  "text": "product",
+  "startMs": 30260,
+  "endMs": 30540
+ },
+ {
+  "text": "we",
+  "startMs": 30540,
+  "endMs": 30760
+ },
+ {
+  "text": "just",
+  "startMs": 30760,
+  "endMs": 31020
+ },
+ {
+  "text": "ripped",
+  "startMs": 31020,
+  "endMs": 31280
+ },
+ {
+  "text": "had",
+  "startMs": 31280,
+  "endMs": 31540
+ },
+ {
+  "text": "your",
+  "startMs": 31540,
+  "endMs": 31640
+ },
+ {
+  "text": "most",
+  "startMs": 31640,
+  "endMs": 31920
+ },
+ {
+  "text": "expensive",
+  "startMs": 31920,
+  "endMs": 32460
+ },
+ {
+  "text": "sale",
+  "startMs": 32460,
+  "endMs": 32780
+ },
+ {
+  "text": "ever",
+  "startMs": 32780,
+  "endMs": 33040
+ },
+ {
+  "text": "do",
+  "startMs": 33040,
+  "endMs": 33220
+ },
+ {
+  "text": "you",
+  "startMs": 33220,
+  "endMs": 33320
+ },
+ {
+  "text": "even",
+  "startMs": 33320,
+  "endMs": 33520
+ },
+ {
+  "text": "know",
+  "startMs": 33520,
+  "endMs": 33780
+ },
+ {
+  "text": "your",
+  "startMs": 33780,
+  "endMs": 33920
+ }
+]

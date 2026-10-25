@@ -21,4 +21,4 @@ const P = makePodPlan({
   circle: {at: 1600, who: 'M'},
   extraSfx: [{file: 'anime-wow.mp3', at: 12500, volume: 0.4, onset: 60}],
 });
-export const {SRC, CUTS, SHOTS, CAPTIONS, HOOK, CUTOUTS, PUNCH, AURA, LAUGH, SFX, MUSIC, SPEECH} = P;
+export const {SRC, CUTS, SHOTS, CAPTIONS, HOOK, CUTOUTS, PUNCH, AURA, LAUGH, SFX, MUSIC, SPEECH, TRACK, WSPEED, ACTIONS} = P;

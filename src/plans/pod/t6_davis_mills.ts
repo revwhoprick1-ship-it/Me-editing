@@ -18,4 +18,4 @@ const P = makePodPlan({
   circle: {at: 2100, who: 'M'},
   extraSfx: [{file: 'record-scratch.mp3', at: 9200, volume: 0.4, onset: 40}],
 });
-export const {SRC, CUTS, SHOTS, CAPTIONS, HOOK, CUTOUTS, PUNCH, AURA, LAUGH, SFX, MUSIC, SPEECH} = P;
+export const {SRC, CUTS, SHOTS, CAPTIONS, HOOK, CUTOUTS, PUNCH, AURA, LAUGH, SFX, MUSIC, SPEECH, TRACK, WSPEED, ACTIONS} = P;
