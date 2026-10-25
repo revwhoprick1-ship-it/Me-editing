@@ -24,8 +24,14 @@ Edit podcast/streamer clips into viral vertical Shorts in a **meme / brainrot cl
   - funny → Du bist gut genug;
   - wholesome → "Blue" (Yung Kai), edited as a **W speed edit** in our usual style;
   - serious → phonk. (2026-10-25)
-- **Podcast captions must not cover the speakers' faces**, but stay where viewers look easily (lower part of the video box, under the faces). (2026-10-25)
-- **Podcast: motion-track the speakers** (the crop follows the speaker's face, using real face tracking). (2026-10-25)
+- **Podcast captions stay in ONE fixed spot** (66% down the video box). Never move them per shot; covering a face sometimes is OK. (2026-10-25, replaces the earlier "under the faces" rule)
+- **Podcast: motion-track the speakers**: the crop follows the face of whoever is talking, never random people in the background. `scripts/seat_track.py` only accepts faces near the seat and at seated head height. When people walk around, use wide shots instead. (2026-10-25)
+- **Hook clips are ONLY for card pulls**, never in podcast videos. (2026-10-25)
+- **W Speed edits:**
+  - freeze the screen (`scripts/insert_freeze.py`) and put a **gray overlay** on it;
+  - the "W TREVOR ❤️‍🩹" caption lands on Blue's **"I'd imagine we fell in love / under moonlight skies with you"** (song 55.7–65.4 s; the freeze starts on 59.9 s);
+  - the narrated action text (*TREVOR WALKS IN*) gets a **keyboard typing SFX** (`sfx/keyboard-typing.mp3`). (2026-10-25)
+- **Let the speaker finish the story before the video ends.** End cuts on a finished sentence, even if it runs a bit past 25 s. (2026-10-25)
 - **ElevenLabs retries: don't wait long.** If a call is rate-limited, retry after a couple of minutes, not 15–30. On 2026-10-25 an immediate retry worked and two back-to-back calls went through. (2026-10-25)
 - **Podcast clips:** use the Ref C layout (black bars, video box, plain top caption "Do you agree with this? 💀", cut-out photos of people mentioned) **on top of** our normal edit style. See [[Reference Shorts#Ref C: podcast layout (user: "for podcast style videos make it like this")]].
 

@@ -15,8 +15,10 @@ export type Shot =
   | {from: number; kind: 'wide'; who?: undefined};
 // Face track per seat from scripts/seat_track.py: [x, y, faceH] in source px every stepMs from fromMs.
 export type SeatTrack = {stepMs: number; fromMs: number} & Partial<Record<'L' | 'M' | 'R', [number, number, number][]>>;
-// W Speed slam (wholesome clips): big "W TREVOR ❤️‍🩹" on the Blue beat, cutting to crowd reactions.
-export type WSpeed = {at: number; text: string; beatMs: number; beats: number; crowd: {file: string; from: number}[]};
+// W Speed slam (wholesome clips): the screen freezes (scripts/insert_freeze.py), goes gray, and a big
+// "W TREVOR ❤️‍🩹" pulses on the Blue beat while the "…under moonlight skies with you" lyric plays.
+// No hook clips here: those are only for card pulls.
+export type WSpeed = {at: number; text: string; beatMs: number; beats: number};
 // Narrated action text, W Speed style: *TREVOR WALKS IN* (italic, name in red).
 export type Action = {at: number; to: number; name: string; text: string};
 export type Mood = 'funny' | 'wholesome' | 'serious';
@@ -53,7 +55,7 @@ export type PodSpec = {
 // Default song per mood (drop = ms in the song where the beat comes in).
 const MOOD_MUSIC: Record<Mood, {file: string; drop: number[]; volume: number; duck: number; loop: boolean}> = {
   funny: {file: 'du-bist-gut-genug.mp3', drop: [], volume: 0.32, duck: 0.17, loop: true},
-  wholesome: {file: 'blue-yung-kai.mp3', drop: [23500, 58300], volume: 0.34, duck: 0.16, loop: false},
+  wholesome: {file: 'blue-yung-kai.mp3', drop: [59900], volume: 0.42, duck: 0.15, loop: false}, // 59.9 s = "under moonlight skies with you"
   serious: {file: 'montagem-uranium.mp3', drop: [9300, 37000, 73800], volume: 0.3, duck: 0.13, loop: false},
 };
 
@@ -153,6 +155,9 @@ export const makePodPlan = (s: PodSpec) => {
     ...(s.punch ? [{file: s.punch.sfx ?? 'vine-boom.mp3', at: s.punch.at, volume: 0.6, onset: 80}] : []),
     ...(s.aura ? [{file: 'camera-shutter.mp3', at: s.aura.at - 150, volume: 0.6, onset: 10},
       {file: 'error.mp3', at: s.aura.at, volume: 0.5, onset: 110}] : []),
+    // keyboard typing while the narrated action text types itself out (W Speed)
+    ...(s.actions ?? []).map((a) => ({file: 'keyboard-typing.mp3', at: a.at, volume: 0.55, onset: 100,
+      maxMs: (a.name.split(' ').length + a.text.split(' ').length) * 133 + 350})),
     ...(s.extraSfx ?? []),
   ];
   const lastEnd = Math.max(...s.cuts.map(([, b]) => b));

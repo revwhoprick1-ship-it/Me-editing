@@ -162,14 +162,8 @@ const ShotView = ({shot, src, trim, srcFrom}: {shot: Shot; src: string; trim: nu
 
 // ---- captions ------------------------------------------------------------
 // Words appear as they're spoken (Ref A); keywords glow in their color.
-// Where captions go so they never cover a face: under the faces in close-ups (emoji below the
-// words), on the seam between the wide shot and the close-up in stacked shots (emoji above).
-const captionPlace = (at: number) => {
-  const shot = [...SHOTS].reverse().find((s) => s.from <= at) ?? SHOTS[0];
-  return shot.kind === 'stack'
-    ? {top: BOX_TOP + STACK_TOP - 78, emojiBelow: false}
-    : {top: BOX_TOP + Math.round(BOX_H * 0.68), emojiBelow: true};
-};
+// Captions always sit in ONE place (user: don't move them around; covering a face now and then is fine).
+const captionPlace = (_at: number) => ({top: BOX_TOP + Math.round(BOX_H * 0.66), emojiBelow: false});
 
 const Caption = ({c}: {c: CaptionGroup}) => {
   const frame = useCurrentFrame();
@@ -324,8 +318,8 @@ const Aura = () => {
   );
 };
 
-// W Speed slam (wholesome): on every beat the colour of "W TREVOR ❤️‍🩹" changes and the text
-// pulses; every other beat cuts to a crowd/celebration clip (vWrSsM8JBhc pattern).
+// W Speed slam (wholesome): the source is frozen here (insert_freeze.py); the frame goes gray and
+// "W TREVOR ❤️‍🩹" pulses, changing colour on every beat, while the moonlight-skies lyric plays.
 const WSpeedSlam = () => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
@@ -336,18 +330,14 @@ const WSpeedSlam = () => {
   const colors = ['#FF3B3B', '#3BFF5C', '#3BE8FF'];
   const color = colors[beat % 3];
   const pulse = interpolate(inBeat, [0, 3, beatF], [1.25, 1, 0.97], {extrapolateRight: 'clamp'});
-  const crowd = beat % 2 === 1 ? w.crowd[Math.floor(beat / 2) % w.crowd.length] : null;
   const flash = interpolate(frame, [0, 4], [0.85, 0], {extrapolateRight: 'clamp'});
+  const gray = interpolate(frame, [0, 6], [0, 1], {extrapolateRight: 'clamp'});
   return (
     <AbsoluteFill>
-      {crowd && (
-        <div style={{position: 'absolute', top: BOX_TOP, width: OUT_W, height: BOX_H, overflow: 'hidden'}}>
-          <Sequence from={beat * beatF} layout="none">
-            <OffthreadVideo src={staticFile(crowd.file)} muted trimBefore={f(crowd.from)}
-              style={{width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top'}} />
-          </Sequence>
-        </div>
-      )}
+      {/* gray overlay on the paused frame */}
+      <div style={{position: 'absolute', top: BOX_TOP, width: OUT_W, height: BOX_H, opacity: gray,
+        backdropFilter: 'grayscale(1) brightness(0.8)', WebkitBackdropFilter: 'grayscale(1) brightness(0.8)',
+        background: 'rgba(90,90,90,0.35)'}} />
       <AbsoluteFill style={{backgroundColor: 'white', opacity: flash}} />
       <AbsoluteFill style={{top: BOX_TOP + BOX_H * 0.66, bottom: 'auto', height: 'auto', alignItems: 'center', flexDirection: 'row',
         justifyContent: 'center', gap: 18, transform: `scale(${pulse})`}}>

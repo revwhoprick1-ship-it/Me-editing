@@ -19,3 +19,13 @@ Analysed: `vWrSsM8JBhc` ("Ishowspeed Picks Up Water - W Speed ❤️‍🩹 Edit
 ## How we combine it with our style
 - Keep the podcast layout (black bars, top caption, glow captions with iOS emoji, whoosh/ding).
 - Music = Blue instead of Du bist gut genug, and the "W TREVOR ❤️‍🩹" slam on the wholesome peak.
+
+## Correction from the user (2026-10-25)
+- The W caption is timed to the lyric **"I'd imagine we fell in love / under moonlight skies with you"**. In `blue-yung-kai.mp3` the lyric is at 55.7–65.4 s, and "under moonlight skies" starts at 59.9 s.
+- On that line the screen is **paused (freeze frame)** with a **gray overlay**, and "W …" pulses.
+- Action text like *TREVOR WALKS IN* has **keyboard typing** SFX.
+- **No crowd cutaways from the hook clips in podcasts.** Hook clips are only for card pulls.
+- How we build it:
+  - put the freeze at the end of the story, so the speaker finishes first;
+  - make it 8 beats × 740 ms = 5.92 s;
+  - the music offset puts song 59.9 s on the freeze, so "I'd imagine we fell in love" plays under the last sentence.

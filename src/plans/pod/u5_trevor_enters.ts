@@ -6,17 +6,18 @@ import {makePodPlan, type SeatTrack} from './make';
 
 export * from './make';
 const P = makePodPlan({
-  src: 'pod2/u5_trevor_enters.mp4',
-  cuts: [[0, 19700]],
+  src: 'pod2/u5_trevor_enters_w.mp4', // 13.7 s + 2x replay of the bow + 5.92 s freeze (W Speed)
+  cuts: [[0, 24100]],
   seats: {L: 750, M: 1150, R: 1600},
   track: track as SeatTrack,
-  speakers: [{from: 0, who: 'W'}, {from: 7300, who: 'R'}, {from: 9000, who: 'M'}, {from: 11000, who: 'R'}, {from: 13700, who: 'W'}],
+  // people walk around here: wide shots, tracking only the bowing host (M)
+  speakers: [{from: 0, who: 'W'}, {from: 9000, who: 'M'}, {from: 11000, who: 'W'}, {from: 13700, who: 'M'}, {from: 18200, who: 'W'}],
   words,
   mood: 'wholesome',
   colors: {HAIL: '#FFE14D', KING: '#FFE14D', BOYS: '#5CFF5C'},
   emoji: {KING: '1f451'},
   hook: {text: 'The boys bowed down when Trevor walked in', emoji: '1f451'},
   actions: [{at: 7300, to: 9000, name: 'TREVOR', text: 'WALKS IN'}, {at: 9000, to: 11200, name: 'THE BOYS', text: 'BOW DOWN'}],
-  wspeed: {at: 11300, text: 'W TREVOR', beatMs: 740, beats: 6, crowd: [{file: 'hooks/costco_guys_boom.mp4', from: 400}, {file: 'hooks/scream_yessir.mp4', from: 0}, {file: 'hooks/oh_my_god_our_first_one.mp4', from: 200}, {file: 'hooks/holy_scream.mp4', from: 100}]},
+  wspeed: {at: 18200, text: 'W TREVOR', beatMs: 740, beats: 8},
 });
 export const {SRC, CUTS, SHOTS, CAPTIONS, HOOK, CUTOUTS, PUNCH, AURA, LAUGH, SFX, MUSIC, SPEECH, TRACK, WSPEED, ACTIONS} = P;

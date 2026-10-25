@@ -6,7 +6,7 @@ import {makePodPlan, type SeatTrack} from './make';
 export * from './make';
 const P = makePodPlan({
   src: 'pod2/u1_playbook.mp4',
-  cuts: [[0, 3300], [14400, 19000], [37000, 43100], [49000, 55200]],
+  cuts: [[0, 3300], [14400, 19000], [37000, 43100], [49000, 58200]],
   seats: {L: 405, M: 930, R: 1440},
   track: track as SeatTrack,
   speakers: [{from: 0, who: 'R'}, {from: 3400, who: 'M'}],
