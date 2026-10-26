@@ -6,6 +6,7 @@ import {MG_FPS, MG_OUT_MS, MotionPod} from './MotionPod';
 import {E2_FPS, E2_OUT_MS, Edit2} from './Edit2';
 import {CV_FPS, CV_OUT_MS, E2Coverage} from './E2Coverage';
 import {E3_FPS, E3_OUT_MS, E3Ant} from './E3Ant';
+import {E3_CLIPS} from './e3/clips';
 
 export const RemotionRoot = () => (
   <>
@@ -58,5 +59,6 @@ export const RemotionRoot = () => (
     height={1920}
     durationInFrames={Math.round((E3_OUT_MS / 1000) * E3_FPS)}
   />
+  {E3_CLIPS.map(([id, C, ms]) => <Composition key={id} id={id} component={C} fps={30} width={1080} height={1920} durationInFrames={Math.round((ms / 1000) * 30)} />)}
   </>
 );

@@ -28,6 +28,21 @@ First build: `src/E3Ant.tsx` (composition `E3Ant`). Clip: t1_tiger_auto_pen, the
 - **Cut dead air hard.** Re-transcribe unclear lines (faster-whisper; pass a numpy array, since the file-path input breaks on this av version). Remove garbled parts instead of captioning them wrong.
 - Captions stay in **one fixed spot** (y=1560). Hide them only while kinetic text already says the same words (the hook, B-roll).
 
+## No loud booms (user, 2026-10-26)
+"Don't use that super loud BOOM sound." The **bass-boosted vine boom is banned**. Impacts are soft: mg-boom / 808 at 0.16–0.2 at most. Let the music drop and the camera shake carry the hit.
+
+## Batch: 6 clips, each a different world (user: "each output should be unique, not mass produced")
+Code: `src/e3/kit.tsx` holds only the plumbing (timeline with freeze holds, face cam + mattes, captions, sound tracks). Each clip has its own file with its own concept, palette, fonts, caption style, transition and music:
+| clip | file | concept | type | transitions | music |
+|---|---|---|---|---|---|
+| t3 rollout-left | `e3/Lefty.tsx` | chalkboard X's & O's split screen, sepia flashback, mirror flip, chalk tallies | Anton + Caveat | smear left | Funk Sigilo (drop on LEFT) |
+| t4 natty ticket | `e3/Ticket.tsx` | 3D ticket printed/stamped/signed, empty frame filled at the end | Playfair + Courier, typed captions | soft zoom | Blue W Speed freeze at 58.27 s |
+| t2 golf foursome | `e3/Foursome.tsx` | scorecard filling in, heaven rays, Tiger behind Trevor, 15 majors counter, ball-in-cup iris | Cormorant + Archivo Black + pencil | vertical | Du bist (full) 42.5 s drop |
+| u2 PSA-10 celly | `e3/Celly.tsx` | LED dot-matrix, CELLY CAM jumbotron, celly meter 0→10, gem-mint scale, confetti | Bungee + VT323 | zoom | Du bist (full) 83.8 s drop |
+| t5 true gold | `e3/TrueGold.tsx` | gold refractor card, prism sweep, RGB glitch twist, HINES- name morph | Unbounded + Space Grotesk | spin + glitch | Du bist (full) 2.0 s drop |
+| u1 playbook | `e3/Playbook.tsx` | blueprint: install progress bar, route tiles, inventory wall → THIS WEEK | Oswald + Space Mono, boxed captions | scanline | Montagem Pegadora 15.7 s drop |
+Synthesized foley in `public/sfx/`: chalk-scratch, projector, paper-tear, scan-beep (plus pen-scribble, phone-buzz).
+
 ## Sound design checklist
 - Whoosh (fast-whoosh) on every cut; a pop/click per kinetic word.
 - **Music drop-out about 0.2 s before the punchline**, then a bass-boosted vine boom.
