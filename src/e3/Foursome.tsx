@@ -38,7 +38,7 @@ const who = (s: number) => {
   return 'L' as const;
 };
 const cam: CamCfg = {
-  src: SRC, tl, track: track as unknown as Track, who, mattes: mattesFor('t2'), wideX: 620,
+  src: SRC, tl, track: track as unknown as Track, who, mattes: mattesFor('t2'), wideX: 330,
   grade: 'contrast(1.1) saturate(1.12) brightness(0.95)',
   zoom: (o) => punchAt([[T.jesus, S[3], 1.12], [T.tiger, S[4], 1.12], [T.goat, T.heGoat, 1.1], [T.grade, tl.total, 1.12]], o) * (1 + 0.04 * ((o % 4500) / 4500)),
 };
