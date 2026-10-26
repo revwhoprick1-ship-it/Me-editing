@@ -78,3 +78,26 @@ Engine: `src/Edit2.tsx`. Plans: `src/plans/edit2/<name>.ts` (types in `types.ts`
 | e2_playbook.mp4 | u1, how much the playbook changes | "How many plays does an NFL QB actually learn?" | HUNDREDS stack → checklist (runs / pass concepts / play action / screens) → field formation/motion/route → counter 10 new plays a week |
 | e2_coverage.mp4 | u6, knowing the coverage pre-snap | "How an NFL QB knows the coverage before the snap" (cold open "most CONFIDENCE before the ball is snapped") | Liam Coen card → field: motion makes the D show it, wide open → Cover 3 zones + seams → "it's COVER 3. I got the seam." |
 | e2_goleft.mp4 | t3, throwing on the move | "A righty who throws better going LEFT?" | "since I was a KID." → field: coaches roll you right ✗ → go LEFT → "only throw to his RIGHT." → "worked going LEFT so much." |
+
+
+## Edit2 **v2** (user, 2026-10-26: "v1 is too simple, copy their motion graphics, add images")
+Test edit: `src/E2Coverage.tsx` (composition `E2Coverage`), output `e2v2_coverage.mp4`. A frame-by-frame look at the ref (10 fps) showed what v1 lacked:
+- **Everything keeps moving:** slow push/drift on every scene, nothing static.
+- **Real images with depth:** blurred backgrounds, 3D tilt, parallax.
+- **Hard cuts and motion-blur whips,** plus white flashes and colour shifts.
+- **UI at different blur depths.**
+
+Techniques added in v2:
+- **Text behind the speaker:** `scripts/person_matte.py` (rembg u2net_human_seg) cuts the person out of each source frame, crop x 545..1345, saved 480x648 at 30 fps in `public/matte/<edit>/` (gitignored). The face cam draws the video, then the big word, then the person cut-out on top. Examples: "CONFIDENCE" and "COVER 3" behind Trevor's head.
+- **Photos** (CC from Openverse / Wikimedia; download with `thumb.wikimedia.org/.../1280px-<file>` when `upload.` returns 429):
+  - Ken Burns, depth blur and a colour grade;
+  - a cut-out (rembg isnet + `binary_fill_holes`) standing in front of giant serif text, then stepping aside;
+  - a polaroid stack outro with camera-shutter SFX.
+- **3D telestrator field:** the top-down field in `perspective(1500px) rotateX(48–52deg)`, with a light sweep, glowing routes and DEEP ⅓ zones. Spring-popped chips float above it in 2D.
+- **WhipIn** on every scene: fast slide with motion blur, plus an optional white flash. The cam can also sit in a floating 3D-tilted card.
+- **Film grain** via SVG feTurbulence (7 %, overlay).
+- **Images used (credit when posting):**
+  - Trevor Lawrence photos by All-Pro Reels (CC BY-SA 2.0, Commons);
+  - "Trevor Lawrence & Cam Robinson Jaguars 2021" by Atlanta Falcons (CC BY 3.0);
+  - "Jacksonville Municipal Stadium" by Joe Shlabotnik (CC BY 2.0, Flickr).
+- **Next:** fold these into the Edit2 engine as scene types (`photoCut`, `field3d`, `behindText`, `polaroids`).

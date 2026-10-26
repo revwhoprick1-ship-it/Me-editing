@@ -4,6 +4,7 @@ import {SRC as POD_SRC} from './activePod';
 import {FPS, OUT_MS, ShortEdit} from './ShortEdit';
 import {MG_FPS, MG_OUT_MS, MotionPod} from './MotionPod';
 import {E2_FPS, E2_OUT_MS, Edit2} from './Edit2';
+import {CV_FPS, CV_OUT_MS, E2Coverage} from './E2Coverage';
 
 export const RemotionRoot = () => (
   <>
@@ -39,6 +40,14 @@ export const RemotionRoot = () => (
     width={1080}
     height={1920}
     durationInFrames={Math.round((E2_OUT_MS / 1000) * E2_FPS)}
+  />
+  <Composition
+    id="E2Coverage"
+    component={E2Coverage}
+    fps={CV_FPS}
+    width={1080}
+    height={1920}
+    durationInFrames={Math.round((CV_OUT_MS / 1000) * CV_FPS)}
   />
   </>
 );
