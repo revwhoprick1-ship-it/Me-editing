@@ -49,6 +49,7 @@ Edit podcast/streamer clips into viral vertical Shorts in a **meme / brainrot cl
   - [[Caption style]]: font (Montserrat 800 + glow), keyword colors, iOS emoji
   - [[SFX and music library]]: every sound/music file, when to use it, licensing
   - [[Card pull playbook]]: template for card-pull stream clips
+  - [[Edit3 kinetic storytelling compositing]]: **Edit3** (`src/E3Ant.tsx`): kinetic type + story graphics + text/photos behind the speaker; lessons from the 38% STW flop (no ad look, cold-open hook, sound design checklist)
   - [[Motion graphics podcast style]]: **preset Edit2** (`src/Edit2.tsx` + `src/plans/edit2/`), the motion-graphics podcast edit, plus research on 6 viral refs
 - **Workflow**
   - [[Edit workflow]]: step by step, from Drive link to rendered MP4

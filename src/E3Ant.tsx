@@ -218,15 +218,15 @@ const HookBehind = ({o}: {o: number}) => {
   if (o < T.roast) {
     const rp = ease(o, -200, 700);
     return <>
-      <Img src={staticFile('cutouts/richardson.png')} style={{position: 'absolute', left: 470 + (1 - rp) * 500, top: 620, height: 900,
+      <Img src={staticFile('cutouts/richardson.png')} style={{position: 'absolute', left: 560 + (1 - rp) * 500, top: 560, height: 820,
         filter: 'grayscale(0.35) contrast(1.1) brightness(0.85) drop-shadow(0 0 40px rgba(80,160,255,0.45))', opacity: rp}} />
-      <div style={{position: 'absolute', top: 200, width: W, textAlign: 'center', ...font.bold, fontSize: 214, lineHeight: 1, color: 'white', textShadow: glow,
+      <div style={{position: 'absolute', top: 300, width: W, textAlign: 'center', ...font.bold, fontSize: 214, lineHeight: 1, color: 'white', textShadow: glow,
         ...land(o, 0, 'slam')}}>ANTHONY</div>
-      <div style={{position: 'absolute', top: 410, width: W, textAlign: 'center', ...font.serifI, fontSize: 160, lineHeight: 1, ...goldText,
+      <div style={{position: 'absolute', top: 500, width: W, textAlign: 'center', ...font.serifI, fontSize: 160, lineHeight: 1, ...goldText,
         ...land(o, 420, 'up')}}>Richardson's</div>
     </>;
   }
-  if (o < T.ant) return <div style={{position: 'absolute', top: 190, width: W, textAlign: 'center', lineHeight: 0.95}}>
+  if (o < T.ant) return <div style={{position: 'absolute', top: 300, width: W, textAlign: 'center', lineHeight: 0.95}}>
     <div style={{...font.bold, fontSize: 170, color: 'white', textShadow: glow}}>
       <span style={{display: 'inline-block', ...land(o, 1180, 'left')}}>HIS</span> <span style={{display: 'inline-block', ...land(o, 1520, 'right')}}>AUTO</span>
     </div>
@@ -234,9 +234,9 @@ const HookBehind = ({o}: {o: number}) => {
   </div>;
   const walk = interpolate(o, [T.ant + 150, T.card], [-120, 1180], clamp);
   return <>
-    <div style={{position: 'absolute', top: 150, width: W, textAlign: 'center', ...font.bold, fontSize: 400, lineHeight: 1, color: RED,
+    <div style={{position: 'absolute', top: 120, left: 70, width: W, textAlign: 'center', ...font.bold, fontSize: 400, lineHeight: 1, color: RED,
       textShadow: '0 0 60px rgba(255,59,59,0.55), 0 10px 40px rgba(0,0,0,0.6)', ...land(o, T.ant, 'slam')}}>ANT.</div>
-    {o > T.ant + 150 && <Emoji code="1f41c" size={190} style={{left: walk, top: 90 + Math.abs(Math.sin(o / 60)) * -14,
+    {o > T.ant + 150 && <Emoji code="1f41c" size={190} style={{left: walk, top: 60 + Math.abs(Math.sin(o / 60)) * -14,
       transform: `scaleX(-1) rotate(${Math.sin(o / 45) * 7}deg)`}} />}
   </>;
 };
@@ -253,24 +253,13 @@ const LaughPops = ({o}: {o: number}) => {
 const CardScene = ({o}: {o: number}) => {
   const lo = o - T.card;
   const inP = pop(o, T.card, 15, 120);
-  const zoom = interpolate(o, [T.big - 60, T.big + 420], [1, 2.3], {...clamp, easing: Easing.inOut(Easing.cubic)});
-  const sway = Math.sin(lo / 520) * 9 * (1 - (zoom - 1) / 1.3);
+  const zoom = interpolate(o, [T.big - 60, T.big + 420], [1, 2.1], {...clamp, easing: Easing.inOut(Easing.cubic)});
+  const sway = Math.sin(lo / 520) * 9 * (1 - (zoom - 1) / 1.1);
   const aP = ease(o, T.a, 300);
   const rP = ease(o, T.r, 300);
   const measure = ease(o, T.big + 380, 300);
   return (
     <AbsoluteFill>
-      {/* kinetic words across the top */}
-      <div style={{position: 'absolute', top: 120, width: W, height: 300}}>
-        {o < T.big && <>
-          <div style={{position: 'absolute', left: 70, top: 10, ...font.serifI, fontSize: 96, color: 'white', textShadow: glow, ...land(o, T.card + 40, 'left')}}>just an</div>
-          <div style={{position: 'absolute', left: 120, top: 90, ...font.bold, fontSize: 240, color: 'white', textShadow: glow, ...land(o, T.a, 'slam')}}>A</div>
-          <div style={{position: 'absolute', left: 440, top: 130, ...font.serifI, fontSize: 170, ...goldText, ...land(o, T.amp, 'up')}}>&amp;</div>
-          <div style={{position: 'absolute', left: 700, top: 90, ...font.bold, fontSize: 240, color: 'white', textShadow: glow, ...land(o, T.r, 'slam')}}>R</div>
-        </>}
-        {o >= T.big && <div style={{position: 'absolute', top: 30, width: W, textAlign: 'center', ...font.bold, fontSize: 170, color: 'white', textShadow: glow,
-          ...land(o, T.big, 'slam')}}>THIS <span style={{color: RED}}>BIG</span></div>}
-      </div>
       {/* the slab */}
       <div style={{position: 'absolute', left: 220, top: 470, width: 640, height: 940, perspective: 1500}}>
         <div style={{position: 'absolute', inset: 0, transformOrigin: '53% 72%',
@@ -287,7 +276,7 @@ const CardScene = ({o}: {o: number}) => {
             <div style={{position: 'absolute', inset: 0, background: 'repeating-linear-gradient(115deg, rgba(255,255,255,0.05) 0 14px, transparent 14px 34px)'}} />
             <Img src={staticFile('cutouts/richardson.png')} style={{position: 'absolute', left: -60, bottom: 0, height: 700}} />
             <div style={{position: 'absolute', left: 0, right: 0, bottom: 0, height: 120, background: 'linear-gradient(180deg, transparent, rgba(0,10,30,0.9))'}} />
-            <div style={{position: 'absolute', left: 24, bottom: 22, fontFamily: SANS, fontWeight: 800, fontSize: 40, color: 'white', letterSpacing: '-0.02em'}}>ANTHONY RICHARDSON</div>
+            <div style={{position: 'absolute', left: 24, bottom: 22, fontFamily: SANS, fontWeight: 800, fontSize: 40, color: 'white', letterSpacing: '-0.02em', opacity: 2 - zoom}}>ANTHONY RICHARDSON</div>
             {/* sticker auto box */}
             <div style={{position: 'absolute', left: 150, top: 470, width: 300, height: 120, borderRadius: 8, background: 'rgba(255,255,255,0.94)',
               boxShadow: '0 4px 10px rgba(0,0,0,0.4)'}}>
@@ -308,6 +297,17 @@ const CardScene = ({o}: {o: number}) => {
           {/* plastic glare */}
           <div style={{position: 'absolute', inset: 0, borderRadius: 34, background: `linear-gradient(115deg, transparent ${30 + Math.sin(lo / 700) * 25}%, rgba(255,255,255,0.22) ${38 + Math.sin(lo / 700) * 25}%, transparent ${46 + Math.sin(lo / 700) * 25}%)`}} />
         </div>
+      </div>
+      {/* kinetic words across the top */}
+      <div style={{position: 'absolute', top: 120, width: W, height: 300}}>
+        {o < T.big && <>
+          <div style={{position: 'absolute', left: 70, top: 10, ...font.serifI, fontSize: 96, color: 'white', textShadow: glow, ...land(o, T.card + 40, 'left')}}>just an</div>
+          <div style={{position: 'absolute', left: 120, top: 90, ...font.bold, fontSize: 240, color: 'white', textShadow: glow, ...land(o, T.a, 'slam')}}>A</div>
+          <div style={{position: 'absolute', left: 440, top: 130, ...font.serifI, fontSize: 170, ...goldText, ...land(o, T.amp, 'up')}}>&amp;</div>
+          <div style={{position: 'absolute', left: 700, top: 90, ...font.bold, fontSize: 240, color: 'white', textShadow: glow, ...land(o, T.r, 'slam')}}>R</div>
+        </>}
+        {o >= T.big && <div style={{position: 'absolute', top: 30, width: W, textAlign: 'center', ...font.bold, fontSize: 170, color: 'white', textShadow: glow,
+          ...land(o, T.big, 'slam')}}>THIS <span style={{color: RED}}>BIG</span></div>}
       </div>
     </AbsoluteFill>
   );
@@ -336,9 +336,9 @@ const Consistent = ({o}: {o: number}) => {
       const at = T.cons + 120 + i * 140;
       if (o < at) return null;
       const p = ease(o, at, 120);
-      return <div key={i} style={{position: 'absolute', left: i % 2 ? 560 : 70, top: 1090 + Math.floor(i / 2) * 190,
+      return <div key={i} style={{position: 'absolute', left: i % 2 ? 560 : 50, top: 1080 + Math.floor(i / 2) * 200,
         transform: `scale(${1.6 - 0.6 * p}) rotate(${[-5, 4, 3, -4][i]}deg)`, opacity: Math.min(1, p * 2), filter: `blur(${(1 - p) * 8}px)`}}>
-        <Signature text="Trevor Lawrence" w={440} size={104} p={1} />
+        <Signature text="Trevor Lawrence" w={470} size={118} p={1} />
       </div>;
     })}
   </>;
@@ -347,10 +347,10 @@ const Consistent = ({o}: {o: number}) => {
 // "look how beautiful the signatures": B-roll of the real cards on the table
 const BRoll = ({o}: {o: number}) => {
   const lo = o - T.broll;
-  const k0 = W / 880;
+  const k0 = W / 700;
   const k = k0 * (1 + lo / 9000);
   const cx = 960;
-  const cy = 885;
+  const cy = 915;
   const sweep = ((lo / 1300) % 1) * 160 - 30;
   return (
     <AbsoluteFill style={{background: '#06070b'}}>
@@ -359,7 +359,7 @@ const BRoll = ({o}: {o: number}) => {
           <OffthreadVideo src={staticFile(SRC)} muted trimBefore={f(SEGS[2][0])} style={{width: '100%', height: '100%'}} />
         </div>
       </AbsoluteFill>
-      <div style={{position: 'absolute', left: 20, top: 520, width: 1040, height: 470, perspective: 1300}}>
+      <div style={{position: 'absolute', left: 20, top: 720, width: 1040, height: 470, perspective: 1300}}>
         <div style={{position: 'absolute', inset: 0, borderRadius: 30, overflow: 'hidden', boxShadow: '0 50px 90px rgba(0,0,0,0.75), 0 0 0 3px rgba(255,255,255,0.18)',
           transform: `rotateX(${20 - lo / 120}deg) rotateZ(${-2 + lo / 900}deg) scale(${0.92 + ease(o, T.broll, 400) * 0.08})`}}>
           <div style={{position: 'absolute', left: 520 - cx * k, top: 235 - cy * k, width: SRC_W * k, height: SRC_H * k, filter: GRADE}}>
@@ -368,9 +368,9 @@ const BRoll = ({o}: {o: number}) => {
           <div style={{position: 'absolute', inset: 0, background: `linear-gradient(110deg, transparent ${sweep}%, rgba(255,240,200,0.28) ${sweep + 8}%, transparent ${sweep + 16}%)`}} />
         </div>
       </div>
-      {[[150, 610, 70, 140], [880, 560, 90, 420], [520, 930, 60, 700], [300, 820, 50, 980], [950, 880, 70, 1180], [700, 600, 55, 1400]].map(([x, y, s, at], i) =>
+      {[[150, 810, 70, 140], [880, 760, 90, 420], [520, 1130, 60, 700], [300, 1020, 50, 980], [950, 1080, 70, 1180], [700, 800, 55, 1400]].map(([x, y, s, at], i) =>
         <Sparkle key={i} x={x} y={y} s={s} o={o} at={T.broll + at} />)}
-      <div style={{position: 'absolute', top: 1090, width: W, textAlign: 'center', lineHeight: 0.9}}>
+      <div style={{position: 'absolute', top: 180, width: W, textAlign: 'center', lineHeight: 0.9}}>
         <div style={{...font.sans, fontSize: 64, color: 'white', textShadow: glow, ...land(o, 8600, 'up')}}>look how</div>
         <div style={{...font.serifI, fontSize: 220, ...goldText, ...land(o, T.beaut, 'slam')}}>beautiful</div>
         <div style={{...font.sans, fontWeight: 600, fontSize: 66, color: 'white', textShadow: glow, ...land(o, T.sigs - 180, 'up')}}>the signatures are.</div>
@@ -388,9 +388,9 @@ const Goated = ({o}: {o: number}) => {
       <div style={{...font.bold, fontSize: 196, color: GREEN, textShadow: '0 0 40px rgba(82,255,122,0.5), 0 8px 30px rgba(0,0,0,0.6)', ...land(o, T.goated, 'slam')}}>GOATED</div>
     </div>
     <Emoji code="1f410" size={150} style={{left: 860, top: 70, transform: `scale(${pop(o, T.goated + 80, 9, 240)}) rotate(14deg)`}} />
-    {o >= T.pen && <div style={{position: 'absolute', left: 300 + (1 - pp) * 900, top: 430, perspective: 900}}>
-      <div style={{transform: `rotateZ(${-12 + (1 - pp) * 140}deg) rotateY(${(1 - pp) * 260 + Math.sin(o / 300) * 18}deg)`}}>
-        <GoldPen len={500} spin={o / 160} />
+    {o >= T.pen && <div style={{position: 'absolute', left: 260 + (1 - pp) * 900, top: 360, perspective: 900}}>
+      <div style={{transform: `rotateZ(${-6 + (1 - pp) * 140}deg) rotateY(${(1 - pp) * 260 + Math.sin(o / 300) * 18}deg)`}}>
+        <GoldPen len={580} spin={o / 160} />
       </div>
     </div>}
   </>;
@@ -475,7 +475,7 @@ const Phone = ({o}: {o: number}) => {
 // payoff: "it's a BIG DEAL to have a nice signature"
 const BigDealBehind = ({o}: {o: number}) => {
   if (o < T.itsA) return null;
-  return <div style={{position: 'absolute', top: 160, width: W, textAlign: 'center', lineHeight: 0.84}}>
+  return <div style={{position: 'absolute', top: 90, width: W, textAlign: 'center', lineHeight: 0.8}}>
     <div style={{...font.sans, fontSize: 72, color: 'white', textShadow: glow, ...land(o, T.itsA, 'up')}}>it's a</div>
     <div style={{...font.bold, fontSize: 300, color: 'white', textShadow: glow, ...land(o, T.bigDeal, 'slam')}}>BIG</div>
     <div style={{...font.bold, fontSize: 300, ...goldText, ...land(o, T.deal, 'slam')}}>DEAL.</div>
