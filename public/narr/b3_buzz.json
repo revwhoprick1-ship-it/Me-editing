@@ -1,0 +1,130 @@
+[
+ {
+  "file": [
+   0,
+   2940
+  ],
+  "words": [
+   {
+    "text": "He",
+    "at": 60
+   },
+   {
+    "text": "already",
+    "at": 160
+   },
+   {
+    "text": "pulled",
+    "at": 720
+   },
+   {
+    "text": "the",
+    "at": 1020
+   },
+   {
+    "text": "Woody",
+    "at": 1140
+   },
+   {
+    "text": "Super.",
+    "at": 1320
+   },
+   {
+    "text": "One",
+    "at": 2240
+   },
+   {
+    "text": "of",
+    "at": 2360
+   },
+   {
+    "text": "one.",
+    "at": 2520
+   }
+  ]
+ },
+ {
+  "file": [
+   3960,
+   7430
+  ],
+  "words": [
+   {
+    "text": "There's",
+    "at": 4020
+   },
+   {
+    "text": "only",
+    "at": 4100
+   },
+   {
+    "text": "one",
+    "at": 4300
+   },
+   {
+    "text": "card",
+    "at": 4720
+   },
+   {
+    "text": "left",
+    "at": 5060
+   },
+   {
+    "text": "he",
+    "at": 5280
+   },
+   {
+    "text": "wants.",
+    "at": 5520
+   }
+  ]
+ },
+ {
+  "file": [
+   7400,
+   11800
+  ],
+  "words": [
+   {
+    "text": "Buzz",
+    "at": 7460
+   },
+   {
+    "text": "Lightyear,",
+    "at": 7720
+   },
+   {
+    "text": "Super",
+    "at": 8620
+   },
+   {
+    "text": "Auto,",
+    "at": 8880
+   },
+   {
+    "text": "one",
+    "at": 9540
+   },
+   {
+    "text": "of",
+    "at": 9780
+   },
+   {
+    "text": "one.",
+    "at": 9920
+   },
+   {
+    "text": "Back",
+    "at": 10700
+   },
+   {
+    "text": "to",
+    "at": 10900
+   },
+   {
+    "text": "back.",
+    "at": 11100
+   }
+  ]
+ }
+]

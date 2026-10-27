@@ -1,0 +1,130 @@
+[
+ {
+  "file": [
+   0,
+   3420
+  ],
+  "words": [
+   {
+    "text": "Most",
+    "at": 60
+   },
+   {
+    "text": "people",
+    "at": 320
+   },
+   {
+    "text": "open",
+    "at": 600
+   },
+   {
+    "text": "a",
+    "at": 900
+   },
+   {
+    "text": "thousand",
+    "at": 1080
+   },
+   {
+    "text": "packs",
+    "at": 1500
+   },
+   {
+    "text": "and",
+    "at": 1920
+   },
+   {
+    "text": "never",
+    "at": 2160
+   },
+   {
+    "text": "see",
+    "at": 2560
+   },
+   {
+    "text": "this.",
+    "at": 2880
+   }
+  ]
+ },
+ {
+  "file": [
+   3700,
+   8590
+  ],
+  "words": [
+   {
+    "text": "Wait,",
+    "at": 3760
+   },
+   {
+    "text": "every",
+    "at": 5240
+   },
+   {
+    "text": "single",
+    "at": 5460
+   },
+   {
+    "text": "card",
+    "at": 5860
+   },
+   {
+    "text": "is",
+    "at": 6340
+   },
+   {
+    "text": "a",
+    "at": 6940
+   },
+   {
+    "text": "hit?",
+    "at": 7120
+   }
+  ]
+ },
+ {
+  "file": [
+   8560,
+   12440
+  ],
+  "words": [
+   {
+    "text": "Godpack!",
+    "at": 8620
+   },
+   {
+    "text": "Every",
+    "at": 9760
+   },
+   {
+    "text": "card",
+    "at": 9920
+   },
+   {
+    "text": "in",
+    "at": 10200
+   },
+   {
+    "text": "the",
+    "at": 10320
+   },
+   {
+    "text": "pack!",
+    "at": 10420
+   },
+   {
+    "text": "It",
+    "at": 11200
+   },
+   {
+    "text": "actually",
+    "at": 11300
+   },
+   {
+    "text": "happened!",
+    "at": 11680
+   }
+  ]
+ }
+]

@@ -26,6 +26,9 @@ const FONTS: [string, string, string, string?][] = [
   ['VT323', 'vt323-400-normal.woff2', '400'], ['Space Grotesk', 'space-grotesk-700-normal.woff2', '700'],
   ['Rubik Glitch', 'rubik-glitch-400-normal.woff2', '400'], ['Oswald', 'oswald-700-normal.woff2', '700'],
   ['Space Mono', 'space-mono-700-normal.woff2', '700'], ['Unbounded', 'unbounded-800-normal.woff2', '800'],
+  ['Pacifico', 'pacifico-400-normal.woff2', '400'],
+  ['Bangers', 'bangers-400-normal.woff2', '400'], ['Cinzel', 'cinzel-700-normal.woff2', '700'], ['Orbitron', 'orbitron-800-normal.woff2', '800'],
+  ['Fredoka', 'fredoka-700-normal.woff2', '700'],
 ];
 FONTS.forEach(([family, file, weight, style]) => loadFont({family, url: staticFile(`fonts/${file}`), weight, style: style ?? 'normal'}));
 
@@ -72,7 +75,8 @@ export type Track = {stepMs: number; fromMs: number} & Partial<Record<'L' | 'M' 
 export type Matte = {src: [number, number]; dir: string; n: number; rect: [number, number, number, number]};
 export type CamCfg = {
   src: string; tl: TL; track: Track; who: (src: number) => Seat; mattes?: Matte[]; grade: string;
-  baseH?: number; wideX?: number; zoom?: (o: number) => number; faceY?: number | ((o: number) => number);
+  baseH?: number; wideX?: number | ((src: number) => number); zoom?: (o: number) => number; faceY?: number | ((o: number) => number);
+  box?: [number, number]; // render size (default the full 1080x1920 frame; black-bar layouts use the video box)
 };
 const faceAt = (tr: Track, who: 'L' | 'M' | 'R', src: number) => {
   const arr = tr[who]!;
@@ -87,14 +91,15 @@ export const camRect = (c: CamCfg, o: number) => {
   const who = c.who(src);
   const z = c.zoom ? c.zoom(o) : 1;
   let hs = (c.baseH ?? 800) / z;
-  let face = {x: c.wideX ?? 960, y: 540};
+  let face = {x: typeof c.wideX === 'function' ? c.wideX(src) : c.wideX ?? 960, y: 540};
   if (who === 'W') hs = Math.min(SRC_H, 1080 / z);
   else face = faceAt(c.track, who, src);
-  const ws = (hs * W) / H;
+  const [bw, bh] = c.box ?? [W, H];
+  const ws = Math.min(SRC_W, (hs * bw) / bh);
   const x0 = Math.min(Math.max(face.x - ws / 2, 0), SRC_W - ws);
   const fy = typeof c.faceY === 'function' ? c.faceY(o) : c.faceY ?? 0.42;
   const y0 = Math.min(Math.max(face.y - hs * fy, 0), SRC_H - hs);
-  return {src, x0, y0, k: W / ws};
+  return {src, x0, y0, k: bw / ws};
 };
 export const Cam = ({c, o, behind, blur = 0, style}: {c: CamCfg; o: number; behind?: ReactNode; blur?: number; style?: CSSProperties}) => {
   const {src, x0, y0, k} = camRect(c, o);
