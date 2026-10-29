@@ -37,7 +37,7 @@ const Odds = ({o}: {o: number}) => {
   const bloom = ease(o, R, 600);
   const cols = 40, cell = 24;
   const gi = 1000 - 1 - 12; // the god pack
-  return <div style={{position: 'absolute', left: (W - cols * cell) / 2, top: 70, width: cols * cell, opacity: 1 - ease(o, R + 1500, 400)}}>
+  return <div style={{position: 'absolute', left: (W - cols * cell) / 2, top: 70, width: cols * cell, opacity: 1 - ease(o, R + 500, 300)}}>
     <div style={{...MONO, fontSize: 30, color: 'white', display: 'flex', justifyContent: 'space-between', marginBottom: 10, textShadow: shadow}}>
       <span>PACKS OPENED</span><span>{gold ? 1000 : n + 1} / 1,000</span></div>
     <svg width={cols * cell} height={25 * cell}>
@@ -99,7 +99,7 @@ const CAPS: Cap[] = [
   [3800, 'OH!'], [4900, 'NO!'], [6140, 'NO!'],
   ...narrCaps(LINES, PLACED, 3, {'GODPACK!': 'GOD PACK!'}, {THOUSAND: '#FFD84D', 'HIT?': '#ff7ad9', 'GOD PACK!': '#FFD84D', 'HAPPENED!': '#77ffd6'}),
   [11180, 'IT HAPPENED!', 'HAPPENED', '#77ffd6'], [13320, 'GOD PACK!', 'GOD PACK', '#FFD84D'], [14120, 'IS IT A GOD PACK?'],
-  [21460, 'S-I-R!', 'S-I-R', '#ff7ad9'], [T.gross, 'THIS IS GROSS!'], [T.shaking, "I'M SHAKING!"],
+  [21460, 'S-I-R!', 'S-I-R', '#ff7ad9'], 
 ];
 
 export const GodPack = () => {
@@ -128,9 +128,9 @@ export const GodPack = () => {
         <GodPackWord o={o} />
         <Binder o={o} />
         <Shaking o={o} />
-        {o < HOOK.ms && <div style={{position: 'absolute', top: 1500, width: W, textAlign: 'center', ...FRED, fontSize: 96, ...holoText, ...land(o, 400, 'slam')}}>1 IN 1,000 PACKS…</div>}
+        {o < HOOK.ms && <div style={{position: 'absolute', top: 1660, width: W, textAlign: 'center', ...FRED, fontSize: 96, ...holoText, ...land(o, 400, 'slam')}}>1 IN 1,000 PACKS…</div>}
       </AbsoluteFill>
-      <Captions o={o} caps={CAPS} off={[[0, HOOK.ms], [R, S[3]]]} top={1640} anim="pop" keyColor="#FFD84D"
+      <Captions o={o} caps={CAPS} off={[[0, HOOK.ms], [R, S[3]], [T.gross - 100, 99999]]} top={1640} anim="pop" keyColor="#FFD84D"
         style={{...FRED, fontSize: 70, color: '#fff', WebkitTextStroke: '5px #1b1033', paintOrder: 'stroke fill', textShadow: shadow}} />
       <AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 45%, transparent 55%, rgba(8,4,20,0.6) 100%)', pointerEvents: 'none'}} />
       <Grain frame={frame} opacity={0.07} />

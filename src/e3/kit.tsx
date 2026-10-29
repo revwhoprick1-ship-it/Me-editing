@@ -154,7 +154,7 @@ export const Captions = ({o, caps, off = [], top = 1560, style, keyColor = '#FFD
 }) => {
   if (off.some(([a, b]) => o >= a && o < b)) return null;
   let i = -1;
-  caps.forEach(([t], j) => { if (o >= t) i = j; });
+  caps.forEach(([t], j) => { if (o >= t && (i < 0 || t >= caps[i][0])) i = j; }); // latest-starting cap wins, list order doesn't matter
   if (i < 0) return null;
   const [t, text, key, kc] = caps[i];
   const s = pop(o, t, 11, 300);

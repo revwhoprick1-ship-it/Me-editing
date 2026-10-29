@@ -29,10 +29,16 @@ const glow = (c: string) => `0 0 18px ${c}, 0 6px 22px rgba(0,0,0,0.7)`;
 const camAt = (o: number) => {
   const s = tl.srcAt(o);
   if (o >= S[1] && o < R) { const p = ease(o, S[1], R - S[1], Easing.in(Easing.quad)); return {z: 1 + 0.3 * p, x: 540, y: 1250, tr: p * 5}; }
-  if (o >= R && o < S[3]) return s < 9600 ? {z: 1.55 - 0.1 * ease(o, R, 800), x: 520, y: 1340, tr: 0} : {z: 1.5, x: 540, y: 230, tr: 0};
+  if (o >= R && o < S[3]) return s < 9600 ? {z: 1.12 - 0.04 * ease(o, R, 800), x: 540, y: 1300, tr: 0} : {z: 1.25, x: 540, y: 230, tr: 0};
   return {z: 1.03, x: 540, y: 960, tr: 0};
 };
 
+// second slot stays encrypted until Alex says the name, then decodes letter by letter
+const GLYPHS = '#%&*?@$XZ';
+const decode = (o: number) => {
+  const shown = Math.floor(interpolate(o, [T.name, T.name + 520], [0, 4], clamp));
+  return 'BUZZ'.split('').map((c, i) => (i < shown ? c : GLYPHS[(Math.floor(o / 70) * 7 + i * 3) % GLYPHS.length])).join('');
+};
 // the mission checklist sits where the stream's burned-in banner was
 const Mission = ({o}: {o: number}) => {
   if (o < HOOK.ms) return null;
@@ -45,15 +51,15 @@ const Mission = ({o}: {o: number}) => {
     </div>
     <div style={{...ORB, fontSize: 34, color: on ? LIME : 'white'}}>{label}</div>
   </div>;
-  return <div style={{position: 'absolute', left: 0, top: 410, width: W, height: 160, background: 'linear-gradient(180deg, rgba(8,10,30,0.96), rgba(18,10,48,0.96))',
-    borderTop: `3px solid ${CYAN}`, borderBottom: `3px solid ${CYAN}`, boxShadow: `0 0 30px rgba(92,225,255,0.35)`, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 46px', boxSizing: 'border-box'}}>
+  return <div style={{position: 'absolute', left: 0, top: 522, width: W, height: 186, background: 'linear-gradient(180deg, rgba(8,10,30,0.96), rgba(18,10,48,0.96))',
+    borderTop: `3px solid ${CYAN}`, borderBottom: `3px solid ${CYAN}`, boxShadow: `0 0 30px rgba(92,225,255,0.35)`, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 130px', whiteSpace: 'nowrap', boxSizing: 'border-box'}}>
     <div>
       <div style={{...MONO, fontSize: 22, color: CYAN, letterSpacing: '0.25em'}}>MISSION</div>
       <div style={{...ORB, fontSize: 32, color: 'white'}}>BACK-TO-BACK SUPERS</div>
     </div>
     <div style={{display: 'flex', flexDirection: 'column', gap: 10}}>
       {box('WOODY 1/1', true, o >= T.woody && o < T.woody + 1200)}
-      {box('BUZZ 1/1', buzz, buzz, tick)}
+      {box(`${decode(o)} 1/1`, buzz, buzz, tick)}
     </div>
   </div>;
 };
@@ -85,23 +91,23 @@ const Reveal = ({o}: {o: number}) => {
   if (o < T.card || o >= S[3]) return null;
   const c = pop(o, T.card, 13, 150);
   return <>
-    <div style={{position: 'absolute', left: 150, top: 640, width: 780, height: 606, transform: `perspective(1400px) rotateY(${(1 - c) * 70 + Math.sin(o / 500) * 8}deg) scale(${c})`,
+    <div style={{position: 'absolute', left: 150, top: 720, width: 780, height: 606, transform: `perspective(1400px) rotateY(${(1 - c) * 70 + Math.sin(o / 500) * 8}deg) scale(${c})`,
       borderRadius: 18, overflow: 'hidden', border: '5px solid #f3d27a', boxShadow: `0 0 60px rgba(243,210,122,0.5), 0 30px 60px rgba(0,0,0,0.7)`, opacity: 1 - ease(o, n3(10000), 400)}}>
       <Img src={staticFile('img/b3/buzz_card.jpg')} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
       <div style={{position: 'absolute', inset: 0, background: `linear-gradient(115deg, transparent ${(o / 10) % 200 - 50}%, rgba(255,255,255,0.4) ${(o / 10) % 200 - 42}%, transparent ${(o / 10) % 200 - 34}%)`}} />
     </div>
-    <div style={{position: 'absolute', top: 150, width: W, textAlign: 'center'}}>
+    <div style={{position: 'absolute', top: 1370, width: W, textAlign: 'center'}}>
       <div style={{...ORB, fontSize: 104, color: 'white', textShadow: glow(PURP), lineHeight: 1, ...land(o, T.name, 'slam')}}>BUZZ</div>
       <div style={{...ORB, fontSize: 92, color: LIME, textShadow: glow(LIME), lineHeight: 1.05, ...land(o, T.name + 260, 'up')}}>LIGHTYEAR</div>
       <div style={{...MONO, fontSize: 34, color: CYAN, marginTop: 10, ...land(o, T.sup, 'up')}}>GOLDEN TOYS SUPER AUTO · SIGNED BY TIM ALLEN</div>
     </div>
-    {o >= T.oneOf && <div style={{position: 'absolute', left: 700, top: 1180, ...ORB, fontSize: 92, color: '#111', background: LIME, padding: '2px 26px', borderRadius: 10,
+    {o >= T.oneOf && <div style={{position: 'absolute', left: 800, top: 1230, ...ORB, fontSize: 92, color: '#111', background: LIME, padding: '2px 26px', borderRadius: 10,
       transform: `rotate(-8deg) scale(${2.2 - 1.2 * ease(o, T.oneOf, 160)})`, boxShadow: `0 0 30px ${LIME}`}}>1/1</div>}
   </>;
 };
 const Dangs = ({o}: {o: number}) => {
   if (o < T.dangs[0] || o >= S[3]) return null;
-  return <div style={{position: 'absolute', top: 820, width: W, textAlign: 'center'}}>
+  return <div style={{position: 'absolute', top: 880, width: W, textAlign: 'center'}}>
     {T.dangs.map((at, i) => o >= at && <div key={i} style={{...ORB, fontSize: 120 + i * 30, lineHeight: 1, color: i === 2 ? LIME : 'white', textShadow: glow(i === 2 ? LIME : PURP),
       ...land(at === T.dangs[i] ? o : o, at, 'slam')}}>DANG!</div>)}
   </div>;
@@ -110,21 +116,15 @@ const Ending = ({o}: {o: number}) => {
   if (o < S[3]) return null;
   return <>
     <div style={{position: 'absolute', top: 160, width: W, textAlign: 'center'}}>
-      {o < S[4] ? <>
-        <div style={{...MONO, fontSize: 36, color: CYAN, ...land(o, T.night - 100, 'up')}}>▌ TRANSMISSION ENDING…</div>
-        <div style={{...ORB, fontSize: 96, color: 'white', textShadow: glow(PURP), ...land(o, T.night, 'up')}}>GOOD NIGHT.</div>
-      </> : <>
-        <div style={{...ORB, fontSize: 64, color: 'white', textShadow: glow(PURP), ...land(o, S[4] + 60, 'up')}}>THAT'S HOW IT'S DONE.</div>
-        <div style={{...ORB, fontSize: 90, color: LIME, textShadow: glow(LIME), ...land(o, T.done + 500, 'slam')}}>MISSION COMPLETE</div>
-      </>}
+      {o < S[4] ? <div style={{...MONO, fontSize: 40, color: CYAN, textShadow: glow(CYAN), opacity: Math.floor(o / 400) % 2 ? 1 : 0.55, ...land(o, T.night - 100, 'up')}}>▌ TRANSMISSION ENDING…</div>
+        : o >= T.done + 500 && <div style={{...ORB, fontSize: 96, lineHeight: 1, color: LIME, textShadow: glow(LIME), ...land(o, T.done + 500, 'slam')}}>MISSION<br />COMPLETE</div>}
     </div>
   </>;
 };
 
 const CAPS: Cap[] = [
   ...narrCaps(LINES, PLACED, 3, {}, {WOODY: '#FFB347', 'ONE OF ONE.': LIME, 'ONE OF': LIME, 'ONE CARD LEFT': CYAN, BACK: LIME}),
-  [T.base, "LET'S GET OUR BASE"], [6260, 'OUT OF THE WAY.'], [T.dangs[0], 'DANG!'], [T.dangs[1], 'DANG!'], [T.dangs[2], 'DANG!', 'DANG', LIME],
-  [T.night, 'GOOD NIGHT,'], [16940, 'LADIES AND GENTLEMEN.'], [T.done, "THAT'S HOW IT'S DONE."],
+  [T.base, "LET'S GET OUR BASE"], [6260, 'OUT OF THE WAY.'],   [T.night, 'GOOD NIGHT,'], [16940, 'LADIES AND GENTLEMEN.'], [T.done, "THAT'S HOW IT'S DONE."],
 ];
 
 export const Buzz = () => {
@@ -144,11 +144,11 @@ export const Buzz = () => {
             <AbsoluteFill style={{transformOrigin: `${cam.x}px ${cam.y}px`, transform: `scale(${cam.z})`, filter: 'contrast(1.1) saturate(1.1) hue-rotate(-6deg)'}}>
               <StreamView src={SRC} srcW={1080} tl={tl} />
               <Blurs tl={tl} o={o} srcW={1080} boxes={[{src: [5300, 7600], box: [150, 850, 800, 800]}]} />
+              <Mission o={o} />
             </AbsoluteFill>
             <AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 55%, transparent 45%, rgba(20,10,60,0.55) 100%)'}} />
           </AbsoluteFill>}
         {(warp > 0 || (o >= S[1] && o < S[3])) && <Stars o={o} warp={warp} />}
-        <Mission o={o} />
         <Reticle o={o} />
         <Reveal o={o} />
         <Dangs o={o} />
@@ -156,7 +156,7 @@ export const Buzz = () => {
         {o < HOOK.ms && <div style={{position: 'absolute', top: 1480, width: W, textAlign: 'center', ...ORB, fontSize: 70, color: 'white', textShadow: glow(PURP), ...land(o, 300, 'up')}}>
           TWO 1/1s… <span style={{color: LIME}}>BACK TO BACK?</span></div>}
       </AbsoluteFill>
-      <Captions o={o} caps={CAPS} off={[[0, HOOK.ms], [T.name, T.dangs[0]]]} top={1640} anim="pop" keyColor={CYAN}
+      <Captions o={o} caps={CAPS} off={[[0, HOOK.ms], [T.name, S[3]]]} top={1640} anim="pop" keyColor={CYAN}
         style={{...ORB, fontSize: 52, color: '#fff', WebkitTextStroke: '3px #05061a', paintOrder: 'stroke fill', textShadow: glow(PURP)}} />
       <Grain frame={frame} opacity={0.07} />
       {flash > 0 && <AbsoluteFill style={{background: o < R + 60 ? '#fff' : CYAN, opacity: flash}} />}

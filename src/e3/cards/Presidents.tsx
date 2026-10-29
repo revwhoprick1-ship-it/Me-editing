@@ -6,7 +6,7 @@ import type {ReactNode} from 'react';
 import {AbsoluteFill, Easing, Img, staticFile, useCurrentFrame} from 'remotion';
 import narr from '../../../public/narr/b3_presidents.json';
 import {Blurs, HookAudio, HookView, HostAudio, Narration, Riser, StreamView, cardTimeline, narrCaps, narrSpans, type NarrLine, type Placed} from '../cardkit';
-import {Captions, Emoji, FPS, Grain, H, Music, SfxTrack, W, ease, flashAt, land, pop, sfx, shakeAt, type Cap} from '../kit';
+import {Captions, FPS, Grain, H, Music, SfxTrack, W, ease, flashAt, land, pop, sfx, shakeAt, type Cap} from '../kit';
 
 const SRC = 'b3/k_presidents.mp4';
 const HOOK = {file: 'hooks/this_product_is_unbelievable.mp4', from: 0, ms: 1900};
@@ -88,7 +88,7 @@ const Plaque = ({o}: {o: number}) => {
   </div>;
 };
 const WaxSeal = ({o}: {o: number}) => {
-  if (o < T.oneOf) return null;
+  if (o < T.oneOf || o >= S[4]) return null;
   const s = ease(o, T.oneOf, 160);
   return <div style={{position: 'absolute', left: 720, top: 1080, width: 260, height: 260, borderRadius: '50%', background: 'radial-gradient(circle at 40% 35%, #d23a3a, #8e1414 60%, #5a0b0b)',
     boxShadow: '0 16px 30px rgba(0,0,0,0.6), inset 0 0 0 14px rgba(0,0,0,0.18)', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
@@ -96,12 +96,6 @@ const WaxSeal = ({o}: {o: number}) => {
     <div style={{...CIN, fontSize: 70, color: '#f3d2c8', lineHeight: 0.9}}>1/1</div>
     <div style={{...CIN, fontSize: 22, color: '#f3d2c8', letterSpacing: '0.2em'}}>ONE OF ONE</div>
   </div>;
-};
-const Money = ({o}: {o: number}) => {
-  if (o < T.oneOf || o > T.oneOf + 2200) return null;
-  const t = (o - T.oneOf) / 1000;
-  return <>{Array.from({length: 18}).map((_, i) => <Emoji key={i} code="1f4b5" size={90} style={{left: (i * 113) % W - 20, top: -120 + t * (700 + (i % 5) * 160) - (i % 4) * 120,
-    transform: `rotate(${Math.sin(t * 4 + i) * 30}deg)`, opacity: Math.min(1, (2.2 - t) * 2)}} />)}</>;
 };
 const Placard = ({o}: {o: number}) => {
   if (o < S[5] - 100) return null;
@@ -152,12 +146,11 @@ export const Presidents = () => {
         <Portraits o={o} />
         <Plaque o={o} />
         <WaxSeal o={o} />
-        <Money o={o} />
         {o >= S[4] && o < S[5] && <div style={{position: 'absolute', top: 1180, width: W, textAlign: 'center', ...CIN, fontSize: 84, color: IVORY, textShadow: shadow}}>
           <div style={land(o, T.museum, 'up')}>BELONGS IN A</div><div style={{fontSize: 130, color: GOLD, ...land(o, T.museum + 340, 'slam')}}>MUSEUM</div></div>}
         <Placard o={o} />
       </AbsoluteFill>
-      <Captions o={o} caps={CAPS} off={[[0, HOOK.ms], [T.four, S[4]], [S[5], S[5] + 400]]} top={o >= S[5] ? 1150 : 1620} anim="rise" keyColor={GOLD}
+      <Captions o={o} caps={CAPS} off={[[0, HOOK.ms], [T.four, S[5] + 400]]} top={o >= S[5] ? 1530 : 1620} anim="rise" keyColor={GOLD}
         style={{...CIN, fontSize: 62, color: IVORY, WebkitTextStroke: '3px #1a0b05', paintOrder: 'stroke fill', textShadow: shadow}} />
       <AbsoluteFill style={{background: 'radial-gradient(ellipse at 50% 45%, transparent 55%, rgba(10,4,2,0.7) 100%)', pointerEvents: 'none'}} />
       <Grain frame={frame} opacity={0.09} />
