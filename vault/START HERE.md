@@ -58,6 +58,8 @@ Edit podcast/streamer clips into viral vertical Shorts in a **meme / brainrot cl
   - [[NBA GOAT pick]]: Trevor Lawrence podcast clip: seat map, verified timings, **feedback log**
   - [[Cooper Flagg Arrivals 1-1]]: card pull from the sheet
   - [[Batch 1 - 6 big pulls + 6 Trevor clips]]: 12 Shorts from the sheet, how the batch pipeline works, titles/descriptions
+  - [[Batch 2 - 6 big pulls + 6 Trevor clips]]: hooks, mood music, face tracking
+  - [[Batch 3 - Edit3 4 cards + 4 Trevor]]: Edit3 style on black bars + card pulls, titles/descriptions
 
 ## Quick start (new session)
 1. Read [[NBA GOAT pick]] (feedback log) and [[Caption style]].

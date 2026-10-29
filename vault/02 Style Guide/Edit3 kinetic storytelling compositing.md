@@ -45,7 +45,7 @@ Synthesized foley in `public/sfx/`: chalk-scratch, projector, paper-tear, scan-b
 
 ## Sound design checklist
 - Whoosh (fast-whoosh) on every cut; a pop/click per kinetic word.
-- **Music drop-out about 0.2 s before the punchline**, then a bass-boosted vine boom.
+- **Music drop-out about 0.2 s before the punchline**, then a soft impact (mg-boom ≤ 0.2; the bass-boosted vine boom is banned).
 - A riser (cinematic-suspense-riser) timed so its peak lands on the reveal.
 - Boom on the reveal, plus a 2-frame white flash and a camera shutter.
 - Literal foley for the story:
@@ -55,3 +55,28 @@ Synthesized foley in `public/sfx/`: chalk-scratch, projector, paper-tear, scan-b
   - ding-2 on "GOATED".
 - Music follows the mood (funny → Du bist gut genug): ducked to about 0.11 under speech, about 0.28 in gaps, a swell on the ending.
 - An alimiter pass after the render.
+
+## Edit3 on black bars (Trevor podcast clips, batch 3)
+User: "still use the black bars with a normal caption." `src/e3/bars.tsx`:
+- a video box at y 390–1540, with a **plain top caption** above it (Montserrat 800, 54 px, white, plus one iOS emoji);
+- spoken captions inside the box at 66 % of its height;
+- all Edit3 graphics live **inside the box** (words behind the speaker via matte, story graphics) or in the **bottom bar** (y 1540+).
+
+The bottom bar is never left empty. It always carries a story graphic that builds through the clip: a read-progress ring, a slot reel, a crowd-noise meter, a postcard map.
+
+## Edit3 card pulls (batch 3)
+`src/e3/cardkit.tsx`:
+- `cardTimeline(hookMs, segs)`, which supports slow-mo segments (`rate`);
+- `HookView` for the hooks-folder clip, with its burned caption blurred;
+- `StreamView`;
+- `Blurs`, which keeps the card blurred until the reveal;
+- `HostAudio`, which ducks the hosts under Alex and mutes them in slow-mo;
+- `Narration` / `narrCaps`, which place lines by hand.
+
+Each card gets a world taken from the card itself: a comic for the Kaboom insert, a museum for the presidents cut auto, binder plus odds grid for the Pokémon god pack, a space-mission HUD for Buzz.
+
+The stream's burned-in banner is **covered by our own themed bar**: a velvet rope, a mission checklist. Put that bar **inside the camera transform**, so it stays on the banner through zooms. Keep its content padded about 130 px from the edges, so a 1.25× zoom doesn't crop it.
+
+**No spoilers before the reveal.** That covers the name in any HUD or checklist too: encrypt it (`#*$# 1/1`) and decode it on the name.
+
+**Captions:** `Captions` now picks the latest-starting cap, so mixed narration/host lists don't need sorting. Turn captions off wherever the kinetic text already says the same words.
