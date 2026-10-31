@@ -56,7 +56,7 @@ Every number below comes from that, not from eyeballing. YouTube itself is not d
   - ~81 BPM → **Blue** (half-time);
   - ~125 BPM → **Du bist (full)**.
 - Edits snap to the beat: the main strobe lands on a beat (`songFrom = beat − strobeOut`).
-- Our synthesized matches are in `public/sfx/`: `jorho-ting`, `jorho-flash`, `jorho-swish`.
+- Sound effects come from myinstants.com, never self-made (user rule): `jorho-ting` = "proper ding" (peaks at 2642 Hz, the same as the refs), `jorho-flash` = "camera flash flash" (centroid ~3.7 kHz), `jorho-swish` = "swoosh sound effects". All are in `public/sfx/`, with leading silence trimmed.
 
 ## Code
 - `src/jorho/kit.tsx`:
