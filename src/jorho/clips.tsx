@@ -109,8 +109,9 @@ const COEN: Spec = {
   shots: [[0, 'W'], [C.liam + STROBE_CUT, 'L'], [cTl.segOut[2], 'W'], [C.yeah + STROBE_CUT, 'M']],
   strobes: [C.liam, C.yeah],
   beeps: [cTl.segOut[0] + 1800],
-  tints: [[C.taught, GREEN], [C.life, GREEN], [C.why, RED], [C.half, GREEN]],
-  swish: [C.taught, C.life, C.half],
+  tints: [[C.liam + STROBE_CUT, GREEN], [C.taught, GREEN], [C.life, GREEN], [C.why, RED], [C.half, GREEN]],
+  swish: [C.liam + STROBE_CUT, C.taught, C.life, C.half],
+  cut: {file: 'coen.png', from: C.liam + STROBE_CUT, to: C.life - 300, x: 250, h: 640},
   music: {file: 'blue-yung-kai.mp3', from: 37240 - C.yeah, level: 0.33},
 };
 export const JorhoCoen = () => <Jorho s={COEN} />;
