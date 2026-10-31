@@ -2,60 +2,72 @@
 tags: [style, podcast, jorho]
 date: 2026-10-31
 ---
-# Jorho style
+# Jorho style (v2, measured from the real videos)
 
-The user asked to copy four reference Shorts "every single detail" and call the style **Jorho**. All four are Backyard Breaks Daily Trevor Lawrence clips from the same wig session as our footage:
-- d1vqyQ55k8A: gifted signed natty ticket;
-- 5VPfMFvbfyI: NBA goat that's not LeBron;
-- 5Uym-crDaD4: elite ball knowledge;
-- i6rueNLVGiA: Davis Mills joke.
+**Sources:** four Backyard Breaks Daily Trevor Lawrence Shorts that the user shared on Drive (360x640, 30 fps, about 15.1 s each). All are from the same wig session as our footage:
+- `ref0` "Imagine being so popular people gift you your card";
+- `ref1` "Imagine having an NBA Goat thats not LeBron fr";
+- `ref2` "This player is elite ball knowledge!";
+- `ref3` "Davis Mills be like: Why u bully meh".
 
-**How they were studied:** YouTube blocks video and audio downloads from this box (bot check), so the analysis is visual only, from YouTube's frame thumbnails: `i.ytimg.com/vi/<id>/maxres1|2|3.jpg`, `maxresdefault.jpg`, and the vertical `oardefault.jpg`. **The sound design was not heard.** The SFX below are our best guess and should be checked against the real videos.
+**How it was measured:**
+- per-frame pixel measurements (box edges, brightness, tint colour by linear fit);
+- Demucs (htdemucs, two stems) to split voice from music+SFX;
+- spectrograms, onset detection and band envelopes on the stems.
 
-## Layout (1080x1920)
-- **Background:** pure black.
-- **Video box:** y = 420 → 1495 (1080x1075, nearly square). The landscape stream is cropped to full height, about a 1085 px slice of the 1920 width, so it shows 2 people. No border, no rounding.
-- **Bottom bar:** y 1495–1920, left empty.
+Every number below comes from that, not from eyeballing. YouTube itself is not downloadable from this box (bot check), so the user drops reference videos on Drive.
+
+## Layout
+- **Background:** black.
+- **Video box:** y **417 → 1494** (1077 tall, vertically centred), full width, no border.
 - **Top line:**
-  - Montserrat ExtraBold/Bold, about 66 px, white, centered, 2–3 lines, bottom-aligned about 40 px above the box (text block about y 240–370);
-  - sentence case, internet slang ("be like:", "fr", "meh", "Imagine…");
-  - always ends with the **iOS 💀** inline, at text size;
-  - no stroke, no shadow.
-- **Spoken captions:**
-  - **one word at a time**, as spoken (lowercase, names capitalized);
-  - Montserrat ExtraBold about 70 px;
-  - fill rotates yellow `#FFE81F` / cyan `#3FE6F5` / green `#7DFF3C` / white;
-  - thick black outline plus a short hard drop shadow;
-  - fixed centre line at **76 % of the box height** (y ≈ 1237), centered horizontally;
-  - a quick pop-in (scale 0.82 → 1).
-  - Names usually get cyan or yellow (Demitri cyan, Trevor yellow).
+  - Montserrat **Bold 700**, ~58 px, line pitch 65 px, white, centred, max width about 900 px, no stroke or shadow;
+  - its last line sits **3 px above the box** and moves with it;
+  - sentence-case meme take ending in an iOS **💀** at about cap height ("…fr💀", "be like:", "Imagine…").
+- **Bottom bar:** empty.
 
-## Moves (only three, used sparingly)
-1. **Hard punch-in:** a straight cut to a close crop of whoever reacts (Trevor laughing, about 1.6–1.7×), then a cut back to the wide shot. No animated zoom between.
-2. **Exposure flash:** on the punchline the frame blows out warm (brightness up, contrast down, saturation and sepia up), then settles over about 0.45 s.
-3. **Meme cutout:** a rembg cut-out photo of whoever they're talking about. It pops up from the table edge, large, over the hosts, with an **orange rim glow**, and leaves when the bit ends. The captions stay on top of it. (Ref: Dellavedova in a Cavs jersey for "NBA goat that's not LeBron".)
+## Intro (identical in all 4, frames 0–24)
+- The box opens like a mask from **700 → 1077 px tall**, centred. Measured top edge at frames 0, 3, … 24: 609, 573, 537, 504, 474, 450, 432, 420, 417.
+- The top line rides on the box.
+- The footage starts **blurred and blown out** (with a horizontal smear) and is clear by about frame 16–18.
+- The first spoken word is already on screen at frame 0.
+- **Sound:** a 2642 Hz "ting" at frame 0 (pure tone, faint partial near 6.9 kHz, full level at once, decays about 35 dB over 1.3 s).
 
-Light warm grade (contrast 1.08, saturation 1.06). No grain, no vignette, no progress bar, no emoji except the 💀 on top (a cutout-style emoji pop is OK for a literal noun, e.g. 🐜).
+## Captions
+- One word at a time, exactly on the word, staying until the next word.
+- Montserrat 800, about 58 px, thin dark outline plus a soft dark shadow.
+- **Colours** (measured): yellow **#F9FC35**, cyan **#21F5E6**, green **#58EE28**, white. They look random per word (repeats allowed).
+- **Entry:** 2 frames of horizontal motion smear, then sharp. No pop, no scale bounce.
+- **Height varies per video** (centre y 1100–1230), placed on the subject's chest/table line, fixed for the whole video.
 
-## Sound (assumed, see note above)
-- Speech up front.
-- Quiet background music (`du-bist-full` at about 0.075).
-- fast-whoosh on punch-ins.
-- camera-shutter on flashes.
-- mg-swoosh + click on the cutout pop.
-- One small meme sting per clip at most (boowomp, error).
-- Never the loud boom.
+## Effects (all land on music beats)
+1. **White strobe:** an 11-frame preset. Brightness per frame relative to normal: +.6 +.45 +.7 +.85 +.85 +.85 **dip** +.95 +1 +1 +.95. Blown highlights (50–70 % of pixels clipped). **The shot changes on the dip frame (frame 6)**, so the strobe works as a transition. Sound: a loud, bright, short noise hit (spectral centroid 3.5–4.4 kHz, ~0.1–0.2 s, a little low end), peaking around −2 dBFS.
+2. **Green tint:** rgb(**167,234,4**), normal blend at **62 %**. Envelope: 3 frames in (0.21 / 0.42 / 0.62), 3 held, 3 out. Used on names and hook words, in quick rhythm early in the video. Sound: a short swish (noise burst, ~0.25 s), and sometimes the ting again.
+3. **Red tint:** rgb(**244,3,5**) at 62 %, same envelope. Used on laughs ("hahaha", "your"). **Silent.**
+4. **Cut-out photo** (Dellavedova in ref1):
+   - **Entry:** under a green tint. Frame 0 is huge with vertical streaks, then it settles over about 10 frames from 1.5× scale, blurred and washed in yellow, down to normal.
+   - **Look:** a solid yellow-orange outline (~4 px). It stands on the bottom of the box over the hosts, and captions stay on top.
+   - **Exit:** blinks on/off for about 8 frames while sliding right.
+5. **Framing:** hard cuts between the wide shot and a tight one (~1.6×) on whoever reacts. No animated zooms.
 
-## Length and hook
-About 15–17 s. The hook is the top line (a meme take on the clip), plus the cutout landing in the first 3–4 s.
+## Sound mix
+- Voice on top.
+- Background music **about 10 dB under the voice**, running the whole time. Two refs share one ~82 BPM track; the other two are ~123–129 BPM. The tracks are not in our library (chroma match failed), so we pick by tempo:
+  - ~81 BPM → **Blue** (half-time);
+  - ~125 BPM → **Du bist (full)**.
+- Edits snap to the beat: the main strobe lands on a beat (`songFrom = beat − strobeOut`).
+- Our synthesized matches are in `public/sfx/`: `jorho-ting`, `jorho-flash`, `jorho-swish`.
 
 ## Code
 - `src/jorho/kit.tsx`:
-  - `Frame` (bars + top line + 💀);
-  - `wordsFrom` / `OneWord` (one-word captions; cut words are dropped automatically);
-  - `exposure()` (flash filter);
-  - `Cutout` (pop-up photo with orange rim).
-- `src/jorho/clips.tsx`: `JorhoAnt` (t1, Anthony Richardson's auto "looks like an ant") and `JorhoJosh` (t5, "not rookie Josh Allen… the real Josh Hines-Allen").
-- Cut-outs are in `public/img/jorho/`, made from Wikipedia lead images with rembg `u2net_human_seg`.
-- Punch-ins use the e3 `Cam` with `who` returning a seat inside the punch windows and `'W'` (wide, `wideX`) elsewhere.
-- Don't punch in on someone standing (the head gets cropped); stay wide.
+  - `Frame` (intro reveal + top line);
+  - `wordsFrom` / `OneWord`;
+  - `strobe()` + `STROBE_CUT`;
+  - `Tints` with `GREEN` / `RED`;
+  - `Cutout`.
+- `src/jorho/clips.tsx`: a `Spec` per clip (timeline, shot list in output time, strobes, tints, swishes, cut-out, music) rendered by one `Jorho` component.
+  - `JorhoPeyton`: u4, "Imagine having Peyton Manning on speed dial".
+  - `JorhoGolf`: t2, "Trevor's dream golf foursome is undefeated".
+- Cut-outs are made from Wikimedia photos with rembg `u2net_human_seg` and stored in `public/img/jorho/`.
+- Wikimedia rate-limits hard: use a descriptive User-Agent and wait about 60 s between retries.
+- v1 (made from thumbnails only) is superseded.

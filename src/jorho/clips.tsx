@@ -1,105 +1,77 @@
-// The first two Jorho edits. Same recipe for both (see kit.tsx); what differs is the joke, who gets punched in on,
-// where the flashes land and whose photo pops up.
-import {AbsoluteFill, Img, staticFile, useCurrentFrame} from 'remotion';
-import antWords from '../plans/data/t1_tiger_auto_pen.words.json';
-import antTrack from '../plans/data/t1_tiger_auto_pen.seats.json';
-import joshWords from '../plans/data/t5_ex_teammate.words.json';
-import joshTrack from '../plans/data/t5_ex_teammate.seats.json';
-import {Cam, FPS, Music, SfxTrack, SpeechTrack, ease, pop, sfx, timeline, type CamCfg, type Seat, type Track} from '../e3/kit';
-import {BOX_H, Cutout, Frame, JORHO, OneWord, exposure, wordsFrom} from './kit';
+// Jorho edits (v2 kit). Each clip: the ting on frame 0 under the intro reveal, a white strobe on the beat that
+// carries a shot change, green tints with a swish on the names, a red tint on the laugh, one cut-out photo.
+import {AbsoluteFill, useCurrentFrame} from 'remotion';
+import peytonWords from '../plans/data/u4_peyton.words.json';
+import peytonTrack from '../plans/data/u4_peyton.seats.json';
+import golfWords from '../plans/data/t2_dream_golf_four.words.json';
+import golfTrack from '../plans/data/t2_dream_golf_four.seats.json';
+import {Cam, FPS, Music, SfxTrack, SpeechTrack, sfx, timeline, type CamCfg, type Seat, type TL, type Track} from '../e3/kit';
+import {BOX_H, Cutout, Frame, GREEN, OneWord, RED, STROBE_CUT, Tints, strobe, wordsFrom, type Word} from './kit';
 
-const GRADE = 'contrast(1.08) saturate(1.06)';
+const GRADE = 'contrast(1.06) saturate(1.05)';
 const inAny = (s: number, spans: [number, number][]) => spans.some(([a, b]) => s >= a && s < b);
+type Shot = [from: number, who: Seat]; // output time → framing (hard cuts only, like the refs)
+const shotAt = (shots: Shot[], o: number) => shots.reduce<Seat>((w, [t, s]) => (o >= t ? s : w), 'W');
 
-// ---- t1 · "his auto looks like an ant" -------------------------------------------------------------------------
-const antTl = timeline([[9300, 11850], [12200, 16600], [16900, 20300], [20450, 22000], [22400, 27500]]);
-export const ANT_MS = antTl.total;
-const A = {anthony: antTl.out(12800), haventEnd: antTl.out(14980), ant: antTl.out(16160), respect: antTl.out(19940), pen: antTl.out(27100)};
-const antPunch = {M: [[14680, 14980], [21280, 22000], [26700, 27500]] as [number, number][], R: [[14980, 16600]] as [number, number][]};
-const antCam: CamCfg = {
-  src: 'pod/t1_tiger_auto_pen.mp4', tl: antTl, track: antTrack as unknown as Track, grade: GRADE, box: [1080, BOX_H], baseH: 640, faceY: 0.42,
-  who: (s): Seat => (inAny(s, antPunch.M) ? 'M' : inAny(s, antPunch.R) ? 'R' : 'W'), wideX: 1285,
-  zoom: (o) => 1 + 0.035 * ((o % 6000) / 6000),
+type Spec = {
+  tl: TL; src: string; track: Track; top: string; words: Word[]; wordY: number; wideX: number; shots: Shot[];
+  strobes: number[]; tints: [number, string][]; swish: number[]; cut: {file: string; from: number; to: number; x: number; h: number};
+  music: {file: string; from: number; level: number};
 };
-const ANT_WORDS = wordsFrom(antWords, antTl, {goaded: 'goated', 'Richardson\'s': 'Richardson\'s'},
-  {Anthony: JORHO.cyan, "Richardson's": JORHO.cyan, ant: JORHO.green, respect: JORHO.yellow, goated: JORHO.green, pen: JORHO.yellow});
-
-export const JorhoAnt = () => {
+const Jorho = ({s}: {s: Spec}) => {
   const frame = useCurrentFrame();
   const o = (frame / FPS) * 1000;
-  const flash = exposure([A.ant, A.respect, A.pen], o);
-  const antP = o >= A.ant && o < A.ant + 440 ? pop(o, A.ant, 9, 280) * (1 - ease(o, A.ant + 330, 110)) : 0;
-  return <Frame top="Imagine your autograph looking like an ant"
+  // the shot list is in output time; Cam asks by source time, so keep a reverse lookup on the output clock
+  const cam: CamCfg = {src: s.src, tl: s.tl, track: s.track, grade: GRADE, box: [1080, BOX_H], baseH: 640, faceY: 0.42, wideX: s.wideX,
+    who: () => shotAt(s.shots, o)};
+  return <Frame o={o} top={s.top}
     over={<>
-      <OneWord o={o} words={ANT_WORDS} />
-      <SpeechTrack src="pod/t1_tiger_auto_pen.mp4" tl={antTl} />
-      <Music file="du-bist-full.mp3" songFrom={21000} level={(t) => 0.075 * Math.min(1, t / 300, (antTl.total - t) / 400)} />
+      <OneWord o={o} words={s.words} y={s.wordY} />
+      <SpeechTrack src={s.src} tl={s.tl} />
+      <Music file={s.music.file} songFrom={s.music.from} level={(t) => s.music.level * Math.min(1, (s.tl.total - t) / 400)} />
       <SfxTrack list={[
-        sfx('mg-swoosh', A.anthony, 0.3), sfx('mg-click', A.anthony + 60, 0.25),
-        sfx('fast-whoosh', antTl.out(14680), 0.22), sfx('fast-whoosh', antTl.out(14980), 0.22),
-        sfx('camera-shutter', A.ant, 0.3), sfx('mg-click', A.ant, 0.2),
-        sfx('camera-shutter', A.respect, 0.28), sfx('spongebob-boowomp', A.respect + 250, 0.22),
-        sfx('fast-whoosh', antTl.out(21280), 0.2), sfx('fast-whoosh', antTl.out(26700), 0.22), sfx('camera-shutter', A.pen, 0.3), sfx('mg-shimmer', A.pen, 0.2),
+        sfx('jorho-ting', 0, 0.55),
+        ...s.strobes.map((t) => sfx('jorho-flash', t, 0.7)),
+        ...s.swish.map((t) => sfx('jorho-swish', t, 0.45)),
       ]} />
     </>}>
-    <AbsoluteFill style={{filter: flash || undefined}}>
-      <Cam c={antCam} o={o} />
+    <AbsoluteFill style={{filter: strobe(o, s.strobes) || undefined}}>
+      <Cam c={cam} o={o} />
+      <Cutout o={o} {...s.cut} />
     </AbsoluteFill>
-    <Cutout o={o} file="richardson.png" from={A.anthony} to={A.haventEnd - 380} x={430} h={700} />
-    {antP > 0 && <div style={{position: 'absolute', left: 560, top: 150, transform: `scale(${antP}) rotate(${-8 + Math.sin(o / 120) * 6}deg)`,
-      filter: 'drop-shadow(0 0 3px #FF8A1E) drop-shadow(0 0 14px rgba(255,138,30,0.85))'}}>
-      <Img src={staticFile('emoji-ios/1f41c.png')} style={{width: 230, height: 230}} />
-    </div>}
+    <Tints o={o} list={s.tints} />
   </Frame>;
 };
 
-// ---- t5 · "that's not rookie Josh Allen… that's the real Josh Hines-Allen" -----------------------------------------------
-const joshTl = timeline([[1600, 4450], [11500, 13150], [14050, 14600], [15050, 16650], [17100, 18950], [19100, 25750]]);
-export const JOSH_MS = joshTl.total;
-const J = {josh: joshTl.out(12580), notRookie: joshTl.out(19380), notJosh: joshTl.out(19960), but: joshTl.out(21240), real: joshTl.out(22040),
-  hines: joshTl.out(22360), name: joshTl.out(25180)};
-const joshPunch = {M: [[17100, 17700], [19100, 21100]] as [number, number][], L: [] as [number, number][]};
-const joshCam: CamCfg = {
-  src: 'pod/t5_ex_teammate.mp4', tl: joshTl, track: joshTrack as unknown as Track, grade: GRADE, box: [1080, BOX_H], baseH: 660, faceY: 0.4,
-  who: (s): Seat => (inAny(s, joshPunch.M) ? 'M' : inAny(s, joshPunch.L) ? 'L' : 'W'),
-  wideX: (s) => (s < 3600 || (s >= 11500 && s < 17000) || s >= 21000 ? 860 : 1010),
-  zoom: (o) => 1 + 0.035 * ((o % 6000) / 6000),
+// ---- u4 · "Peyton Manning called me about my signature" --------------------------------------------------------
+const pTl = timeline([[1000, 2300], [2700, 7100], [7700, 9500], [11300, 13050], [13600, 14450], [14800, 19950]]);
+export const PEYTON_MS = pTl.total;
+const P = {peyton: pTl.out(1680), called: pTl.out(4440), nice: pTl.out(9040), real: pTl.out(12420), text: pTl.out(17640), great: pTl.out(19640)};
+const PEYTON: Spec = {
+  tl: pTl, src: 'pod2/u4_peyton.mp4', track: peytonTrack as unknown as Track, top: 'Imagine having Peyton Manning on speed dial', wordY: 1170, wideX: 700,
+  words: wordsFrom(peytonWords, pTl, {}, {Peyton: '#21F5E6', Manning: '#21F5E6'}),
+  shots: [[0, 'W'], [P.called + STROBE_CUT, 'M'], [pTl.segOut[2], 'W'], [pTl.segOut[3], 'L'], [pTl.segOut[4], 'W'], [pTl.segOut[5], 'M'], [P.text - 240 + STROBE_CUT, 'W']],
+  strobes: [P.called, P.text - 240],
+  tints: [[P.peyton, GREEN], [P.nice, GREEN], [P.real, RED], [P.great, GREEN]],
+  swish: [P.peyton, P.nice, P.great],
+  cut: {file: 'peyton.png', from: P.peyton, to: P.called - 120, x: 470, h: 900},
+  music: {file: 'blue-yung-kai.mp3', from: 37240 - P.called, level: 0.19},
 };
-const JOSH_WORDS = wordsFrom(joshWords, joshTl, {Heinz: 'Hines'},
-  {Josh: JORHO.cyan, Allen: JORHO.cyan, gold: JORHO.yellow, fire: JORHO.green, real: JORHO.green, Hines: JORHO.cyan, name: JORHO.yellow});
+export const JorhoPeyton = () => <Jorho s={PEYTON} />;
 
-const BigX = ({o, at}: {o: number; at: number}) => {
-  if (o < at) return null;
-  const p = pop(o, at, 10, 300);
-  return <svg width={420} height={420} viewBox="-60 -60 120 120" style={{position: 'absolute', left: 600, top: 300, transform: `scale(${p})`, filter: 'drop-shadow(0 6px 10px rgba(0,0,0,0.5))'}}>
-    <path d="M-42,-42 L42,42 M42,-42 L-42,42" stroke="#000" strokeWidth={26} strokeLinecap="round" />
-    <path d="M-42,-42 L42,42 M42,-42 L-42,42" stroke="#FF2A2A" strokeWidth={16} strokeLinecap="round" />
-  </svg>;
+// ---- t2 · "dream golf foursome: throw Jesus in there … Tiger, the goat" ----------------------------------------
+const gTl = timeline([[11250, 13900], [16820, 18500], [32200, 34150], [34750, 35700], [45450, 48450], [50400, 54400]]);
+export const GOLF_MS = gTl.total;
+const G = {dream: gTl.out(12380), humans: gTl.out(17740), jesus: gTl.out(33460), like: gTl.out(34780), tiger: gTl.out(48000), world: gTl.out(52140),
+  heIs: gTl.out(52760)};
+const GOLF: Spec = {
+  tl: gTl, src: 'pod/t2_dream_golf_four.mp4', track: golfTrack as unknown as Track, top: "Trevor's dream golf foursome is undefeated", wordY: 1150, wideX: 720,
+  words: wordsFrom(golfWords, gTl, {for: 'four', '-time': 'time'}, {Jesus: '#F9FC35', Tiger: '#21F5E6', goat: '#58EE28'}),
+  shots: [[0, 'W'], [gTl.segOut[2], 'L'], [G.jesus + STROBE_CUT, 'M'], [gTl.segOut[4], 'W'], [G.heIs - 200 + STROBE_CUT, 'M']],
+  strobes: [G.jesus, G.heIs - 200],
+  tints: [[G.dream, GREEN], [G.humans, GREEN], [G.like, RED], [G.tiger, GREEN]],
+  swish: [G.dream, G.humans, G.tiger],
+  cut: {file: 'tiger.png', from: G.tiger, to: G.world + 250, x: 420, h: 880},
+  music: {file: 'du-bist-full.mp3', from: 42050 - G.jesus, level: 0.42},
 };
-
-export const JorhoJosh = () => {
-  const frame = useCurrentFrame();
-  const o = (frame / FPS) * 1000;
-  const flash = exposure([J.real, J.name - 150], o);
-  return <Frame top="Not the Josh Allen you were thinking of"
-    over={<>
-      <OneWord o={o} words={JOSH_WORDS} />
-      <SpeechTrack src="pod/t5_ex_teammate.mp4" tl={joshTl} />
-      <Music file="du-bist-full.mp3" songFrom={58000} level={(t) => 0.075 * Math.min(1, t / 300, (joshTl.total - t) / 400)} />
-      <SfxTrack list={[
-        sfx('mg-swoosh', J.josh, 0.3), sfx('mg-click', J.josh + 60, 0.25),
-        sfx('fast-whoosh', joshTl.out(17100), 0.2), sfx('fast-whoosh', joshTl.out(19100), 0.22),
-        sfx('mg-swoosh', J.notJosh, 0.25), sfx('error', J.notJosh + 220, 0.22),
-        sfx('camera-shutter', J.real, 0.3), sfx('mg-swoosh', J.hines, 0.3), sfx('mg-shimmer', J.hines + 100, 0.2),
-        sfx('camera-shutter', J.name - 150, 0.28),
-      ]} />
-    </>}>
-    <AbsoluteFill style={{filter: flash || undefined}}>
-      <Cam c={joshCam} o={o} />
-    </AbsoluteFill>
-    <Cutout o={o} file="josh_allen.png" from={J.josh} to={joshTl.out(15050)} x={520} h={760} />
-    <Cutout o={o} file="josh_allen.png" from={J.notJosh} to={J.but} x={600} h={640} />
-    {o >= J.notJosh && o < J.but + 160 && <BigX o={o} at={J.notJosh + 220} />}
-    <Cutout o={o} file="hines_allen.png" from={J.hines} to={joshTl.out(24300)} x={360} h={720} />
-  </Frame>;
-};
+export const JorhoGolf = () => <Jorho s={GOLF} />;
