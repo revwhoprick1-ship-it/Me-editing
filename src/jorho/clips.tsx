@@ -54,8 +54,8 @@ const PEYTON: Spec = {
   strobes: [P.called, P.text - 240],
   tints: [[P.peyton, GREEN], [P.nice, GREEN], [P.real, RED], [P.great, GREEN]],
   swish: [P.peyton, P.nice, P.great],
-  cut: {file: 'peyton.png', from: P.peyton, to: P.called - 120, x: 470, h: 900},
-  music: {file: 'blue-yung-kai.mp3', from: 37240 - P.called, level: 0.19},
+  cut: {file: 'peyton.png', from: P.peyton, to: P.called - 120, x: 270, h: 640},
+  music: {file: 'blue-yung-kai.mp3', from: 37240 - P.called, level: 0.33},
 };
 export const JorhoPeyton = () => <Jorho s={PEYTON} />;
 
@@ -71,7 +71,7 @@ const GOLF: Spec = {
   strobes: [G.jesus, G.heIs - 200],
   tints: [[G.dream, GREEN], [G.humans, GREEN], [G.like, RED], [G.tiger, GREEN]],
   swish: [G.dream, G.humans, G.tiger],
-  cut: {file: 'tiger.png', from: G.tiger, to: G.world + 250, x: 420, h: 880},
-  music: {file: 'du-bist-full.mp3', from: 42050 - G.jesus, level: 0.42},
+  cut: {file: 'tiger.png', from: G.tiger, to: G.world + 250, x: 290, h: 640},
+  music: {file: 'du-bist-full.mp3', from: 42050 - G.jesus, level: 0.32},
 };
 export const JorhoGolf = () => <Jorho s={GOLF} />;
