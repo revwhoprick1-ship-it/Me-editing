@@ -5,6 +5,10 @@ import peytonWords from '../plans/data/u4_peyton.words.json';
 import peytonTrack from '../plans/data/u4_peyton.seats.json';
 import golfWords from '../plans/data/t2_dream_golf_four.words.json';
 import golfTrack from '../plans/data/t2_dream_golf_four.seats.json';
+import redeemWords from '../plans/data/u3_redemptions.words.json';
+import redeemTrack from '../plans/data/u3_redemptions.seats.json';
+import coenWords from '../plans/data/u6_coen_duo.words.json';
+import coenTrack from '../plans/data/u6_coen_duo.seats.json';
 import {Cam, FPS, Music, SfxTrack, SpeechTrack, sfx, timeline, type CamCfg, type Seat, type TL, type Track} from '../e3/kit';
 import {BOX_H, Cutout, Frame, GREEN, OneWord, RED, STROBE_CUT, Tints, strobe, wordsFrom, type Word} from './kit';
 
@@ -15,7 +19,7 @@ const shotAt = (shots: Shot[], o: number) => shots.reduce<Seat>((w, [t, s]) => (
 
 type Spec = {
   tl: TL; src: string; track: Track; top: string; words: Word[]; wordY: number; wideX: number; shots: Shot[];
-  strobes: number[]; beeps?: number[]; tints: [number, string][]; swish: number[]; cut: {file: string; from: number; to: number; x: number; h: number};
+  strobes: number[]; beeps?: number[]; tints: [number, string][]; swish: number[]; cut?: {file: string; from: number; to: number; x: number; h: number};
   music: {file: string; from: number; level: number};
 };
 const Jorho = ({s}: {s: Spec}) => {
@@ -38,7 +42,7 @@ const Jorho = ({s}: {s: Spec}) => {
     </>}>
     <AbsoluteFill style={{filter: strobe(o, s.strobes) || undefined}}>
       <Cam c={cam} o={o} />
-      <Cutout o={o} {...s.cut} />
+      {s.cut && <Cutout o={o} {...s.cut} />}
     </AbsoluteFill>
     <Tints o={o} list={s.tints} />
   </Frame>;
@@ -78,3 +82,35 @@ const GOLF: Spec = {
   music: {file: 'du-bist-full.mp3', from: 42050 - G.jesus, level: 0.32},
 };
 export const JorhoGolf = () => <Jorho s={GOLF} />;
+
+// ---- u3 · "this card was $20,000… what is it now? 500 bucks maybe" ---------------------------------------------
+const rTl = timeline([[0, 1780], [1780, 2900, 480], [2900, 6000], [7000, 9600], [27050, 27900], [28950, 33700]]);
+export const REDEEM_MS = rTl.total;
+const RD = {k20: rTl.out(1140), d200: rTl.segOut[2], maybe: rTl.out(5520), redeem: rTl.out(8840), sale: rTl.out(32460) - 200};
+const REDEEM: Spec = {
+  tl: rTl, src: 'pod2/u3_redemptions.mp4', track: redeemTrack as unknown as Track, top: 'Imagine your card going from $20,000 to $500', wordY: 1160, wideX: 700,
+  words: wordsFrom(redeemWords, rTl, {'20': '$20,000', '000': '', '200': '$200?', '500': '$500'}, {'$20,000': '#58EE28', '$500': '#F9FC35', redeem: '#21F5E6'}),
+  shots: [[0, 'W'], [RD.d200 + STROBE_CUT, 'M'], [rTl.segOut[3], 'R'], [rTl.segOut[4], 'M'], [rTl.segOut[5], 'W'], [RD.sale + STROBE_CUT, 'M']],
+  strobes: [RD.d200, RD.sale],
+  beeps: [rTl.segOut[1] + 1120],
+  tints: [[RD.k20, GREEN], [RD.maybe, RED], [RD.redeem, GREEN]],
+  swish: [RD.k20, RD.redeem],
+  music: {file: 'du-bist-full.mp3', from: 42050 - RD.d200, level: 0.32},
+};
+export const JorhoRedeem = () => <Jorho s={REDEEM} />;
+
+// ---- u6 · "Liam Coen has taught me more in this past year than my whole football life" ---------------------------
+const cTl = timeline([[4700, 6500, 480], [6500, 7900], [11400, 17950], [18300, 23000]]);
+export const COEN_MS = cTl.total;
+const C = {liam: cTl.segOut[1], taught: cTl.out(7280), life: cTl.out(14800), why: cTl.out(17240), yeah: cTl.segOut[3], half: cTl.out(21680)};
+const COEN: Spec = {
+  tl: cTl, src: 'pod2/u6_coen_duo.mp4', track: coenTrack as unknown as Track, top: "Liam Coen really changed Trevor's whole game fr", wordY: 1160, wideX: 690,
+  words: wordsFrom(coenWords, cTl, {Cohen: 'Coen'}, {Liam: '#21F5E6', Coen: '#21F5E6', definitely: '#58EE28'}),
+  shots: [[0, 'W'], [C.liam + STROBE_CUT, 'L'], [cTl.segOut[2], 'W'], [C.yeah + STROBE_CUT, 'M']],
+  strobes: [C.liam, C.yeah],
+  beeps: [cTl.segOut[0] + 1800],
+  tints: [[C.taught, GREEN], [C.life, GREEN], [C.why, RED], [C.half, GREEN]],
+  swish: [C.taught, C.life, C.half],
+  music: {file: 'blue-yung-kai.mp3', from: 37240 - C.yeah, level: 0.33},
+};
+export const JorhoCoen = () => <Jorho s={COEN} />;
