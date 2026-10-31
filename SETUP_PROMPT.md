@@ -28,7 +28,7 @@ You're taking over my Shorts editing system. Set it up completely, learn every e
 - ElevenLabs narration (card pulls only): needs the ElevenLabs connector. Use ONLY voice "Alex – Young American Male" `yl2ZDV1MzN4HbQJbMihG`, model eleven_v4, made loud with `scripts/prep_narr.py`.
 
 ## 4. How I want every job done (short version; the vault has the details)
-- Each Short is 15–25 s and ends on a finished sentence.
+- Each Short is 15–30 s, aims for about 20 s, and the main point or story must finish before it ends.
 - Every video is sent to me as a file, with a **title + a 3–5 sentence story description + 8–15 hashtags**.
 - Everything must be unique, not look like an ad, not look "vibecoded", and have a strong hook.
 - iOS emoji only. whoosh = fast-whoosh, ding = ding-2. **No loud bass-boosted vine boom.**

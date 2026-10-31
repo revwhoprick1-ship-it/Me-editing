@@ -9,6 +9,8 @@ import redeemWords from '../plans/data/u3_redemptions.words.json';
 import redeemTrack from '../plans/data/u3_redemptions.seats.json';
 import coenWords from '../plans/data/u6_coen_duo.words.json';
 import coenTrack from '../plans/data/u6_coen_duo.seats.json';
+import goatWords from '../plans/data/nba_goat.words.json';
+import goatTrack from '../plans/data/nba_goat.seats.json';
 import {Cam, FPS, Music, SfxTrack, SpeechTrack, sfx, timeline, type CamCfg, type Seat, type TL, type Track} from '../e3/kit';
 import {BOX_H, Cutout, Frame, GREEN, OneWord, RED, STROBE_CUT, Tints, strobe, wordsFrom, type Word} from './kit';
 
@@ -115,3 +117,20 @@ const COEN: Spec = {
   music: {file: 'blue-yung-kai.mp3', from: 37240 - C.yeah, level: 0.33},
 };
 export const JorhoCoen = () => <Jorho s={COEN} />;
+
+// ---- NBA goat · "Who is your NBA goat?" … long think … "Gotta be Matthew Dellavedova, man." -----------------------
+const nTl = timeline([[0, 7400], [9000, 13650, 480], [13650, 18800]]);
+export const GOAT_MS = nTl.total;
+const N = {nba: nTl.out(4480), greatest: nTl.out(5620), think: nTl.segOut[1], della: nTl.segOut[2], laugh: nTl.out(15050), tension: nTl.out(17740)};
+const GOAT: Spec = {
+  tl: nTl, src: 'input.mp4', track: goatTrack as unknown as Track, top: "Imagine having an NBA goat that's not LeBron fr", wordY: 1170, wideX: 960,
+  words: wordsFrom(goatWords, nTl, {'Delvedova': 'Dellavedova', times: 'time'}, {goat: '#58EE28', Matthew: '#21F5E6', Dellavedova: '#21F5E6'}),
+  shots: [[0, 'W'], [N.nba + STROBE_CUT, 'M'], [N.greatest, 'L'], [N.think, 'M'], [N.della + 1500, 'W'], [N.tension - 200, 'R']],
+  strobes: [N.nba],
+  beeps: [N.della - 480],
+  tints: [[N.della, GREEN], [N.laugh + 400, RED], [N.tension + 480, GREEN]],
+  swish: [N.della, N.tension + 480],
+  cut: {file: 'della.png', from: N.della, to: N.laugh + 900, x: 250, h: 640},
+  music: {file: 'du-bist-full.mp3', from: 42050 - N.nba, level: 0.32},
+};
+export const JorhoGoat = () => <Jorho s={GOAT} />;
