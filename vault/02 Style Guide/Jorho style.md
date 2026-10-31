@@ -71,3 +71,19 @@ Every number below comes from that, not from eyeballing. YouTube itself is not d
 - Cut-outs are made from Wikimedia photos with rembg `u2net_human_seg` and stored in `public/img/jorho/`.
 - Wikimedia rate-limits hard: use a descriptive User-Agent and wait about 60 s between retries.
 - v1 (made from thumbnails only) is superseded.
+
+## SFX identified in the references (all on myinstants.com)
+Method:
+- 4-stem Demucs split;
+- peak-constellation fingerprint plus windowed mel correlation of about 500 myinstants sounds against the drums/other stems;
+- checks: pitch for tones, transient spacing for multi-hit sounds.
+
+| sound | myinstants file | where in refs | proof |
+|---|---|---|---|
+| intro ting (also some green tints) | `proper-ding_IbfMQYw.mp3` → `jorho-ting` | frame 0 in all 4; ref0 8.0 s | tone exactly 2642 Hz, same line in the spectrogram |
+| white strobe hit | `camera-flash-sound-effect.mp3` → `jorho-flash` | ref0 1.74, ref3 1.04, ref1 7.73 | 53-peak fingerprint, 40–55 % matched at the strobe frames |
+| green tint / cut-out entry swoosh | `roblox-swoosh-hd.mp3` → `jorho-swish` | ref3 1.79 / 2.90 / 4.29, ref1 11.5, ref2 11.2 | mel correlation 0.81–0.85 exactly on the tints |
+| suspense beep before a name | `04357.mp3` (1 kHz, 0.57 s) → `jorho-beep` | ref1 2.53–3.10 ("gotta be… [beep] who") | pure 1000 Hz tone, 0.57 s |
+| red tint | none | | silent |
+
+The beep goes on a **480 ms freeze-pause** right before the name drops (a timeline hold); the strobe/cut-out lands after it.

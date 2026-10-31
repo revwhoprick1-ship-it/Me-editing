@@ -15,7 +15,7 @@ const shotAt = (shots: Shot[], o: number) => shots.reduce<Seat>((w, [t, s]) => (
 
 type Spec = {
   tl: TL; src: string; track: Track; top: string; words: Word[]; wordY: number; wideX: number; shots: Shot[];
-  strobes: number[]; tints: [number, string][]; swish: number[]; cut: {file: string; from: number; to: number; x: number; h: number};
+  strobes: number[]; beeps?: number[]; tints: [number, string][]; swish: number[]; cut: {file: string; from: number; to: number; x: number; h: number};
   music: {file: string; from: number; level: number};
 };
 const Jorho = ({s}: {s: Spec}) => {
@@ -33,6 +33,7 @@ const Jorho = ({s}: {s: Spec}) => {
         sfx('jorho-ting', 0, 0.55),
         ...s.strobes.map((t) => sfx('jorho-flash', t, 0.7)),
         ...s.swish.map((t) => sfx('jorho-swish', t, 0.45)),
+        ...(s.beeps ?? []).map((t) => sfx('jorho-beep', t, 0.35)),
       ]} />
     </>}>
     <AbsoluteFill style={{filter: strobe(o, s.strobes) || undefined}}>
@@ -44,14 +45,15 @@ const Jorho = ({s}: {s: Spec}) => {
 };
 
 // ---- u4 · "Peyton Manning called me about my signature" --------------------------------------------------------
-const pTl = timeline([[1000, 2300], [2700, 7100], [7700, 9500], [11300, 13050], [13600, 14450], [14800, 19950]]);
+const pTl = timeline([[1000, 1620, 480], [1620, 2300], [2700, 7100], [7700, 9500], [11300, 13050], [13600, 14450], [14800, 19950]]);
 export const PEYTON_MS = pTl.total;
 const P = {peyton: pTl.out(1680), called: pTl.out(4440), nice: pTl.out(9040), real: pTl.out(12420), text: pTl.out(17640), great: pTl.out(19640)};
 const PEYTON: Spec = {
   tl: pTl, src: 'pod2/u4_peyton.mp4', track: peytonTrack as unknown as Track, top: 'Imagine having Peyton Manning on speed dial', wordY: 1170, wideX: 700,
   words: wordsFrom(peytonWords, pTl, {}, {Peyton: '#21F5E6', Manning: '#21F5E6'}),
-  shots: [[0, 'W'], [P.called + STROBE_CUT, 'M'], [pTl.segOut[2], 'W'], [pTl.segOut[3], 'L'], [pTl.segOut[4], 'W'], [pTl.segOut[5], 'M'], [P.text - 240 + STROBE_CUT, 'W']],
+  shots: [[0, 'W'], [P.called + STROBE_CUT, 'M'], [pTl.segOut[3], 'W'], [pTl.segOut[4], 'L'], [pTl.segOut[5], 'W'], [pTl.segOut[6], 'M'], [P.text - 240 + STROBE_CUT, 'W']],
   strobes: [P.called, P.text - 240],
+  beeps: [pTl.segOut[0] + 620],
   tints: [[P.peyton, GREEN], [P.nice, GREEN], [P.real, RED], [P.great, GREEN]],
   swish: [P.peyton, P.nice, P.great],
   cut: {file: 'peyton.png', from: P.peyton, to: P.called - 120, x: 270, h: 640},
@@ -60,15 +62,16 @@ const PEYTON: Spec = {
 export const JorhoPeyton = () => <Jorho s={PEYTON} />;
 
 // ---- t2 · "dream golf foursome: throw Jesus in there … Tiger, the goat" ----------------------------------------
-const gTl = timeline([[11250, 13900], [16820, 18500], [32200, 34150], [34750, 35700], [45450, 48450], [50400, 54400]]);
+const gTl = timeline([[11250, 13900], [16820, 18500], [32200, 33440, 480], [33440, 34150], [34750, 35700], [45450, 48450], [50400, 54400]]);
 export const GOLF_MS = gTl.total;
 const G = {dream: gTl.out(12380), humans: gTl.out(17740), jesus: gTl.out(33460), like: gTl.out(34780), tiger: gTl.out(48000), world: gTl.out(52140),
   heIs: gTl.out(52760)};
 const GOLF: Spec = {
   tl: gTl, src: 'pod/t2_dream_golf_four.mp4', track: golfTrack as unknown as Track, top: "Trevor's dream golf foursome is undefeated", wordY: 1150, wideX: 720,
   words: wordsFrom(golfWords, gTl, {for: 'four', '-time': 'time'}, {Jesus: '#F9FC35', Tiger: '#21F5E6', goat: '#58EE28'}),
-  shots: [[0, 'W'], [gTl.segOut[2], 'L'], [G.jesus + STROBE_CUT, 'M'], [gTl.segOut[4], 'W'], [G.heIs - 200 + STROBE_CUT, 'M']],
+  shots: [[0, 'W'], [gTl.segOut[2], 'L'], [G.jesus + STROBE_CUT, 'M'], [gTl.segOut[5], 'W'], [G.heIs - 200 + STROBE_CUT, 'M']],
   strobes: [G.jesus, G.heIs - 200],
+  beeps: [gTl.segOut[2] + 1240],
   tints: [[G.dream, GREEN], [G.humans, GREEN], [G.like, RED], [G.tiger, GREEN]],
   swish: [G.dream, G.humans, G.tiger],
   cut: {file: 'tiger.png', from: G.tiger, to: G.world + 250, x: 290, h: 640},
