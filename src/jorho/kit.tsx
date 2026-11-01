@@ -64,6 +64,8 @@ export const wordsFrom = (raw: {text: string; startMs: number}[], tl: TL, fix: R
 };
 // the word stays until the next one (or 1.2 s of silence); first 2 frames are a horizontal smear
 export const OneWord = ({o, words, y}: {o: number; words: Word[]; y: number}) => {
+  // words can come out of source order (cold-open hooks): sort by output time
+  words = [...words].sort((p, q) => p.at - q.at);
   let i = -1;
   words.forEach((w, j) => { if (o >= w.at) i = j; });
   if (i < 0) return null;
