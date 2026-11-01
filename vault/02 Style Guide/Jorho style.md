@@ -300,3 +300,15 @@ YouTube blocks downloads from this box, so these were studied from thumbnails on
   - primitives: `Wipe`, `Sweep`, `Typer`, `Letters`, `Pill`, `Ring`, `Card` (neumorphic, inset variant), `Person` (flat circle-head figure, optional #16), `Ball` (flat football), `Arrow` (draws on, dashed via a mask).
 - **Beats:** ball pop → flies LEFT on a dashed arc → LEFT|RIGHT toggle snaps LEFT, RIGHT struck through, bars LEFT > RIGHT → teal wipe "back when I was a kid" + lil #16 → Coach's playbook card, red rollout arrow RIGHT → EVERYONE GOES RIGHT row of grey people → #16 runs LEFT against the crowd, LEFT REPS card + ring, bouncing LEFT, search bar typing "QB who can only roll right" ✕ → teal wipe, LEFT core with orbiting emoji nodes + ring fill, 10,000 REPS → crown pop + BEST QB EVER? + dot confetti.
 - Jorho captions (5 px black stroke) read fine on the light background. Pure 2D renders fast (no swangle-heavy 3D) — good for usage.
+
+## v10 natural openings + evidence-based hooks (user, 2026-11-01)
+User asked for: hooks based on attention/curiosity research (no clickbait); open on footage that sets the context before any MG; a viewer simulation before render; ElevenLabs VO only if it really helps; a post-render report.
+- **Open on the real question being asked, on a two-shot** (the asker + Trevor in frame). Viewers see who is talking and what is being asked within 1–2 s. The MG starts only after the context lands (`stories10.tsx`).
+- **Make the open question visible:**
+  - golf: an empty 4-slot "dream foursome" scorecard that fills as he answers;
+  - playbook: the top line states the exact number the clip answers at the end (8–10).
+  - This is the information-gap idea (Loewenstein 1994): a specific, answerable gap holds attention.
+- **Answer late but not too late:** the payoff lands in the last third. Give a partial payoff early (golf: "Jesus" at ~6 s) so the gap doesn't feel like bait.
+- **No VO** on these two: the host's real question already gives context plus the gap, and VO would push the footage back.
+- **Viewer pass caught:** single-person question shots hid Trevor, so the openings became two-shots; overlapping end graphics were moved apart.
+- Clips: `JorhoPlaybook10` (u1), `JorhoGolf10` (t2).

@@ -25,6 +25,7 @@ import {JoshFront, type JoshTimes} from '../jorho3d/josh3d';
 import {CellyFront, GiftFront, MillsFront} from '../jorho3d/pod7_3d';
 import {LeftyWorld, type LeftyK} from '../jorho3d/lefty8';
 import {LeftyFlat} from './flat9';
+import {GolfFlat, PlaybookFlat, type GolfK, type PbK} from './stories10';
 import {Arrow7, Band, Big, Emoji, Neck, P7, Pill, Rain, Ruler, Sticker} from './pod7';
 import t4Words from '../plans/data/t4_natty_ticket.words.json';
 import t4Track from '../plans/data/t4_natty_ticket.seats.json';
@@ -616,3 +617,44 @@ const LEFTY9: Spec = {
     sfx('jorho-pop', endA9 + 100, 0.45), sfx('meme-tada', endA9 + 300, 0.5)],
 };
 export const JorhoLefty9 = () => <Jorho s={LEFTY9} />;
+
+// ==== v10 (2026-11-01): natural openings — each Short opens on the real question being asked (context first), then
+// flat MG (v9 style) answers while the voice continues. Hooks reviewed as a viewer before render (see vault v10 notes).
+// ---- A) Playbook (u1): LEFT host asks, Trevor (M) answers
+const pb = timeline([[0, 2700], [14150, 18300], [18400, 22900], [36800, 42900], [48800, 54850]]);
+export const PB10_MS = pb.total;
+const PBS = pb.segOut, po = pb.out;
+const KPB: PbK = {S: PBS, mg1: PBS[1] + 1500, runs: po(19200), pass: po(20800), pa: po(21900), screens: po(22600), inventory: po(39000), thisWeek: po(42200),
+  mg3: PBS[4] + 1250, eight: po(52500), ten: po(53900), end: PB10_MS};
+const PB10: Spec = {
+  tl: pb, src: 'pod2/u1_playbook.mp4', track: u1Track as unknown as Track, top: 'How many new plays an NFL team adds each week', wordY: 1170, wideX: 930, push: true,
+  words: wordsFrom(u1Words, pb, {}, {playbook: '#F9FC35', hundreds: '#58EE28', plays: '#F9FC35', week: '#21F5E6', eight: '#58EE28', ten: '#58EE28', inventory: '#21F5E6'}),
+  wideXAt: (o) => (o < PBS[1] ? 735 : 930), // question on a two-shot: asker + Trevor in frame (context first)
+  shots: [[0, 'W'], [PBS[1], 'M']],
+  strobes: [PBS[1] - STROBE_CUT], tints: [[KPB.eight, GREEN]], swish: [KPB.mg1, PBS[2], PBS[3] + 1250, KPB.mg3],
+  music: {file: 'funk-sigilo.mp3', from: 36900 - KPB.mg1, level: 0.12},
+  box: (o) => <PlaybookFlat o={o} K={KPB} />,
+  fx: [sfx('jorho-whoosh', KPB.mg1 - 250, 0.35), ...[0, 1, 2, 3].map((i) => sfx('jorho-click', KPB.mg1 + 150 + i * 400, 0.25)), sfx('meme-impact', PBS[2] - 1300, 0.35),
+    ...[KPB.runs, KPB.pass, KPB.pa, KPB.screens].map((t) => sfx('jorho-pop', t - 150, 0.35)), sfx('jorho-whoosh', KPB.inventory - 300, 0.3), sfx('jorho-swish', KPB.thisWeek - 900, 0.3),
+    sfx('jorho-ting', KPB.thisWeek, 0.35), sfx('jorho-whoosh', KPB.mg3 - 250, 0.3), sfx('jorho-ting', KPB.eight, 0.35), sfx('meme-tada', KPB.ten, 0.45)],
+};
+export const JorhoPlaybook10 = () => <Jorho s={PB10} />;
+
+// ---- B) Dream golf foursome (t2): RIGHT host asks, Trevor (M) answers "Jesus" and "Tiger"
+const gf = timeline([[11200, 13900], [23650, 24600], [26500, 28400], [32200, 34300], [34700, 35600], [45400, 48700], [50300, 54400]]);
+export const GOLF10_MS = gf.total;
+const GFS = gf.segOut, gfo = gf.out;
+const KGF: GolfK = {S: GFS, card: gfo(12300), week: gfo(27300), jesus: gfo(33400), tiger: gfo(48000), goat: gfo(51300), end: GOLF10_MS};
+const GOLF10: Spec = {
+  tl: gf, src: 'pod/t2_dream_golf_four.mp4', track: golfTrack as unknown as Track, top: 'Trevor picks his dream golf foursome', wordY: 1170, wideX: 1000, push: true,
+  words: wordsFrom(golfWords, gf, {for: 'foursome', some: '', of: 'on'}, {dream: '#F9FC35', foursome: '#F9FC35', golf: '#58EE28', Jesus: '#F9FC35', Tiger: '#58EE28', goat: '#21F5E6', week: '#21F5E6'}),
+  wideXAt: (o) => (o < GFS[1] ? 1250 : 1000), // question on a two-shot: Trevor + right host
+  shots: [[0, 'W'], [GFS[1], 'M'], [GFS[4], 'W'], [GFS[5], 'M']],
+  strobes: [GFS[1] - STROBE_CUT], tints: [[KGF.jesus, GREEN]], swish: [GFS[2], GFS[3], GFS[5]],
+  music: {file: 'joyful-chess-slowed.mp3', from: 40500 - KGF.tiger, level: 0.12},
+  box: (o) => <GolfFlat o={o} K={KGF} />,
+  fx: [sfx('jorho-swish', KGF.card - 200, 0.3), sfx('jorho-click', KGF.card + 700, 0.35), sfx('jorho-whoosh', GFS[2] - 200, 0.3), sfx('keyboard-typing', GFS[2] + 150, 0.3, 700),
+    sfx('jorho-ting', KGF.week, 0.3), sfx('jorho-ting', KGF.jesus, 0.35), sfx('meme-impact', KGF.jesus, 0.3), sfx('jorho-whoosh', GFS[5] - 250, 0.3),
+    sfx('jorho-pop', KGF.tiger - 100, 0.45), sfx('meme-orch', KGF.goat - 150, 0.4), sfx('jorho-click', GOLF10_MS - 1700, 0.35)],
+};
+export const JorhoGolf10 = () => <Jorho s={GOLF10} />;

@@ -11,3 +11,5 @@
 - The one thing Trevor never kept from Clemson 🎟️
 - Coaches only let him roll right… so Trevor went LEFT ⬅️
 - Every QB rolls right. Trevor trained LEFT 🔁
+- How many NEW plays an NFL team adds each week 📋
+- Trevor fills out his dream golf foursome ⛳

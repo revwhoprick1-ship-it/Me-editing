@@ -9,71 +9,71 @@ import {SANS} from '../mgFonts';
 const FPS = 30;
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
 export const F9 = {BG: '#E9EEF3', TEAL: '#00A3AD', TEAL_D: '#007C85', GOLD: '#D7A22A', RED: '#E3504F', INK: '#24323a', GREY: '#9aa7b2'};
-const ez = (o: number, a: number, d: number) => interpolate(o - a, [0, d], [0, 1], {...clamp, easing: (t) => 1 - (1 - t) ** 4});
-const io = (o: number, a: number, d: number) => interpolate(o - a, [0, d], [0, 1], {...clamp, easing: (t) => (t < 0.5 ? 8 * t ** 4 : 1 - (-2 * t + 2) ** 4 / 2)});
-const sp = (o: number, a: number, damping = 13, stiffness = 170) => (o < a ? 0 : spring({frame: ((o - a) / 1000) * FPS, fps: FPS, config: {damping, stiffness}}));
-const on = (o: number, a: number, b: number) => o >= a && o < b;
-const NEU = '16px 16px 34px #c3cad3, -16px -16px 34px #ffffff';
-const NEU_IN = 'inset 10px 10px 20px #c6ccd5, inset -10px -10px 20px #ffffff';
-const abs = (x: number, y: number, s: CSSProperties = {}): CSSProperties => ({position: 'absolute', left: x, top: y, transform: 'translate(-50%,-50%)', ...s});
-const T = (s: CSSProperties): CSSProperties => ({fontFamily: SANS, fontWeight: 800, color: F9.INK, letterSpacing: -0.5, whiteSpace: 'nowrap', ...s});
+export const ez = (o: number, a: number, d: number) => interpolate(o - a, [0, d], [0, 1], {...clamp, easing: (t) => 1 - (1 - t) ** 4});
+export const io = (o: number, a: number, d: number) => interpolate(o - a, [0, d], [0, 1], {...clamp, easing: (t) => (t < 0.5 ? 8 * t ** 4 : 1 - (-2 * t + 2) ** 4 / 2)});
+export const sp = (o: number, a: number, damping = 13, stiffness = 170) => (o < a ? 0 : spring({frame: ((o - a) / 1000) * FPS, fps: FPS, config: {damping, stiffness}}));
+export const on = (o: number, a: number, b: number) => o >= a && o < b;
+export const NEU = '16px 16px 34px #c3cad3, -16px -16px 34px #ffffff';
+export const NEU_IN = 'inset 10px 10px 20px #c6ccd5, inset -10px -10px 20px #ffffff';
+export const abs = (x: number, y: number, s: CSSProperties = {}): CSSProperties => ({position: 'absolute', left: x, top: y, transform: 'translate(-50%,-50%)', ...s});
+export const T = (s: CSSProperties): CSSProperties => ({fontFamily: SANS, fontWeight: 800, color: F9.INK, letterSpacing: -0.5, whiteSpace: 'nowrap', ...s});
 
 // ---- primitives ------------------------------------------------------------------------------------------------------------
-const Fill = ({c}: {c: string}) => <div style={{position: 'absolute', inset: 0, background: c}} />;
+export const Fill = ({c}: {c: string}) => <div style={{position: 'absolute', inset: 0, background: c}} />;
 // circle wipe from a point (the ref's main transition)
-const Wipe = ({o, at, c, x = 540, y = 538, d = 520}: {o: number; at: number; c: string; x?: number; y?: number; d?: number}) => {
+export const Wipe = ({o, at, c, x = 540, y = 538, d = 520}: {o: number; at: number; c: string; x?: number; y?: number; d?: number}) => {
   const r = io(o, at, d) * 1600;
   return r <= 0 ? null : <div style={{position: 'absolute', inset: 0, background: c, clipPath: `circle(${r}px at ${x}px ${y}px)`}} />;
 };
 // diagonal line sweep (white bar shooting across)
-const Sweep = ({o, at, c = '#fff'}: {o: number; at: number; c?: string}) => {
+export const Sweep = ({o, at, c = '#fff'}: {o: number; at: number; c?: string}) => {
   const t = (o - at) / 450;
   if (t < 0 || t > 1) return null;
   return <div style={{position: 'absolute', left: -400 + t * 1900, top: -200, width: 46, height: 1500, background: c, transform: 'rotate(35deg)', boxShadow: '0 0 30px rgba(0,0,0,.15)'}} />;
 };
-const Typer = ({o, at, text, cps = 22, s, caret = F9.TEAL}: {o: number; at: number; text: string; cps?: number; s: CSSProperties; caret?: string}) => {
+export const Typer = ({o, at, text, cps = 22, s, caret = F9.TEAL}: {o: number; at: number; text: string; cps?: number; s: CSSProperties; caret?: string}) => {
   if (o < at) return null;
   const n = Math.min(text.length, Math.floor(((o - at) / 1000) * cps));
   const blink = Math.floor(o / 300) % 2 === 0 || n < text.length;
   return <div style={{...T({}), ...s, display: 'flex', alignItems: 'center'}}>{text.slice(0, n)}<span style={{display: 'inline-block', width: 7, height: '0.9em', background: caret, marginLeft: 6, opacity: blink ? 1 : 0}} /></div>;
 };
-const Letters = ({o, at, text, size, color, x, y, gap = 0.06}: {o: number; at: number; text: string; size: number; color: string; x: number; y: number; gap?: number}) => (
+export const Letters = ({o, at, text, size, color, x, y, gap = 0.06}: {o: number; at: number; text: string; size: number; color: string; x: number; y: number; gap?: number}) => (
   <div style={abs(x, y, {display: 'flex'})}>{text.split('').map((ch, i) => {
     const p = sp(o, at + i * 70, 11, 210);
     return <span key={i} style={{...T({fontSize: size, color}), display: 'inline-block', transform: `translateY(${(1 - p) * -120}px) rotate(${(1 - p) * (i % 2 ? 25 : -25)}deg)`, opacity: Math.min(1, p * 2), marginRight: size * gap}}>{ch === ' ' ? ' ' : ch}</span>;
   })}</div>
 );
-const Pill = ({o, at, to, text, x, y, bg = F9.TEAL, fg = '#fff', size = 38, icon}: {o: number; at: number; to?: number; text: string; x: number; y: number; bg?: string; fg?: string; size?: number; icon?: string}) => {
+export const Pill = ({o, at, to, text, x, y, bg = F9.TEAL, fg = '#fff', size = 38, icon}: {o: number; at: number; to?: number; text: string; x: number; y: number; bg?: string; fg?: string; size?: number; icon?: string}) => {
   if (o < at || (to && o >= to)) return null;
   const p = sp(o, at, 14, 200) * (to ? 1 - ez(o, to - 200, 200) : 1);
   return <div style={abs(x, y, {transform: `translate(-50%,-50%) scale(${p})`, background: bg, color: fg, borderRadius: 60, padding: `${size * 0.32}px ${size * 0.75}px`, ...T({fontSize: size, color: fg}),
     boxShadow: bg === F9.BG ? NEU : '0 14px 30px rgba(0,124,133,.35)', display: 'flex', alignItems: 'center', gap: 12})}>
     {icon && <Img src={staticFile(`emoji-ios/${icon}.png`)} style={{width: size * 1.1}} />}{text}</div>;
 };
-const Ring = ({p, r, w = 16, c = F9.TEAL, track = 'rgba(0,0,0,.07)'}: {p: number; r: number; w?: number; c?: string; track?: string}) => {
+export const Ring = ({p, r, w = 16, c = F9.TEAL, track = 'rgba(0,0,0,.07)'}: {p: number; r: number; w?: number; c?: string; track?: string}) => {
   const L = 2 * Math.PI * r;
   return <svg width={2 * r + w} height={2 * r + w} style={{transform: 'rotate(-90deg)', overflow: 'visible'}}>
     <circle cx={r + w / 2} cy={r + w / 2} r={r} fill="none" stroke={track} strokeWidth={w} />
     <circle cx={r + w / 2} cy={r + w / 2} r={r} fill="none" stroke={c} strokeWidth={w} strokeLinecap="round" strokeDasharray={`${L * p} ${L}`} />
   </svg>;
 };
-const Ball = ({x, y, s = 1, rot = 0, c = '#8a4b22'}: {x: number; y: number; s?: number; rot?: number; c?: string}) => (
+export const Ball = ({x, y, s = 1, rot = 0, c = '#8a4b22'}: {x: number; y: number; s?: number; rot?: number; c?: string}) => (
   <svg width={110 * s} height={66 * s} viewBox="0 0 110 66" style={abs(x, y, {transform: `translate(-50%,-50%) rotate(${rot}deg)`, filter: 'drop-shadow(0 10px 12px rgba(0,0,0,.18))'})}>
     <ellipse cx={55} cy={33} rx={52} ry={30} fill={c} /><path d="M33 33 H77" stroke="#fff" strokeWidth={4} strokeLinecap="round" />{[42, 50, 58, 66].map((q) => <path key={q} d={`M${q} 26 V40`} stroke="#fff" strokeWidth={3.5} strokeLinecap="round" />)}
   </svg>
 );
 // flat person (circle head + rounded body), optional number
-const Person = ({x, y, s = 1, c = F9.TEAL, num, face = '#fff', hop = 0}: {x: number; y: number; s?: number; c?: string; num?: string; face?: string; hop?: number}) => (
+export const Person = ({x, y, s = 1, c = F9.TEAL, num, face = '#fff', hop = 0}: {x: number; y: number; s?: number; c?: string; num?: string; face?: string; hop?: number}) => (
   <div style={abs(x, y - hop, {width: 120 * s, height: 190 * s})}>
     <div style={{position: 'absolute', left: 30 * s, top: 0, width: 60 * s, height: 60 * s, borderRadius: '50%', background: face === '#fff' ? c : face, boxShadow: 'inset -6px -8px 0 rgba(0,0,0,.12)'}} />
     <div style={{position: 'absolute', left: 8 * s, top: 68 * s, width: 104 * s, height: 122 * s, borderRadius: `${50 * s}px ${50 * s}px ${22 * s}px ${22 * s}px`, background: c, boxShadow: 'inset -8px -10px 0 rgba(0,0,0,.12)',
       display: 'flex', alignItems: 'center', justifyContent: 'center', ...T({fontSize: 46 * s, color: '#fff'})}}>{num}</div>
   </div>
 );
-const Card = ({x, y, w, h, children, p = 1, inset}: {x: number; y: number; w: number; h: number; children?: ReactNode; p?: number; inset?: boolean}) => (
+export const Card = ({x, y, w, h, children, p = 1, inset}: {x: number; y: number; w: number; h: number; children?: ReactNode; p?: number; inset?: boolean}) => (
   <div style={abs(x, y, {width: w, height: h, borderRadius: 44, background: F9.BG, boxShadow: inset ? NEU_IN : NEU, transform: `translate(-50%,-50%) translateY(${(1 - p) * 80}px) scale(${0.9 + 0.1 * p})`, opacity: p})}>{children}</div>
 );
-const Arrow = ({d, p, c = F9.TEAL, w = 10, dash}: {d: string; p: number; c?: string; w?: number; dash?: boolean}) => {
+export const Arrow = ({d, p, c = F9.TEAL, w = 10, dash}: {d: string; p: number; c?: string; w?: number; dash?: boolean}) => {
   const id = `m${c.slice(1)}${Math.round(w)}${dash ? 'd' : ''}`;
   return <svg width={1080} height={1077} style={{position: 'absolute', inset: 0, overflow: 'visible'}}>
     <defs>
