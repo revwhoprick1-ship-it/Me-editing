@@ -28,6 +28,7 @@ import {LeftyFlat} from './flat9';
 import {GolfFlat, PlaybookFlat, type GolfK, type PbK} from './stories10';
 import {DrawnTT, type DrawnK} from './drawn11';
 import {GoatStick, type GoatK} from './stick12';
+import {Arcade, Chalk, Chat, Comic, Whiteboard} from './styles13';
 import {Arrow7, Band, Big, Emoji, Neck, P7, Pill, Rain, Ruler, Sticker} from './pod7';
 import t4Words from '../plans/data/t4_natty_ticket.words.json';
 import t4Track from '../plans/data/t4_natty_ticket.seats.json';
@@ -697,3 +698,11 @@ const GOAT12: Spec = {
     sfx('meme-orch', N.della - 150, 0.55), sfx('meme-bonk', N.della + 450, 0.45), sfx('meme-violin', N.tension - 200, 0.4, 1200)],
 };
 export const JorhoGoat12 = () => <Jorho s={GOAT12} />;
+
+// ==== v13 (2026-11-01): 5 style candidates of the NBA GOAT clip (user picks one as the new Jorho style)
+const goatV = (box: (p: {o: number; K: GoatK}) => ReactNode): Spec => ({...GOAT12, box: (o) => box({o, K: KG12})});
+export const JorhoGoatWhiteboard = () => <Jorho s={goatV(Whiteboard)} />;
+export const JorhoGoatChalk = () => <Jorho s={goatV(Chalk)} />;
+export const JorhoGoatComic = () => <Jorho s={goatV(Comic)} />;
+export const JorhoGoatArcade = () => <Jorho s={goatV(Arcade)} />;
+export const JorhoGoatChat = () => <Jorho s={goatV(Chat)} />;

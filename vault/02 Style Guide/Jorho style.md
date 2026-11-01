@@ -340,3 +340,12 @@ User asked for: hooks based on attention/curiosity research (no clickbait); open
   - "Dellavedova": the reel locks on Della, he goes on the gold #1 podium with a crown, Trevor points, the host stick falls over;
   - real laugh;
   - TENSION: both sticks sweating, red zigzag.
+
+## v13 five style candidates for the NBA GOAT clip (user, 2026-11-01): "create 5 NBA goat clips just like that but with a different style and approach. I'll pick which ones the best and it will be the new jorho editing style"
+All five use the same beats as v12 and the same real-footage moments (the two-shot ask, Trevor's "NBA goat?", the start of his think, the laugh), the Jorho frame and the captions (`src/jorho/styles13.tsx`):
+1. `JorhoGoatWhiteboard`: grid paper, blue-marker stickmen with a hand-drawn line "boil" (jitter every 110 ms), photos taped on, red marker circle, "HIS GOAT?!".
+2. `JorhoGoatChalk`: green chalkboard in a wood frame, chalk stickmen (glow), X/O doodles, magnet-pinned photos, yellow chalk circle, "THE PICK: DELLA".
+3. `JorhoGoatComic`: yellow halftone, thick-bordered panels, oval speech balloons (Bangers), photo panels, star-burst KA-BOOM, speed lines on TENSION.
+4. `JorhoGoatArcade`: night sky with pixel stars, VT323 font, RPG dialogue box, PLAYER SELECT grid with a blinking cursor speeding up through the think, a "TIME" countdown, P1 SELECTS DELLA, health bars for TENSION, pixel sprites.
+5. `JorhoGoatChat`: iMessage thread with a "Trevor" header; "Trevor is typing… (Ns)" runs through the long pause; then the blue bubble with Della's photo and a 😂 reaction; "I could feel the tension 😬".
+**Waiting for the user's pick → that becomes the new Jorho style.**
