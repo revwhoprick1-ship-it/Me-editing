@@ -18,7 +18,8 @@ import u1Words from '../plans/data/u1_playbook.words.json';
 import u1Track from '../plans/data/u1_playbook.seats.json';
 import {Cam, FPS, Music, SfxTrack, SpeechTrack, sfx, timeline, type CamCfg, type Seat, type Sfx, type TL, type Track} from '../e3/kit';
 import {BOX_H, Cutout, Frame, GREEN, OneWord, RED, STROBE_CUT, Tints, strobe, wordsFrom, type Word} from './kit';
-import {Chips, Cursor, HandCircle, LIME, OrbitDiagram, Poster, StudioCard, type Node} from './mg';
+import {Chips, Cursor, HandCircle, LIME, RED_INK} from './mg';
+import {Brackets, CleanBg, Clipping, Counter, GridBg, Headline, MarkerX, Meter, PaperBg, PlayGrid, RingTags, Stamp, Struck, Timeline, TwoTone, Typed, cardTransform, type Theme} from './mg2';
 import {ease, pop} from '../e3/kit';
 
 const GRADE = 'contrast(1.06) saturate(1.05)';
@@ -31,6 +32,7 @@ type Spec = {
   strobes: number[]; beeps?: number[]; tints: [number, string][]; swish: number[]; cut?: {file: string; from: number; to: number; x: number; h: number};
   music: {file: string; from: number; level: number};
   box?: (o: number) => ReactNode; over?: (o: number) => ReactNode; fx?: Sfx[];
+  intro?: {theme: Theme; to: number; bg: (o: number) => ReactNode; fg?: (o: number) => ReactNode};
 };
 const Jorho = ({s}: {s: Spec}) => {
   const frame = useCurrentFrame();
@@ -53,7 +55,9 @@ const Jorho = ({s}: {s: Spec}) => {
       ]} />
     </>}>
     <AbsoluteFill style={{filter: strobe(o, s.strobes) || undefined}}>
-      <Cam c={cam} o={o} />
+      {s.intro && o < s.intro.to && s.intro.bg(o)}
+      <AbsoluteFill style={s.intro ? cardTransform(s.intro.theme, o, s.intro.to) : undefined}><Cam c={cam} o={o} /></AbsoluteFill>
+      {s.intro && o < s.intro.to && s.intro.fg?.(o)}
       {s.box?.(o)}
       {s.cut && <Cutout o={o} {...s.cut} />}
     </AbsoluteFill>
@@ -129,16 +133,16 @@ const COEN: Spec = {
 };
 export const JorhoCoen = () => <Jorho s={COEN} />;
 
-// ---- NBA goat · "Who is your NBA goat?" … long think … "Gotta be Matthew Dellavedova, man." -----------------------
-// hook: studio card (B&W Trevor in a lime orbit); the long think becomes the GOAT orbit diagram (LeBron barred out)
+// ---- NBA goat · PAPER theme (Mark Suy): front page intro, clippings of the usual GOATs crossed out in red marker,
+// a stamp on the answer ------------------------------------------------------------------------------------------------
 const nTl = timeline([[0, 7400], [8400, 18800]]);
 export const GOAT_MS = nTl.total;
-const N = {who: nTl.out(2280), nba: nTl.out(4480), greatest: nTl.out(5620), think: nTl.segOut[1], gotta: nTl.out(12780), della: nTl.out(13820),
+const N = {who: nTl.out(2280), goat: nTl.out(4800), nba: nTl.out(4480), greatest: nTl.out(5620), think: nTl.segOut[1], gotta: nTl.out(12780), della: nTl.out(13820),
   laugh: nTl.out(15050), tension: nTl.out(17740)};
-const GOAT_NODES: Node[] = [
-  {label: 'LeBron', file: 'lebron.png', at: N.think + 700, bar: true}, {label: 'Kobe', file: 'kobe.png', at: N.think + 1400},
-  {label: 'Curry', file: 'curry.png', at: N.think + 2100}, {label: 'MJ', at: N.think + 2800},
-];
+const CLIPS = [
+  {label: 'LeBron', file: 'lebron.png', x: 90, y: 250, rot: -5, bar: true}, {label: 'Kobe', file: 'kobe.png', x: 560, y: 230, rot: 4},
+  {label: 'Curry', file: 'curry.png', x: 130, y: 640, rot: 3}, {label: 'MJ', x: 600, y: 620, rot: -3},
+].map((c, i) => ({...c, at: N.think + 300 + i * 550, x2: N.think + 2700 + i * 380}));
 const GOAT: Spec = {
   tl: nTl, src: 'input.mp4', track: goatTrack as unknown as Track, top: "Imagine having an NBA goat that's not LeBron fr", wordY: 1170, wideX: 960,
   words: wordsFrom(goatWords, nTl, {'Delvedova,': 'Dellavedova', Delvedova: 'Dellavedova', times: 'time'}, {goat: '#58EE28', Matthew: '#21F5E6', Dellavedova: '#21F5E6'}),
@@ -146,26 +150,37 @@ const GOAT: Spec = {
   strobes: [N.who - STROBE_CUT, N.nba, N.gotta - STROBE_CUT],
   beeps: [N.della - 570],
   tints: [[N.della, GREEN], [N.laugh + 400, RED], [N.tension + 480, GREEN]],
-  swish: [N.della, N.tension + 480, N.think + 300],
+  swish: [N.della, N.tension + 480, N.think + 250],
   cut: {file: 'della.png', from: N.della, to: N.laugh + 900, x: 250, h: 640},
   music: {file: 'du-bist-full.mp3', from: 42050 - N.nba, level: 0.32},
+  intro: {theme: 'paper', to: N.who, bg: () => <PaperBg />, fg: (o) => <>
+    <Headline o={o} at={0} to={N.who} sub="THE BACKYARD TIMES · SPORTS · EXTRA" text={<>Trevor Lawrence names his <span style={{color: RED_INK}}>NBA GOAT</span></>} y={36} />
+    <Stamp o={o} at={900} text="EXCLUSIVE" x={610} y={360} rot={9} size={60} />
+  </>},
   box: (o) => <>
-    <StudioCard o={o} from={0} to={N.who} file="trevor_t3.png" title="TREVOR LAWRENCE" sub="naming his NBA GOAT" />
-    <OrbitDiagram o={o} from={N.think + 300} to={N.gotta} center="?" nodes={GOAT_NODES} />
-    <Cursor o={o} from={N.think + 3100} at={N.think + 3600} to={N.gotta} x={540} y={420} />
+    {o >= N.greatest && o < N.think && <Headline o={o} at={N.greatest} to={N.think} sub="DEFINITION" text="Greatest of all time." y={40} />}
+    {o >= N.think && o < N.gotta && <AbsoluteFill>
+      <PaperBg seed={3} />
+      {CLIPS.map((c, i) => <Clipping key={i} o={o} at={c.at} x={c.x} y={c.y} rot={c.rot} file={c.file} label={c.label} bar={c.bar} w={330} />)}
+      {CLIPS.map((c, i) => <MarkerX key={i} o={o} at={c.x2} x={c.x + 40} y={c.y + 40} s={290} />)}
+      <div style={{position: 'absolute', top: 40, width: 1080, textAlign: 'center', fontFamily: 'Courier Prime', fontWeight: 700, fontSize: 44, color: '#1d1c1a'}}>
+        TREVOR IS THINKING… {((o - N.think) / 1000).toFixed(1)}s</div>
+    </AbsoluteFill>}
+    {o < N.laugh + 900 && <Stamp o={o} at={N.della + 650} text="GOAT?!" x={560} y={170} rot={-14} size={130} />}
+    {o >= N.tension && <Headline o={o} at={N.tension} to={GOAT_MS} sub="BREAKING" text="Tension: 100%" y={40} />}
   </>,
-  over: (o) => <HandCircle o={o} at={N.della + 380} to={N.laugh} y={1170} w={420} />,
-  fx: [...GOAT_NODES.map((n) => sfx('jorho-click', n.at, 0.5)), sfx('jorho-click', N.think + 3600, 0.6), sfx('jorho-pen', N.della + 380, 0.5, 700),
-    sfx('jorho-whoosh', 0, 0.3)],
+  over: (o) => <><HandCircle o={o} at={N.goat} to={N.greatest} y={1170} w={150} /><HandCircle o={o} at={N.della + 380} to={N.laugh} y={1170} w={420} /></>,
+  fx: [sfx('jorho-whoosh', 0, 0.3), sfx('jorho-click', 900, 0.5), ...CLIPS.map((c) => sfx('jorho-click', c.at, 0.45)), ...CLIPS.map((c) => sfx('jorho-pen', c.x2, 0.4, 350)),
+    sfx('jorho-pen', N.goat, 0.45, 600), sfx('jorho-pen', N.della + 380, 0.5, 700), sfx('jorho-click', N.della + 650, 0.6), sfx('jorho-click', N.tension, 0.45)],
 };
 export const JorhoGoat = () => <Jorho s={GOAT} />;
 
-// ---- t3 · "coaches only want rollouts to your right … so I threw way more going to my left" ----------------------
-// hook: studio card; the story is drawn on a dark grid play diagram (roll right, then the flip to the left)
+// ---- t3 · GRID theme (Gary Vee): glass card on a dark grid with stat meters, a career timeline, the play diagram,
+// struck-out titles -----------------------------------------------------------------------------------------------------
 const lTl = timeline([[1760, 3850], [4300, 6000], [11260, 12750], [16220, 18950], [25700, 31250], [32100, 33250], [33860, 39600]]);
 export const LEFTY_J_MS = lTl.total;
-const L = {incredible: lTl.out(2760), god: lTl.out(5440), kid: lTl.out(18860), rollouts: lTl.out(28220), right: lTl.out(28900), hated: lTl.out(32800),
-  left: lTl.out(36060), onlyRight: lTl.out(38940)};
+const L = {accuracy: lTl.out(1760), velocity: lTl.out(2020), incredible: lTl.out(2760), god: lTl.out(5440), worked: lTl.out(17120), kid: lTl.out(18860),
+  coaches: lTl.out(26820), rollouts: lTl.out(28220), right: lTl.out(28900), hated: lTl.out(32800), left: lTl.out(36060), guy: lTl.out(37980)};
 const Rollout = ({o, from, to, dir, label}: {o: number; from: number; to: number; dir: 1 | -1; label: string}) => {
   if (o < from || o >= to) return null;
   const p = ease(o, from + 150, 700);
@@ -186,47 +201,61 @@ const Rollout = ({o, from, to, dir, label}: {o: number; from: number; to: number
 };
 const LEFTY_J: Spec = {
   tl: lTl, src: 'pod/t3_traveling_trevors.mp4', track: t3Track as unknown as Track, top: 'Trevor trained himself to throw LEFT on purpose fr', wordY: 1160, wideX: 990,
-  words: wordsFrom(t3Words, lTl, {'-given,': 'given', God: 'God'}, {God: '#F9FC35', right: '#FFFFFF', left: '#58EE28', kid: '#21F5E6'}),
+  words: wordsFrom(t3Words, lTl, {}, {God: '#F9FC35', right: '#FFFFFF', left: '#58EE28', kid: '#21F5E6'}),
   shots: [[0, 'W'], [lTl.segOut[2], 'M'], [lTl.segOut[4], 'W'], [L.right + 900, 'M'], [L.left - 200 + STROBE_CUT, 'M']],
   strobes: [lTl.segOut[1] - STROBE_CUT, L.left - 200],
-  tints: [[L.incredible, GREEN], [L.god, GREEN], [L.hated, RED], [L.left, GREEN]],
-  swish: [L.incredible, L.god, L.left],
+  tints: [[L.god, GREEN], [L.hated, RED], [L.left, GREEN]],
+  swish: [L.god, L.left, L.worked],
   music: {file: 'funk-abnormal.mp3', from: 37570 - (lTl.segOut[1] - STROBE_CUT), level: 0.3},
+  intro: {theme: 'grid', to: lTl.segOut[1], bg: (o) => <GridBg o={o} />, fg: (o) => <>
+    <TwoTone o={o} at={0} to={lTl.segOut[1]} a="HOW IS HE THIS" b="ACCURATE?" y={34} size={92} />
+    <Meter o={o} at={L.accuracy + 60} label="ACCURACY" value={99} x={720} y={470} w={310} />
+    <Meter o={o} at={L.velocity + 60} label="VELOCITY" value={97} x={720} y={610} w={310} />
+    <Cursor o={o} from={lTl.segOut[1] - 900} at={lTl.segOut[1] - 260} to={lTl.segOut[1]} x={420} y={640} />
+  </>},
   box: (o) => <>
-    <StudioCard o={o} from={0} to={lTl.segOut[1]} file="trevor_t3.png" title="TREVOR LAWRENCE" sub="the throw most QBs can't make" />
+    {o >= L.god && o < lTl.segOut[2] && <Chips o={o} top={90} items={[['GOD-GIVEN?', L.god], ['OR WORK?', L.god + 450]]} />}
+    <Timeline o={o} from={L.worked - 150} to={lTl.segOut[4]} stops={[['KID', L.worked], ['HIGH SCHOOL', L.worked + 450], ['CLEMSON', L.worked + 900], ['NFL', L.kid]]} />
+    {o >= L.coaches && o < L.rollouts - 200 && <TwoTone o={o} at={L.coaches} to={L.rollouts - 200} a="COACHES ONLY CALL" b="ROLLOUTS RIGHT" y={60} size={84} />}
     <Rollout o={o} from={L.rollouts - 200} to={lTl.segOut[5]} dir={1} label="ROLL RIGHT" />
-    <Rollout o={o} from={L.left - 100} to={L.onlyRight} dir={-1} label="GO LEFT" />
-    <Cursor o={o} from={L.god - 500} at={L.god} to={lTl.segOut[2]} x={560} y={330} />
+    <Struck o={o} at={L.hated} to={lTl.segOut[6]} text="ONLY-RIGHT" />
+    <Rollout o={o} from={L.left - 100} to={L.guy - 300} dir={-1} label="GO LEFT" />
+    <Struck o={o} at={L.guy - 100} to={LEFTY_J_MS} text="THE ONE-WAY QB" />
   </>,
   over: (o) => <HandCircle o={o} at={L.left + 100} to={L.left + 1500} y={1160} w={150} />,
-  fx: [sfx('jorho-whoosh', 0, 0.3), sfx('jorho-click', L.god, 0.6), sfx('jorho-pen', L.rollouts, 0.45, 800), sfx('jorho-pen', L.left, 0.45, 800)],
+  fx: [sfx('jorho-whoosh', 0, 0.3), sfx('jorho-click', L.accuracy + 60, 0.45), sfx('jorho-click', L.velocity + 60, 0.45), sfx('jorho-click', lTl.segOut[1] - 260, 0.6),
+    sfx('jorho-click', L.god, 0.5), sfx('jorho-click', L.god + 450, 0.5), ...[0, 450, 900].map((d) => sfx('jorho-click', L.worked + d, 0.4)),
+    sfx('jorho-pen', L.rollouts, 0.45, 800), sfx('jorho-pen', L.hated + 450, 0.45, 400), sfx('jorho-pen', L.left, 0.45, 800), sfx('jorho-pen', L.guy + 350, 0.45, 400)],
 };
 export const JorhoLefty = () => <Jorho s={LEFTY_J} />;
 
-// ---- u1 · "how much does the playbook change week to week?" → hundreds of plays → 8–10 new a week ----------------
-// hook: Gary-Vee poster title over the question; chips per play type; collapses into the stat
+// ---- u1 · CLEAN theme (Elon): typed question over a framed card, a play counter, the offense as a ring diagram,
+// the whole inventory as tiles with this week's picks lighting up, then the 8–10 counter ---------------------------
 const bTl = timeline([[0, 2700], [14260, 18100], [18420, 22700], [36840, 42800], [48820, 54700]]);
 export const PLAYBOOK_J_MS = bTl.total;
 const B = {hundreds: bTl.out(17000), runs: bTl.out(19260), pass: bTl.out(20820), action: bTl.out(21920), screens: bTl.out(22620), inventory: bTl.out(39060),
   week: bTl.out(42500), eight: bTl.out(52580), ten: bTl.out(53980)};
 const PLAYBOOK_J: Spec = {
   tl: bTl, src: 'pod2/u1_playbook.mp4', track: u1Track as unknown as Track, top: 'How big an NFL playbook really is fr', wordY: 1170, wideX: 930,
-  words: wordsFrom(u1Words, bTl, {'-to': 'to', '-week': 'week'}, {hundreds: '#58EE28', plays: '#F9FC35', eight: '#21F5E6', ten: '#21F5E6'}),
+  words: wordsFrom(u1Words, bTl, {}, {hundreds: '#58EE28', plays: '#F9FC35', eight: '#21F5E6', ten: '#21F5E6'}),
   shots: [[0, 'R'], [bTl.segOut[1], 'M'], [bTl.segOut[2], 'W'], [bTl.segOut[3], 'M'], [B.week - 200 + STROBE_CUT, 'W'], [B.eight - 300, 'M']],
   strobes: [bTl.segOut[1] - STROBE_CUT, B.week - 200],
-  tints: [[B.hundreds, GREEN], [B.inventory, GREEN], [B.eight, GREEN]],
-  swish: [B.hundreds, B.inventory, B.eight],
+  tints: [[B.hundreds, GREEN], [B.eight, GREEN]],
+  swish: [B.hundreds, B.runs - 300, B.inventory, B.eight],
   music: {file: 'versatile.mp3', from: 36730 - (bTl.segOut[1] - STROBE_CUT), level: 0.3},
+  intro: {theme: 'clean', to: bTl.segOut[1], bg: () => <CleanBg />, fg: (o) => <>
+    <Typed o={o} at={150} text="How much does an NFL playbook change week to week?" y={60} size={52} />
+    <Brackets o={o} to={bTl.segOut[1]} />
+  </>},
   box: (o) => <>
-    <Poster o={o} from={0} to={bTl.segOut[1]} a="HOW BIG IS" b="AN NFL PLAYBOOK?" />
-    {o < B.runs && <Chips o={o} top={120} items={[['HUNDREDS OF PLAYS', B.hundreds]]} />}
-    {o >= B.runs && o < bTl.segOut[3] && <Chips o={o} top={120} items={[['RUNS', B.runs], ['PASS CONCEPTS', B.pass], ['PLAY ACTION', B.action], ['SCREENS', B.screens]]} />}
-    {o >= B.inventory && o < B.week - 200 && <Chips o={o} top={140} items={[['THE WHOLE INVENTORY', B.inventory]]} />}
-    {o >= B.eight && <Chips o={o} top={110} items={[['NEW PLAYS / WEEK', B.eight]]} collapseAt={B.eight + 700} stat="8–10" />}
-    <Cursor o={o} from={B.week - 700} at={B.week - 250} to={B.week - 200} x={540} y={240} flip />
+    <Counter o={o} at={B.hundreds} to={B.runs - 300} value={300} suffix="+" label="PLAYS INSTALLED" dark />
+    <RingTags o={o} from={B.runs - 300} to={bTl.segOut[3]} center="THE OFFENSE" tags={[['RUNS', B.runs], ['PASS CONCEPTS', B.pass], ['PLAY ACTION', B.action], ['SCREENS', B.screens]]} />
+    <PlayGrid o={o} from={B.inventory - 200} to={B.week - 200} pickAt={B.week - 1300} />
+    <Cursor o={o} from={B.week - 1700} at={B.week - 1300} to={B.week - 200} x={520} y={420} flip />
+    <Counter o={o} at={B.eight} to={PLAYBOOK_J_MS} from={0} prefix="8–" value={10} label="NEW PLAYS A WEEK" dark />
   </>,
-  over: (o) => <HandCircle o={o} at={B.ten} to={bTl.total} y={1170} w={110} />,
-  fx: [sfx('jorho-whoosh', 0, 0.3), ...[B.runs, B.pass, B.action, B.screens].map((t) => sfx('jorho-click', t, 0.5)), sfx('jorho-click', B.week - 250, 0.6),
-    sfx('jorho-pen', B.ten, 0.5, 700)],
+  over: (o) => <HandCircle o={o} at={B.ten} to={PLAYBOOK_J_MS} y={1170} w={110} />,
+  fx: [sfx('jorho-whoosh', 0, 0.3), ...Array.from({length: 12}).map((_, i) => sfx('jorho-click', 150 + i * 190, 0.18)), sfx('jorho-click', B.hundreds, 0.5),
+    ...[B.runs, B.pass, B.action, B.screens].map((t) => sfx('jorho-click', t, 0.5)), sfx('jorho-click', B.week - 1300, 0.6), sfx('jorho-pen', B.ten, 0.5, 700)],
 };
 export const JorhoPlaybook = () => <Jorho s={PLAYBOOK_J} />;

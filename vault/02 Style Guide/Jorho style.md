@@ -119,3 +119,22 @@ YouTube blocks downloads from this box, so these were studied from thumbnails on
 - `JorhoGoat`: StudioCard → orbit of GOATs with LeBron barred → Dellavedova.
 - `JorhoLefty`: StudioCard → ROLL RIGHT / GO LEFT play diagram.
 - `JorhoPlaybook`: Poster "HOW BIG IS AN NFL PLAYBOOK?" → chips → 8–10 stat.
+
+## v4 (user, 2026-11-01): "more motion graphics, the intro sucks (copied the Elon card), don't be repetitive"
+- **No more StudioCard intro.** The intro keeps the REAL footage playing from frame 1, inside a themed card on a themed background (`cardTransform`). It snaps to full frame on the first strobe.
+- **One theme per video, never repeated back to back** (`src/jorho/mg2.tsx`):
+  - **paper** (Mark Suy):
+    - newspaper texture, photo-print card with a white border and tilt;
+    - Playfair headlines, "EXCLUSIVE"/"GOAT?!" stamps;
+    - clippings crossed out with a red marker X, a Courier "thinking… 3.5s" timer.
+  - **grid** (Gary Vee):
+    - dark grid, rounded glass card with 3D tilt;
+    - Anton two-tone titles, stat meters (ACCURACY/VELOCITY);
+    - career timeline, play diagram, titles struck out with a red bar, pixel cursor.
+  - **clean** (Elon):
+    - light grey, lime corner brackets, typed question;
+    - big counters, a ring diagram with corner labels, a tile grid where the cursor picks this week's plays.
+- **Motion graphics on almost every beat:** a long silence or a list becomes a full-box diagram (the audio keeps playing and captions stay on top).
+- Layout checks:
+  - keep diagram labels on one line and clear of the caption line (box y ≈ 740);
+  - stamps and overlays need an end time so they don't pile up.
