@@ -286,3 +286,17 @@ YouTube blocks downloads from this box, so these were studied from thumbnails on
 - **Hook** = the payoff line as a cold open ("I throw it a little better moving LEFT than right"): #16 sprinting left in a pro stadium, a spiral thrown with a trail, green LEFT arrow, red RIGHT with an X.
 - **Story beats:** LIL TREVOR on a youth field → robot coach draws a rollout to the RIGHT on a chalkboard → EVERYONE GOES RIGHT crowd → little #16 runs LEFT through the crowd with a LEFT REPS counter → grows up into the stadium (10,000 reps) → coach robot dances to "BEST QB EVER?!".
 - **Memory (render OOM on first try):** load the 8k panoramas without mipmaps, light the scene with 1k copies (PMREM), and render with `--concurrency=2`.
+
+## v9 FLAT motion design (user, 2026-11-01): "I don't want realistic bro. I want motion graphics style animation and simplistic anims. Something like this https://vt.tiktok.com/ZSgwjsfpN/"
+- **Rejected:** v8's realistic 3D (photoreal stadium panoramas, mannequin and soldier characters). Don't go realistic again.
+- **Ref** (juneedit3d "neumorphism concept" ad, an After Effects screen recording):
+  - soft off-white UI with dual soft shadows (neumorphism) and ONE accent colour;
+  - transitions: circle pop, circle colour wipes, diagonal line sweeps;
+  - typewriter text with a blinking caret, letters that drop and bounce in;
+  - pill labels ("Introducing"), toggles, search bars, UI cards with progress rings and charts, dashed rings with icon nodes orbiting;
+  - smooth eased motion, simple shapes.
+- **Ours** (`src/jorho/flat9.tsx`, comp `JorhoLefty9`):
+  - bg `#E9EEF3`, accent Jaguars teal `#00A3AD`, red `#E3504F` only for "right/wrong", grey people; Inter 800;
+  - primitives: `Wipe`, `Sweep`, `Typer`, `Letters`, `Pill`, `Ring`, `Card` (neumorphic, inset variant), `Person` (flat circle-head figure, optional #16), `Ball` (flat football), `Arrow` (draws on, dashed via a mask).
+- **Beats:** ball pop → flies LEFT on a dashed arc → LEFT|RIGHT toggle snaps LEFT, RIGHT struck through, bars LEFT > RIGHT → teal wipe "back when I was a kid" + lil #16 → Coach's playbook card, red rollout arrow RIGHT → EVERYONE GOES RIGHT row of grey people → #16 runs LEFT against the crowd, LEFT REPS card + ring, bouncing LEFT, search bar typing "QB who can only roll right" ✕ → teal wipe, LEFT core with orbiting emoji nodes + ring fill, 10,000 REPS → crown pop + BEST QB EVER? + dot confetti.
+- Jorho captions (5 px black stroke) read fine on the light background. Pure 2D renders fast (no swangle-heavy 3D) — good for usage.

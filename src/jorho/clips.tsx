@@ -24,6 +24,7 @@ import {RedeemFront, type RedeemTimes} from '../jorho3d/redeem3d';
 import {JoshFront, type JoshTimes} from '../jorho3d/josh3d';
 import {CellyFront, GiftFront, MillsFront} from '../jorho3d/pod7_3d';
 import {LeftyWorld, type LeftyK} from '../jorho3d/lefty8';
+import {LeftyFlat} from './flat9';
 import {Arrow7, Band, Big, Emoji, Neck, P7, Pill, Rain, Ruler, Sticker} from './pod7';
 import t4Words from '../plans/data/t4_natty_ticket.words.json';
 import t4Track from '../plans/data/t4_natty_ticket.seats.json';
@@ -597,3 +598,21 @@ const LEFTY8: Spec = {
     sfx('meme-bonk', KL.onlyRight + 150, 0.4), sfx('meme-build', LS[6] - 1200, 0.35, 1300), sfx('meme-orch', KL.much - 150, 0.5), sfx('meme-tada', KL.best + 1250, 0.5)],
 };
 export const JorhoLefty8 = () => <Jorho s={LEFTY8} />;
+
+// ==== v9 FLAT motion design (user, 2026-11-01): "I don't want realistic bro. I want motion graphics style animation and
+// simplistic anims" + juneedit3d neumorphism ref. Same lefty story/timeline/captions as v8; the box is flat 2D MG.
+const endA9 = KL.best + 1250;
+const LEFTY9: Spec = {
+  ...LEFTY8,
+  box: (o) => <LeftyFlat o={o} K={KL} />,
+  fx: [sfx('jorho-pop', 0, 0.45), sfx('jorho-whoosh', KL.throw0 - 80, 0.4), sfx('jorho-swish', 650, 0.25), sfx('jorho-click', KL.left0 - 120, 0.5), sfx('meme-impact', KL.left0, 0.35),
+    sfx('meme-bonk', KL.right0, 0.4), sfx('jorho-ting', KL.right0 + 250, 0.3),
+    sfx('jorho-whoosh', LS[2], 0.35), sfx('keyboard-typing', LS[2] + 250, 0.35, 900), sfx('jorho-pop', KL.kid - 300, 0.45), sfx('jorho-click', KL.kid, 0.3),
+    sfx('jorho-swish', LS[3] - 150, 0.35), sfx('jorho-pop', LS[3] + 100, 0.3), sfx('jorho-pen', KL.coachRight - 600, 0.35, 800), sfx('jorho-click', KL.coachRight, 0.35),
+    sfx('jorho-whoosh', KL.most - 300, 0.3), sfx('meme-dundun', KL.most - 100, 0.3), sfx('meme-violin', KL.hated, 0.4, 1200),
+    sfx('jorho-whoosh', LS[5] - 300, 0.3), ...[KL.threw, KL.leftB, KL.rolling].map((t) => sfx('meme-jet', t, 0.3)), sfx('meme-impact', KL.leftB - 100, 0.4),
+    sfx('keyboard-typing', KL.onlyRight - 100, 0.35, 900), sfx('meme-bonk', KL.rolling - 300, 0.45),
+    sfx('jorho-whoosh', LS[6] - 200, 0.35), sfx('meme-build', LS[6] - 1200, 0.3, 1100), sfx('meme-orch', KL.much - 150, 0.5),
+    sfx('jorho-pop', endA9 + 100, 0.45), sfx('meme-tada', endA9 + 300, 0.5)],
+};
+export const JorhoLefty9 = () => <Jorho s={LEFTY9} />;
