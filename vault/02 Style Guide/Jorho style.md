@@ -138,3 +138,54 @@ YouTube blocks downloads from this box, so these were studied from thumbnails on
 - Layout checks:
   - keep diagram labels on one line and clear of the caption line (box y ≈ 740);
   - stamps and overlays need an end time so they don't pile up.
+
+## v5 "active" (user, 2026-11-01): "a lot of animations… always something happening that keeps viewers watching"
+**References (YouTube Shorts, studied from thumbnails):**
+- **Pavel Durov edit `qKJpQyj0D3c` (the main one):**
+  - kinetic mixed-type words behind/around the speaker;
+  - a full-screen 3D phone mockup carrying the stat;
+  - a cream quote card with a B&W portrait and huge mixed serif type.
+- **UbdleuYhvac:**
+  - glowing 3D icon orbs;
+  - two-size gradient captions;
+  - B-roll with type over it.
+- **z63j_EgCAf4:** italic serif + bold glow words.
+- **HQ6Oag6iYjI:** neumorphic logo network.
+
+**Kit:** `src/jorho/mg3.tsx`
+- `Kinetic`: per-word slam/slide, mixed Playfair italic + Anton.
+- `QuoteCard`: cream card, B&W cut-out, mixed serif lines, Allura signature that writes itself.
+- `SigCard`: trading card whose signature writes itself; a light sweep crosses it.
+- `Magnifier`, `AntWalk`, `Letters`: giant letters slam in, then shrink to "THIS BIG" with a bracket.
+- `Orb`: 3D icon orb with a spinning dashed ring.
+- `GlowTitle`: small sans line + gradient italic serif.
+- `Silhouette`: black "?" cut-out that reveals into the person.
+- `PhoneCall`: iPhone incoming-call mockup with buzz and pulse.
+- `Dust`: always-on drifting particles.
+
+**Runner additions (`clips.tsx`):**
+- `mattes` + `behind`: words behind a person, using `scripts/person_matte.py` frames in `public/matte/jorho/…`;
+- `push`: a slow push-in that restarts on every cut;
+- `capsOff`: hide captions while a card already shows the words;
+- `wideXAt`: per-time framing.
+
+**Lessons:**
+- **Text-behind-person only works when nothing is in front of them.** The host's camera arm got matted too and hid the words. Use it on clean shots (Trevor) and put words in front on empty wall space elsewhere.
+- **Write-on reveals must finish before the video ends.** Start the signature early enough.
+- **Pacing rule:** a new element lands about every 1 s. Every pop/slam gets a myinstants sound:
+  - `jorho-pop` for pops;
+  - `jorho-pen` for signatures;
+  - `jorho-ring` for the phone (iPhone marimba);
+  - `jorho-snap` for cards (iPhone screenshot).
+
+**Clip:** `JorhoPen` (t1, 22.6 s)
+1. NO RESPECT kinetic opener.
+2. Richardson quote card.
+3. Tiny "AR" auto + magnifier + ants.
+4. A / R letters shrink to THIS BIG.
+5. Fan of Trevor cards signing themselves + "same every time" orb.
+6. "goated pen" glow title + goat/pen orbs.
+7. WHO? behind Trevor + Peyton silhouette.
+8. PEYTON MANNING behind Trevor.
+9. Phone call.
+10. "It's a big deal to have a nice signature" quote card.

@@ -16,7 +16,12 @@ import t3Words from '../plans/data/t3_traveling_trevors.words.json';
 import t3Track from '../plans/data/t3_traveling_trevors.seats.json';
 import u1Words from '../plans/data/u1_playbook.words.json';
 import u1Track from '../plans/data/u1_playbook.seats.json';
-import {Cam, FPS, Music, SfxTrack, SpeechTrack, sfx, timeline, type CamCfg, type Seat, type Sfx, type TL, type Track} from '../e3/kit';
+import t1Words from '../plans/data/t1_tiger_auto_pen.words.json';
+import t1Track from '../plans/data/t1_tiger_auto_pen.seats.json';
+import {AntWalk, Dust, GlowTitle, Kinetic, Letters, Magnifier, Orb, PhoneCall, QuoteCard, SigCard, Silhouette} from './mg3';
+import {Img, staticFile} from 'remotion';
+const emo = (code: string, size: number) => <Img src={staticFile(`emoji-ios/${code}.png`)} style={{width: size, height: size}} />;
+import {Cam, FPS, Music, SfxTrack, SpeechTrack, sfx, timeline, type CamCfg, type Matte, type Seat, type Sfx, type TL, type Track} from '../e3/kit';
 import {BOX_H, Cutout, Frame, GREEN, OneWord, RED, STROBE_CUT, Tints, strobe, wordsFrom, type Word} from './kit';
 import {Chips, Cursor, HandCircle, LIME, RED_INK} from './mg';
 import {Brackets, CleanBg, Clipping, Counter, GridBg, Headline, MarkerX, Meter, PaperBg, PlayGrid, RingTags, Stamp, Struck, Timeline, TwoTone, Typed, cardTransform, type Theme} from './mg2';
@@ -33,16 +38,19 @@ type Spec = {
   music: {file: string; from: number; level: number};
   box?: (o: number) => ReactNode; over?: (o: number) => ReactNode; fx?: Sfx[];
   intro?: {theme: Theme; to: number; bg: (o: number) => ReactNode; fg?: (o: number) => ReactNode};
+  wideXAt?: (o: number) => number; mattes?: Matte[]; behind?: (o: number) => ReactNode; push?: boolean; capsOff?: [number, number][]; faceY?: (o: number) => number;
 };
 const Jorho = ({s}: {s: Spec}) => {
   const frame = useCurrentFrame();
   const o = (frame / FPS) * 1000;
   // the shot list is in output time; Cam asks by source time, so keep a reverse lookup on the output clock
-  const cam: CamCfg = {src: s.src, tl: s.tl, track: s.track, grade: GRADE, box: [1080, BOX_H], baseH: 640, faceY: 0.42, wideX: s.wideX,
-    who: () => shotAt(s.shots, o)};
+  const cam: CamCfg = {src: s.src, tl: s.tl, track: s.track, grade: GRADE, box: [1080, BOX_H], baseH: 640, faceY: s.faceY ?? 0.42, wideX: s.wideXAt ? () => s.wideXAt!(o) : s.wideX,
+    who: () => shotAt(s.shots, o), mattes: s.mattes,
+    // slow push-in that restarts on every hard cut, so the frame never sits still
+    zoom: s.push ? () => { const st = s.shots.reduce((a, [t]) => (o >= t ? t : a), 0); return 1 + 0.07 * ease(o, st, 3500, (v) => v); } : undefined};
   return <Frame o={o} top={s.top}
     over={<>
-      <OneWord o={o} words={s.words} y={s.wordY} />
+      {!(s.capsOff ?? []).some(([a, b]) => o >= a && o < b) && <OneWord o={o} words={s.words} y={s.wordY} />}
       {s.over?.(o)}
       <SpeechTrack src={s.src} tl={s.tl} />
       <Music file={s.music.file} songFrom={s.music.from} level={(t) => s.music.level * Math.min(1, (s.tl.total - t) / 400)} />
@@ -56,7 +64,7 @@ const Jorho = ({s}: {s: Spec}) => {
     </>}>
     <AbsoluteFill style={{filter: strobe(o, s.strobes) || undefined}}>
       {s.intro && o < s.intro.to && s.intro.bg(o)}
-      <AbsoluteFill style={s.intro ? cardTransform(s.intro.theme, o, s.intro.to) : undefined}><Cam c={cam} o={o} /></AbsoluteFill>
+      <AbsoluteFill style={s.intro ? cardTransform(s.intro.theme, o, s.intro.to) : undefined}><Cam c={cam} o={o} behind={s.behind?.(o)} /></AbsoluteFill>
       {s.intro && o < s.intro.to && s.intro.fg?.(o)}
       {s.box?.(o)}
       {s.cut && <Cutout o={o} {...s.cut} />}
@@ -259,3 +267,81 @@ const PLAYBOOK_J: Spec = {
     ...[B.runs, B.pass, B.action, B.screens].map((t) => sfx('jorho-click', t, 0.5)), sfx('jorho-click', B.week - 1300, 0.6), sfx('jorho-pen', B.ten, 0.5, 700)],
 };
 export const JorhoPlaybook = () => <Jorho s={PLAYBOOK_J} />;
+
+// ---- t1 · "his auto looks like an ant" → Peyton Manning told Trevor a nice signature is a big deal ------------------
+// ACTIVE theme (mg3): kinetic words behind the speakers (person mattes), quote cards, a self-writing signature on a
+// card, a magnifier that finds the ant, slam letters A/R, a fan of signed cards, glow title, silhouette reveal,
+// incoming-call phone. Something new lands about every second.
+const tTl = timeline([[9390, 11770], [12040, 16510], [16850, 20180], [23860, 27650], [27790, 29670], [30670, 32500], [33760, 36400], [36400, 37320], [38170, 39570]]);
+export const PEN_MS = tTl.total;
+const o_ = (ms: number) => tTl.out(ms);
+const T = {big: o_(9780), some: o_(10580), hobby: o_(10580) + 150, no: o_(11300), seen: o_(12620), anthony: o_(12800), rich: o_(13180), disrespect: o_(14020),
+  haven: o_(14680), his: o_(14980), auto: o_(15320), looks: o_(15660), ant: o_(16160), A: o_(17740), R: o_(18200), thisBig: o_(18760), noResp: o_(19700),
+  look: o_(24080), beautiful: o_(24320), sigs: o_(24820), every: o_(25500), goated: o_(26900), you: o_(27900), told: o_(28480), iron: o_(30960), peyton: o_(31360),
+  manning: o_(31760), called: o_(33800), a: o_(38200), big2: o_(38280), toHave: o_(38640), nice: o_(39000), signature: o_(39200)};
+const S = tTl.segOut;
+const PEN_MATTES: Matte[] = [
+  {src: [9390, 11770], dir: 'matte/jorho/t1a', n: 72, rect: [1180, 120, 660, 960]},
+  {src: [27790, 32500], dir: 'matte/jorho/t1b', n: 142, rect: [660, 120, 660, 960]},
+];
+const PEN: Spec = {
+  tl: tTl, src: 'pod/t1_tiger_auto_pen.mp4', track: t1Track as unknown as Track, top: "Bro said Anthony Richardson's auto looks like an ant", wordY: 1170, wideX: 1285,
+  wideXAt: (o) => (o < S[1] ? 1400 : 1285),
+  words: wordsFrom(t1Words, tTl, {goaded: 'goated', "Richardson's,": "Richardson's"}, {Anthony: '#21F5E6', "Richardson's": '#21F5E6', ant: '#58EE28', goated: '#58EE28', Peyton: '#F9FC35', Manning: '#F9FC35'}),
+  capsOff: [[T.anthony, S[1] + (14680 - 12040)], [S[7] + 100, PEN_MS]],
+  shots: [[0, 'W'], [S[1], 'W'], [T.haven, 'M'], [T.his, 'R'], [S[2], 'R'], [S[3], 'W'], [S[4], 'M']],
+  push: true, mattes: PEN_MATTES,
+  strobes: [S[1] - STROBE_CUT, S[3] - STROBE_CUT, S[4] - STROBE_CUT, S[6] - STROBE_CUT],
+  tints: [[T.ant, GREEN], [T.noResp, RED], [T.goated, GREEN], [T.peyton, GREEN]],
+  swish: [T.anthony, T.look, T.peyton, S[6], S[7] + 80],
+  music: {file: 'du-bist-full.mp3', from: 45740 - (S[1] - STROBE_CUT), level: 0.3},
+  behind: (o) => <>
+    <Kinetic o={o} to={S[5]} words={[{text: 'you know', at: T.you, y: 90, size: 110, font: 'Playfair Display', italic: true, weight: 900, from: 'left'},
+      {text: 'WHO', at: T.you + 300, y: 200, size: 340, from: 'slam'}, {text: 'told me?', at: T.told, y: 540, size: 110, font: 'Playfair Display', italic: true, weight: 900, from: 'right'}]} />
+    <Kinetic o={o} to={S[6]} words={[{text: 'ironically,', at: T.iron, y: 90, size: 110, font: 'Playfair Display', italic: true, weight: 900, from: 'left'},
+      {text: 'PEYTON', at: T.peyton, y: 200, size: 300, color: '#FF7A1A', from: 'left'}, {text: 'MANNING', at: T.manning, y: 480, size: 250, from: 'right'}]} />
+  </>,
+  box: (o) => <>
+    <Dust o={o} />
+    <AbsoluteFill style={{filter: 'drop-shadow(0 8px 14px rgba(0,0,0,0.55))'}}>
+      <Kinetic o={o} to={T.some} words={[{text: 'a BIG', at: T.big, x: -200, y: 40, size: 100, font: 'Playfair Display', italic: true, weight: 900, from: 'left'},
+        {text: 'THING', at: T.big + 220, x: -200, y: 135, size: 210, from: 'slam'}]} />
+      <Kinetic o={o} to={T.no} words={[{text: 'some', at: T.some, x: -200, y: 30, size: 90, font: 'Playfair Display', italic: true, weight: 900, from: 'left'},
+        {text: 'HOBBY', at: T.hobby, x: -200, y: 115, size: 150, from: 'left'}, {text: 'PLAYERS', at: T.hobby + 200, x: -200, y: 255, size: 150, from: 'left'}]} />
+      <Kinetic o={o} to={S[1]} shake={T.no} words={[{text: 'NO', at: T.no, x: -200, y: 30, size: 230, color: RED_INK, from: 'slam'},
+        {text: 'RESPECT', at: T.no + 120, x: -200, y: 250, size: 165, color: RED_INK, from: 'slam'}]} />
+    </AbsoluteFill>
+    <Orb o={o} at={S[1] + 120} to={T.anthony} x={850} y={300} size={210}>{emo('1f440', 110)}</Orb>
+    <QuoteCard o={o} from={T.anthony - 60} to={T.haven} file="richardson.png" lines={[{text: 'ANTHONY', at: T.anthony, size: 170, font: 'Anton'},
+      {text: "Richardson's", at: T.rich, size: 140, italic: true}, {text: 'autograph', at: T.rich + 350, size: 90, font: 'Anton', color: RED_INK},
+      {text: '(no disrespect)', at: T.disrespect, size: 64, italic: true}]} />
+    {o >= T.haven && o < T.his && <>{[[230, 260, -12], [760, 240, 12]].map(([x, y, r], i) => <div key={i} style={{position: 'absolute', left: x, top: y,
+      transform: `scale(${pop(o, T.haven + i * 90, 10, 280)}) rotate(${r}deg)`}}>{emo('1f440', 130)}</div>)}</>}
+    {o >= T.his && o < S[2] && <AbsoluteFill style={{background: 'rgba(0,0,0,0.45)'}} />}
+    {o < S[2] && <SigCard o={o} at={T.his} x={390} y={180} rot={-4} file="richardson.png" frame="#0b4ea2" sig="AR" sigAt={T.auto} tiny />}
+    <Magnifier o={o} from={T.looks - 200} to={S[2]} x={580} y={560} />
+    <AntWalk o={o} from={T.ant} to={T.A} />
+    <Letters o={o} a={T.A} r={T.R} small={T.thisBig} to={T.noResp + 80} />
+    {o >= T.noResp && o < S[3] && <Stamp o={o} at={T.noResp + 60} text="NO RESPECT" x={150} y={260} rot={-10} size={150} />}
+    {o >= S[3] && o < S[4] && <AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(5,5,12,0.78) 0%, rgba(5,5,12,0.55) 60%, rgba(5,5,12,0.2))'}} />}
+    {o < T.goated && [[60, 130, -10, 0], [390, 90, 0, 1], [720, 130, 10, 2]].map(([x, y, r, i]) => <SigCard key={i} o={o} at={T.look + i * 120} x={x} y={y} rot={r}
+      file="trevor_t3.png" sig="T. Lawrence" sigAt={T.beautiful + i * 260} />)}
+    <Orb o={o} at={T.every} to={T.goated} x={540} y={640} size={180} color={LIME}><span style={{fontSize: 80, color: '#2a6b12', fontWeight: 900}}>✓</span></Orb>
+    {o >= T.every && o < T.goated && <div style={{position: 'absolute', top: 560, left: 640, fontFamily: 'Anton', fontSize: 64, color: '#fff', transform: `translateX(${(1 - pop(o, T.every + 150, 12, 240)) * 300}px)`}}>SAME EVERY TIME</div>}
+    <GlowTitle o={o} at={T.goated} to={S[4]} small="he's got a" big="goated pen" y={120} />
+    <Orb o={o} at={T.goated + 200} to={S[4]} x={330} y={560} size={190}>{emo('1f410', 100)}</Orb>
+    <Orb o={o} at={T.goated + 350} to={S[4]} x={750} y={560} size={190} color="#5ad1ff">{emo('1f58b-fe0f', 100)}</Orb>
+    <Silhouette o={o} from={T.told} reveal={T.peyton} to={S[6]} file="peyton.png" x={640} h={520} />
+    <PhoneCall o={o} from={S[6] - 60} to={S[7] + 100} file="peyton.png" name="Peyton Manning" />
+    <QuoteCard o={o} from={S[7] + 80} to={PEN_MS} file="peyton.png" quote lines={[{text: "IT'S A BIG DEAL", at: T.a, size: 120, font: 'Anton'},
+      {text: 'to have a', at: T.toHave, size: 84, italic: true}, {text: 'NICE SIGNATURE', at: T.nice, size: 120}]} sign={{text: 'Peyton Manning', at: T.toHave}} />
+  </>,
+  fx: [sfx('jorho-whoosh', 0, 0.3), sfx('jorho-pop', T.big, 0.5), sfx('jorho-pop', T.big + 220, 0.5), sfx('jorho-pop', T.some, 0.5), sfx('jorho-pop', T.hobby, 0.5),
+    sfx('jorho-click', S[1] + 120, 0.45), sfx('jorho-snap', T.anthony - 60, 0.4), sfx('jorho-pop', T.rich, 0.5), sfx('jorho-pop', T.rich + 350, 0.5), sfx('jorho-pop', T.haven, 0.5),
+    sfx('jorho-swish', T.his, 0.35), sfx('jorho-pen', T.auto, 0.5, 300), sfx('jorho-whoosh', T.looks - 200, 0.25), sfx('jorho-pop', T.looks + 300, 0.5),
+    sfx('jorho-pop', T.A, 0.6), sfx('jorho-pop', T.R, 0.6), sfx('jorho-swish', T.thisBig, 0.35), sfx('jorho-click', T.noResp + 60, 0.6),
+    ...[0, 1, 2].map((i) => sfx('jorho-pen', T.beautiful + i * 260, 0.4, 700)), sfx('jorho-click', T.every, 0.5), sfx('jorho-pop', T.goated + 200, 0.5), sfx('jorho-pop', T.goated + 350, 0.5),
+    sfx('jorho-pop', T.you + 300, 0.5), sfx('jorho-pop', T.told, 0.45), sfx('jorho-pop', T.iron, 0.45), sfx('jorho-pop', T.manning, 0.5),
+    sfx('jorho-ring', S[6], 0.22, S[7] - S[6]), sfx('jorho-snap', S[7] + 80, 0.4), sfx('jorho-pen', T.signature - 300, 0.45, 800)],
+};
+export const JorhoPen = () => <Jorho s={PEN} />;
