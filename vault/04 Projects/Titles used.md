@@ -10,3 +10,4 @@
 - "Longer neck than Mike Glennon" 💀
 - The one thing Trevor never kept from Clemson 🎟️
 - Coaches only let him roll right… so Trevor went LEFT ⬅️
+- Every QB rolls right. Trevor trained LEFT 🔁
