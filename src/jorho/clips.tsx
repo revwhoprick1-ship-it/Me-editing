@@ -1,5 +1,6 @@
 // Jorho edits (v2 kit). Each clip: the ting on frame 0 under the intro reveal, a white strobe on the beat that
 // carries a shot change, green tints with a swish on the names, a red tint on the laugh, one cut-out photo.
+import type {ReactNode} from 'react';
 import {AbsoluteFill, useCurrentFrame} from 'remotion';
 import peytonWords from '../plans/data/u4_peyton.words.json';
 import peytonTrack from '../plans/data/u4_peyton.seats.json';
@@ -11,8 +12,14 @@ import coenWords from '../plans/data/u6_coen_duo.words.json';
 import coenTrack from '../plans/data/u6_coen_duo.seats.json';
 import goatWords from '../plans/data/nba_goat.words.json';
 import goatTrack from '../plans/data/nba_goat.seats.json';
-import {Cam, FPS, Music, SfxTrack, SpeechTrack, sfx, timeline, type CamCfg, type Seat, type TL, type Track} from '../e3/kit';
+import t3Words from '../plans/data/t3_traveling_trevors.words.json';
+import t3Track from '../plans/data/t3_traveling_trevors.seats.json';
+import u1Words from '../plans/data/u1_playbook.words.json';
+import u1Track from '../plans/data/u1_playbook.seats.json';
+import {Cam, FPS, Music, SfxTrack, SpeechTrack, sfx, timeline, type CamCfg, type Seat, type Sfx, type TL, type Track} from '../e3/kit';
 import {BOX_H, Cutout, Frame, GREEN, OneWord, RED, STROBE_CUT, Tints, strobe, wordsFrom, type Word} from './kit';
+import {Chips, Cursor, HandCircle, LIME, OrbitDiagram, Poster, StudioCard, type Node} from './mg';
+import {ease, pop} from '../e3/kit';
 
 const GRADE = 'contrast(1.06) saturate(1.05)';
 const inAny = (s: number, spans: [number, number][]) => spans.some(([a, b]) => s >= a && s < b);
@@ -23,6 +30,7 @@ type Spec = {
   tl: TL; src: string; track: Track; top: string; words: Word[]; wordY: number; wideX: number; shots: Shot[];
   strobes: number[]; beeps?: number[]; tints: [number, string][]; swish: number[]; cut?: {file: string; from: number; to: number; x: number; h: number};
   music: {file: string; from: number; level: number};
+  box?: (o: number) => ReactNode; over?: (o: number) => ReactNode; fx?: Sfx[];
 };
 const Jorho = ({s}: {s: Spec}) => {
   const frame = useCurrentFrame();
@@ -33,6 +41,7 @@ const Jorho = ({s}: {s: Spec}) => {
   return <Frame o={o} top={s.top}
     over={<>
       <OneWord o={o} words={s.words} y={s.wordY} />
+      {s.over?.(o)}
       <SpeechTrack src={s.src} tl={s.tl} />
       <Music file={s.music.file} songFrom={s.music.from} level={(t) => s.music.level * Math.min(1, (s.tl.total - t) / 400)} />
       <SfxTrack list={[
@@ -40,10 +49,12 @@ const Jorho = ({s}: {s: Spec}) => {
         ...s.strobes.map((t) => sfx('jorho-flash', t, 0.7)),
         ...s.swish.map((t) => sfx('jorho-swish', t, 0.45)),
         ...(s.beeps ?? []).map((t) => sfx('jorho-beep', t, 0.35)),
+        ...(s.fx ?? []),
       ]} />
     </>}>
     <AbsoluteFill style={{filter: strobe(o, s.strobes) || undefined}}>
       <Cam c={cam} o={o} />
+      {s.box?.(o)}
       {s.cut && <Cutout o={o} {...s.cut} />}
     </AbsoluteFill>
     <Tints o={o} list={s.tints} />
@@ -51,7 +62,7 @@ const Jorho = ({s}: {s: Spec}) => {
 };
 
 // ---- u4 · "Peyton Manning called me about my signature" --------------------------------------------------------
-const pTl = timeline([[1000, 1620, 480], [1620, 2300], [2700, 7100], [7700, 9500], [11300, 13050], [13600, 14450], [14800, 19950]]);
+const pTl = timeline([[1000, 1620], [1620, 2300], [2700, 7100], [7700, 9500], [11300, 13050], [13600, 14450], [14800, 19950]]);
 export const PEYTON_MS = pTl.total;
 const P = {peyton: pTl.out(1680), called: pTl.out(4440), nice: pTl.out(9040), real: pTl.out(12420), text: pTl.out(17640), great: pTl.out(19640)};
 const PEYTON: Spec = {
@@ -59,7 +70,7 @@ const PEYTON: Spec = {
   words: wordsFrom(peytonWords, pTl, {}, {Peyton: '#21F5E6', Manning: '#21F5E6'}),
   shots: [[0, 'W'], [P.called + STROBE_CUT, 'M'], [pTl.segOut[3], 'W'], [pTl.segOut[4], 'L'], [pTl.segOut[5], 'W'], [pTl.segOut[6], 'M'], [P.text - 240 + STROBE_CUT, 'W']],
   strobes: [P.called, P.text - 240],
-  beeps: [pTl.segOut[0] + 620],
+  beeps: [P.peyton - 570],
   tints: [[P.peyton, GREEN], [P.nice, GREEN], [P.real, RED], [P.great, GREEN]],
   swish: [P.peyton, P.nice, P.great],
   cut: {file: 'peyton.png', from: P.peyton, to: P.called - 120, x: 270, h: 640},
@@ -68,7 +79,7 @@ const PEYTON: Spec = {
 export const JorhoPeyton = () => <Jorho s={PEYTON} />;
 
 // ---- t2 · "dream golf foursome: throw Jesus in there … Tiger, the goat" ----------------------------------------
-const gTl = timeline([[11250, 13900], [16820, 18500], [32200, 33440, 480], [33440, 34150], [34750, 35700], [45450, 48450], [50400, 54400]]);
+const gTl = timeline([[11250, 13900], [16820, 18500], [32200, 33440], [33440, 34150], [34750, 35700], [45450, 48450], [50400, 54400]]);
 export const GOLF_MS = gTl.total;
 const G = {dream: gTl.out(12380), humans: gTl.out(17740), jesus: gTl.out(33460), like: gTl.out(34780), tiger: gTl.out(48000), world: gTl.out(52140),
   heIs: gTl.out(52760)};
@@ -77,7 +88,7 @@ const GOLF: Spec = {
   words: wordsFrom(golfWords, gTl, {for: 'four', '-time': 'time'}, {Jesus: '#F9FC35', Tiger: '#21F5E6', goat: '#58EE28'}),
   shots: [[0, 'W'], [gTl.segOut[2], 'L'], [G.jesus + STROBE_CUT, 'M'], [gTl.segOut[5], 'W'], [G.heIs - 200 + STROBE_CUT, 'M']],
   strobes: [G.jesus, G.heIs - 200],
-  beeps: [gTl.segOut[2] + 1240],
+  beeps: [G.jesus - 570],
   tints: [[G.dream, GREEN], [G.humans, GREEN], [G.like, RED], [G.tiger, GREEN]],
   swish: [G.dream, G.humans, G.tiger],
   cut: {file: 'tiger.png', from: G.tiger, to: G.world + 250, x: 290, h: 640},
@@ -86,7 +97,7 @@ const GOLF: Spec = {
 export const JorhoGolf = () => <Jorho s={GOLF} />;
 
 // ---- u3 · "this card was $20,000… what is it now? 500 bucks maybe" ---------------------------------------------
-const rTl = timeline([[0, 1780], [1780, 2900, 480], [2900, 6000], [7000, 9600], [27050, 27900], [28950, 33700]]);
+const rTl = timeline([[0, 1780], [1780, 2900], [2900, 6000], [7000, 9600], [27050, 27900], [28950, 33700]]);
 export const REDEEM_MS = rTl.total;
 const RD = {k20: rTl.out(1140), d200: rTl.segOut[2], maybe: rTl.out(5520), redeem: rTl.out(8840), sale: rTl.out(32460) - 200};
 const REDEEM: Spec = {
@@ -94,7 +105,7 @@ const REDEEM: Spec = {
   words: wordsFrom(redeemWords, rTl, {'20': '$20,000', '000': '', '200': '$200?', '500': '$500'}, {'$20,000': '#58EE28', '$500': '#F9FC35', redeem: '#21F5E6'}),
   shots: [[0, 'W'], [RD.d200 + STROBE_CUT, 'M'], [rTl.segOut[3], 'R'], [rTl.segOut[4], 'M'], [rTl.segOut[5], 'W'], [RD.sale + STROBE_CUT, 'M']],
   strobes: [RD.d200, RD.sale],
-  beeps: [rTl.segOut[1] + 1120],
+  beeps: [RD.d200 - 570],
   tints: [[RD.k20, GREEN], [RD.maybe, RED], [RD.redeem, GREEN]],
   swish: [RD.k20, RD.redeem],
   music: {file: 'du-bist-full.mp3', from: 42050 - RD.d200, level: 0.32},
@@ -102,7 +113,7 @@ const REDEEM: Spec = {
 export const JorhoRedeem = () => <Jorho s={REDEEM} />;
 
 // ---- u6 · "Liam Coen has taught me more in this past year than my whole football life" ---------------------------
-const cTl = timeline([[4700, 6500, 480], [6500, 7900], [11400, 17950], [18300, 23000]]);
+const cTl = timeline([[4700, 6500], [6500, 7900], [11400, 17950], [18300, 23000]]);
 export const COEN_MS = cTl.total;
 const C = {liam: cTl.segOut[1], taught: cTl.out(7280), life: cTl.out(14800), why: cTl.out(17240), yeah: cTl.segOut[3], half: cTl.out(21680)};
 const COEN: Spec = {
@@ -110,7 +121,7 @@ const COEN: Spec = {
   words: wordsFrom(coenWords, cTl, {Cohen: 'Coen'}, {Liam: '#21F5E6', Coen: '#21F5E6', definitely: '#58EE28'}),
   shots: [[0, 'W'], [C.liam + STROBE_CUT, 'L'], [cTl.segOut[2], 'W'], [C.yeah + STROBE_CUT, 'M']],
   strobes: [C.liam, C.yeah],
-  beeps: [cTl.segOut[0] + 1800],
+  beeps: [C.liam + 120 - 570],
   tints: [[C.liam + STROBE_CUT, GREEN], [C.taught, GREEN], [C.life, GREEN], [C.why, RED], [C.half, GREEN]],
   swish: [C.liam + STROBE_CUT, C.taught, C.life, C.half],
   cut: {file: 'coen.png', from: C.liam + STROBE_CUT, to: C.life - 300, x: 250, h: 640},
@@ -119,18 +130,103 @@ const COEN: Spec = {
 export const JorhoCoen = () => <Jorho s={COEN} />;
 
 // ---- NBA goat · "Who is your NBA goat?" … long think … "Gotta be Matthew Dellavedova, man." -----------------------
-const nTl = timeline([[0, 7400], [9000, 13650, 480], [13650, 18800]]);
+// hook: studio card (B&W Trevor in a lime orbit); the long think becomes the GOAT orbit diagram (LeBron barred out)
+const nTl = timeline([[0, 7400], [8400, 18800]]);
 export const GOAT_MS = nTl.total;
-const N = {nba: nTl.out(4480), greatest: nTl.out(5620), think: nTl.segOut[1], della: nTl.segOut[2], laugh: nTl.out(15050), tension: nTl.out(17740)};
+const N = {who: nTl.out(2280), nba: nTl.out(4480), greatest: nTl.out(5620), think: nTl.segOut[1], gotta: nTl.out(12780), della: nTl.out(13820),
+  laugh: nTl.out(15050), tension: nTl.out(17740)};
+const GOAT_NODES: Node[] = [
+  {label: 'LeBron', file: 'lebron.png', at: N.think + 700, bar: true}, {label: 'Kobe', file: 'kobe.png', at: N.think + 1400},
+  {label: 'Curry', file: 'curry.png', at: N.think + 2100}, {label: 'MJ', at: N.think + 2800},
+];
 const GOAT: Spec = {
   tl: nTl, src: 'input.mp4', track: goatTrack as unknown as Track, top: "Imagine having an NBA goat that's not LeBron fr", wordY: 1170, wideX: 960,
-  words: wordsFrom(goatWords, nTl, {'Delvedova': 'Dellavedova', times: 'time'}, {goat: '#58EE28', Matthew: '#21F5E6', Dellavedova: '#21F5E6'}),
+  words: wordsFrom(goatWords, nTl, {'Delvedova,': 'Dellavedova', Delvedova: 'Dellavedova', times: 'time'}, {goat: '#58EE28', Matthew: '#21F5E6', Dellavedova: '#21F5E6'}),
   shots: [[0, 'W'], [N.nba + STROBE_CUT, 'M'], [N.greatest, 'L'], [N.think, 'M'], [N.della + 1500, 'W'], [N.tension - 200, 'R']],
-  strobes: [N.nba],
-  beeps: [N.della - 480],
+  strobes: [N.who - STROBE_CUT, N.nba, N.gotta - STROBE_CUT],
+  beeps: [N.della - 570],
   tints: [[N.della, GREEN], [N.laugh + 400, RED], [N.tension + 480, GREEN]],
-  swish: [N.della, N.tension + 480],
+  swish: [N.della, N.tension + 480, N.think + 300],
   cut: {file: 'della.png', from: N.della, to: N.laugh + 900, x: 250, h: 640},
   music: {file: 'du-bist-full.mp3', from: 42050 - N.nba, level: 0.32},
+  box: (o) => <>
+    <StudioCard o={o} from={0} to={N.who} file="trevor_t3.png" title="TREVOR LAWRENCE" sub="naming his NBA GOAT" />
+    <OrbitDiagram o={o} from={N.think + 300} to={N.gotta} center="?" nodes={GOAT_NODES} />
+    <Cursor o={o} from={N.think + 3100} at={N.think + 3600} to={N.gotta} x={540} y={420} />
+  </>,
+  over: (o) => <HandCircle o={o} at={N.della + 380} to={N.laugh} y={1170} w={420} />,
+  fx: [...GOAT_NODES.map((n) => sfx('jorho-click', n.at, 0.5)), sfx('jorho-click', N.think + 3600, 0.6), sfx('jorho-pen', N.della + 380, 0.5, 700),
+    sfx('jorho-whoosh', 0, 0.3)],
 };
 export const JorhoGoat = () => <Jorho s={GOAT} />;
+
+// ---- t3 · "coaches only want rollouts to your right … so I threw way more going to my left" ----------------------
+// hook: studio card; the story is drawn on a dark grid play diagram (roll right, then the flip to the left)
+const lTl = timeline([[1760, 3850], [4300, 6000], [11260, 12750], [16220, 18950], [25700, 31250], [32100, 33250], [33860, 39600]]);
+export const LEFTY_J_MS = lTl.total;
+const L = {incredible: lTl.out(2760), god: lTl.out(5440), kid: lTl.out(18860), rollouts: lTl.out(28220), right: lTl.out(28900), hated: lTl.out(32800),
+  left: lTl.out(36060), onlyRight: lTl.out(38940)};
+const Rollout = ({o, from, to, dir, label}: {o: number; from: number; to: number; dir: 1 | -1; label: string}) => {
+  if (o < from || o >= to) return null;
+  const p = ease(o, from + 150, 700);
+  const qx = 540, qy = 620, ex = 540 + dir * 330;
+  return <AbsoluteFill>
+    <AbsoluteFill style={{background: 'rgba(7,12,9,0.72)', backgroundImage: 'linear-gradient(rgba(185,244,110,0.10) 2px, transparent 2px), linear-gradient(90deg, rgba(185,244,110,0.10) 2px, transparent 2px)',
+      backgroundSize: '90px 90px'}} />
+    <svg width={1080} height={BOX_H} style={{position: 'absolute', inset: 0}}>
+      {[-2, -1, 0, 1, 2].map((k) => <circle key={k} cx={540 + k * 120} cy={420} r={22} fill="none" stroke="#fff" strokeWidth={5} opacity={0.8} />)}
+      <circle cx={qx} cy={qy} r={30} fill={LIME} />
+      <path d={`M ${qx} ${qy} Q ${qx + dir * 60} ${qy + 170} ${ex} ${qy + 120}`} fill="none" stroke={dir > 0 ? '#fff' : LIME} strokeWidth={10} strokeLinecap="round"
+        pathLength={1} strokeDasharray={1} strokeDashoffset={1 - p} />
+      <path d={`M ${ex} ${qy + 120} L ${ex - dir * 34} ${qy + 96} M ${ex} ${qy + 120} L ${ex - dir * 30} ${qy + 150}`} stroke={dir > 0 ? '#fff' : LIME} strokeWidth={10} strokeLinecap="round" opacity={p > 0.95 ? 1 : 0} />
+    </svg>
+    <div style={{position: 'absolute', top: 110, width: 1080, textAlign: 'center', fontFamily: 'Anton', fontSize: 120, color: dir > 0 ? '#fff' : LIME, lineHeight: 1,
+      textShadow: '0 6px 0 rgba(0,0,0,0.6)', transform: `scale(${pop(o, from, 11, 260)})`}}>{label}</div>
+  </AbsoluteFill>;
+};
+const LEFTY_J: Spec = {
+  tl: lTl, src: 'pod/t3_traveling_trevors.mp4', track: t3Track as unknown as Track, top: 'Trevor trained himself to throw LEFT on purpose fr', wordY: 1160, wideX: 990,
+  words: wordsFrom(t3Words, lTl, {'-given,': 'given', God: 'God'}, {God: '#F9FC35', right: '#FFFFFF', left: '#58EE28', kid: '#21F5E6'}),
+  shots: [[0, 'W'], [lTl.segOut[2], 'M'], [lTl.segOut[4], 'W'], [L.right + 900, 'M'], [L.left - 200 + STROBE_CUT, 'M']],
+  strobes: [lTl.segOut[1] - STROBE_CUT, L.left - 200],
+  tints: [[L.incredible, GREEN], [L.god, GREEN], [L.hated, RED], [L.left, GREEN]],
+  swish: [L.incredible, L.god, L.left],
+  music: {file: 'funk-abnormal.mp3', from: 37570 - (lTl.segOut[1] - STROBE_CUT), level: 0.3},
+  box: (o) => <>
+    <StudioCard o={o} from={0} to={lTl.segOut[1]} file="trevor_t3.png" title="TREVOR LAWRENCE" sub="the throw most QBs can't make" />
+    <Rollout o={o} from={L.rollouts - 200} to={lTl.segOut[5]} dir={1} label="ROLL RIGHT" />
+    <Rollout o={o} from={L.left - 100} to={L.onlyRight} dir={-1} label="GO LEFT" />
+    <Cursor o={o} from={L.god - 500} at={L.god} to={lTl.segOut[2]} x={560} y={330} />
+  </>,
+  over: (o) => <HandCircle o={o} at={L.left + 100} to={L.left + 1500} y={1160} w={150} />,
+  fx: [sfx('jorho-whoosh', 0, 0.3), sfx('jorho-click', L.god, 0.6), sfx('jorho-pen', L.rollouts, 0.45, 800), sfx('jorho-pen', L.left, 0.45, 800)],
+};
+export const JorhoLefty = () => <Jorho s={LEFTY_J} />;
+
+// ---- u1 · "how much does the playbook change week to week?" → hundreds of plays → 8–10 new a week ----------------
+// hook: Gary-Vee poster title over the question; chips per play type; collapses into the stat
+const bTl = timeline([[0, 2700], [14260, 18100], [18420, 22700], [36840, 42800], [48820, 54700]]);
+export const PLAYBOOK_J_MS = bTl.total;
+const B = {hundreds: bTl.out(17000), runs: bTl.out(19260), pass: bTl.out(20820), action: bTl.out(21920), screens: bTl.out(22620), inventory: bTl.out(39060),
+  week: bTl.out(42500), eight: bTl.out(52580), ten: bTl.out(53980)};
+const PLAYBOOK_J: Spec = {
+  tl: bTl, src: 'pod2/u1_playbook.mp4', track: u1Track as unknown as Track, top: 'How big an NFL playbook really is fr', wordY: 1170, wideX: 930,
+  words: wordsFrom(u1Words, bTl, {'-to': 'to', '-week': 'week'}, {hundreds: '#58EE28', plays: '#F9FC35', eight: '#21F5E6', ten: '#21F5E6'}),
+  shots: [[0, 'R'], [bTl.segOut[1], 'M'], [bTl.segOut[2], 'W'], [bTl.segOut[3], 'M'], [B.week - 200 + STROBE_CUT, 'W'], [B.eight - 300, 'M']],
+  strobes: [bTl.segOut[1] - STROBE_CUT, B.week - 200],
+  tints: [[B.hundreds, GREEN], [B.inventory, GREEN], [B.eight, GREEN]],
+  swish: [B.hundreds, B.inventory, B.eight],
+  music: {file: 'versatile.mp3', from: 36730 - (bTl.segOut[1] - STROBE_CUT), level: 0.3},
+  box: (o) => <>
+    <Poster o={o} from={0} to={bTl.segOut[1]} a="HOW BIG IS" b="AN NFL PLAYBOOK?" />
+    {o < B.runs && <Chips o={o} top={120} items={[['HUNDREDS OF PLAYS', B.hundreds]]} />}
+    {o >= B.runs && o < bTl.segOut[3] && <Chips o={o} top={120} items={[['RUNS', B.runs], ['PASS CONCEPTS', B.pass], ['PLAY ACTION', B.action], ['SCREENS', B.screens]]} />}
+    {o >= B.inventory && o < B.week - 200 && <Chips o={o} top={140} items={[['THE WHOLE INVENTORY', B.inventory]]} />}
+    {o >= B.eight && <Chips o={o} top={110} items={[['NEW PLAYS / WEEK', B.eight]]} collapseAt={B.eight + 700} stat="8–10" />}
+    <Cursor o={o} from={B.week - 700} at={B.week - 250} to={B.week - 200} x={540} y={240} flip />
+  </>,
+  over: (o) => <HandCircle o={o} at={B.ten} to={bTl.total} y={1170} w={110} />,
+  fx: [sfx('jorho-whoosh', 0, 0.3), ...[B.runs, B.pass, B.action, B.screens].map((t) => sfx('jorho-click', t, 0.5)), sfx('jorho-click', B.week - 250, 0.6),
+    sfx('jorho-pen', B.ten, 0.5, 700)],
+};
+export const JorhoPlaybook = () => <Jorho s={PLAYBOOK_J} />;

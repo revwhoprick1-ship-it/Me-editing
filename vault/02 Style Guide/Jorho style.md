@@ -87,3 +87,35 @@ Method:
 | red tint | none | | silent |
 
 The beep goes on a **480 ms freeze-pause** right before the name drops (a timeline hold); the strobe/cut-out lands after it.
+
+## Beep rule (user, 2026-11-01)
+Never freeze the video for the censor beep. The beep sits in the natural pause before the name and ends on it (`name − 570 ms`), while the video keeps playing.
+
+## Motion graphics layer (v3, from 3 editor showcase Shorts)
+**Sources:** DLND-0I2FmM (Elon studio card), OwuTc_mzyo8 (Gary Vee poster), MoVlt-ptxIk (Mark Suy newspaper).
+
+YouTube blocks downloads from this box, so these were studied from thumbnails only (oardefault + maxres1–3). Ask the user to drop the files on Drive for full audio/motion timing.
+
+| ref | look | our component (`src/jorho/mg.tsx`) | used for |
+|---|---|---|---|
+| Elon | light grey studio, faint skyline, **B&W cut-out**, big grey Montserrat title + small subtitle, **lime orbit ring with nodes** (back half behind the subject, front half in front) | `StudioCard` | hook card for the first ~2 s; the strobe cuts into the footage |
+| Elon logos | centre mark, thin grey ring, items around it | `OrbitDiagram` (B&W avatars, lime or red ring; `bar` = red censor bar over the eyes) | turning a silence or a list into a picture (GOAT candidates) |
+| Gary Vee | dark grid, heavy Anton two-tone title (white / `#FF4A1C`), white and orange chips, **pixel hand cursor** | `Poster`, `Chips` (can collapse into a big stat), `Cursor` | question hooks, lists, stats |
+| Gary Vee | red bar over the eyes | `OrbitDiagram` node `bar` | "not him" (LeBron) |
+| Mark Suy | red hand-drawn circle / underline on the key word | `HandCircle` (around the caption, drawn in 300 ms) | the punchline word |
+
+**SFX (myinstants):**
+- `jorho-click` = mouse-click-by-ek6, for the cursor and for chips/nodes popping;
+- `jorho-pen` = pen-drawing-line, for the hand circle;
+- `jorho-whoosh` = transition-whoosh, under the hook card.
+
+**Rules:**
+- One MG idea per beat, tied to what is said.
+- Graphics stay inside the video box. Captions stay on top.
+- The hook card/poster ends with the white strobe cut.
+- Length 15–30 s, aim ~20 s, and the story must be complete.
+
+**Clips:**
+- `JorhoGoat`: StudioCard → orbit of GOATs with LeBron barred → Dellavedova.
+- `JorhoLefty`: StudioCard → ROLL RIGHT / GO LEFT play diagram.
+- `JorhoPlaybook`: Poster "HOW BIG IS AN NFL PLAYBOOK?" → chips → 8–10 stat.
