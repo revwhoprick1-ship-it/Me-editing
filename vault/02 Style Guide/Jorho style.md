@@ -271,3 +271,17 @@ YouTube blocks downloads from this box, so these were studied from thumbnails on
 - **Plain-word explainer pills** for slang: "CELLY = CELEBRATION", "PSA 10 = PERFECT GRADE".
 - **Lean workflow:** pick clips → face-crop strip to confirm who talks (diarize can be unsure) → write specs → ONE stills grid per clip → fix → render once.
 - Clips: `JorhoGift7` (t4, Blue), `JorhoCelly7` (u2, joyful chess), `JorhoNeck7` (t6, du bist; source fades to black at 16.8 s, so end by 16.7).
+
+## v8 "mostly animation" (user, 2026-11-01): "Try 80-90% be motion graphics/animation, something that visually shows what they are talking about and just the voice speaking (should sometimes show him tho). You should download models from the internet. Try minimizing creating your own … keep the black bars caption stuff … this is still jorho style … the start has a great hook."
+- **Same Jorho frame** (black bars, top meme line + 💀, one-word captions, strobes/tints/swish, meme SFX, music ≈0.12).
+- **Inside the box:** a 3D world plays most of the time and the speech keeps running under it. Real footage shows only on a few lines (Trevor's "loved throwing on the move", "I just hated that", and the host's "best QB I've ever seen"), about 80 % animation.
+- **Downloaded assets** (`scripts/fetch_assets_v8.sh`, kept out of git):
+  - Poly Haven CC0: `orlando_stadium` and `suburban_football_field` panoramas, used as a ground-projected `GroundedSkybox` so the characters stand on a real field; `american_football` and `standing_chalkboard_01` gltf models.
+  - three.js example models: Xbot (run/agree, recoloured Jaguars teal, a "kid" version in light teal + gold), Soldier (Run, used for the crowd), RobotExpressive (the coach: Wave/Yes/Dance).
+- **Tech:**
+  - Load GLTFs and panoramas on the DOM side with delayRender and cache them.
+  - Use `SkeletonUtils.clone` for each instance, and an `AnimationMixer.setTime(frameMs)` so the animation is driven by the frame.
+  - Measure height from the bones: fresh skinned clones have bad bounds, and the first try rendered characters tiny or giant.
+  - Set the camera far plane to 600, otherwise the sky gets clipped into a black wedge.
+- **Hook** = the payoff line as a cold open ("I throw it a little better moving LEFT than right"): #16 sprinting left in a pro stadium, a spiral thrown with a trail, green LEFT arrow, red RIGHT with an X.
+- **Story beats:** LIL TREVOR on a youth field → robot coach draws a rollout to the RIGHT on a chalkboard → EVERYONE GOES RIGHT crowd → little #16 runs LEFT through the crowd with a LEFT REPS counter → grows up into the stadium (10,000 reps) → coach robot dances to "BEST QB EVER?!".

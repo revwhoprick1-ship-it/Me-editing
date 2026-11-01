@@ -1,7 +1,7 @@
 // Jorho edits (v2 kit). Each clip: the ting on frame 0 under the intro reveal, a white strobe on the beat that
 // carries a shot change, green tints with a swish on the names, a red tint on the laugh, one cut-out photo.
 import type {ReactNode} from 'react';
-import {AbsoluteFill, useCurrentFrame} from 'remotion';
+import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
 import peytonWords from '../plans/data/u4_peyton.words.json';
 import peytonTrack from '../plans/data/u4_peyton.seats.json';
 import golfWords from '../plans/data/t2_dream_golf_four.words.json';
@@ -23,6 +23,7 @@ import {GoatFront, type GoatTimes} from '../jorho3d/goat3d';
 import {RedeemFront, type RedeemTimes} from '../jorho3d/redeem3d';
 import {JoshFront, type JoshTimes} from '../jorho3d/josh3d';
 import {CellyFront, GiftFront, MillsFront} from '../jorho3d/pod7_3d';
+import {LeftyWorld, type LeftyK} from '../jorho3d/lefty8';
 import {Arrow7, Band, Big, Emoji, Neck, P7, Pill, Rain, Ruler, Sticker} from './pod7';
 import t4Words from '../plans/data/t4_natty_ticket.words.json';
 import t4Track from '../plans/data/t4_natty_ticket.seats.json';
@@ -565,3 +566,34 @@ const NECK7: Spec = {
     sfx('meme-impact', KN7.glennon, 0.5), sfx('meme-lwk', KN7.trevor, 0.4), sfx('meme-trombone', KN7.nothing - 150, 0.45, 1300)],
 };
 export const JorhoNeck7 = () => <Jorho s={NECK7} />;
+
+// ==== v8 (user, 2026-11-01): "80-90% motion graphics/animation … visually shows what they are talking about … just the
+// voice speaking (should sometimes show him) … download models from the internet … keep the black bars caption stuff".
+// Trevor (M) on loving to throw on the move / coaches only rolling kids right / so he trained LEFT; left host (L) closes
+// with "you're the best quarterback I've ever seen". Only S1, S4 and the first 1.25 s of S7 show real footage.
+const lf = timeline([[47880, 50760], [19450, 21050], [22450, 24000], [26550, 31650], [32050, 33650], [34250, 39850], [44800, 46600], [50800, 53200]]);
+export const LEFTY8_MS = lf.total;
+const LS = lf.segOut, lo = lf.out;
+const KL: LeftyK = {S: LS, throw0: lo(48300), left0: lo(49440), right0: lo(49920), kid: lo(23500), coachRight: lo(28900), most: lo(29560), hated: lo(32800),
+  threw: lo(34440), leftB: lo(36060), onlyRight: lo(38380), rolling: lo(39380), worked: lo(45000), much: lo(46240), best: lo(51080), end: LEFTY8_MS};
+const Reps = ({o}: {o: number}) => {
+  if (o < LS[5] || o >= LS[7]) return null;
+  const n = o < LS[6] ? Math.round(interpolate(o, [LS[5], LS[6]], [1, 999], {extrapolateRight: 'clamp'})) : 10000;
+  return <div style={{position: 'absolute', left: 36, top: 30, padding: '10px 22px', borderRadius: 18, background: 'rgba(0,30,36,.72)', border: '3px solid #2fd25a',
+    fontFamily: 'Anton', color: '#fff', fontSize: 40, lineHeight: 1.05, transform: `scale(${o < LS[6] ? 1 : 1 + 0.25 * Math.max(0, 1 - (o - LS[6]) / 300)})`, transformOrigin: '0 0'}}>
+    <div style={{fontSize: 26, color: '#2fd25a', letterSpacing: 2}}>LEFT REPS</div>{n.toLocaleString('en-US')}</div>;
+};
+const LEFTY8: Spec = {
+  tl: lf, src: 'pod/t3_traveling_trevors.mp4', track: t3Track as unknown as Track, top: 'Why Trevor is better rolling to his LEFT', wordY: 1170, wideX: 990, push: true,
+  words: wordsFrom(t3Words, lf, {}, {left: '#58EE28', right: '#FFFFFF', kid: '#21F5E6', move: '#21F5E6', hated: '#F9FC35', quarterback: '#F9FC35', much: '#F9FC35'}),
+  shots: [[0, 'M'], [LS[7], 'L']],
+  strobes: [LS[1] - STROBE_CUT, LS[4] - STROBE_CUT, LS[7] - STROBE_CUT], tints: [[KL.left0, GREEN], [KL.hated, RED], [KL.leftB, GREEN]],
+  swish: [LS[2], LS[3], LS[5], LS[6], KL.best + 1250],
+  music: {file: 'funk-sigilo.mp3', from: 36900 - LS[5], level: 0.12},
+  box: (o) => <><LeftyWorld o={o} K={KL} /><Reps o={o} /></>,
+  fx: [sfx('jorho-whoosh', 0, 0.3), sfx('meme-jet', KL.throw0, 0.45), sfx('meme-impact', KL.left0, 0.45), sfx('meme-bonk', KL.right0 + 120, 0.45),
+    sfx('jorho-pop', KL.kid - 100, 0.45), sfx('meme-radio', LS[3] + 100, 0.3), sfx('jorho-pen', KL.coachRight - 500, 0.4, 900), sfx('meme-dundun', KL.most - 250, 0.35),
+    sfx('meme-violin', KL.hated, 0.4, 1200), ...[KL.threw, KL.leftB, KL.rolling].map((t) => sfx('meme-jet', t, 0.35)), sfx('meme-impact', KL.leftB, 0.4),
+    sfx('meme-bonk', KL.onlyRight + 150, 0.4), sfx('meme-build', LS[6] - 1200, 0.35, 1300), sfx('meme-orch', KL.much - 150, 0.5), sfx('meme-tada', KL.best + 1250, 0.5)],
+};
+export const JorhoLefty8 = () => <Jorho s={LEFTY8} />;
