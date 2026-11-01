@@ -429,7 +429,7 @@ const J3 = j3.segOut;
 const KJ: JoshTimes = {gold: j3.out(2020), prism: j3.out(3300), teal: j3.out(5920), josh: j3.out(12580), fire: j3.out(16400), rookie: j3.out(18500), notRookie: j3.out(19380),
   joshAllen: j3.out(19960), real: j3.out(22040), hines: j3.out(22800), before: j3.out(24400), changed: j3.out(24840), end: JOSH3D_MS, S: J3};
 const JOSH3D: Spec = {
-  tl: j3, src: 'pod/t5_ex_teammate.mp4', track: t5Track as unknown as Track, top: "When you pull Josh Allen but it's the wrong one", wordY: 1170, wideX: 820, push: true,
+  tl: j3, src: 'pod/t5_ex_teammate.mp4', track: t5Track as unknown as Track, top: "When you pull Josh Allen but it's the wrong one", wordY: 1170, wideX: 880, push: true,
   words: wordsFrom(t5Words, j3, {Heinz: 'Hines'}, {gold: '#F9FC35', Josh: '#21F5E6', Allen: '#21F5E6', Hines: '#58EE28', fire: '#F9FC35'}),
   shots: [[0, 'W']],
   strobes: [J3[2] - STROBE_CUT, J3[6] - STROBE_CUT], tints: [[KJ.real, GREEN]], swish: [KJ.josh, KJ.real],
