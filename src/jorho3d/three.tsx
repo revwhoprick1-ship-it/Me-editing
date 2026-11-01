@@ -68,7 +68,7 @@ export const Word3D = ({text, size = 0.6, depth = 0.22, face = '#ffffff', side =
 );
 
 // ---- trading card: rounded slab, holo front with a signature that writes itself -----------------------------------
-export const Card3D = ({img, sig, sigP = 0, sigBox = [60, 470, 480, 120], sigSize = 92, sigColor = '#0b2a8a', h = 3, ...g}: {img: HTMLImageElement | null; sig?: string; sigP?: number;
+export const Card3D = ({img, sig, sigP = 0, sigBox = [60, 470, 480, 120], sigSize = 92, sigColor = '#0b2a8a', h = 3, back = TEAL_D, ...g}: {img: HTMLImageElement | null; back?: string; sig?: string; sigP?: number;
   sigBox?: [number, number, number, number]; sigSize?: number; sigColor?: string; h?: number} & ThreeElements['group']) => {
   const canvas = useMemo(() => { const c = document.createElement('canvas'); c.width = 600; c.height = 840; return c; }, []);
   const tex = useMemo(() => { const t = new THREE.CanvasTexture(canvas); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 4; return t; }, [canvas]);
@@ -85,7 +85,7 @@ export const Card3D = ({img, sig, sigP = 0, sigBox = [60, 470, 480, 120], sigSiz
   const w = (h * 600) / 840;
   return <group {...g}>
     <RoundedBox args={[w, h, 0.07]} radius={0.06} smoothness={4}>
-      <meshPhysicalMaterial color={TEAL_D} metalness={0.6} roughness={0.3} clearcoat={1} />
+      <meshPhysicalMaterial color={back} metalness={back === GOLD ? 1 : 0.6} roughness={back === GOLD ? 0.2 : 0.3} clearcoat={1} />
     </RoundedBox>
     <mesh position={[0, 0, 0.0365]}>
       <planeGeometry args={[w * 0.985, h * 0.985]} />
@@ -152,3 +152,87 @@ export const Rig = ({children, o, hits}: {children: ReactNode; o: number; hits: 
   const [x, y] = shake(o, hits);
   return <group position={[x, y, 0]}>{children}</group>;
 };
+
+// ---- more props (v6 set 2) -----------------------------------------------------------------------------------------
+const gold = <meshPhysicalMaterial color={GOLD} metalness={1} roughness={0.22} clearcoat={1} />;
+export const Basketball3D = (g: ThreeElements['group']) => (
+  <group {...g}>
+    <mesh><sphereGeometry args={[0.6, 48, 32]} /><meshPhysicalMaterial color="#e2722b" roughness={0.6} clearcoat={0.3} /></mesh>
+    {[0, Math.PI / 2].map((r) => <mesh key={r} rotation={[0, r, 0]}><torusGeometry args={[0.603, 0.012, 8, 64]} /><meshStandardMaterial color="#1a1a1a" /></mesh>)}
+    <mesh rotation={[Math.PI / 2, 0, 0]}><torusGeometry args={[0.603, 0.012, 8, 64]} /><meshStandardMaterial color="#1a1a1a" /></mesh>
+  </group>
+);
+export const Coin3D = (g: ThreeElements['group']) => (
+  <group {...g}>
+    <mesh rotation={[Math.PI / 2, 0, 0]}><cylinderGeometry args={[0.32, 0.32, 0.07, 40]} />{gold}</mesh>
+    <mesh rotation={[Math.PI / 2, 0, 0]} position={[0, 0, 0.036]}><torusGeometry args={[0.25, 0.018, 8, 40]} />{gold}</mesh>
+  </group>
+);
+// price tag: rounded slab with a hole, text in front
+export const Tag3D = ({text, color = '#ffffff', ink = '#123', ...g}: {text: string; color?: string; ink?: string} & ThreeElements['group']) => (
+  <group {...g}>
+    <RoundedBox args={[3.1, 1.35, 0.14]} radius={0.12} smoothness={4}><meshPhysicalMaterial color={color} roughness={0.35} clearcoat={1} /></RoundedBox>
+    <mesh position={[-1.32, 0, 0.08]}><circleGeometry args={[0.1, 24]} /><meshStandardMaterial color="#333" /></mesh>
+    <Word3D text={text} size={0.62} depth={0.08} face={ink} side={ink} position={[0.18, 0, 0.12]} />
+  </group>
+);
+// extruded arrow pointing up (rotate z = PI for down)
+export const Arrow3D = ({color = '#E3242B', ...g}: {color?: string} & ThreeElements['group']) => {
+  const shape = useMemo(() => {
+    const s = new THREE.Shape();
+    s.moveTo(-0.22, -0.9); s.lineTo(0.22, -0.9); s.lineTo(0.22, 0.15); s.lineTo(0.5, 0.15); s.lineTo(0, 0.9); s.lineTo(-0.5, 0.15); s.lineTo(-0.22, 0.15); s.closePath();
+    return s;
+  }, []);
+  return <group {...g}><mesh position={[0, 0, -0.1]}><extrudeGeometry args={[shape, {depth: 0.22, bevelEnabled: true, bevelSize: 0.03, bevelThickness: 0.04, bevelSegments: 3}]} />
+    <meshPhysicalMaterial color={color} roughness={0.3} clearcoat={1} /></mesh></group>;
+};
+export const Clock3D = ({o, speed = 1, ...g}: {o: number; speed?: number} & ThreeElements['group']) => (
+  <group {...g}>
+    <mesh rotation={[Math.PI / 2, 0, 0]}><cylinderGeometry args={[1, 1, 0.22, 64]} /><meshPhysicalMaterial color={TEAL} metalness={0.5} roughness={0.3} clearcoat={1} /></mesh>
+    <mesh position={[0, 0, 0.115]}><circleGeometry args={[0.88, 64]} /><meshStandardMaterial color="#f7f7f2" /></mesh>
+    {Array.from({length: 12}).map((_, i) => <mesh key={i} position={[Math.sin((i / 12) * Math.PI * 2) * 0.75, Math.cos((i / 12) * Math.PI * 2) * 0.75, 0.12]}><boxGeometry args={[0.04, 0.12, 0.02]} /><meshStandardMaterial color="#222" /></mesh>)}
+    <group position={[0, 0, 0.14]} rotation={[0, 0, -(o / 1000) * speed * Math.PI * 2]}><mesh position={[0, 0.3, 0]}><boxGeometry args={[0.05, 0.62, 0.03]} /><meshStandardMaterial color="#111" /></mesh></group>
+    <group position={[0, 0, 0.16]} rotation={[0, 0, -(o / 1000) * speed * Math.PI * 0.2]}><mesh position={[0, 0.2, 0]}><boxGeometry args={[0.08, 0.42, 0.03]} /><meshStandardMaterial color={RED} /></mesh></group>
+  </group>
+);
+// flickering flames (stacked emissive cones)
+export const Flames3D = ({o, ...g}: {o: number} & ThreeElements['group']) => (
+  <group {...g}>
+    {Array.from({length: 9}).map((_, i) => {
+      const x = (i - 4) * 0.28, f = 0.75 + 0.35 * Math.sin(o / 70 + i * 1.7);
+      return <mesh key={i} position={[x, 0.35 * f, 0]} scale={[1, f, 1]}><coneGeometry args={[0.2, 0.9, 16]} />
+        <meshStandardMaterial color={i % 2 ? '#ff9a1f' : '#ff5a1f'} emissive={i % 2 ? '#ff7a00' : '#ff3d00'} emissiveIntensity={1.4} transparent opacity={0.92} /></mesh>;
+    })}
+  </group>
+);
+// confetti burst: deterministic pieces flying out and falling
+export const Confetti3D = ({o, at, n = 60, colors = [GOLD, TEAL, '#ffffff'], ...g}: {o: number; at: number; n?: number; colors?: string[]} & ThreeElements['group']) => {
+  if (o < at) return null;
+  const t = (o - at) / 1000;
+  return <group {...g}>{Array.from({length: n}).map((_, i) => {
+    const a = (i * 137.5 * Math.PI) / 180, v = 2.2 + (i % 7) * 0.45;
+    const x = Math.cos(a) * v * t, y = Math.sin(a) * v * t * 0.8 + 1.2 * t - 4.2 * t * t, z = ((i % 5) - 2) * 0.3 * t;
+    return <mesh key={i} position={[x, y, z]} rotation={[t * (3 + i % 4), t * (2 + i % 3), i]}><boxGeometry args={[0.1, 0.06, 0.01]} />
+      <meshStandardMaterial color={colors[i % colors.length]} metalness={0.4} roughness={0.4} side={THREE.DoubleSide} /></mesh>;
+  })}</group>;
+};
+export const Bars3D = ({o, at, heights, ...g}: {o: number; at: number; heights: number[]} & ThreeElements['group']) => (
+  <group {...g}>{heights.map((hgt, i) => {
+    const p = sp(o, at + i * 120, 12, 160); const h = Math.max(0.01, hgt * p);
+    return <mesh key={i} position={[(i - (heights.length - 1) / 2) * 0.62, h / 2, 0]}><boxGeometry args={[0.45, h, 0.45]} />
+      <meshPhysicalMaterial color={i === heights.length - 1 ? GOLD : TEAL} metalness={i === heights.length - 1 ? 1 : 0.3} roughness={0.28} clearcoat={1} /></mesh>;
+  })}</group>
+);
+export const XMark3D = ({o, at, ...g}: {o: number; at: number} & ThreeElements['group']) => {
+  if (o < at) return null;
+  const p = sp(o, at, 9, 260);
+  return <group {...g} scale={p}>{[0.78, -0.78].map((r) => <RoundedBox key={r} args={[2.6, 0.38, 0.25]} radius={0.1} rotation={[0, 0, r]}>
+    <meshPhysicalMaterial color={RED} roughness={0.3} clearcoat={1} /></RoundedBox>)}</group>;
+};
+export const Sparkles3D = ({o, n = 18, r = 2, ...g}: {o: number; n?: number; r?: number} & ThreeElements['group']) => (
+  <group {...g}>{Array.from({length: n}).map((_, i) => {
+    const a = (i / n) * Math.PI * 2 + o / 1500, s = 0.06 + 0.06 * Math.abs(Math.sin(o / 200 + i));
+    return <mesh key={i} position={[Math.cos(a) * r * (0.7 + (i % 3) * 0.15), Math.sin(a) * r * 0.6 * (0.7 + (i % 2) * 0.3), (i % 4) * 0.2]} rotation={[o / 300, o / 400 + i, 0]} scale={s}>
+      <octahedronGeometry args={[1, 0]} /><meshStandardMaterial color="#fff6c8" emissive={GOLD} emissiveIntensity={1.2} /></mesh>;
+  })}</group>
+);

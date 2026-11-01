@@ -19,6 +19,11 @@ import u1Track from '../plans/data/u1_playbook.seats.json';
 import t1Words from '../plans/data/t1_tiger_auto_pen.words.json';
 import t1Track from '../plans/data/t1_tiger_auto_pen.seats.json';
 import {Dim, PenBehind, PenFront, type PenTimes} from '../jorho3d/pen3d';
+import {GoatFront, type GoatTimes} from '../jorho3d/goat3d';
+import {RedeemFront, type RedeemTimes} from '../jorho3d/redeem3d';
+import {JoshFront, type JoshTimes} from '../jorho3d/josh3d';
+import t5Words from '../plans/data/t5_ex_teammate.words.json';
+import t5Track from '../plans/data/t5_ex_teammate.seats.json';
 import {AntWalk, Dust, GlowTitle, Kinetic, Letters, Magnifier, Orb, PhoneCall, QuoteCard, SigCard, Silhouette} from './mg3';
 import {Img, staticFile} from 'remotion';
 const emo = (code: string, size: number) => <Img src={staticFile(`emoji-ios/${code}.png`)} style={{width: size, height: size}} />;
@@ -351,9 +356,15 @@ export const JorhoPen = () => <Jorho s={PEN} />;
 const K3: PenTimes = {some: T.some, hobby: T.hobby, no: T.no, anthony: T.anthony, disrespect: T.disrespect, haven: T.haven, his: T.his, auto: T.auto, looks: T.looks, ant: T.ant,
   A: T.A, R: T.R, thisBig: T.thisBig, noResp: T.noResp, look: T.look, beautiful: T.beautiful, every: T.every, goated: T.goated, pen: o_(27100), you: T.you,
   peyton: T.peyton, manning: T.manning, big2: T.big2, nice: T.nice, signature: T.signature, S, end: PEN_MS};
+// who talks (scripts/voice_diarize.py + frame check): the LEFT host does the roast and the "goated pen" line,
+// Trevor (M) laughs "I haven't" and tells the Peyton story
 const PEN3D: Spec = {
   ...PEN,
-  top: "Bro said Anthony Richardson's auto looks like an ant",
+  top: "Bro said Anthony Richardson's autograph looks like an ant",
+  wideXAt: () => 720,
+  shots: [[0, 'W'], [S[1], 'W'], [T.haven, 'M'], [T.his, 'L'], [S[3], 'W'], [S[4], 'M']],
+  words: wordsFrom(t1Words, tTl, {goaded: 'goated', "Richardson's,": "Richardson's", auto: 'autograph', autos: 'autographs'},
+    {Anthony: '#21F5E6', "Richardson's": '#21F5E6', ant: '#58EE28', goated: '#58EE28', Peyton: '#F9FC35', Manning: '#F9FC35'}),
   capsOff: [],
   tints: [[T.noResp, RED], [T.goated, GREEN]],
   swish: [T.goated],
@@ -375,3 +386,57 @@ const PEN3D: Spec = {
     sfx('meme-impact', T.big2, 0.5), sfx('jorho-pen', T.nice - 250, 0.45, 900), sfx('meme-tada', T.signature + 200, 0.5)],
 };
 export const JorhoPen3D = () => <Jorho s={PEN3D} />;
+
+// ==== v6 3D set 2 (2026-11-01): who talks checked with scripts/voice_diarize.py + frames; plain on-screen words ====
+// ---- NBA goat 3D (input.mp4): left host asks, Trevor (M) thinks and answers, right host "I could feel the tension"
+const KG: GoatTimes = {who: N.who, nba: N.nba, greatest: N.greatest, think: N.think, gotta: N.gotta, della: N.della, laugh: N.laugh, tension: N.tension, end: GOAT_MS};
+const GOAT3D: Spec = {
+  ...GOAT, intro: undefined, cut: undefined, over: undefined, push: true,
+  shots: [[0, 'W'], [N.who, 'L'], [N.nba, 'M'], [N.greatest, 'L'], [N.think, 'M'], [N.della + 1500, 'W'], [N.tension - 200, 'R']],
+  strobes: [N.who - STROBE_CUT, N.gotta - STROBE_CUT],
+  tints: [[N.della, GREEN], [N.tension, RED]], swish: [N.della],
+  music: {file: 'joyful-chess-slowed.mp3', from: 40500 - N.della, level: 0.12},
+  box: (o) => <><Dim o={o} spans={[[N.who, N.nba], [N.greatest, N.gotta], [N.della, N.laugh + 200]]} /><GoatFront o={o} K={KG} /></>,
+  fx: [sfx('jorho-whoosh', 0, 0.25), sfx('meme-jet', 150, 0.45), sfx('meme-impact', N.who + 220, 0.45), sfx('meme-bonk', N.nba, 0.5),
+    ...[0, 1, 2, 3].map((i) => sfx('meme-impact', N.greatest + 120 + i * 260, 0.3)), sfx('meme-shutter', N.think + 200, 0.35),
+    sfx('meme-build', N.gotta - 2600, 0.4, 2500), sfx('meme-orch', N.della, 0.6), sfx('meme-trombone', N.laugh + 300, 0.45, 1600), sfx('meme-violin', N.tension, 0.45, 1300)],
+};
+export const JorhoGoat3D = () => <Jorho s={GOAT3D} />;
+
+// ---- $20,000 → $500 3D (u3): standing host + Trevor (wide), seated LEFT host explains, Trevor "oh really"
+const r3 = timeline([[0, 1780], [1780, 2900], [2900, 6000], [7000, 9600], [17160, 22600], [23980, 26500], [27050, 27900], [28950, 33050]]);
+export const REDEEM3D_MS = r3.total;
+const R3 = r3.segOut;
+const KR: RedeemTimes = {k20: r3.out(1140), what: r3.out(1780), d200: r3.out(2940), d500: r3.out(4240), maybe: r3.out(5520), why: r3.out(7020), finish: r3.out(17780),
+  product: r3.out(19940), notYet: r3.out(21160), people: r3.out(24320), really: r3.out(27260), product2: r3.out(30260), sale: r3.out(32460), end: REDEEM3D_MS, S: R3};
+const REDEEM3D: Spec = {
+  tl: r3, src: 'pod2/u3_redemptions.mp4', track: redeemTrack as unknown as Track, top: 'Imagine your card going from $20,000 to $500', wordY: 1170, wideX: 760, push: true,
+  words: wordsFrom(redeemWords, r3, {'20': '$20,000', '000': '', '200': '$200?', '500': '$500'}, {'$20,000': '#58EE28', '$500': '#F9FC35', expensive: '#58EE28'}),
+  shots: [[0, 'W'], [R3[3], 'W'], [R3[4], 'L'], [R3[6], 'M'], [R3[7], 'W'], [KR.sale - 900, 'L']],
+  strobes: [R3[3] - STROBE_CUT, R3[7] - STROBE_CUT], tints: [[KR.d500, RED], [KR.sale, GREEN]], swish: [KR.sale],
+  music: {file: 'du-bist-full.mp3', from: 42050 - KR.d500, level: 0.12},
+  box: (o) => <><Dim o={o} spans={[[KR.k20, R3[3]], [KR.why, R3[6]], [R3[7], REDEEM3D_MS]]} /><RedeemFront o={o} K={KR} /></>,
+  fx: [sfx('jorho-whoosh', 0, 0.25), sfx('meme-jet', 120, 0.45), sfx('meme-orch', KR.k20, 0.5), sfx('meme-radio', KR.what, 0.4), sfx('meme-shutter', KR.d200 - 150, 0.4),
+    sfx('meme-trombone', KR.d500, 0.5, 1500), sfx('meme-lwk', KR.maybe, 0.5), sfx('meme-build2', KR.why, 0.4), sfx('meme-radio', KR.finish, 0.4), sfx('meme-jet', KR.product, 0.4),
+    sfx('meme-impact', KR.notYet, 0.45), sfx('meme-fahh', KR.people + 100, 0.45, 1500), sfx('meme-bonk', KR.really, 0.5), sfx('meme-build', KR.product2, 0.35, 2000), sfx('meme-tada', KR.sale, 0.5)],
+};
+export const JorhoRedeem3D = () => <Jorho s={REDEEM3D} />;
+
+// ---- wrong Josh Allen 3D (t5): the standing LEFT host does nearly all the talking → wide shot centred on him + Trevor
+const j3 = timeline([[1600, 3500], [5300, 7950], [11500, 13150], [14050, 14600], [15050, 16650], [17100, 18950], [19100, 25750]]);
+export const JOSH3D_MS = j3.total;
+const J3 = j3.segOut;
+const KJ: JoshTimes = {gold: j3.out(2020), prism: j3.out(3300), teal: j3.out(5920), josh: j3.out(12580), fire: j3.out(16400), rookie: j3.out(18500), notRookie: j3.out(19380),
+  joshAllen: j3.out(19960), real: j3.out(22040), hines: j3.out(22800), before: j3.out(24400), changed: j3.out(24840), end: JOSH3D_MS, S: J3};
+const JOSH3D: Spec = {
+  tl: j3, src: 'pod/t5_ex_teammate.mp4', track: t5Track as unknown as Track, top: "When you pull Josh Allen but it's the wrong one", wordY: 1170, wideX: 820, push: true,
+  words: wordsFrom(t5Words, j3, {Heinz: 'Hines'}, {gold: '#F9FC35', Josh: '#21F5E6', Allen: '#21F5E6', Hines: '#58EE28', fire: '#F9FC35'}),
+  shots: [[0, 'W']],
+  strobes: [J3[2] - STROBE_CUT, J3[6] - STROBE_CUT], tints: [[KJ.real, GREEN]], swish: [KJ.josh, KJ.real],
+  music: {file: 'joyful-chess-slowed.mp3', from: 84700 - KJ.real, level: 0.12},
+  box: (o) => <><Dim o={o} spans={[[0, JOSH3D_MS]]} /><JoshFront o={o} K={KJ} /></>,
+  fx: [sfx('jorho-whoosh', 0, 0.25), sfx('meme-jet', KJ.gold, 0.5), sfx('meme-bonk', KJ.teal, 0.5), sfx('meme-orch', KJ.josh, 0.55), sfx('meme-jet', KJ.fire - 100, 0.5),
+    sfx('meme-shutter', KJ.rookie, 0.4), sfx('meme-dundun', KJ.notRookie, 0.5), sfx('meme-violin', KJ.joshAllen, 0.35, 900), sfx('meme-tada', KJ.real, 0.55),
+    sfx('meme-impact', KJ.changed, 0.45)],
+};
+export const JorhoJosh3D = () => <Jorho s={JOSH3D} />;

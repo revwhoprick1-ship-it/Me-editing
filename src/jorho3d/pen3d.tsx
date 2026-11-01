@@ -72,7 +72,7 @@ export const PenFront = ({o, K}: {o: number; K: PenTimes}) => {
     <Env /><Lights />
     <Rig o={o} hits={[K.no, K.A, K.R, K.noResp, K.goated, K.big2]}>
       {o < K.S[1] + 50 && <>
-        {o >= K.some && <Word3D text="HOBBY" size={0.5} position={[-1.15, 2.2, away]} rotation={[0, (1 - pHob) * -1.6, 0.04]} scale={pHob} />}
+        {o >= K.some && <Word3D text="SOME" size={0.5} position={[-1.15, 2.2, away]} rotation={[0, (1 - pHob) * -1.6, 0.04]} scale={pHob} />}
         {o >= K.hobby + 200 && <Word3D text="PLAYERS" size={0.5} position={[-0.75, 1.5, away]} rotation={[0, (1 - pPla) * 1.6, -0.03]} scale={pPla} />}
         {o >= K.no && <Word3D text="NO RESPECT" size={0.62} face={RED} side="#5c0a0d" position={[-0.35, 1.7, (1 - pNo) * 9]} rotation={[0.05, Math.sin(o / 380) * 0.18, -0.07]} />}
       </>}

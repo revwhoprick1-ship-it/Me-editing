@@ -9,6 +9,8 @@ This repo is a **Remotion + Whisper Shorts editing setup**, and this `vault/` fo
 Edit podcast/streamer clips into viral vertical Shorts in a **meme / brainrot clipping style**, copying the references they gave and the patterns from researching 50 top Shorts. They give feedback on each version, so check the feedback log in the project note before editing again.
 
 ## User preferences
+- **Frame the person who is ACTUALLY talking (2026-11-01).** Before picking shots, check who speaks each line: run `scripts/voice_diarize.py` (voice clusters) + `scripts/speaker_check.py` (mouth motion per seat), then confirm with a frame strip. Laughing fools the mouth check. If unsure, use the wide shot.
+- **Plain words only on screen (2026-11-01).** Captions and 3D text use words an average viewer knows. Swap hobby slang (auto → autograph, redeem → "why the wait", prism, numbered, etc.) for everyday words, or cut the line.
 - **Title, description and tags go in chat inside code blocks** (one block for the title, one for description + tags) so the user can tap the copy button. (2026-11-01)
 - **Always send a title + description with every video.** The description should be a short story or in-depth explanation (about 3–5 sentences, not too long), followed by tags that boost reach: 8–15 hashtags mixing broad (#shorts #nfl) and niche (#trevorlawrence #jaguars), plus a few plain keyword tags. (2026-10-26)
 - **Always send the finished video file directly in chat** (SendUserFile) so they can download it.

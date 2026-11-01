@@ -251,3 +251,14 @@ YouTube blocks downloads from this box, so these were studied from thumbnails on
 **Clip:** `JorhoPen3D` (t1, 22.6 s).
 
 **Music rule for the 3D style (user, 2026-11-01):** keep the background music LOW but audible, about level 0.12 (roughly 15 dB under the voice). The SFX carry the energy.
+
+**Speaker focus + plain words (user, 2026-11-01):** "focus on the person who's actually talking… don't use words most average people aren't familiar of." Shots follow the real speaker (voice diarize + mouth check + frame strip). On-screen words stay everyday (autograph not auto, "SOME" not "HOBBY", "WHY THE WAIT?" not "redeem").
+
+**3D clips batch 2 (2026-11-01), all music level 0.12, same frame/captions, each a different 3D world:**
+- `JorhoGoat3D` (input.mp4, 17.8 s, joyful-chess): spinning "?" + orbiting basketball hook → NBA / GOAT? slam → G-O-A-T letters bounce in → LeBron/Kobe/Curry card carousel speeds up while Trevor thinks (thinking dots) → Dellavedova card slams in with confetti, shrinks to the corner on the laugh → the other GOAT cards fall → shaking red TENSION.
+- `JorhoRedeem3D` (u3, ~21.5 s, du-bist-full): $20,000 price tag swinging on a string with coins → squash-flips to $200? → $500, red arrow crash → WHY THE WAIT? + clock → clock + NEW box + NOT READY YET → NOBODY LIKES IT + X → chart bars rise + green arrow → MOST EXPENSIVE SALE EVER + confetti.
+- `JorhoJosh3D` (t5, ~16.9 s, joyful-chess): face-down gold card swaying with sparkles (GOLD?! / TEAL??) → flips to Bills Josh Allen + flying football + JOSH ALLEN?! → flames on "fire" → ROOKIE CARD → X + NOT THAT ONE → flips to gold Josh Hines-Allen + THE OTHER JOSH ALLEN + confetti → JOSH [HINES-] ALLEN name build.
+
+**New 3D kit parts (`three.tsx`):** Basketball3D, Coin3D, Tag3D (price tag), Arrow3D, Clock3D, Flames3D, Confetti3D, Bars3D, XMark3D, Sparkles3D. Card textures in `public/img/j3d/` (PIL-composed).
+
+**Lessons from stills:** a flipped tag mirrors its text, so use a squash flip (scale x = |cos|) instead of a rotation; a card spinning face-down shows its face early, so sway it instead; big cards over faces must shrink to a corner once the line is done; keep 3D titles off the top meme line (y ≤ 2.6 world units).

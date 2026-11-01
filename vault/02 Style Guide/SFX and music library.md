@@ -82,6 +82,7 @@ Drop times (s) from `scripts/find_drops.py`; the first one ≥ the run-up you ne
 | tak-tak.mp3 | HIMXN – TAK TAK (Super Slowed) | 2.0 (30 s clip) | spare |
 | funk-sigilo.mp3 | Funk Sigilo (Slowed) | 5.4, 36.9 | card / serious |
 | du-bist-full.mp3 | Du bist gut genug (full) | 2.0, 42.5 | funny podcast |
+| joyful-chess-slowed.mp3 | joyful – Chess (slowed), non-DRM SoundCloud reupload by HijjeX (the official upload is DRM) | 2.4, 40.5, 84.7 (≈108 BPM, 150 s) | funny / hype 3D podcast (user added 2026-11-01) |
 | blue-yung-kai.mp3 | Yung Kai – Blue (official audio) | beat in at **23.5** (≈80 BPM, 0.74 s per 2 beats) | wholesome podcast / W Speed |
 
 **Rule (user, 2026-10-25): never use the same song for every video.** Rotate card phonk, and pick podcast music by mood.
