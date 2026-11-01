@@ -29,6 +29,7 @@ import {GolfFlat, PlaybookFlat, type GolfK, type PbK} from './stories10';
 import {DrawnTT, type DrawnK} from './drawn11';
 import {GoatStick, type GoatK} from './stick12';
 import {Arcade, Chalk, Chat, Comic, Whiteboard} from './styles13';
+import {GoatPoster, PO} from './poster14';
 import {Arrow7, Band, Big, Emoji, Neck, P7, Pill, Rain, Ruler, Sticker} from './pod7';
 import t4Words from '../plans/data/t4_natty_ticket.words.json';
 import t4Track from '../plans/data/t4_natty_ticket.seats.json';
@@ -57,13 +58,13 @@ type Spec = {
   music: {file: string; from: number; level: number};
   box?: (o: number) => ReactNode; over?: (o: number) => ReactNode; fx?: Sfx[];
   intro?: {theme: Theme; to: number; bg: (o: number) => ReactNode; fg?: (o: number) => ReactNode};
-  wideXAt?: (o: number) => number; mattes?: Matte[]; behind?: (o: number) => ReactNode; push?: boolean; capsOff?: [number, number][]; faceY?: (o: number) => number;
+  wideXAt?: (o: number) => number; mattes?: Matte[]; behind?: (o: number) => ReactNode; push?: boolean; capsOff?: [number, number][]; faceY?: (o: number) => number; grade?: string;
 };
 const Jorho = ({s}: {s: Spec}) => {
   const frame = useCurrentFrame();
   const o = (frame / FPS) * 1000;
   // the shot list is in output time; Cam asks by source time, so keep a reverse lookup on the output clock
-  const cam: CamCfg = {src: s.src, tl: s.tl, track: s.track, grade: GRADE, box: [1080, BOX_H], baseH: 640, faceY: s.faceY ?? 0.42, wideX: s.wideXAt ? () => s.wideXAt!(o) : s.wideX,
+  const cam: CamCfg = {src: s.src, tl: s.tl, track: s.track, grade: s.grade ?? GRADE, box: [1080, BOX_H], baseH: 640, faceY: s.faceY ?? 0.42, wideX: s.wideXAt ? () => s.wideXAt!(o) : s.wideX,
     who: () => shotAt(s.shots, o), mattes: s.mattes,
     // slow push-in that restarts on every hard cut, so the frame never sits still
     zoom: s.push ? () => { const st = s.shots.reduce((a, [t]) => (o >= t ? t : a), 0); return 1 + 0.07 * ease(o, st, 3500, (v) => v); } : undefined};
@@ -706,3 +707,17 @@ export const JorhoGoatChalk = () => <Jorho s={goatV(Chalk)} />;
 export const JorhoGoatComic = () => <Jorho s={goatV(Comic)} />;
 export const JorhoGoatArcade = () => <Jorho s={goatV(Arcade)} />;
 export const JorhoGoatChat = () => <Jorho s={goatV(Chat)} />;
+
+// ==== v14 sports poster (user, 2026-11-01): Pinterest sports-motion-design look; answers: keep Jorho frame, half footage /
+// half graphics, black & white + one accent (#ff4d2e). Real footage is graded B&W too; captions white, keywords accent.
+const POSTER_KEYS = new Set(['goat', 'GOAT', 'Matthew', 'Dellavedova', 'tension', 'greatest']);
+const GOAT14: Spec = {
+  ...GOAT12, grade: 'grayscale(1) contrast(1.18) brightness(1.02)',
+  words: GOAT12.words.map((w) => ({...w, color: POSTER_KEYS.has(w.text) ? PO.AC : '#ffffff'})),
+  tints: [[N.della, PO.AC]], box: (o) => <GoatPoster o={o} K={KG12} />,
+  fx: [sfx('jorho-whoosh', N.who + 400, 0.3), ...[0, 160, 330, 520].map((d) => sfx('meme-impact', N.who + 600 + d, 0.28)), sfx('meme-jet', N.who + 1300, 0.3),
+    ...[0, 1, 2].map((i) => sfx('jorho-swish', N.greatest + i * 260, 0.3)), sfx('meme-dundun', N.greatest + 1100, 0.35),
+    ...[0, 1, 2, 3, 4].map((i) => sfx('jorho-click', N.think + 1300 + i * 520, 0.22)), sfx('meme-build', N.gotta - 1400, 0.35, 1300),
+    sfx('jorho-flash', N.della - 150, 0.4), sfx('meme-orch', N.della - 150, 0.55), sfx('meme-impact', N.della + 450, 0.4), sfx('meme-violin', N.tension - 200, 0.4, 1200)],
+};
+export const JorhoGoat14 = () => <Jorho s={GOAT14} />;

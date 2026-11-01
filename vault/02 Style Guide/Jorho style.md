@@ -349,3 +349,17 @@ All five use the same beats as v12 and the same real-footage moments (the two-sh
 4. `JorhoGoatArcade`: night sky with pixel stars, VT323 font, RPG dialogue box, PLAYER SELECT grid with a blinking cursor speeding up through the think, a "TIME" countdown, P1 SELECTS DELLA, health bars for TENSION, pixel sprites.
 5. `JorhoGoatChat`: iMessage thread with a "Trevor" header; "Trevor is typing… (Ns)" runs through the long pause; then the blue bubble with Della's photo and a 😂 reaction; "I could feel the tension 😬".
 **Waiting for the user's pick → that becomes the new Jorho style.**
+
+## v14 Pinterest "sports poster" (user, 2026-11-01): rejected all 5 v13 styles; "find motion graphics stuff on Pinterest and copy them. Ask me questions."
+- **Pinterest access:** plain curl gets JavaScript-only HTML. Use Playwright (`.work/pin/shot.cjs`) to load `pinterest.com/search/pins/?q=…`. A login modal appears, but the pin `<img>` srcs (i.pinimg.com 236x → 474x) are readable and downloadable.
+- **Searches used:** "motion graphics podcast edit", "2d motion graphics animation", "sports motion design".
+- **User answers:** keep the Jorho frame; half real footage, half graphics; colours black/white + 1 accent; look: no preference (I chose sports poster).
+- **Look** (`src/jorho/poster14.tsx`, comp `JorhoGoat14`), copied from the sports-motion-design pins:
+  - giant Anton type stacked and repeated in rows that slide in alternate directions, outline rows mixed with filled rows;
+  - B&W player cut-outs with a hard accent offset shadow;
+  - caution-tape bands with a repeating label;
+  - grain plus halftone;
+  - three vertical candidate panels wiping up;
+  - a round photo window cycling candidates with a seconds counter;
+  - accent `#ff4d2e`; real footage graded B&W too (new `Spec.grade`); captions white with accent keywords.
+- **Beats:** WHO / IS YOUR / NBA / GOAT? slam stack → LEBRON/KOBE/CURRY panels "OR…?" → THINKING rows + cycling photo + live seconds counter → GOTTA BE → white flash, giant DELLA, cut-out, #1, name tape → real laugh → TENSION rows + tapes + Trevor cut-out.
