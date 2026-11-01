@@ -68,7 +68,8 @@ export const OneWord = ({o, words, y}: {o: number; words: Word[]; y: number}) =>
   words.forEach((w, j) => { if (o >= w.at) i = j; });
   if (i < 0) return null;
   const w = words[i];
-  if (o > (words[i + 1]?.at ?? Infinity) || o > w.at + 1200) return null;
+  // captions always on screen (user 2026-11-01): a word stays until the next one starts
+  if (o > (words[i + 1]?.at ?? Infinity)) return null;
   const k = fr(o) - fr(w.at);
   const smear = k < 2 ? {transform: `scaleX(${k === 0 ? 1.35 : 1.15})`, filter: `blur(${k === 0 ? 5 : 2.5}px)`, opacity: 0.85} : {};
   return <div style={{position: 'absolute', left: 0, width: W, top: y - 40, textAlign: 'center', ...smear}}>
