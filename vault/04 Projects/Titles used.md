@@ -1,0 +1,7 @@
+# Titles used (never reuse)
+- Trevor's NBA GOAT is NOT who you think 💀
+- His $20,000 card is worth $500 now 💀
+- He pulled Josh Allen… the wrong one 💀
+- Trevor picked Dellavedova over LeBron 😭
+- From $20,000 to "maybe $500" 📉
+- Nobody tell him which Josh Allen this is 😭
