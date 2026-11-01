@@ -363,3 +363,8 @@ All five use the same beats as v12 and the same real-footage moments (the two-sh
   - a round photo window cycling candidates with a seconds counter;
   - accent `#ff4d2e`; real footage graded B&W too (new `Spec.grade`); captions white with accent keywords.
 - **Beats:** WHO / IS YOUR / NBA / GOAT? slam stack → LEBRON/KOBE/CURRY panels "OR…?" → THINKING rows + cycling photo + live seconds counter → GOTTA BE → white flash, giant DELLA, cut-out, #1, name tape → real laugh → TENSION rows + tapes + Trevor cut-out.
+
+## v15 three more Pinterest looks on the NBA GOAT clip (`src/jorho/refs15.tsx`)
+- `JorhoGoatPremium`: dark warm gradient, glowing gold Instrument Serif italics, rounded photo cards in perspective, gold progress ring through the think, "the GOAT." glow reveal.
+- `JorhoGoatCollage`: solid orange/yellow/blue, torn-paper strips, tape, white-outlined sticker cut-outs, mixed fonts (Anton/Bangers/Permanent Marker), sunburst behind Della, "THE GOAT ★".
+- `JorhoGoatNeon`: black with a cyan grid, typed QUERY, "GOAT RATING" bars, live seconds counter, a glowing chart spiking to 100 for Della, red heartbeat TENSION.

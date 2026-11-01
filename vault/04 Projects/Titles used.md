@@ -16,3 +16,6 @@
 - Trevor first thought the Traveling Trevors were "whacked" 😂
 - Trevor took 5 seconds to name his NBA GOAT… then said this 🏀
 - Trevor named his NBA GOAT. Nobody saw this coming.
+- This man is better than MJ and LeBron combined (premium)
+- Real ball knowledge is knowing who the GOAT is (collage)
+- The NBA GOAT debate is finally over (neon)

@@ -30,6 +30,7 @@ import {DrawnTT, type DrawnK} from './drawn11';
 import {GoatStick, type GoatK} from './stick12';
 import {Arcade, Chalk, Chat, Comic, Whiteboard} from './styles13';
 import {GoatPoster, PO} from './poster14';
+import {GoatCollage, GoatNeon, GoatPremium} from './refs15';
 import {Arrow7, Band, Big, Emoji, Neck, P7, Pill, Rain, Ruler, Sticker} from './pod7';
 import t4Words from '../plans/data/t4_natty_ticket.words.json';
 import t4Track from '../plans/data/t4_natty_ticket.seats.json';
@@ -721,3 +722,8 @@ const GOAT14: Spec = {
     sfx('jorho-flash', N.della - 150, 0.4), sfx('meme-orch', N.della - 150, 0.55), sfx('meme-impact', N.della + 450, 0.4), sfx('meme-violin', N.tension - 200, 0.4, 1200)],
 };
 export const JorhoGoat14 = () => <Jorho s={GOAT14} />;
+
+// ==== v15 (2026-11-01): 3 more NBA GOAT edits from the other Pinterest refs. Top lines are creative, not about Trevor.
+export const JorhoGoatPremium = () => <Jorho s={{...goatV(GoatPremium), top: 'This man is better than MJ and LeBron combined'}} />;
+export const JorhoGoatCollage = () => <Jorho s={{...goatV(GoatCollage), top: 'Real ball knowledge is knowing who the GOAT is'}} />;
+export const JorhoGoatNeon = () => <Jorho s={{...goatV(GoatNeon), top: 'The NBA GOAT debate is finally over'}} />;
