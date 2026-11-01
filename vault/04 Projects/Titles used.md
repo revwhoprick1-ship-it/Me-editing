@@ -13,3 +13,4 @@
 - Every QB rolls right. Trevor trained LEFT 🔁
 - How many NEW plays an NFL team adds each week 📋
 - Trevor fills out his dream golf foursome ⛳
+- Trevor first thought the Traveling Trevors were "whacked" 😂

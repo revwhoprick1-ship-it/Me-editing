@@ -26,6 +26,7 @@ import {CellyFront, GiftFront, MillsFront} from '../jorho3d/pod7_3d';
 import {LeftyWorld, type LeftyK} from '../jorho3d/lefty8';
 import {LeftyFlat} from './flat9';
 import {GolfFlat, PlaybookFlat, type GolfK, type PbK} from './stories10';
+import {DrawnTT, type DrawnK} from './drawn11';
 import {Arrow7, Band, Big, Emoji, Neck, P7, Pill, Rain, Ruler, Sticker} from './pod7';
 import t4Words from '../plans/data/t4_natty_ticket.words.json';
 import t4Track from '../plans/data/t4_natty_ticket.seats.json';
@@ -658,3 +659,24 @@ const GOLF10: Spec = {
     sfx('jorho-pop', KGF.tiger - 100, 0.45), sfx('meme-orch', KGF.goat - 150, 0.4), sfx('jorho-click', GOLF10_MS - 1700, 0.35)],
 };
 export const JorhoGolf10 = () => <Jorho s={GOLF10} />;
+
+// ==== v11 (2026-11-01): animated 2D drawings (unDraw, recoloured teal) in the flat style. Traveling Trevors (t3):
+// LEFT host asks "how much do you know of us?", Trevor (M) answers. Opens on the real two-shot with who's-who labels.
+const tt = timeline([[59400, 62950], [64600, 66650], [68450, 71800], [78450, 83250], [91550, 92750], [97050, 98600], [100050, 101950], [105350, 107000]]);
+export const TT11_MS = tt.total;
+const TTS = tt.segOut, tto = tt.out;
+const KTT: DrawnK = {S: TTS, labels: 500, follow: tto(65800), algo: tto(70800), mgD: TTS[3], realD: tto(81100), second: TTS[4], funny: tto(97900), jax: tto(100700), games: tto(105900), end: TT11_MS};
+const TT11: Spec = {
+  tl: tt, src: 'pod/t3_traveling_trevors.mp4', track: t3Track as unknown as Track, top: 'What Trevor thinks of fans who dress like him', wordY: 1170, wideX: 990, push: true,
+  wideXAt: (o) => (o < TTS[1] ? 715 : 990),
+  words: wordsFrom(t3Words, tt, {traveling: 'Traveling', trevers: 'Trevors', instagram: 'Instagram', i: 'I'},
+    {Traveling: '#F9FC35', Trevors: '#F9FC35', videos: '#21F5E6', algorithm: '#58EE28', Instagram: '#58EE28', whacked: '#F9FC35', funny: '#58EE28', Jax: '#21F5E6', fans: '#21F5E6', pumped: '#F9FC35'}),
+  shots: [[0, 'W'], [TTS[1], 'M']],
+  strobes: [KTT.realD - STROBE_CUT], tints: [[KTT.funny, GREEN]], swish: [TTS[1] + 900, TTS[2], TTS[3], TTS[4], TTS[5], TTS[6], TTS[7]],
+  music: {file: 'du-bist-full.mp3', from: 42500 - KTT.funny, level: 0.12},
+  box: (o) => <DrawnTT o={o} K={KTT} />,
+  fx: [sfx('jorho-pop', KTT.labels, 0.35), sfx('jorho-pop', KTT.labels + 350, 0.35), ...[TTS[1] + 900, TTS[2], TTS[3] + 150, TTS[4] + 200, TTS[5], TTS[6], TTS[7]].map((t) => sfx('jorho-whoosh', t - 200, 0.3)),
+    sfx('jorho-click', KTT.follow, 0.35), sfx('jorho-click', KTT.algo, 0.35), sfx('meme-bonk', tto(83000), 0.45), sfx('jorho-ting', TTS[4] + 250, 0.3),
+    sfx('meme-impact', KTT.funny - 150, 0.35), sfx('meme-impact', KTT.jax - 200, 0.35), sfx('meme-tada', KTT.games - 150, 0.45)],
+};
+export const JorhoTT11 = () => <Jorho s={TT11} />;

@@ -312,3 +312,16 @@ User asked for: hooks based on attention/curiosity research (no clickbait); open
 - **No VO** on these two: the host's real question already gives context plus the gap, and VO would push the footage back.
 - **Viewer pass caught:** single-person question shots hid Trevor, so the openings became two-shots; overlapping end graphics were moved apart.
 - Clips: `JorhoPlaybook10` (u1), `JorhoGolf10` (t2).
+
+## v11 animated 2D drawings (user, 2026-11-01): "try adding 2d animations that actually shows 2d drawings and animated, make it match the style"
+- **Source:** unDraw (free, cdn.undraw.co/illustrations/<name>.svg, search at undraw.co/search/<term>). LottieFiles search is rendered by JavaScript, so it can't be scraped.
+- **Pipeline:** download the SVG to `public/undraw/`, then a python snippet flattens it to `src/jorho/undraw/<name>.json` (tag + attrs, camelCase, `#6c63ff` → teal `#00A3AD`).
+- **`Drawing` component** (`src/jorho/drawn11.tsx`):
+  - every shape pops from its own centre with a stagger, so the drawing builds itself;
+  - then it floats;
+  - `clip` strips let parts of one drawing bounce separately (three fans jumping in turn);
+  - `hide` drops shapes, e.g. the phone's grey tiles, replaced by a live scrolling feed with a real post thumbnail.
+- **GOTCHA:** a CSS transform overrides the SVG `transform` attribute, so put the attribute on a wrapping `<g>`. Otherwise pieces jump out of place (the phone feed was misaligned).
+- **Clip** `JorhoTT11` (t3 Traveling Trevors, 20 s):
+  - Opens on a two-shot with who's-who labels ("TRAVELING TREVOR" / "THE REAL TREVOR").
+  - Drawings follow the story: phone and likes "I follow you guys" → drawn phone with the Traveling Trevors post "in his algorithm" → big "?" "didn't know what to think" → real Trevor "these guys are whacked" → play-button drawing "second one" → jumping guy PRETTY FUNNY → fans in teal jerseys jumping MORE JAX FANS → couch fans with confetti PUMPED UP AT THE GAMES.
