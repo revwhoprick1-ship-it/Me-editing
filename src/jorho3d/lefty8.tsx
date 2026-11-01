@@ -113,7 +113,7 @@ const Chalk = ({p}: {p: number}) => {
     if (p >= 1) { x.beginPath(); x.moveTo(460, 270); x.lineTo(486, 268); x.lineTo(468, 290); x.closePath(); x.fillStyle = '#ffe14d'; x.fill(); x.font = 'bold 54px Anton'; x.fillText('RIGHT', 360, 70); }
   }
   t.needsUpdate = true;
-  return <meshBasicMaterial map={t} transparent />;
+  return <meshBasicMaterial map={t} transparent depthTest={false} side={THREE.DoubleSide} />;
 };
 
 // ---- scenes ----------------------------------------------------------------------------------------------------------------
@@ -188,7 +188,7 @@ const CoachScene = ({A, o, K}: SP & {t: number}) => {
     <group position={[0.75, 0, -0.1]} rotation={[0, -0.25, 0]}>
       <Prop g={A.board} h={2.0} />
       {/* model is 1.51 tall → ×1.325; front slate face leans back ~15° (y 0.32→1.44, z 0.30→0) */}
-      <group scale={1.325}><mesh position={[0.014, 0.98, 0.14]} rotation={[-0.26, 0, 0]}><planeGeometry args={[0.66, 0.74]} /><Chalk p={ez(o, K.coachRight - 500, 700) + (o >= K.coachRight + 200 ? 1 : 0)} /></mesh></group>
+      <group scale={1.325}><mesh position={[0.014, 0.98, 0.2]} rotation={[-0.26, 0, 0]} renderOrder={5}><planeGeometry args={[0.66, 0.74]} /><Chalk p={ez(o, K.coachRight - 500, 700) + (o >= K.coachRight + 200 ? 1 : 0)} /></mesh></group>
     </group>
     {crowd && [0, 1, 2, 3, 4].map((i) => {
       const x = 1.3 + i * 0.95 + ((o - K.most) / 1000) * 2.2;
@@ -214,10 +214,10 @@ const AgainstScene = ({A, o, K}: SP) => {
       return <group key={i}><Char g={A.soldier} clip="Run" t={o + i * 211} h={1.25} position={[sx, 0, -1.3 - (i % 3) * 0.8]} rotation={[0, -Math.PI / 2, 0]} /><Blob x={sx} z={-1.3 - (i % 3) * 0.8} r={0.5} /></group>;
     })}
     {[K.threw, K.leftB, K.rolling].map((at, i) => <Throw key={i} ball={A.ball} o={o} at={at} d={850} a={[x - 0.2, 1.05, 0.3]} b={[x - 5.5, 0.9, -1.5]} arc={1.1} />)}
-    {o >= K.leftB && <group position={[x - 1.4, 1.95, -0.2]} scale={sp(o, K.leftB, 10, 220)}>
+    {o >= K.leftB && <group position={[x - 0.75, 1.75, -0.4]} scale={sp(o, K.leftB, 10, 220) * 0.85}>
       <Arrow3D color="#2fd25a" rotation={[0, 0, Math.PI / 2]} position={[-0.75, 0, 0]} scale={0.6} /><Word3D text="LEFT" size={0.38} face="#2fd25a" side="#0b5a22" position={[0.35, 0, 0]} />
     </group>}
-    {o >= K.onlyRight && <group position={[x + 1.5, 2.05, -1.4]} scale={sp(o, K.onlyRight, 10, 220) * 0.8}>
+    {o >= K.onlyRight && <group position={[x + 0.55, 2.2, -1.4]} scale={sp(o, K.onlyRight, 10, 220) * 0.65}>
       <Word3D text="ONLY RIGHT?" size={0.32} face={RED} side="#5c0a0d" /><XMark3D o={o} at={K.onlyRight + 150} scale={0.4} />
     </group>}
   </>;
