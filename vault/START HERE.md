@@ -9,6 +9,7 @@ This repo is a **Remotion + Whisper Shorts editing setup**, and this `vault/` fo
 Edit podcast/streamer clips into viral vertical Shorts in a **meme / brainrot clipping style**, copying the references they gave and the patterns from researching 50 top Shorts. They give feedback on each version, so check the feedback log in the project note before editing again.
 
 ## User preferences
+- **Title, description and tags go in chat inside code blocks** (one block for the title, one for description + tags) so the user can tap the copy button. (2026-11-01)
 - **Always send a title + description with every video.** The description should be a short story or in-depth explanation (about 3–5 sentences, not too long), followed by tags that boost reach: 8–15 hashtags mixing broad (#shorts #nfl) and niche (#trevorlawrence #jaguars), plus a few plain keyword tags. (2026-10-26)
 - **Always send the finished video file directly in chat** (SendUserFile) so they can download it.
 - iOS emoji only; Ref A glow font; whoosh = `fast-whoosh.mp3`, ding = `ding-2.mp3`.
