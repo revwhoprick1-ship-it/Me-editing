@@ -5,3 +5,6 @@
 - Trevor picked Dellavedova over LeBron 😭
 - From $20,000 to "maybe $500" 📉
 - Nobody tell him which Josh Allen this is 😭
+- The gift Trevor never expected… himself 😭
+- Trevor's first touchdown celebration is just "10 10 10" 🔟
+- "Longer neck than Mike Glennon" 💀
