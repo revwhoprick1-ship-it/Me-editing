@@ -8,3 +8,4 @@
 - The gift Trevor never expected… himself 😭
 - Trevor's first touchdown celebration is just "10 10 10" 🔟
 - "Longer neck than Mike Glennon" 💀
+- The one thing Trevor never kept from Clemson 🎟️
