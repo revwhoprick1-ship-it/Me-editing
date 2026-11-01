@@ -249,3 +249,5 @@ YouTube blocks downloads from this box, so these were studied from thumbnails on
 **Colours:** Jaguars teal `#00A3AD` / `#004a56`, gold `#D7A22A`, white. Red only for the roast ("NO RESPECT"). Team colours for other people (Colts navy card, Broncos orange PEYTON). No random neon.
 
 **Clip:** `JorhoPen3D` (t1, 22.6 s).
+
+**Music rule for the 3D style (user, 2026-11-01):** keep the background music LOW but audible, about level 0.12 (roughly 15 dB under the voice). The SFX carry the energy.

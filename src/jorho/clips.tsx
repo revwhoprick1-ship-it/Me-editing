@@ -357,7 +357,7 @@ const PEN3D: Spec = {
   capsOff: [],
   tints: [[T.noResp, RED], [T.goated, GREEN]],
   swish: [T.goated],
-  music: {file: 'du-bist-full.mp3', from: 45740 - (S[1] - STROBE_CUT), level: 0.22},
+  music: {file: 'du-bist-full.mp3', from: 45740 - (S[1] - STROBE_CUT), level: 0.12},
   behind: (o) => <PenBehind o={o} K={K3} />,
   box: (o) => <>
     <Dim o={o} spans={[[T.anthony - 60, T.haven], [T.his, S[3]], [S[3], S[4]], [S[6] - 60, PEN_MS]]} />
