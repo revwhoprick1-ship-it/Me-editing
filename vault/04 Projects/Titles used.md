@@ -9,3 +9,4 @@
 - Trevor's first touchdown celebration is just "10 10 10" 🔟
 - "Longer neck than Mike Glennon" 💀
 - The one thing Trevor never kept from Clemson 🎟️
+- Coaches only let him roll right… so Trevor went LEFT ⬅️
