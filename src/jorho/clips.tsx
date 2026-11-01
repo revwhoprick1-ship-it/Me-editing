@@ -22,6 +22,13 @@ import {Dim, PenBehind, PenFront, type PenTimes} from '../jorho3d/pen3d';
 import {GoatFront, type GoatTimes} from '../jorho3d/goat3d';
 import {RedeemFront, type RedeemTimes} from '../jorho3d/redeem3d';
 import {JoshFront, type JoshTimes} from '../jorho3d/josh3d';
+import {CellyFront, GiftFront, MillsFront} from '../jorho3d/pod7_3d';
+import {Arrow7, Band, Big, Emoji, Neck, P7, Pill, Rain, Ruler, Sticker} from './pod7';
+import t4Words from '../plans/data/t4_natty_ticket.words.json';
+import t4Track from '../plans/data/t4_natty_ticket.seats.json';
+import u2Words from '../plans/data/u2_psa10_celly.words.json';
+import u2Track from '../plans/data/u2_psa10_celly.seats.json';
+import t6Words from '../plans/data/t6_davis_mills_joke.words.json';
 import t5Words from '../plans/data/t5_ex_teammate.words.json';
 import t5Track from '../plans/data/t5_ex_teammate.seats.json';
 import {AntWalk, Dust, GlowTitle, Kinetic, Letters, Magnifier, Orb, PhoneCall, QuoteCard, SigCard, Silhouette} from './mg3';
@@ -440,3 +447,121 @@ const JOSH3D: Spec = {
     sfx('meme-impact', KJ.changed, 0.45)],
 };
 export const JorhoJosh3D = () => <Jorho s={JOSH3D} />;
+
+// ==== v7 HYBRID podcast motion graphics (user, 2026-11-01): "every element does not have to be 3D … make sure it also
+// looks like a podcast motion graphics style". 2D stickers/pills/keywords/emoji (src/jorho/pod7.tsx) + 1-2 3D heroes.
+// Speakers checked with face-crop strips (diarize was unsure on these): see vault Jorho style v7.
+// ---- Gift ticket (t4): LEFT host gives Trevor a ticket from his own national title game signed by him; Trevor (M) reacts
+const g7 = timeline([[9750, 11900], [14300, 17450], [21480, 25400], [26560, 29380], [32220, 33400], [38100, 42250], [66350, 69980]]);
+export const GIFT7_MS = g7.total;
+const G7 = g7.segOut, go = g7.out;
+const KG7 = {gift: go(11460), weird: go(14680), youWith: go(16160), signed: go(22140), ticket: go(22480), national: go(24120), sig: go(27360), thank: go(32760),
+  giving: go(39820), auto: go(41140), college: go(66900), ticket2: go(68020), sweet: go(69600)};
+const GIFT7: Spec = {
+  tl: g7, src: 'pod/t4_natty_ticket.mp4', track: t4Track as unknown as Track, top: 'He gifted Trevor a ticket signed by Trevor', wordY: 1170, wideX: 700, push: true,
+  words: wordsFrom(t4Words, g7, {auto: 'autograph', into: 'in'}, {gift: '#F9FC35', weird: '#F9FC35', ticket: '#F9FC35', national: '#58EE28', championship: '#58EE28', signature: '#21F5E6', autograph: '#F9FC35', sweet: '#58EE28'}),
+  shots: [[0, 'W'], [G7[5], 'M']],
+  strobes: [G7[2] - STROBE_CUT, G7[5] - STROBE_CUT], tints: [[KG7.ticket, GREEN]], swish: [G7[5]],
+  music: {file: 'blue-yung-kai.mp3', from: 23500 - KG7.ticket, level: 0.12},
+  box: (o) => <>
+    <Band o={o} from={G7[1]} to={G7[2]} h={420} /><Band o={o} from={G7[4]} to={GIFT7_MS} h={380} />
+    <GiftFront o={o} K={{gift: KG7.gift, hide1: G7[1], seg3: G7[2], signed: KG7.signed, sigFrom: KG7.sig - 400, seg5: G7[4], seg7: G7[6], ticket2: KG7.ticket2, end: GIFT7_MS}} />
+    <Pill o={o} at={KG7.gift - 150} to={G7[1]} text="A GIFT FOR TREVOR" icon="1f381" x={540} y={950} bg={P7.TEAL} />
+    <Sticker o={o} at={KG7.weird} to={G7[2]} src="img/jorho/trevor_t3.png" x={230} y={190} w={250} rot={-6} label="TREVOR" />
+    <Arrow7 o={o} at={KG7.youWith - 350} to={G7[2]} d="M 360 150 Q 540 20 720 150" />
+    <Sticker o={o} at={KG7.youWith} to={G7[2]} src="img/jorho/trevor_t3.png" x={850} y={190} w={250} rot={6} label="TREVOR" flip />
+    <Emoji o={o} at={KG7.youWith + 400} to={G7[2]} code="1f914" x={540} y={230} size={120} />
+    <Pill o={o} at={KG7.national - 400} to={G7[3]} text="2019 NATIONAL TITLE GAME" x={540} y={950} bg="#F56600" size={38} />
+    <Pill o={o} at={KG7.sig - 200} to={G7[4]} text="SIGNED BY HIM" icon="1f525" x={540} y={950} bg="#522D80" size={40} />
+    <Emoji o={o} at={KG7.thank - 150} to={G7[5]} code="1f979" x={540} y={190} size={170} />
+    <Pill o={o} at={KG7.thank + 100} to={G7[5]} text="HE LOVES IT" x={540} y={950} bg={P7.LIME} fg={P7.INK} />
+    <Big o={o} at={KG7.giving - 300} to={G7[6]} text="HIS OWN AUTOGRAPH?" x={540} y={120} size={92} color={P7.GOLD} />
+    <Emoji o={o} at={KG7.auto + 300} to={G7[6]} code="1f62c" x={900} y={330} size={140} />
+    <Big o={o} at={KG7.college - 150} to={KG7.ticket2 + 500} text="HE NEVER HAD ONE" x={540} y={120} size={92} />
+    <Big o={o} at={KG7.ticket2 + 500} text="NOW HE DOES" x={540} y={120} size={104} color={P7.LIME} rot={-4} />
+    <Emoji o={o} at={KG7.ticket2 + 700} code="1f979" x={170} y={330} size={140} />
+  </>,
+  fx: [sfx('jorho-whoosh', 0, 0.25), sfx('meme-jet', 120, 0.4), sfx('meme-impact', KG7.gift, 0.45), sfx('meme-lwk', KG7.weird, 0.45), sfx('meme-bonk', KG7.youWith, 0.45),
+    sfx('meme-build2', G7[2], 0.35), sfx('meme-orch', KG7.ticket, 0.55), sfx('meme-shutter', KG7.national - 400, 0.4), sfx('jorho-pen', KG7.sig - 400, 0.45, 1300),
+    sfx('jorho-pop', KG7.thank - 150, 0.5), sfx('meme-dundun', KG7.giving - 300, 0.4), sfx('meme-bonk', KG7.auto + 300, 0.4), sfx('meme-trombone', KG7.college - 150, 0.4, 1300),
+    sfx('meme-tada', KG7.ticket2 + 500, 0.5)],
+};
+export const JorhoGift7 = () => <Jorho s={GIFT7} />;
+
+// ---- PSA 10 celly (u2): LEFT host pitches a touchdown celebration, Trevor (M) answers "No." / "Maybe." / "I'm not good" / "I like that"
+const c7 = timeline([[2080, 8950], [12900, 15000], [19650, 32400]]);
+export const CELLY7_MS = c7.total;
+const C7 = c7.segOut, co = c7.out;
+const KC7 = {celly: co(2720), no: co(3600), gave: co(4600), td: co(6880), maybe: co(8480), dance: co(13520), notGood: co(14540), collectors: co(20000), psa: co(22660),
+  best: co(24560), point: co(26340), t1: co(27580), t2: co(27840), t3: co(28000), easy: co(28660), itsIt: co(29400), likeThat: co(30180), iLike: co(31000), yo: co(31920)};
+const CELLY7: Spec = {
+  tl: c7, src: 'pod2/u2_psa10_celly.mp4', track: u2Track as unknown as Track, top: 'Trevor finally got a touchdown celebration', wordY: 1170, wideX: 960, push: true,
+  words: wordsFrom(u2Words, c7, {selly: 'celly', '1010': '10', tutti: 'TD'}, {celly: '#F9FC35', touchdown: '#58EE28', choreographed: '#F9FC35', PSA: '#21F5E6', '10': '#F9FC35', best: '#58EE28', grade: '#58EE28', easy: '#58EE28'}),
+  shots: [[0, 'L'], [KC7.no - 80, 'M'], [KC7.gave - 600, 'L'], [KC7.maybe - 100, 'M'], [C7[2], 'L'], [KC7.itsIt - 80, 'M'], [KC7.likeThat - 250, 'L'], [KC7.iLike - 250, 'M']],
+  strobes: [C7[2] - STROBE_CUT, KC7.t1 - STROBE_CUT], tints: [[KC7.psa, GREEN]], swish: [C7[1]],
+  music: {file: 'joyful-chess-slowed.mp3', from: 40500 - KC7.t1, level: 0.12},
+  box: (o) => <>
+    <Band o={o} from={0} to={C7[1]} h={330} />
+    <CellyFront o={o} K={{fbFrom: KC7.gave + 300, fbTo: KC7.maybe - 200, slabFrom: KC7.psa - 500, psa: KC7.psa, slabTo: KC7.point, yo: KC7.yo, end: CELLY7_MS}} />
+    <Big o={o} at={KC7.celly - 200} to={KC7.no - 80} text="NO CELLY?" x={540} y={140} size={120} color={P7.GOLD} />
+    <Emoji o={o} at={KC7.celly} to={KC7.gave - 600} code="1f3c8" x={900} y={330} size={130} />
+    <Pill o={o} at={KC7.celly + 400} to={KC7.gave} text="CELLY = CELEBRATION" x={540} y={950} bg={P7.TEAL} size={40} />
+    <Big o={o} at={KC7.no} to={KC7.gave - 600} text="NO." x={540} y={150} size={140} color="#fff" box={P7.RED} rot={-6} />
+    <Pill o={o} at={KC7.td - 300} to={KC7.maybe - 100} text="ONE TOUCHDOWN" icon="1f3c8" x={540} y={950} bg={P7.LIME} fg={P7.INK} />
+    <Emoji o={o} at={KC7.maybe} to={C7[1]} code="1f914" x={880} y={260} size={140} />
+    <Big o={o} at={KC7.dance - 600} to={C7[2]} text="A DANCE?" x={540} y={140} size={120} />
+    {o < C7[2] && <MarkerX o={o} at={KC7.notGood} x={415} y={15} s={250} />}
+    <Sticker o={o} at={KC7.collectors - 200} to={KC7.psa - 300} src="img/j3d/card_lebron.png" x={150} y={330} w={190} rot={-12} />
+    <Sticker o={o} at={KC7.collectors} to={KC7.psa - 300} src="img/j3d/card_jallen.png" x={930} y={330} w={190} rot={10} />
+    <Sticker o={o} at={KC7.collectors + 200} to={KC7.psa - 300} src="img/j3d/card_trevor.png" x={540} y={140} w={160} rot={-3} />
+    <Pill o={o} at={KC7.best - 200} to={KC7.point} text="PSA 10 = PERFECT GRADE" x={540} y={950} bg={P7.RED} size={40} />
+    <Pill o={o} at={KC7.point - 200} to={KC7.t1} text="THE NEW CELLY" x={540} y={120} bg={P7.TEAL} size={44} />
+    <Big o={o} at={KC7.t1} to={KC7.easy + 300} text="10" x={210} y={330} size={170} color={P7.RED} rot={-10} />
+    <Big o={o} at={KC7.t2} to={KC7.easy + 300} text="10" x={540} y={150} size={190} color={P7.GOLD} rot={4} />
+    <Big o={o} at={KC7.t3} to={KC7.easy + 300} text="10" x={870} y={330} size={170} color="#fff" rot={10} />
+    <Pill o={o} at={KC7.easy + 300} to={KC7.iLike} text="NEW CELLY UNLOCKED" icon="1f525" x={540} y={950} bg={P7.GOLD} fg={P7.INK} size={42} />
+    <Big o={o} at={KC7.iLike - 100} text="10/10" x={540} y={140} size={150} color={P7.LIME} />
+    <Emoji o={o} at={KC7.yo - 100} code="1f525" x={880} y={300} size={140} />
+  </>,
+  fx: [sfx('jorho-whoosh', 0, 0.25), sfx('meme-jet', 120, 0.4), sfx('meme-impact', KC7.celly - 200, 0.45), sfx('meme-bonk', KC7.no, 0.5), sfx('meme-jet', KC7.gave + 300, 0.45),
+    sfx('meme-impact', KC7.td - 300, 0.35), sfx('meme-lwk', KC7.maybe, 0.45), sfx('meme-dundun', KC7.dance - 600, 0.4), sfx('meme-trombone', KC7.notGood, 0.45, 1400),
+    ...[0, 1, 2].map((i) => sfx('meme-shutter', KC7.collectors - 200 + i * 200, 0.35)), sfx('meme-build2', KC7.psa - 500, 0.35), sfx('meme-orch', KC7.psa, 0.55),
+    sfx('meme-radio', KC7.point - 200, 0.35), ...[KC7.t1, KC7.t2, KC7.t3].map((t) => sfx('meme-impact', t, 0.45)), sfx('meme-tada', KC7.easy + 300, 0.5),
+    sfx('meme-impact', KC7.iLike - 100, 0.4), sfx('jorho-pop', KC7.yo - 100, 0.5)],
+};
+export const JorhoCelly7 = () => <Jorho s={CELLY7} />;
+
+// ---- Davis Mills neck (t6): standing LEFT host reads the pulls, RIGHT host roasts the neck, Trevor laughs
+const n7 = timeline([[1500, 16700]]);
+export const NECK7_MS = n7.total;
+const no7 = n7.out;
+const KN7 = {red: no7(3360), nashon: no7(4400), adam: no7(5140), davis: no7(5820), ew: no7(6940), hes: no7(9160), longer: no7(9700), neck: no7(9940), glennon: no7(10580),
+  trevor: no7(11940), oh: no7(14320), nothing: no7(16640)};
+const NECK7: Spec = {
+  tl: n7, src: 'pod/t6_davis_mills_joke.mp4', track: t5Track as unknown as Track, top: 'Bro roasted Davis Mills neck mid pack opening', wordY: 1170, wideX: 700, push: false,
+  wideXAt: (o) => (o < KN7.ew - 150 ? 700 : o < KN7.oh - 150 ? 1220 : o < KN7.nothing - 300 ? 1000 : 760),
+  words: wordsFrom(t6Words, n7, {}, {Davis: '#21F5E6', Mills: '#21F5E6', 'Ew': '#F9FC35', longer: '#F9FC35', neck: '#58EE28', Mike: '#21F5E6', Glennon: '#21F5E6', nothing: '#F9FC35'}),
+  shots: [[0, 'W']],
+  strobes: [KN7.davis - STROBE_CUT], tints: [[KN7.ew, RED]], swish: [KN7.ew - 150, KN7.oh - 150, KN7.nothing - 300],
+  music: {file: 'du-bist-full.mp3', from: 42500 - KN7.neck, level: 0.12},
+  box: (o) => <>
+    <Band o={o} from={KN7.hes - 300} to={KN7.oh} h={430} />
+    <MillsFront o={o} K={{names: [KN7.red, KN7.nashon, KN7.adam], davis: KN7.davis, ew: KN7.ew, out: KN7.hes - 300}} />
+    <Pill o={o} at={150} to={KN7.davis} text="PACK OPENING" icon="1f525" x={540} y={950} bg={P7.TEAL} />
+    <Pill o={o} at={KN7.davis} to={KN7.hes - 300} text="DAVIS MILLS" x={540} y={950} bg="#A71930" size={44} />
+    <Big o={o} at={KN7.ew} to={KN7.hes - 300} text="EW" x={860} y={160} size={150} color="#fff" box={P7.RED} rot={8} />
+    <Emoji o={o} at={KN7.ew + 250} to={KN7.hes - 300} code="1f62c" x={180} y={190} size={130} />
+    <Neck o={o} at={KN7.hes - 200} to={KN7.oh} src="img/jorho/mills.png" x={210} y={180} w={300} from={KN7.longer} amount={200} label="DAVIS MILLS" bg="#A71930" />
+    <Ruler o={o} at={KN7.neck} to={KN7.oh} x={385} y={398} h={370} />
+    <Neck o={o} at={KN7.glennon - 250} to={KN7.oh} src="img/jorho/glennon.png" x={560} y={180} w={300} from={KN7.glennon} amount={110} label="MIKE GLENNON" bg="#0B2265" />
+    <Emoji o={o} at={KN7.glennon + 350} to={KN7.oh} code="1f992" x={880} y={150} size={150} />
+    <Big o={o} at={KN7.longer - 150} to={KN7.oh} text="LONGER NECK?!" x={540} y={955} size={96} color={P7.GOLD} />
+    <Emoji o={o} at={KN7.trevor} to={KN7.oh} code="1f923" x={300} y={470} size={120} />
+    <Rain o={o} at={KN7.oh - 100} to={KN7.nothing} code="1f62d" n={16} />
+    <Big o={o} at={KN7.nothing - 150} text="NOTHING" x={540} y={150} size={130} color="#fff" box={P7.INK} rot={-5} />
+  </>,
+  fx: [sfx('jorho-whoosh', 0, 0.25), sfx('meme-jet', 150, 0.4), ...[KN7.red, KN7.nashon, KN7.adam].map((t) => sfx('meme-bonk', t, 0.35)), sfx('meme-build', KN7.adam - 300, 0.35, 900),
+    sfx('meme-orch', KN7.davis, 0.55), sfx('meme-violin', KN7.ew, 0.45, 1300), sfx('meme-dundun', KN7.hes - 200, 0.4), sfx('meme-build2', KN7.longer, 0.4),
+    sfx('meme-impact', KN7.glennon, 0.5), sfx('meme-lwk', KN7.trevor, 0.4), sfx('meme-trombone', KN7.nothing - 150, 0.45, 1300)],
+};
+export const JorhoNeck7 = () => <Jorho s={NECK7} />;

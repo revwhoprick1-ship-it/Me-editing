@@ -262,3 +262,12 @@ YouTube blocks downloads from this box, so these were studied from thumbnails on
 **New 3D kit parts (`three.tsx`):** Basketball3D, Coin3D, Tag3D (price tag), Arrow3D, Clock3D, Flames3D, Confetti3D, Bars3D, XMark3D, Sparkles3D. Card textures in `public/img/j3d/` (PIL-composed).
 
 **Lessons from stills:** a flipped tag mirrors its text, so use a squash flip (scale x = |cos|) instead of a rotation; a card spinning face-down shows its face early, so sway it instead; big cards over faces must shrink to a corner once the line is done; keep 3D titles off the top meme line (y ≤ 2.6 world units). **Never put a 3D card or word over the talker's face**: in a wide shot, put all 3D in the half where nobody is talking (Josh 3D: talker left, card + words right) and check stills for it. Payoff words must show up on the first word of the line ("MOST"), not the last one, so they stay on screen before the video ends.
+
+## v7 HYBRID podcast motion graphics (user, 2026-11-01): "every element does not have to be 3D … make sure it also looks like a podcast motion graphics style." Also: keep usage lean (≈1 weekly usage for 3 videos).
+- **Mix:** mostly 2D podcast MG (`src/jorho/pod7.tsx`) + 1–2 3D hero props per clip (`src/jorho3d/pod7_3d.tsx`). Same Jorho frame, captions, meme SFX, music level 0.12.
+- **2D kit:** `Pill` (name/label pill, white border, optional emoji icon), `Big` (Anton keyword slam, thick outline, optional boxed stamp), `Emoji` (iOS pop + bob), `Sticker` (white-outlined cut-out + name pill), `Arrow7` (hand-drawn arrow draws on), `Rain` (emoji rain), `Neck` (neck-stretch gag on an ESPN headshot), `Ruler`, `Band` (dark gradient so graphics read).
+- **Layout:** pills/explainers at the bottom (y≈950, under the captions); keywords at the top (y≈120–150); emoji/stickers on the sides. Never over the talker's face.
+- **3D canvases are only mounted during their hero beats** → renders are much faster (good for usage).
+- **Plain-word explainer pills** for slang: "CELLY = CELEBRATION", "PSA 10 = PERFECT GRADE".
+- **Lean workflow:** pick clips → face-crop strip to confirm who talks (diarize can be unsure) → write specs → ONE stills grid per clip → fix → render once.
+- Clips: `JorhoGift7` (t4, Blue), `JorhoCelly7` (u2, joyful chess), `JorhoNeck7` (t6, du bist; source fades to black at 16.8 s, so end by 16.7).
