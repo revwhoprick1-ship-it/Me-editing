@@ -325,3 +325,18 @@ User asked for: hooks based on attention/curiosity research (no clickbait); open
 - **Clip** `JorhoTT11` (t3 Traveling Trevors, 20 s):
   - Opens on a two-shot with who's-who labels ("TRAVELING TREVOR" / "THE REAL TREVOR").
   - Drawings follow the story: phone and likes "I follow you guys" → drawn phone with the Traveling Trevors post "in his algorithm" → big "?" "didn't know what to think" → real Trevor "these guys are whacked" → play-button drawing "second one" → jumping guy PRETTY FUNNY → fans in teal jerseys jumping MORE JAX FANS → couch fans with confetti PUMPED UP AT THE GAMES.
+
+## v12 stickmen + images (user, 2026-11-01): "No this time make your own just a simplistic stickman then some images"
+- `src/jorho/stick12.tsx`:
+  - `Stick` is a hand-made SVG stickman: round 10 px strokes, posable shoulder/elbow/hip angles (`Pose`, blended with `mix`), white head with dot eyes;
+  - `hat`: 'cap' for Trevor, 'wig' (yellow hair + teal headband) for the Traveling Trevor hosts;
+  - extras: `sweat` drops, `fall` (tips over);
+  - `Photo` is a real player photo in a white ring with a name tag; `Bubble` is a speech or thought bubble.
+- **Poses:** IDLE, ASK, SCRATCH (head scratch), THINK (hand on chin), POINT, SHOCK.
+- **Clip** `JorhoGoat12` (input.mp4, 17.8 s), opening on the real two-shot:
+  - host stick asks with a typed bubble;
+  - Trevor stick scratches his head while LeBron/Kobe/Curry photos pop in his thought bubble over an empty #1 podium;
+  - during the long think the photos spin like a slot reel, with an hourglass;
+  - "Dellavedova": the reel locks on Della, he goes on the gold #1 podium with a crown, Trevor points, the host stick falls over;
+  - real laugh;
+  - TENSION: both sticks sweating, red zigzag.

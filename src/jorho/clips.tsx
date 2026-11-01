@@ -27,6 +27,7 @@ import {LeftyWorld, type LeftyK} from '../jorho3d/lefty8';
 import {LeftyFlat} from './flat9';
 import {GolfFlat, PlaybookFlat, type GolfK, type PbK} from './stories10';
 import {DrawnTT, type DrawnK} from './drawn11';
+import {GoatStick, type GoatK} from './stick12';
 import {Arrow7, Band, Big, Emoji, Neck, P7, Pill, Rain, Ruler, Sticker} from './pod7';
 import t4Words from '../plans/data/t4_natty_ticket.words.json';
 import t4Track from '../plans/data/t4_natty_ticket.seats.json';
@@ -680,3 +681,19 @@ const TT11: Spec = {
     sfx('meme-impact', KTT.funny - 150, 0.35), sfx('meme-impact', KTT.jax - 200, 0.35), sfx('meme-tada', KTT.games - 150, 0.45)],
 };
 export const JorhoTT11 = () => <Jorho s={TT11} />;
+
+// ==== v12 (2026-11-01): "make your own just a simplistic stickman then some images" — NBA GOAT (input.mp4) with
+// hand-made SVG stickmen + player photos, v9 flat style. LEFT host asks, Trevor (M) thinks/answers, RIGHT host "tension".
+const KG12: GoatK = {...N, end: GOAT_MS};
+const GOAT12: Spec = {
+  ...GOAT, top: 'Who is Trevor’s NBA GOAT?', beeps: undefined, intro: undefined, cut: undefined, over: undefined, push: true,
+  shots: [[0, 'W'], [N.who, 'L'], [N.nba, 'M'], [N.greatest, 'L'], [N.think, 'M'], [N.della + 1500, 'W'], [N.tension - 200, 'R']],
+  strobes: [N.gotta - STROBE_CUT], tints: [[N.della, GREEN]], swish: [N.who + 600, N.greatest, N.think + 1200, N.tension - 200],
+  music: {file: 'joyful-chess-slowed.mp3', from: 40500 - N.della, level: 0.12},
+  box: (o) => <GoatStick o={o} K={KG12} />,
+  fx: [sfx('jorho-whoosh', N.who + 400, 0.3), sfx('jorho-pop', N.who + 800, 0.35), sfx('keyboard-typing', N.who + 900, 0.3, 800),
+    ...[0, 1, 2].map((i) => sfx('jorho-pop', N.greatest + 250 + i * 220, 0.35)), sfx('jorho-ting', N.greatest + 900, 0.3),
+    ...[0, 1, 2, 3, 4].map((i) => sfx('jorho-click', N.think + 1300 + i * 520, 0.22)), sfx('meme-build', N.gotta - 1400, 0.35, 1300),
+    sfx('meme-orch', N.della - 150, 0.55), sfx('meme-bonk', N.della + 450, 0.45), sfx('meme-violin', N.tension - 200, 0.4, 1200)],
+};
+export const JorhoGoat12 = () => <Jorho s={GOAT12} />;

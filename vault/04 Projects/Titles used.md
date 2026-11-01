@@ -14,3 +14,4 @@
 - How many NEW plays an NFL team adds each week 📋
 - Trevor fills out his dream golf foursome ⛳
 - Trevor first thought the Traveling Trevors were "whacked" 😂
+- Trevor took 5 seconds to name his NBA GOAT… then said this 🏀
