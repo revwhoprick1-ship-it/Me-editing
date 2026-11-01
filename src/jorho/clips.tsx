@@ -18,6 +18,7 @@ import u1Words from '../plans/data/u1_playbook.words.json';
 import u1Track from '../plans/data/u1_playbook.seats.json';
 import t1Words from '../plans/data/t1_tiger_auto_pen.words.json';
 import t1Track from '../plans/data/t1_tiger_auto_pen.seats.json';
+import {Dim, PenBehind, PenFront, type PenTimes} from '../jorho3d/pen3d';
 import {AntWalk, Dust, GlowTitle, Kinetic, Letters, Magnifier, Orb, PhoneCall, QuoteCard, SigCard, Silhouette} from './mg3';
 import {Img, staticFile} from 'remotion';
 const emo = (code: string, size: number) => <Img src={staticFile(`emoji-ios/${code}.png`)} style={{width: size, height: size}} />;
@@ -345,3 +346,32 @@ const PEN: Spec = {
     sfx('jorho-ring', S[6], 0.22, S[7] - S[6]), sfx('jorho-snap', S[7] + 80, 0.4), sfx('jorho-pen', T.signature - 300, 0.45, 800)],
 };
 export const JorhoPen = () => <Jorho s={PEN} />;
+
+// ---- t1 · v6: real 3D (three.js) over the footage, meme SFX set from the user's TikTok refs ------------------------
+const K3: PenTimes = {some: T.some, hobby: T.hobby, no: T.no, anthony: T.anthony, disrespect: T.disrespect, haven: T.haven, his: T.his, auto: T.auto, looks: T.looks, ant: T.ant,
+  A: T.A, R: T.R, thisBig: T.thisBig, noResp: T.noResp, look: T.look, beautiful: T.beautiful, every: T.every, goated: T.goated, pen: o_(27100), you: T.you,
+  peyton: T.peyton, manning: T.manning, big2: T.big2, nice: T.nice, signature: T.signature, S, end: PEN_MS};
+const PEN3D: Spec = {
+  ...PEN,
+  top: "Bro said Anthony Richardson's auto looks like an ant",
+  capsOff: [],
+  tints: [[T.noResp, RED], [T.goated, GREEN]],
+  swish: [T.goated],
+  music: {file: 'du-bist-full.mp3', from: 45740 - (S[1] - STROBE_CUT), level: 0.22},
+  behind: (o) => <PenBehind o={o} K={K3} />,
+  box: (o) => <>
+    <Dim o={o} spans={[[T.anthony - 60, T.haven], [T.his, S[3]], [S[3], S[4]], [S[6] - 60, PEN_MS]]} />
+    <PenFront o={o} K={K3} />
+  </>,
+  fx: [sfx('jorho-whoosh', 0, 0.25),
+    sfx('meme-jet', T.some, 0.55), sfx('meme-jet', T.hobby + 200, 0.45), sfx('meme-dundun', T.no, 0.6),
+    sfx('meme-flash', T.anthony - 60, 0.5), sfx('meme-fahh', T.disrespect, 0.5, 1400), sfx('meme-lwk', T.haven, 0.6),
+    sfx('meme-shutter', T.his, 0.45), sfx('meme-radio', T.auto, 0.4), sfx('meme-build2', T.looks, 0.4), sfx('meme-orch', T.ant, 0.6),
+    sfx('meme-impact', T.A, 0.5), sfx('meme-impact', T.R, 0.5), sfx('meme-trombone', T.thisBig + 100, 0.5, 1500), sfx('meme-violin', T.noResp, 0.45, 1300),
+    ...[0, 1, 2].map((i) => sfx('meme-shutter', T.look + i * 120, 0.35)), ...[0, 1, 2].map((i) => sfx('jorho-pen', T.beautiful + i * 280, 0.4, 650)),
+    sfx('meme-tada', T.every + 150, 0.5), sfx('meme-impact', T.goated, 0.55), sfx('meme-bonk', o_(27100), 0.45),
+    sfx('meme-build', T.you, 0.45, 2300), sfx('meme-orch', T.peyton, 0.6), sfx('meme-jet', T.manning, 0.4),
+    sfx('meme-radio', S[6], 0.45), sfx('jorho-ring', S[6] + 150, 0.2, S[7] - S[6] - 150), sfx('meme-flash', S[7] + 100, 0.4),
+    sfx('meme-impact', T.big2, 0.5), sfx('jorho-pen', T.nice - 250, 0.45, 900), sfx('meme-tada', T.signature + 200, 0.5)],
+};
+export const JorhoPen3D = () => <Jorho s={PEN3D} />;

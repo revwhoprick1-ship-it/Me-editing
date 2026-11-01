@@ -22,14 +22,19 @@
   },
   "homepage": "https://github.com/revwhoprick1-ship-it/Me-editing#readme",
   "dependencies": {
+    "@react-three/drei": "9.122.0",
+    "@react-three/fiber": "8.18.0",
     "@remotion/captions": "^4.0.538",
     "@remotion/cli": "^4.0.538",
     "@remotion/fonts": "^4.0.538",
     "@remotion/install-whisper-cpp": "^4.0.538",
     "@remotion/media-utils": "^4.0.538",
+    "@remotion/three": "4.0.538",
+    "@types/three": "0.169.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "remotion": "^4.0.538"
+    "remotion": "^4.0.538",
+    "three": "0.169.0"
   },
   "devDependencies": {
     "@types/react": "^19.3.0",

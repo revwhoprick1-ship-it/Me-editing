@@ -189,3 +189,63 @@ YouTube blocks downloads from this box, so these were studied from thumbnails on
 8. PEYTON MANNING behind Trevor.
 9. Phone call.
 10. "It's a big deal to have a nice signature" quote card.
+
+## v6 REAL 3D (user, 2026-11-01): "refs suck… I want FUN, modern, 3D animations, not 2D pictures. Animations are KEY. Colors fit the theme."
+**Rejected (v5):** 2D quote cards/phone mockups like low-view podcast pages. Don't go back to them.
+
+**Visual refs (TikTok, downloadable with plain yt-dlp):**
+- keanu.visuals "Let Him Cook" (7503556689593896214): huge 3D extruded words standing in the scene, perspective, motion blur, masked behind people.
+- stefanolio_ (7434637647307459895): glossy 3D objects floating around the person.
+
+**SFX refs (the user's):** kienobimedia 7678711626492562718 and editstartofficial 7695651392354061582. Every named sound was matched on myinstants by mel correlation and installed as `public/sfx/meme-*.mp3` (loudnorm −14 LUFS):
+
+| sound | file | match |
+|---|---|---|
+| Fahh | `meme-fahh` | fahhh-pump-sound |
+| Camera Shutter | `meme-shutter` | camera-shutterrrr |
+| Dun Dun Dun | `meme-dundun` | dun_dun_1 |
+| Orchestral Hit | `meme-orch` | roland-orchestra-hit (.86) |
+| Bonk | `meme-bonk` | bonk_7zPAD7C |
+| Sad Trombone | `meme-trombone` | sad_trombone gaming |
+| Tada | `meme-tada` | ta-da_yrvBrlS (.97) |
+| Impact | `meme-impact` | love-impact (.86) |
+| Violin Screech | `meme-violin` | violin-screech (.97) |
+| Camera Flash | `meme-flash` | flash-camera (.90) |
+| Radio Beep | `meme-radio` | police-beep |
+| Build Up | `meme-build` | cut from the editstart free-SFX post |
+| Build Up 2 | `meme-build2` | transition-brrr (.89) |
+| Jet Set | `meme-jet` | jet-set-radio-spray (.99) |
+| LWK IDK 😳✌️ | `meme-lwk` | cut from the editstart post |
+
+**Usage (one per beat, matched to the meaning):**
+- jet spray on words flying in;
+- dun-dun-dun on a dramatic line;
+- fahh on a sarcastic "no disrespect";
+- lwk idk on an awkward "I haven't";
+- orchestra hit on the reveal;
+- impact on slams;
+- sad trombone on "this big";
+- violin screech on the roast;
+- tada on the payoff;
+- bonk on a dumb-funny word;
+- build up before a name;
+- radio beep on a phone.
+
+**3D tech** (`src/jorho3d/`):
+- @remotion/three + @react-three/fiber 8 + drei 9 + three 0.169.
+- Renders/stills MUST pass `--gl=swangle`. Other GL modes fail in this box.
+- The Anton TTF is converted to a three.js typeface by `.work/f3d/conv.cjs` (opentype.js) → `src/jorho3d/fonts/anton.json`.
+- `three.tsx`:
+  - `Word3D`: extruded, bevelled, face and side colours;
+  - `Card3D`: slab plus holo `meshPhysicalMaterial`, signature drawn live on a CanvasTexture;
+  - `Pen3D` (gold), `Ant3D` (googly eyes, walk cycle), `Phone3D`, `Football3D`;
+  - `Env`: RoomEnvironment PMREM for reflections, no network HDR;
+  - `Rig`: shake on slams;
+  - `sp`/`ez`: spring/ease on the output clock.
+- Textures load on the DOM side with `useImage` + delayRender and are passed in as elements. Loading inside the canvas hung.
+- Front canvas goes in the `box` slot; the behind canvas goes in Cam's `behind` slot (between the footage and the person matte) for 3D words behind someone.
+- `Dim`: a dark teal vignette under the 3D so it reads over the footage.
+
+**Colours:** Jaguars teal `#00A3AD` / `#004a56`, gold `#D7A22A`, white. Red only for the roast ("NO RESPECT"). Team colours for other people (Colts navy card, Broncos orange PEYTON). No random neon.
+
+**Clip:** `JorhoPen3D` (t1, 22.6 s).
