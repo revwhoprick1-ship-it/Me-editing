@@ -4,7 +4,7 @@
 import {ThreeCanvas} from '@remotion/three';
 import {Arrow3D, Bars3D, Clock3D, Coin3D, Confetti3D, Env, GOLD, Lights, RED, Rig, TEAL, TEAL_D, Tag3D, Word3D, XMark3D, ez, sp} from './three';
 
-export type RedeemTimes = Record<'k20' | 'what' | 'd200' | 'd500' | 'maybe' | 'why' | 'finish' | 'product' | 'notYet' | 'people' | 'really' | 'product2' | 'sale' | 'end', number> & {S: number[]};
+export type RedeemTimes = Record<'k20' | 'what' | 'd200' | 'd500' | 'maybe' | 'why' | 'finish' | 'product' | 'notYet' | 'people' | 'really' | 'product2' | 'most' | 'sale' | 'end', number> & {S: number[]};
 const CAM = {fov: 35, position: [0, 0, 10] as [number, number, number]};
 const inR = (o: number, a: number, b: number) => o >= a && o < b;
 
@@ -49,15 +49,15 @@ export const RedeemFront = ({o, K}: {o: number; K: RedeemTimes}) => {
       </>}
       {inR(o, S[5], S[6]) && <>
         <XMark3D o={o} at={K.people} position={[0, 1.2, -0.6]} scale={1.2} />
-        <Word3D text="NOBODY LIKES IT" size={0.62} face={RED} side="#5c0a0d" position={[0, 1.2, (1 - sp(o, K.people + 100, 9, 220)) * 8 + 0.5]} rotation={[0, Math.sin(o / 400) * 0.15, -0.04]} />
+        <Word3D text="NOBODY LIKES IT" size={0.56} face={RED} side="#5c0a0d" position={[0, 1.2, (1 - sp(o, K.people + 100, 9, 220)) * 8 + 0.5]} rotation={[0, Math.sin(o / 400) * 0.15, -0.04]} />
       </>}
       {inR(o, S[6], S[7]) && <Word3D text="?" size={0.9} face="#fff" side={TEAL_D} position={[1.9, 1.8, 0.3]} rotation={[0, (o - S[6]) / 200, 0.2]} scale={sp(o, K.really, 9, 260)} />}
       {o >= S[7] && <>
         <Bars3D o={o} at={K.product2} heights={[0.5, 0.75, 0.95, 1.25, 1.9]} position={[0.9, -1.55, 0]} rotation={[0.15, -0.5, 0]} />
         {o >= K.product2 + 600 && <Arrow3D color="#2fd25a" position={[-2.2, -1.2 + 1.1 * ez(o, K.product2 + 600, 500), 0.4]} rotation={[0, Math.sin(o / 300) * 0.3, -0.5]} scale={1} />}
+        {o >= K.most && <Word3D text="MOST EXPENSIVE" size={0.42} position={[0, 2.5, (1 - sp(o, K.most, 10, 200)) * 8]} />}
         {o >= K.sale && <>
-          <Word3D text="MOST EXPENSIVE" size={0.5} position={[0, 2.6, (1 - sp(o, K.sale, 10, 220)) * 8]} />
-          <Word3D text="SALE EVER" size={0.85} face={GOLD} side="#7a5a12" metal={1} rough={0.22} position={[0, 1.85, (1 - sp(o, K.sale + 150, 9, 220)) * 8]} rotation={[0, Math.sin(o / 400) * 0.2, 0]} />
+          <Word3D text="SALE EVER" size={0.72} face={GOLD} side="#7a5a12" metal={1} rough={0.22} position={[0, 1.45, (1 - sp(o, K.sale, 9, 200)) * 8]} rotation={[0, Math.sin(o / 400) * 0.2, 0]} />
           <Confetti3D o={o} at={K.sale + 100} position={[0, 1.6, 0.5]} colors={[GOLD, '#2fd25a', '#ffffff']} />
         </>}
       </>}
