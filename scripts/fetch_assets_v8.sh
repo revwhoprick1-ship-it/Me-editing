@@ -21,6 +21,6 @@ PY
 done
 for id in orlando_stadium suburban_football_field; do
   curl -sS -o ".work/models/$id.jpg" "https://dl.polyhaven.org/file/ph-assets/HDRIs/extra/Tonemapped%20JPG/$id.jpg"
-  python3 -c "from PIL import Image; Image.MAX_IMAGE_PIXELS=None; Image.open('.work/models/$id.jpg').convert('RGB').resize((8192,4096), Image.LANCZOS).save('public/env/${id}_8k.jpg', quality=88)"
+  python3 -c "from PIL import Image; Image.MAX_IMAGE_PIXELS=None; im=Image.open('.work/models/$id.jpg').convert('RGB'); im.resize((8192,4096), Image.LANCZOS).save('public/env/${id}_8k.jpg', quality=88); im.resize((1024,512), Image.LANCZOS).save('public/env/${id}_1k.jpg', quality=90)"
 done
 echo done

@@ -285,3 +285,4 @@ YouTube blocks downloads from this box, so these were studied from thumbnails on
   - Set the camera far plane to 600, otherwise the sky gets clipped into a black wedge.
 - **Hook** = the payoff line as a cold open ("I throw it a little better moving LEFT than right"): #16 sprinting left in a pro stadium, a spiral thrown with a trail, green LEFT arrow, red RIGHT with an X.
 - **Story beats:** LIL TREVOR on a youth field → robot coach draws a rollout to the RIGHT on a chalkboard → EVERYONE GOES RIGHT crowd → little #16 runs LEFT through the crowd with a LEFT REPS counter → grows up into the stadium (10,000 reps) → coach robot dances to "BEST QB EVER?!".
+- **Memory (render OOM on first try):** load the 8k panoramas without mipmaps, light the scene with 1k copies (PMREM), and render with `--concurrency=2`.

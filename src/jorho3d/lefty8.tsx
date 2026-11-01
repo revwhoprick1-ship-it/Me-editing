@@ -14,7 +14,7 @@ import {GroundedSkybox} from 'three/examples/jsm/objects/GroundedSkybox.js';
 import * as SkeletonUtils from 'three/examples/jsm/utils/SkeletonUtils.js';
 import {Arrow3D, Confetti3D, GOLD, RED, TEAL, TEAL_D, Word3D, XMark3D, ez, sp} from './three';
 
-type Assets = {xbot: GLTF; soldier: GLTF; robot: GLTF; ball: GLTF; board: GLTF; stadium: THREE.Texture; field: THREE.Texture};
+type Assets = {xbot: GLTF; soldier: GLTF; robot: GLTF; ball: GLTF; board: GLTF; stadium: THREE.Texture; field: THREE.Texture; stadiumL: THREE.Texture; fieldL: THREE.Texture};
 let cache: Assets | null = null;
 export const useLeftyAssets = () => {
   const [a, setA] = useState<Assets | null>(cache);
@@ -22,11 +22,13 @@ export const useLeftyAssets = () => {
   useEffect(() => {
     if (cache) return;
     const gl = new GLTFLoader(), tl = new THREE.TextureLoader();
-    const tex = async (u: string) => { const t = await tl.loadAsync(staticFile(u)); t.mapping = THREE.EquirectangularReflectionMapping; t.colorSpace = THREE.SRGBColorSpace; return t; };
+    // 8k for the visible sky (no mipmaps: memory), 1k for lighting (PMREM)
+    const tex = async (u: string, mips = false) => { const t = await tl.loadAsync(staticFile(u)); t.mapping = THREE.EquirectangularReflectionMapping; t.colorSpace = THREE.SRGBColorSpace;
+      if (!mips) { t.generateMipmaps = false; t.minFilter = THREE.LinearFilter; } return t; };
     Promise.all([gl.loadAsync(staticFile('models/Xbot.glb')), gl.loadAsync(staticFile('models/Soldier.glb')), gl.loadAsync(staticFile('models/RobotExpressive.glb')),
       gl.loadAsync(staticFile('models/american_football/american_football.gltf')), gl.loadAsync(staticFile('models/standing_chalkboard_01/standing_chalkboard_01.gltf')),
-      tex('env/orlando_stadium_8k.jpg'), tex('env/suburban_football_field_8k.jpg')])
-      .then(([xbot, soldier, robot, ball, board, stadium, field]) => { cache = {xbot, soldier, robot, ball, board, stadium, field}; setA(cache); if (h !== null) continueRender(h); });
+      tex('env/orlando_stadium_8k.jpg'), tex('env/suburban_football_field_8k.jpg'), tex('env/orlando_stadium_1k.jpg', true), tex('env/suburban_football_field_1k.jpg', true)])
+      .then(([xbot, soldier, robot, ball, board, stadium, field, stadiumL, fieldL]) => { cache = {xbot, soldier, robot, ball, board, stadium, field, stadiumL, fieldL}; setA(cache); if (h !== null) continueRender(h); });
   }, [h]);
   return a;
 };
@@ -74,10 +76,10 @@ const blobTex = (() => { let t: THREE.CanvasTexture | null = null; return () => 
 const Blob = ({x, z, r = 0.7}: {x: number; z: number; r?: number}) => (
   <mesh position={[x, 0.01, z]} rotation={[-Math.PI / 2, 0, 0]}><planeGeometry args={[r * 2, r * 2]} /><meshBasicMaterial map={blobTex()} transparent depthWrite={false} /></mesh>
 );
-const Sky = ({tex, h = 2.2}: {tex: THREE.Texture; h?: number}) => {
+const Sky = ({tex, light, h = 2.2}: {tex: THREE.Texture; light: THREE.Texture; h?: number}) => {
   const sky = useMemo(() => { const s = new GroundedSkybox(tex, h, 80); s.position.y = h - 0.01; return s; }, [tex, h]);
   const {scene} = useThree();
-  scene.environment = tex;
+  scene.environment = light;
   return <primitive object={sky} />;
 };
 const Cam = ({p, l, fov = 40}: {p: [number, number, number]; l: [number, number, number]; fov?: number}) => {
@@ -144,7 +146,7 @@ type SP = {A: Assets; o: number; K: LeftyK};
 const HookScene = ({A, o, K}: SP) => {
   const x = 2.2 - (o / 1000) * 2.6;
   return <>
-    <Sky tex={A.stadium} h={2.4} />
+    <Sky tex={A.stadium} light={A.stadiumL} h={2.4} />
     <Cam p={[x - 2.6 + Math.sin(o / 700) * 0.15, 1.15, 3.4 - ez(o, 1300, 900) * 0.6]} l={[x - 0.6, 1.15, 0]} fov={42} />
     <Char g={A.xbot} clip="run" t={o} speed={1.15} tint={XB_TINT} position={[x, 0, 0]} rotation={[0, -Math.PI / 2, 0]} />
     <Blob x={x} z={0} />
@@ -163,7 +165,7 @@ const HookScene = ({A, o, K}: SP) => {
 const KidScene = ({A, o, K}: SP) => {
   const t = o - K.S[2];
   return <>
-    <Sky tex={A.field} h={2.0} />
+    <Sky tex={A.field} light={A.fieldL} h={2.0} />
     <Cam p={[Math.sin(t / 1600) * 1.2, 1.0, 3.6 - t / 4000]} l={[0, 0.75, 0]} fov={40} />
     <Char g={A.xbot} clip="agree" t={t} h={1.15} tint={KID_TINT} position={[0, 0, 0]} rotation={[0, 0.25, 0]} />
     <Blob x={0} z={0} r={0.45} />
@@ -179,7 +181,7 @@ const CoachScene = ({A, o, K}: SP & {t: number}) => {
   const crowd = o >= K.most - 250;
   const pan = ez(o, K.most - 250, 700);
   return <>
-    <Sky tex={A.field} h={2.0} />
+    <Sky tex={A.field} light={A.fieldL} h={2.0} />
     <Cam p={[-0.1 + pan * 2.6, 1.3 + pan * 0.4, 5.3 + pan * 0.8]} l={[0.0 + pan * 2.8, 1.0, 0]} fov={42} />
     <Char g={A.robot} clip={o < K.coachRight ? 'Wave' : 'Yes'} t={t} h={1.35} position={[-0.95, 0, 0.2]} rotation={[0, 0.5, 0]} />
     <Blob x={-0.95} z={0.2} />
@@ -203,7 +205,7 @@ const AgainstScene = ({A, o, K}: SP) => {
   const t = o - K.S[5];
   const x = 2.5 - (t / 1000) * 1.6;
   return <>
-    <Sky tex={A.field} h={2.0} />
+    <Sky tex={A.field} light={A.fieldL} h={2.0} />
     <Cam p={[x + 0.6, 1.25, 4.0]} l={[x - 0.4, 0.8, 0]} fov={44} />
     <Char g={A.xbot} clip="run" t={o} h={1.2} tint={KID_TINT} position={[x, 0, 0.3]} rotation={[0, -Math.PI / 2, 0]} />
     <Blob x={x} z={0.3} r={0.5} />
@@ -226,7 +228,7 @@ const GrowScene = ({A, o, K}: SP) => {
   const grow = ez(o, K.S[6], 700);
   const x = 1.5 - (t / 1000) * 2.4;
   return <>
-    <Sky tex={A.stadium} h={2.4} />
+    <Sky tex={A.stadium} light={A.stadiumL} h={2.4} />
     <Cam p={[x - 2.2, 0.55, 2.6]} l={[x - 0.2, 1.2, 0]} fov={46} />
     <Char g={A.xbot} clip="run" t={o} speed={1.2} h={1.2 + 0.7 * grow} tint={XB_TINT} position={[x, 0, 0]} rotation={[0, -Math.PI / 2, 0]} />
     <Blob x={x} z={0} />
@@ -240,7 +242,7 @@ const GrowScene = ({A, o, K}: SP) => {
 const DanceScene = ({A, o, K}: SP) => {
   const t = o - (K.best + 1250);
   return <>
-    <Sky tex={A.stadium} h={2.4} />
+    <Sky tex={A.stadium} light={A.stadiumL} h={2.4} />
     <Cam p={[Math.sin(t / 900) * 0.8, 1.3, 5.8]} l={[0, 1.15, 0]} fov={42} />
     <Char g={A.robot} clip="Dance" t={t} h={1.5} position={[0, 0, 0]} />
     <Blob x={0} z={0} />
