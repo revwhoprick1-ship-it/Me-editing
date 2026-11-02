@@ -21,3 +21,4 @@
 - The NBA GOAT debate is finally over (neon)
 - 8-bit proof the GOAT is not LeBron (pixel)
 - Finding the real NBA GOAT was a whole side quest (journey)
+- Ball knowledge level: picking this guy over MJ (crosshatch ink)

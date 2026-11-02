@@ -388,3 +388,13 @@ All five use the same beats as v12 and the same real-footage moments (the two-sh
   - camera rises through pink clouds into the night, candidates become glowing star portraits on a constellation, "hmm…";
   - comet fall, confetti, Della portrait, "Dellavedova" writes in ink;
   - "the tension…" in red ink, trembling, sweating ball.
+
+## v18 the animate skill (user, 2026-11-02: "Try using this skill https://github.com/cth9191/animate")
+- **Skill:** procedural single-file canvas animation with styles (cut paper, crosshatch, riso, sketchbook, math, pixel, isometric). Its flow: intake questions → style gallery → storyboard approval → build → export. Clone it to the scratchpad (not the repo); its tools live in `plugins/animate/skills/animate/tools/`.
+- **User picks:** crosshatch ink, a basketball hero (original: the style's ink dot with seams), inside the Jorho box, podcast audio + our SFX (no synthesized score).
+- **Piece:** `pieces/goat-ink/` (piece.json 1080×1080 @ 30 fps, 17.8 s = the clip's output timeline; head.html cues = `N.*` in seconds).
+  - Build: `node <skill>/tools/build.mjs pieces/goat-ink`.
+  - Board: `node <skill>/tools/still.mjs pieces/goat-ink 4,7,10.5,13.6,17.3 board.png --scale 0.5`.
+  - Export: `node <skill>/tools/export.mjs pieces/goat-ink --no-audio`. Its score render crashes with the demo `score.js`, and we use the podcast audio anyway. Copy the result to `public/animate/goat_ink.mp4` (gitignored).
+- **Jorho:** `JorhoGoatInk` shows the exported MP4 in the box on the graphics beats (`beatOf`).
+- **Fonts:** the style's handwriting fonts aren't on this Linux box. Install Caveat: `pip install fonttools brotli`, convert `public/fonts/caveat-700-normal.woff2` to `~/.fonts/Caveat-Bold.ttf`, run `fc-cache -f`, and add "Caveat" first in the piece's `HAND` list.

@@ -17,3 +17,6 @@ public/matte/
 public/b3/*.mp4
 .work/
 public/env/
+pieces/*/renders/
+pieces/*/frames/
+public/animate/*.mp4

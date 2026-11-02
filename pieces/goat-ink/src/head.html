@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NBA GOAT — crosshatch ink</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #1b1714; overflow: hidden; }
+  body { display: flex; align-items: center; justify-content: center; }
+  canvas { height: min(100vh, 100vw); width: auto; aspect-ratio: 1; display: block; cursor: pointer; }
+</style>
+</head>
+<body>
+<canvas id="c" width="1080" height="1080"></canvas>
+<script>
+"use strict";
+// =====================================================================
+//  NBA GOAT — crosshatch ink, 1:1 (fills the Jorho video box), 17.8s @ 30fps. Beat times = the podcast clip's
+//  output timeline (src/jorho/clips.tsx N.*); the Jorho runner shows real footage between the beats.
+//  Hero: an original basketball with eyes (the style's ink dot, with seams).
+// =====================================================================
+const FPS = 30, W = 1080, H = 1080;
+const BPM = 120, BEAT = 60 / BPM, E8 = BEAT / 2, E16 = BEAT / 4;
+const DURATION = 17.8;
+const NFRAMES = Math.round(DURATION * FPS);
+const LOOP_T = NFRAMES / FPS;
+const SAFE = { top: 60, bottom: 300, right: 60 };
+const HAND = '"Caveat", "Ink Free", "Segoe Print", "Bradley Hand", "Chalkboard SE", "Comic Sans MS", "Comic Neue", cursive';
+const CX = 540;
+// clip cues (seconds on the output timeline)
+const Q = { who: 2.28, nba: 4.48, greatest: 5.62, think: 7.4, gotta: 11.78, della: 12.82, laugh: 14.05, tension: 16.74 };
+const ERA_LIST = [[0, 5.62, () => sceneAsk()], [5.62, 8.6, () => sceneOptions()], [8.6, 11.78, () => sceneThink()], [11.78, 16.54, () => sceneReveal()], [16.54, 17.8, () => sceneTension()]];
+const SHOTS = [
+  ['ask', 0, 0.0, 5.62, 'the ball hears the question on a note'],
+  ['options', 1, 5.62, 8.6, 'the usual answers pinned up as jerseys'],
+  ['think', 2, 8.6, 11.78, 'inside the head: jerseys orbit, the clock spins'],
+  ['reveal', 3, 11.78, 16.54, 'jersey #8 slams in: Dellavedova?!'],
+  ['tension', 4, 16.54, 17.8, 'the tension: the ball sweats'],
+];
+const TIMELINE = {
+  width: W, height: H, fps: FPS, bpm: BPM, duration: DURATION, frames: NFRAMES, loop: LOOP_T, safe: SAFE,
+  format: 'journey',
+  shots: SHOTS.map(([key, era, t0, t1, title], i) => ({ id: i + 1, key, era, t0, t1, title })),
+  cuts: [5.62, 8.6, 11.78, 16.54], morphs: [],
+  cues: Q,
+  acts: [{ name: '1 Ask', role: 'setup', t0: 0, t1: 5.62 }, { name: '2 Options', role: 'build', t0: 5.62, t1: 8.6 }, { name: '3 Think', role: 'turn', t0: 8.6, t1: 11.78 }, { name: '4 Reveal', role: 'payoff', t0: 11.78, t1: 16.54 }, { name: '5 Tension', role: 'button', t0: 16.54, t1: 17.8 }],
+  board: [
+    { t: 4.0, title: '1 the question', sound: 'pencil scratch', next: 'cut to Trevor' },
+    { t: 7.0, title: '2 the usual answers', sound: 'pops', next: 'cut to Trevor thinking' },
+    { t: 10.5, title: '3 inside the head', sound: 'clock ticks', next: 'gotta be…' },
+    { t: 13.6, title: '4 DELLAVEDOVA?!', sound: 'orchestra hit', next: 'real laugh' },
+    { t: 17.3, title: '5 the tension', sound: 'violin', next: 'end' },
+  ],
+  narration: [],
+};
+window.TIMELINE = TIMELINE;

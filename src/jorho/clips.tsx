@@ -33,6 +33,8 @@ import {GoatPoster, PO} from './poster14';
 import {GoatCollage, GoatNeon, GoatPremium} from './refs15';
 import {GoatPixel} from './pixel16';
 import {GoatJourney} from './journey17';
+import {beatOf} from './styles13';
+import {OffthreadVideo} from 'remotion';
 import {Arrow7, Band, Big, Emoji, Neck, P7, Pill, Rain, Ruler, Sticker} from './pod7';
 import t4Words from '../plans/data/t4_natty_ticket.words.json';
 import t4Track from '../plans/data/t4_natty_ticket.seats.json';
@@ -737,3 +739,10 @@ export const JorhoGoatPixel = () => <Jorho s={{...goatV(GoatPixel), top: '8-bit 
 // ==== v17 "side quest" (2026-11-02): own basketball character with squash & stretch on a self-drawing paper world
 export const JorhoGoatJourney = () => <Jorho s={{...goatV(GoatJourney), top: 'Finding the real NBA GOAT was a whole side quest',
   fx: [...GOAT12.fx!, sfx('jorho-pop', N.who + 950, 0.35), ...[0, 1, 2].map((i) => sfx('jorho-pop', N.greatest + 520 * (i + 1), 0.3)), sfx('jorho-whoosh', N.think + 1200, 0.35), sfx('jorho-ting', N.della - 150, 0.35)]}} />;
+
+// ==== v18 (2026-11-02): the animate skill (github.com/cth9191/animate), crosshatch-ink style, original basketball hero.
+// The piece (pieces/goat-ink, 1:1, same 17.8 s timeline) is exported to public/animate/goat_ink.mp4 and shown in the
+// Jorho box on the graphics beats; real footage on the usual moments; podcast audio + our SFX.
+const InkLayer = ({o}: {o: number}) => (beatOf(o, KG12) ? <OffthreadVideo src={staticFile('animate/goat_ink.mp4')} muted style={{position: 'absolute', left: 0, top: 0, width: 1080, height: 1077, objectFit: 'cover'}} /> : null);
+export const JorhoGoatInk = () => <Jorho s={{...GOAT12, top: 'Ball knowledge level: picking this guy over MJ', box: (o) => <InkLayer o={o} />,
+  fx: [...GOAT12.fx!, sfx('jorho-pen', N.who + 200, 0.35, 1200), sfx('jorho-pen', N.della + 250, 0.35, 700)]}} />;

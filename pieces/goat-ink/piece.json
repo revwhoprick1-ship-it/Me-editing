@@ -1,0 +1,8 @@
+{
+  "name": "goat-ink",
+  "title": "NBA GOAT — crosshatch ink",
+  "format": { "width": 1080, "height": 1080, "fps": 30, "bpm": 120, "duration": 17.8, "frames": 534 },
+  "storyFormat": "fixed-hero journey (5 beats, hard cuts — the Jorho edit cuts to real footage between them)",
+  "style": "crosshatch",
+  "review": { "safe": { "top": 60, "bottom": 300, "right": 60 }, "refs": {} }
+}
