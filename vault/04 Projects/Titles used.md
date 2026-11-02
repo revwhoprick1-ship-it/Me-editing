@@ -20,3 +20,4 @@
 - Real ball knowledge is knowing who the GOAT is (collage)
 - The NBA GOAT debate is finally over (neon)
 - 8-bit proof the GOAT is not LeBron (pixel)
+- Finding the real NBA GOAT was a whole side quest (journey)

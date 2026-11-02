@@ -379,3 +379,12 @@ All five use the same beats as v12 and the same real-footage moments (the two-sh
   - real laugh;
   - back at the table for TENSION: both sweating, the screen shakes, the text blinks.
 - Real footage only for the opening two-shot and the laugh.
+
+## v17 "side quest" (user ref 2026-11-02, vt.tiktok.com/ZSgEuSfBD, claude.stuff: a dot character with squash & stretch on a paper world that draws itself → pink clouds → starry night with constellation → comet fall → brush lettering)
+- `src/jorho/journey17.tsx`, comp `JorhoGoatJourney`. Own hero: a basketball with eyes (squash/stretch from the `hop()` physics, mood wow/worry, sweat). Paper texture: feTurbulence multiply plus a warm vignette. Brush text: Allura, revealed left→right.
+- **Beats:**
+  - ball drops and bounces in, "who's the GOAT?" writes itself;
+  - hills and sky draw themselves, the ball hops pedestal to pedestal past LeBron?/Kobe?/Curry?;
+  - camera rises through pink clouds into the night, candidates become glowing star portraits on a constellation, "hmm…";
+  - comet fall, confetti, Della portrait, "Dellavedova" writes in ink;
+  - "the tension…" in red ink, trembling, sweating ball.
