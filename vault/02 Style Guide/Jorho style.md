@@ -398,3 +398,13 @@ All five use the same beats as v12 and the same real-footage moments (the two-sh
   - Export: `node <skill>/tools/export.mjs pieces/goat-ink --no-audio`. Its score render crashes with the demo `score.js`, and we use the podcast audio anyway. Copy the result to `public/animate/goat_ink.mp4` (gitignored).
 - **Jorho:** `JorhoGoatInk` shows the exported MP4 in the box on the graphics beats (`beatOf`).
 - **Fonts:** the style's handwriting fonts aren't on this Linux box. Install Caveat: `pip install fonttools brotli`, convert `public/fonts/caveat-700-normal.woff2` to `~/.fonts/Caveat-Bold.ttf`, run `fc-cache -f`, and add "Caveat" first in the piece's `HAND` list.
+
+## v19 evidence-based hook pass, ORIGINAL Jorho style (user, 2026-11-02): full brief (hook research, 3 hook alternatives, viewer simulation, QC, final report)
+- `JorhoGoat19` (13.7 s):
+  - **Opening:** the real question on a two-shot (asker + Trevor) at 0.1 s, with the "Bring it up, but I want to ask you the question before" lead-in cut; small "TREVOR LAWRENCE · NFL QB" label.
+  - **Think:** trimmed 5.4 → 3.6 s, with the Jeopardy think cue, "THE USUAL ANSWERS…" LeBron/Kobe/Curry cutouts, an honest "⏱ Xs of silence" counter (real elapsed pause) and captions off.
+  - **Payoff:** music to silence just before the answer, strobe + green tint + orchestra hit on "Matthew Dellavedova", his cutout, and a verified stat label "CAREER 5.2 PPG" so non-fans get the joke. Then the real laugh (wide), then "I could feel the tension" (right host) with a red tint and violin.
+- **New runner option** `Spec.musicLevel(o)`: per-moment music level (bed under the question, 0 during the think cue, silence before the answer).
+- **QC:** normalise the final to −14 LUFS (the render came out at −9.6 LUFS).
+- **Facts checked:** Dellavedova career 5.2 PPG over 479 games, 2016 champion with Cleveland (landofbasketball.com, ESPN).
+- **Under 15 s on purpose:** the clip has no more relevant footage, and padding would add dead time.

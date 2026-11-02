@@ -63,7 +63,7 @@ type Spec = {
   music: {file: string; from: number; level: number};
   box?: (o: number) => ReactNode; over?: (o: number) => ReactNode; fx?: Sfx[];
   intro?: {theme: Theme; to: number; bg: (o: number) => ReactNode; fg?: (o: number) => ReactNode};
-  wideXAt?: (o: number) => number; mattes?: Matte[]; behind?: (o: number) => ReactNode; push?: boolean; capsOff?: [number, number][]; faceY?: (o: number) => number; grade?: string;
+  wideXAt?: (o: number) => number; mattes?: Matte[]; behind?: (o: number) => ReactNode; push?: boolean; capsOff?: [number, number][]; faceY?: (o: number) => number; grade?: string; musicLevel?: (o: number) => number;
 };
 const Jorho = ({s}: {s: Spec}) => {
   const frame = useCurrentFrame();
@@ -78,7 +78,7 @@ const Jorho = ({s}: {s: Spec}) => {
       {!(s.capsOff ?? []).some(([a, b]) => o >= a && o < b) && <OneWord o={o} words={s.words} y={s.wordY} />}
       {s.over?.(o)}
       <SpeechTrack src={s.src} tl={s.tl} />
-      <Music file={s.music.file} songFrom={s.music.from} level={(t) => s.music.level * Math.min(1, (s.tl.total - t) / 400)} />
+      <Music file={s.music.file} songFrom={s.music.from} level={(t) => (s.musicLevel ? s.musicLevel(t) : s.music.level) * Math.min(1, (s.tl.total - t) / 400)} />
       <SfxTrack list={[
         sfx('jorho-ting', 0, 0.55),
         ...s.strobes.map((t) => sfx('jorho-flash', t, 0.7)),
@@ -746,3 +746,44 @@ export const JorhoGoatJourney = () => <Jorho s={{...goatV(GoatJourney), top: 'Fi
 const InkLayer = ({o}: {o: number}) => (beatOf(o, KG12) ? <OffthreadVideo src={staticFile('animate/goat_ink.mp4')} muted style={{position: 'absolute', left: 0, top: 0, width: 1080, height: 1077, objectFit: 'cover'}} /> : null);
 export const JorhoGoatInk = () => <Jorho s={{...GOAT12, top: 'Ball knowledge level: picking this guy over MJ', box: (o) => <InkLayer o={o} />,
   fx: [...GOAT12.fx!, sfx('jorho-pen', N.who + 200, 0.35, 1200), sfx('jorho-pen', N.della + 250, 0.35, 700)]}} />;
+
+// ==== v19 (2026-11-02): NBA GOAT in the ORIGINAL Jorho style, evidence-based hook pass (see vault v19 report).
+// Opens on the real question on a two-shot (context first), cuts the confusing lead-in, trims the silent think from
+// 5.4 s to 3.6 s, scores it with the Jeopardy think cue, cuts the music to silence before the answer, and explains the
+// joke for non-fans with a verified stat (Dellavedova: 5.2 PPG career, landofbasketball.com / ESPN).
+const g19 = timeline([[2150, 3650], [4380, 5150], [5550, 7350], [9200, 18810]]);
+export const GOAT19_MS = g19.total;
+const G19 = g19.segOut, go19 = g19.out;
+const K19 = {who: go19(2280), nba: go19(4480), greatest: go19(5620), think: G19[3], gotta: go19(12780), della: go19(13820), name: go19(14160),
+  laugh: go19(15050), could: go19(17480), tension: go19(18220)};
+const Lbl = ({o, at, to, children, x, y}: {o: number; at: number; to: number; children: ReactNode; x: number; y: number}) => {
+  if (o < at || o >= to) return null;
+  const p = Math.min(1, (o - at) / 180), q = Math.min(1, (to - o) / 180);
+  return <div style={{position: 'absolute', left: x, top: y, transform: `translateY(${(1 - p) * 20}px)`, opacity: Math.min(p, q), background: 'rgba(0,0,0,.78)', color: '#fff',
+    fontFamily: 'Montserrat', fontWeight: 800, fontSize: 34, padding: '10px 20px', borderRadius: 12, whiteSpace: 'nowrap', borderLeft: '6px solid #F9FC35'}}>{children}</div>;
+};
+const GOAT19: Spec = {
+  tl: g19, src: 'input.mp4', track: goatTrack as unknown as Track, top: 'This NBA GOAT pick broke the whole room', wordY: 1170, wideX: 960, push: true,
+  wideXAt: (o) => (o < G19[1] ? 665 : o < K19.laugh ? 960 : 960),
+  words: wordsFrom(goatWords, g19, {'Delvedova,': 'Dellavedova', Delvedova: 'Dellavedova'}, {goat: '#58EE28', Matthew: '#21F5E6', Dellavedova: '#21F5E6', tension: '#F9FC35'}),
+  capsOff: [[K19.think + 150, K19.gotta - 60]],
+  shots: [[0, 'W'], [G19[1], 'M'], [G19[2], 'L'], [K19.think, 'M'], [K19.laugh + 200, 'W'], [K19.could - 100, 'R']],
+  strobes: [K19.della - STROBE_CUT], tints: [[K19.della, GREEN], [K19.tension, RED]], swish: [K19.laugh + 200],
+  cut: {file: 'della.png', from: K19.della, to: K19.laugh + 700, x: 600, h: 560},
+  music: {file: 'du-bist-full.mp3', from: 42500 - K19.della, level: 0.12},
+  // music under the question, out for the think (Jeopardy cue), silent for the beat before the answer, back on the payoff
+  musicLevel: (o) => (o < K19.think - 200 ? 0.1 : o < K19.della ? 0 : 0.14),
+  box: (o) => <>
+    <Lbl o={o} at={350} to={G19[1]} x={600} y={40}>TREVOR LAWRENCE · NFL QB</Lbl>
+    {o >= K19.think + 300 && o < K19.gotta && <>
+      <Lbl o={o} at={K19.think + 300} to={K19.gotta} x={40} y={40}>THE USUAL ANSWERS…</Lbl>
+      {[['lebron.png', 40, 0], ['kobe.png', 380, 1], ['curry.png', 720, 2]].map(([f, x, i]) => (
+        <Cutout key={f as string} o={o} file={f as string} from={K19.think + 600 + (i as number) * 700} to={K19.gotta - 100} x={x as number} h={300} />))}
+      <Lbl o={o} at={K19.think + 300} to={K19.gotta} x={690} y={40}>{`⏱ ${((o - K19.think) / 1000 + 1.85).toFixed(1)}s of silence`}</Lbl>
+    </>}
+    <Lbl o={o} at={K19.name + 500} to={K19.laugh + 700} x={40} y={40}>MATTHEW DELLAVEDOVA · CAREER 5.2 PPG</Lbl>
+  </>,
+  fx: [sfx('jeopardy-think', K19.think + 100, 0.32, K19.gotta - K19.think - 200), ...[0, 1, 2].map((i) => sfx('jorho-pop', K19.think + 600 + i * 700, 0.3)),
+    sfx('meme-orch', K19.della, 0.5), sfx('jorho-ting', K19.name + 500, 0.3), sfx('meme-violin', K19.tension, 0.35, 1100)],
+};
+export const JorhoGoat19 = () => <Jorho s={GOAT19} />;
