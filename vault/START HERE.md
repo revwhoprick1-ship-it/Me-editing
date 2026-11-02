@@ -97,3 +97,4 @@ Edit podcast/streamer clips into viral vertical Shorts in a **meme / brainrot cl
 | `vault/assets/references/` | full-res frames of the two reference Shorts |
 - **Top captions must be creative and NOT about Trevor (2026-11-01).** Write it like a meme about the topic or the player ("This man is better than MJ and LeBron combined", "Real ball knowledge is knowing who the GOAT is"), never "Trevor's NBA GOAT". Every clip gets a new one.
 - **Keep usage low (2026-11-01):** batch similar clips in one file, check ONE stills grid per batch, render in one queue, no re-checks unless something is clearly broken.
+- Campaign rule: Shorts must be 15 s+ (aim 16+). Never ship under 15 s.

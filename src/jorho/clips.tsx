@@ -751,7 +751,7 @@ export const JorhoGoatInk = () => <Jorho s={{...GOAT12, top: 'Ball knowledge lev
 // Opens on the real question on a two-shot (context first), cuts the confusing lead-in, trims the silent think from
 // 5.4 s to 3.6 s, scores it with the Jeopardy think cue, cuts the music to silence before the answer, and explains the
 // joke for non-fans with a verified stat (Dellavedova: 5.2 PPG career, landofbasketball.com / ESPN).
-const g19 = timeline([[2150, 3650], [4380, 5150], [5550, 7350], [9200, 18810]]);
+const g19 = timeline([[2150, 3650], [4380, 5150], [5550, 7350], [7350, 18810]]); // full real pause kept: campaign needs 15 s+
 export const GOAT19_MS = g19.total;
 const G19 = g19.segOut, go19 = g19.out;
 const K19 = {who: go19(2280), nba: go19(4480), greatest: go19(5620), think: G19[3], gotta: go19(12780), della: go19(13820), name: go19(14160),
@@ -779,7 +779,7 @@ const GOAT19: Spec = {
       <Lbl o={o} at={K19.think + 300} to={K19.gotta} x={40} y={40}>THE USUAL ANSWERS…</Lbl>
       {[['lebron.png', 40, 0], ['kobe.png', 380, 1], ['curry.png', 720, 2]].map(([f, x, i]) => (
         <Cutout key={f as string} o={o} file={f as string} from={K19.think + 600 + (i as number) * 700} to={K19.gotta - 100} x={x as number} h={300} />))}
-      <Lbl o={o} at={K19.think + 300} to={K19.gotta} x={690} y={40}>{`⏱ ${((o - K19.think) / 1000 + 1.85).toFixed(1)}s of silence`}</Lbl>
+      <Lbl o={o} at={K19.think + 300} to={K19.gotta} x={690} y={40}>{`⏱ ${((o - K19.think) / 1000 + 0.0).toFixed(1)}s of silence`}</Lbl>
     </>}
     <Lbl o={o} at={K19.name + 500} to={K19.laugh + 700} x={40} y={40}>MATTHEW DELLAVEDOVA · CAREER 5.2 PPG</Lbl>
   </>,
