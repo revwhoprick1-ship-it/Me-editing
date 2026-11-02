@@ -19,3 +19,4 @@
 - This man is better than MJ and LeBron combined (premium)
 - Real ball knowledge is knowing who the GOAT is (collage)
 - The NBA GOAT debate is finally over (neon)
+- 8-bit proof the GOAT is not LeBron (pixel)

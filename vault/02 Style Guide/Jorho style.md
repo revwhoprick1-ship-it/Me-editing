@@ -368,3 +368,14 @@ All five use the same beats as v12 and the same real-footage moments (the two-sh
 - `JorhoGoatPremium`: dark warm gradient, glowing gold Instrument Serif italics, rounded photo cards in perspective, gold progress ring through the think, "the GOAT." glow reveal.
 - `JorhoGoatCollage`: solid orange/yellow/blue, torn-paper strips, tape, white-outlined sticker cut-outs, mixed fonts (Anton/Bangers/Permanent Marker), sunburst behind Della, "THE GOAT ★".
 - `JorhoGoatNeon`: black with a cyan grid, typed QUERY, "GOAT RATING" bars, live seconds counter, a glowing chart spiking to 100 for Della, red heartbeat TENSION.
+
+## v16 pixel people (user, 2026-11-02): "2d pixel animations (people)"; answers: chunky 8-bit, podcast table → dream court mix, mostly pixel, Game Boy green
+- `src/jorho/pixel16.tsx`, comp `JorhoGoatPixel`. Everything is drawn in 4 greys and mapped to the Game Boy greens by one SVG filter (`#gb`: desaturate, then a discrete transfer table), with an LCD dot grid on top.
+- **Sprites:** rows of chars (D/M/L/W); bodies have stand/runA/runB/jump frames on a 2-frame clock; drawn heads (Trevor cap, host wig). Real player photos are drawn at 8×8 px and scaled ×12 with `image-rendering: pixelated`, so they become 8-bit portraits.
+- **Scenes:**
+  - pixel podcast table: the host's speech box types "WHO'S YOUR NBA GOAT?", Trevor answers "NBA GOAT?", and a thought box shows the LBJ/KOBE/CURRY portraits;
+  - dream court: the three dribble with "?" over them, the crowd bobs, and a "THINKING 2.6s" timer runs;
+  - Della runs in and dunks: "DELLA!!", "★ NEW GOAT ★";
+  - real laugh;
+  - back at the table for TENSION: both sweating, the screen shakes, the text blinks.
+- Real footage only for the opening two-shot and the laugh.

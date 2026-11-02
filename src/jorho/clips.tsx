@@ -31,6 +31,7 @@ import {GoatStick, type GoatK} from './stick12';
 import {Arcade, Chalk, Chat, Comic, Whiteboard} from './styles13';
 import {GoatPoster, PO} from './poster14';
 import {GoatCollage, GoatNeon, GoatPremium} from './refs15';
+import {GoatPixel} from './pixel16';
 import {Arrow7, Band, Big, Emoji, Neck, P7, Pill, Rain, Ruler, Sticker} from './pod7';
 import t4Words from '../plans/data/t4_natty_ticket.words.json';
 import t4Track from '../plans/data/t4_natty_ticket.seats.json';
@@ -727,3 +728,7 @@ export const JorhoGoat14 = () => <Jorho s={GOAT14} />;
 export const JorhoGoatPremium = () => <Jorho s={{...goatV(GoatPremium), top: 'This man is better than MJ and LeBron combined'}} />;
 export const JorhoGoatCollage = () => <Jorho s={{...goatV(GoatCollage), top: 'Real ball knowledge is knowing who the GOAT is'}} />;
 export const JorhoGoatNeon = () => <Jorho s={{...goatV(GoatNeon), top: 'The NBA GOAT debate is finally over'}} />;
+
+// ==== v16 pixel (2026-11-02): chunky 8-bit people, table → dream court, mostly pixel, Game Boy green
+export const JorhoGoatPixel = () => <Jorho s={{...goatV(GoatPixel), top: '8-bit proof the GOAT is not LeBron',
+  fx: [...GOAT12.fx!, ...[0, 1, 2].map((i) => sfx('jorho-click', N.della - 600 + i * 120, 0.3)), sfx('jorho-ting', N.della + 150, 0.35)]}} />;
