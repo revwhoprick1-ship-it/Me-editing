@@ -891,7 +891,7 @@ export const JorhoGoat22 = () => <Jorho s={{
   shots: [[0, 'W'], [K22.nba, 'M'], [K22.greatest, 'L'], [K22.think, 'M'], [K22.after, 'W'], [K22.tension - 200, 'R']],
   strobes: [K22.gotta - STROBE_CUT], tints: [], swish: [K22.after],
   music: {file: 'blue-yung-kai.mp3', from: 58270 - K22.slam, level: 0.07},
-  musicLevel: (o) => (o >= K22.slam && o < K22.after ? 0.34 : o >= K22.think + 100 && o < K22.gotta ? 0.16 : 0.07),
+  musicLevel: (o) => (o >= K22.slam && o < K22.after ? 0.8 : o >= K22.think + 100 && o < K22.gotta ? 0.16 : 0.07),
   box: (o) => <><Vignette /><SpeedActions o={o} acts={acts22} /><SpeedSlam o={o} a={K22.slam} beats={BEATS22} beatMs={BEAT22} text="REAL BALL KNOWLEDGE" emoji="1f410" /></>,
   fx: [...acts22.map(([a, , t]) => sfx('keyboard-typing', a, 0.3, typeMs(t))), sfx('fast-whoosh', K22.slam - 60, 0.4), sfx('keyboard-typing', K22.slam + 200, 0.3, typeMs('REAL BALL KNOWLEDGE') * 2)],
 }} />;
