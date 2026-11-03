@@ -243,6 +243,7 @@ const SHOTS: Shot[] = [
 const WORDS = wordsFrom(goatWords, tl, {'Delvedova,': 'Dellavedova', Delvedova: 'Dellavedova', times: 'time'}, {}).sort((p, q) => p.at - q.at);
 const KEY = new Set(['goat', 'GOAT', 'Dellavedova', 'tension']);
 const Caption = ({o}: {o: number}) => {
+  if (o >= S(6980) + 700 && o < B.gotta - 40) return null; // the long silence: no stale word on screen
   let i = -1; WORDS.forEach((w, j) => { if (o >= w.at) i = j; });
   if (i < 0) return null;
   const w = WORDS[i];

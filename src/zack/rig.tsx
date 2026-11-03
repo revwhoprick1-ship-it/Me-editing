@@ -119,9 +119,9 @@ const HeadGear = ({bone, look}: {bone: THREE.Bone; look: Look}) => {
     if (look.cap) {
       const m = new THREE.MeshStandardMaterial({color: look.cap, roughness: 0.55, side: THREE.DoubleSide});
       const dome = new THREE.Mesh(new THREE.SphereGeometry(0.116, 32, 16, 0, Math.PI * 2, 0, Math.PI * 0.5), m);
-      dome.position.set(0, 0.122, 0.004); dome.scale.set(1.02, 0.92, 1.1);
+      dome.position.set(0, 0.136, 0.004); dome.scale.set(1.02, 0.84, 1.1);
       const brim = new THREE.Mesh(new THREE.CylinderGeometry(0.105, 0.105, 0.014, 32, 1, false, -Math.PI * 0.5, Math.PI), m);
-      brim.position.set(0, 0.128, 0.072); brim.scale.set(0.92, 1, 1.45); brim.rotation.x = 0.14;
+      brim.position.set(0, 0.142, 0.072); brim.scale.set(0.92, 1, 1.45); brim.rotation.x = 0.14;
       g.add(dome, brim);
     }
     g.traverse((x) => { (x as THREE.Mesh).castShadow = true; });
