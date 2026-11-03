@@ -29,14 +29,14 @@ export const introFilter = (o: number) => {
   const bright = interpolate(f, [0, 4, 10, 18], [1.9, 1.45, 1.15, 1], clamp);
   return `blur(${blur}px) brightness(${bright}) contrast(${2 - bright * 0.9 > 0.6 ? 2 - bright * 0.9 : 0.6})`;
 };
-export const Frame = ({o, top, children, over}: {o: number; top: string; children: ReactNode; over?: ReactNode}) => {
-  const f = fr(o);
+export const Frame = ({o, top, children, over, noIntro}: {o: number; top: string; children: ReactNode; over?: ReactNode; noIntro?: boolean}) => {
+  const f = noIntro ? 999 : fr(o);
   const t = interpolate(f, INTRO_F, INTRO_TOP, clamp);
   const b = interpolate(f, INTRO_F, INTRO_BOT, clamp);
   const smear = f < 16 ? interpolate(f, [0, 16], [70, 0], clamp) : 0;
   return <AbsoluteFill style={{background: 'black'}}>
     <div style={{position: 'absolute', left: 0, top: BOX_TOP, width: W, height: BOX_H, overflow: 'hidden', clipPath: `inset(${t - BOX_TOP}px 0 ${BOX_BOTTOM - b}px 0)`}}>
-      <AbsoluteFill style={{transform: f < 19 ? `translateX(${smear}px) scale(1.12)` : undefined, filter: introFilter(o) || undefined}}>{children}</AbsoluteFill>
+      <AbsoluteFill style={{transform: f < 19 ? `translateX(${smear}px) scale(1.12)` : undefined, filter: (!noIntro && introFilter(o)) || undefined}}>{children}</AbsoluteFill>
     </div>
     <div style={{position: 'absolute', left: 0, width: W, bottom: 1920 - t + 3, display: 'flex', justifyContent: 'center'}}>
       <div style={{fontFamily: MONT, fontWeight: 700, fontSize: 58, lineHeight: '65px', color: 'white', textAlign: 'center', maxWidth: 900}}>

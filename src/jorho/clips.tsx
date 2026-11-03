@@ -1,6 +1,6 @@
 // Jorho edits (v2 kit). Each clip: the ting on frame 0 under the intro reveal, a white strobe on the beat that
 // carries a shot change, green tints with a swish on the names, a red tint on the laugh, one cut-out photo.
-import type {ReactNode} from 'react';
+import type {CSSProperties, ReactNode} from 'react';
 import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
 import peytonWords from '../plans/data/u4_peyton.words.json';
 import peytonTrack from '../plans/data/u4_peyton.seats.json';
@@ -63,7 +63,7 @@ type Spec = {
   music: {file: string; from: number; level: number};
   box?: (o: number) => ReactNode; over?: (o: number) => ReactNode; fx?: Sfx[];
   intro?: {theme: Theme; to: number; bg: (o: number) => ReactNode; fg?: (o: number) => ReactNode};
-  wideXAt?: (o: number) => number; mattes?: Matte[]; behind?: (o: number) => ReactNode; push?: boolean; capsOff?: [number, number][]; faceY?: (o: number) => number; grade?: string; musicLevel?: (o: number) => number;
+  wideXAt?: (o: number) => number; mattes?: Matte[]; behind?: (o: number) => ReactNode; push?: boolean; capsOff?: [number, number][]; faceY?: (o: number) => number; grade?: string; musicLevel?: (o: number) => number; noIntro?: boolean;
 };
 const Jorho = ({s}: {s: Spec}) => {
   const frame = useCurrentFrame();
@@ -73,7 +73,7 @@ const Jorho = ({s}: {s: Spec}) => {
     who: () => shotAt(s.shots, o), mattes: s.mattes,
     // slow push-in that restarts on every hard cut, so the frame never sits still
     zoom: s.push ? () => { const st = s.shots.reduce((a, [t]) => (o >= t ? t : a), 0); return 1 + 0.07 * ease(o, st, 3500, (v) => v); } : undefined};
-  return <Frame o={o} top={s.top}
+  return <Frame o={o} top={s.top} noIntro={s.noIntro}
     over={<>
       {!(s.capsOff ?? []).some(([a, b]) => o >= a && o < b) && <OneWord o={o} words={s.words} y={s.wordY} />}
       {s.over?.(o)}
@@ -787,3 +787,63 @@ const GOAT19: Spec = {
     sfx('meme-orch', K19.della, 0.5), sfx('jorho-ting', K19.name + 500, 0.3), sfx('meme-violin', K19.tension, 0.35, 1100)],
 };
 export const JorhoGoat19 = () => <Jorho s={GOAT19} />;
+
+// ==== v21 (2026-11-03): the 13k "premium gold" style, rebuilt from its retention graph.
+// 13k analytics (18 s, 71.9% stayed, 101% avg viewed): steepest drop 0–2 s = the filler opening ("Bring it up, but I
+// want to ask you the question before") → cut it, open on the question with the gold question on screen at frame 0;
+// flat 9–14 s through the think → kept; second drop 14–18 s after the answer (laugh + tension card, nothing new) →
+// the laugh now carries the comment prompt + a LeBron-vs-Della vote, the tension card a like prompt; loop kept.
+const GOLDC = '#f5c45e';
+const gSerif = (s: CSSProperties): CSSProperties => ({fontFamily: 'Instrument Serif', fontStyle: 'italic', color: GOLDC, textShadow: '0 0 26px rgba(245,196,94,.65)', lineHeight: 1, whiteSpace: 'nowrap', ...s});
+const gSans = (s: CSSProperties): CSSProperties => ({fontFamily: 'Inter', fontWeight: 700, color: '#fff', whiteSpace: 'nowrap', ...s});
+const fadeIn = (o: number, a: number, d = 250) => Math.max(0, Math.min(1, (o - a) / d));
+// engagement overlay over the real laugh: comment prompt + a two-way vote (premium gold look)
+const Engage = ({o, a, b}: {o: number; a: number; b: number}) => {
+  if (o < a || o >= b) return null;
+  const p = fadeIn(o, a), q = fadeIn(o, a + 350);
+  return <>
+    <div style={{position: 'absolute', left: 0, right: 0, top: 0, height: 430, background: 'linear-gradient(rgba(11,10,9,.88), rgba(11,10,9,0))'}} />
+    <div style={{position: 'absolute', left: 0, right: 0, top: 40, textAlign: 'center', opacity: p, transform: `translateY(${(1 - p) * -20}px)`, ...gSerif({fontSize: 92})}}>who's YOUR goat?</div>
+    <div style={{position: 'absolute', left: 0, right: 0, top: 160, display: 'flex', justifyContent: 'center', gap: 26, opacity: q, transform: `scale(${0.9 + 0.1 * q})`}}>
+      {[['lebron.png', 'LeBron'], ['della.png', 'Della']].map(([f, l], i) => <div key={i} style={{display: 'flex', alignItems: 'center', gap: 14, padding: '10px 26px 10px 10px', borderRadius: 60,
+        background: 'rgba(20,17,13,.92)', border: `3px solid ${GOLDC}`, boxShadow: '0 0 24px rgba(245,196,94,.4)'}}>
+        <Img src={staticFile(`img/jorho/${f}`)} style={{width: 74, height: 74, borderRadius: 37, objectFit: 'cover', objectPosition: '50% 15%'}} />
+        <span style={gSans({fontSize: 40})}>{l}</span></div>)}
+    </div>
+    <div style={{position: 'absolute', left: 0, right: 0, top: 290, textAlign: 'center', opacity: fadeIn(o, a + 700), ...gSans({fontSize: 34, color: 'rgba(255,255,255,.85)', letterSpacing: 2})}}>COMMENT YOUR PICK 👇</div>
+  </>;
+};
+const LikeNudge = ({o, a}: {o: number; a: number}) => (o < a ? null : <div style={{position: 'absolute', left: 0, right: 0, top: 860, textAlign: 'center', opacity: fadeIn(o, a), ...gSans({fontSize: 36, color: 'rgba(255,255,255,.88)'})}}>
+  ❤️ like if you felt it too<div style={{fontSize: 30, marginTop: 10, color: GOLDC, opacity: fadeIn(o, a + 400)}}>+ follow for more ball knowledge</div></div>);
+// frame-0 hook over the real two-shot: the question is already on screen
+const Frame0Q = ({o, b}: {o: number; b: number}) => (o >= b ? null : <>
+  <div style={{position: 'absolute', left: 0, right: 0, bottom: 0, height: 420, background: 'linear-gradient(rgba(11,10,9,0), rgba(11,10,9,.85))'}} />
+  <div style={{position: 'absolute', left: 0, right: 0, top: 820, textAlign: 'center', ...gSerif({fontSize: 110})}}>who's your NBA goat?</div>
+</>);
+const mkGoat21 = (tl: TL, K: GoatK, extra: {intro?: number; cta?: [number, number]}) => {
+  const fx: Sfx[] = [sfx('jorho-whoosh', K.who + 450, 0.3), ...[0, 1, 2].map((i) => sfx('jorho-pop', K.greatest + i * 200, 0.32)), sfx('jorho-ting', K.greatest + 800, 0.25),
+    ...[0, 1, 2, 3, 4].map((i) => sfx('jorho-click', K.think + 1300 + i * 520, 0.22)), sfx('meme-build', K.gotta - 1400, 0.3, 1300), sfx('meme-orch', K.della - 150, 0.5),
+    sfx('jorho-pop', K.della + 1600, 0.35), sfx('jorho-click', K.della + 1950, 0.35), sfx('meme-violin', K.tension - 200, 0.35, 1100)];
+  return {
+    tl, src: 'input.mp4', track: goatTrack as unknown as Track, top: '', wordY: 1170, noIntro: true, wideX: 960, push: true,
+    wideXAt: (o: number) => (o < K.nba ? 665 : 960),
+    words: wordsFrom(goatWords, tl, {'Delvedova,': 'Dellavedova', Delvedova: 'Dellavedova', times: 'time'}, {goat: '#58EE28', Matthew: '#21F5E6', Dellavedova: '#21F5E6'}),
+    capsOff: [[K.think + 150, K.gotta - 60], ...(extra.intro ? [[0, extra.intro] as [number, number]] : []), ...(extra.cta ? [extra.cta] : [])],
+    shots: [[0, 'W'], [K.nba, 'M'], [K.greatest, 'L'], [K.think, 'M'], [K.della + 1500, 'W'], [K.tension - 200, 'R']],
+    strobes: [K.gotta - STROBE_CUT], tints: [[K.della, GREEN]], swish: [K.della + 1500],
+    music: {file: 'joyful-chess-slowed.mp3', from: 40500 - K.della, level: 0.12},
+    musicLevel: (o: number) => (extra.intro && o < extra.intro ? 0.06 : extra.cta && o >= extra.cta[0] ? 0.07 : o >= K.think + 100 && o < K.della ? 0.05 : 0.12),
+    box: (o: number) => <>
+      <GoatPremium o={o} K={K} />
+      <Frame0Q o={o} b={K.who + 600} />
+      <Engage o={o} a={K.della + 1600} b={K.tension - 200} />
+      {o >= K.tension - 200 && <LikeNudge o={o} a={K.tension + 100} />}
+    </>,
+    fx,
+  } as Spec;
+};
+// ---- A) no voice-over: one continuous take from the question to the end (16.7 s)
+const a21 = timeline([[2150, 18810]]);
+export const GOAT21A_MS = a21.total;
+const KA21: GoatK = {who: a21.out(2280), nba: a21.out(4480), greatest: a21.out(5620), think: a21.out(7350), gotta: a21.out(12780), della: a21.out(13820), laugh: a21.out(15050), tension: a21.out(17740), end: a21.total};
+export const JorhoGoat21A = () => <Jorho s={{...mkGoat21(a21, KA21, {}), top: 'This NBA GOAT is better than MJ and LeBron combined'}} />;

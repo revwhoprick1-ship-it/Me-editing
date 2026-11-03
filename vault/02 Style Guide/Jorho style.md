@@ -418,3 +418,8 @@ All five use the same beats as v12 and the same real-footage moments (the two-sh
   - Render: `npx hyperframes render -o out/...`. Gate: `node <skill>/scripts/verify-render.mjs <mp4> --duration 16.66` PASS.
 - **ElevenLabs:** the MCP connector was disconnected this session and there's no API key in the env, so no voiceover. The design has no VO slot needed; reconnect the connector to add one.
 - **Watch out:** a source clip that ends before the root duration renders BLACK frames. Keep the root ≤ the media length.
+
+## v21 — premium gold + engagement (from the 13k analytics)
+- 13k premium gold retention: steep drop 0-2s (filler "bring it up" line + blurred intro frame = no hook), gentle 2-9s, flat 9-14s (think → reveal holds), drop 14-18s after payoff.
+- Fixes: cut filler (start at the question), `noIntro` spec flag = sharp frame 0 with gold question on screen, comment prompt + LeBron-vs-Della vote over the laugh, like + follow line under the tension caption, loop kept.
+- Video B (ElevenLabs VO intro + CTA) waits on ElevenLabs free tier (busy).
