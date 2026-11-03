@@ -408,3 +408,13 @@ All five use the same beats as v12 and the same real-footage moments (the two-sh
 - **QC:** normalise the final to −14 LUFS (the render came out at −9.6 LUFS).
 - **Facts checked:** Dellavedova career 5.2 PPG over 479 games, 2016 champion with Cleveland (landofbasketball.com, ESPN).
 - **Under 15 s on purpose:** the clip has no more relevant footage, and padding would add dead time.
+
+## v20 vertical-video-editing skill (user, 2026-11-03: github.com/nopefallacy/vertical-video-editing-skills + "try with elevenlabs, be creative")
+- **Skill:** a HyperFrames (HTML→MP4, `npx hyperframes@0.9.6`) editing standard. Its "editorial look" uses ten patterns: a mixed serif/sans headline, a paper stage, a dark-grid interstitial, a stacked split (graphics top / talking head bottom) with seam captions, highlight-bar supers, name pills, a headline card, a UI-card stack, a glow word (once), seam captions. Its vibe-life tokens: cream `#f3ecd9`, ink `#161513`, peach `#e88c5a`, butter `#f0c860`; Space Grotesk + Instrument Serif italic.
+- **Project:** `hf/goat/edit/` (init → check → snapshot → render).
+  - `assets/clip.mp4` = input.mp4 2.15–18.81 s.
+  - `assets/master.m4a` = ONE pre-mixed track (speech + du bist bed, 0 in the silence, back on the answer + Jeopardy cue + SFX, loudnorm −14).
+  - The camera is a `#cam` wrapper with face-safe `x/y/scale` per speaker (L −52/712/1.6, M −996/728/1.6, R full −2291/−76/1.9). The bottom panel grows via `clip-path` on the laugh.
+  - Render: `npx hyperframes render -o out/...`. Gate: `node <skill>/scripts/verify-render.mjs <mp4> --duration 16.66` PASS.
+- **ElevenLabs:** the MCP connector was disconnected this session and there's no API key in the env, so no voiceover. The design has no VO slot needed; reconnect the connector to add one.
+- **Watch out:** a source clip that ends before the root duration renders BLACK frames. Keep the root ≤ the media length.

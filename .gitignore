@@ -20,3 +20,6 @@ public/env/
 pieces/*/renders/
 pieces/*/frames/
 public/animate/*.mp4
+hf/*/edit/.hyperframes/
+hf/*/edit/assets/*.mp4
+hf/*/edit/assets/*.m4a

@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      /* vertical-video-editing-skills "editorial look", vibe-life tokens. NBA GOAT (input.mp4 2.15–18.81 s). */
+      @font-face { font-family: "Space Grotesk"; src: url("assets/fonts/space-grotesk-700-normal.woff2"); font-weight: 700; }
+      @font-face { font-family: "Instrument Serif"; src: url("assets/fonts/instrument-serif-latin-400-normal.woff2"); font-weight: 400; }
+      @font-face { font-family: "Instrument Serif"; src: url("assets/fonts/instrument-serif-latin-400-italic.woff2"); font-weight: 400; font-style: italic; }
+      :root { --bg: #f3ecd9; --bg2: #ece2c9; --ink: #161513; --accent: #e88c5a; --butter: #f0c860; --line: rgba(22, 21, 19, 0.07); }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); }
+      #root { position: relative; width: 1080px; height: 1920px; container-type: size; font-family: "Space Grotesk", sans-serif; color: var(--ink); }
+      .paper { position: absolute; inset: 0; background: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px), var(--bg); background-size: 65px 65px; }
+      .layer { position: absolute; inset: 0; }
+      .sans { font-family: "Space Grotesk"; font-weight: 700; letter-spacing: -0.03em; }
+      .serif { font-family: "Instrument Serif"; font-style: italic; font-weight: 400; }
+      .mono { font-family: "Space Mono", monospace; }
+      .center { position: absolute; left: 0; right: 0; text-align: center; }
+      /* bottom talking-head panel: full-frame layer, clipped to the lower panel until it grows */
+      #bot { position: absolute; inset: 0; overflow: hidden; z-index: 5; clip-path: inset(1000px 0 0 0); }
+      #push { position: absolute; inset: 0; transform-origin: 540px 1400px; }
+      #cam { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; }
+      #v { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+      .seamline { position: absolute; left: 0; right: 0; top: 996px; height: 8px; background: var(--ink); z-index: 6; }
+      /* seam / band captions */
+      .cap { position: absolute; left: 0; right: 0; text-align: center; z-index: 9; }
+      .cap span { display: inline-block; background: var(--ink); color: var(--bg); font-family: "Instrument Serif"; font-style: italic; font-size: 64px; padding: 6px 30px 12px; border-radius: 999px; }
+      .cap.band { top: 1180px; } .cap.seam { top: 958px; }
+      .bar { display: inline-block; padding: 10px 34px 16px; font: 700 84px/1.12 "Space Grotesk"; letter-spacing: -0.03em; }
+      .bar.ink { background: var(--ink); color: var(--bg); } .bar.acc { background: var(--accent); color: var(--ink); }
+      .kw { color: var(--butter); }
+      .pill { display: inline-block; background: var(--bg); color: var(--ink); font: 700 38px "Space Grotesk"; padding: 10px 26px; border-radius: 999px; border: 4px solid var(--ink); box-shadow: 6px 6px 0 var(--ink); }
+      .card { position: absolute; width: 290px; background: #faf6ec; border: 4px solid var(--ink); border-radius: 26px; box-shadow: 10px 10px 0 var(--ink); overflow: hidden; }
+      .card .ph { height: 250px; background: var(--bg2); display: flex; align-items: flex-end; justify-content: center; overflow: hidden; }
+      .card .ph img { width: 118%; }
+      .card .nm { font: 700 46px "Space Grotesk"; text-align: center; padding: 10px 0 14px; letter-spacing: -0.02em; }
+      mark { background: var(--ink); color: var(--bg); padding: 0 16px; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="16.66" data-width="1080" data-height="1920">
+      <div id="paper" class="paper clip" data-start="0" data-duration="16.66" data-track-index="0"></div>
+
+      <!-- B1 hook: editorial headline (on screen at frame 0) -->
+      <div id="hook" class="layer clip" data-start="0" data-duration="3.38" data-track-index="1">
+        <div class="center serif" style="top: 230px; font-size: 64px">one simple question:</div>
+        <div class="center sans" style="top: 330px; font-size: 150px; line-height: 1">WHO'S YOUR</div>
+        <div class="center serif" style="top: 480px; font-size: 210px; line-height: 1">NBA <span style="color: var(--accent)">GOAT?</span></div>
+        <div id="ul" style="position: absolute; left: 240px; top: 730px; width: 600px; height: 14px; border-radius: 999px; background: var(--accent); transform-origin: left center"></div>
+      </div>
+      <!-- B2 name pill when Trevor first speaks -->
+      <div id="pill" class="center clip" data-start="2.22" data-duration="1.1" data-track-index="2" style="top: 1050px; z-index: 8">
+        <span class="pill">Trevor Lawrence · NFL QB</span>
+      </div>
+      <div id="pill2" class="center clip" data-start="5.3" data-duration="1.9" data-track-index="2" style="top: 1050px; z-index: 8">
+        <span class="pill">Trevor Lawrence · NFL QB</span>
+      </div>
+      <!-- B3 highlight-bar super -->
+      <div id="bars" class="layer clip" data-start="3.4" data-duration="1.8" data-track-index="1">
+        <div class="center" style="top: 330px"><span id="b1" class="bar ink">GOAT =</span></div>
+        <div class="center" style="top: 470px"><span id="b2" class="bar acc"><span class="kw" style="color: var(--bg)">Greatest</span> Of All Time</span></div>
+      </div>
+      <!-- B4 UI-card stack: the usual answers -->
+      <div id="cards" class="layer clip" data-start="5.2" data-duration="5.42" data-track-index="1">
+        <div class="center sans" style="top: 215px; font-size: 64px">the usual answers<span class="serif" style="color: var(--accent)">…</span></div>
+        <div id="k1" class="card" style="left: 70px; top: 360px"><div class="ph"><img src="assets/img/lebron.png" /></div><div class="nm">LeBron?</div></div>
+        <div id="k2" class="card" style="left: 395px; top: 400px"><div class="ph"><img src="assets/img/kobe.png" /></div><div class="nm">Kobe?</div></div>
+        <div id="k3" class="card" style="left: 720px; top: 360px"><div class="ph"><img src="assets/img/curry.png" /></div><div class="nm">Steph?</div></div>
+      </div>
+      <!-- B5 headline card (newspaper beat) -->
+      <div id="news" class="layer clip" data-start="10.62" data-duration="2.56" data-track-index="1">
+        <div class="center mono" style="top: 200px; font-size: 34px; letter-spacing: 0.3em">BREAKING · HIS NBA GOAT</div>
+        <div id="h1" class="center serif" style="top: 260px; font-size: 104px">gotta be…</div>
+        <div id="h2" class="center serif" style="top: 255px; font-size: 92px; line-height: 1.15">Matthew <mark>Dellavedova</mark></div>
+        <svg id="bolt" width="1080" height="40" style="position: absolute; left: 0; top: 400px"><path d="M60 20 L240 20 L270 4 L300 36 L330 4 L360 36 L390 20 L1020 20" stroke="#161513" stroke-width="6" fill="none" /></svg>
+        <img id="della" src="assets/img/della.png" style="position: absolute; left: 290px; top: 460px; width: 500px" />
+        <div id="stat" class="center" style="top: 830px"><span class="bar ink" style="font-size: 62px">career: <span class="kw">5.2 PPG</span></span></div>
+      </div>
+      <div class="seamline clip" id="seam" data-start="0" data-duration="13.18" data-track-index="3"></div>
+
+      <!-- the talking-head panel (A-roll); camera = #cam, push = #push, panel grow = #bot clip-path -->
+      <div id="bot">
+        <div id="push"><div id="cam">
+          <video id="v" class="clip" data-start="0" data-duration="16.66" data-track-index="4" src="assets/clip.mp4" muted playsinline></video>
+        </div></div>
+      </div>
+
+      <!-- B6 display glow word, once, over the laugh (with a scrim) -->
+      <div id="glow" class="layer clip" data-start="13.35" data-duration="1.85" data-track-index="5" style="z-index: 7">
+        <div style="position: absolute; left: 0; right: 0; top: 0; height: 760px; background: linear-gradient(rgba(22,21,19,.75), rgba(22,21,19,0))"></div>
+        <div class="center serif" style="top: 240px; font-size: 70px; color: var(--bg)">the whole room:</div>
+        <div class="center sans" style="top: 330px; font-size: 220px; color: var(--butter); -webkit-text-stroke: 3px var(--ink); text-shadow: 0 0 40px rgba(232,140,90,.9)">GOAT?!</div>
+      </div>
+      <!-- B7 tension bar super -->
+      <div id="tens" class="layer clip" data-start="15.3" data-duration="1.36" data-track-index="5" style="z-index: 7">
+        <div class="center" style="top: 330px"><span id="t1" class="bar ink">I could feel the</span></div>
+        <div class="center" style="top: 470px"><span id="t2" class="bar acc" style="font-size: 120px">tension</span></div>
+      </div>
+
+      <!-- captions: always on, one clause at a time -->
+      <div id="c1" class="cap seam clip" data-start="0" data-duration="2.18" data-track-index="6"><span>who is your NBA goat?</span></div>
+      <div id="c2" class="cap seam clip" data-start="2.22" data-duration="1.16" data-track-index="6"><span>“NBA goat?”</span></div>
+      <div id="c3" class="cap seam clip" data-start="3.42" data-duration="1.76" data-track-index="6"><span>greatest of all time, NBA player</span></div>
+      <div id="c4" class="cap seam clip" data-start="5.22" data-duration="5.38" data-track-index="6"><span id="sil">silence… 0.0 s</span></div>
+      <div id="c5" class="cap seam clip" data-start="10.62" data-duration="1.0" data-track-index="6"><span>gotta be…</span></div>
+      <div id="c6" class="cap seam clip" data-start="11.64" data-duration="1.52" data-track-index="6"><span>Matthew Dellavedova, man</span></div>
+      <div id="c7" class="cap band clip" data-start="13.2" data-duration="2.06" data-track-index="6"><span>(the whole room loses it)</span></div>
+      <div id="c8" class="cap band clip" data-start="15.3" data-duration="1.36" data-track-index="6"><span>I could feel the tension</span></div>
+
+      <audio id="master" class="clip" data-start="0" data-duration="16.66" data-track-index="9" src="assets/master.m4a"></audio>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      // camera: face-safe crops of the 1920x1080 source (faces: L x370, M x960, R x1490, y~430)
+      const shot = (x, y, s) => ({ x, y, scale: s });
+      const L = shot(-52, 712, 1.6), M = shot(-996, 728, 1.6), WIDE = shot(-1284, -38, 1.9), R = shot(-2291, -76, 1.9);
+      tl.set("#cam", L, 0).set("#cam", M, 2.2).set("#cam", L, 3.4).set("#cam", M, 5.2);
+      // slow push on Trevor through the silence, released on the answer
+      tl.fromTo("#push", { scale: 1 }, { scale: 1.12, duration: 5.3, ease: "sine.inOut" }, 5.25).set("#push", { scale: 1 }, 10.6);
+      // hook underline draws after frame 0
+      tl.fromTo("#ul", { scaleX: 0.15 }, { scaleX: 1, duration: 0.6, ease: "power3.out" }, 0.25);
+      // bars stagger in
+      tl.from("#b1", { y: 30, opacity: 0, duration: 0.3, ease: "power3.out" }, 3.42).from("#b2", { y: 30, opacity: 0, duration: 0.3, ease: "power3.out" }, 3.52);
+      tl.from("#pill span", { scale: 0, duration: 0.35, ease: "back.out(2)" }, 2.24).from("#pill2 span", { scale: 0, duration: 0.35, ease: "back.out(2)" }, 5.32);
+      // cards cascade (one per beat of the silence), alternate tilt
+      [["#k1", 5.55, -2], ["#k2", 6.05, 1.5], ["#k3", 6.55, -1.5]].forEach(([id, t, r]) =>
+        tl.fromTo(id, { y: 160, opacity: 0, rotation: 0 }, { y: 0, opacity: 1, rotation: r, duration: 0.45, ease: "power3.out" }, t));
+      // silence counter (real elapsed pause since the question's last word)
+      const sil = { v: 0 };
+      tl.to(sil, { v: 5.43, duration: 5.38, ease: "none", onUpdate: () => { const el = document.getElementById("sil"); if (el) el.textContent = `silence… ${sil.v.toFixed(1)} s`; } }, 5.22);
+      // headline card: question line, then the name with its ink mark, the bolt, the cut-out, the stat
+      tl.set("#h2", { opacity: 0 }, 10.62).set("#h1", { opacity: 0 }, 11.64).set("#h2", { opacity: 1 }, 11.64);
+      tl.fromTo("#bolt", { opacity: 0 }, { opacity: 1, duration: 0.12 }, 11.66);
+      tl.fromTo("#della", { y: 200, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power3.out" }, 11.7);
+      tl.fromTo("#stat", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, 11.95);
+      // the laugh: the bottom panel grows to full frame while the camera widens
+      tl.to("#bot", { clipPath: "inset(0px 0px 0px 0px)", duration: 0.55, ease: "power3.inOut" }, 13.15).to("#cam", { ...WIDE, duration: 0.55, ease: "power3.inOut" }, 13.15);
+      tl.fromTo("#glow .sans", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(2)" }, 13.4);
+      // the tension line: cut to the right host
+      tl.set("#cam", R, 15.25);
+      tl.from("#t1", { y: 30, opacity: 0, duration: 0.3, ease: "power3.out" }, 15.32).from("#t2", { y: 30, opacity: 0, duration: 0.3, ease: "power3.out" }, 15.95);
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

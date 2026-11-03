@@ -23,3 +23,4 @@
 - Finding the real NBA GOAT was a whole side quest (journey)
 - Ball knowledge level: picking this guy over MJ (crosshatch ink)
 - This NBA GOAT pick broke the whole room (v19 original Jorho)
+- This NBA GOAT answer needed 5 seconds of silence (HF editorial)
