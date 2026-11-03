@@ -427,3 +427,11 @@ All five use the same beats as v12 and the same real-footage moments (the two-sh
 ## v22 — IShowSpeed "W Speed edit be like" format on NBA GOAT (after v21 flopped)
 - v21 results: A 55.4% stayed (vs 13k's 71.9%), B (AI VO intro) 28% stayed. **AI voice cold open = instant swipe. Don't open on a card/narrator; open on real footage.** Sample is small (~570 views), so treat A's drop as weak evidence.
 - v22: real footage from frame 0, typed `*TREVOR THINKS*` action lines (keyboard SFX, colour per line), punchy grade + vignette, freeze slam after "Dellavedova, man": green flash, zoom-blur, gray, 🐐 on chest, `*REAL BALL KNOWLEDGE*`, sparkles; Blue (Yung Kai) "I'd" on the slam. Components in `src/jorho/speed22.tsx`.
+
+## v23 — 3D explainer (Zack D. Films-type) NBA GOAT (`src/zack/`)
+- User: "Create a Zack D films type for the NBA goat. Must not make it look like from Claude. Do not add any Claude logos or Claude model." → no branding/watermark anywhere; strip file metadata on export.
+- Real podcast audio (no AI VO: v21B's AI intro got 28% stayed). Every shot rebuilt in 3D, full 9:16, no black bars/top caption:
+  studio table (3 people) → host CU → gold trophy ("of all time") → thinking CU + clock ticks → dive into his head (player cards spinning faster) → "gotta be" low-angle CU → Dellavedova hero on a court + fact labels (5.2 PPG career) → laugh wide → tension push-in with red light.
+- Captions: one word, white, thick black outline, centre (y≈1110), key words yellow.
+- Avatar: three.js example `readyplayer.me.glb` (`scripts/fetch_assets_v23.sh`), posed bone-by-bone in character-frame degrees (`rig.tsx`, `poses.ts`); mouths from the real audio envelope (`speech_env.json`). Recoloured outfits + simple hair/cap/headband meshes on the head bone.
+- Gotchas: mount `ThreeCanvas` only after assets load (else blank frame); parent extra meshes to bones (world-space copies land on the wrong person); add them in `useMemo`, not `useEffect` (stills render before effects).
