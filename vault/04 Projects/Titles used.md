@@ -25,3 +25,4 @@
 - This NBA GOAT pick broke the whole room (v19 original Jorho)
 - This NBA GOAT answer needed 5 seconds of silence (HF editorial)
 - Would you take this guy over LeBron? Be honest 👀 (v21A engage)
+- Nobody in the room was ready for this NBA GOAT pick (v21B ElevenLabs VO)

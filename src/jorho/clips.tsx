@@ -847,3 +847,31 @@ const a21 = timeline([[2150, 18810]]);
 export const GOAT21A_MS = a21.total;
 const KA21: GoatK = {who: a21.out(2280), nba: a21.out(4480), greatest: a21.out(5620), think: a21.out(7350), gotta: a21.out(12780), della: a21.out(13820), laugh: a21.out(15050), tension: a21.out(17740), end: a21.total};
 export const JorhoGoat21A = () => <Jorho s={{...mkGoat21(a21, KA21, {}), top: 'This NBA GOAT is better than MJ and LeBron combined'}} />;
+// ---- B) ElevenLabs VO cold open over a premium gold card, then the same engaged take (21.3 s)
+const VO_IN = 4600;
+const voWords = [['We', 0], ['asked', 200], ['an', 480], ['NFL', 640], ['quarterback', 1000], ['for', 1380], ['his', 1680], ['NBA', 1840], ['goat', 2240], ['and', 2660], ['the', 3160], ['room', 3240], ['went', 3440], ['silent', 3640]] as const;
+const VO_COL: Record<string, string> = {NFL: '#21F5E6', goat: '#58EE28', silent: '#FFE81F'};
+const IntroCard = ({o}: {o: number}) => {
+  if (o >= VO_IN) return null;
+  const out = 1 - fadeIn(o, VO_IN - 260, 260);
+  const pop = 0.85 + 0.15 * fadeIn(o, 560, 220), q = 1, hush = fadeIn(o, 2640, 300);
+  return <div style={{position: 'absolute', inset: 0, opacity: out, background: 'radial-gradient(ellipse at 50% 35%, #2a2116 0%, #0b0a09 70%)'}}>
+    <div style={{position: 'absolute', left: 0, right: 0, top: 70, textAlign: 'center', ...gSans({fontSize: 40, letterSpacing: 6, color: 'rgba(255,255,255,.8)'})}}>WE ASKED AN NFL QB</div>
+    <div style={{position: 'absolute', left: 540 - 200, top: 140, width: 400, height: 355, borderRadius: 26, overflow: 'hidden', border: `4px solid ${GOLDC}`,
+      boxShadow: `0 0 ${40 + 30 * hush}px rgba(245,196,94,.5)`, opacity: 1, transform: `perspective(900px) rotateY(${(1 - pop) * -60}deg) scale(${(0.8 + 0.2 * pop) * (1 - 0.06 * hush)})`,
+      filter: `brightness(${1 - 0.35 * hush})`}}>
+      <Img src={staticFile('img/jorho/trevor_goat.png')} style={{width: '100%', height: '100%', objectFit: 'cover'}} />
+    </div>
+    <div style={{position: 'absolute', left: 0, right: 0, top: 530, textAlign: 'center', opacity: q * (1 - hush), transform: `translateY(${(1 - q) * 20}px)`, ...gSerif({fontSize: 112})}}>his NBA goat?</div>
+    <div style={{position: 'absolute', left: 0, right: 0, top: 530, textAlign: 'center', opacity: hush, ...gSerif({fontSize: 96, color: '#fff', textShadow: '0 0 22px rgba(255,255,255,.35)'})}}>the room went silent…</div>
+  </div>;
+};
+const b21 = timeline([[2150, 2200, VO_IN - 50], [2200, 18810]]);
+export const GOAT21B_MS = b21.total;
+const KB21: GoatK = {who: b21.out(2280), nba: b21.out(4480), greatest: b21.out(5620), think: b21.out(7350), gotta: b21.out(12780), della: b21.out(13820), laugh: b21.out(15050), tension: b21.out(17740), end: b21.total};
+const g21b = mkGoat21(b21, KB21, {});
+export const JorhoGoat21B = () => <Jorho s={{...g21b, top: 'Nobody in the room was ready for this NBA GOAT pick',
+  words: [...voWords.map(([t, at]) => ({text: t, at, color: VO_COL[t] ?? '#fff'})), ...g21b.words.filter((w) => w.at >= VO_IN)],
+  musicLevel: (o: number) => (o < VO_IN ? 0.05 : g21b.musicLevel!(o)),
+  box: (o: number) => <>{g21b.box!(o)}<IntroCard o={o} /></>,
+  fx: [sfx('vo-goat-intro-tight', 0, 1.0), sfx('jorho-whoosh', 560, 0.22), sfx('jorho-ting', 1840, 0.18), sfx('jorho-whoosh', VO_IN - 180, 0.3), ...g21b.fx!]}} />;
