@@ -423,3 +423,7 @@ All five use the same beats as v12 and the same real-footage moments (the two-sh
 - 13k premium gold retention: steep drop 0-2s (filler "bring it up" line + blurred intro frame = no hook), gentle 2-9s, flat 9-14s (think → reveal holds), drop 14-18s after payoff.
 - Fixes: cut filler (start at the question), `noIntro` spec flag = sharp frame 0 with gold question on screen, comment prompt + LeBron-vs-Della vote over the laugh, like + follow line under the tension caption, loop kept.
 - Video B: ElevenLabs VO cold open (Alex, eleven_v4, tightened to 4.4 s) over a gold card (Trevor photo + "his NBA goat?" visible at frame 0 → "the room went silent…"), then the same engaged take. CTA VO skipped (free tier busy); on-screen prompts carry the CTA. Keep segments ≥ 1 frame (a 10 ms seg crashed SpeechTrack).
+
+## v22 — IShowSpeed "W Speed edit be like" format on NBA GOAT (after v21 flopped)
+- v21 results: A 55.4% stayed (vs 13k's 71.9%), B (AI VO intro) 28% stayed. **AI voice cold open = instant swipe. Don't open on a card/narrator; open on real footage.** Sample is small (~570 views), so treat A's drop as weak evidence.
+- v22: real footage from frame 0, typed `*TREVOR THINKS*` action lines (keyboard SFX, colour per line), punchy grade + vignette, freeze slam after "Dellavedova, man": green flash, zoom-blur, gray, 🐐 on chest, `*REAL BALL KNOWLEDGE*`, sparkles; Blue (Yung Kai) "I'd" on the slam. Components in `src/jorho/speed22.tsx`.

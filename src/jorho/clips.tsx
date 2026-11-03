@@ -47,6 +47,7 @@ import {AntWalk, Dust, GlowTitle, Kinetic, Letters, Magnifier, Orb, PhoneCall, Q
 import {Img, staticFile} from 'remotion';
 const emo = (code: string, size: number) => <Img src={staticFile(`emoji-ios/${code}.png`)} style={{width: size, height: size}} />;
 import {Cam, FPS, Music, SfxTrack, SpeechTrack, sfx, timeline, type CamCfg, type Matte, type Seat, type Sfx, type TL, type Track} from '../e3/kit';
+import {SpeedActions, SpeedSlam, Vignette, typeMs, type Act} from './speed22';
 import {BOX_H, Cutout, Frame, GREEN, OneWord, RED, STROBE_CUT, Tints, strobe, wordsFrom, type Word} from './kit';
 import {Chips, Cursor, HandCircle, LIME, RED_INK} from './mg';
 import {Brackets, CleanBg, Clipping, Counter, GridBg, Headline, MarkerX, Meter, PaperBg, PlayGrid, RingTags, Stamp, Struck, Timeline, TwoTone, Typed, cardTransform, type Theme} from './mg2';
@@ -875,3 +876,22 @@ export const JorhoGoat21B = () => <Jorho s={{...g21b, top: 'Nobody in the room w
   musicLevel: (o: number) => (o < VO_IN ? 0.05 : g21b.musicLevel!(o)),
   box: (o: number) => <>{g21b.box!(o)}<IntroCard o={o} /></>,
   fx: [sfx('vo-goat-intro-tight', 0, 1.0), sfx('jorho-whoosh', 560, 0.22), sfx('jorho-ting', 1840, 0.18), sfx('jorho-whoosh', VO_IN - 180, 0.3), ...g21b.fx!]}} />;
+// ---- v22: IShowSpeed "W Speed edit be like" format on the NBA GOAT clip (no VO). Freeze slam after "Dellavedova, man".
+const FRZ = 15250, BEAT22 = 740, BEATS22 = 4;
+const s22 = timeline([[2150, FRZ, BEAT22 * BEATS22], [FRZ, 18810]]);
+export const GOAT22_MS = s22.total;
+const K22 = {nba: s22.out(4480), greatest: s22.out(5620), think: s22.out(7350), gotta: s22.out(12780), della: s22.out(13820), slam: s22.out(FRZ - 1) + 1, after: s22.segOut[1], tension: s22.out(17480)};
+const acts22: Act[] = [[0, K22.nba - 80, 'TREVOR GETS THE QUESTION'], [K22.nba, K22.greatest, 'TREVOR STALLS'], [K22.think + 150, K22.think + 2600, 'TREVOR THINKS'],
+  [K22.think + 2600, K22.gotta - 60, 'TREVOR THINKS HARDER'], [K22.gotta, K22.slam, 'TREVOR LOCKS IN'], [K22.after + 200, K22.tension - 150, 'THE ROOM LOSES IT'], [K22.tension - 150, s22.total, 'TENSION RISES']];
+export const JorhoGoat22 = () => <Jorho s={{
+  tl: s22, src: 'input.mp4', track: goatTrack as unknown as Track, top: 'This is what peak ball knowledge looks like', wordY: 1170, wideX: 960, push: true, noIntro: true,
+  wideXAt: (o) => (o < K22.nba ? 665 : 960), grade: 'contrast(1.14) saturate(1.35) brightness(1.03)',
+  words: wordsFrom(goatWords, s22, {'Delvedova,': 'Dellavedova', Delvedova: 'Dellavedova', times: 'time'}, {goat: '#58EE28', Matthew: '#21F5E6', Dellavedova: '#21F5E6'}),
+  capsOff: [[K22.think + 150, K22.gotta - 60], [K22.slam, K22.after]],
+  shots: [[0, 'W'], [K22.nba, 'M'], [K22.greatest, 'L'], [K22.think, 'M'], [K22.after, 'W'], [K22.tension - 200, 'R']],
+  strobes: [K22.gotta - STROBE_CUT], tints: [], swish: [K22.after],
+  music: {file: 'blue-yung-kai.mp3', from: 58270 - K22.slam, level: 0.07},
+  musicLevel: (o) => (o >= K22.slam && o < K22.after ? 0.34 : o >= K22.think + 100 && o < K22.gotta ? 0.16 : 0.07),
+  box: (o) => <><Vignette /><SpeedActions o={o} acts={acts22} /><SpeedSlam o={o} a={K22.slam} beats={BEATS22} beatMs={BEAT22} text="REAL BALL KNOWLEDGE" emoji="1f410" /></>,
+  fx: [...acts22.map(([a, , t]) => sfx('keyboard-typing', a, 0.3, typeMs(t))), sfx('fast-whoosh', K22.slam - 60, 0.4), sfx('keyboard-typing', K22.slam + 200, 0.3, typeMs('REAL BALL KNOWLEDGE') * 2)],
+}} />;

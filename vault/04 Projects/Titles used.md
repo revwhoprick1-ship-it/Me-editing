@@ -26,3 +26,4 @@
 - This NBA GOAT answer needed 5 seconds of silence (HF editorial)
 - Would you take this guy over LeBron? Be honest 👀 (v21A engage)
 - Nobody in the room was ready for this NBA GOAT pick (v21B ElevenLabs VO)
+- This is what peak ball knowledge looks like (v22 Speed edit)
