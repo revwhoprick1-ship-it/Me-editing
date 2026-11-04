@@ -442,3 +442,9 @@ All five use the same beats as v12 and the same real-footage moments (the two-sh
 - Changed: sharp frame 0 (`noIntro`), curiosity-gap top line, 0.5 s comedic hold after "Dellavedova, man." with the 5.2 PPG stat (+ dun-dun), a second reveal during the laugh ("…but he does have a 2016 ring 💍", true), new `mirror` spec flag (footage only, overlays unflipped), new music (interstellar-piano, swell at 232.2 s on the answer), gold/green/red palette, mg-boom payoff, heartbeat on tension.
 - Mirror gotcha: text in the footage reads backwards (sign, shirt). Cutouts must not cover the centred speaker (della cutout right side, x 640).
 - **v24 result (111 min):** 58% stayed-to-watch. The two versions with `noIntro` (v21A 55.4%, v24 58%) both trail the ones with the Jorho box-opening intro (13k premium 71.9%, v19 big rewatch). Hypothesis: the intro's motion at frame 0 is part of the hook, so the "sharp frame 0" idea was wrong. **Keep the Jorho intro.** Next test: v24 with the intro back (one change only). Early numbers, small sample.
+- **v24 flatlined at 1.1k.** Frame-by-frame vs v19 (first 2 s), v24 lost three things v19 had:
+  1. the Jorho box-opening intro (motion in the first 0.6 s);
+  2. the famous name: v19 label "TREVOR LAWRENCE · NFL QB" became "NFL QB · ASKED HIS NBA GOAT" (no recognition hook). The no-Trevor rule is for the TOP caption only; keep the name label;
+  3. a top line with a reaction promise ("broke the whole room") became a vague, news-like one ("debate just got a new answer").
+  Also: 6th upload of the same clip (audience fatigue / possible reuse limits), and the mirror makes the sign and shirt read backwards.
+  **Fixes:** keep the intro, keep the name label, top line promises a reaction or a bold claim, no mirror, a new clip instead of re-posting goat.
