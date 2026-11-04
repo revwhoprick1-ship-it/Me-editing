@@ -29,3 +29,4 @@
 - This is what peak ball knowledge looks like (v22 Speed edit)
 - He thought for 5 seconds… then picked THIS guy as the NBA GOAT (v23 3D explainer)
 - The NBA GOAT debate just got a new answer (v24 flipped v19 remake)
+- This card went from $20,000 to $500 in 3 seconds (v25 redemption, goat19 formula)

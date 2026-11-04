@@ -448,3 +448,8 @@ All five use the same beats as v12 and the same real-footage moments (the two-sh
   3. a top line with a reaction promise ("broke the whole room") became a vague, news-like one ("debate just got a new answer").
   Also: 6th upload of the same clip (audience fatigue / possible reuse limits), and the mirror makes the sign and shirt read backwards.
   **Fixes:** keep the intro, keep the name label, top line promises a reaction or a bold claim, no mirror, a new clip instead of re-posting goat.
+
+## v25 — redemption clip with the goat19 formula (`JorhoRedeem25`, 19.8 s)
+- Jorho intro kept; "TREVOR LAWRENCE · NFL QB" label in second 1; top line = concrete bold claim ("This card went from $20,000 to $500 in 3 seconds").
+- Beats: $20,000 → value ticker → $500 (trombone, red) → "why do you have to redeem it" + plain label "REDEEM = MAIL IT IN FOR THE SIGNED CARD" → "do you sign like on time?" + "⏰ PLAYER SIGNS LATE = CARD COMES LATE" → music out, silent beat, "I see." → "people very much dislike that" → "Oh really?" → twist "most expensive sale ever" (orch + cha-ching, green) → cut-off "do you even know your…" loops into "This card…".
+- Voices: voice_diarize says the left host is the main explainer. "uh you've done that" (14.4–15.6 s) was not heard by large-v3, so it's cut (no wrong captions). Ambiguous lines use two-shots (W@640 = L+M, W@1140 = M+R).

@@ -930,3 +930,31 @@ const GOAT24: Spec = {
     sfx('mg-boom', K24.della, 0.55), sfx('meme-dundun', K24.hold, 0.4, 900), sfx('jorho-ting', K24.laugh + 450, 0.3), sfx('heartbeat-loud', K24.tension - 100, 0.4, 1000)],
 };
 export const JorhoGoat24 = () => <Jorho s={GOAT24} />;
+
+// ==== v25 (2026-11-04): redemption clip with the goat19 formula (v24 post-mortem): Jorho intro kept, famous-name label in
+// second 1, bold concrete top line, real setup first, plain-words fact label, silent beat before the roast, twist payoff,
+// cut-off last line loops into the first. Voices checked (voice_diarize + large-v3): left host carries the explanation.
+const t25 = timeline([[0, 6000], [8080, 14300], [24320, 27000], [27000, 27900], [30000, 33950]]);
+export const RED25_MS = t25.total; // 19.75 s
+const S25 = t25.segOut, o25 = t25.out;
+const K25 = {k20: o25(1140), what: o25(1780), d200: o25(2940), d500: o25(4240), bucks: o25(5080), redeem: o25(8840), onTime: o25(12000), react: o25(12940), see: o25(13840),
+  dislike: o25(25940), really: o25(27080), most: o25(31640), sale: o25(32460), ever: o25(32780)};
+const RED25: Spec = {
+  tl: t25, src: 'pod2/u3_redemptions.mp4', track: redeemTrack as unknown as Track, top: 'This card went from $20,000 to $500 in 3 seconds', wordY: 1170, wideX: 640, push: true,
+  wideXAt: (o) => ((o >= K25.what && o < K25.bucks) || (o >= S25[3] && o < S25[4]) ? 1140 : 640),
+  words: wordsFrom(redeemWords, t25, {'20': '$20,000', '000': '', '200': '$200?', '500': '$500'}, {'$20,000': '#58EE28', '$200?': '#FF5A5A', '$500': '#FF5A5A', redeem: '#21F5E6', dislike: '#FF5A5A', expensive: '#58EE28'}),
+  shots: [[0, 'W'], [S25[1], 'L'], [K25.react, 'W'], [S25[2], 'L'], [S25[3], 'W'], [S25[4], 'L'], [K25.ever, 'W']],
+  strobes: [K25.sale - STROBE_CUT], tints: [[K25.k20, GREEN], [K25.d500, RED], [K25.dislike, RED], [K25.sale, GREEN]], swish: [S25[1], S25[4]],
+  music: {file: 'joyful-chess-slowed.mp3', from: 40500 - K25.most, level: 0.1},
+  musicLevel: (o) => (o >= K25.react - 100 && o < S25[2] ? 0 : o >= K25.most ? 0.16 : 0.1),
+  box: (o) => <>
+    <Lbl o={o} at={350} to={K25.what} x={430} y={40}>TREVOR LAWRENCE · NFL QB</Lbl>
+    <Lbl o={o} at={K25.k20} to={S25[1]} x={40} y={40}>{o < K25.d200 ? 'CARD VALUE: $20,000' : o < K25.d500 ? 'CARD VALUE: $200?' : 'CARD VALUE: $500 📉'}</Lbl>
+    <Lbl o={o} at={K25.redeem} to={K25.onTime - 100} x={40} y={40}>REDEEM = MAIL IT IN FOR THE SIGNED CARD</Lbl>
+    <Lbl o={o} at={K25.onTime} to={S25[2]} x={40} y={40}>⏰ PLAYER SIGNS LATE = CARD COMES LATE</Lbl>
+    <Lbl o={o} at={K25.most} to={t25.total} x={40} y={40}>HIS MOST EXPENSIVE SALE EVER 💰</Lbl>
+  </>,
+  fx: [sfx('cha-ching', K25.k20, 0.35), sfx('meme-shutter', K25.d200 - 120, 0.35), sfx('meme-trombone', K25.d500, 0.45, 1400), sfx('jorho-pop', K25.redeem, 0.3),
+    sfx('jorho-pop', K25.onTime, 0.3), sfx('meme-dundun', K25.see - 150, 0.4, 900), sfx('jorho-pop', K25.really, 0.3), sfx('meme-orch', K25.most, 0.45), sfx('cha-ching', K25.sale, 0.4)],
+};
+export const JorhoRedeem25 = () => <Jorho s={RED25} />;
