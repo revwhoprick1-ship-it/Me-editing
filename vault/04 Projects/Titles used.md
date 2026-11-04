@@ -28,3 +28,4 @@
 - Nobody in the room was ready for this NBA GOAT pick (v21B ElevenLabs VO)
 - This is what peak ball knowledge looks like (v22 Speed edit)
 - He thought for 5 seconds… then picked THIS guy as the NBA GOAT (v23 3D explainer)
+- The NBA GOAT debate just got a new answer (v24 flipped v19 remake)

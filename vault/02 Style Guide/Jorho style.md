@@ -435,3 +435,9 @@ All five use the same beats as v12 and the same real-footage moments (the two-sh
 - Captions: one word, white, thick black outline, centre (y≈1110), key words yellow.
 - Avatar: three.js example `readyplayer.me.glb` (`scripts/fetch_assets_v23.sh`), posed bone-by-bone in character-frame degrees (`rig.tsx`, `poses.ts`); mouths from the real audio envelope (`speech_env.json`). Recoloured outfits + simple hair/cap/headband meshes on the head bone.
 - Gotchas: mount `ThreeCanvas` only after assets load (else blank frame); parent extra meshes to bones (world-space copies land on the wrong person); add them in `useMemo`, not `useEffect` (stills render before effects).
+
+## v24 — v19 remake from its own analytics + mirrored (`JorhoGoat24`, 16.0 s)
+- v19 result: 9.7K views, avg 0:28 = 180% (rewatches drive it). Graph: steepest loss 0–2 s, gentle 2–9 s, flat 9–13 s (answer), small dip 13–15 s (laugh), end drop.
+- Kept everything that worked: real question first, Jeopardy think, "usual answers" cutouts, silence timer, silent beat before the answer, stat label, loop.
+- Changed: sharp frame 0 (`noIntro`), curiosity-gap top line, 0.5 s comedic hold after "Dellavedova, man." with the 5.2 PPG stat (+ dun-dun), a second reveal during the laugh ("…but he does have a 2016 ring 💍", true), new `mirror` spec flag (footage only, overlays unflipped), new music (interstellar-piano, swell at 232.2 s on the answer), gold/green/red palette, mg-boom payoff, heartbeat on tension.
+- Mirror gotcha: text in the footage reads backwards (sign, shirt). Cutouts must not cover the centred speaker (della cutout right side, x 640).

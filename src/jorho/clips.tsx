@@ -64,7 +64,7 @@ type Spec = {
   music: {file: string; from: number; level: number};
   box?: (o: number) => ReactNode; over?: (o: number) => ReactNode; fx?: Sfx[];
   intro?: {theme: Theme; to: number; bg: (o: number) => ReactNode; fg?: (o: number) => ReactNode};
-  wideXAt?: (o: number) => number; mattes?: Matte[]; behind?: (o: number) => ReactNode; push?: boolean; capsOff?: [number, number][]; faceY?: (o: number) => number; grade?: string; musicLevel?: (o: number) => number; noIntro?: boolean;
+  wideXAt?: (o: number) => number; mattes?: Matte[]; behind?: (o: number) => ReactNode; push?: boolean; capsOff?: [number, number][]; faceY?: (o: number) => number; grade?: string; musicLevel?: (o: number) => number; noIntro?: boolean; mirror?: boolean;
 };
 const Jorho = ({s}: {s: Spec}) => {
   const frame = useCurrentFrame();
@@ -90,7 +90,7 @@ const Jorho = ({s}: {s: Spec}) => {
     </>}>
     <AbsoluteFill style={{filter: strobe(o, s.strobes) || undefined}}>
       {s.intro && o < s.intro.to && s.intro.bg(o)}
-      <AbsoluteFill style={s.intro ? cardTransform(s.intro.theme, o, s.intro.to) : undefined}><Cam c={cam} o={o} behind={s.behind?.(o)} /></AbsoluteFill>
+      <AbsoluteFill style={s.intro ? cardTransform(s.intro.theme, o, s.intro.to) : s.mirror ? {transform: 'scaleX(-1)'} : undefined}><Cam c={cam} o={o} behind={s.behind?.(o)} /></AbsoluteFill>
       {s.intro && o < s.intro.to && s.intro.fg?.(o)}
       {s.box?.(o)}
       {s.cut && <Cutout o={o} {...s.cut} />}
@@ -895,3 +895,38 @@ export const JorhoGoat22 = () => <Jorho s={{
   box: (o) => <><Vignette /><SpeedActions o={o} acts={acts22} /><SpeedSlam o={o} a={K22.slam} beats={BEATS22} beatMs={BEAT22} text="REAL BALL KNOWLEDGE" emoji="1f410" /></>,
   fx: [...acts22.map(([a, , t]) => sfx('keyboard-typing', a, 0.3, typeMs(t))), sfx('fast-whoosh', K22.slam - 60, 0.4), sfx('keyboard-typing', K22.slam + 200, 0.3, typeMs('REAL BALL KNOWLEDGE') * 2)],
 }} />;
+
+// ==== v24 (2026-11-04): v19 (9.7K views, 0:28 avg = 180% → rewatches) improved from its retention graph + made a distinct edit.
+// Graph: steepest loss 0–2 s (blurred intro frame, generic top line), gentle 2–9 s, flat 9–13 s (answer), small dip
+// 13–15 s (laugh: nothing new). Changes: sharp frame 0 + curiosity-gap top line, a 0.5 s comedic hold on the answer with
+// the stat, a second reveal during the laugh (2016 champion: true), mirrored footage, new music/colours/labels/payoff hit.
+const g24 = timeline([[2150, 3650], [4380, 5150], [5550, 7350], [7350, 15250, 500], [15250, 18810]]);
+export const GOAT24_MS = g24.total; // 16.03 s
+const G24 = g24.segOut, go24 = g24.out;
+const K24 = {think: G24[3], gotta: go24(12780), della: go24(13820), name: go24(14160), hold: G24[4] - 500, laugh: G24[4] + 0, could: go24(17480), tension: go24(18220)};
+const GOAT24: Spec = {
+  tl: g24, src: 'input.mp4', track: goatTrack as unknown as Track, top: 'The NBA GOAT debate just got a new answer', wordY: 1170, wideX: 960, push: true, noIntro: true, mirror: true,
+  grade: 'contrast(1.1) saturate(1.12) brightness(1.02)',
+  wideXAt: (o) => (o < G24[1] ? 665 : 960),
+  words: wordsFrom(goatWords, g24, {'Delvedova,': 'Dellavedova', Delvedova: 'Dellavedova', times: 'time'}, {goat: '#FFC83D', Matthew: '#58EE28', Dellavedova: '#58EE28', tension: '#FF5A5A'}),
+  capsOff: [[K24.think + 150, K24.gotta - 60]],
+  shots: [[0, 'W'], [G24[1], 'M'], [G24[2], 'L'], [K24.think, 'M'], [K24.laugh + 150, 'W'], [K24.could - 100, 'R']],
+  strobes: [K24.della - STROBE_CUT], tints: [[K24.della, '#FFC83D'], [K24.tension, RED]], swish: [K24.laugh + 150],
+  cut: {file: 'della.png', from: K24.della, to: K24.laugh + 200, x: 640, h: 520},
+  music: {file: 'interstellar-piano.mp3', from: 232200 - K24.della, level: 0.12},
+  musicLevel: (o) => (o < K24.think - 200 ? 0.09 : o < K24.della ? 0 : 0.18),
+  box: (o) => <>
+    <Lbl o={o} at={300} to={G24[1]} x={40} y={40}>NFL QB · ASKED HIS NBA GOAT</Lbl>
+    {o >= K24.think + 300 && o < K24.gotta && <>
+      <Lbl o={o} at={K24.think + 300} to={K24.gotta} x={40} y={40}>EVERYONE ELSE SAYS…</Lbl>
+      {[['curry.png', 720, 0], ['kobe.png', 380, 1], ['lebron.png', 40, 2]].map(([f, x, i]) => (
+        <Cutout key={f as string} o={o} file={f as string} from={K24.think + 600 + (i as number) * 700} to={K24.gotta - 100} x={x as number} h={300} />))}
+      <Lbl o={o} at={K24.think + 1200} to={K24.gotta} x={600} y={130}>{`still thinking… ${((o - K24.think) / 1000).toFixed(1)}s`}</Lbl>
+    </>}
+    <Lbl o={o} at={K24.name + 300} to={K24.laugh + 450} x={500} y={40}>CAREER: 5.2 PPG</Lbl>
+    <Lbl o={o} at={K24.laugh + 450} to={K24.tension} x={330} y={40}>…BUT HE DOES HAVE A 2016 RING 💍</Lbl>
+  </>,
+  fx: [sfx('jeopardy-think', K24.think + 100, 0.3, K24.gotta - K24.think - 200), ...[0, 1, 2].map((i) => sfx('mg-click', K24.think + 600 + i * 700, 0.35)),
+    sfx('mg-boom', K24.della, 0.55), sfx('meme-dundun', K24.hold, 0.4, 900), sfx('jorho-ting', K24.laugh + 450, 0.3), sfx('heartbeat-loud', K24.tension - 100, 0.4, 1000)],
+};
+export const JorhoGoat24 = () => <Jorho s={GOAT24} />;
