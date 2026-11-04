@@ -459,3 +459,9 @@ All five use the same beats as v12 and the same real-footage moments (the two-sh
 - New pieces: `Reel` (slot-machine card that decelerates 90 → ~650 ms and stops on a yellow "?" before "Gotta be"; quiet mg-click per change), `Burst` (radial speed lines behind the answer cutout, kept off the face), `rev-whoosh.mp3` (reversed fast-whoosh) ending on the answer, orch + 808 layered, 0.5 s hold with the stat, "…BUT HE IS A 2016 NBA CHAMPION 💍" during the laugh.
 - Name label x 430 (v19's x 600 was cut off at the right edge).
 - QC: −13.2 LUFS, −3.1 dBTP; the think stays quiet (≈−35 dB, like v19) on purpose.
+
+## v27 — "BREAKING NEWS" parody, a new identity (`src/news/NewsGoat.tsx`, comp `NewsGoat`, 16.2 s)
+- User (2026-11-04): every video must look different; use Gemini images for absurd/"sussy" gags.
+- Identity: fictional channel "BALL KNOWLEDGE NEWS"; LIVE two-box interview (active speaker = red border), red/navy/gold, Oswald + Anton headlines, Courier Prime closed captions (hand-set phrase lines), crawling ticker, lower thirds that change per beat, BREAKING NEWS stinger on a 0.6 s freeze before "Matthew", Della photo card "THE GOAT?", Curb-style credits music on the laugh, news SFX (scan beep, typing, clock ticks, phone buzz, shutter, error alert).
+- Gag cards: goat-emoji fans with signs (PiP), coronation (goat on a throne + crown + confetti + flashes), "paparazzi" date (goat + trophy + candles + hearts). Animals/objects only: no real people in fabricated scenes.
+- Gemini: the key works on generativelanguage.googleapis.com (not Vertex). Image models listed: gemini-3-pro-image, gemini-3.1-flash-image, gemini-2.5-flash-image. ALL return 429 "free tier limit 0", so billing is needed. Key kept only in the scratchpad (never in git). Swap the emoji gag cards for generated photos once billing is on.

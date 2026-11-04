@@ -31,3 +31,4 @@
 - The NBA GOAT debate just got a new answer (v24 flipped v19 remake)
 - This card went from $20,000 to $500 in 3 seconds (v25 redemption, goat19 formula)
 - This NBA GOAT pick made the whole room lose it (v26 goat19 formula + reel)
+- BREAKING: An NFL QB just named the new NBA GOAT (v27 news parody)
