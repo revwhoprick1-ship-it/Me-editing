@@ -453,3 +453,9 @@ All five use the same beats as v12 and the same real-footage moments (the two-sh
 - Jorho intro kept; "TREVOR LAWRENCE · NFL QB" label in second 1; top line = concrete bold claim ("This card went from $20,000 to $500 in 3 seconds").
 - Beats: $20,000 → value ticker → $500 (trombone, red) → "why do you have to redeem it" + plain label "REDEEM = MAIL IT IN FOR THE SIGNED CARD" → "do you sign like on time?" + "⏰ PLAYER SIGNS LATE = CARD COMES LATE" → music out, silent beat, "I see." → "people very much dislike that" → "Oh really?" → twist "most expensive sale ever" (orch + cha-ching, green) → cut-off "do you even know your…" loops into "This card…".
 - Voices: voice_diarize says the left host is the main explainer. "uh you've done that" (14.4–15.6 s) was not heard by large-v3, so it's cut (no wrong captions). Ambiguous lines use two-shots (W@640 = L+M, W@1140 = M+R).
+
+## v26 — NBA GOAT, goat19 formula + graph-dip fixes (`JorhoGoat26`, 16.1 s)
+- Evidence order for this channel: our own analytics first (goat19 9.7K/180%, intro versions 72% STW vs no-intro 55–58%, AI VO 28%), then peer-reviewed attention/curiosity work, then creator blogs (no peer-reviewed swipe-timing study found).
+- New pieces: `Reel` (slot-machine card that decelerates 90 → ~650 ms and stops on a yellow "?" before "Gotta be"; quiet mg-click per change), `Burst` (radial speed lines behind the answer cutout, kept off the face), `rev-whoosh.mp3` (reversed fast-whoosh) ending on the answer, orch + 808 layered, 0.5 s hold with the stat, "…BUT HE IS A 2016 NBA CHAMPION 💍" during the laugh.
+- Name label x 430 (v19's x 600 was cut off at the right edge).
+- QC: −13.2 LUFS, −3.1 dBTP; the think stays quiet (≈−35 dB, like v19) on purpose.

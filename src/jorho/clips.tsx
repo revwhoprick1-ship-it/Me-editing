@@ -958,3 +958,61 @@ const RED25: Spec = {
     sfx('jorho-pop', K25.onTime, 0.3), sfx('meme-dundun', K25.see - 150, 0.4, 900), sfx('jorho-pop', K25.really, 0.3), sfx('meme-orch', K25.most, 0.45), sfx('cha-ching', K25.sale, 0.4)],
 };
 export const JorhoRedeem25 = () => <Jorho s={RED25} />;
+
+// ==== v26 (2026-11-04): NBA GOAT, goat19 formula (best channel result) + fixes aimed at its graph dips.
+// Kept: Jorho intro, real question first, name label in second 1, Jeopardy think, silent beat before the answer, stat, loop.
+// New: slot-machine reel through the think (decelerating = anticipation), reverse-whoosh into the answer, impact burst +
+// layered orch/808 on "Dellavedova", 0.5 s comedic hold with the stat, second reveal during the laugh (2016 champion, true).
+const g26 = timeline([[2150, 3650], [4380, 5150], [5550, 7350], [7350, 15250, 500], [15250, 18810]]);
+export const GOAT26_MS = g26.total; // 16.03 s
+const G26 = g26.segOut, go26 = g26.out;
+const K26 = {think: G26[3], gotta: go26(12780), della: go26(13820), name: go26(14160), laugh: G26[4], could: go26(17480), tension: go26(18220)};
+// reel: card changes slow down from 90 ms to ~650 ms, last stop is the "?" card just before "Gotta be"
+const REEL = (() => { const out: number[] = []; let t = K26.think + 700, d = 90; while (t < K26.gotta - 500) { out.push(t); t += d; d *= 1.17; } return out; })();
+const REEL_IMG = ['lebron.png', 'kobe.png', 'curry.png'];
+const Reel = ({o}: {o: number}) => {
+  if (o < REEL[0] || o >= K26.gotta) return null;
+  let i = 0; REEL.forEach((t, j) => { if (o >= t) i = j; });
+  const last = i === REEL.length - 1;
+  const k = Math.min(1, (o - REEL[i]) / 70);
+  return <div style={{position: 'absolute', left: 40, top: 610, width: 250, height: 320, borderRadius: 20, overflow: 'hidden', background: '#111',
+    border: `6px solid ${last ? '#F9FC35' : '#fff'}`, boxShadow: last ? '0 0 34px rgba(249,252,53,.7)' : '0 10px 30px rgba(0,0,0,.5)', transform: `translateY(${(1 - k) * -14}px)`}}>
+    {last ? <div style={{width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Montserrat', fontWeight: 900, fontSize: 200, color: '#F9FC35'}}>?</div>
+      : <Img src={staticFile(`img/jorho/${REEL_IMG[i % 3]}`)} style={{width: '100%', height: '100%', objectFit: 'cover', objectPosition: '50% 20%'}} />}
+  </div>;
+};
+// radial speed-line burst behind the answer cutout
+const Burst = ({o, at, x, y}: {o: number; at: number; x: number; y: number}) => {
+  const t = (o - at) / 600;
+  if (t < 0 || t > 1) return null;
+  return <svg width={1080} height={1077} style={{position: 'absolute', inset: 0, opacity: 1 - t}}>
+    {Array.from({length: 28}, (_, i) => { const a = (i / 28) * Math.PI * 2, r0 = 90 + 140 * t, r1 = r0 + 150;
+      return <line key={i} x1={x + Math.cos(a) * r0} y1={y + Math.sin(a) * r0} x2={x + Math.cos(a) * r1} y2={y + Math.sin(a) * r1} stroke={i % 2 ? '#F9FC35' : '#fff'} strokeWidth={i % 2 ? 10 : 6} strokeLinecap="round" />; })}
+  </svg>;
+};
+const GOAT26: Spec = {
+  tl: g26, src: 'input.mp4', track: goatTrack as unknown as Track, top: 'This NBA GOAT pick made the whole room lose it', wordY: 1170, wideX: 960, push: true,
+  wideXAt: (o) => (o < G26[1] ? 665 : 960),
+  words: wordsFrom(goatWords, g26, {'Delvedova,': 'Dellavedova', Delvedova: 'Dellavedova', times: 'time'}, {goat: '#58EE28', Matthew: '#21F5E6', Dellavedova: '#21F5E6', tension: '#F9FC35'}),
+  capsOff: [[K26.think + 150, K26.gotta - 60]],
+  shots: [[0, 'W'], [G26[1], 'M'], [G26[2], 'L'], [K26.think, 'M'], [K26.laugh + 150, 'W'], [K26.could - 100, 'R']],
+  strobes: [K26.della - STROBE_CUT], tints: [[K26.della, GREEN], [K26.tension, RED]], swish: [K26.laugh + 150],
+  cut: {file: 'della.png', from: K26.della, to: K26.laugh + 200, x: 600, h: 560},
+  music: {file: 'du-bist-full.mp3', from: 42500 - K26.della, level: 0.12},
+  musicLevel: (o) => (o < K26.think - 200 ? 0.1 : o < K26.della ? 0 : 0.14),
+  box: (o) => <>
+    <Burst o={o} at={K26.della} x={880} y={860} />
+    <Lbl o={o} at={350} to={G26[1]} x={430} y={40}>TREVOR LAWRENCE · NFL QB</Lbl>
+    {o >= K26.think + 300 && o < K26.gotta && <>
+      <Lbl o={o} at={K26.think + 300} to={K26.gotta} x={40} y={40}>THE USUAL ANSWERS…</Lbl>
+      <Lbl o={o} at={K26.think + 300} to={K26.gotta} x={690} y={40}>{`⏱ ${((o - K26.think) / 1000).toFixed(1)}s of silence`}</Lbl>
+    </>}
+    <Reel o={o} />
+    <Lbl o={o} at={K26.name + 300} to={K26.laugh + 450} x={40} y={40}>MATTHEW DELLAVEDOVA · CAREER 5.2 PPG</Lbl>
+    <Lbl o={o} at={K26.laugh + 450} to={K26.tension} x={40} y={40}>…BUT HE IS A 2016 NBA CHAMPION 💍</Lbl>
+  </>,
+  fx: [sfx('jeopardy-think', K26.think + 100, 0.28, K26.gotta - K26.think - 200), ...REEL.map((t) => sfx('mg-click', t, 0.14)), sfx('jorho-ting', K26.gotta - 520, 0.3),
+    sfx('rev-whoosh', K26.della - 1220, 0.4), sfx('meme-orch', K26.della, 0.5), sfx('808-boom', K26.della, 0.4), sfx('meme-dundun', G26[4] - 500, 0.35, 800),
+    sfx('jorho-ting', K26.laugh + 450, 0.3), sfx('meme-violin', K26.tension, 0.35, 1100)],
+};
+export const JorhoGoat26 = () => <Jorho s={GOAT26} />;
