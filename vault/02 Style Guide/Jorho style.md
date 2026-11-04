@@ -471,3 +471,10 @@ All five use the same beats as v12 and the same real-footage moments (the two-sh
 - This one: freeze BEFORE the name (suspense) instead of after; think = clock ticks + an AI insert "MJ & LEBRON WAITING ON HIS ANSWER…"; laugh = record scratch + phonk drop (montagem-alquimia 4.0 s, cut to `sfx/montagem-drop.mp3`) + "MEANWHILE: LEBRON'S ULTRASOUND" → "IT'S A… DELLAVEDOVA 💀" (gender-reveal joke) → "STEPH TOO?? 😭"; Sneaky Snitch under the question.
 - AI images of real people (user-made, `public/img/ai/`, gitignored): only the harmless / obviously impossible ones, each tagged "AI PARODY". Not used: the kiss / near-kiss ones (realistic romantic fakes of real people). Tell the user to tick YouTube's "altered or synthetic content" box.
 - Gemini key: free tier has 0 image quota (billing needed).
+
+## v29 — "clipper" style from ref XB-5FxyY4X8 (same redemption moment, another channel) → `src/clipper/Redeem29.tsx`, 19.3 s
+- Ref (storyboard only: video download blocked by YouTube's bot check, not bypassed): footage band in the middle on a blurred zoomed copy of itself, persistent black title box (white condensed caps), one small word at a time, plain reframing between speakers, ~28 s with every repeat, ends on "Yeah." + a black frame.
+- Kept from the ref: blur-fill layout, title box, one-word captions, plain reframing, no heavy effects.
+- Improved: stakes title "HE SAID THIS CARD IS / WORTH $20,000… 💀"; repeats + "if you know" cut; bigger captions with money words yellow; reaction insert on "$500"; plain-words labels (REDEEM = MAIL IT IN…, PLAYER SIGNS LATE = CARD COMES LATE); "…AND THEN THE TWIST 👀" chip at 5 s; twist ending ("most expensive sale ever") that loops instead of a black frame; quiet Monkeys Spinning Monkeys bed; small SFX (cha-ching, trombone, dun-dun).
+- Viewer passes: pass 1 swipe at 6–10.8 s (one static host shot, jargon, filler) + 12–15 s (static) → pass 2 cuts "if you know", splits shots on the dialogue (two-shot on "because", Trevor on "do you sign on time?", Trevor's reaction on "dislike") → pass 3 adds the twist chip for the dip after the $500 payoff at ~5 s.
+- `makeClip(plan)` makes this layout reusable for other clips.
