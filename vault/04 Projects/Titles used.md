@@ -32,3 +32,4 @@
 - This card went from $20,000 to $500 in 3 seconds (v25 redemption, goat19 formula)
 - This NBA GOAT pick made the whole room lose it (v26 goat19 formula + reel)
 - BREAKING: An NFL QB just named the new NBA GOAT (v27 news parody)
+- This NBA GOAT pick got LeBron pregnant (v28 Jorho + AI parody)

@@ -1016,3 +1016,61 @@ const GOAT26: Spec = {
     sfx('jorho-ting', K26.laugh + 450, 0.3), sfx('meme-violin', K26.tension, 0.35, 1100)],
 };
 export const JorhoGoat26 = () => <Jorho s={GOAT26} />;
+
+// ==== v28 (2026-11-04): Jorho style (kept: intro, black bars, top line, captions, strobe/tint, cutout, stat label, loop) with
+// new details: freeze BEFORE the name (suspense), an AI-parody insert during the think (MJ + LeBron "waiting"), and an
+// absurd ultrasound gag during the laugh ("IT'S A… DELLAVEDOVA"). User-supplied AI images of real players: only the
+// obviously-impossible / harmless ones are used (no kissing ones), each tagged "AI PARODY".
+const g28 = timeline([[2150, 3650], [4380, 5150], [5550, 7350], [7350, 13800, 600], [13800, 18810]]);
+export const GOAT28_MS = g28.total; // 16.13 s
+const G28 = g28.segOut, go28 = g28.out;
+const K28 = {think: G28[3], gotta: go28(12780), freeze: G28[4] - 600, della: go28(13820), name: go28(14160), laugh: go28(15050), could: go28(17480), tension: go28(18220)};
+const AI1 = [K28.think + 1500, K28.think + 3250] as const, LB = [K28.laugh, K28.laugh + 900] as const, ST = [LB[1], LB[1] + 850] as const;
+const AiShot = ({o, a, b, file, fit, pos = '50% 50%'}: {o: number; a: number; b: number; file: string; fit: 'cover' | 'contain'; pos?: string}) => {
+  if (o < a || o >= b) return null;
+  const t = o - a, z = 1 + 0.07 * (t / (b - a)), hit = Math.max(0, 1 - t / 130);
+  const src = staticFile(`img/ai/${file}`);
+  return <div style={{position: 'absolute', left: 0, top: 0, width: 1080, height: 1077, overflow: 'hidden', background: '#000'}}>
+    {fit === 'contain' && <Img src={src} style={{position: 'absolute', inset: -40, width: 1160, height: 1157, objectFit: 'cover', filter: 'blur(28px) brightness(.55)'}} />}
+    <Img src={src} style={{position: 'absolute', inset: 0, width: 1080, height: 1077, objectFit: fit, objectPosition: pos, transform: `scale(${z * (1 + 0.12 * hit)})`}} />
+    {hit > 0 && <div style={{position: 'absolute', inset: 0, background: '#fff', opacity: 0.7 * hit}} />}
+    <div style={{position: 'absolute', right: 18, bottom: 18, background: 'rgba(0,0,0,.65)', color: '#fff', fontFamily: 'Montserrat', fontWeight: 800, fontSize: 24, padding: '5px 12px', borderRadius: 8, letterSpacing: 1}}>AI PARODY</div>
+  </div>;
+};
+const Reveal = ({o, a, b}: {o: number; a: number; b: number}) => {
+  if (o < a || o >= b) return null;
+  const t = o - a, s = t < 120 ? 1.4 - 0.4 * (t / 120) : 1, second = t > 280;
+  return <div style={{position: 'absolute', left: 0, right: 0, top: 760, textAlign: 'center', transform: `scale(${s})`, fontFamily: 'Montserrat', fontWeight: 800, fontSize: 64, color: '#fff',
+    WebkitTextStroke: '10px #111', paintOrder: 'stroke fill', lineHeight: 1.1}}>
+    IT'S A…{second && <><br /><span style={{color: '#5EC8FF', fontSize: 84}}>DELLAVEDOVA 💀</span></>}
+  </div>;
+};
+const GOAT28: Spec = {
+  tl: g28, src: 'input.mp4', track: goatTrack as unknown as Track, top: 'This NBA GOAT pick got LeBron pregnant', wordY: 1170, wideX: 960, push: true,
+  wideXAt: (o) => (o < G28[1] ? 665 : 960),
+  words: wordsFrom(goatWords, g28, {'Delvedova,': 'Dellavedova', Delvedova: 'Dellavedova', times: 'time'}, {goat: '#FF9F1C', Matthew: '#5EC8FF', Dellavedova: '#5EC8FF', tension: '#FF4D6D'}),
+  capsOff: [[K28.think + 150, K28.gotta - 60], [LB[0] + 200, K28.could - 40]],
+  shots: [[0, 'W'], [G28[1], 'M'], [G28[2], 'L'], [K28.think, 'M'], [ST[1], 'W'], [K28.could - 100, 'R']],
+  strobes: [K28.della - STROBE_CUT], tints: [[K28.della, GREEN], [K28.tension, RED]], swish: [ST[1]],
+  cut: {file: 'della.png', from: K28.della, to: K28.laugh, x: 600, h: 560},
+  music: {file: 'Sneaky_Snitch.mp3', from: 0, level: 0.12},
+  musicLevel: (o) => (o < K28.think - 200 ? 0.12 : 0),
+  box: (o) => <>
+    <Lbl o={o} at={350} to={G28[1]} x={430} y={40}>TREVOR LAWRENCE · NFL QB</Lbl>
+    <Lbl o={o} at={K28.think + 300} to={K28.gotta} x={690} y={40}>{`⏱ ${((o - K28.think) / 1000).toFixed(1)}s`}</Lbl>
+    <AiShot o={o} a={AI1[0]} b={AI1[1]} file="mj_lebron_court.jpg" fit="contain" />
+    <Lbl o={o} at={AI1[0] + 100} to={AI1[1]} x={40} y={40}>MJ & LEBRON WAITING ON HIS ANSWER…</Lbl>
+    <Lbl o={o} at={K28.name + 300} to={K28.laugh} x={40} y={40}>MATTHEW DELLAVEDOVA · CAREER 5.2 PPG</Lbl>
+    <AiShot o={o} a={LB[0]} b={LB[1]} file="lebron_ultrasound.jpg" fit="cover" pos="59% 50%" />
+    <Lbl o={o} at={LB[0] + 60} to={LB[1]} x={40} y={40}>MEANWHILE: LEBRON'S ULTRASOUND</Lbl>
+    <Reveal o={o} a={LB[0] + 380} b={LB[1]} />
+    <AiShot o={o} a={ST[0]} b={ST[1]} file="steph_ultrasound.jpg" fit="cover" pos="40% 50%" />
+    <Lbl o={o} at={ST[0] + 60} to={ST[1]} x={40} y={40}>STEPH TOO?? 😭</Lbl>
+  </>,
+  fx: [sfx('mg-click', G28[1], 0.3), ...Array.from({length: 5}, (_, i) => sfx('clock-tick', K28.think + 1000 * (i + 1), 0.35)),
+    sfx('camera-shutter', AI1[0], 0.35), sfx('mg-swoosh', AI1[1] - 60, 0.25), sfx('meme-build2', K28.freeze, 0.35, 600),
+    sfx('meme-impact', K28.della, 0.5), sfx('808-boom', K28.della, 0.4), sfx('jorho-ting', K28.name + 300, 0.3),
+    sfx('record-scratch', LB[0] - 60, 0.4), sfx('montagem-drop', LB[0], 0.14, ST[1] - LB[0] + 300), sfx('scan-beep', LB[0] + 120, 0.3),
+    sfx('meme-tada', LB[0] + 660, 0.35), sfx('huh-cat', ST[0] + 40, 0.4), sfx('meme-violin', K28.tension, 0.35, 1100)],
+};
+export const JorhoGoat28 = () => <Jorho s={GOAT28} />;
