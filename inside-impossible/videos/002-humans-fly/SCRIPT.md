@@ -34,3 +34,13 @@
 | 10 | "hit" | engine close-up, bird strike flash + feathers — FAA 22,372 |
 | 11 | "Now" | airliner in a swarm of flying people — + 8,000,000,000 FLYERS |
 | 12 | "Would" | rooftop, wings fold, Max looks at you — WOULD YOU? 👇 (loops to 1) |
+
+## Production log
+- Stills pass 1: wings read as a "fence" (straight edge + hanging feathers) → arched leading edge, 30 longer overlapping
+  feathers + coverts, tone variation; skyline lowered; clouds moved off the climb camera; glide camera moved above.
+- Render v1 QA clean, but the viewer pass found black skies in the car and swarm shots (declarative background detached
+  on shot swaps; stills can't show it) → imperative `<Env/>`; airliner camera pulled back, birds larger. Verified with a
+  `--frames` transition render.
+- Final v2: 1080x1920, 30 fps, 27.4 s; no black/white/frozen frames; pops only on cuts + the strike flash; −14.1 LUFS,
+  −1.2 dBTP. `out/inside_002_fly.mp4`.
+- Still weak: the airliner reads small/side-on in the "sky is busy" shot (birds barely visible).
