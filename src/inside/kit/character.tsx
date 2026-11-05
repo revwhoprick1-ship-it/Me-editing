@@ -1,11 +1,12 @@
 // "Max", the channel's recurring test subject: a procedural stylised character (no third-party model, licence-clean).
 // Soft vinyl-toy proportions, physical skin with sheen, glossy eyes with iris/pupil/catchlight, blinking lids, brows,
 // a jaw that opens/chews, an orange hoodie (channel colour). Optional x-ray mode for "inside the body" shots.
-import {useMemo} from 'react';
+import React, {useMemo} from 'react';
 import * as THREE from 'three';
 import {xrayMat} from './three';
 
-export type Face = {jaw?: number; eyesWide?: number; blink?: number; brow?: number; lookX?: number; lookY?: number; smile?: number; gum?: boolean; gulp?: number; headTilt?: number; xray?: number};
+export type Face = {jaw?: number; eyesWide?: number; blink?: number; brow?: number; lookX?: number; lookY?: number; smile?: number; gum?: boolean; gulp?: number; headTilt?: number; xray?: number; frost?: number; sick?: number};
+export type Body = {armL?: number; armR?: number; legSwing?: number; legsBack?: number}; // radians
 const SKIN = '#eab48f', HAIR = '#2b1d16', HOODIE = '#ff7a2f';
 
 const headGeo = () => {
@@ -33,7 +34,7 @@ const hairGeo = () => {
   return g;
 };
 
-export const Max = ({f, position = [0, 0, 0], rotation = [0, 0, 0], scale = 1}: {f: Face; position?: [number, number, number]; rotation?: [number, number, number]; scale?: number}) => {
+export const Max = ({f, body, children, position = [0, 0, 0], rotation = [0, 0, 0], scale = 1}: {f: Face; body?: Body; children?: React.ReactNode; position?: [number, number, number]; rotation?: [number, number, number]; scale?: number}) => {
   const m = useMemo(() => ({
     head: headGeo(), hair: hairGeo(),
     skin: new THREE.MeshPhysicalMaterial({color: SKIN, roughness: 0.48, sheen: 0.45, sheenColor: new THREE.Color('#ff9a7a'), clearcoat: 0.08, clearcoatRoughness: 0.6}),
@@ -49,7 +50,11 @@ export const Max = ({f, position = [0, 0, 0], rotation = [0, 0, 0], scale = 1}: 
     gum: new THREE.MeshPhysicalMaterial({color: '#ff6fb1', roughness: 0.35, clearcoat: 0.8, sheen: 0.6, sheenColor: new THREE.Color('#ffd0e6')}),
     hood: new THREE.MeshPhysicalMaterial({color: HOODIE, roughness: 0.85, sheen: 1, sheenColor: new THREE.Color('#ffc09a')}),
     xr: xrayMat('#7fd8ff'),
+    pants: new THREE.MeshPhysicalMaterial({color: '#2c3e66', roughness: 0.8, sheen: 0.5, sheenColor: new THREE.Color('#5a74b0')}),
+    shoe: new THREE.MeshPhysicalMaterial({color: '#f4f4f4', roughness: 0.4, clearcoat: 0.6}),
   }), []);
+  // frost / altitude-sickness tints on the skin
+  m.skin.color.set(SKIN).lerp(new THREE.Color('#bfe3ff'), 0.55 * (f.frost ?? 0)).lerp(new THREE.Color('#b9d99a'), 0.45 * (f.sick ?? 0));
   const jaw = f.jaw ?? 0, wide = f.eyesWide ?? 0, blink = f.blink ?? 0, brow = f.brow ?? 0, smile = f.smile ?? 0, xr = f.xray ?? 0;
   const lid = Math.max(blink, 0.18 - 0.18 * wide); // upper lid cover 0..1
   const eye = (s: 1 | -1) => (
@@ -93,6 +98,19 @@ export const Max = ({f, position = [0, 0, 0], rotation = [0, 0, 0], scale = 1}: 
       {(f.gulp ?? 0) > 0 && xr < 0.5 && <mesh material={m.skin} position={[0, -0.95 - 0.35 * (f.gulp ?? 0), 0.3]} scale={[0.09, 0.07, 0.06]}><sphereGeometry args={[1, 16, 12]} /></mesh>}
       <mesh material={xr > 0.5 ? m.xr : m.hood} position={[0, -2.15, 0]} scale={[1.55, 1.05, 0.95]}><sphereGeometry args={[1, 64, 48]} /></mesh>
       <mesh material={m.hood} visible={xr < 0.5} position={[0, -1.32, -0.18]} rotation={[Math.PI / 2 + 0.25, 0, 0]}><torusGeometry args={[0.55, 0.2, 20, 48]} /></mesh>
+      {body && xr < 0.5 && <>
+        {/* arms: pivot at the shoulder, hang down; armL/armR rotate them outward */}
+        {([[1, body.armL ?? 0.15], [-1, body.armR ?? 0.15]] as const).map(([s, a]) => <group key={s} position={[1.3 * s, -1.75, 0]} rotation={[0, 0, a * s]}>
+          <mesh material={m.hood} position={[0, -0.6, 0]}><capsuleGeometry args={[0.3, 0.9, 8, 16]} /></mesh>
+          <mesh material={m.skin} position={[0, -1.35, 0.02]}><sphereGeometry args={[0.24, 24, 16]} /></mesh>
+        </group>)}
+        {/* legs */}
+        {[1, -1].map((s) => <group key={s} position={[0.5 * s, -3.05, 0]} rotation={[(body.legsBack ?? 0) + s * (body.legSwing ?? 0), 0, 0]}>
+          <mesh material={m.pants} position={[0, -0.6, 0]}><capsuleGeometry args={[0.33, 0.85, 8, 16]} /></mesh>
+          <mesh material={m.shoe} position={[0, -1.25, 0.18]} scale={[0.36, 0.22, 0.6]}><sphereGeometry args={[1, 24, 16]} /></mesh>
+        </group>)}
+      </>}
+      {children}
     </group>
   );
 };

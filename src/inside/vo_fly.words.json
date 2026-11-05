@@ -1,0 +1,524 @@
+[
+{
+"text": "What",
+"startMs": 0,
+"endMs": 100,
+"p": 0.91
+},
+{
+"text": "if",
+"startMs": 100,
+"endMs": 200,
+"p": 1.0
+},
+{
+"text": "every",
+"startMs": 200,
+"endMs": 480,
+"p": 1.0
+},
+{
+"text": "human",
+"startMs": 480,
+"endMs": 680,
+"p": 1.0
+},
+{
+"text": "could",
+"startMs": 680,
+"endMs": 900,
+"p": 0.99
+},
+{
+"text": "fly?",
+"startMs": 900,
+"endMs": 1140,
+"p": 1.0
+},
+{
+"text": "First,",
+"startMs": 1540,
+"endMs": 1740,
+"p": 0.99
+},
+{
+"text": "you'd",
+"startMs": 1940,
+"endMs": 2060,
+"p": 0.98
+},
+{
+"text": "need",
+"startMs": 2060,
+"endMs": 2180,
+"p": 1.0
+},
+{
+"text": "wings",
+"startMs": 2180,
+"endMs": 2420,
+"p": 1.0
+},
+{
+"text": "six",
+"startMs": 2420,
+"endMs": 2680,
+"p": 0.41
+},
+{
+"text": "to",
+"startMs": 2680,
+"endMs": 2880,
+"p": 0.99
+},
+{
+"text": "seven",
+"startMs": 2880,
+"endMs": 3080,
+"p": 1.0
+},
+{
+"text": "meters",
+"startMs": 3080,
+"endMs": 3280,
+"p": 0.95
+},
+{
+"text": "wide,",
+"startMs": 3280,
+"endMs": 3660,
+"p": 1.0
+},
+{
+"text": "longer",
+"startMs": 4160,
+"endMs": 4300,
+"p": 1.0
+},
+{
+"text": "than",
+"startMs": 4300,
+"endMs": 4520,
+"p": 1.0
+},
+{
+"text": "a",
+"startMs": 4520,
+"endMs": 4640,
+"p": 1.0
+},
+{
+"text": "car,",
+"startMs": 4640,
+"endMs": 4920,
+"p": 1.0
+},
+{
+"text": "plus",
+"startMs": 5260,
+"endMs": 5520,
+"p": 1.0
+},
+{
+"text": "a",
+"startMs": 5520,
+"endMs": 5680,
+"p": 1.0
+},
+{
+"text": "chest",
+"startMs": 5680,
+"endMs": 5920,
+"p": 1.0
+},
+{
+"text": "packed",
+"startMs": 5920,
+"endMs": 6200,
+"p": 0.99
+},
+{
+"text": "with",
+"startMs": 6200,
+"endMs": 6420,
+"p": 1.0
+},
+{
+"text": "flight",
+"startMs": 6420,
+"endMs": 6700,
+"p": 0.99
+},
+{
+"text": "muscle",
+"startMs": 6700,
+"endMs": 7060,
+"p": 1.0
+},
+{
+"text": "like",
+"startMs": 7060,
+"endMs": 7280,
+"p": 0.77
+},
+{
+"text": "a",
+"startMs": 7280,
+"endMs": 7420,
+"p": 1.0
+},
+{
+"text": "bird.",
+"startMs": 7420,
+"endMs": 7640,
+"p": 1.0
+},
+{
+"text": "Even",
+"startMs": 8100,
+"endMs": 8280,
+"p": 1.0
+},
+{
+"text": "then,",
+"startMs": 8280,
+"endMs": 8540,
+"p": 1.0
+},
+{
+"text": "scientists",
+"startMs": 8740,
+"endMs": 9020,
+"p": 1.0
+},
+{
+"text": "think",
+"startMs": 9020,
+"endMs": 9280,
+"p": 1.0
+},
+{
+"text": "you",
+"startMs": 9280,
+"endMs": 9420,
+"p": 1.0
+},
+{
+"text": "couldn't",
+"startMs": 9420,
+"endMs": 9640,
+"p": 1.0
+},
+{
+"text": "flap",
+"startMs": 9640,
+"endMs": 9840,
+"p": 0.98
+},
+{
+"text": "your",
+"startMs": 9840,
+"endMs": 9980,
+"p": 1.0
+},
+{
+"text": "way",
+"startMs": 9980,
+"endMs": 10140,
+"p": 1.0
+},
+{
+"text": "up.",
+"startMs": 10140,
+"endMs": 10340,
+"p": 1.0
+},
+{
+"text": "You'd",
+"startMs": 10660,
+"endMs": 10800,
+"p": 0.97
+},
+{
+"text": "mostly",
+"startMs": 10800,
+"endMs": 11080,
+"p": 1.0
+},
+{
+"text": "glide.",
+"startMs": 11080,
+"endMs": 11420,
+"p": 1.0
+},
+{
+"text": "Above",
+"startMs": 11960,
+"endMs": 12080,
+"p": 1.0
+},
+{
+"text": "two",
+"startMs": 12080,
+"endMs": 12320,
+"p": 0.68
+},
+{
+"text": "and",
+"startMs": 12320,
+"endMs": 12420,
+"p": 0.87
+},
+{
+"text": "a",
+"startMs": 12420,
+"endMs": 12520,
+"p": 0.96
+},
+{
+"text": "half",
+"startMs": 12520,
+"endMs": 12680,
+"p": 1.0
+},
+{
+"text": "kilometers,",
+"startMs": 12680,
+"endMs": 13120,
+"p": 0.98
+},
+{
+"text": "thin",
+"startMs": 13400,
+"endMs": 13560,
+"p": 1.0
+},
+{
+"text": "air",
+"startMs": 13560,
+"endMs": 13800,
+"p": 1.0
+},
+{
+"text": "can",
+"startMs": 13800,
+"endMs": 13980,
+"p": 1.0
+},
+{
+"text": "make",
+"startMs": 13980,
+"endMs": 14140,
+"p": 1.0
+},
+{
+"text": "you",
+"startMs": 14140,
+"endMs": 14280,
+"p": 1.0
+},
+{
+"text": "sick,",
+"startMs": 14280,
+"endMs": 14540,
+"p": 1.0
+},
+{
+"text": "and",
+"startMs": 14840,
+"endMs": 15020,
+"p": 1.0
+},
+{
+"text": "every",
+"startMs": 15020,
+"endMs": 15300,
+"p": 1.0
+},
+{
+"text": "kilometer",
+"startMs": 15300,
+"endMs": 15780,
+"p": 0.99
+},
+{
+"text": "up",
+"startMs": 15780,
+"endMs": 15980,
+"p": 1.0
+},
+{
+"text": "is",
+"startMs": 15980,
+"endMs": 16100,
+"p": 1.0
+},
+{
+"text": "about",
+"startMs": 16100,
+"endMs": 16320,
+"p": 1.0
+},
+{
+"text": "six",
+"startMs": 16320,
+"endMs": 16620,
+"p": 0.94
+},
+{
+"text": "degrees",
+"startMs": 16620,
+"endMs": 16940,
+"p": 1.0
+},
+{
+"text": "colder.",
+"startMs": 16940,
+"endMs": 17300,
+"p": 1.0
+},
+{
+"text": "The",
+"startMs": 17840,
+"endMs": 17920,
+"p": 1.0
+},
+{
+"text": "sky",
+"startMs": 17920,
+"endMs": 18220,
+"p": 1.0
+},
+{
+"text": "is",
+"startMs": 18220,
+"endMs": 18420,
+"p": 1.0
+},
+{
+"text": "already",
+"startMs": 18420,
+"endMs": 18720,
+"p": 1.0
+},
+{
+"text": "crowded.",
+"startMs": 18720,
+"endMs": 19080,
+"p": 1.0
+},
+{
+"text": "US",
+"startMs": 19680,
+"endMs": 19920,
+"p": 0.7
+},
+{
+"text": "planes",
+"startMs": 20220,
+"endMs": 20220,
+"p": 0.88
+},
+{
+"text": "hit",
+"startMs": 20220,
+"endMs": 20540,
+"p": 1.0
+},
+{
+"text": "over",
+"startMs": 20540,
+"endMs": 20740,
+"p": 1.0
+},
+{
+"text": "20,000",
+"startMs": 20740,
+"endMs": 21480,
+"p": 0.97
+},
+{
+"text": "animals",
+"startMs": 21480,
+"endMs": 21820,
+"p": 1.0
+},
+{
+"text": "a",
+"startMs": 21820,
+"endMs": 22000,
+"p": 1.0
+},
+{
+"text": "year.",
+"startMs": 22000,
+"endMs": 22220,
+"p": 1.0
+},
+{
+"text": "Now",
+"startMs": 22760,
+"endMs": 22980,
+"p": 1.0
+},
+{
+"text": "add",
+"startMs": 22980,
+"endMs": 23240,
+"p": 0.81
+},
+{
+"text": "eight",
+"startMs": 23240,
+"endMs": 23500,
+"p": 0.69
+},
+{
+"text": "billion",
+"startMs": 23500,
+"endMs": 23880,
+"p": 0.99
+},
+{
+"text": "flying",
+"startMs": 23880,
+"endMs": 24260,
+"p": 1.0
+},
+{
+"text": "people.",
+"startMs": 24260,
+"endMs": 24720,
+"p": 1.0
+},
+{
+"text": "Would",
+"startMs": 24920,
+"endMs": 25000,
+"p": 0.99
+},
+{
+"text": "you",
+"startMs": 25000,
+"endMs": 25120,
+"p": 1.0
+},
+{
+"text": "still",
+"startMs": 25120,
+"endMs": 25360,
+"p": 1.0
+},
+{
+"text": "want",
+"startMs": 25360,
+"endMs": 25560,
+"p": 1.0
+},
+{
+"text": "wings?",
+"startMs": 25560,
+"endMs": 25840,
+"p": 1.0
+}
+]
