@@ -37,6 +37,10 @@ const sealTex = () => canvasTex('seal', 512, 512, (x) => {
   const ring = 'PRESIDENT OF THE DOGS ★ ', R = 200;
   [...ring].forEach((ch, i) => { const a = -Math.PI / 2 + (i / ring.length) * Math.PI * 2; x.save(); x.translate(256 + R * Math.cos(a), 256 + R * Math.sin(a)); x.rotate(a + Math.PI / 2); x.fillText(ch, 0, 12); x.restore(); });
 });
+export const flagTex = () => canvasTex('flag', 512, 348, (x) => {
+  ['#1b3a7a', '#f3efe4', '#1b3a7a'].forEach((c, i) => { x.fillStyle = c; x.fillRect(0, i * 116, 512, 116); });
+  x.drawImage(sealTex().image as HTMLCanvasElement, 186, 104, 140, 140);
+});
 const reportTex = () => canvasTex('report', 640, 400, (x) => {
   x.fillStyle = '#f5f7fb'; x.fillRect(0, 0, 640, 400); x.fillStyle = '#1f3b73'; x.fillRect(0, 0, 640, 64);
   x.fillStyle = '#fff'; x.font = '800 34px Inter, Arial'; x.fillText('Q3 BARK REPORT', 22, 44);

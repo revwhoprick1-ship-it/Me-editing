@@ -11,7 +11,7 @@ import '../mgFonts';
 import {Captions, Chips, Soundtrack, chunks, type Chip, type Word} from '../inside/kit/overlay';
 import {Cam, Post, clamp01, lerp, lerp3, prog, smoother, type V3} from '../inside/kit/three';
 import {Actor, LEGS, OnBone, boneWorld, findBone, gait, rotateWorld, useModels, type ModelId} from './assets';
-import {Backpack, Banner, Bench, Bowl, BowTie, Chair, Chalkboard, Confetti, Desk, Flashes, Gavel, Laptop, Leash, Paper, Podium, PropMats, Rosette, SchoolDesk, Scraps, Table, Tie, Wig, WordCards} from './props';
+import {Backpack, Banner, flagTex, Bench, Bowl, BowTie, Chair, Chalkboard, Confetti, Desk, Flashes, Gavel, Laptop, Leash, Paper, Podium, PropMats, Rosette, SchoolDesk, Scraps, Table, Tie, Wig, WordCards} from './props';
 import {Stage, useEnvs, type EnvId, type StageProps} from './stage';
 import raw from './lines.gen.json';
 
@@ -55,9 +55,11 @@ const Dog = ({id, M, o, pos, yaw, pose = 'stand', talk = 0, speed = 2.3, nod = 0
   const g = M[id], r = RIG[id], t = o / 1000 + phase;
   let clip: string | number = 0, ct = 0;
   if (id === 'golden') { const d = g.animations[0].duration; ct = pose === 'sit' ? 0.3 * d : 0.02; }
-  if (id === 'lab') { clip = 0; ct = t * 0.6; }
+  // ping-pong the idle clips: their loop points aren't seamless (a wrap mid-shot snaps the head)
+  const pp = (x: number, d: number) => { const m = x % (2 * d); return m < d ? m : 2 * d - m; };
+  if (id === 'lab') { clip = 0; ct = pp(t * 0.6, g.animations[0].duration * 0.98); }
   if (id === 'shiba') { clip = pose === 'sit' ? '0|sitting_0' : pose === 'shake' ? '0|shake_0' : '0|standing_0'; ct = pose === 'shake' ? t : pose === 'sit' ? 0.5 + 0.1 * Math.sin(t) : 0.5; }
-  if (id === 'boxer') { clip = 0; ct = t * 0.8; }
+  if (id === 'boxer') { clip = 0; ct = pp(t * 0.8, g.animations[0].duration * 0.98); }
   const side = new THREE.Vector3(Math.cos(yaw), 0, -Math.sin(yaw));
   return <Actor g={g} clip={clip} t={ct} h={r.h} position={pos} rotation={[0, yaw, 0]} hide={r.hide} mouth={talk} jaw={{bone: r.jaw, amp: r.amp}}
     bones={(b, root) => {
@@ -239,8 +241,9 @@ const Nego = ({c, shot}: {c: Ctx; shot: 'nego' | 'rights' | 'couch'}) => {
 
 // ---- 6. president + reaction + walk ---------------------------------------------------------------------------------------------
 const Flag = ({x}: {x: number}) => <group position={[x, 0, -0.3]}>
-  <mesh material={PropMats.gold} position={[0, 1.1, 0]}><cylinderGeometry args={[0.012, 0.012, 2.2, 8]} /></mesh>
-  <mesh position={[0.28 * Math.sign(-x), 1.85, 0]}><planeGeometry args={[0.56, 0.36]} /><meshStandardMaterial color="#1b3a7a" side={THREE.DoubleSide} roughness={0.7} /></mesh>
+  <mesh material={PropMats.gold} position={[0, 0.85, 0]}><cylinderGeometry args={[0.012, 0.012, 1.7, 8]} /></mesh>
+  <mesh material={PropMats.gold} position={[0, 1.72, 0]}><sphereGeometry args={[0.03, 12, 10]} /></mesh>
+  <mesh position={[0.25 * Math.sign(-x), 1.45, 0]} rotation={[0, Math.sign(x) * 0.35, 0]}><planeGeometry args={[0.5, 0.34]} /><meshStandardMaterial map={flagTex()} side={THREE.DoubleSide} roughness={0.7} /></mesh>
 </group>;
 const President = ({c, shot}: {c: Ctx; shot: 'pres' | 'decree'}) => {
   const {o, a, b, M, E} = c, k = ease(o, a, b);

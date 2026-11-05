@@ -66,3 +66,7 @@ Cast (Kokoro voices): Goldie the golden retriever `am_michael` · owner `af_bell
 - Stills pass 2: close-ups aimed by guessed head heights missed (chest shots) → `CamAt` frames off the head bone's live
   world position. Props read bone positions during render → `Actor` now sets its transforms imperatively; values read
   in a parent's JSX need `<Defer>`. Backpack moved to the spine bone; chair back removed (blocked the Shiba).
+- Render v1 (49 min, 1306 frames): no black/frozen frames; −22.6 LUFS. Viewer pass: Lab head snapped every ~3.5 s (its
+  idle clip is only 2.08 s and wrapped mid-shot — QA pop at f672) → ping-pong the idle clips (Lab, boxer); presidential
+  flags were dark blocks cut by the frame top → lowered, striped flag with the paw seal. Frames 416–1305 re-rendered
+  and spliced onto v1 (`--frames`, `--muted`, then one re-encode + v1 audio), loudnorm to −14 LUFS.
