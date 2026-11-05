@@ -34,3 +34,13 @@ Not claimed (on purpose): exact transit hours, exact intestine lengths, any medi
 | 9 | "Not seven years" | "7 YEARS" page, red ✕ slams, "MYTH BUSTED" | payoff |
 | 10 | "Just don't swallow lots" | clump of many gums blocking the intestine, red alarm light | safety note |
 | 11 | after "blockage" | Max chewing again (same framing as shot 1) | loop |
+
+## Production log
+- v1 render → frame QA: black flicker + 24-frame freeze in the blockage shot (red point light inside glossy gum balls →
+  HDR blowout → bloom NaN), large intestine too dark (luma 0.16). Viewer pass: weak gulp, static esophagus, 4.7 s same
+  small-intestine view.
+- v2 fixes: light moved in front of the clump; brighter large intestine; stronger gulp + punch-in on the uh-oh face;
+  esophagus camera lags so the squeeze visibly travels; reverse angle on "but the gum keeps sliding".
+- v2 QA: 1080x1920, 30 fps, 27.2 s; black frames only the planned dip (f160); no freezes; pops only on planned cuts,
+  page flips and the ✕ slam; −14.2 LUFS, −1.4 dBTP after two-pass loudnorm. Final: `out/inside_001_gum.mp4`.
+- Still weak: the large-intestine shot is fairly static; the last blockage frames go bright behind the caption.
