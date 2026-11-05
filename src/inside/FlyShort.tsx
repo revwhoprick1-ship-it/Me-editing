@@ -9,7 +9,7 @@ import * as THREE from 'three';
 import '../mgFonts';
 import {Max, type Body, type Face} from './kit/character';
 import {Captions, Chips, Soundtrack, chunks, loadWords, wordAt, type Chip} from './kit/overlay';
-import {Cam, Post, gradientTex, lerp, lerp3, prog, smoother, xrayMat, type V3} from './kit/three';
+import {Cam, Env, Post, gradientTex, lerp, lerp3, prog, smoother, xrayMat, type V3} from './kit/three';
 import {Airliner, Birds, Car, CloudField, Hills, Measure, Rooftop, Swarm, Wings, type WingPose} from './kit/world';
 import raw from './vo_fly.words.json';
 
@@ -23,10 +23,10 @@ const S = {hook: 0, span: T.first, car: T.longer, chest: T.plus, flap: T.even, g
 const SH = (Object.keys(S) as (keyof typeof S)[]).filter((k) => k !== 'end');
 const shotAt = (o: number) => { let id = SH[0]; for (const k of SH) if (o >= S[k]) id = k; const i = SH.indexOf(id); return {id, a: S[id], b: S[SH[i + 1]] ?? S.end}; };
 
-const Sky = ({top = '#5fb2ff', bottom = '#d9f0ff'}: {top?: string; bottom?: string}) => {
+const Sky = ({top = '#5fb2ff', bottom = '#d9f0ff', fog = null}: {top?: string; bottom?: string; fog?: [string, number, number] | null}) => {
   const bg = useMemo(() => gradientTex(top, bottom), [top, bottom]);
   return <>
-    <primitive attach="background" object={bg} />
+    <Env bg={bg} fog={fog} />
     <hemisphereLight args={['#ffffff', '#7aa7d6', 0.9]} />
     <directionalLight position={[-6, 9, 8]} intensity={2.6} color="#fff3e0" />
     <directionalLight position={[8, 3, -6]} intensity={2.2} color="#a9e4ff" />
@@ -85,7 +85,7 @@ const ChestShot = ({o}: {o: number}) => {
   const g = smoother(prog(o, S.chest + 300, T.even - 600));
   const t = prog(o, S.chest, S.flap);
   return <>
-    <primitive attach="background" object={gradientTex('#0b2340', '#02060f')} />
+    <Env bg={gradientTex('#0b2340', '#02060f')} />
     <ambientLight intensity={0.4} />
     <Cam p={lerp3([2.6, -1.6, 7.4], [1.4, -1.9, 6.2], smoother(t))} l={[0, -2.0, 0]} fov={36} />
     <Max f={{xray: 1}} />
@@ -119,8 +119,7 @@ const GlideShot = ({o}: {o: number}) => {
   const t = (o - S.glide) / 1000;
   const x = t * 26;
   return <>
-    <Sky top="#4f9ff0" bottom="#e2f3ff" />
-    <fog attach="fog" args={['#d6ecff', 80, 600]} />
+    <Sky top="#4f9ff0" bottom="#e2f3ff" fog={['#d6ecff', 80, 600]} />
     <Cam p={[x - 13, 13, 7]} l={[x + 3, -1.5, 0]} fov={50} roll={-0.08} />
     <Hills y={-70} />
     <CloudField seed="gl" n={10} area={[260, 120]} y={-30} yJit={14} scale={[4, 8]} drift={[40, 0, -20]} />
@@ -161,15 +160,14 @@ const PlaneShot = ({o, kind}: {o: number; kind: 'sky' | 'strike' | 'swarm'}) => 
   const px = (o - S.sky) / 1000 * 6;
   const hitT = o - (S.strike + 450);
   const shake = kind === 'strike' && hitT > 0 && hitT < 400 ? 0.5 * Math.sin(hitT / 14) * (1 - hitT / 400) : 0;
-  const cam: {p: V3; l: V3; fov: number} = kind === 'sky' ? {p: [px - 30, 8, 70], l: [px, 0, 0], fov: 38}
+  const cam: {p: V3; l: V3; fov: number} = kind === 'sky' ? {p: [px - 22, 12, 108 - t * 6], l: [px + 2, 0, 0], fov: 38}
     : kind === 'strike' ? {p: [px + 12 + shake, 0 + shake, 26], l: [px + 1, -2.4, 7], fov: 40} : {p: [px - 50, 30, 150 - t * 10], l: [px, 0, 0], fov: 44};
   return <>
-    <Sky top="#3d8de6" bottom="#d8efff" />
-    <fog attach="fog" args={['#cfe6ff', 120, 700]} />
+    <Sky top="#3d8de6" bottom="#d8efff" fog={['#cfe6ff', 160, 900]} />
     <Cam p={cam.p} l={cam.l} fov={cam.fov} />
     <CloudField seed="pl" n={12} area={[400, 200]} y={-30} yJit={30} scale={[5, 10]} drift={[px * 0.3, 0, -60]} />
     <Airliner position={[px, 0, 0]} rotation={[0, 0, 0.03 * Math.sin(o / 900)]} />
-    {kind !== 'swarm' && <Birds o={o} n={kind === 'sky' ? 24 : 10} center={kind === 'sky' ? [px + 40 - t * 12, 2, 6] : [px + 10 - Math.max(0, (o - S.strike) / 1000) * 14, -2.4, 7]} spread={kind === 'sky' ? [14, 6, 10] : [3, 1.5, 2]} size={0.9} />}
+    {kind !== 'swarm' && <Birds o={o} n={kind === 'sky' ? 24 : 10} center={kind === 'sky' ? [px + 40 - t * 12, 2, 6] : [px + 10 - Math.max(0, (o - S.strike) / 1000) * 14, -2.4, 7]} spread={kind === 'sky' ? [16, 7, 14] : [3, 1.5, 2]} size={kind === 'sky' ? 2.6 : 1.1} />}
     {kind === 'strike' && hitT > 0 && hitT < 700 && Array.from({length: 30}, (_, i) => { const k = hitT / 700;
       return <mesh key={i} position={[px + 3 + (random(`ex${i}`) - 0.5) * 8 * k, -2.4 + (random(`ey${i}`) - 0.5) * 6 * k, 7 + (random(`ez${i}`) - 0.3) * 5 * k]} rotation={[i, k * 5 + i, 0]} scale={[0.35, 0.12, 0.02]}>
         <boxGeometry args={[1, 1, 1]} /><meshStandardMaterial color={i % 2 ? '#ffffff' : '#555555'} transparent opacity={1 - k} /></mesh>; })}

@@ -71,6 +71,15 @@ export const xrayMat = (color = '#7fd8ff') => new THREE.ShaderMaterial({
   fragmentShader: `uniform vec3 c; uniform float k; varying vec3 vN; varying vec3 vV; void main(){ float f = pow(1.0-abs(dot(vN,vV)), 2.2); gl_FragColor = vec4(c*(0.06+1.6*f)*k, 1.0); }`,
 });
 
+// ---- scene background / fog, set imperatively every frame (declarative attach races on shot swaps → black sky) ----
+export const Env = ({bg, fog}: {bg: THREE.Texture | THREE.Color | string; fog?: [string, number, number] | null}) => {
+  const {scene} = useThree();
+  scene.background = typeof bg === 'string' ? new THREE.Color(bg) : bg;
+  if (fog) { if (scene.fog instanceof THREE.Fog) { scene.fog.color.set(fog[0]); scene.fog.near = fog[1]; scene.fog.far = fog[2]; } else scene.fog = new THREE.Fog(fog[0], fog[1], fog[2]); }
+  else scene.fog = null;
+  return null;
+};
+
 // ---- camera ---------------------------------------------------------------------------------------------------------------
 export const Cam = ({p, l, fov = 35, roll = 0}: {p: V3; l: V3; fov?: number; roll?: number}) => {
   const {camera} = useThree();

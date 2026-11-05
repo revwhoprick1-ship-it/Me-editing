@@ -31,3 +31,10 @@ reference channels do) first. The first video is `src/inside/GumShort.tsx` — c
 - Eyes: iris/pupil must sit ON the eyeball (spherical caps), or they render as rings.
 - Capsules are Y-aligned: rotate brows by π/2.
 - Tunnel villi are static instances at 0.93 × radius; keep that tube's squeeze mild.
+- **Never `<primitive attach="background">` / `<fog attach>` in shots that swap**: on a swap the old shot's detach runs
+  after the new attach and leaves a BLACK sky (stills don't show it — they render each frame fresh). Use `<Env bg fog/>`
+  from `kit/three.tsx`, and test a transition with `npx remotion render … --frames=a-b`.
+- Keep point lights outside glossy meshes (HDR blowout → bloom NaN → black frames).
+- Wings: `kit/world.tsx` `Wings` (arched leading edge, 30 feathers + coverts); a straight edge with hanging feathers reads as a fence.
+- Vertical framing: anything wide (wingspans, planes) needs a 3/4 or top view, or it crops to a bar.
+- Shared overlays (captions, chips, soundtrack) live in `kit/overlay.tsx`; #002 `FlyShort.tsx` is the cleaner template.

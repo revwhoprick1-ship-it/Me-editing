@@ -35,3 +35,4 @@
 - This NBA GOAT pick got LeBron pregnant (v28 Jorho + AI parody)
 - He said this card is worth $20,000… (v29 clipper style redemption)
 - What happens if you swallow chewing gum? (Inside the Impossible #001)
+- What if every human could fly? (Inside the Impossible #002)
