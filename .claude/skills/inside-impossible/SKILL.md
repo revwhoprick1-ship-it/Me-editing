@@ -38,3 +38,16 @@ reference channels do) first. The first video is `src/inside/GumShort.tsx` — c
 - Wings: `kit/world.tsx` `Wings` (arched leading edge, 30 feathers + coverts); a straight edge with hanging feathers reads as a fence.
 - Vertical framing: anything wide (wingspans, planes) needs a 3/4 or top view, or it crops to a bar.
 - Shared overlays (captions, chips, soundtrack) live in `kit/overlay.tsx`; #002 `FlyShort.tsx` is the cleaner template.
+
+## Rigged models (#003 dogs — `src/dogs/`)
+- Only CC-BY/CC0 models with a clear licence (Objaverse mirror of Sketchfab, `scripts/fetch_dog_assets.py`); credit every
+  one in `CREDITS.md` and the description. Models stay gitignored (`public/dogs/`).
+- GLTFLoader strips `.` `:` `/` `[]` from node names (`UpperArm.L` → `UpperArmL`): write bone regexes with `\.?`.
+- `Actor` sets its transforms imperatively so bone world matrices are valid during render (props, leashes, cameras read
+  them). Keep Actors directly under the scene. JSX props computed in a parent run BEFORE the child poses: pass the
+  vector object (`CamAt h={hv}`) or wrap in `<Defer f={() => …}/>`.
+- Aim close-ups with `CamAt` off the head bone, not guessed heights. Check a new rig with `JawTest`/`PoseTest` first.
+- No walk cycles in most dog models → `gait()` (procedural trot). Humans: use in-place loops (check hip translation
+  range with a GLB dump; `walkers` has root motion).
+- Sets: Poly Haven panorama + `Stage` (GroundedSkybox + IBL + sun + shadow catcher). Bright rooms need `bright` < 1.
+- Stills: `bash .work/sheet.sh name '{"T":[ms,…]}'` renders the `DogsStills` sheet in one bundle (Freeze doesn't work).

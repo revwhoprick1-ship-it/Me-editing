@@ -1,0 +1,20 @@
+[
+  {"id": "first", "who": "goldie", "voice": "am_michael", "speed": 0.98, "gap": 250, "text": "I'm tired of eating dog food."},
+  {"id": "owner", "who": "owner", "voice": "af_bella", "speed": 1.0, "gap": 450, "text": "Did you... just talk?"},
+  {"id": "n_what", "who": "narr", "voice": "af_heart", "speed": 1.08, "gap": 250, "text": "What if dogs could suddenly talk? Real dogs already respond to about eighty-nine words."},
+  {"id": "n_now", "who": "narr", "voice": "af_heart", "speed": 1.08, "gap": 200, "text": "Now imagine every dog on Earth, talking at once."},
+  {"id": "shoes", "who": "shiba", "voice": "am_puck", "speed": 1.05, "gap": 200, "text": "Nice shoes. Can I chew them?"},
+  {"id": "mail", "who": "lab", "voice": "bm_george", "speed": 1.05, "gap": 300, "text": "We need to talk about the mailman."},
+  {"id": "n_school", "who": "narr", "voice": "af_heart", "speed": 1.08, "gap": 150, "text": "Soon, they go to school."},
+  {"id": "homework", "who": "pup", "voice": "af_sky", "speed": 1.08, "gap": 200, "text": "I ate my homework. On purpose."},
+  {"id": "n_jobs", "who": "narr", "voice": "af_heart", "speed": 1.08, "gap": 120, "text": "They get jobs."},
+  {"id": "report", "who": "lab", "voice": "bm_george", "speed": 1.05, "gap": 250, "text": "Send me the quarterly bark report."},
+  {"id": "n_parl", "who": "narr", "voice": "af_heart", "speed": 1.08, "gap": 150, "text": "Then, dogs build their own parliament."},
+  {"id": "order", "who": "lab", "voice": "bm_george", "speed": 1.02, "gap": 450, "text": "Order! The Belly Rub Act is now law."},
+  {"id": "n_nego", "who": "narr", "voice": "af_heart", "speed": 1.08, "gap": 150, "text": "Humans try to negotiate."},
+  {"id": "rights", "who": "biz", "voice": "am_adam", "speed": 1.0, "gap": 200, "text": "Fine. Equal rights."},
+  {"id": "couch", "who": "shiba", "voice": "am_puck", "speed": 1.0, "gap": 350, "text": "And the couch."},
+  {"id": "n_pres", "who": "narr", "voice": "af_heart", "speed": 1.08, "gap": 200, "text": "Then a golden retriever becomes president."},
+  {"id": "decree", "who": "goldie", "voice": "am_michael", "speed": 0.95, "gap": 500, "text": "Effective immediately, humans must now take us for walks."},
+  {"id": "n_end", "who": "narr", "voice": "af_heart", "speed": 1.08, "gap": 0, "text": "Wait. Who's walking who? Would you vote for him?"}
+]

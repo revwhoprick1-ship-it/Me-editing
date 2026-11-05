@@ -1,7 +1,7 @@
 // Asset layer for Inside the Impossible #003 (dogs): loads the CC-BY rigged models (public/dogs/*.glb, see CREDITS.md),
 // clones them per instance (SkeletonUtils), plays a named clip at an exact time (deterministic: mixer.setTime),
 // normalises height, and lets a shot override bones (jaw for lip sync, head look) and hang props on bones.
-import {createPortal, useThree, type ThreeElements} from '@react-three/fiber';
+import {createPortal, useThree} from '@react-three/fiber';
 import React, {useEffect, useMemo, useState} from 'react';
 import {continueRender, delayRender, staticFile} from 'remotion';
 import * as THREE from 'three';
@@ -40,10 +40,12 @@ export const boundsOf = (o: THREE.Object3D, only?: RegExp) => {
   return box;
 };
 const heightOf = (o: THREE.Object3D, only?: RegExp) => { const box = boundsOf(o, only); return {h: box.max.y - box.min.y || 1, minY: box.min.y, box}; };
+const _jawAx = new THREE.Vector3();
 export type BoneFn = (bones: Record<string, THREE.Bone>, root: THREE.Object3D) => void;
 /** one animated instance. clip: name or index; t: seconds into the clip; h: target height (world units) */
-export const Actor = ({g, clip = 0, t, h, tint, bones: boneFn, children, mouth, hide, measure, ...rest}: {g: GLTF; clip?: string | number; t: number; h: number; tint?: (mat: THREE.MeshStandardMaterial, name: string) => void; hide?: RegExp; measure?: RegExp;
-  bones?: BoneFn; children?: (bones: Record<string, THREE.Bone>) => React.ReactNode; mouth?: number} & ThreeElements['group']) => {
+export const Actor = ({g, clip = 0, clip2, t, h, tint, bones: boneFn, children, mouth, jaw: jawCfg, hide, measure, position = [0, 0, 0], rotation = [0, 0, 0]}: {g: GLTF; clip?: string | number; clip2?: string; t: number; h: number;
+  tint?: (mat: THREE.MeshStandardMaterial, name: string) => void; hide?: RegExp; measure?: RegExp; jaw?: {axis?: [number, number, number]; amp?: number; bone?: RegExp};
+  bones?: BoneFn; children?: (bones: Record<string, THREE.Bone>, root: THREE.Object3D) => React.ReactNode; mouth?: number; position?: [number, number, number]; rotation?: [number, number, number]}) => {
   const inst = useMemo(() => {
     const obj = SkeletonUtils.clone(g.scene);
     const bones: Record<string, THREE.Bone> = {};
@@ -65,30 +67,49 @@ export const Actor = ({g, clip = 0, t, h, tint, bones: boneFn, children, mouth, 
     const a0 = g.animations[0]; if (a0) { const ac = mixer.clipAction(a0); ac.play(); mixer.setTime(0); }
     const {h: h0, minY} = heightOf(obj, measure);
     mixer.stopAllAction();
-    const jaw = Object.keys(bones).find((n) => /^jaw/i.test(n)) ?? Object.keys(bones).find((n) => /jaw/i.test(n));
-    return {obj, bones, mixer, restQ, h0, minY, jaw};
+    const jaw = (jawCfg?.bone && Object.keys(bones).find((n) => jawCfg.bone!.test(n))) || (Object.keys(bones).find((n) => /^jaw/i.test(n)) ?? Object.keys(bones).find((n) => /jaw/i.test(n)));
+    const holder = new THREE.Group(), scaler = new THREE.Group(); holder.add(scaler); scaler.add(obj);
+    return {obj, bones, mixer, restQ, h0, minY, jaw, holder, scaler};
   }, [g]); // eslint-disable-line react-hooks/exhaustive-deps
   const clipObj = typeof clip === 'number' ? g.animations[clip] : g.animations.find((a) => a.name === clip) ?? g.animations[0];
-  inst.mixer.stopAllAction();
-  if (clipObj) { const ac = inst.mixer.clipAction(clipObj); ac.reset(); ac.play(); inst.mixer.setTime(((t % clipObj.duration) + clipObj.duration) % clipObj.duration); }
-  // lip sync: open the jaw on top of the clip pose
-  if (mouth && inst.jaw) inst.bones[inst.jaw].rotateX(mouth * 0.45);
-  boneFn?.(inst.bones, inst.obj);
+  // transforms are set imperatively (not via JSX props) so bone world matrices are valid during this render: props,
+  // leashes and gait read them before R3F commits. Keep an Actor directly under the scene (no transformed parent group).
   const k = h / inst.h0;
-  return <group {...rest}>
-    <group scale={k} position={[0, -inst.minY * k, 0]}><primitive object={inst.obj} /></group>
-    {children?.(inst.bones)}
-  </group>;
+  inst.holder.position.set(...position); inst.holder.rotation.set(...rotation);
+  inst.scaler.scale.setScalar(k); inst.scaler.position.set(0, -inst.minY * k, 0);
+  inst.mixer.stopAllAction();
+  if (clipObj) {
+    const ac = inst.mixer.clipAction(clipObj); ac.reset(); ac.play();
+    // optional second clip layered on top (e.g. a talking cycle that only keys face bones), same time
+    const c2 = clip2 ? g.animations.find((a) => a.name === clip2) : undefined; if (c2) { const a2 = inst.mixer.clipAction(c2); a2.reset(); a2.play(); }
+    inst.mixer.setTime(((t % clipObj.duration) + clipObj.duration) % clipObj.duration);
+  }
+  inst.holder.updateMatrixWorld(true);
+  // lip sync: open the jaw on top of the clip pose
+  if (mouth && inst.jaw) inst.bones[inst.jaw].rotateOnAxis(_jawAx.set(...(jawCfg?.axis ?? [1, 0, 0])).normalize(), mouth * (jawCfg?.amp ?? 0.45));
+  boneFn?.(inst.bones, inst.obj);
+  inst.holder.updateMatrixWorld(true);
+  return <><primitive object={inst.holder} />{children?.(inst.bones, inst.holder)}</>;
 };
-/** keep a prop glued to a bone (world-space copy each frame) */
-export const OnBone = ({bone, children, offset = [0, 0, 0], rot = [0, 0, 0], scale = 1}: {bone?: THREE.Bone; children: React.ReactNode; offset?: [number, number, number]; rot?: [number, number, number]; scale?: number}) => {
+/** keep a prop at a bone (world-space copy each frame, portalled to the scene root). follow='pos': only the bone position is
+ *  used and off/rot are in the actor's frame (x right, y up, z forward) with world-metre units — easy to tune from stills.
+ *  follow='full': the prop also takes the bone's rotation (props that must track a moving head). */
+const _bp = new THREE.Vector3(), _bq = new THREE.Quaternion(), _bs = new THREE.Vector3(), _hq = new THREE.Quaternion(), _o = new THREE.Vector3();
+export const OnBone = ({bone, to, mix = 0.5, root, children, off = [0, 0, 0], rot = [0, 0, 0], scale = 1, follow = 'pos'}: {bone?: THREE.Bone; to?: THREE.Bone; mix?: number; root: THREE.Object3D; children: React.ReactNode;
+  off?: [number, number, number]; rot?: [number, number, number]; scale?: number; follow?: 'pos' | 'full'}) => {
   const {scene} = useThree();
   const grp = useMemo(() => new THREE.Group(), []);
-  if (bone) { bone.updateWorldMatrix(true, false); bone.matrixWorld.decompose(grp.position, grp.quaternion, grp.scale); }
-  const s = scale / Math.max(1e-6, grp.scale.x);
-  // rendered in world space (portal to the scene root), so the actor's own transform is not applied twice
-  return <>{createPortal(<primitive object={grp}><group position={offset} rotation={rot} scale={s}>{children}</group></primitive>, scene)}</>;
+  if (bone) {
+    bone.updateWorldMatrix(true, false); bone.matrixWorld.decompose(_bp, _bq, _bs); root.getWorldQuaternion(_hq);
+    if (to) { to.updateWorldMatrix(true, false); _bp.lerp(_o.setFromMatrixPosition(to.matrixWorld), mix); }
+    grp.position.copy(_bp).add(_o.set(...off).applyQuaternion(follow === 'full' ? _bq : _hq));
+    grp.quaternion.copy(follow === 'full' ? _bq : _hq).multiply(new THREE.Quaternion().setFromEuler(new THREE.Euler(...rot)));
+    grp.scale.setScalar(scale);
+  }
+  return <>{createPortal(<primitive object={grp}>{children}</primitive>, scene)}</>;
 };
+/** world position of a bone (for leashes, look-ats, focus points) */
+export const boneWorld = (bone?: THREE.Bone, out = new THREE.Vector3()) => { if (bone) { bone.updateWorldMatrix(true, false); out.setFromMatrixPosition(bone.matrixWorld); } return out; };
 
 // ---- procedural gait (none of the open-licence dogs ships a walk cycle) -------------------------------------------------
 // Rotations are applied in the CHARACTER frame: the swing axis is the dog's own sideways axis (from pelvis → head), so it
