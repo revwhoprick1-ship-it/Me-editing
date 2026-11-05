@@ -12,6 +12,7 @@ import {RigTest} from './zack/RigTest';
 import {GoatExplainer, GOATX_MS} from './zack/GoatExplainer';
 import {NewsGoat, NEWSGOAT_MS} from './news/NewsGoat';
 import {Redeem29, RED29_MS} from './clipper/Redeem29';
+import {GumShort, GUM_MS} from './inside/GumShort';
 import {GLASS_MEMORY_MS, GlassMemory} from './glass/memory';
 import {GOAT28_MS, JorhoGoat28, GOAT26_MS, JorhoGoat26, RED25_MS, JorhoRedeem25, GOAT24_MS, JorhoGoat24, GOAT22_MS, JorhoGoat22, GOAT21A_MS, JorhoGoat21A, GOAT21B_MS, JorhoGoat21B, GOAT19_MS, JorhoGoat19, JorhoGoatInk, JorhoGoatJourney, JorhoGoatPixel, JorhoGoatCollage, JorhoGoatNeon, JorhoGoatPremium, JorhoGoat14, JorhoGoatArcade, JorhoGoatChalk, JorhoGoatChat, JorhoGoatComic, JorhoGoatWhiteboard, JorhoGoat12, JorhoTT11, TT11_MS, GOLF10_MS, JorhoGolf10, JorhoPlaybook10, PB10_MS, JorhoLefty9, JorhoLefty8, LEFTY8_MS, CELLY7_MS, GIFT7_MS, JorhoCelly7, JorhoGift7, JorhoNeck7, NECK7_MS, JOSH3D_MS, JorhoGoat3D, JorhoJosh3D, JorhoRedeem3D, REDEEM3D_MS, GOAT_MS, JorhoGoat, JorhoPen, JorhoPen3D, PEN_MS, JorhoLefty, JorhoPlaybook, LEFTY_J_MS, PLAYBOOK_J_MS, COEN_MS, GOLF_MS, JorhoCoen, JorhoGolf, JorhoPeyton, JorhoRedeem, PEYTON_MS, REDEEM_MS} from './jorho/clips';
 
@@ -69,6 +70,7 @@ export const RemotionRoot = () => (
   <Composition id="GlassMemory" component={GlassMemory} fps={30} width={1080} height={1920} durationInFrames={Math.round((GLASS_MEMORY_MS / 1000) * 30)} />
   <Composition id="Test3D" component={Test3D} fps={30} width={1080} height={1920} durationInFrames={60} />
   <Composition id="RigTest" component={RigTest} fps={30} width={1080} height={1920} durationInFrames={30} />
+  <Composition id="GumShort" component={GumShort} fps={30} width={1080} height={1920} durationInFrames={Math.round((GUM_MS / 1000) * 30)} />
   <Composition id="Redeem29" component={Redeem29} fps={30} width={1080} height={1920} durationInFrames={Math.round((RED29_MS / 1000) * 30)} />
   <Composition id="NewsGoat" component={NewsGoat} fps={30} width={1080} height={1920} durationInFrames={Math.round((NEWSGOAT_MS / 1000) * 30)} />
   <Composition id="GoatExplainer" component={GoatExplainer} fps={30} width={1080} height={1920} durationInFrames={Math.round((GOATX_MS / 1000) * 30)} />

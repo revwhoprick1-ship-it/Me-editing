@@ -1,0 +1,524 @@
+[
+{
+"text": "You",
+"startMs": 0,
+"endMs": 80,
+"p": 0.8
+},
+{
+"text": "just",
+"startMs": 80,
+"endMs": 240,
+"p": 0.99
+},
+{
+"text": "swallowed",
+"startMs": 240,
+"endMs": 620,
+"p": 1.0
+},
+{
+"text": "your",
+"startMs": 620,
+"endMs": 820,
+"p": 1.0
+},
+{
+"text": "gum.",
+"startMs": 820,
+"endMs": 1020,
+"p": 1.0
+},
+{
+"text": "People",
+"startMs": 1480,
+"endMs": 1700,
+"p": 1.0
+},
+{
+"text": "say",
+"startMs": 1700,
+"endMs": 1940,
+"p": 1.0
+},
+{
+"text": "it",
+"startMs": 1940,
+"endMs": 2080,
+"p": 1.0
+},
+{
+"text": "stays",
+"startMs": 2080,
+"endMs": 2280,
+"p": 0.99
+},
+{
+"text": "inside",
+"startMs": 2280,
+"endMs": 2660,
+"p": 1.0
+},
+{
+"text": "you",
+"startMs": 2660,
+"endMs": 2840,
+"p": 0.99
+},
+{
+"text": "for",
+"startMs": 2840,
+"endMs": 2980,
+"p": 1.0
+},
+{
+"text": "seven",
+"startMs": 2980,
+"endMs": 3220,
+"p": 0.89
+},
+{
+"text": "years.",
+"startMs": 3220,
+"endMs": 3500,
+"p": 1.0
+},
+{
+"text": "Let's",
+"startMs": 3880,
+"endMs": 4080,
+"p": 0.99
+},
+{
+"text": "follow",
+"startMs": 4080,
+"endMs": 4280,
+"p": 1.0
+},
+{
+"text": "it.",
+"startMs": 4280,
+"endMs": 4540,
+"p": 1.0
+},
+{
+"text": "Your",
+"startMs": 4840,
+"endMs": 4960,
+"p": 0.99
+},
+{
+"text": "esophagus",
+"startMs": 4960,
+"endMs": 5440,
+"p": 0.99
+},
+{
+"text": "squeezes",
+"startMs": 5440,
+"endMs": 5880,
+"p": 1.0
+},
+{
+"text": "it",
+"startMs": 5880,
+"endMs": 6020,
+"p": 1.0
+},
+{
+"text": "down",
+"startMs": 6020,
+"endMs": 6180,
+"p": 1.0
+},
+{
+"text": "in",
+"startMs": 6180,
+"endMs": 6360,
+"p": 1.0
+},
+{
+"text": "seconds.",
+"startMs": 6360,
+"endMs": 6680,
+"p": 1.0
+},
+{
+"text": "In",
+"startMs": 7200,
+"endMs": 7300,
+"p": 1.0
+},
+{
+"text": "your",
+"startMs": 7300,
+"endMs": 7400,
+"p": 1.0
+},
+{
+"text": "stomach,",
+"startMs": 7400,
+"endMs": 7740,
+"p": 1.0
+},
+{
+"text": "even",
+"startMs": 7940,
+"endMs": 8160,
+"p": 1.0
+},
+{
+"text": "acid",
+"startMs": 8160,
+"endMs": 8560,
+"p": 1.0
+},
+{
+"text": "can't",
+"startMs": 8560,
+"endMs": 8980,
+"p": 1.0
+},
+{
+"text": "break",
+"startMs": 8980,
+"endMs": 9100,
+"p": 0.99
+},
+{
+"text": "down",
+"startMs": 9100,
+"endMs": 9340,
+"p": 1.0
+},
+{
+"text": "its",
+"startMs": 9340,
+"endMs": 9480,
+"p": 0.99
+},
+{
+"text": "rubbery",
+"startMs": 9480,
+"endMs": 9820,
+"p": 1.0
+},
+{
+"text": "base.",
+"startMs": 9820,
+"endMs": 10100,
+"p": 1.0
+},
+{
+"text": "In",
+"startMs": 10740,
+"endMs": 10840,
+"p": 1.0
+},
+{
+"text": "the",
+"startMs": 10840,
+"endMs": 10960,
+"p": 1.0
+},
+{
+"text": "small",
+"startMs": 10960,
+"endMs": 11240,
+"p": 1.0
+},
+{
+"text": "intestine,",
+"startMs": 11240,
+"endMs": 11700,
+"p": 1.0
+},
+{
+"text": "your",
+"startMs": 11900,
+"endMs": 12000,
+"p": 1.0
+},
+{
+"text": "body",
+"startMs": 12000,
+"endMs": 12220,
+"p": 1.0
+},
+{
+"text": "soaks",
+"startMs": 12220,
+"endMs": 12580,
+"p": 0.99
+},
+{
+"text": "up",
+"startMs": 12580,
+"endMs": 12700,
+"p": 1.0
+},
+{
+"text": "the",
+"startMs": 12700,
+"endMs": 12820,
+"p": 1.0
+},
+{
+"text": "sugar",
+"startMs": 12820,
+"endMs": 13040,
+"p": 1.0
+},
+{
+"text": "and",
+"startMs": 13040,
+"endMs": 13260,
+"p": 1.0
+},
+{
+"text": "flavor,",
+"startMs": 13260,
+"endMs": 13580,
+"p": 0.98
+},
+{
+"text": "but",
+"startMs": 13940,
+"endMs": 14080,
+"p": 1.0
+},
+{
+"text": "the",
+"startMs": 14080,
+"endMs": 14220,
+"p": 1.0
+},
+{
+"text": "gum",
+"startMs": 14220,
+"endMs": 14440,
+"p": 1.0
+},
+{
+"text": "keeps",
+"startMs": 14440,
+"endMs": 14660,
+"p": 0.99
+},
+{
+"text": "sliding",
+"startMs": 14660,
+"endMs": 15040,
+"p": 1.0
+},
+{
+"text": "along",
+"startMs": 15040,
+"endMs": 15460,
+"p": 1.0
+},
+{
+"text": "into",
+"startMs": 15460,
+"endMs": 15840,
+"p": 0.94
+},
+{
+"text": "the",
+"startMs": 15840,
+"endMs": 16000,
+"p": 1.0
+},
+{
+"text": "large",
+"startMs": 16000,
+"endMs": 16300,
+"p": 1.0
+},
+{
+"text": "intestine",
+"startMs": 16300,
+"endMs": 16840,
+"p": 1.0
+},
+{
+"text": "where",
+"startMs": 16840,
+"endMs": 17160,
+"p": 0.57
+},
+{
+"text": "it",
+"startMs": 17160,
+"endMs": 17260,
+"p": 1.0
+},
+{
+"text": "joins",
+"startMs": 17260,
+"endMs": 17540,
+"p": 1.0
+},
+{
+"text": "the",
+"startMs": 17540,
+"endMs": 17740,
+"p": 1.0
+},
+{
+"text": "rest",
+"startMs": 17740,
+"endMs": 17880,
+"p": 1.0
+},
+{
+"text": "of",
+"startMs": 17880,
+"endMs": 18060,
+"p": 1.0
+},
+{
+"text": "your",
+"startMs": 18060,
+"endMs": 18140,
+"p": 1.0
+},
+{
+"text": "waste.",
+"startMs": 18140,
+"endMs": 18460,
+"p": 0.61
+},
+{
+"text": "Within",
+"startMs": 19120,
+"endMs": 19220,
+"p": 1.0
+},
+{
+"text": "a",
+"startMs": 19220,
+"endMs": 19360,
+"p": 1.0
+},
+{
+"text": "few",
+"startMs": 19360,
+"endMs": 19500,
+"p": 1.0
+},
+{
+"text": "days,",
+"startMs": 19500,
+"endMs": 19760,
+"p": 1.0
+},
+{
+"text": "it",
+"startMs": 19760,
+"endMs": 20020,
+"p": 1.0
+},
+{
+"text": "simply",
+"startMs": 20020,
+"endMs": 20240,
+"p": 0.99
+},
+{
+"text": "comes",
+"startMs": 20240,
+"endMs": 20520,
+"p": 1.0
+},
+{
+"text": "out.",
+"startMs": 20520,
+"endMs": 20800,
+"p": 1.0
+},
+{
+"text": "Not",
+"startMs": 21240,
+"endMs": 21440,
+"p": 1.0
+},
+{
+"text": "seven",
+"startMs": 21440,
+"endMs": 21740,
+"p": 0.99
+},
+{
+"text": "years.",
+"startMs": 21740,
+"endMs": 22020,
+"p": 1.0
+},
+{
+"text": "Just",
+"startMs": 22460,
+"endMs": 22640,
+"p": 1.0
+},
+{
+"text": "don't",
+"startMs": 22640,
+"endMs": 22840,
+"p": 1.0
+},
+{
+"text": "swallow",
+"startMs": 22840,
+"endMs": 23260,
+"p": 1.0
+},
+{
+"text": "lots",
+"startMs": 23260,
+"endMs": 23560,
+"p": 0.98
+},
+{
+"text": "at",
+"startMs": 23560,
+"endMs": 23740,
+"p": 1.0
+},
+{
+"text": "once.",
+"startMs": 23740,
+"endMs": 24080,
+"p": 1.0
+},
+{
+"text": "That",
+"startMs": 24220,
+"endMs": 24380,
+"p": 1.0
+},
+{
+"text": "can",
+"startMs": 24380,
+"endMs": 24540,
+"p": 1.0
+},
+{
+"text": "cause",
+"startMs": 24540,
+"endMs": 24820,
+"p": 1.0
+},
+{
+"text": "a",
+"startMs": 24820,
+"endMs": 24960,
+"p": 1.0
+},
+{
+"text": "blockage.",
+"startMs": 24960,
+"endMs": 25420,
+"p": 1.0
+}
+]

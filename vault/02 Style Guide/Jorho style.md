@@ -478,3 +478,10 @@ All five use the same beats as v12 and the same real-footage moments (the two-sh
 - Improved: stakes title "HE SAID THIS CARD IS / WORTH $20,000… 💀"; repeats + "if you know" cut; bigger captions with money words yellow; reaction insert on "$500"; plain-words labels (REDEEM = MAIL IT IN…, PLAYER SIGNS LATE = CARD COMES LATE); "…AND THEN THE TWIST 👀" chip at 5 s; twist ending ("most expensive sale ever") that loops instead of a black frame; quiet Monkeys Spinning Monkeys bed; small SFX (cha-ching, trombone, dun-dun).
 - Viewer passes: pass 1 swipe at 6–10.8 s (one static host shot, jargon, filler) + 12–15 s (static) → pass 2 cuts "if you know", splits shots on the dialogue (two-shot on "because", Trevor on "do you sign on time?", Trevor's reaction on "dislike") → pass 3 adds the twist chip for the dip after the $500 payoff at ~5 s.
 - `makeClip(plan)` makes this layout reusable for other clips.
+
+## NEW CHANNEL: "Inside the Impossible" (2026-11-05) — 3D science explainers (`src/inside/`, docs in `inside-impossible/`)
+- Separate from Jorho. First video: #001 "What happens if you swallow chewing gum?" (`GumShort`, 27 s).
+- Pipeline: fact sheet → narration (Kokoro af_heart, local; ElevenLabs was "busy") → word timings → shot table keyed to words → three.js scenes (procedural character "Max", tube organs with peristalsis, villi, stomach + acid, calendar) → DOF/bloom/ACES/vignette (postprocessing) → synthesized SFX → render → `short_qa.py` frame QA.
+- Skill: `.claude/skills/inside-impossible/SKILL.md`. Vendored MIT code: `inside-impossible/vendor/claude-animated-shorts`.
+- Licences: everything procedural; Investigations (Kevin MacLeod) needs CC BY credit in the description.
+- QA lesson: a point light inside glossy geometry → HDR blowout → bloom NaN → black frames. Keep lights outside meshes.

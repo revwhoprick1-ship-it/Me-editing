@@ -1,1 +1,1 @@
-{"compilerOptions":{"jsx":"react-jsx","module":"esnext","moduleResolution":"bundler","strict":true,"skipLibCheck":true,"target":"es2023"}}
+{"compilerOptions": {"jsx": "react-jsx", "module": "esnext", "moduleResolution": "bundler", "strict": true, "skipLibCheck": true, "target": "es2023"}, "exclude": ["node_modules", "inside-impossible/vendor", "hf", "pieces"]}
