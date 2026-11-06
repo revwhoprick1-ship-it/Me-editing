@@ -81,10 +81,10 @@ export const Env = ({bg, fog}: {bg: THREE.Texture | THREE.Color | string; fog?: 
 };
 
 // ---- camera ---------------------------------------------------------------------------------------------------------------
-export const Cam = ({p, l, fov = 35, roll = 0}: {p: V3; l: V3; fov?: number; roll?: number}) => {
+export const Cam = ({p, l, fov = 35, roll = 0, near = 0.01, far = 200}: {p: V3; l: V3; fov?: number; roll?: number; near?: number; far?: number}) => {
   const {camera} = useThree();
   const c = camera as THREE.PerspectiveCamera;
-  c.position.set(...p); c.fov = fov; c.near = 0.01; c.far = 200; c.up.set(Math.sin(roll), Math.cos(roll), 0); c.lookAt(...l); c.updateProjectionMatrix();
+  c.position.set(...p); c.fov = fov; c.near = near; c.far = far; c.up.set(Math.sin(roll), Math.cos(roll), 0); c.lookAt(...l); c.updateProjectionMatrix();
   return null;
 };
 

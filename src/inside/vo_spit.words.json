@@ -1,0 +1,530 @@
+[
+{
+"text": "How",
+"startMs": 0,
+"endMs": 120,
+"p": 0.89
+},
+{
+"text": "many",
+"startMs": 120,
+"endMs": 300,
+"p": 1.0
+},
+{
+"text": "times",
+"startMs": 300,
+"endMs": 620,
+"p": 1.0
+},
+{
+"text": "would",
+"startMs": 620,
+"endMs": 800,
+"p": 1.0
+},
+{
+"text": "you",
+"startMs": 800,
+"endMs": 900,
+"p": 1.0
+},
+{
+"text": "have",
+"startMs": 900,
+"endMs": 1040,
+"p": 1.0
+},
+{
+"text": "to",
+"startMs": 1040,
+"endMs": 1180,
+"p": 1.0
+},
+{
+"text": "spit",
+"startMs": 1180,
+"endMs": 1320,
+"p": 0.99
+},
+{
+"text": "to",
+"startMs": 1320,
+"endMs": 1480,
+"p": 1.0
+},
+{
+"text": "fill",
+"startMs": 1480,
+"endMs": 1640,
+"p": 1.0
+},
+{
+"text": "the",
+"startMs": 1640,
+"endMs": 1800,
+"p": 1.0
+},
+{
+"text": "entire",
+"startMs": 1800,
+"endMs": 2200,
+"p": 1.0
+},
+{
+"text": "ocean?",
+"startMs": 2200,
+"endMs": 2600,
+"p": 1.0
+},
+{
+"text": "The",
+"startMs": 3160,
+"endMs": 3280,
+"p": 0.99
+},
+{
+"text": "ocean",
+"startMs": 3280,
+"endMs": 3580,
+"p": 1.0
+},
+{
+"text": "holds",
+"startMs": 3580,
+"endMs": 3940,
+"p": 1.0
+},
+{
+"text": "about",
+"startMs": 3940,
+"endMs": 4140,
+"p": 1.0
+},
+{
+"text": "1.3",
+"startMs": 4140,
+"endMs": 5060,
+"p": 0.97
+},
+{
+"text": "billion",
+"startMs": 5060,
+"endMs": 5420,
+"p": 0.99
+},
+{
+"text": "cubic",
+"startMs": 5420,
+"endMs": 5820,
+"p": 1.0
+},
+{
+"text": "kilometers",
+"startMs": 5820,
+"endMs": 6240,
+"p": 0.92
+},
+{
+"text": "of",
+"startMs": 6240,
+"endMs": 6520,
+"p": 1.0
+},
+{
+"text": "water.",
+"startMs": 6520,
+"endMs": 6760,
+"p": 1.0
+},
+{
+"text": "Say",
+"startMs": 7240,
+"endMs": 7420,
+"p": 0.99
+},
+{
+"text": "one",
+"startMs": 7420,
+"endMs": 7680,
+"p": 0.73
+},
+{
+"text": "big",
+"startMs": 7680,
+"endMs": 7880,
+"p": 0.99
+},
+{
+"text": "spit",
+"startMs": 7880,
+"endMs": 8120,
+"p": 1.0
+},
+{
+"text": "is",
+"startMs": 8120,
+"endMs": 8300,
+"p": 1.0
+},
+{
+"text": "a",
+"startMs": 8300,
+"endMs": 8440,
+"p": 1.0
+},
+{
+"text": "teaspoon.",
+"startMs": 8440,
+"endMs": 8760,
+"p": 1.0
+},
+{
+"text": "That's",
+"startMs": 9220,
+"endMs": 9520,
+"p": 0.99
+},
+{
+"text": "267",
+"startMs": 9520,
+"endMs": 10380,
+"p": 0.99
+},
+{
+"text": "sextillion",
+"startMs": 10380,
+"endMs": 11020,
+"p": 0.92
+},
+{
+"text": "spits.",
+"startMs": 11020,
+"endMs": 11580,
+"p": 0.99
+},
+{
+"text": "At",
+"startMs": 11940,
+"endMs": 12120,
+"p": 0.95
+},
+{
+"text": "one",
+"startMs": 12120,
+"endMs": 12340,
+"p": 0.97
+},
+{
+"text": "spit",
+"startMs": 12340,
+"endMs": 12560,
+"p": 0.99
+},
+{
+"text": "per",
+"startMs": 12560,
+"endMs": 12760,
+"p": 0.96
+},
+{
+"text": "second",
+"startMs": 12760,
+"endMs": 13100,
+"p": 1.0
+},
+{
+"text": "nonstop,",
+"startMs": 13100,
+"endMs": 13580,
+"p": 0.69
+},
+{
+"text": "that",
+"startMs": 13780,
+"endMs": 13880,
+"p": 1.0
+},
+{
+"text": "takes",
+"startMs": 13880,
+"endMs": 14100,
+"p": 1.0
+},
+{
+"text": "eight",
+"startMs": 14100,
+"endMs": 14400,
+"p": 0.71
+},
+{
+"text": "quadrillion",
+"startMs": 14400,
+"endMs": 14940,
+"p": 0.99
+},
+{
+"text": "years.",
+"startMs": 14940,
+"endMs": 15360,
+"p": 1.0
+},
+{
+"text": "600,000",
+"startMs": 15980,
+"endMs": 16660,
+"p": 0.87
+},
+{
+"text": "times",
+"startMs": 16660,
+"endMs": 16960,
+"p": 1.0
+},
+{
+"text": "the",
+"startMs": 16960,
+"endMs": 17140,
+"p": 1.0
+},
+{
+"text": "age",
+"startMs": 17140,
+"endMs": 17340,
+"p": 1.0
+},
+{
+"text": "of",
+"startMs": 17340,
+"endMs": 17520,
+"p": 1.0
+},
+{
+"text": "the",
+"startMs": 17520,
+"endMs": 17620,
+"p": 1.0
+},
+{
+"text": "universe.",
+"startMs": 17620,
+"endMs": 17980,
+"p": 0.97
+},
+{
+"text": "And",
+"startMs": 18460,
+"endMs": 18640,
+"p": 0.99
+},
+{
+"text": "your",
+"startMs": 18640,
+"endMs": 18760,
+"p": 0.99
+},
+{
+"text": "mouth",
+"startMs": 18760,
+"endMs": 19040,
+"p": 1.0
+},
+{
+"text": "only",
+"startMs": 19040,
+"endMs": 19260,
+"p": 1.0
+},
+{
+"text": "makes",
+"startMs": 19260,
+"endMs": 19480,
+"p": 1.0
+},
+{
+"text": "about",
+"startMs": 19480,
+"endMs": 19700,
+"p": 1.0
+},
+{
+"text": "a",
+"startMs": 19700,
+"endMs": 19840,
+"p": 0.99
+},
+{
+"text": "liter",
+"startMs": 19840,
+"endMs": 20000,
+"p": 0.95
+},
+{
+"text": "of",
+"startMs": 20000,
+"endMs": 20200,
+"p": 1.0
+},
+{
+"text": "spit",
+"startMs": 20200,
+"endMs": 20400,
+"p": 1.0
+},
+{
+"text": "a",
+"startMs": 20400,
+"endMs": 20500,
+"p": 1.0
+},
+{
+"text": "day.",
+"startMs": 20500,
+"endMs": 20700,
+"p": 1.0
+},
+{
+"text": "So",
+"startMs": 21100,
+"endMs": 21440,
+"p": 1.0
+},
+{
+"text": "call",
+"startMs": 21440,
+"endMs": 21820,
+"p": 0.46
+},
+{
+"text": "everyone,",
+"startMs": 21820,
+"endMs": 22300,
+"p": 0.99
+},
+{
+"text": "all",
+"startMs": 22800,
+"endMs": 23020,
+"p": 0.99
+},
+{
+"text": "eight",
+"startMs": 23020,
+"endMs": 23220,
+"p": 0.78
+},
+{
+"text": "billion",
+"startMs": 23220,
+"endMs": 23560,
+"p": 1.0
+},
+{
+"text": "of",
+"startMs": 23560,
+"endMs": 23700,
+"p": 1.0
+},
+{
+"text": "us,",
+"startMs": 23700,
+"endMs": 23920,
+"p": 1.0
+},
+{
+"text": "spitting",
+"startMs": 24080,
+"endMs": 24300,
+"p": 0.94
+},
+{
+"text": "all",
+"startMs": 24300,
+"endMs": 24580,
+"p": 1.0
+},
+{
+"text": "day.",
+"startMs": 24580,
+"endMs": 24820,
+"p": 1.0
+},
+{
+"text": "Every",
+"startMs": 25000,
+"endMs": 25200,
+"p": 0.99
+},
+{
+"text": "day",
+"startMs": 25200,
+"endMs": 25460,
+"p": 1.0
+},
+{
+"text": "would",
+"startMs": 25460,
+"endMs": 25720,
+"p": 0.84
+},
+{
+"text": "still",
+"startMs": 25720,
+"endMs": 26000,
+"p": 1.0
+},
+{
+"text": "need",
+"startMs": 26000,
+"endMs": 26240,
+"p": 1.0
+},
+{
+"text": "hundreds",
+"startMs": 26240,
+"endMs": 26580,
+"p": 0.99
+},
+{
+"text": "of",
+"startMs": 26580,
+"endMs": 26840,
+"p": 1.0
+},
+{
+"text": "millions",
+"startMs": 26840,
+"endMs": 27080,
+"p": 1.0
+},
+{
+"text": "of",
+"startMs": 27080,
+"endMs": 27300,
+"p": 1.0
+},
+{
+"text": "years.",
+"startMs": 27300,
+"endMs": 27600,
+"p": 1.0
+},
+{
+"text": "Ready",
+"startMs": 28080,
+"endMs": 28260,
+"p": 1.0
+},
+{
+"text": "to",
+"startMs": 28260,
+"endMs": 28480,
+"p": 1.0
+},
+{
+"text": "start?",
+"startMs": 28480,
+"endMs": 28760,
+"p": 1.0
+}
+]

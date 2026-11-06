@@ -5,8 +5,8 @@ import React, {useMemo} from 'react';
 import * as THREE from 'three';
 import {xrayMat} from './three';
 
-export type Face = {jaw?: number; eyesWide?: number; blink?: number; brow?: number; lookX?: number; lookY?: number; smile?: number; gum?: boolean; gulp?: number; headTilt?: number; xray?: number; frost?: number; sick?: number};
-export type Body = {armL?: number; armR?: number; legSwing?: number; legsBack?: number}; // radians
+export type Face = {jaw?: number; eyesWide?: number; blink?: number; brow?: number; lookX?: number; lookY?: number; smile?: number; gum?: boolean; gulp?: number; headTilt?: number; xray?: number; frost?: number; sick?: number; puff?: number; beard?: number; gray?: number};
+export type Body = {armL?: number; armR?: number; legSwing?: number; legsBack?: number; armLFwd?: number; armRFwd?: number}; // radians
 const SKIN = '#eab48f', HAIR = '#2b1d16', HOODIE = '#ff7a2f';
 
 const headGeo = () => {
@@ -54,6 +54,7 @@ export const Max = ({f, body, children, position = [0, 0, 0], rotation = [0, 0, 
     shoe: new THREE.MeshPhysicalMaterial({color: '#f4f4f4', roughness: 0.4, clearcoat: 0.6}),
   }), []);
   // frost / altitude-sickness tints on the skin
+  m.hairM.color.set(HAIR).lerp(new THREE.Color('#d9d6d0'), f.gray ?? 0);
   m.skin.color.set(SKIN).lerp(new THREE.Color('#bfe3ff'), 0.55 * (f.frost ?? 0)).lerp(new THREE.Color('#b9d99a'), 0.45 * (f.sick ?? 0));
   const jaw = f.jaw ?? 0, wide = f.eyesWide ?? 0, blink = f.blink ?? 0, brow = f.brow ?? 0, smile = f.smile ?? 0, xr = f.xray ?? 0;
   const lid = Math.max(blink, 0.18 - 0.18 * wide); // upper lid cover 0..1
@@ -89,9 +90,15 @@ export const Max = ({f, body, children, position = [0, 0, 0], rotation = [0, 0, 
             <mesh material={m.lip} position={[0, 0.03 + 0.07 * open, 0.02]} scale={[0.17 + 0.04 * smile, 0.024, 0.035]}><sphereGeometry args={[1, 32, 16]} /></mesh>
             <mesh material={m.lip} position={[0, -0.03 - 0.12 * open, 0.02]} scale={[0.16 + 0.04 * smile, 0.03, 0.035]}><sphereGeometry args={[1, 32, 16]} /></mesh>
             {jaw > 0.2 && <mesh material={m.teeth} position={[0, 0.02 + 0.05 * open, 0.02]} scale={[0.14, 0.03, 0.03]}><boxGeometry args={[1, 1, 1]} /></mesh>}
+            {(f.puff ?? 0) > 0 && [1, -1].map((s) => <mesh key={s} material={m.skin} position={[0.36 * s, 0.25, -0.12]} scale={[0.2 * (f.puff ?? 0), 0.17 * (f.puff ?? 0), 0.16 * (f.puff ?? 0)]}><sphereGeometry args={[1, 24, 16]} /></mesh>)}
             {f.gum && <mesh material={m.gum} position={[0.05, -0.02, 0.02]} scale={[0.07, 0.05 + 0.03 * jaw, 0.05]}><sphereGeometry args={[1, 24, 16]} /></mesh>}
           </group>
         </>}
+        {/* beard: grows from the chin down (beard 1 = to the floor) */}
+        {(f.beard ?? 0) > 0.01 && xr < 0.5 && <group position={[0, -0.62, 0.62]} rotation={[0.12, 0, 0]}>
+          {[0, 1, -1, 2, -2].map((k) => { const L = 0.25 + 3.6 * (f.beard ?? 0) * (1 - 0.12 * Math.abs(k)); return <mesh key={k} material={m.hairM} position={[0.12 * k, -L / 2, 0.08 - 0.03 * Math.abs(k)]} rotation={[Math.PI, 0, 0.04 * k]}><coneGeometry args={[0.2 - 0.02 * Math.abs(k), L, 10, 1, true]} /></mesh>; })}
+          <mesh material={m.hairM} position={[0, 0.05, 0]} scale={[0.52, 0.32, 0.3]}><sphereGeometry args={[1, 24, 16]} /></mesh>
+        </group>}
       </group>
       {/* neck + hoodie */}
       <mesh material={xr > 0.5 ? m.xr : m.skin} position={[0, -1.05 - 0.04 * (f.gulp ?? 0), 0]}><cylinderGeometry args={[0.32, 0.36, 0.6, 32]} /></mesh>
@@ -100,7 +107,7 @@ export const Max = ({f, body, children, position = [0, 0, 0], rotation = [0, 0, 
       <mesh material={m.hood} visible={xr < 0.5} position={[0, -1.32, -0.18]} rotation={[Math.PI / 2 + 0.25, 0, 0]}><torusGeometry args={[0.55, 0.2, 20, 48]} /></mesh>
       {body && xr < 0.5 && <>
         {/* arms: pivot at the shoulder, hang down; armL/armR rotate them outward */}
-        {([[1, body.armL ?? 0.15], [-1, body.armR ?? 0.15]] as const).map(([s, a]) => <group key={s} position={[1.3 * s, -1.75, 0]} rotation={[0, 0, a * s]}>
+        {([[1, body.armL ?? 0.15, body.armLFwd ?? 0], [-1, body.armR ?? 0.15, body.armRFwd ?? 0]] as const).map(([s, a, fw]) => <group key={s} position={[1.3 * s, -1.75, 0]} rotation={[-fw, 0, a * s]}>
           <mesh material={m.hood} position={[0, -0.6, 0]}><capsuleGeometry args={[0.3, 0.9, 8, 16]} /></mesh>
           <mesh material={m.skin} position={[0, -1.35, 0.02]}><sphereGeometry args={[0.24, 24, 16]} /></mesh>
         </group>)}

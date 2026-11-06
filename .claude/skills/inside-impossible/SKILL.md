@@ -38,6 +38,10 @@ reference channels do) first. The first video is `src/inside/GumShort.tsx` — c
 - Wings: `kit/world.tsx` `Wings` (arched leading edge, 30 feathers + coverts); a straight edge with hanging feathers reads as a fence.
 - Vertical framing: anything wide (wingspans, planes) needs a 3/4 or top view, or it crops to a bar.
 - Shared overlays (captions, chips, soundtrack) live in `kit/overlay.tsx`; #002 `FlyShort.tsx` is the cleaner template.
+- `Cam` defaults to far = 200: big sets (seabeds, stars, galaxies) need `near`/`far` props or they silently vanish.
+- Looking down +z, world +x is screen LEFT. Do the framing math (half-hfov ≈ 13° at fov 46 in 9:16) before stills.
+- Grey noise is a bump map, never a normal map (renders as camo). Metals need an env map or they go black: use low metalness.
+- #004 `SpitShort.tsx` + `kit/ocean.tsx`: coast/seabed, Earth (wet/dry), galaxy, crowd, spit physics; `SpitStills` sheet.
 
 ## Rigged models (#003 dogs — `src/dogs/`)
 - Only CC-BY/CC0 models with a clear licence (Objaverse mirror of Sketchfab, `scripts/fetch_dog_assets.py`); credit every
