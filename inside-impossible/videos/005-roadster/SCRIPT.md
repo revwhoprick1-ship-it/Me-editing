@@ -28,3 +28,14 @@ voice", "make sure voice is easily heard"). Hook chosen in `HOOK_LAB.md`.
 | 1.5 bn × $200,000 = $300 trillion ≈ 2.5 years of world GDP | ✅ math | IMF WEO Oct 2025: world nominal GDP ≈ $117 trillion (2025) → 300/117 = 2.6 |
 | Promised for 2020, now targeted for 2028 | ✅ hedged "Now?" | Electrek (2020 promise, ≥ 6 slips); Fox (Musk: production should begin in 2028, a target not a guarantee) |
 | Rocket version: 1 seat, 10 thrusters; Performance: 2 seats; 0.81 s demo; > 230 mph; > 300 mi range (chips only) | ✅ claimed | Fox News (Tesla's projected specs) |
+
+## Production log
+- ElevenLabs (planned voice "Marcus") refused: free tier disabled on the account ("unusual activity … upgrade to a paid
+  subscription"). Not purchased (user rule). Local voice chosen by measurement instead (Whisper confidence/WER over the
+  script for 10 Kokoro voices + a blend): `am_michael:0.55+am_fenrir:0.45`, clarity EQ + compression, music ducked to 0.035.
+- Max v2 built from the user's sheet; three sheet passes (hair helmet → wavy mop, mouth z-curve bug, black hip band =
+  waistband poking out of the hoodie, rib bump too strong).
+- Render v1 (1174 f): QA clean, but the red Roadster vanished from the receipt and end shots and the receipt never
+  showed. Causes: one shared Object3D re-parented across many shot swaps (now cloned per mount), and a receipt whose
+  geometry grew after its bounds were computed + lay under the shadow-catcher plane (now rebuilt per frame, lifted,
+  never culled). Frames 585–748 and 1071–1173 re-rendered and spliced. Final −14.0 LUFS, −1.5 dBFS, 39.2 s.
