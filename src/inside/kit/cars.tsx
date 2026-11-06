@@ -221,14 +221,17 @@ let _rcp: THREE.Texture | null = null;
 /** receipt hanging from a hand point and unrolling to length L (m), curling on the ground */
 export const Receipt = ({L, from}: {L: number; from: V3}) => {
   _rcp = _rcp ?? rcpTex();
-  const geo = useMemo(() => new THREE.PlaneGeometry(0.17, 1, 1, 60), []);
-  const p = geo.attributes.position as THREE.BufferAttribute, drop = from[1];
-  for (let i = 0; i < p.count; i++) { const v = 0.5 - p.getY(i), s = v * L; // arc length along the strip
-    const y = s < drop ? -s : -drop + 0.002, z = s < drop ? 0.02 * Math.sin(s * 9) : (s - drop); p.setY(i, y); p.setZ(i, z); }
-  p.needsUpdate = true; geo.computeVertexNormals();
+  const drop = from[1] - 0.012; // lands just above the shadow-catcher plane (y 0.003), which would hide it
+  // rebuilt every frame (L changes every frame); never frustum-culled
+  const geo = useMemo(() => {
+    const g = new THREE.PlaneGeometry(0.22, 1, 1, 80), p = g.attributes.position as THREE.BufferAttribute;
+    for (let i = 0; i < p.count; i++) { const s = (0.5 - p.getY(i)) * L;
+      p.setY(i, s < drop ? -s : -drop); p.setZ(i, s < drop ? 0.02 * Math.sin(s * 9) : s - drop); }
+    g.computeVertexNormals(); g.computeBoundingSphere(); return g;
+  }, [L, drop]);
   const mat = useMemo(() => new THREE.MeshStandardMaterial({map: _rcp!, side: THREE.DoubleSide, roughness: 0.9}), []);
   mat.map!.repeat.set(1, Math.max(1, L / 0.6));
-  return <mesh geometry={geo} material={mat} position={from} castShadow />;
+  return <mesh geometry={geo} material={mat} position={from} castShadow frustumCulled={false} renderOrder={2} />;
 };
 export const Coffee = ({tilt = 0}: {tilt?: number}) => <group rotation={[tilt, 0, 0]}>
   <mesh position={[0, 0.07, 0]}><cylinderGeometry args={[0.045, 0.035, 0.14, 24]} /><meshStandardMaterial color="#f3eee6" roughness={0.6} /></mesh>
