@@ -70,8 +70,11 @@ export const makeRoadster = (g: GLTF, paint = '#b0101a', glassOpacity = 0.55) =>
 };
 /** a placed hero car; spin = wheel angle (rad); flip if the model faces −z */
 export const Roadster = ({car, position = [0, 0, 0], rotation = [0, 0, 0], scale = 1}: {car: ReturnType<typeof makeRoadster>; position?: V3; rotation?: V3; scale?: number}) => {
-  car.obj.position.set(...position); car.obj.rotation.set(...rotation); car.obj.scale.setScalar(scale);
-  return <primitive object={car.obj} />;
+  // one Object3D per mount (geometry/materials shared): re-parenting a single shared object across shot swaps lost it
+  // in long sequential renders (it vanished from later shots although isolated stills were fine)
+  const obj = useMemo(() => car.obj.clone(true), [car]);
+  obj.position.set(...position); obj.rotation.set(...rotation); obj.scale.setScalar(scale);
+  return <primitive object={obj} />;
 };
 
 // ---- instanced low-poly Roadsters ------------------------------------------------------------------------------------------------

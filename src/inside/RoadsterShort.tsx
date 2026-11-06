@@ -63,7 +63,7 @@ const Driveway = ({c, kind}: {c: Ctx; kind: 'hook' | 'breaks' | 'end' | 'bill' |
     maxFn = (tt) => place(tt * 1000 < T.would ? pockets(tt) : pointAt(tt), 2.3, 0, 2.2, 0.25);
   } else {
     const k = ease(o, a, b), longk = kind === 'receipt' ? ease(o, S.receipt, S.pile) : 0;
-    cam = kind === 'bill' ? {p: lerp3([3.2, 1.5, 4.6], [3.0, 1.45, 4.2], k), l: [2.3, 1.2, 2.2], fov: 34} : {p: lerp3([3.6, 1.5, 5.2], [6.5, 3.2, 9.5], longk), l: lerp3([2.3, 0.9, 2.6], [2.0, 0.2, 6.0], longk), fov: 40};
+    cam = kind === 'bill' ? {p: lerp3([3.4, 1.55, 5.0], [3.2, 1.5, 4.6], k), l: [2.2, 1.15, 2.4], fov: 36} : {p: lerp3([4.8, 1.7, 6.4], [6.0, 2.8, 9.0], longk), l: lerp3([2.2, 1.0, 2.8], [2.3, 0.45, 4.6], longk), fov: 42};
     maxFn = (tt) => place(withP(pockets(tt), {armR: {fwd: 0.9, out: 0.1, elbow: 0.6, hand: 0.9, pocket: 0}, face: {wide: kind === 'receipt' ? smoother(clamp01((tt * 1000 - S.receipt) / 600)) : 0.2, open: kind === 'receipt' ? 0.35 : 0, mouthO: 0.5, browUp: 0.6}}), 2.3, 0, 2.2, 0.3);
   }
   const rcpL = kind === 'bill' ? 0.4 + 1.2 * ease(o, S.bill + 150, S.price) : kind === 'receipt' ? 1.6 + 26 * ease(o, S.receipt, S.pile) : 0;
