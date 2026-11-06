@@ -55,3 +55,21 @@ reference channels do) first. The first video is `src/inside/GumShort.tsx` — c
   range with a GLB dump; `walkers` has root motion).
 - Sets: Poly Haven panorama + `Stage` (GroundedSkybox + IBL + sun + shadow catcher). Bright rooms need `bright` < 1.
 - Stills: `bash .work/sheet.sh name '{"T":[ms,…]}'` renders the `DogsStills` sheet in one bundle (Freeze doesn't work).
+
+## #005 lessons (user feedback 2026-11-06: "mascot should look like the sheet", "voice easily heard", "hook sucks — do
+## the scientific method", "everything needs texture and detail", "animations — it's weird being still")
+- **Mascot = Max v2** (`kit/max2.tsx`), built from the user's character sheet: messy wavy mop, big brown eyes with lids
+  and lashes, thick brows, expressive mouth (open/smile/O/wide), orange hoodie (hood, drawstrings, kangaroo pocket,
+  ribbed hem/cuffs), white tee, black cargo pants, orange/white high-tops with a generic stripe (no brand logo).
+  Real units (1.65 m). Drive it with pose clips (idle, pockets, walk, run, shocked, pointAt, think, laugh, shrug, cheer,
+  yawn, seated/drive, gforce, gamer) and `lagOf` for hair bounce. `Max2Test` is the turnaround/expression sheet.
+  Never leave him static: every shot gets a clip, and cameras always move.
+- **Hook = experiment, not taste:** write ≥ 5 candidates, score them (motion at frame 0, a recognisable name ≤ 1.5 s,
+  concrete image, "you/your", an open loop, ≤ 3.5 s, visual = words), keep the winner, and log how it'll be measured
+  (`videos/005-roadster/HOOK_LAB.md`). Frame 0 must already be moving.
+- **Voice:** ElevenLabs free tier is disabled on this account (needs a paid plan; don't buy without asking). Local
+  fallback: pick the Kokoro voice by measured intelligibility (Whisper mean word probability + WER over the script,
+  `scratchpad vtest.py`); best = blend `am_michael:0.55+am_fenrir:0.45`. `tts.py` applies a clarity chain (HPF 75, −2.5 dB
+  @250, +3.5 dB @3.2 k, compressor, −16 LUFS). Music ducks to 0.035 under speech.
+- **Detail:** real CC-BY models where they exist (Objaverse mirror via `scripts/fetch_objaverse.py`), Poly Haven CC0
+  HDRIs as sets + CC0 PBR textures on the ground, canvas textures (windows, knit, twill, leather) on everything procedural.

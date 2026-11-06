@@ -20,6 +20,8 @@ import {JawTest} from './dogs/JawTest';
 import {PoseTest} from './dogs/PoseTest';
 import {DogsShort, DogsStills, DOGS_MS} from './dogs/DogsShort';
 import {SpitShort, SpitStills, SPIT_MS} from './inside/SpitShort';
+import {Max2Test} from './inside/Max2Test';
+import {RoadsterShort, RoadsterStills, ROADSTER_MS} from './inside/RoadsterShort';
 import {GLASS_MEMORY_MS, GlassMemory} from './glass/memory';
 import {GOAT28_MS, JorhoGoat28, GOAT26_MS, JorhoGoat26, RED25_MS, JorhoRedeem25, GOAT24_MS, JorhoGoat24, GOAT22_MS, JorhoGoat22, GOAT21A_MS, JorhoGoat21A, GOAT21B_MS, JorhoGoat21B, GOAT19_MS, JorhoGoat19, JorhoGoatInk, JorhoGoatJourney, JorhoGoatPixel, JorhoGoatCollage, JorhoGoatNeon, JorhoGoatPremium, JorhoGoat14, JorhoGoatArcade, JorhoGoatChalk, JorhoGoatChat, JorhoGoatComic, JorhoGoatWhiteboard, JorhoGoat12, JorhoTT11, TT11_MS, GOLF10_MS, JorhoGolf10, JorhoPlaybook10, PB10_MS, JorhoLefty9, JorhoLefty8, LEFTY8_MS, CELLY7_MS, GIFT7_MS, JorhoCelly7, JorhoGift7, JorhoNeck7, NECK7_MS, JOSH3D_MS, JorhoGoat3D, JorhoJosh3D, JorhoRedeem3D, REDEEM3D_MS, GOAT_MS, JorhoGoat, JorhoPen, JorhoPen3D, PEN_MS, JorhoLefty, JorhoPlaybook, LEFTY_J_MS, PLAYBOOK_J_MS, COEN_MS, GOLF_MS, JorhoCoen, JorhoGolf, JorhoPeyton, JorhoRedeem, PEYTON_MS, REDEEM_MS} from './jorho/clips';
 
@@ -84,6 +86,9 @@ export const RemotionRoot = () => (
   <Composition id="DogsStills" component={DogsStills} fps={30} width={1080} height={1920} durationInFrames={21} />
   <Composition id="SpitShort" component={SpitShort} fps={30} width={1080} height={1920} durationInFrames={Math.ceil((SPIT_MS / 1000) * 30)} />
   <Composition id="SpitStills" component={SpitStills} fps={30} width={1080} height={1920} durationInFrames={14} />
+  <Composition id="Max2Test" component={Max2Test} fps={30} width={1920} height={1080} durationInFrames={30} />
+  <Composition id="RoadsterShort" component={RoadsterShort} fps={30} width={1080} height={1920} durationInFrames={Math.ceil((ROADSTER_MS / 1000) * 30)} />
+  <Composition id="RoadsterStills" component={RoadsterStills} fps={30} width={1080} height={1920} durationInFrames={18} />
   <Composition id="WingTest" component={WingTest} fps={30} width={1080} height={1920} durationInFrames={10} />
   <Composition id="FlyShort" component={FlyShort} fps={30} width={1080} height={1920} durationInFrames={Math.round((FLY_MS / 1000) * 30)} />
   <Composition id="GumShort" component={GumShort} fps={30} width={1080} height={1920} durationInFrames={Math.round((GUM_MS / 1000) * 30)} />

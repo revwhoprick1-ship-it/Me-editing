@@ -3,6 +3,8 @@
 #   pip install kokoro-onnx soundfile faster-whisper
 #   models: kokoro-v1.0.int8.onnx + voices-v1.0.bin from github.com/thewh1teagle/kokoro-onnx/releases (model-files-v1.0)
 #   python3 inside-impossible/audio/tts.py <script.txt> <out_basename> [voice=af_heart] [speed=1.05] [models_dir]
+# voice may be a blend: "am_michael:0.55+am_fenrir:0.45". The VO gets a clarity chain (high-pass, de-mud, presence,
+# compression) so it reads over music on phone speakers.
 # Writes public/inside/<out>.wav (48 kHz mono) and src/inside/<out>.words.json ([{text,startMs,endMs,p}]).
 import json, os, subprocess, sys
 import numpy as np
@@ -17,10 +19,14 @@ ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..')
 from kokoro_onnx import Kokoro  # noqa: E402
 k = Kokoro(os.path.join(mdir, 'kokoro-v1.0.int8.onnx'), os.path.join(mdir, 'voices-v1.0.bin'))
 text = open(script).read().strip()
+if '+' in voice or ':' in voice:
+    parts = [(n, float(w)) for n, w in (x.split(':') for x in voice.split('+'))]
+    voice = sum(w * k.get_voice_style(n) for n, w in parts)
 a, sr = k.create(text, voice=voice, speed=speed, lang='en-us')
 tmp = os.path.join(ROOT, 'public', 'inside', f'{out}_raw.wav'); sf.write(tmp, a, sr)
 wav = os.path.join(ROOT, 'public', 'inside', f'{out}.wav')
-subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', tmp, '-ar', '48000', '-ac', '1', wav], check=True); os.remove(tmp)
+chain = 'highpass=f=75,equalizer=f=250:t=q:w=1.2:g=-2.5,equalizer=f=3200:t=q:w=1.4:g=3.5,equalizer=f=8000:t=q:w=1.5:g=1.5,acompressor=threshold=-20dB:ratio=3:attack=5:release=90:makeup=3,loudnorm=I=-16:TP=-1.5:LRA=7'
+subprocess.run(['ffmpeg', '-y', '-v', 'error', '-i', tmp, '-af', chain, '-ar', '48000', '-ac', '1', wav], check=True); os.remove(tmp)
 
 from faster_whisper import WhisperModel  # noqa: E402
 m = WhisperModel('small.en', device='cpu', compute_type='int8')

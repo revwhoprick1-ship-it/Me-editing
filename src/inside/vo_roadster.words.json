@@ -1,0 +1,716 @@
+[
+{
+"text": "Your",
+"startMs": 0,
+"endMs": 160,
+"p": 0.55
+},
+{
+"text": "mom's",
+"startMs": 160,
+"endMs": 520,
+"p": 0.9
+},
+{
+"text": "minivan",
+"startMs": 520,
+"endMs": 820,
+"p": 0.99
+},
+{
+"text": "just",
+"startMs": 820,
+"endMs": 1080,
+"p": 0.98
+},
+{
+"text": "turned",
+"startMs": 1080,
+"endMs": 1360,
+"p": 1.0
+},
+{
+"text": "into",
+"startMs": 1360,
+"endMs": 1600,
+"p": 0.99
+},
+{
+"text": "a",
+"startMs": 1600,
+"endMs": 2000,
+"p": 0.99
+},
+{
+"text": "Tesla",
+"startMs": 2000,
+"endMs": 2000,
+"p": 0.97
+},
+{
+"text": "Roadster.",
+"startMs": 2000,
+"endMs": 2480,
+"p": 0.85
+},
+{
+"text": "So",
+"startMs": 2820,
+"endMs": 2840,
+"p": 0.92
+},
+{
+"text": "did",
+"startMs": 2840,
+"endMs": 2980,
+"p": 0.92
+},
+{
+"text": "every",
+"startMs": 2980,
+"endMs": 3220,
+"p": 1.0
+},
+{
+"text": "car",
+"startMs": 3220,
+"endMs": 3460,
+"p": 1.0
+},
+{
+"text": "on",
+"startMs": 3460,
+"endMs": 3680,
+"p": 1.0
+},
+{
+"text": "Earth.",
+"startMs": 3680,
+"endMs": 3860,
+"p": 0.61
+},
+{
+"text": "Here's",
+"startMs": 4100,
+"endMs": 4240,
+"p": 0.99
+},
+{
+"text": "what",
+"startMs": 4240,
+"endMs": 4340,
+"p": 1.0
+},
+{
+"text": "breaks",
+"startMs": 4340,
+"endMs": 4560,
+"p": 0.97
+},
+{
+"text": "first.",
+"startMs": 4560,
+"endMs": 4940,
+"p": 1.0
+},
+{
+"text": "Tesla",
+"startMs": 5660,
+"endMs": 5660,
+"p": 0.98
+},
+{
+"text": "says",
+"startMs": 5660,
+"endMs": 5840,
+"p": 0.98
+},
+{
+"text": "the",
+"startMs": 5840,
+"endMs": 6020,
+"p": 0.99
+},
+{
+"text": "thruster",
+"startMs": 6020,
+"endMs": 6340,
+"p": 0.94
+},
+{
+"text": "version",
+"startMs": 6340,
+"endMs": 6640,
+"p": 1.0
+},
+{
+"text": "hits",
+"startMs": 6640,
+"endMs": 6840,
+"p": 0.76
+},
+{
+"text": "60",
+"startMs": 6840,
+"endMs": 7200,
+"p": 0.94
+},
+{
+"text": "in",
+"startMs": 7200,
+"endMs": 7360,
+"p": 0.98
+},
+{
+"text": "under",
+"startMs": 7360,
+"endMs": 7500,
+"p": 1.0
+},
+{
+"text": "a",
+"startMs": 7500,
+"endMs": 7660,
+"p": 0.98
+},
+{
+"text": "second.",
+"startMs": 7660,
+"endMs": 7900,
+"p": 1.0
+},
+{
+"text": "That's",
+"startMs": 8100,
+"endMs": 8280,
+"p": 0.99
+},
+{
+"text": "harder",
+"startMs": 8280,
+"endMs": 8500,
+"p": 1.0
+},
+{
+"text": "than",
+"startMs": 8500,
+"endMs": 8660,
+"p": 1.0
+},
+{
+"text": "a",
+"startMs": 8660,
+"endMs": 8780,
+"p": 0.99
+},
+{
+"text": "Space",
+"startMs": 8780,
+"endMs": 9040,
+"p": 0.89
+},
+{
+"text": "Shuttle",
+"startMs": 9040,
+"endMs": 9360,
+"p": 0.99
+},
+{
+"text": "launch.",
+"startMs": 9360,
+"endMs": 9700,
+"p": 1.0
+},
+{
+"text": "So",
+"startMs": 10060,
+"endMs": 10120,
+"p": 0.98
+},
+{
+"text": "every",
+"startMs": 10120,
+"endMs": 10380,
+"p": 0.94
+},
+{
+"text": "green",
+"startMs": 10380,
+"endMs": 10640,
+"p": 0.99
+},
+{
+"text": "light,",
+"startMs": 10640,
+"endMs": 10880,
+"p": 0.93
+},
+{
+"text": "your",
+"startMs": 10980,
+"endMs": 11040,
+"p": 0.99
+},
+{
+"text": "coffee",
+"startMs": 11040,
+"endMs": 11340,
+"p": 1.0
+},
+{
+"text": "hits",
+"startMs": 11340,
+"endMs": 11580,
+"p": 0.98
+},
+{
+"text": "the",
+"startMs": 11580,
+"endMs": 11740,
+"p": 1.0
+},
+{
+"text": "back",
+"startMs": 11740,
+"endMs": 11940,
+"p": 1.0
+},
+{
+"text": "seat.",
+"startMs": 11940,
+"endMs": 12220,
+"p": 0.63
+},
+{
+"text": "Traffic",
+"startMs": 12720,
+"endMs": 12720,
+"p": 0.99
+},
+{
+"text": "jam?",
+"startMs": 12720,
+"endMs": 13020,
+"p": 0.95
+},
+{
+"text": "just",
+"startMs": 13180,
+"endMs": 13260,
+"p": 1.0
+},
+{
+"text": "fly",
+"startMs": 13260,
+"endMs": 13520,
+"p": 1.0
+},
+{
+"text": "over",
+"startMs": 13520,
+"endMs": 13820,
+"p": 1.0
+},
+{
+"text": "it.",
+"startMs": 13820,
+"endMs": 13980,
+"p": 1.0
+},
+{
+"text": "Tesla",
+"startMs": 14160,
+"endMs": 14360,
+"p": 1.0
+},
+{
+"text": "actually",
+"startMs": 14360,
+"endMs": 14700,
+"p": 1.0
+},
+{
+"text": "did",
+"startMs": 14700,
+"endMs": 14960,
+"p": 1.0
+},
+{
+"text": "that",
+"startMs": 14960,
+"endMs": 15160,
+"p": 1.0
+},
+{
+"text": "at",
+"startMs": 15160,
+"endMs": 15280,
+"p": 1.0
+},
+{
+"text": "the",
+"startMs": 15280,
+"endMs": 15380,
+"p": 0.98
+},
+{
+"text": "reveal.",
+"startMs": 15380,
+"endMs": 15680,
+"p": 0.95
+},
+{
+"text": "The",
+"startMs": 16080,
+"endMs": 16180,
+"p": 1.0
+},
+{
+"text": "catch?",
+"startMs": 16180,
+"endMs": 16420,
+"p": 0.99
+},
+{
+"text": "refilling",
+"startMs": 16620,
+"endMs": 16900,
+"p": 0.99
+},
+{
+"text": "those",
+"startMs": 16900,
+"endMs": 17180,
+"p": 0.99
+},
+{
+"text": "thrusters",
+"startMs": 17180,
+"endMs": 17580,
+"p": 1.0
+},
+{
+"text": "takes",
+"startMs": 17580,
+"endMs": 17840,
+"p": 0.29
+},
+{
+"text": "six",
+"startMs": 17840,
+"endMs": 18140,
+"p": 0.64
+},
+{
+"text": "to",
+"startMs": 18140,
+"endMs": 18280,
+"p": 1.0
+},
+{
+"text": "seven",
+"startMs": 18280,
+"endMs": 18540,
+"p": 1.0
+},
+{
+"text": "hours.",
+"startMs": 18540,
+"endMs": 18860,
+"p": 1.0
+},
+{
+"text": "Now",
+"startMs": 19240,
+"endMs": 19340,
+"p": 1.0
+},
+{
+"text": "the",
+"startMs": 19340,
+"endMs": 19500,
+"p": 0.88
+},
+{
+"text": "bill,",
+"startMs": 19500,
+"endMs": 19720,
+"p": 0.98
+},
+{
+"text": "one",
+"startMs": 20020,
+"endMs": 20040,
+"p": 0.71
+},
+{
+"text": "and",
+"startMs": 20040,
+"endMs": 20140,
+"p": 0.93
+},
+{
+"text": "a",
+"startMs": 20140,
+"endMs": 20240,
+"p": 0.98
+},
+{
+"text": "half",
+"startMs": 20240,
+"endMs": 20400,
+"p": 1.0
+},
+{
+"text": "billion",
+"startMs": 20400,
+"endMs": 20640,
+"p": 1.0
+},
+{
+"text": "cars,",
+"startMs": 20640,
+"endMs": 21080,
+"p": 0.43
+},
+{
+"text": "At",
+"startMs": 21300,
+"endMs": 21480,
+"p": 0.98
+},
+{
+"text": "Tesla's",
+"startMs": 21480,
+"endMs": 22000,
+"p": 0.99
+},
+{
+"text": "original",
+"startMs": 22000,
+"endMs": 22340,
+"p": 0.99
+},
+{
+"text": "$200,000",
+"startMs": 22340,
+"endMs": 23540,
+"p": 0.94
+},
+{
+"text": "each,",
+"startMs": 23540,
+"endMs": 24180,
+"p": 0.94
+},
+{
+"text": "that's",
+"startMs": 24700,
+"endMs": 25020,
+"p": 0.99
+},
+{
+"text": "$300",
+"startMs": 25020,
+"endMs": 25500,
+"p": 0.95
+},
+{
+"text": "trillion,",
+"startMs": 25500,
+"endMs": 26040,
+"p": 0.97
+},
+{
+"text": "two",
+"startMs": 26660,
+"endMs": 26980,
+"p": 0.95
+},
+{
+"text": "and",
+"startMs": 26980,
+"endMs": 27100,
+"p": 0.99
+},
+{
+"text": "a",
+"startMs": 27100,
+"endMs": 27220,
+"p": 0.97
+},
+{
+"text": "half",
+"startMs": 27220,
+"endMs": 27420,
+"p": 1.0
+},
+{
+"text": "years",
+"startMs": 27420,
+"endMs": 27640,
+"p": 1.0
+},
+{
+"text": "of",
+"startMs": 27640,
+"endMs": 27840,
+"p": 0.99
+},
+{
+"text": "the",
+"startMs": 27840,
+"endMs": 27960,
+"p": 1.0
+},
+{
+"text": "entire",
+"startMs": 27960,
+"endMs": 28380,
+"p": 1.0
+},
+{
+"text": "world's",
+"startMs": 28380,
+"endMs": 28840,
+"p": 0.99
+},
+{
+"text": "economy.",
+"startMs": 28840,
+"endMs": 29240,
+"p": 1.0
+},
+{
+"text": "And",
+"startMs": 29240,
+"endMs": 29720,
+"p": 0.04
+},
+{
+"text": "you",
+"startMs": 29720,
+"endMs": 29900,
+"p": 0.94
+},
+{
+"text": "can't",
+"startMs": 29900,
+"endMs": 30280,
+"p": 0.99
+},
+{
+"text": "even",
+"startMs": 30280,
+"endMs": 30520,
+"p": 0.99
+},
+{
+"text": "buy",
+"startMs": 30520,
+"endMs": 30780,
+"p": 0.99
+},
+{
+"text": "one",
+"startMs": 30780,
+"endMs": 31040,
+"p": 0.99
+},
+{
+"text": "yet.",
+"startMs": 31040,
+"endMs": 31320,
+"p": 0.98
+},
+{
+"text": "It",
+"startMs": 31640,
+"endMs": 31720,
+"p": 0.99
+},
+{
+"text": "was",
+"startMs": 31720,
+"endMs": 31820,
+"p": 1.0
+},
+{
+"text": "promised",
+"startMs": 31820,
+"endMs": 32220,
+"p": 0.99
+},
+{
+"text": "for",
+"startMs": 32220,
+"endMs": 32460,
+"p": 0.99
+},
+{
+"text": "2020.",
+"startMs": 32460,
+"endMs": 32860,
+"p": 0.95
+},
+{
+"text": "Now?",
+"startMs": 33660,
+"endMs": 33800,
+"p": 0.98
+},
+{
+"text": "2028.",
+"startMs": 34300,
+"endMs": 34920,
+"p": 0.97
+},
+{
+"text": "So",
+"startMs": 35460,
+"endMs": 35580,
+"p": 0.99
+},
+{
+"text": "would",
+"startMs": 35580,
+"endMs": 35800,
+"p": 0.67
+},
+{
+"text": "you",
+"startMs": 35800,
+"endMs": 35980,
+"p": 0.99
+},
+{
+"text": "trade",
+"startMs": 35980,
+"endMs": 36240,
+"p": 1.0
+},
+{
+"text": "your",
+"startMs": 36240,
+"endMs": 36440,
+"p": 1.0
+},
+{
+"text": "car",
+"startMs": 36440,
+"endMs": 36660,
+"p": 1.0
+},
+{
+"text": "for",
+"startMs": 36660,
+"endMs": 36960,
+"p": 0.99
+},
+{
+"text": "one?",
+"startMs": 36960,
+"endMs": 37200,
+"p": 0.98
+}
+]
