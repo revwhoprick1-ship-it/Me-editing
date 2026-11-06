@@ -49,3 +49,9 @@ CC BY 4.0 — credit in the description.
   `Cam` now takes near/far. Screen side: looking down +z, world +x is screen LEFT.
 - Stills pass 4: drained seabed read as a blank plane → darker wet sand, puddles, a 2× ship and a giant drain plug in the
   centre of frame; seabed/water planes 4 km with fog so no hard edge.
+- Render v1 (925 frames): QA flagged "black" f511–524 — the cosmic zoom had a real dark gap (Earth shrunk, galaxy not
+  yet in) → added a glowing Sun, faster pull-out (k^0.7), galaxy-core glow fades in with distance (it showed as a hard
+  brown block up close); smaller polar cap; bottle + "≈1 L PER DAY" label brought into frame. Frames 487–640
+  re-rendered and spliced; −14.0 LUFS, −1.4 dBFS. Remaining "black" flags (f504–526) are dark space with Earth/Sun/galaxy
+  in frame (checked by eye) — false positives of the mean-luma detector.
+- Final: `out/inside_004_spit.mp4`, 1080x1920, 30 fps, 30.9 s.

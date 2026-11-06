@@ -158,7 +158,7 @@ const earthTex = (dry: boolean) => {
         v += a * lerp(lerp(h(i, j), h(i + 1, j), sx), lerp(h(i, j + 1), h(i + 1, j + 1), sx), sy); tot += a; a *= 0.5; }
       v /= tot; const lat = Math.abs(py / H - 0.5) * 2, k = (py * W + px) * 4;
       let col: number[];
-      if (lat > 0.86) col = [240, 244, 250];
+      if (lat > 0.93) col = [236, 240, 246];
       else if (v > 0.56) col = v > 0.66 ? [150, 130, 95] : lat > 0.6 ? [110, 130, 90] : [70, 120, 60];
       else col = dry ? [196 - (0.56 - v) * 160, 168 - (0.56 - v) * 170, 122 - (0.56 - v) * 120] : [16 + v * 30, 60 + v * 80, 120 + v * 120];
       img.data[k] = col[0]; img.data[k + 1] = col[1]; img.data[k + 2] = col[2]; img.data[k + 3] = 255;
@@ -191,7 +191,12 @@ export const Stars = ({n = 2500, R = 400, seed = 'st'}: {n?: number; R?: number;
 const glowTex = () => (mat('glowM', () => { const c = document.createElement('canvas'); c.width = c.height = 256; const x = c.getContext('2d')!;
   const g = x.createRadialGradient(128, 128, 0, 128, 128, 128); g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(0.25, 'rgba(255,220,170,0.55)'); g.addColorStop(1, 'rgba(0,0,0,0)');
   x.fillStyle = g; x.fillRect(0, 0, 256, 256); return new THREE.MeshBasicMaterial({map: new THREE.CanvasTexture(c)}); }) as THREE.MeshBasicMaterial).map!;
-export const Galaxy = ({n = 26000, R = 300, rot = 0, seed = 'gx'}: {n?: number; R?: number; rot?: number; seed?: string}) => {
+/** a sun: bright core + soft additive glow */
+export const Sun = ({r = 1}: {r?: number}) => <group>
+  <mesh scale={r}><sphereGeometry args={[1, 32, 24]} /><meshBasicMaterial color={new THREE.Color(4, 3.4, 2.4)} toneMapped={false} /></mesh>
+  <sprite scale={[r * 9, r * 9, 1]}><spriteMaterial map={glowTex()} color="#ffd9a0" transparent blending={THREE.AdditiveBlending} depthWrite={false} /></sprite>
+</group>;
+export const Galaxy = ({n = 26000, R = 300, rot = 0, seed = 'gx', glow = 1}: {n?: number; R?: number; rot?: number; seed?: string; glow?: number}) => {
   const g = useMemo(() => {
     const geo = new THREE.BufferGeometry(), p = new Float32Array(n * 3), c = new Float32Array(n * 3), core = new THREE.Color('#ffd9a0'), arm = new THREE.Color('#8fb8ff');
     for (let i = 0; i < n; i++) {
@@ -204,6 +209,6 @@ export const Galaxy = ({n = 26000, R = 300, rot = 0, seed = 'gx'}: {n?: number; 
   }, [n, R, seed]);
   return <group rotation={[0, rot, 0]}>
     <points geometry={g}><pointsMaterial vertexColors size={3.2} sizeAttenuation={false} transparent opacity={0.9} blending={THREE.AdditiveBlending} depthWrite={false} /></points>
-    <sprite scale={[R * 0.55, R * 0.55, 1]}><spriteMaterial map={glowTex()} color="#ffe2b0" transparent blending={THREE.AdditiveBlending} depthWrite={false} /></sprite>
+    {glow > 0.01 && <sprite scale={[R * 0.55, R * 0.55, 1]}><spriteMaterial map={glowTex()} color="#ffe2b0" transparent opacity={glow} blending={THREE.AdditiveBlending} depthWrite={false} /></sprite>}
   </group>;
 };

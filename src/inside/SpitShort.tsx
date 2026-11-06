@@ -9,7 +9,7 @@ import * as THREE from 'three';
 import '../mgFonts';
 import {textTex} from '../dogs/props';
 import {Max, type Body, type Face} from './kit/character';
-import {Bottle, Coast, Crowd, Drop, Earth, Galaxy, Spit, SpitRain, Stars, Teaspoon, WaterBall} from './kit/ocean';
+import {Bottle, Coast, Crowd, Drop, Earth, Galaxy, Spit, SpitRain, Stars, Sun, Teaspoon, WaterBall} from './kit/ocean';
 import {Captions, Chips, Soundtrack, chunks, loadWords, wordAt, type Chip} from './kit/overlay';
 import {Cam, Env, Post, clamp01, gradientTex, lerp, lerp3, prog, smoother, type V3} from './kit/three';
 import raw from './vo_spit.words.json';
@@ -145,14 +145,15 @@ const LapseShot = ({o, late}: {o: number; late: boolean}) => {
 
 // 8: zoom out past Earth to the whole galaxy (the universe is only 1/600,000 of the job)
 const CosmosShot = ({o}: {o: number}) => {
-  const k = ease(o, S.cosmos, S.glands - 100), d = 3 * Math.pow(400, k);
+  const k = ease(o, S.cosmos, S.glands - 100), d = 3 * Math.pow(400, Math.pow(k, 0.7));
   const dir = new THREE.Vector3(0.35, 0.75, 0.55).normalize();
   const look = lerp3([0, 0, 0], [-150, 0, 0], smoother(clamp01((k - 0.3) / 0.7)));
   return <>
     <Space />
     <Cam p={[dir.x * d, dir.y * d, dir.z * d]} l={look} fov={40} near={0.05} far={6000} />
     <Earth rot={o / 2600} />
-    <group position={[-150, -2, 0]}><Galaxy R={300} rot={o / 9000} /></group>
+    <group position={[-9, 1.5, -6]}><Sun r={1.2} /></group>
+    <group position={[-150, -2, 0]}><Galaxy R={300} rot={o / 9000} glow={clamp01((d - 300) / 500)} /></group>
     <Post focus={look} bokeh={0.6} bloom={0.7} />
   </>;
 };
@@ -164,7 +165,7 @@ const GlandShot = ({o}: {o: number}) => {
   const label = textTex(['≈ 1 L', 'PER DAY'], {w: 400, h: 200, bg: 'rgba(255,255,255,0.92)', fg: '#16324f', size: 64, radius: 30});
   return <>
     <Sky day={0.1} />
-    <Cam p={lerp3([2.2, -0.8, 8.8], [1.9, -0.9, 7.8], k)} l={[-0.5, -1.6, 0.6]} fov={40} />
+    <Cam p={lerp3([1.4, -0.9, 9.4], [1.1, -1.0, 8.4], k)} l={[-0.8, -1.7, 0.8]} fov={42} />
     <Max f={{xray: 1}} body={{}} rotation={[0, 0.5, 0]}>
       {GLANDS.map((g, i) => <mesh key={i} position={g} scale={[0.17, 0.12, 0.14]}><sphereGeometry args={[1, 20, 14]} /><meshBasicMaterial color={new THREE.Color('#ffd84a').multiplyScalar(1.6 * pulse)} toneMapped={false} /></mesh>)}
       {GLANDS.flatMap((g, i) => [0, 1, 2].map((j) => { const u = ((o / 700) + j / 3 + i * 0.13) % 1; return <Drop key={`${i}-${j}`} position={lerp3(g, [0, -0.45, 0.85], u)} r={0.035} />; }))}
