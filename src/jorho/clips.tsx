@@ -1074,3 +1074,11 @@ const GOAT28: Spec = {
     sfx('meme-tada', LB[0] + 660, 0.35), sfx('huh-cat', ST[0] + 40, 0.4), sfx('meme-violin', K28.tension, 0.35, 1100)],
 };
 export const JorhoGoat28 = () => <Jorho s={GOAT28} />;
+
+// ==== v30 (2026-11-08): "best hook" — goat19/v26 formula kept whole (intro motion at frame 0, real question first, name
+// label in second 1, think + reel, silent beat, answer slam, stat, loop). Only the top line changes (one variable), fusing
+// the two best-performing hooks on this channel: the 13k "Premium" bold claim (71.9% stayed, best) + goat19's subject/
+// reaction framing (9.7K, 180% avg viewed). Scored in vault/02 Style Guide/Jorho style.md (v30 hook lab).
+const GOAT30: Spec = {...GOAT26, top: 'His NBA GOAT is better than MJ and LeBron combined'};
+export const GOAT30_MS = GOAT26_MS;
+export const JorhoGoat30 = () => <Jorho s={GOAT30} />;

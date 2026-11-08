@@ -485,3 +485,14 @@ All five use the same beats as v12 and the same real-footage moments (the two-sh
 - Skill: `.claude/skills/inside-impossible/SKILL.md`. Vendored MIT code: `inside-impossible/vendor/claude-animated-shorts`.
 - Licences: everything procedural; Investigations (Kevin MacLeod) needs CC BY credit in the description.
 - QA lesson: a point light inside glossy geometry → HDR blowout → bloom NaN → black frames. Keep lights outside meshes.
+
+## v30 — "best hook" (`JorhoGoat30`, 16.0 s): one variable changed vs v26
+- Hook lab from our own analytics (strongest evidence for this channel): top lines ranked by result —
+  "This man is better than MJ and LeBron combined" (13k Premium, **71.9% stayed**, best) > "This NBA GOAT pick broke the
+  whole room" (goat19, 9.7K, 180% avg viewed) > reaction/news lines (v24 "debate just got a new answer": 58%, flatlined).
+  Scored candidates on: bold claim, recognisable names (MJ/LeBron), names the topic (NBA GOAT), curiosity gap, ≤ 9 words.
+- Winner fuses the two best: **"His NBA GOAT is better than MJ and LeBron combined"** (bold claim + names + topic).
+- Everything else = v26 (Jorho intro motion at frame 0, TREVOR LAWRENCE · NFL QB label in second 1, think reel, silent
+  beat, Dellavedova slam + 5.2 PPG, 2016 ring reveal, loop). Measure: stayed-to-watch vs v26/v28 at 48 h.
+- Risk: this is the ~10th upload of the same goat moment (fatigue). If it stalls, the next test is a NEW clip with the
+  same formula, not another goat repost.

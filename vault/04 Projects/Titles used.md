@@ -39,3 +39,4 @@
 - What if dogs learned to talk… and took over? 🐶 (Inside the Impossible #003)
 - How many spits to fill the ENTIRE ocean? 🌊 (Inside the Impossible #004)
 - Your mom's minivan just became a Tesla Roadster 🚀 (Inside the Impossible #005)
+- His NBA GOAT is better than MJ and LeBron combined 💀 (v30 best-hook: Premium claim + goat19 formula)
