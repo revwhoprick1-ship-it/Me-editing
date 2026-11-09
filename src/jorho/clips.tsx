@@ -1082,3 +1082,10 @@ export const JorhoGoat28 = () => <Jorho s={GOAT28} />;
 const GOAT30: Spec = {...GOAT26, top: 'His NBA GOAT is better than MJ and LeBron combined'};
 export const GOAT30_MS = GOAT26_MS;
 export const JorhoGoat30 = () => <Jorho s={GOAT30} />;
+
+// v31 (2026-11-09): low-cost variant of v26 — new top line, music, keyword colours, tints, framing.
+const GOAT31: Spec = {...GOAT26, top: 'He picked this guy over MJ and LeBron 💀', wideXAt: (o) => (o < G26[1] ? 700 : 900),
+  words: wordsFrom(goatWords, g26, {'Delvedova,': 'Dellavedova', Delvedova: 'Dellavedova', times: 'time'}, {goat: '#FF9F1C', Matthew: '#FF4DCB', Dellavedova: '#FF4DCB', tension: '#5EC8FF'}),
+  tints: [[K26.della, '#FF4DCB'], [K26.tension, '#2b6cff']], music: {file: 'Sneaky_Snitch.mp3', from: 0, level: 0.12}};
+export const GOAT31_MS = GOAT26_MS;
+export const JorhoGoat31 = () => <Jorho s={GOAT31} />;
