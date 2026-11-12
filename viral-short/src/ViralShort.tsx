@@ -1,198 +1,54 @@
+// "Guess the fake millionaire" edit in the reference style (refs: @Staroftheday / @MR.RankBoy shorts, storyboards only):
+// black top band with a 2-line title, footage band cropped onto the speaker, one yellow word at a time, a lime flash +
+// zoom punch on every money item (the source already carries its own car cut-outs and price tags), payoff = reveal.
 import React from 'react';
-import {
-  AbsoluteFill,
-  Series,
-  Sequence,
-  OffthreadVideo,
-  Img,
-  staticFile,
-  useCurrentFrame,
-  useVideoConfig,
-  spring,
-  interpolate,
-} from 'remotion';
-import { SCENES, WordTiming } from './clipData';
+import {AbsoluteFill, OffthreadVideo, Series, interpolate, spring, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
+import {SCENES, SceneConfig, WordTiming} from './clipData';
 
-const TopBanner: React.FC = () => (
-  <div
-    style={{
-      position: 'absolute',
-      top: 110,
-      width: '100%',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      zIndex: 50,
-    }}
-  >
-    <div style={{ fontSize: 64, marginBottom: 8 }}>😵</div>
-    <div
-      style={{
-        backgroundColor: 'rgba(0, 0, 0, 0.85)',
-        padding: '10px 26px',
-        borderRadius: 14,
-        fontFamily: 'Montserrat, Inter, sans-serif',
-        fontWeight: 900,
-        fontSize: 42,
-        color: '#FFFFFF',
-        boxShadow: '0 8px 20px rgba(0,0,0,0.6)',
-      }}
-    >
-      &ldquo;<span style={{ color: '#facc15' }}>Guess</span> the{' '}
-      <span style={{ fontStyle: 'italic' }}>Fake</span>{' '}
-      <span style={{ color: '#22c55e' }}>millionaire..</span>&rdquo;
-    </div>
+const BAND_Y = 250, BAND_H = 1250, SRC_W = 1920, SRC_H = 1080, K = BAND_H / SRC_H; // source scaled to the band height
+
+const Title: React.FC = () => (
+  <div style={{position: 'absolute', top: 70, left: 0, right: 0, textAlign: 'center', fontFamily: 'Montserrat, Arial Black, sans-serif', fontWeight: 900,
+    fontSize: 62, lineHeight: 1.12, color: '#fff', letterSpacing: -0.5}}>
+    Guess the <span style={{color: '#FFE500'}}>fake</span><br />Millionaire? 😵
   </div>
 );
 
-const AssetOverlay: React.FC<{ price: string; imageFile?: string }> = ({
-  price,
-  imageFile,
-}) => {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
+const Word: React.FC<{words: WordTiming[]}> = ({words}) => {
+  const f = useCurrentFrame(), {fps} = useVideoConfig();
+  const w = words.find((x) => f >= x.startFrame && f < x.endFrame);
+  if (!w) return null;
+  const s = spring({frame: f - w.startFrame, fps, config: {damping: 13, stiffness: 280}});
+  return <div style={{position: 'absolute', top: BAND_Y + BAND_H * 0.4, left: 0, right: 0, textAlign: 'center', fontFamily: 'Montserrat, Arial Black, sans-serif',
+    fontWeight: 900, fontSize: 92, color: w.color ?? '#FFE500', WebkitTextStroke: '10px #000', paintOrder: 'stroke fill',
+    textShadow: '0 6px 18px rgba(0,0,0,.6)', transform: `scale(${interpolate(s, [0, 1], [0.7, 1])})`}}>{w.word}</div>;
+};
 
-  const pop = spring({
-    frame,
-    fps,
-    config: { damping: 12, stiffness: 180 },
-  });
-
-  return (
-    <AbsoluteFill
-      style={{
-        justifyContent: 'flex-end',
-        alignItems: 'center',
-        paddingBottom: 280,
-        zIndex: 20,
-      }}
-    >
-      <div
-        style={{
-          transform: `scale(${pop})`,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      >
-        <div
-          style={{
-            fontFamily: 'Impact, Montserrat, sans-serif',
-            fontWeight: 900,
-            fontSize: 78,
-            color: '#4ade80',
-            WebkitTextStroke: '3px #000',
-            textShadow: '0px 8px 16px rgba(0,0,0,0.85)',
-            marginBottom: -15,
-            zIndex: 2,
-          }}
-        >
-          {price}
-        </div>
-        {imageFile && (
-          <Img
-            src={staticFile(imageFile)}
-            style={{
-              width: 650,
-              height: 'auto',
-              filter: 'drop-shadow(0px 16px 24px rgba(0,0,0,0.8))',
-            }}
-          />
-        )}
+const Scene: React.FC<{s: SceneConfig}> = ({s}) => {
+  const f = useCurrentFrame(), {fps} = useVideoConfig();
+  const fl = s.words.find((w) => w.flash);
+  const d = fl ? f - fl.startFrame : -1;
+  const flash = d >= 0 && d < 8 ? 1 - d / 8 : 0; // lime flash on the money word
+  const punch = d >= 0 && d < 10 ? 0.07 * (1 - d / 10) : 0;
+  const push = 1 + 0.035 * (f / s.durationInFrames); // every hold moves
+  const vw = SRC_W * K, left = 540 - s.cropX * K;
+  return <AbsoluteFill>
+    <div style={{position: 'absolute', top: BAND_Y, left: 0, width: 1080, height: BAND_H, overflow: 'hidden', background: '#000'}}>
+      <div style={{position: 'absolute', inset: 0, transform: `scale(${push + punch})`, transformOrigin: '50% 45%'}}>
+        <OffthreadVideo src={staticFile('source.mp4')} startFrom={Math.round(s.videoStartSec * fps)} style={{position: 'absolute', top: 0, left, width: vw, height: SRC_H * K}} />
       </div>
-    </AbsoluteFill>
-  );
+      {flash > 0 && <div style={{position: 'absolute', inset: 0, background: '#7CFF3A', mixBlendMode: 'multiply', opacity: 0.85 * flash}} />}
+      {flash > 0 && <div style={{position: 'absolute', inset: 0, background: '#B6FF5C', opacity: 0.25 * flash}} />}
+    </div>
+    <Word words={s.words} />
+  </AbsoluteFill>;
 };
 
-const ActiveSubtitles: React.FC<{ words: WordTiming[] }> = ({ words }) => {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-
-  const currentWord = words.find(
-    (w) => frame >= w.startFrame && frame < w.endFrame
-  );
-
-  if (!currentWord) return null;
-
-  const wordFrame = frame - currentWord.startFrame;
-  const scale = spring({
-    frame: wordFrame,
-    fps,
-    config: { damping: 14, stiffness: 260 },
-  });
-
-  return (
-    <AbsoluteFill
-      style={{
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingTop: 120,
-        zIndex: 40,
-      }}
-    >
-      <div
-        style={{
-          fontFamily: 'Montserrat, Arial Black, sans-serif',
-          fontWeight: 900,
-          fontSize: 72,
-          color: currentWord.color || '#FFFFFF',
-          WebkitTextStroke: '4px #000000',
-          textShadow: '0px 8px 18px rgba(0,0,0,0.95)',
-          transform: `scale(${interpolate(scale, [0, 1], [0.8, 1])})`,
-          textAlign: 'center',
-        }}
-      >
-        {currentWord.word}
-      </div>
-    </AbsoluteFill>
-  );
-};
-
-export const ViralShort: React.FC = () => {
-  const { fps } = useVideoConfig();
-
-  return (
-    <AbsoluteFill style={{ backgroundColor: '#000' }}>
-      <TopBanner />
-
-      <Series>
-        {SCENES.map((scene) => {
-          const startFromFrame = Math.round(scene.videoStartSec * fps);
-          const endAtFrame = startFromFrame + scene.durationInFrames;
-
-          return (
-            <Series.Sequence
-              key={scene.id}
-              durationInFrames={scene.durationInFrames}
-            >
-              <AbsoluteFill style={{ overflow: 'hidden' }}>
-                <OffthreadVideo
-                  src={staticFile('source.mp4')}
-                  startFrom={startFromFrame}
-                  endAt={endAtFrame}
-                  style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    transform: `scale(${scene.zoom || 1})`,
-                  }}
-                />
-              </AbsoluteFill>
-
-              {scene.overlay && (
-                <Sequence from={scene.overlay.delayFrames || 0}>
-                  <AssetOverlay
-                    price={scene.overlay.price}
-                    imageFile={scene.overlay.imageFile}
-                  />
-                </Sequence>
-              )}
-
-              <ActiveSubtitles words={scene.words} />
-            </Series.Sequence>
-          );
-        })}
-      </Series>
-    </AbsoluteFill>
-  );
-};
+export const ViralShort: React.FC = () => (
+  <AbsoluteFill style={{backgroundColor: '#000'}}>
+    <Series>
+      {SCENES.map((s) => <Series.Sequence key={s.id} durationInFrames={s.durationInFrames}><Scene s={s} /></Series.Sequence>)}
+    </Series>
+    <Title />
+  </AbsoluteFill>
+);
