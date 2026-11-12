@@ -41,3 +41,4 @@
 - Your mom's minivan just became a Tesla Roadster 🚀 (Inside the Impossible #005)
 - His NBA GOAT is better than MJ and LeBron combined 💀 (v30 best-hook: Premium claim + goat19 formula)
 - He picked this guy over MJ and LeBron 💀 (v31)
+- Guess the FAKE crypto millionaire… the M3 guy?? 💀 (guess-the-fake clip 1)
