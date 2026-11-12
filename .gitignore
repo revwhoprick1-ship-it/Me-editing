@@ -26,3 +26,6 @@ hf/*/edit/assets/*.m4a
 public/img/ai/
 public/dogs/
 public/roadster/
+viral-short/public/source.mp4
+viral-short/out/
+viral-short/node_modules
