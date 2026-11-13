@@ -3,8 +3,8 @@
 # sit on the source's own camera cuts (scdet) so no sub-second fragments; crops = [shot start sec, centre x in 1920 px].
 import json, sys
 tx = json.load(open(sys.argv[1])); W = [w for s in tx for w in s['w']]
-AT = {196.12: 'Sol', 198.9: '2%?!', 199.12: '', 623.94: 'long-term', 624.16: '', 970.7: '100%', 972.98: '100%', 197.84: '67', 194.34: 'Pino', 200.90: '$200K?', 4.46: 'off', 4.78: '', 5.12: 'Shib?', 13.08: 'How', 13.10: 'is', 14.14: 'e-commerce?', 14.26: '', 16.54: 'e-commerce', 16.78: '', 275.38: 'this', 275.90: 'I', 276.84: 'He', 277.10: 'sucks', 273.42: 'had', 273.52: 'to', 273.62: 'sell', 398.90: '$1K', 399.24: 'and', 399.44: 'got', 399.60: '', 399.68: '$100K?', 397.92: '$100K', 394.34: '100x', 401.24: '100x', 1364.96: 'LARPER', 1365.20: '', 1371.14: '35', 398.06: '', 395.88: 'LARP'}
-FIX = {'stop': '', 'amira': 'Emira', 'amgt': 'AMG', 'six-free': 'GT 63', 'six': 'GT', '-free': '63', 'm3': 'M3', 'shitcoin': 'shitcoin', '10': '10%', '%': '', '98': '98%', '100k': '$100K', '$400k': '$400K'}
+AT = {318.52: '$50,000', 318.76: '', 1547.13: "You're", 1547.37: 'LARP?', 709.58: '100%', 196.12: 'Sol', 198.9: '2%?!', 199.12: '', 623.94: 'long-term', 624.16: '', 970.7: '100%', 972.98: '100%', 197.84: '67', 194.34: 'Pino', 200.90: '$200K?', 4.46: 'off', 4.78: '', 5.12: 'Shib?', 13.08: 'How', 13.10: 'is', 14.14: 'e-commerce?', 14.26: '', 16.54: 'e-commerce', 16.78: '', 275.38: 'this', 275.90: 'I', 276.84: 'He', 277.10: 'sucks', 273.42: 'had', 273.52: 'to', 273.62: 'sell', 398.90: '$1K', 399.24: 'and', 399.44: 'got', 399.60: '', 399.68: '$100K?', 397.92: '$100K', 394.34: '100x', 401.24: '100x', 1364.96: 'LARPER', 1365.20: '', 1371.14: '35', 398.06: '', 395.88: 'LARP'}
+FIX = {'fuck': 'f***', 'maritz': 'Maurits', 'stop': '', 'amira': 'Emira', 'amgt': 'AMG', 'six-free': 'GT 63', 'six': 'GT', '-free': '63', 'm3': 'M3', 'shitcoin': 'shitcoin', '10': '10%', '%': '', '98': '98%', '100k': '$100K', '$400k': '$400K'}
 EDITS = {
  'bowling': [
   ('hook', 357.40, 359.30, [(357.40, 960)]),
@@ -44,6 +44,11 @@ EDITS = {
   ('hook', 331.56, 334.20, [(331.56, 840), (332.96, 960)]),
   ('main', 322.05, 334.20, [(322.05, 560), (324.28, 960), (326.32, 960), (329.00, 920), (331.56, 840), (332.96, 960)])],
 }
+# auto-planned edits (scratchpad autoplan.py: scdet shots + foreground-centroid crops)
+import os
+AUTO = json.load(open('src/tracks/auto/auto_edits.json')) if os.path.exists('src/tracks/auto/auto_edits.json') else {}
+for eid, v in AUTO.items():
+    EDITS[eid] = [('main', v['start'], v['end'], [tuple(c) for c in v['crops']])]
 out = {}
 for eid, plan in EDITS.items():
     scenes = []
@@ -55,6 +60,10 @@ for eid, plan in EDITS.items():
                 if not tt: continue
                 f0 = max(0, round((ws - a) * 30)); f1 = min(n, max(f0 + 4, round((we - a) * 30) + 3))
                 words.append({'word': tt, 'startFrame': f0, 'endFrame': f1})
+        for i in range(len(words) - 1, 0, -1):   # merge split tokens ("larp" "-er", "e" "-commerce")
+            if words[i]['word'].startswith('-'): words[i - 1]['word'] += words[i]['word']; words[i - 1]['endFrame'] = words[i]['endFrame']; words.pop(i)
+        for w in words:
+            if w['word'].lower().startswith('larp'): w['word'] = w['word'].upper().replace('-', '')
         for i in range(len(words) - 1): words[i]['endFrame'] = min(words[i]['endFrame'], words[i + 1]['startFrame'])
         scenes.append({'id': sid, 'videoStartSec': a, 'durationInFrames': n, 'cropX': crops[0][1], 'crops': [[round((s - a) * 30), x] for s, x in crops], 'words': words})
     out[eid] = scenes

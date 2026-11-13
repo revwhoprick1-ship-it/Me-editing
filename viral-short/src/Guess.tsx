@@ -94,6 +94,18 @@ export const EDITS: Record<string, Cfg> = {
     punch: [['hook', 'seven'], ['hook', 'seven', 1], ['main', 'seven'], ['main', 'launched'], ['main', 'seven', 1], ['main', 'seven', 2], ['main', 'impressive']],
     blowouts: [['hook', 'seven']], blackFlash: [['main']], streaks: [['main', 'seven', 1]]},
 };
+// 10 "viral" edits: auto-planned (autoplan.py shots/crops/tracks, autocfg.py cues from caption words), loop style, music 70 %
+import AUTO from './auto.cfg.json';
+import IRONREVEAL from './ironTrack.json';
+import T_RICHEST from './tracks/auto/richest.json';
+import T_BIRKIN from './tracks/auto/birkin.json';
+import T_FAMILY from './tracks/auto/family.json';
+const AUTO_TRACKS: Record<string, Record<string, number[]>> = {confess: IRONREVEAL as Record<string, number[]>, richest: T_RICHEST, birkin: T_BIRKIN, family: T_FAMILY};
+Object.entries(AUTO as unknown as Record<string, {top: string; cta: string; music: number; calls: [number, number, string][]; tints: [Ref, string][]; rizz: Ref[]; punch: Ref[];
+  blowouts: Ref[]; blackFlash: Ref[]; streaks: Ref[]; ctaAt: Ref}>).forEach(([id, a]) => {
+  EDITS[id] = {top: a.top, cta: a.cta, label: '', track: AUTO_TRACKS[id] ?? {}, music: a.music, loop: true, ctaAt: a.ctaAt, musicVol: 0.7, calls: a.calls,
+    tints: a.tints.map(([r, c]) => [r, c === 'G' ? GREEN : RED] as [Ref, string]), rizz: a.rizz, punch: a.punch, blowouts: a.blowouts, blackFlash: a.blackFlash, streaks: a.streaks};
+});
 export const framesOf = (id: string) => (GEN as unknown as Record<string, SceneConfig[]>)[id].reduce((a, s) => a + s.durationInFrames, 0);
 
 const TINT = [0.21, 0.42, 0.62, 0.62, 0.62, 0.53, 0.35, 0.17];
