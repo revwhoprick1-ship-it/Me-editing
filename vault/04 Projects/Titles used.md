@@ -43,3 +43,6 @@
 - He picked this guy over MJ and LeBron 💀 (v31)
 - Guess the FAKE crypto millionaire… the M3 guy?? 💀 (guess-the-fake clip 1)
 - Only One Guy Spotted the LARPER 💀 (guess the fake millionaire v4, LARPER cut)
+- He Lost a $100K Deposit on a BOWLING ALLEY 💀 (guess-the-fake: bowling)
+- He's Down $400K on ONE Coin 💀 (guess-the-fake: 400K coin)
+- He Claims 7 FIGURES in ONE Day 💀 (guess-the-fake: seven figs)
