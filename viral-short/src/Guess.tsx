@@ -94,9 +94,11 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
   const f = useCurrentFrame(), {fps} = useVideoConfig();
   // Black flash 2 on EVERY music beat for the whole video (goodbye.mp3: 89.1 BPM, first beat 0.139 s — scratchpad beats.py):
   // beat frame = pure black, +1 = hard B&W, then a 1.08x punch that settles in 6 frames. Big 22-frame version on key moments.
-  const BEAT = 0.6734, PH = 0.1393, mt = cfg.music + f / fps, bd = Math.floor(((mt - PH) % BEAT + BEAT) % BEAT * fps);
-  const bf = near(BLACK, f, BF.length);
-  const bfs = bf !== undefined ? BF[bf] : bd === 0 ? 0 : bd === 1 ? 1 : -1;
+  // Black flash 2 (v3, per user): a see-through black flash every 0.2 s (6 frames) for the whole video, no zoom/shake.
+  // Key moments (old big flash spots) get a slightly darker one.
+  const bd = f % 6, big = near(BLACK, f, 18) !== undefined;
+  const bfa = bd === 0 ? (big ? 0.7 : 0.5) : bd === 1 ? (big ? 0.3 : 0.18) : 0;
+
   const fi = cfg.loop ? 999 : f;   // loop edits skip the intro so the restart is invisible
   const hblur = fi < 16 ? interpolate(f, [0, 16], [46, 0], clamp) : (() => { const d = near(STREAKS, f, 4); return d === undefined ? 0 : [70, 48, 26, 8][d]; })();
   const filter = (() => {
@@ -105,14 +107,12 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
     if (fi < 16) p.push(`brightness(${interpolate(f, [0, 5, 10, 16], [2.5, 1.9, 1.3, 1], clamp)}) contrast(${interpolate(f, [0, 16], [0.75, 1], clamp)})`);
     const s = near(STREAKS, f, 4); if (s !== undefined) p.push(`brightness(${[1.5, 1.3, 1.15, 1.05][s]})`);
     const w = near(BLOW, f, WB.length); if (w !== undefined && WB[w]) p.push(WB[w]);
-    if (bfs === 1) p.push('grayscale(1) contrast(4) brightness(0.9)');
-    if (bfs === 2) p.push('grayscale(1) invert(1) contrast(4) brightness(0.9)');
     return p.join(' ');
   })();
   const pu = near(PUNCH, f, 12), punch = pu === undefined ? 1 : interpolate(pu, [0, 2, 12], [1.13, 1.11, 1], clamp);
-  const bfZoom = bf !== undefined ? (bf < 12 ? 1.2 : interpolate(bf, [12, BF.length], [1.2, 1], clamp)) : bd < 8 ? interpolate(bd, [1, 2, 8], [1.08, 1.08, 1], clamp) : 1;
+  const bfZoom = 1;
   const zoom = (fi < 19 ? interpolate(f, [0, 18], [1.14, 1], clamp) : 1) * Math.max(punch, bfZoom);
-  const shake = bf !== undefined ? [0, 0, 18, -14, 0, 0, -18, 14, 0, 12, -10, 8, 10, -8, 5, -3][bf] ?? 0 : pu === 0 ? 8 : pu === 1 ? -5 : bd === 1 ? 10 : bd === 2 ? -6 : 0;
+  const shake = pu === 0 ? 8 : pu === 1 ? -5 : 0;
   const top = interpolate(fi, [0, 3, 6, 9, 12, 15, 18, 21, 24], [609, 573, 537, 504, 474, 450, 432, 420, BOX_TOP], clamp);
   const bot = interpolate(fi, [0, 3, 6, 9, 12, 15, 18, 21, 24], [1308, 1341, 1377, 1410, 1434, 1458, 1479, 1491, BOX_BOTTOM], clamp);
   const tint = TINTS.map(([t, c]) => [TINT[f - t], c] as const).find(([a]) => a !== undefined);
@@ -141,7 +141,7 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
         {call && cp && left + cp[0] * K < 1000 && <Callout x={left + cp[0] * K} y={cp[1] * K} r={Math.max(48, cp[2] * K * 1.35)} k={Math.min(1, (tSrc - call[0]) * 6)} label={cfg.label} />}
       </AbsoluteFill>
       {tint && <AbsoluteFill style={{background: tint[1], opacity: tint[0], mixBlendMode: 'multiply'}} />}
-      {bfs === 0 && <AbsoluteFill style={{background: '#000'}} />}
+      {bfa > 0 && <AbsoluteFill style={{background: '#000', opacity: bfa}} />}
     </div>
     <div style={{position: 'absolute', left: 0, width: 1080, bottom: 1920 - top + 3, display: 'flex', justifyContent: 'center'}}>
       <div style={{fontFamily: MONT, fontWeight: 700, fontSize: 58, lineHeight: '65px', color: 'white', textAlign: 'center', maxWidth: 940}}>
