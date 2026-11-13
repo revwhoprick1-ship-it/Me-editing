@@ -71,3 +71,8 @@
 - $50K Family SUV vs 7 Figures in ONE Day 💀 (suv)
 - A $40K Rolex Is 'Cheap'?? 💀 (rolex)
 - They All Agreed He's NOT the LARPER 💀 (legit)
+- The FAKE Millionaire Fooled Them Until the Very End 💀 (v5 confess)
+- Asking the FAKE Millionaire What He Got His Mom 💀 (v5 gift)
+- He Flew Across the World… for MERCH 💀 (v5 merch)
+- He Swore He Wasn't the LARPER… 💀 (v5 pissed)
+- The Dumbest Thing a 'Millionaire' Ever Bought 💀 (v5 bowling)
