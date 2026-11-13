@@ -12,6 +12,7 @@ import THANOS from './tracks/thanos.json';
 import CLOWN from './tracks/clown.json';
 import IRONMAN from './tracks/ironman.json';
 import FOMO from './tracks/fomoeyes.json';
+import MONTAGE from './tracks/montage.json';
 import type {SceneConfig} from './clipData';
 
 const MONT = 'Montserrat';
@@ -20,7 +21,7 @@ const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
 const BOX_TOP = 417, BOX_BOTTOM = 1494, BOX_H = BOX_BOTTOM - BOX_TOP, K = BOX_H / 1080;
 const GREEN = 'rgb(167,234,4)', RED = 'rgb(244,3,5)';
 type Ref = [string, string?, number?];   // [scene] = scene start, [scene, word, nth] = that word
-type Cfg = {top: string; cta: string; label: string; track: Record<string, number[]>; calls: [number, number][]; tints: [Ref, string][]; rizz: Ref[];
+type Cfg = {top: string; cta: string; label: string; track: Record<string, number[]>; calls: [number, number, string?][]; tints: [Ref, string][]; rizz: Ref[];
   punch: Ref[]; blowouts: Ref[]; blackFlash: Ref[]; streaks: Ref[]; music: number; loop?: boolean; ctaAt?: Ref};
 
 export const EDITS: Record<string, Cfg> = {
@@ -50,6 +51,18 @@ export const EDITS: Record<string, Cfg> = {
     tints: [[['main', 'ice'], GREEN], [['main', 'larper'], RED], [['main', '35'], GREEN], [['main', 'two'], GREEN]], rizz: [['main', 'ice'], ['main', '35']],
     punch: [['main', 'ice'], ['main', 'larper'], ['main', 'ice', 2], ['main', '35'], ['main', '35', 1], ['main', 'two']],
     blowouts: [['main', 'larper']], blackFlash: [['main', '35']], streaks: [['main', 'so']]},
+  // same clips the user's reference Shorts used (YRs8B6FaVbE / IeC6Lxv_EvQ montage; 0UpfENqRCXQ laugh hook), current style
+  refmontage: {top: 'Guess the fake LARPER millionaire', cta: '*real or LARP?*', label: '*Clown*', track: MONTAGE, music: 200, loop: true, ctaAt: ['main', 'could'],
+    calls: [[218.72, 221.28, '*Hulk*'], [228.56, 230.68, '*FOMO Eyes*'], [244.20, 246.28, '*Iron Man*'], [267.12, 273.84, '*Clown*']],
+    tints: [[['lotus', 'lotus'], GREEN], [['mercedes', 'mercedes'], GREEN], [['m3', 'm3'], GREEN], [['mom', 'mom'], RED], [['main', 'mustangs'], GREEN], [['main', 'laughing'], RED]],
+    rizz: [['lotus', 'lotus'], ['mercedes', 'mercedes'], ['m3', 'm3'], ['main', 'mustangs']],
+    punch: [['hook', 'expensive'], ['lotus', 'lotus'], ['mercedes', 'mercedes'], ['m3', 'm3'], ['mom', 'mom', 1], ['main', 'mustangs'], ['main', 'sell'], ['main', 'laughing'], ['main', 'two', 1], ['main', 'wrong']],
+    blowouts: [['main', 'sell']], blackFlash: [['lotus'], ['mercedes'], ['m3'], ['main']], streaks: [['lotus'], ['mercedes'], ['m3'], ['main']]},
+  reflaugh: {top: 'Spot the millionaire LARPER', cta: '*would you buy two of the same car?*', label: '*Clown*', track: CLOWN, music: 230, loop: true, ctaAt: ['main', 'could'],
+    calls: [[269.40, 272.92], [272.92, 273.84]],
+    tints: [[['hook', 'laughing'], RED], [['main', 'mustangs'], GREEN], [['main', 'laughing'], RED], [['main', 'two', 1], GREEN]], rizz: [['main', 'mustangs'], ['main', 'two', 1]],
+    punch: [['hook', 'laughing'], ['hook', 'believe'], ['main', 'two'], ['main', 'mustangs'], ['main', 'sell'], ['main', 'sucks'], ['main', 'two', 1], ['main', 'wrong']],
+    blowouts: [['main', 'sell']], blackFlash: [['main']], streaks: [['main']]},
   sevenfigs: {top: 'Real millionaire or LARPER?', cta: '*real millionaire or LARP?*', label: '*Thanos*', track: THANOS, music: 70,
     calls: [[331.56, 332.96], [324.28, 325.28], [326.32, 331.56]],
     tints: [[['main', 'seven'], GREEN], [['main', 'exchanges'], RED], [['main', 'seven', 2], GREEN]], rizz: [['main', 'seven'], ['main', 'seven', 2]],
@@ -137,8 +150,8 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
         <Series>{SCENES.map((s) => <Series.Sequence key={s.id} durationInFrames={s.durationInFrames}>
           <OffthreadVideo src={staticFile('source.mp4')} startFrom={Math.round(s.videoStartSec * fps)} style={{position: 'absolute', top: 0, left: s === sc ? left : 0, width: 1920 * K, height: BOX_H}} />
         </Series.Sequence>)}</Series>
-        <div style={{position: 'absolute', left: -60, right: -60, top: BOX_H * 0.865, height: BOX_H * 0.16, backdropFilter: 'blur(22px)', WebkitBackdropFilter: 'blur(22px)', background: 'rgba(0,0,0,0.08)'}} />
-        {call && cp && left + cp[0] * K < 1000 && <Callout x={left + cp[0] * K} y={cp[1] * K} r={Math.max(48, cp[2] * K * 1.35)} k={Math.min(1, (tSrc - call[0]) * 6)} label={cfg.label} />}
+        <div style={{position: 'absolute', left: -60, right: -60, top: BOX_H * 0.9, height: BOX_H * 0.12, backdropFilter: 'blur(22px)', WebkitBackdropFilter: 'blur(22px)', background: 'rgba(0,0,0,0.08)'}} />
+        {call && cp && left + cp[0] * K < 1000 && <Callout x={left + cp[0] * K} y={cp[1] * K} r={Math.max(48, cp[2] * K * 1.35)} k={Math.min(1, (tSrc - call[0]) * 6)} label={call[2] ?? cfg.label} />}
       </AbsoluteFill>
       {tint && <AbsoluteFill style={{background: tint[1], opacity: tint[0], mixBlendMode: 'multiply'}} />}
       {bfa > 0 && <AbsoluteFill style={{background: '#000', opacity: bfa}} />}

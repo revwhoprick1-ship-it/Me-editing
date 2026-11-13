@@ -55,3 +55,5 @@
 - Guess the LARPER Millionaire 💀 (bowling v2)
 - Find the Millionaire LARPER 💀 (400K coin v2)
 - Real Millionaire or LARPER? 💀 (seven figs v2)
+- Guess the Fake LARPER Millionaire 💀 (ref montage remake)
+- Spot the Millionaire LARPER 💀 (ref laugh-hook remake)
