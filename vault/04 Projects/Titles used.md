@@ -58,3 +58,6 @@
 - Guess the Fake LARPER Millionaire 💀 (ref montage remake)
 - Spot the Millionaire LARPER 💀 (ref laugh-hook remake)
 - Guess the Crypto Millionaire LARPER 💀 (intro cold-open edit)
+- Is the Clown the Millionaire LARPER? 💀 (data-picked: 2% of 67 mil)
+- Holding Chainlink = Millionaire LARPER? 💀 (data-picked: IQ check)
+- The Millionaire LARPER's Live Trade Fooled Him 💀 (data-picked: live trade)

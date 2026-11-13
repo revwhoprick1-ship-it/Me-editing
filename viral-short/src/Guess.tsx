@@ -14,6 +14,7 @@ import IRONMAN from './tracks/ironman.json';
 import FOMO from './tracks/fomoeyes.json';
 import MONTAGE from './tracks/montage.json';
 import PIKACHU from './tracks/pikachu.json';
+import CLOWN3 from './tracks/clown3.json';
 import type {SceneConfig} from './clipData';
 
 const MONT = 'Montserrat';
@@ -71,6 +72,22 @@ export const EDITS: Record<string, Cfg> = {
     rizz: [['main', '100x'], ['main', 'pikachu']],
     punch: [['main', 'seven'], ['main', 'millionaire'], ['main', '100x'], ['main', 'larp'], ['main', 'fake'], ['main', 'fake', 1], ['main', 'tokenize', 1], ['main', 'delusional'], ['main', 'larp', 2]],
     blowouts: [['main', '100x']], blackFlash: [['main', 'however'], ['main', 'this']], streaks: [['main', 'however'], ['main', 'what']]},
+  // data-picked set (score.py: crowd-reaction audio peaks + hook number/conflict density + late payoff); music 70 %
+  twopct: {top: 'Is the Clown the millionaire LARPER?', cta: '*real or LARP?*', label: '*Clown*', track: CLOWN3, music: 260, loop: true, ctaAt: ['main', 'where'], musicVol: 0.7,
+    calls: [[194.92, 196.44], [197.84, 198.32], [198.32, 198.84], [201.00, 201.60], [202.80, 203.68], [204.28, 204.80]],
+    tints: [[['main', '67'], GREEN], [['main', '2%'], RED], [['main', '$200k'], GREEN], [['main', 'puerto'], GREEN]], rizz: [['main', '67'], ['main', '$200k']],
+    punch: [['main', 'pino'], ['main', '67'], ['main', '2%'], ['main', '2%', 1], ['main', '$200k'], ['main', 'realistic'], ['main', 'puerto'], ['main', 'san']],
+    blowouts: [['main', '2%', 1]], blackFlash: [['main', '2%', 1]], streaks: [['main', 'where']]},
+  chainlink: {top: 'Holding Chainlink = millionaire LARPER?', cta: '*comment if you still hold Chainlink*', label: '', track: {}, music: 300, loop: true, ctaAt: ['main', 'bro'], musicVol: 0.7,
+    calls: [],
+    tints: [[['main', 'chainlink'], GREEN], [['main', 'wrong'], RED], [['main', 'chainlink', 2], GREEN]], rizz: [['main', 'chainlink'], ['main', 'chainlink', 2]],
+    punch: [['main', 'holds'], ['main', 'chainlink'], ['main', 'chainlink', 1], ['main', 'everything'], ['main', 'wrong'], ['main', 'chainlink', 2], ['main', 'iq'], ['main', 'sus']],
+    blowouts: [['main', 'iq']], blackFlash: [['main', 'wrong']], streaks: [['main', 'if']]},
+  livetrade: {top: "The millionaire LARPER's live trade fooled him", cta: '*would you have spotted the LARPER?*', label: '', track: {}, music: 340, loop: true, ctaAt: ['main', 'bro'], musicVol: 0.7,
+    calls: [],
+    tints: [[['main', 'solid'], GREEN], [['main', 'tabbed'], RED], [['main', 'actually', 1], GREEN]], rizz: [['main', 'solid'], ['main', 'actually', 1]],
+    punch: [['main', 'clot'], ['main', 'real'], ['main', '100%'], ['main', 'tabbed'], ['main', 'quick'], ['main', 'walkthrough'], ['main', 'actually', 1], ['main', 'knows']],
+    blowouts: [['main', 'tabbed']], blackFlash: [['main', 'did']], streaks: [['main', 'alright']]},
   sevenfigs: {top: 'Real millionaire or LARPER?', cta: '*real millionaire or LARP?*', label: '*Thanos*', track: THANOS, music: 70,
     calls: [[331.56, 332.96], [324.28, 325.28], [326.32, 331.56]],
     tints: [[['main', 'seven'], GREEN], [['main', 'exchanges'], RED], [['main', 'seven', 2], GREEN]], rizz: [['main', 'seven'], ['main', 'seven', 2]],
