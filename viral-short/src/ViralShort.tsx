@@ -8,6 +8,7 @@ import {loadFont} from '@remotion/fonts';
 import React from 'react';
 import {AbsoluteFill, Audio, Img, OffthreadVideo, Sequence, Series, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {SCENES, SceneConfig} from './clipData';
+import TRACK from './ironTrack.json';
 
 const MONT = 'Montserrat';
 loadFont({family: MONT, url: staticFile('res/Montserrat-Black.woff2'), weight: '800'});
@@ -24,18 +25,17 @@ const at = (id: string, word: string, nth = 0) => START[id] + SCENES.find((s) =>
 const shot = (id: string, sec: number) => START[id] + Math.round((sec - SCENES.find((s) => s.id === id)!.videoStartSec) * 30);
 const WILL = at('votes', 'will');
 
-const TINTS: [number, string][] = [[START.votes, RED], [at('votes', 'iron'), GREEN], [at('votes', 'larper'), GREEN], [WILL, RED], [START.fairplay, GREEN], [at('fairplay', 'fair'), GREEN]];
-const RIZZ = [at('votes', 'iron'), at('votes', 'larper'), at('fairplay', 'fair')];
-const STREAKS = [START.votes, START.fairplay];               // motion-streak cuts (ref 2, 0:00.6)
+const TINTS: [number, string][] = [[START.iron, RED], [at('iron', 'iron'), GREEN], [at('votes', 'larper'), GREEN], [WILL, RED], [START.fairplay, GREEN], [at('fairplay', 'fair'), GREEN]];
+const RIZZ = [at('iron', 'iron'), at('votes', 'larper'), at('fairplay', 'fair')];
+const STREAKS = [START.iron, START.fairplay];               // motion-streak cuts (ref 2, 0:00.6)
 const BLACK_FLASH = [START.reveal];                          // the reveal
 const BLOWOUTS = [at('hook', 'yes'), at('reveal', 'yes')];   // ref 2, 0:02.4 "white blow-out"
-const PUNCH = [at('hook', 'larp'), at('hook', 'yes'), at('votes', 'larp'), at('votes', 'larp', 1), at('votes', 'larper'), at('reveal', 'larp', 1), at('reveal', 'yes'), at('fairplay', 'fair'), at('fairplay', 'got')];
-const CALLOUTS = [
-  {from: shot('hook', 1548.16) + 2, to: START.votes, x: 250, y: 70, label: '*Iron Man*'},
-  {from: shot('votes', 1511.28) + 2, to: shot('votes', 1512.4), x: 520, y: 40, label: '*Iron Man*'},
-  {from: shot('reveal', 1546.08) + 2, to: shot('reveal', 1547.04), x: 250, y: 60, label: '*Iron Man*'},
-  {from: shot('reveal', 1548.16) + 2, to: START.fairplay, x: 250, y: 70, label: '*Iron Man*'},
-];
+const PUNCH = [at('hook', 'larp'), at('hook', 'yes'), at('iron', 'larp'), at('votes', 'larp'), at('votes', 'larper'), at('reveal', 'larp', 1), at('reveal', 'yes'), at('fairplay', 'fair'), at('fairplay', 'got')];
+// red circle + arrow call-out on Iron Man, tracked per frame (scratchpad track_im.py: mask colour blob, smoothed) — source sec ranges
+const CALL: [number, number][] = [[1548.16 + 2 / 30, 1550.12], [1511.28 + 2 / 30, 1512.4], [1546.08 + 2 / 30, 1547.04]];
+const TK = Object.keys(TRACK).map(Number);
+const track = (t: number) => { let best = -1, bd = 0.02; TK.forEach((k) => { const d = Math.abs(k - t); if (d < bd) { bd = d; best = k; } }); return best < 0 ? null : (TRACK as Record<string, number[]>)[best.toFixed(2)]; };
+const CALL_SFX = SCENES.flatMap((s) => CALL.filter(([a]) => a >= s.videoStartSec && a < s.videoStartSec + s.durationInFrames / 30).map(([a]) => shot(s.id, a)));
 
 // ---- measured presets ----------------------------------------------------------------------------------------------------
 const TINT = [0.21, 0.42, 0.62, 0.62, 0.62, 0.53, 0.35, 0.17];
@@ -111,36 +111,38 @@ const OneWord: React.FC = () => {
   </div>;
 };
 
-// red curved arrow + red italic name label (refs' "*Trevor Lawrence*" call-out), box coordinates
-const Callout: React.FC<{c: typeof CALLOUTS[number]}> = ({c}) => {
-  const f = useCurrentFrame(); const k = Math.min(1, f / 5);
+// tracked call-out: arrow.png's circle (centre 749,1120 of 1920x1861, radius 435) sits on the mask; red italic label above/below
+const Callout: React.FC<{x: number; y: number; r: number; k: number}> = ({x, y, r, k}) => {
+  const W = (r / 435) * 1920, lab = y - r - 95 > 8 ? y - r - 95 : y + r + 12;
   return <>
-    <Img src={staticFile('res/arrow.png')} style={{position: 'absolute', left: c.x + 40, top: c.y + 50, width: 280, opacity: k, transform: `rotate(${-20 + 4 * Math.sin(f / 5)}deg) scale(${0.7 + 0.3 * k})`,
+    <Img src={staticFile('res/arrow.png')} style={{position: 'absolute', left: x - (W * 749) / 1920, top: y - (W * 1120) / 1920, width: W, opacity: k, transform: `scale(${0.75 + 0.25 * k})`, transformOrigin: `${(749 / 1920) * 100}% ${(1120 / 1861) * 100}%`,
       filter: 'brightness(0) saturate(100%) invert(18%) sepia(98%) saturate(7000%) hue-rotate(355deg) drop-shadow(0 0 3px #fff)'}} />
-    <div style={{position: 'absolute', left: c.x, top: c.y, fontFamily: MONT, fontWeight: 800, fontStyle: 'italic', fontSize: 50, color: '#FF2020', WebkitTextStroke: '6px #fff', paintOrder: 'stroke fill', opacity: k, transform: `scale(${0.7 + 0.3 * k})`}}>{c.label}</div>
+    <div style={{position: 'absolute', left: Math.min(1080 - 330, Math.max(10, x - 150)), top: lab, fontFamily: MONT, fontWeight: 800, fontStyle: 'italic', fontSize: 50, color: '#FF2020', WebkitTextStroke: '6px #fff', paintOrder: 'stroke fill', opacity: k}}>*Iron Man*</div>
   </>;
 };
 
 const Scene: React.FC<{s: SceneConfig}> = ({s}) => {
   const {fps} = useVideoConfig(), f = useCurrentFrame();
   const cx = (s.crops ?? [[0, s.cropX]]).filter(([t]) => t <= f).pop()![1];
+  const left = Math.min(0, Math.max(1080 - 1920 * K, 540 - cx * K)), t = s.videoStartSec + f / fps;
+  const c = CALL.find(([a, b]) => t >= a && t < b), p = c && track(t);
   return <AbsoluteFill>
-    <OffthreadVideo src={staticFile('source.mp4')} startFrom={Math.round(s.videoStartSec * fps)} style={{position: 'absolute', top: 0, left: Math.min(0, Math.max(1080 - 1920 * K, 540 - cx * K)), width: 1920 * K, height: BOX_H}} />
+    <OffthreadVideo src={staticFile('source.mp4')} startFrom={Math.round(s.videoStartSec * fps)} style={{position: 'absolute', top: 0, left, width: 1920 * K, height: BOX_H}} />
+    {c && p && left + p[0] * K < 1000 && <Callout x={left + p[0] * K} y={p[1] * K} r={Math.max(48, p[2] * K * 1.35)} k={Math.min(1, (t - c[0]) * 6)} />}
   </AbsoluteFill>;
 };
 
 const sfx = (file: string, t: number, v: number) => ({file, at: Math.max(0, Math.round(t)), v});
 const FX = [
-  ...CALLOUTS.map((c) => sfx('flash.mp3', c.from, 0.4)),
+  ...CALL_SFX.map((f) => sfx('flash.mp3', f, 0.4)),
   ...RIZZ.map((t) => sfx('rizz.mp3', t, 0.42)),
-  ...BLACK_FLASH.map((b) => sfx('shock.mp3', b, 0.5)), sfx('shock.mp3', START.votes, 0.38),
+  ...BLACK_FLASH.map((b) => sfx('shock.mp3', b, 0.5)), sfx('shock.mp3', START.iron, 0.38),
 ];
 
 export const ViralShort: React.FC = () => (
   <AbsoluteFill style={{backgroundColor: '#000'}}>
     <Box>
       <Series>{SCENES.map((s) => <Series.Sequence key={s.id} durationInFrames={s.durationInFrames}><Scene s={s} /></Series.Sequence>)}</Series>
-      {CALLOUTS.map((c, i) => <Sequence key={i} from={c.from} durationInFrames={c.to - c.from}><Callout c={c} /></Sequence>)}
     </Box>
     <OneWord />
     <Sequence from={at('fairplay', 'like', 1)} durationInFrames={END - at('fairplay', 'like', 1)}>
