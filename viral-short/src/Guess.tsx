@@ -9,6 +9,9 @@ import {AbsoluteFill, Audio, Img, OffthreadVideo, Sequence, Series, interpolate,
 import GEN from './edits.gen.json';
 import HULK from './tracks/hulk.json';
 import THANOS from './tracks/thanos.json';
+import CLOWN from './tracks/clown.json';
+import IRONMAN from './tracks/ironman.json';
+import FOMO from './tracks/fomoeyes.json';
 import type {SceneConfig} from './clipData';
 
 const MONT = 'Montserrat';
@@ -18,7 +21,7 @@ const BOX_TOP = 417, BOX_BOTTOM = 1494, BOX_H = BOX_BOTTOM - BOX_TOP, K = BOX_H 
 const GREEN = 'rgb(167,234,4)', RED = 'rgb(244,3,5)';
 type Ref = [string, string?, number?];   // [scene] = scene start, [scene, word, nth] = that word
 type Cfg = {top: string; cta: string; label: string; track: Record<string, number[]>; calls: [number, number][]; tints: [Ref, string][]; rizz: Ref[];
-  punch: Ref[]; blowouts: Ref[]; blackFlash: Ref[]; streaks: Ref[]; music: number};
+  punch: Ref[]; blowouts: Ref[]; blackFlash: Ref[]; streaks: Ref[]; music: number; loop?: boolean; ctaAt?: Ref};
 
 export const EDITS: Record<string, Cfg> = {
   bowling: {top: 'He lost a $100K deposit on a BOWLING ALLEY', cta: '*real millionaire or LARP?*', label: '*Hulk*', track: HULK, music: 20,
@@ -31,6 +34,22 @@ export const EDITS: Record<string, Cfg> = {
     tints: [[['main', '$400K'], GREEN], [['main', '98%'], RED], [['main', 'tuition'], GREEN]], rizz: [['main', '$400K'], ['main', 'tuition']],
     punch: [['hook', '$400K'], ['hook', '98%'], ['main', 'expensive'], ['main', '$400K'], ['main', '98%'], ['main', 'dox'], ['main', '$400K', 1], ['main', 'tuition']],
     blowouts: [['hook', '98%']], blackFlash: [['main']], streaks: [['main', '$400K']]},
+  // loop edits: no intro animation, no end card, CTA mid-video — the last line runs straight back into the first (replays)
+  mustangs: {top: 'He owned TWO Mustang GTs… the room lost it', cta: '*would you buy two of the same car?*', label: '*Clown*', track: CLOWN, music: 95, loop: true, ctaAt: ['main', 'he'],
+    calls: [[269.40, 272.92], [272.92, 273.84]],
+    tints: [[['main', 'mustangs'], GREEN], [['main', 'laughing'], RED], [['main', 'two', 1], GREEN]], rizz: [['main', 'mustangs'], ['main', 'two', 1]],
+    punch: [['main', 'two'], ['main', 'mustangs'], ['main', 'sell'], ['main', 'laughing'], ['main', 'sucks'], ['main', 'two', 1], ['main', 'car']],
+    blowouts: [['main', 'sell']], blackFlash: [['main', 'why']], streaks: [['main', 'could']]},
+  shiba: {top: 'He says he turned $1K into $100K on Shiba', cta: '*real or LARP?*', label: '*FOMO Eyes*', track: FOMO, music: 120, loop: true, ctaAt: ['main', 'how', 1],
+    calls: [[389.98, 392.80], [394.12, 394.96], [397.64, 398.68], [400.08, 400.72]],
+    tints: [[['main', 'shiba'], GREEN], [['main', 'larp'], RED], [['main', '$100k'], GREEN], [['main', 'exactly'], GREEN]], rizz: [['main', 'shiba'], ['main', '$100k']],
+    punch: [['main', '100x'], ['main', 'larp'], ['main', '$100k'], ['main', '$1k'], ['main', '$100k', 1], ['main', 'difficult'], ['main', 'did', 1]],
+    blowouts: [['main', 'exactly']], blackFlash: [['main', '100x']], streaks: [['main', 'hitting']]},
+  icebath: {top: 'His morning routine got him called a LARPER', cta: '*real or LARP?*', label: '*Iron Man*', track: IRONMAN, music: 150, loop: true, ctaAt: ['main', 'how'],
+    calls: [[1362.24, 1364.44], [1367.64, 1369.84], [1371.04, 1371.92], [1373.76, 1376.30]],
+    tints: [[['main', 'ice'], GREEN], [['main', 'larper'], RED], [['main', '35'], GREEN], [['main', 'two'], GREEN]], rizz: [['main', 'ice'], ['main', '35']],
+    punch: [['main', 'ice'], ['main', 'larper'], ['main', 'ice', 2], ['main', '35'], ['main', '35', 1], ['main', 'two']],
+    blowouts: [['main', 'larper']], blackFlash: [['main', '35']], streaks: [['main', 'so']]},
   sevenfigs: {top: 'He claims he made 7 FIGURES in ONE day', cta: '*real millionaire or LARP?*', label: '*Thanos*', track: THANOS, music: 70,
     calls: [[331.56, 332.96], [324.28, 325.28], [326.32, 331.56]],
     tints: [[['main', 'seven'], GREEN], [['main', 'exchanges'], RED], [['main', 'seven', 2], GREEN]], rizz: [['main', 'seven'], ['main', 'seven', 2]],
@@ -74,11 +93,12 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
 
   const f = useCurrentFrame(), {fps} = useVideoConfig();
   const bf = near(BLACK, f, BF.length), bfs = bf === undefined ? -1 : BF[bf];
-  const hblur = f < 16 ? interpolate(f, [0, 16], [46, 0], clamp) : (() => { const d = near(STREAKS, f, 4); return d === undefined ? 0 : [70, 48, 26, 8][d]; })();
+  const fi = cfg.loop ? 999 : f;   // loop edits skip the intro so the restart is invisible
+  const hblur = fi < 16 ? interpolate(f, [0, 16], [46, 0], clamp) : (() => { const d = near(STREAKS, f, 4); return d === undefined ? 0 : [70, 48, 26, 8][d]; })();
   const filter = (() => {
     const p = ['saturate(1.3) contrast(1.06)'];
     if (hblur > 0) p.push('url(#hblur)');
-    if (f < 16) p.push(`brightness(${interpolate(f, [0, 5, 10, 16], [2.5, 1.9, 1.3, 1], clamp)}) contrast(${interpolate(f, [0, 16], [0.75, 1], clamp)})`);
+    if (fi < 16) p.push(`brightness(${interpolate(f, [0, 5, 10, 16], [2.5, 1.9, 1.3, 1], clamp)}) contrast(${interpolate(f, [0, 16], [0.75, 1], clamp)})`);
     const s = near(STREAKS, f, 4); if (s !== undefined) p.push(`brightness(${[1.5, 1.3, 1.15, 1.05][s]})`);
     const w = near(BLOW, f, WB.length); if (w !== undefined && WB[w]) p.push(WB[w]);
     if (bfs === 1) p.push('grayscale(1) contrast(4) brightness(0.9)');
@@ -87,10 +107,10 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
   })();
   const pu = near(PUNCH, f, 12), punch = pu === undefined ? 1 : interpolate(pu, [0, 2, 12], [1.13, 1.11, 1], clamp);
   const bfZoom = bf === undefined ? 1 : bf < 12 ? 1.2 : interpolate(bf, [12, BF.length], [1.2, 1], clamp);
-  const zoom = (f < 19 ? interpolate(f, [0, 18], [1.14, 1], clamp) : 1) * Math.max(punch, bfZoom);
+  const zoom = (fi < 19 ? interpolate(f, [0, 18], [1.14, 1], clamp) : 1) * Math.max(punch, bfZoom);
   const shake = bf !== undefined ? [0, 0, 18, -14, 0, 0, -18, 14, 0, 12, -10, 8, 10, -8, 5, -3][bf] ?? 0 : pu === 0 ? 8 : pu === 1 ? -5 : 0;
-  const top = interpolate(f, [0, 3, 6, 9, 12, 15, 18, 21, 24], [609, 573, 537, 504, 474, 450, 432, 420, BOX_TOP], clamp);
-  const bot = interpolate(f, [0, 3, 6, 9, 12, 15, 18, 21, 24], [1308, 1341, 1377, 1410, 1434, 1458, 1479, 1491, BOX_BOTTOM], clamp);
+  const top = interpolate(fi, [0, 3, 6, 9, 12, 15, 18, 21, 24], [609, 573, 537, 504, 474, 450, 432, 420, BOX_TOP], clamp);
+  const bot = interpolate(fi, [0, 3, 6, 9, 12, 15, 18, 21, 24], [1308, 1341, 1377, 1410, 1434, 1458, 1479, 1491, BOX_BOTTOM], clamp);
   const tint = TINTS.map(([t, c]) => [TINT[f - t], c] as const).find(([a]) => a !== undefined);
 
   // current scene (for crop + tracked call-out)
@@ -103,7 +123,7 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
   const words = SCENES.flatMap((s) => s.words.map((w) => ({...w, at: START[s.id] + w.startFrame, end: START[s.id] + w.endFrame, sceneEnd: START[s.id] + s.durationInFrames})));
   let wi = -1; words.forEach((w, j) => { if (f >= w.at) wi = j; });
   const word = wi >= 0 && f < words[wi].sceneEnd && f <= words[wi].end + 20 ? words[wi] : null, wk = word ? f - word.at : 9;
-  const ctaFrom = END - 75;
+  const ctaFrom = cfg.ctaAt ? at(cfg.ctaAt) : END - 75, ctaTo = cfg.ctaAt ? ctaFrom + 75 : END;
 
   const FX = [...callStarts.map((t) => ['flash.mp3', t, 0.4] as const), ...RIZZ.map((t) => ['rizz.mp3', t, 0.42] as const), ...BLACK.map((t) => ['shock.mp3', t, 0.55] as const)];
   return <AbsoluteFill style={{backgroundColor: '#000'}}>
@@ -126,7 +146,7 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
     {word && <div style={{position: 'absolute', left: 0, width: 1080, top: 1060, textAlign: 'center', ...(wk < 2 ? {transform: `scaleX(${wk === 0 ? 1.35 : 1.15})`, filter: `blur(${wk === 0 ? 5 : 2.5}px)`, opacity: 0.85} : {})}}>
       <span style={{fontFamily: MONT, fontWeight: 800, fontSize: 68, color: '#FFFFFF', WebkitTextStroke: '7px #000', paintOrder: 'stroke fill', textShadow: '0 3px 8px rgba(0,0,0,0.7)'}}>{word.word}</span>
     </div>}
-    {f >= ctaFrom && <div style={{position: 'absolute', left: 0, width: 1080, top: 1250, textAlign: 'center', fontFamily: MONT, fontWeight: 800, fontStyle: 'italic', fontSize: 42, color: '#fff', WebkitTextStroke: '5px #000', paintOrder: 'stroke fill', opacity: Math.min(1, (f - ctaFrom) / 5)}}>{cfg.cta}</div>}
+    {f >= ctaFrom && f < ctaTo && <div style={{position: 'absolute', left: 0, width: 1080, top: 1250, textAlign: 'center', fontFamily: MONT, fontWeight: 800, fontStyle: 'italic', fontSize: 42, color: '#fff', WebkitTextStroke: '5px #000', paintOrder: 'stroke fill', opacity: Math.min(1, (f - ctaFrom) / 5)}}>{cfg.cta}</div>}
     <Audio src={staticFile('res/goodbye.mp3')} startFrom={cfg.music * fps} volume={0.09} />
     {FX.map(([file, t, v], i) => <Sequence key={i} from={Math.max(0, t)}><Audio src={staticFile(`res/${file}`)} volume={v} /></Sequence>)}
   </AbsoluteFill>;

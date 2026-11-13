@@ -3,6 +3,7 @@
 # sit on the source's own camera cuts (scdet) so no sub-second fragments; crops = [shot start sec, centre x in 1920 px].
 import json, sys
 tx = json.load(open(sys.argv[1])); W = [w for s in tx for w in s['w']]
+AT = {273.42: 'had', 273.52: 'to', 273.62: 'sell', 398.90: '$1K', 399.24: 'and', 399.44: 'got', 399.60: '', 399.68: '$100K?', 397.92: '$100K', 394.34: '100x', 401.24: '100x', 1364.96: 'LARPER', 1365.20: '', 1371.14: '35', 398.06: '', 395.88: 'LARP'}
 FIX = {'shitcoin': 'shitcoin', '10': '10%', '%': '', '98': '98%', '100k': '$100K', '$400k': '$400K'}
 EDITS = {
  'bowling': [
@@ -11,6 +12,13 @@ EDITS = {
  'coin400k': [
   ('hook', 290.96, 294.20, [(290.96, 960)]),
   ('main', 286.40, 303.16, [(286.40, 960), (290.04, 960), (290.96, 960), (294.88, 960), (296.24, 980), (297.92, 960)])],
+ # loop edits (no hook/rewind: the last line flows straight back into the first line -> replays)
+ 'mustangs': [
+  ('main', 269.40, 281.22, [(269.40, 900), (272.92, 800), (273.84, 760), (275.64, 560), (278.04, 960)])],
+ 'shiba': [
+  ('main', 389.98, 404.72, [(389.98, 960), (394.96, 1040), (396.48, 960), (400.72, 960)])],
+ 'icebath': [
+  ('main', 1360.84, 1376.30, [(1360.84, 1300), (1362.24, 960), (1364.44, 540), (1366.04, 960), (1371.04, 1050), (1371.92, 600), (1373.76, 1000)])],
  'sevenfigs': [
   ('hook', 331.56, 334.20, [(331.56, 840), (332.96, 960)]),
   ('main', 322.05, 334.20, [(322.05, 560), (324.28, 960), (326.32, 960), (329.00, 920), (331.56, 840), (332.96, 960)])],
@@ -22,7 +30,7 @@ for eid, plan in EDITS.items():
         n = round((b - a) * 30); words = []
         for (ws, we, t) in W:
             if a - 0.05 <= ws < b - 0.05:
-                tt = FIX.get(t.lower().strip(',.?'), t.strip(',.'))
+                tt = AT[round(ws, 2)] if round(ws, 2) in AT else FIX.get(t.lower().strip(',.?'), t.strip(',.'))
                 if not tt: continue
                 f0 = max(0, round((ws - a) * 30)); f1 = min(n, max(f0 + 4, round((we - a) * 30) + 3))
                 words.append({'word': tt, 'startFrame': f0, 'endFrame': f1})

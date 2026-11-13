@@ -46,3 +46,6 @@
 - He Lost a $100K Deposit on a BOWLING ALLEY 💀 (guess-the-fake: bowling)
 - He's Down $400K on ONE Coin 💀 (guess-the-fake: 400K coin)
 - He Claims 7 FIGURES in ONE Day 💀 (guess-the-fake: seven figs)
+- He Owned TWO Mustang GTs… the Room Lost It 💀 (guess-the-fake: mustangs, loop)
+- He Says He Turned $1K Into $100K on Shiba 💀 (guess-the-fake: shiba, loop)
+- His Morning Routine Got Him Called a LARPER 💀 (guess-the-fake: ice bath, loop)
