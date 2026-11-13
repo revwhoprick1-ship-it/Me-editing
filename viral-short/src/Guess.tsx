@@ -96,8 +96,8 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
   // beat frame = pure black, +1 = hard B&W, then a 1.08x punch that settles in 6 frames. Big 22-frame version on key moments.
   // Black flash 2 (v3, per user): a see-through black flash every 0.2 s (6 frames) for the whole video, no zoom/shake.
   // Key moments (old big flash spots) get a slightly darker one.
-  const bd = f % 6, big = near(BLACK, f, 18) !== undefined;
-  const bfa = bd === 0 ? (big ? 0.35 : 0.25) : bd === 1 ? (big ? 0.12 : 0.08) : 0;
+  const bd = f % 3, big = near(BLACK, f, 18) !== undefined;
+  const bfa = bd === 0 ? (big ? 0.2 : 0.14) : 0;
 
   const fi = cfg.loop ? 999 : f;   // loop edits skip the intro so the restart is invisible
   const hblur = fi < 16 ? interpolate(f, [0, 16], [46, 0], clamp) : (() => { const d = near(STREAKS, f, 4); return d === undefined ? 0 : [70, 48, 26, 8][d]; })();
