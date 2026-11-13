@@ -24,33 +24,33 @@ type Cfg = {top: string; cta: string; label: string; track: Record<string, numbe
   punch: Ref[]; blowouts: Ref[]; blackFlash: Ref[]; streaks: Ref[]; music: number; loop?: boolean; ctaAt?: Ref};
 
 export const EDITS: Record<string, Cfg> = {
-  bowling: {top: 'He lost a $100K deposit on a BOWLING ALLEY', cta: '*real millionaire or LARP?*', label: '*Hulk*', track: HULK, music: 20,
+  bowling: {top: 'Guess the LARPER millionaire', cta: '*real millionaire or LARP?*', label: '*Hulk*', track: HULK, music: 20,
     calls: [[357.40, 359.32], [351.32, 352.40]],
     tints: [[['main', 'bowling'], GREEN], [['main', 'lost'], RED], [['main', 'legit'], GREEN]], rizz: [['main', 'bowling'], ['main', 'legit']],
     punch: [['hook', '$100K'], ['hook', 'stupid'], ['main', 'dumbest'], ['main', 'bowling'], ['main', '$100K'], ['main', '$100K', 1], ['main', 'legit']],
     blowouts: [['hook', 'lost']], blackFlash: [['main']], streaks: [['main', 'bowling']]},
-  coin400k: {top: "He's down $400K on ONE coin", cta: '*real millionaire or LARP?*', label: '*Thanos*', track: THANOS, music: 45,
+  coin400k: {top: 'Find the millionaire LARPER', cta: '*real millionaire or LARP?*', label: '*Thanos*', track: THANOS, music: 45,
     calls: [[290.96, 294.88], [286.40, 290.04], [296.24, 297.92]],
     tints: [[['main', '$400K'], GREEN], [['main', '98%'], RED], [['main', 'tuition'], GREEN]], rizz: [['main', '$400K'], ['main', 'tuition']],
     punch: [['hook', '$400K'], ['hook', '98%'], ['main', 'expensive'], ['main', '$400K'], ['main', '98%'], ['main', 'dox'], ['main', '$400K', 1], ['main', 'tuition']],
     blowouts: [['hook', '98%']], blackFlash: [['main']], streaks: [['main', '$400K']]},
   // loop edits: no intro animation, no end card, CTA mid-video — the last line runs straight back into the first (replays)
-  mustangs: {top: 'He owned TWO Mustang GTs… the room lost it', cta: '*would you buy two of the same car?*', label: '*Clown*', track: CLOWN, music: 95, loop: true, ctaAt: ['main', 'he'],
+  mustangs: {top: 'Guess the millionaire LARPER', cta: '*would you buy two of the same car?*', label: '*Clown*', track: CLOWN, music: 95, loop: true, ctaAt: ['main', 'he'],
     calls: [[269.40, 272.92], [272.92, 273.84]],
     tints: [[['main', 'mustangs'], GREEN], [['main', 'laughing'], RED], [['main', 'two', 1], GREEN]], rizz: [['main', 'mustangs'], ['main', 'two', 1]],
     punch: [['main', 'two'], ['main', 'mustangs'], ['main', 'sell'], ['main', 'laughing'], ['main', 'sucks'], ['main', 'two', 1], ['main', 'car']],
     blowouts: [['main', 'sell']], blackFlash: [['main', 'why']], streaks: [['main', 'could']]},
-  shiba: {top: 'He says he turned $1K into $100K on Shiba', cta: '*real or LARP?*', label: '*FOMO Eyes*', track: FOMO, music: 120, loop: true, ctaAt: ['main', 'how', 1],
+  shiba: {top: 'Can you spot the millionaire LARPER?', cta: '*real or LARP?*', label: '*FOMO Eyes*', track: FOMO, music: 120, loop: true, ctaAt: ['main', 'how', 1],
     calls: [[389.98, 392.80], [394.12, 394.96], [397.64, 398.68], [400.08, 400.72]],
     tints: [[['main', 'shiba'], GREEN], [['main', 'larp'], RED], [['main', '$100k'], GREEN], [['main', 'exactly'], GREEN]], rizz: [['main', 'shiba'], ['main', '$100k']],
     punch: [['main', '100x'], ['main', 'larp'], ['main', '$100k'], ['main', '$1k'], ['main', '$100k', 1], ['main', 'difficult'], ['main', 'did', 1]],
     blowouts: [['main', 'exactly']], blackFlash: [['main', '100x']], streaks: [['main', 'hitting']]},
-  icebath: {top: 'His morning routine got him called a LARPER', cta: '*real or LARP?*', label: '*Iron Man*', track: IRONMAN, music: 150, loop: true, ctaAt: ['main', 'how'],
+  icebath: {top: 'Which one is the millionaire LARPER?', cta: '*real or LARP?*', label: '*Iron Man*', track: IRONMAN, music: 150, loop: true, ctaAt: ['main', 'how'],
     calls: [[1362.24, 1364.44], [1367.64, 1369.84], [1371.04, 1371.92], [1373.76, 1376.30]],
     tints: [[['main', 'ice'], GREEN], [['main', 'larper'], RED], [['main', '35'], GREEN], [['main', 'two'], GREEN]], rizz: [['main', 'ice'], ['main', '35']],
     punch: [['main', 'ice'], ['main', 'larper'], ['main', 'ice', 2], ['main', '35'], ['main', '35', 1], ['main', 'two']],
     blowouts: [['main', 'larper']], blackFlash: [['main', '35']], streaks: [['main', 'so']]},
-  sevenfigs: {top: 'He claims he made 7 FIGURES in ONE day', cta: '*real millionaire or LARP?*', label: '*Thanos*', track: THANOS, music: 70,
+  sevenfigs: {top: 'Real millionaire or LARPER?', cta: '*real millionaire or LARP?*', label: '*Thanos*', track: THANOS, music: 70,
     calls: [[331.56, 332.96], [324.28, 325.28], [326.32, 331.56]],
     tints: [[['main', 'seven'], GREEN], [['main', 'exchanges'], RED], [['main', 'seven', 2], GREEN]], rizz: [['main', 'seven'], ['main', 'seven', 2]],
     punch: [['hook', 'seven'], ['hook', 'seven', 1], ['main', 'seven'], ['main', 'launched'], ['main', 'seven', 1], ['main', 'seven', 2], ['main', 'impressive']],
@@ -67,7 +67,7 @@ const WB = ['brightness(1.75) contrast(1.45) saturate(1.25)', 'brightness(1.85) 
 const near = (list: number[], f: number, len: number) => list.map((t) => f - t).find((d) => d >= 0 && d < len);
 
 const Callout: React.FC<{x: number; y: number; r: number; k: number; label: string}> = ({x, y, r, k, label}) => {
-  const W = (r / 435) * 1920, lab = y - r - 95 > 8 ? y - r - 95 : y + r + 12;
+  const W = (r / 435) * 1920, lab = y - r - 95 > 45 ? y - r - 95 : y + r + 12;
   return <>
     <Img src={staticFile('res/arrow.png')} style={{position: 'absolute', left: x - (W * 749) / 1920, top: y - (W * 1120) / 1920, width: W, opacity: k, transform: `scale(${0.75 + 0.25 * k})`, transformOrigin: `${(749 / 1920) * 100}% ${(1120 / 1861) * 100}%`,
       filter: 'brightness(0) saturate(100%) invert(18%) sepia(98%) saturate(7000%) hue-rotate(355deg) drop-shadow(0 0 3px #fff)'}} />
@@ -92,7 +92,11 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
   const callStarts = SCENES.flatMap((s) => cfg.calls.filter(([a]) => a >= s.videoStartSec - 0.01 && a < s.videoStartSec + s.durationInFrames / 30).map(([a]) => START[s.id] + Math.max(0, Math.round((a - s.videoStartSec) * 30)) + 2));
 
   const f = useCurrentFrame(), {fps} = useVideoConfig();
-  const bf = near(BLACK, f, BF.length), bfs = bf === undefined ? -1 : BF[bf];
+  // Black flash 2 on EVERY music beat for the whole video (goodbye.mp3: 89.1 BPM, first beat 0.139 s — scratchpad beats.py):
+  // beat frame = pure black, +1 = hard B&W, then a 1.08x punch that settles in 6 frames. Big 22-frame version on key moments.
+  const BEAT = 0.6734, PH = 0.1393, mt = cfg.music + f / fps, bd = Math.floor(((mt - PH) % BEAT + BEAT) % BEAT * fps);
+  const bf = near(BLACK, f, BF.length);
+  const bfs = bf !== undefined ? BF[bf] : bd === 0 ? 0 : bd === 1 ? 1 : -1;
   const fi = cfg.loop ? 999 : f;   // loop edits skip the intro so the restart is invisible
   const hblur = fi < 16 ? interpolate(f, [0, 16], [46, 0], clamp) : (() => { const d = near(STREAKS, f, 4); return d === undefined ? 0 : [70, 48, 26, 8][d]; })();
   const filter = (() => {
@@ -106,9 +110,9 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
     return p.join(' ');
   })();
   const pu = near(PUNCH, f, 12), punch = pu === undefined ? 1 : interpolate(pu, [0, 2, 12], [1.13, 1.11, 1], clamp);
-  const bfZoom = bf === undefined ? 1 : bf < 12 ? 1.2 : interpolate(bf, [12, BF.length], [1.2, 1], clamp);
+  const bfZoom = bf !== undefined ? (bf < 12 ? 1.2 : interpolate(bf, [12, BF.length], [1.2, 1], clamp)) : bd < 8 ? interpolate(bd, [1, 2, 8], [1.08, 1.08, 1], clamp) : 1;
   const zoom = (fi < 19 ? interpolate(f, [0, 18], [1.14, 1], clamp) : 1) * Math.max(punch, bfZoom);
-  const shake = bf !== undefined ? [0, 0, 18, -14, 0, 0, -18, 14, 0, 12, -10, 8, 10, -8, 5, -3][bf] ?? 0 : pu === 0 ? 8 : pu === 1 ? -5 : 0;
+  const shake = bf !== undefined ? [0, 0, 18, -14, 0, 0, -18, 14, 0, 12, -10, 8, 10, -8, 5, -3][bf] ?? 0 : pu === 0 ? 8 : pu === 1 ? -5 : bd === 1 ? 10 : bd === 2 ? -6 : 0;
   const top = interpolate(fi, [0, 3, 6, 9, 12, 15, 18, 21, 24], [609, 573, 537, 504, 474, 450, 432, 420, BOX_TOP], clamp);
   const bot = interpolate(fi, [0, 3, 6, 9, 12, 15, 18, 21, 24], [1308, 1341, 1377, 1410, 1434, 1458, 1479, 1491, BOX_BOTTOM], clamp);
   const tint = TINTS.map(([t, c]) => [TINT[f - t], c] as const).find(([a]) => a !== undefined);
@@ -133,6 +137,7 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
         <Series>{SCENES.map((s) => <Series.Sequence key={s.id} durationInFrames={s.durationInFrames}>
           <OffthreadVideo src={staticFile('source.mp4')} startFrom={Math.round(s.videoStartSec * fps)} style={{position: 'absolute', top: 0, left: s === sc ? left : 0, width: 1920 * K, height: BOX_H}} />
         </Series.Sequence>)}</Series>
+        <div style={{position: 'absolute', left: -60, right: -60, top: BOX_H * 0.865, height: BOX_H * 0.16, backdropFilter: 'blur(22px)', WebkitBackdropFilter: 'blur(22px)', background: 'rgba(0,0,0,0.08)'}} />
         {call && cp && left + cp[0] * K < 1000 && <Callout x={left + cp[0] * K} y={cp[1] * K} r={Math.max(48, cp[2] * K * 1.35)} k={Math.min(1, (tSrc - call[0]) * 6)} label={cfg.label} />}
       </AbsoluteFill>
       {tint && <AbsoluteFill style={{background: tint[1], opacity: tint[0], mixBlendMode: 'multiply'}} />}
