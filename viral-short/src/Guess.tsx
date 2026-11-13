@@ -97,7 +97,7 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
   // Black flash 2 (v3, per user): a see-through black flash every 0.2 s (6 frames) for the whole video, no zoom/shake.
   // Key moments (old big flash spots) get a slightly darker one.
   const bd = f % 3, big = near(BLACK, f, 18) !== undefined;
-  const bfa = bd === 0 ? (big ? 0.2 : 0.14) : 0;
+  const bfa = bd === 0 ? 0.04 : 0;   // constant 4 % every 0.1 s (user)
 
   const fi = cfg.loop ? 999 : f;   // loop edits skip the intro so the restart is invisible
   const hblur = fi < 16 ? interpolate(f, [0, 16], [46, 0], clamp) : (() => { const d = near(STREAKS, f, 4); return d === undefined ? 0 : [70, 48, 26, 8][d]; })();
