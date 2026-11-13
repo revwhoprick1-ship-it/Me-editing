@@ -13,6 +13,7 @@ import CLOWN from './tracks/clown.json';
 import IRONMAN from './tracks/ironman.json';
 import FOMO from './tracks/fomoeyes.json';
 import MONTAGE from './tracks/montage.json';
+import PIKACHU from './tracks/pikachu.json';
 import type {SceneConfig} from './clipData';
 
 const MONT = 'Montserrat';
@@ -22,7 +23,7 @@ const BOX_TOP = 417, BOX_BOTTOM = 1494, BOX_H = BOX_BOTTOM - BOX_TOP, K = BOX_H 
 const GREEN = 'rgb(167,234,4)', RED = 'rgb(244,3,5)';
 type Ref = [string, string?, number?];   // [scene] = scene start, [scene, word, nth] = that word
 type Cfg = {top: string; cta: string; label: string; track: Record<string, number[]>; calls: [number, number, string?][]; tints: [Ref, string][]; rizz: Ref[];
-  punch: Ref[]; blowouts: Ref[]; blackFlash: Ref[]; streaks: Ref[]; music: number; loop?: boolean; ctaAt?: Ref};
+  punch: Ref[]; blowouts: Ref[]; blackFlash: Ref[]; streaks: Ref[]; music: number; loop?: boolean; ctaAt?: Ref; musicVol?: number; subBand?: [number, number]; blurOff?: [number, number][]};
 
 export const EDITS: Record<string, Cfg> = {
   bowling: {top: 'Guess the LARPER millionaire', cta: '*real millionaire or LARP?*', label: '*Hulk*', track: HULK, music: 20,
@@ -63,6 +64,13 @@ export const EDITS: Record<string, Cfg> = {
     tints: [[['hook', 'laughing'], RED], [['main', 'mustangs'], GREEN], [['main', 'laughing'], RED], [['main', 'two', 1], GREEN]], rizz: [['main', 'mustangs'], ['main', 'two', 1]],
     punch: [['hook', 'laughing'], ['hook', 'believe'], ['main', 'two'], ['main', 'mustangs'], ['main', 'sell'], ['main', 'sucks'], ['main', 'two', 1], ['main', 'wrong']],
     blowouts: [['main', 'sell']], blackFlash: [['main']], streaks: [['main']]},
+  // the episode's cold open (0-24.6 s, continuous); its burned-in captions sit mid-frame -> taller blur band; music at 70 % (user)
+  intro: {top: 'Guess the crypto millionaire LARPER', cta: '*who do you think is the LARPER?*', label: '*Pikachu*', track: PIKACHU, music: 0, loop: true, ctaAt: ['main', 'and', 1],
+    musicVol: 0.7, subBand: [0.6, 0.36], blurOff: [[23.2, 25]], calls: [[19.96, 20.92]],
+    tints: [[['main', 'millionaire'], GREEN], [['main', '100x'], GREEN], [['main', 'larp'], RED], [['main', 'fake', 1], RED], [['main', 'pikachu'], GREEN], [['main', 'crypto', 2], GREEN]],
+    rizz: [['main', '100x'], ['main', 'pikachu']],
+    punch: [['main', 'seven'], ['main', 'millionaire'], ['main', '100x'], ['main', 'larp'], ['main', 'fake'], ['main', 'fake', 1], ['main', 'tokenize', 1], ['main', 'delusional'], ['main', 'larp', 2]],
+    blowouts: [['main', '100x']], blackFlash: [['main', 'however'], ['main', 'this']], streaks: [['main', 'however'], ['main', 'what']]},
   sevenfigs: {top: 'Real millionaire or LARPER?', cta: '*real millionaire or LARP?*', label: '*Thanos*', track: THANOS, music: 70,
     calls: [[331.56, 332.96], [324.28, 325.28], [326.32, 331.56]],
     tints: [[['main', 'seven'], GREEN], [['main', 'exchanges'], RED], [['main', 'seven', 2], GREEN]], rizz: [['main', 'seven'], ['main', 'seven', 2]],
@@ -150,7 +158,7 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
         <Series>{SCENES.map((s) => <Series.Sequence key={s.id} durationInFrames={s.durationInFrames}>
           <OffthreadVideo src={staticFile('source.mp4')} startFrom={Math.round(s.videoStartSec * fps)} style={{position: 'absolute', top: 0, left: s === sc ? left : 0, width: 1920 * K, height: BOX_H}} />
         </Series.Sequence>)}</Series>
-        <div style={{position: 'absolute', left: -60, right: -60, top: BOX_H * 0.9, height: BOX_H * 0.12, backdropFilter: 'blur(22px)', WebkitBackdropFilter: 'blur(22px)', background: 'rgba(0,0,0,0.08)'}} />
+        {!(cfg.blurOff ?? []).some(([a, b]) => tSrc >= a && tSrc < b) && <div style={{position: 'absolute', left: -60, right: -60, maskImage: 'linear-gradient(to bottom, transparent, #000 18%)', WebkitMaskImage: 'linear-gradient(to bottom, transparent, #000 18%)', top: BOX_H * (cfg.subBand?.[0] ?? 0.9), height: BOX_H * (cfg.subBand?.[1] ?? 0.12), backdropFilter: 'blur(22px)', WebkitBackdropFilter: 'blur(22px)', background: 'rgba(0,0,0,0.08)'}} />}
         {call && cp && left + cp[0] * K < 1000 && <Callout x={left + cp[0] * K} y={cp[1] * K} r={Math.max(48, cp[2] * K * 1.35)} k={Math.min(1, (tSrc - call[0]) * 6)} label={call[2] ?? cfg.label} />}
       </AbsoluteFill>
       {tint && <AbsoluteFill style={{background: tint[1], opacity: tint[0], mixBlendMode: 'multiply'}} />}
@@ -165,7 +173,7 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
       <span style={{fontFamily: MONT, fontWeight: 800, fontSize: 68, color: '#FFFFFF', WebkitTextStroke: '7px #000', paintOrder: 'stroke fill', textShadow: '0 3px 8px rgba(0,0,0,0.7)'}}>{word.word}</span>
     </div>}
     {f >= ctaFrom && f < ctaTo && <div style={{position: 'absolute', left: 0, width: 1080, top: 1250, textAlign: 'center', fontFamily: MONT, fontWeight: 800, fontStyle: 'italic', fontSize: 42, color: '#fff', WebkitTextStroke: '5px #000', paintOrder: 'stroke fill', opacity: Math.min(1, (f - ctaFrom) / 5)}}>{cfg.cta}</div>}
-    <Audio src={staticFile('res/goodbye.mp3')} startFrom={cfg.music * fps} volume={0.09} />
+    <Audio src={staticFile('res/goodbye.mp3')} startFrom={cfg.music * fps} volume={cfg.musicVol ?? 0.09} />
     {FX.map(([file, t, v], i) => <Sequence key={i} from={Math.max(0, t)}><Audio src={staticFile(`res/${file}`)} volume={v} /></Sequence>)}
   </AbsoluteFill>;
 };

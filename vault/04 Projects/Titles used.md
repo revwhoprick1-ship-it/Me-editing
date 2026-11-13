@@ -57,3 +57,4 @@
 - Real Millionaire or LARPER? 💀 (seven figs v2)
 - Guess the Fake LARPER Millionaire 💀 (ref montage remake)
 - Spot the Millionaire LARPER 💀 (ref laugh-hook remake)
+- Guess the Crypto Millionaire LARPER 💀 (intro cold-open edit)
