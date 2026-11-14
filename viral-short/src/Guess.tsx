@@ -24,7 +24,7 @@ const BOX_TOP = 417, BOX_BOTTOM = 1494, BOX_H = BOX_BOTTOM - BOX_TOP, K = BOX_H 
 const GREEN = 'rgb(167,234,4)', RED = 'rgb(244,3,5)';
 type Ref = [string, string?, number?];   // [scene] = scene start, [scene, word, nth] = that word
 type Cfg = {top: string; cta: string; label: string; track: Record<string, number[]>; calls: [number, number, string?][]; tints: [Ref, string][]; rizz: Ref[];
-  punch: Ref[]; blowouts: Ref[]; blackFlash: Ref[]; streaks: Ref[]; music: number; loop?: boolean; ctaAt?: Ref; musicVol?: number; subBand?: [number, number]; blurOff?: [number, number][]; musicFile?: string; hl?: Record<string, string>; pushIn?: boolean};
+  punch: Ref[]; blowouts: Ref[]; blackFlash: Ref[]; streaks: Ref[]; music: number; loop?: boolean; ctaAt?: Ref; musicVol?: number; subBand?: [number, number]; blurOff?: [number, number][]; musicFile?: string; hl?: Record<string, string>; pushIn?: boolean; src?: string};
 
 export const EDITS: Record<string, Cfg> = {
   bowling: {top: 'Guess the LARPER millionaire', cta: '*real millionaire or LARP?*', label: '*Hulk*', track: HULK, music: 20,
@@ -113,13 +113,14 @@ import T_GIFT from './tracks/gift.json';
 import T_MERCH from './tracks/merch.json';
 import T_PISSED from './tracks/auto5/pissed.json';
 import V6 from './v6.cfg.json';
+import R3 from './r3.cfg.json';
 import T_CHANT_IRON from './tracks/chant_iron.json';
 import T_CLOWN_SOL from './tracks/clown_sol.json';
 const V5_TRACKS: Record<string, Record<string, number[]>> = {iron: IRONREVEAL as Record<string, number[]>, gift: T_GIFT, merch: T_MERCH, pissed: T_PISSED, hulk: HULK,
   chant_iron: T_CHANT_IRON, solstice: T_CLOWN_SOL};
-Object.entries({...V5, ...V6} as unknown as Record<string, {top: string; hl: Record<string, string>; cta: string; music: [string, number]; ctaAt: Ref; track: string; calls: [number, number, string][];
-  tints: [Ref, string][]; rizz: Ref[]; punch: Ref[]; blowouts: Ref[]; blackFlash: Ref[]; streaks: Ref[]}>).forEach(([id, a]) => {
-  EDITS[id] = {top: a.top, hl: a.hl, cta: a.cta, label: '', track: V5_TRACKS[a.track] ?? {}, music: a.music[1], musicFile: a.music[0], musicVol: 0.53, loop: true, pushIn: true,
+Object.entries({...V5, ...V6, ...R3} as unknown as Record<string, {top: string; hl: Record<string, string>; cta: string; music: [string, number]; ctaAt: Ref; track: string; calls: [number, number, string][];
+  tints: [Ref, string][]; rizz: Ref[]; punch: Ref[]; blowouts: Ref[]; blackFlash: Ref[]; streaks: Ref[]; src?: string}>).forEach(([id, a]) => {
+  EDITS[id] = {src: a.src, subBand: a.src ? [1, 0] : undefined, top: a.top, hl: a.hl, cta: a.cta, label: '', track: V5_TRACKS[a.track] ?? {}, music: a.music[1], musicFile: a.music[0], musicVol: 0.53, loop: true, pushIn: true,
     ctaAt: a.ctaAt, calls: a.calls, tints: a.tints.map(([r, c]) => [r, c === 'G' ? GREEN : RED] as [Ref, string]), rizz: a.rizz, punch: a.punch,
     blowouts: a.blowouts, blackFlash: a.blackFlash, streaks: a.streaks};
 });
@@ -209,8 +210,8 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
           {(s as SceneConfig & {rewind?: [number, number]}).rewind ? Array.from({length: s.durationInFrames}, (_, i) => {
             // rewind scrub: one frame per output frame, sampled backwards from the hook's end to the story's start
             const [ra, rb] = (s as SceneConfig & {rewind: [number, number]}).rewind, t = ra + (rb - ra) * (i / Math.max(1, s.durationInFrames - 1));
-            return <Sequence key={i} from={i} durationInFrames={1}><OffthreadVideo src={staticFile('source.mp4')} muted startFrom={Math.round(t * fps)} style={{position: 'absolute', top: 0, left: 540 - 960 * K, width: 1920 * K, height: BOX_H}} /></Sequence>;
-          }) : <OffthreadVideo src={staticFile('source.mp4')} startFrom={Math.round(s.videoStartSec * fps)} style={{position: 'absolute', top: 0, left: s === sc ? left : 0, width: 1920 * K, height: BOX_H}} />}
+            return <Sequence key={i} from={i} durationInFrames={1}><OffthreadVideo src={staticFile(cfg.src ?? 'source.mp4')} muted startFrom={Math.round(t * fps)} style={{position: 'absolute', top: 0, left: 540 - 960 * K, width: 1920 * K, height: BOX_H}} /></Sequence>;
+          }) : <OffthreadVideo src={staticFile(cfg.src ?? 'source.mp4')} startFrom={Math.round(s.videoStartSec * fps)} style={{position: 'absolute', top: 0, left: s === sc ? left : 0, width: 1920 * K, height: BOX_H}} />}
         </Series.Sequence>)}</Series>
         {!(cfg.blurOff ?? []).some(([a, b]) => tSrc >= a && tSrc < b) && <div style={{position: 'absolute', left: -60, right: -60, maskImage: 'linear-gradient(to bottom, transparent, #000 18%)', WebkitMaskImage: 'linear-gradient(to bottom, transparent, #000 18%)', top: BOX_H * (cfg.subBand?.[0] ?? 0.9), height: BOX_H * (cfg.subBand?.[1] ?? 0.12), backdropFilter: 'blur(22px)', WebkitBackdropFilter: 'blur(22px)', background: 'rgba(0,0,0,0.08)'}} />}
         {call && cp && left + cp[0] * K < 1000 && <Callout x={left + cp[0] * K} y={cp[1] * K} r={Math.max(48, cp[2] * K * 1.35)} k={Math.min(1, (tSrc - call[0]) * 6)} label={call[2] ?? cfg.label} />}
