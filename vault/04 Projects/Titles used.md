@@ -76,3 +76,8 @@
 - He Flew Across the World… for MERCH 💀 (v5 merch)
 - He Swore He Wasn't the LARPER… 💀 (v5 pissed)
 - The Dumbest Thing a 'Millionaire' Ever Bought 💀 (v5 bowling)
+- They Voted Him the FAKE… He Was REAL 💀 (v6 twist)
+- When Every Answer Sounds Like a LARP 💀 (v6 chant)
+- He 'Talks To' Solstice… But Can't Name ONE Trade 💀 (v6 solstice)
+- Not Knowing DV = LARPER? 💀 (v6 dv)
+- What the Millionaires Look Like WITHOUT Masks 💀 (v6 unmasked)
