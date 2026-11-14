@@ -92,3 +92,8 @@
 - Gifting an NFL QB… HIMSELF 💀 (tv ticket)
 - They Invented His Touchdown Celly 💀 (tv celly)
 - $20,000 Card… Now Worth $500?! 💀 (tv redeem)
+- Loser Gets WAXED… 💀 (R3born stakes)
+- Pilates BROKE N3on 💀 (R3born reformer)
+- N3on Tried a HANDSTAND 💀 (R3born handstand)
+- N3on's Excuse After Losing AGAIN 💀 (R3born chatgpt)
+- N3on vs Sarah… FINAL Score 💀 (R3born reveal)
