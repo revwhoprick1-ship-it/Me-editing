@@ -86,3 +86,8 @@
 - N3on Tried POLE Dancing 💀 (R3born ep2 pole)
 - She Made HOW Much in ONE Night?! 💀 (R3born ep2 money)
 - N3on Burned 103 Calories Doing Pilates… 💀 (R3born ep2 pilates)
+- The Meanest Card Roast Ever 💀 (tv neck)
+- His Autograph Looks Like an ANT 💀 (tv ant)
+- NFL QB Rates His SUPERFANS Honestly 💀 (tv fans)
+- Gifting an NFL QB… HIMSELF 💀 (tv ticket)
+- They Invented His Touchdown Celly 💀 (tv celly)
