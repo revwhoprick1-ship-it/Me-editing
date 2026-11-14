@@ -61,7 +61,7 @@ CFG = {
    blowouts=[['c1', '10']], blackFlash=[['c1']], streaks=[['c1', 'so']]),
 }
 for eid, c in CFG.items():
-    c.update(track='none', calls=[])
+    c.update(track='none', calls=[], intro=True)  # reference intro: box opens from a blown-out horizontal smear
     sc = {s['id']: s for s in gen[eid]}
     for key in ('tints', 'rizz', 'punch', 'blowouts', 'blackFlash', 'streaks', 'ctaAt'):
         refs = c[key] if key != 'tints' else [r for r, _ in c[key]]
