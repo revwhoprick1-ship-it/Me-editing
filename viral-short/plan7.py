@@ -10,6 +10,11 @@ EDITS = {  # id: (source, [(scene, a, b) | (rw, from, to, None)])
  'tvticket': ('t4_natty_ticket', [('hook', 13.85, 17.35), ('rw', 17.35, 9.75, None), ('c1', 9.75, 13.85), ('c2', 20.75, 31.65)]),
  'tvant': ('t1_tiger_auto_pen', [('hook', 14.85, 18.35), ('rw', 18.35, 7.05, None), ('c1', 7.05, 25.2)]),
  'tvredeem': ('u3_redemptions', [('hook', 1.15, 5.90), ('rw', 24.05, 11.90, None), ('c1', 11.90, 24.05), ('c2', 28.55, 33.95)]),
+ 'tvredeem2': ('u3_redemptions', [
+     ('s1', 0.00, 5.90, [(0.00, 680, 1.15, 360), (2.05, 975, 1.75, 430), (4.95, 700, 1.1, 400)]),
+     ('s2', 7.00, 13.00, [(7.00, 975, 1.6, 430), (9.55, 600, 1.12, 440)]),
+     ('s3', 24.15, 28.35, [(24.15, 975, 1.45, 430), (27.15, 975, 1.85, 420), (27.95, 600, 1.12, 440)]),
+     ('s4', 28.55, 33.95, [(28.55, 600, 1.12, 440), (31.45, 975, 1.9, 420)])]),
  'tvcelly': ('u2_psa10_celly', [('hook', 25.45, 28.85), ('rw', 28.85, 14.95, None), ('c1', 14.95, 32.4)]),
 }
 gen = json.load(open('src/edits.gen.json'))
@@ -17,8 +22,9 @@ for eid, (src, plan) in EDITS.items():
     W = [w for s in json.load(open(f'{TX}/{src}.json')) for w in s['w']]; scenes = []
     for p in plan:
         sid, a, b = p[:3]
-        if len(p) == 4:
+        if len(p) == 4 and p[3] is None:
             scenes.append({'id': sid, 'videoStartSec': b, 'durationInFrames': RW, 'cropX': 960, 'crops': [[0, 960]], 'rewind': [a, b], 'words': []}); continue
+        manual = p[3] if len(p) == 4 and p[3] is not None else None
         n = round((b - a) * 30); words = []
         for (ws, we, t) in W:
             if a - 0.05 <= ws < b - 0.05:
@@ -29,7 +35,8 @@ for eid, (src, plan) in EDITS.items():
         for i in range(len(words) - 1, 0, -1):
             if words[i]['word'].startswith('-'): words[i-1]['word'] += words[i]['word']; words.pop(i)
         for i in range(len(words) - 1): words[i]['endFrame'] = min(words[i]['endFrame'], words[i + 1]['startFrame'])
-        scenes.append({'id': sid, 'videoStartSec': a, 'durationInFrames': n, 'cropX': 960, 'crops': [[0, 960]], 'words': words})
+        cr = [[max(0, round((t - a) * 30)), x, z, y] for t, x, z, y in manual] if manual else [[0, 960]]
+        scenes.append({'id': sid, 'videoStartSec': a, 'durationInFrames': n, 'cropX': 960, 'crops': cr, 'words': words})
     gen[eid] = scenes
     print(eid, round(sum(s['durationInFrames'] for s in scenes) / 30, 1), 's |', ' / '.join(s['id'] + ': ' + ' '.join(w['word'] for w in s['words']) for s in scenes)[:330])
 json.dump(gen, open('src/edits.gen.json', 'w'))
@@ -55,6 +62,10 @@ CFG = {
    tints=[[['hook', '$20,000'], G], [['hook', '$500'], R], [['c1', 'time'], R], [['c2', 'expensive'], G]], rizz=[['hook', '$20,000']],
    punch=[['hook', '$20,000'], ['hook', '$500'], ['c1', 'sign'], ['c1', 'time'], ['c1', 'finish'], ['c1', 'packed'], ['c2', 'ripped'], ['c2', 'expensive'], ['c2', 'ever']],
    blowouts=[['c2', 'expensive']], blackFlash=[['c1']], streaks=[['c2']]),
+ 'tvredeem2': dict(top='$20,000 card… now worth $500?!', hl={'$20,000': '#58EE28', '$500?!': '#FF2A2A'}, cta='*would you buy redemptions?*', music=['goodbye_n', 60], ctaAt=['s3', 'oh'], src='u3_redemptions.mp4',
+   tints=[[['s1', '$20,000'], G], [['s1', '$500'], R], [['s2', 'time'], R], [['s3', 'dislike'], R], [['s4', 'expensive'], G]], rizz=[['s1', '$20,000']],
+   punch=[['s1', '$20,000'], ['s1', 'now'], ['s1', '$500'], ['s2', 'redeem'], ['s2', 'sign'], ['s2', 'time'], ['s3', 'dislike'], ['s3', 'really'], ['s4', 'ripped'], ['s4', 'expensive'], ['s4', 'ever']],
+   blowouts=[['s4', 'expensive']], blackFlash=[['s2']], streaks=[['s3'], ['s4']]),
  'tvcelly': dict(top='They invented his touchdown celly', hl={'touchdown': '#58EE28'}, cta='*would you do this celly?*', music=['phonk_n', 15], ctaAt=['c1', 'so', 1], src='u2_psa10_celly.mp4',
    tints=[[['hook', '10'], G], [['c1', 'psa'], G], [['c1', 'like', 4], G], [['c1', 'no!'], R]], rizz=[['c1', 'psa'], ['c1', 'like', 4]],
    punch=[['hook', 'point'], ['hook', '10'], ['c1', 'stadium'], ['c1', 'point'], ['c1', 'psa'], ['c1', 'best'], ['c1', '10'], ['c1', 'easy'], ['c1', 'no!']],
