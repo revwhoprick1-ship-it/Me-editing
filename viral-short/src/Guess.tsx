@@ -202,7 +202,21 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
   const word = wi >= 0 && f < words[wi].sceneEnd && f <= words[wi].end + 20 ? words[wi] : null, wk = word ? f - word.at : 9;
   const ctaFrom = cfg.ctaAt ? at(cfg.ctaAt) : END - 75, ctaTo = cfg.ctaAt ? ctaFrom + 75 : END;
 
-  const FX = [...SCENES.filter((s) => (s as SceneConfig & {rewind?: unknown}).rewind).map((s) => ['flash.mp3', START[s.id], 0.45] as const), ...callStarts.map((t) => ['flash.mp3', t, 0.4] as const), ...RIZZ.map((t) => ['rizz.mp3', t, 0.42] as const), ...BLACK.map((t) => ['shock.mp3', t, 0.55] as const)];
+  // every effect carries the SFX the reference Shorts pair with it (sfxmatch on refs): call-out/rewind/white blow-out -> flash,
+  // green tint -> rizz (riser 10 frames before), red tint / big black flash -> shock, punch-in -> pop. One sound per 5-frame window.
+  const RAW: [string, number, number][] = [
+    ...SCENES.filter((s) => (s as SceneConfig & {rewind?: unknown}).rewind).map((s): [string, number, number] => ['flash.mp3', START[s.id], 0.45]),
+    ...callStarts.map((t): [string, number, number] => ['flash.mp3', t, 0.4]),
+    ...BLACK.map((t): [string, number, number] => ['shock.mp3', t, 0.5]),
+    ...TINTS.filter(([, c]) => c === GREEN).map(([t]): [string, number, number] => ['rizz.mp3', t, 0.42]),
+    ...RIZZ.map((t): [string, number, number] => ['rizz.mp3', t, 0.42]),
+    ...TINTS.filter(([, c]) => c === RED).map(([t]): [string, number, number] => ['shock.mp3', t, 0.4]),
+    ...BLOW.map((t): [string, number, number] => ['flash.mp3', t, 0.38]),
+    ...TINTS.filter(([, c]) => c === GREEN).slice(0, 1).map(([t]): [string, number, number] => ['riser.mp3', t - 10, 0.3]),
+    ...PUNCH.map((t): [string, number, number] => ['pop.mp3', t, 0.22]),
+  ];
+  const FX: [string, number, number][] = [];
+  RAW.forEach((x) => { if (x[1] >= 0 && !FX.some((y) => Math.abs(y[1] - x[1]) < 5)) FX.push(x); });
   return <AbsoluteFill style={{backgroundColor: '#000'}}>
     <svg width="0" height="0" style={{position: 'absolute'}}><filter id="hblur" x="-10%" y="0" width="120%" height="100%"><feGaussianBlur stdDeviation={`${hblur} 1.5`} /></filter></svg>
     <div style={{position: 'absolute', left: 0, top: BOX_TOP, width: 1080, height: BOX_H, overflow: 'hidden', clipPath: `inset(${top - BOX_TOP}px 0 ${BOX_BOTTOM - bot}px 0)`}}>
