@@ -91,3 +91,4 @@
 - NFL QB Rates His SUPERFANS Honestly 💀 (tv fans)
 - Gifting an NFL QB… HIMSELF 💀 (tv ticket)
 - They Invented His Touchdown Celly 💀 (tv celly)
+- $20,000 Card… Now Worth $500?! 💀 (tv redeem)

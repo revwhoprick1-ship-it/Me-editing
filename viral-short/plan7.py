@@ -1,14 +1,15 @@
 # Trevor stream clips (Backyard Breaks sheet) re-edited in the v5 formula: hook -> rewind -> scene with payoff, 18-22 s.
 import json, sys
 TX = sys.argv[1]  # dir with <source>.json Whisper word timings
-FIX = {'tuddy': 'TD', 'selly': 'celly'}
-ATW = {(23.1, '10'): '10', (23.4, '-10'): '-10', (27.6, '10'): '10', (27.8, '-10'): '-10'}
+FIX = {'produced': 'produced', 'tuddy': 'TD', 'selly': 'celly'}
+ATW = {(1.2, '$20'): '$20,000', (1.5, '000'): '', (23.1, '10'): '10', (23.4, '-10'): '-10', (27.6, '10'): '10', (27.8, '-10'): '-10'}
 RW = 12
 EDITS = {  # id: (source, [(scene, a, b) | (rw, from, to, None)])
  'tvfans': ('t3_traveling_trevors', [('hook', 77.75, 82.70), ('rw', 82.70, 72.75, None), ('c1', 72.75, 82.70), ('c2', 91.65, 98.55)]),
  'tvneck': ('t6_davis_mills_joke', [('hook', 7.10, 11.10), ('rw', 11.10, 1.35, None), ('c1', 1.35, 16.80)]),
  'tvticket': ('t4_natty_ticket', [('hook', 13.85, 17.35), ('rw', 17.35, 9.75, None), ('c1', 9.75, 13.85), ('c2', 20.75, 31.65)]),
  'tvant': ('t1_tiger_auto_pen', [('hook', 14.85, 18.35), ('rw', 18.35, 7.05, None), ('c1', 7.05, 25.2)]),
+ 'tvredeem': ('u3_redemptions', [('hook', 1.15, 5.90), ('rw', 24.05, 11.90, None), ('c1', 11.90, 24.05), ('c2', 28.55, 33.95)]),
  'tvcelly': ('u2_psa10_celly', [('hook', 25.45, 28.85), ('rw', 28.85, 14.95, None), ('c1', 14.95, 32.4)]),
 }
 gen = json.load(open('src/edits.gen.json'))
@@ -21,7 +22,7 @@ for eid, (src, plan) in EDITS.items():
         n = round((b - a) * 30); words = []
         for (ws, we, t) in W:
             if a - 0.05 <= ws < b - 0.05:
-                k = (round(ws, 1), t.lower().strip(',.?!')); tt = ATW.get(k) or FIX.get(t.lower().strip(',.?!'), t.strip(',.'))
+                k = (round(ws, 1), t.lower().strip(',.?!')); tt = ATW[k] if k in ATW else FIX.get(t.lower().strip(',.?!'), t.strip(',.'))
                 if not tt: continue
                 f0 = max(0, round((ws - a) * 30)); f1 = min(n, max(f0 + 4, round((we - a) * 30) + 3))
                 words.append({'word': tt, 'startFrame': f0, 'endFrame': f1})
@@ -50,6 +51,10 @@ CFG = {
    tints=[[['hook', 'ant'], R], [['c1', 'respect'], R], [['c1', 'ant'], R], [['c1', 'beautiful'], G]], rizz=[['c1', 'beautiful']],
    punch=[['hook', 'ant'], ['hook', 'a'], ['c1', 'respect'], ['c1', 'anthony'], ['c1', 'ant'], ['c1', 'big'], ['c1', 'respect', 1], ['c1', 'consistent'], ['c1', 'beautiful']],
    blowouts=[['c1', 'ant']], blackFlash=[['c1']], streaks=[['c1', 'yes']]),
+ 'tvredeem': dict(top='$20,000 card… now worth $500?!', hl={'$20,000': '#58EE28', '$500?!': '#FF2A2A'}, cta='*would you buy redemptions?*', music=['goodbye_n', 60], ctaAt=['c1', 'so', 1], src='u3_redemptions.mp4',
+   tints=[[['hook', '$20,000'], G], [['hook', '$500'], R], [['c1', 'time'], R], [['c2', 'expensive'], G]], rizz=[['hook', '$20,000']],
+   punch=[['hook', '$20,000'], ['hook', '$500'], ['c1', 'sign'], ['c1', 'time'], ['c1', 'finish'], ['c1', 'packed'], ['c2', 'ripped'], ['c2', 'expensive'], ['c2', 'ever']],
+   blowouts=[['c2', 'expensive']], blackFlash=[['c1']], streaks=[['c2']]),
  'tvcelly': dict(top='They invented his touchdown celly', hl={'touchdown': '#58EE28'}, cta='*would you do this celly?*', music=['phonk_n', 15], ctaAt=['c1', 'so', 1], src='u2_psa10_celly.mp4',
    tints=[[['hook', '10'], G], [['c1', 'psa'], G], [['c1', 'like', 4], G], [['c1', 'no!'], R]], rizz=[['c1', 'psa'], ['c1', 'like', 4]],
    punch=[['hook', 'point'], ['hook', '10'], ['c1', 'stadium'], ['c1', 'point'], ['c1', 'psa'], ['c1', 'best'], ['c1', '10'], ['c1', 'easy'], ['c1', 'no!']],
