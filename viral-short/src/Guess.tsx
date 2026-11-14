@@ -192,8 +192,10 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
 
   // current scene (for crop + tracked call-out)
   const si = SCENES.findIndex((s) => f >= START[s.id] && f < START[s.id] + s.durationInFrames), sc = SCENES[Math.max(0, si)], lf = f - START[sc.id];
-  const cx = (sc.crops ?? [[0, sc.cropX]]).filter(([t]) => t <= lf).pop()![1];
-  const left = Math.min(0, Math.max(1080 - 1920 * K, 540 - cx * K)), tSrc = sc.videoStartSec + lf / fps;
+  // crop = [frame, centre x] or [frame, centre x, zoom, centre y] (speaker push-in on static multi-person shots)
+  const crop = (sc.crops ?? [[0, sc.cropX]]).filter(([t]) => t <= lf).pop()! as number[];
+  const cx = crop[1], cz = crop[2] ?? 1, cy = crop[3] ?? 540;
+  const left = Math.min(0, Math.max(1080 - 1920 * K * cz, 540 - cx * K * cz)), vtop = Math.min(0, Math.max(BOX_H - BOX_H * cz, BOX_H / 2 - cy * K * cz)), tSrc = sc.videoStartSec + lf / fps;
   const call = cfg.calls.find(([a, b]) => tSrc >= a + 1 / 30 && tSrc < b), cp = call && track(tSrc);
 
   // caption word
@@ -226,7 +228,7 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
             // rewind scrub: one frame per output frame, sampled backwards from the hook's end to the story's start
             const [ra, rb] = (s as SceneConfig & {rewind: [number, number]}).rewind, t = ra + (rb - ra) * (i / Math.max(1, s.durationInFrames - 1));
             return <Sequence key={i} from={i} durationInFrames={1}><OffthreadVideo src={staticFile(cfg.src ?? 'source.mp4')} muted startFrom={Math.round(t * fps)} style={{position: 'absolute', top: 0, left: 540 - 960 * K, width: 1920 * K, height: BOX_H}} /></Sequence>;
-          }) : <OffthreadVideo src={staticFile(cfg.src ?? 'source.mp4')} startFrom={Math.round(s.videoStartSec * fps)} style={{position: 'absolute', top: 0, left: s === sc ? left : 0, width: 1920 * K, height: BOX_H}} />}
+          }) : <OffthreadVideo src={staticFile(cfg.src ?? 'source.mp4')} startFrom={Math.round(s.videoStartSec * fps)} style={{position: 'absolute', top: s === sc ? vtop : 0, left: s === sc ? left : 0, width: 1920 * K * (s === sc ? cz : 1), height: BOX_H * (s === sc ? cz : 1)}} />}
         </Series.Sequence>)}</Series>
         {!(cfg.blurOff ?? []).some(([a, b]) => tSrc >= a && tSrc < b) && <div style={{position: 'absolute', left: -60, right: -60, maskImage: 'linear-gradient(to bottom, transparent, #000 18%)', WebkitMaskImage: 'linear-gradient(to bottom, transparent, #000 18%)', top: BOX_H * (cfg.subBand?.[0] ?? 0.9), height: BOX_H * (cfg.subBand?.[1] ?? 0.12), backdropFilter: 'blur(22px)', WebkitBackdropFilter: 'blur(22px)', background: 'rgba(0,0,0,0.08)'}} />}
         {call && cp && left + cp[0] * K < 1000 && <Callout x={left + cp[0] * K} y={cp[1] * K} r={Math.max(48, cp[2] * K * 1.35)} k={Math.min(1, (tSrc - call[0]) * 6)} label={call[2] ?? cfg.label} />}
