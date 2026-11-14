@@ -112,8 +112,12 @@ import V5 from './v5.cfg.json';
 import T_GIFT from './tracks/gift.json';
 import T_MERCH from './tracks/merch.json';
 import T_PISSED from './tracks/auto5/pissed.json';
-const V5_TRACKS: Record<string, Record<string, number[]>> = {iron: IRONREVEAL as Record<string, number[]>, gift: T_GIFT, merch: T_MERCH, pissed: T_PISSED, hulk: HULK};
-Object.entries(V5 as unknown as Record<string, {top: string; hl: Record<string, string>; cta: string; music: [string, number]; ctaAt: Ref; track: string; calls: [number, number, string][];
+import V6 from './v6.cfg.json';
+import T_CHANT_IRON from './tracks/chant_iron.json';
+import T_CLOWN_SOL from './tracks/clown_sol.json';
+const V5_TRACKS: Record<string, Record<string, number[]>> = {iron: IRONREVEAL as Record<string, number[]>, gift: T_GIFT, merch: T_MERCH, pissed: T_PISSED, hulk: HULK,
+  chant_iron: T_CHANT_IRON, solstice: T_CLOWN_SOL};
+Object.entries({...V5, ...V6} as unknown as Record<string, {top: string; hl: Record<string, string>; cta: string; music: [string, number]; ctaAt: Ref; track: string; calls: [number, number, string][];
   tints: [Ref, string][]; rizz: Ref[]; punch: Ref[]; blowouts: Ref[]; blackFlash: Ref[]; streaks: Ref[]}>).forEach(([id, a]) => {
   EDITS[id] = {top: a.top, hl: a.hl, cta: a.cta, label: '', track: V5_TRACKS[a.track] ?? {}, music: a.music[1], musicFile: a.music[0], musicVol: 0.53, loop: true, pushIn: true,
     ctaAt: a.ctaAt, calls: a.calls, tints: a.tints.map(([r, c]) => [r, c === 'G' ? GREEN : RED] as [Ref, string]), rizz: a.rizz, punch: a.punch,
