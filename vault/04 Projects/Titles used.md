@@ -81,3 +81,8 @@
 - He 'Talks To' Solstice… But Can't Name ONE Trade 💀 (v6 solstice)
 - Not Knowing DV = LARPER? 💀 (v6 dv)
 - What the Millionaires Look Like WITHOUT Masks 💀 (v6 unmasked)
+- N3on Lost… So She WAXED Him 💀 (R3born ep2 wax)
+- N3on Snuck Off to CHEAT 💀 (R3born ep2 cheat)
+- N3on Tried POLE Dancing 💀 (R3born ep2 pole)
+- She Made HOW Much in ONE Night?! 💀 (R3born ep2 money)
+- N3on Burned 103 Calories Doing Pilates… 💀 (R3born ep2 pilates)
