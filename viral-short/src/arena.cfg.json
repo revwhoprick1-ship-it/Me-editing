@@ -1892,5 +1892,562 @@
   "progress": true,
   "popMid": true,
   "noSkull": true
+ },
+ "arwalk": {
+  "srcVol": 1,
+  "focus": {
+   "x": 540,
+   "y": 330,
+   "r": 230,
+   "dur": 22
+  },
+  "top": "Inside The Arena at Camp Flog Gnaw",
+  "hl": {
+   "Arena": "#58EE28"
+  },
+  "sub": "The Arena \u00b7 Camp Flog Gnaw",
+  "music": [
+   "xcool_n",
+   0
+  ],
+  "ask": [
+   {
+    "at": [
+     "hook"
+    ],
+    "text": "What would you hit first?"
+   }
+  ],
+  "tints": [
+   [
+    [
+     "c1",
+     "arcade"
+    ],
+    "G"
+   ],
+   [
+    [
+     "c1",
+     "merch"
+    ],
+    "G"
+   ]
+  ],
+  "rizz": [
+   [
+    "c1",
+    "arcade"
+   ]
+  ],
+  "punch": [
+   [
+    "hook",
+    "craziest"
+   ],
+   [
+    "hook",
+    "life"
+   ],
+   [
+    "c1",
+    "activation"
+   ],
+   [
+    "c1",
+    "arcade"
+   ],
+   [
+    "c1",
+    "merch"
+   ],
+   [
+    "c1",
+    "blind"
+   ],
+   [
+    "c2",
+    "Cup"
+   ],
+   [
+    "c2",
+    "festival"
+   ]
+  ],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [
+   [
+    "c1"
+   ],
+   [
+    "c2"
+   ]
+  ],
+  "extras": [
+   {
+    "at": [
+     "c1",
+     "blind"
+    ],
+    "kind": "sfx",
+    "file": "s_wow.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2",
+     "festival"
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 8,
+    "sfx": "s_huh.mp3",
+    "sv": 0.45
+   }
+  ],
+  "trackData": {},
+  "cta": "The Arena \u00b7 @thearenahq",
+  "ctaEnd": true,
+  "track": "none",
+  "calls": [],
+  "src": "g67_arwalk.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": true,
+  "popMid": true,
+  "noSkull": true
+ },
+ "arguests": {
+  "srcVol": 0.12,
+  "focus": {
+   "x": 540,
+   "y": 330,
+   "r": 230,
+   "dur": 20
+  },
+  "top": "Who pulled up to The Arena at Camp Flog Gnaw",
+  "hl": {
+   "Arena": "#58EE28"
+  },
+  "sub": "The Arena \u00b7 Camp Flog Gnaw \u00b7 Day 1",
+  "music": [
+   "aura_n",
+   0
+  ],
+  "ask": [
+   {
+    "at": [
+     "s1"
+    ],
+    "text": "Best fit here?"
+   }
+  ],
+  "tints": [
+   [
+    [
+     "s5"
+    ],
+    "G"
+   ]
+  ],
+  "rizz": [
+   [
+    "s5"
+   ]
+  ],
+  "punch": [
+   [
+    "s2"
+   ],
+   [
+    "s4"
+   ],
+   [
+    "s6"
+   ],
+   [
+    "s9"
+   ],
+   [
+    "s10"
+   ]
+  ],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [
+   [
+    "s3"
+   ],
+   [
+    "s5"
+   ],
+   [
+    "s7"
+   ],
+   [
+    "s10"
+   ]
+  ],
+  "extras": [
+   {
+    "at": [
+     "s10"
+    ],
+    "kind": "sfx",
+    "file": "s_camflash.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "s9"
+    ],
+    "kind": "png",
+    "file": "e_heart.png",
+    "off": 10,
+    "sfx": "s_correct.mp3",
+    "sv": 0.45
+   }
+  ],
+  "trackData": {},
+  "cta": "The Arena \u00b7 @thearenahq",
+  "ctaEnd": true,
+  "track": "none",
+  "calls": [],
+  "src": "g67_arguests.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": true,
+  "popMid": true,
+  "noSkull": true
+ },
+ "arday2": {
+  "srcVol": 0.12,
+  "focus": {
+   "x": 540,
+   "y": 330,
+   "r": 230,
+   "dur": 20
+  },
+  "top": "Day 2 at The Arena at Camp Flog Gnaw",
+  "hl": {
+   "Arena": "#58EE28"
+  },
+  "sub": "The Arena \u00b7 Camp Flog Gnaw \u00b7 Day 2",
+  "music": [
+   "montagem_n",
+   25
+  ],
+  "ask": [
+   {
+    "at": [
+     "s1"
+    ],
+    "text": "Were you there day 2?"
+   }
+  ],
+  "tints": [
+   [
+    [
+     "s3"
+    ],
+    "G"
+   ]
+  ],
+  "rizz": [
+   [
+    "s3"
+   ]
+  ],
+  "punch": [
+   [
+    "s2"
+   ],
+   [
+    "s3"
+   ],
+   [
+    "s5"
+   ],
+   [
+    "s8"
+   ]
+  ],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [
+   [
+    "s2"
+   ],
+   [
+    "s4"
+   ],
+   [
+    "s6"
+   ],
+   [
+    "s8"
+   ]
+  ],
+  "extras": [
+   {
+    "at": [
+     "s4"
+    ],
+    "kind": "sfx",
+    "file": "s_ding.mp3",
+    "v": 0.35,
+    "off": 0
+   },
+   {
+    "at": [
+     "s6"
+    ],
+    "kind": "png",
+    "file": "e_heart.png",
+    "off": 8,
+    "sfx": "s_wow.mp3",
+    "sv": 0.45
+   }
+  ],
+  "trackData": {},
+  "cta": "The Arena \u00b7 @thearenahq",
+  "ctaEnd": true,
+  "track": "none",
+  "calls": [],
+  "src": "g67_arday2.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": true,
+  "popMid": true,
+  "noSkull": true
+ },
+ "arrecap": {
+  "srcVol": 0.12,
+  "focus": {
+   "x": 540,
+   "y": 330,
+   "r": 230,
+   "dur": 20
+  },
+  "top": "Everything that went down at The Arena this weekend",
+  "hl": {
+   "Arena": "#58EE28"
+  },
+  "sub": "Camp Flog Gnaw recap \u00b7 The Arena edition",
+  "music": [
+   "phonk_n",
+   40
+  ],
+  "ask": [
+   {
+    "at": [
+     "s1"
+    ],
+    "text": "Which day were you there?"
+   }
+  ],
+  "tints": [
+   [
+    [
+     "s4"
+    ],
+    "G"
+   ]
+  ],
+  "rizz": [
+   [
+    "s4"
+   ]
+  ],
+  "punch": [
+   [
+    "s2"
+   ],
+   [
+    "s4"
+   ],
+   [
+    "s6"
+   ],
+   [
+    "s9"
+   ],
+   [
+    "s10"
+   ]
+  ],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [
+   [
+    "s3"
+   ],
+   [
+    "s5"
+   ],
+   [
+    "s7"
+   ],
+   [
+    "s9"
+   ]
+  ],
+  "extras": [
+   {
+    "at": [
+     "s2"
+    ],
+    "kind": "sfx",
+    "file": "s_camflash.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "s7"
+    ],
+    "kind": "png",
+    "file": "e_heart.png",
+    "off": 10,
+    "sfx": "s_correct.mp3",
+    "sv": 0.45
+   }
+  ],
+  "trackData": {},
+  "cta": "The Arena \u00b7 @thearenahq",
+  "ctaEnd": true,
+  "track": "none",
+  "calls": [],
+  "src": "g67_arrecap.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": true,
+  "popMid": true,
+  "noSkull": true
+ },
+ "arwalkfit": {
+  "srcVol": 0.12,
+  "focus": {
+   "x": 540,
+   "y": 330,
+   "r": 230,
+   "dur": 20
+  },
+  "top": "Fit check at The Arena, Camp Flog Gnaw",
+  "hl": {
+   "Arena,": "#58EE28"
+  },
+  "sub": "The Arena \u00b7 Camp Flog Gnaw",
+  "music": [
+   "brega_n",
+   0
+  ],
+  "ask": [
+   {
+    "at": [
+     "s1"
+    ],
+    "text": "Which fit wins? 1-7"
+   }
+  ],
+  "tints": [
+   [
+    [
+     "s2"
+    ],
+    "G"
+   ],
+   [
+    [
+     "s5"
+    ],
+    "G"
+   ]
+  ],
+  "rizz": [
+   [
+    "s2"
+   ]
+  ],
+  "punch": [
+   [
+    "s1"
+   ],
+   [
+    "s2"
+   ],
+   [
+    "s3"
+   ],
+   [
+    "s4"
+   ],
+   [
+    "s5"
+   ],
+   [
+    "s6"
+   ],
+   [
+    "s7"
+   ]
+  ],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [
+   [
+    "s2"
+   ],
+   [
+    "s3"
+   ],
+   [
+    "s4"
+   ],
+   [
+    "s5"
+   ],
+   [
+    "s6"
+   ],
+   [
+    "s7"
+   ]
+  ],
+  "extras": [
+   {
+    "at": [
+     "s7"
+    ],
+    "kind": "sfx",
+    "file": "s_wow.mp3",
+    "v": 0.4,
+    "off": 0
+   }
+  ],
+  "trackData": {},
+  "cta": "The Arena \u00b7 @thearenahq",
+  "ctaEnd": true,
+  "track": "none",
+  "calls": [],
+  "src": "g67_arwalkfit.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": true,
+  "popMid": true,
+  "noSkull": true
  }
 }
