@@ -151,3 +151,7 @@
 - Day 2 at The Arena, Camp Flog Gnaw (Arena day2)
 - The Whole Weekend at The Arena in 15 Seconds (Arena recap)
 - Fit Check at The Arena, Camp Flog Gnaw. Pick 1-7 (Arena walkfit)
+- He Said He MADE IT… Then Said Manufacturers ☠️ (Arena fmade)
+- He Pulled a MOUTHPIECE From the Gacha at The Arena ☠️ (Arena fmouth)
+- The Longest 3, 2, 1 EVER at The Arena ☠️ (Arena fcount)
+- The Arena Asked Him the REAL Anime Question ☠️ (Arena faura)

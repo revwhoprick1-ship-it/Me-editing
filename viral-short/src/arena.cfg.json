@@ -3182,5 +3182,1215 @@
   "progress": true,
   "popMid": true,
   "noSkull": true
+ },
+ "artake": {
+  "srcVol": 1,
+  "focus": {
+   "x": 540,
+   "y": 330,
+   "r": 210,
+   "dur": 18
+  },
+  "top": "Take 1 vs Take 2 at The Arena",
+  "hl": {
+   "Arena": "#58EE28"
+  },
+  "sub": "The Arena \u00b7 Camp Flog Gnaw \u00b7 behind the scenes",
+  "music": [
+   "funkabn_n",
+   0
+  ],
+  "ask": [
+   {
+    "at": [
+     "hook"
+    ],
+    "text": "Take 1 or take 2?"
+   }
+  ],
+  "tints": [],
+  "rizz": [],
+  "punch": [
+   [
+    "hook"
+   ],
+   [
+    "t1",
+    "wait"
+   ],
+   [
+    "t1",
+    "back"
+   ],
+   [
+    "t2",
+    "go"
+   ]
+  ],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [
+   [
+    "t2"
+   ]
+  ],
+  "extras": [
+   {
+    "at": [
+     "t1",
+     "actually"
+    ],
+    "kind": "sfx",
+    "file": "s_awk.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "t1",
+     "back"
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 6,
+    "sfx": "s_huh.mp3",
+    "sv": 0.45
+   },
+   {
+    "at": [
+     "t2"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 170
+   }
+  ],
+  "trackData": {},
+  "cta": "The Arena \u00b7 @thearenahq",
+  "ctaEnd": true,
+  "track": "none",
+  "calls": [],
+  "src": "g67_artake.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": true,
+  "popMid": true,
+  "noSkull": true
+ },
+ "argo": {
+  "srcVol": 1,
+  "focus": {
+   "x": 540,
+   "y": 300,
+   "r": 230,
+   "dur": 18
+  },
+  "top": "The camera guy at The Arena has one line",
+  "hl": {
+   "Arena": "#58EE28"
+  },
+  "sub": "The Arena \u00b7 Camp Flog Gnaw \u00b7 behind the scenes",
+  "music": [
+   "brega_n",
+   0
+  ],
+  "ask": [
+   {
+    "at": [
+     "hook"
+    ],
+    "text": "Count the \"go for it\"s"
+   }
+  ],
+  "tints": [],
+  "rizz": [],
+  "punch": [
+   [
+    "hook",
+    "cool"
+   ],
+   [
+    "g2",
+    "Go"
+   ],
+   [
+    "g3",
+    "Go"
+   ],
+   [
+    "g4",
+    "go"
+   ]
+  ],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [
+   [
+    "g2"
+   ],
+   [
+    "g3"
+   ],
+   [
+    "g4"
+   ]
+  ],
+  "extras": [
+   {
+    "at": [
+     "g2",
+     "Go"
+    ],
+    "kind": "sfx",
+    "file": "s_ding.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "g3",
+     "Go"
+    ],
+    "kind": "sfx",
+    "file": "s_ding.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "g4",
+     "go"
+    ],
+    "kind": "sfx",
+    "file": "s_ding.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "g4",
+     "go"
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 10,
+    "sfx": "s_huh.mp3",
+    "sv": 0.45
+   }
+  ],
+  "trackData": {},
+  "cta": "The Arena \u00b7 @thearenahq",
+  "ctaEnd": true,
+  "track": "none",
+  "calls": [],
+  "src": "g67_argo.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": true,
+  "popMid": true,
+  "noSkull": true
+ },
+ "arlens": {
+  "srcVol": 0.35,
+  "focus": {
+   "x": 540,
+   "y": 300,
+   "r": 230,
+   "dur": 18
+  },
+  "top": "Every fit check at The Arena ends the same way",
+  "hl": {
+   "Arena": "#58EE28"
+  },
+  "sub": "The Arena \u00b7 Camp Flog Gnaw \u00b7 behind the scenes",
+  "music": [
+   "goodbye_n",
+   0
+  ],
+  "ask": [
+   {
+    "at": [
+     "s1"
+    ],
+    "text": "Wait for it"
+   }
+  ],
+  "tints": [],
+  "rizz": [],
+  "punch": [
+   [
+    "s2"
+   ],
+   [
+    "s3"
+   ],
+   [
+    "s4"
+   ],
+   [
+    "s5"
+   ],
+   [
+    "s6"
+   ]
+  ],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "extras": [
+   {
+    "at": [
+     "s1"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 62
+   },
+   {
+    "at": [
+     "s2"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 75
+   },
+   {
+    "at": [
+     "s3"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 85
+   },
+   {
+    "at": [
+     "s4"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 75
+   },
+   {
+    "at": [
+     "s5"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 75
+   },
+   {
+    "at": [
+     "s6"
+    ],
+    "kind": "png",
+    "file": "e_sob.png",
+    "off": 70,
+    "sfx": "s_fahhh.mp3",
+    "sv": 0.45
+   }
+  ],
+  "trackData": {},
+  "cta": "The Arena \u00b7 @thearenahq",
+  "ctaEnd": true,
+  "track": "none",
+  "calls": [],
+  "src": "g67_arlens.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": true,
+  "popMid": true,
+  "noSkull": true
+ },
+ "arhost": {
+  "srcVol": 1,
+  "focus": {
+   "x": 540,
+   "y": 330,
+   "r": 230,
+   "dur": 18
+  },
+  "top": "Our host at The Arena was not ready",
+  "hl": {
+   "Arena": "#58EE28"
+  },
+  "sub": "The Arena \u00b7 Camp Flog Gnaw",
+  "music": [
+   "funkabn_n",
+   0
+  ],
+  "ask": [
+   {
+    "at": [
+     "c1"
+    ],
+    "text": "Funniest part?"
+   }
+  ],
+  "tints": [],
+  "rizz": [],
+  "punch": [
+   [
+    "c1",
+    "made"
+   ],
+   [
+    "c1",
+    "Manufacturers"
+   ],
+   [
+    "c2",
+    "mouthpiece?"
+   ],
+   [
+    "c3",
+    "craziest"
+   ],
+   [
+    "c4",
+    "strawberries."
+   ]
+  ],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [
+   [
+    "c2"
+   ],
+   [
+    "c3"
+   ]
+  ],
+  "extras": [
+   {
+    "at": [
+     "c1",
+     "Manufacturers"
+    ],
+    "kind": "sfx",
+    "file": "s_huh.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2",
+     "mouthpiece?"
+    ],
+    "kind": "sfx",
+    "file": "s_ayo.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c3",
+     "life."
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 6,
+    "sfx": "s_fahhh.mp3",
+    "sv": 0.45
+   }
+  ],
+  "trackData": {},
+  "cta": "The Arena \u00b7 @thearenahq",
+  "ctaEnd": true,
+  "track": "none",
+  "calls": [],
+  "src": "g67_arhost.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": true,
+  "popMid": true,
+  "noSkull": true
+ },
+ "arsquad": {
+  "srcVol": 0.3,
+  "focus": {
+   "x": 540,
+   "y": 330,
+   "r": 230,
+   "dur": 18
+  },
+  "top": "When the whole group chat pulls up to The Arena",
+  "hl": {
+   "Arena": "#58EE28"
+  },
+  "sub": "The Arena \u00b7 Camp Flog Gnaw",
+  "music": [
+   "brega_n",
+   0
+  ],
+  "ask": [
+   {
+    "at": [
+     "hook"
+    ],
+    "text": "Tag your group chat"
+   }
+  ],
+  "tints": [],
+  "rizz": [],
+  "punch": [
+   [
+    "hook"
+   ],
+   [
+    "s2"
+   ],
+   [
+    "s3"
+   ]
+  ],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [
+   [
+    "s3"
+   ]
+  ],
+  "extras": [
+   {
+    "at": [
+     "s3"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.5,
+    "off": 205
+   },
+   {
+    "at": [
+     "s3"
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 215,
+    "sfx": "s_huh.mp3",
+    "sv": 0.45
+   }
+  ],
+  "trackData": {},
+  "cta": "The Arena \u00b7 @thearenahq",
+  "ctaEnd": true,
+  "track": "none",
+  "calls": [],
+  "src": "g67_arsquad.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": true,
+  "popMid": true,
+  "noSkull": true
+ },
+ "fmade": {
+  "srcVol": 1,
+  "focus": {
+   "x": 657,
+   "y": 367,
+   "r": 210,
+   "dur": 14
+  },
+  "top": "He said he MADE IT at The Arena",
+  "hl": {
+   "MADE": "#FF2A2A",
+   "IT": "#FF2A2A",
+   "Arena": "#58EE28"
+  },
+  "noSkull": false,
+  "sub": "The Arena \u00b7 Camp Flog Gnaw",
+  "music": [
+   "funkabn_n",
+   0
+  ],
+  "ask": [
+   {
+    "at": [
+     "hook"
+    ],
+    "text": "Does this count as making it?"
+   }
+  ],
+  "tints": [],
+  "rizz": [],
+  "punch": [
+   [
+    "hook",
+    "made"
+   ],
+   [
+    "c1",
+    "made"
+   ],
+   [
+    "c1",
+    "Manufacturers"
+   ],
+   [
+    "c1",
+    "design."
+   ],
+   [
+    "c2",
+    "hiding"
+   ],
+   [
+    "c3",
+    "strawberries."
+   ]
+  ],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "extras": [
+   {
+    "at": [
+     "c1",
+     "Manufacturers"
+    ],
+    "kind": "sfx",
+    "file": "s_huh.mp3",
+    "v": 0.55,
+    "off": 0
+   },
+   {
+    "at": [
+     "c1",
+     "design."
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 4,
+    "sfx": "s_awk.mp3",
+    "sv": 0.45
+   },
+   {
+    "at": [
+     "c2",
+     "hiding"
+    ],
+    "kind": "sfx",
+    "file": "s_ayo.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c3",
+     "strawberries."
+    ],
+    "kind": "png",
+    "file": "e_sob.png",
+    "off": 6,
+    "sfx": "s_fahhh.mp3",
+    "sv": 0.45
+   }
+  ],
+  "trackData": {},
+  "cta": "The Arena \u00b7 @thearenahq",
+  "ctaEnd": true,
+  "track": "none",
+  "calls": [],
+  "src": "g67_fmade.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": true,
+  "popMid": true
+ },
+ "fmouth": {
+  "srcVol": 1,
+  "focus": {
+   "x": 557,
+   "y": 450,
+   "r": 210,
+   "dur": 14
+  },
+  "top": "He pulled a MOUTHPIECE at The Arena",
+  "hl": {
+   "MOUTHPIECE": "#FF2A2A",
+   "Arena": "#58EE28"
+  },
+  "noSkull": false,
+  "sub": "The Arena \u00b7 Camp Flog Gnaw",
+  "music": [
+   "funkabn_n",
+   0
+  ],
+  "ask": [
+   {
+    "at": [
+     "hook"
+    ],
+    "text": "What would you pull?"
+   }
+  ],
+  "tints": [],
+  "rizz": [],
+  "punch": [
+   [
+    "hook",
+    "mouthpiece?"
+   ],
+   [
+    "c1",
+    "mouthpiece?"
+   ]
+  ],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "extras": [
+   {
+    "at": [
+     "hook",
+     "mouthpiece?"
+    ],
+    "kind": "sfx",
+    "file": "s_huh.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "c1",
+     "mouthpiece?"
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 6,
+    "sfx": "s_fahhh.mp3",
+    "sv": 0.45
+   }
+  ],
+  "trackData": {
+   "2.18": [
+    1050,
+    690,
+    90
+   ],
+   "2.20": [
+    1050,
+    690,
+    90
+   ],
+   "2.22": [
+    1050,
+    690,
+    90
+   ],
+   "2.24": [
+    1050,
+    690,
+    90
+   ],
+   "2.26": [
+    1050,
+    690,
+    90
+   ],
+   "2.28": [
+    1050,
+    690,
+    90
+   ],
+   "2.30": [
+    1050,
+    690,
+    90
+   ],
+   "2.32": [
+    1050,
+    690,
+    90
+   ],
+   "2.34": [
+    1050,
+    690,
+    90
+   ],
+   "2.36": [
+    1050,
+    690,
+    90
+   ],
+   "2.38": [
+    1050,
+    690,
+    90
+   ],
+   "2.40": [
+    1050,
+    690,
+    90
+   ],
+   "2.42": [
+    1050,
+    690,
+    90
+   ],
+   "2.44": [
+    1050,
+    690,
+    90
+   ],
+   "2.46": [
+    1050,
+    690,
+    90
+   ],
+   "2.48": [
+    1050,
+    690,
+    90
+   ],
+   "2.50": [
+    1050,
+    690,
+    90
+   ],
+   "2.52": [
+    1050,
+    690,
+    90
+   ],
+   "2.54": [
+    1050,
+    690,
+    90
+   ],
+   "2.56": [
+    1050,
+    690,
+    90
+   ],
+   "2.58": [
+    1050,
+    690,
+    90
+   ],
+   "2.60": [
+    1050,
+    690,
+    90
+   ],
+   "2.62": [
+    1050,
+    690,
+    90
+   ],
+   "2.64": [
+    1050,
+    690,
+    90
+   ],
+   "2.66": [
+    1050,
+    690,
+    90
+   ],
+   "2.68": [
+    1050,
+    690,
+    90
+   ],
+   "2.70": [
+    1050,
+    690,
+    90
+   ],
+   "2.72": [
+    1050,
+    690,
+    90
+   ],
+   "2.74": [
+    1050,
+    690,
+    90
+   ],
+   "2.76": [
+    1050,
+    690,
+    90
+   ],
+   "2.78": [
+    1050,
+    690,
+    90
+   ],
+   "2.80": [
+    1050,
+    690,
+    90
+   ],
+   "2.82": [
+    1050,
+    690,
+    90
+   ],
+   "2.84": [
+    1050,
+    690,
+    90
+   ],
+   "2.86": [
+    1050,
+    690,
+    90
+   ],
+   "2.88": [
+    1050,
+    690,
+    90
+   ],
+   "2.90": [
+    1050,
+    690,
+    90
+   ],
+   "2.92": [
+    1050,
+    690,
+    90
+   ],
+   "2.94": [
+    1050,
+    690,
+    90
+   ],
+   "2.96": [
+    1050,
+    690,
+    90
+   ],
+   "2.98": [
+    1050,
+    690,
+    90
+   ],
+   "3.00": [
+    1050,
+    690,
+    90
+   ],
+   "3.02": [
+    1050,
+    690,
+    90
+   ],
+   "3.04": [
+    1050,
+    690,
+    90
+   ],
+   "3.06": [
+    1050,
+    690,
+    90
+   ],
+   "3.08": [
+    1050,
+    690,
+    90
+   ],
+   "3.10": [
+    1050,
+    690,
+    90
+   ],
+   "3.12": [
+    1050,
+    690,
+    90
+   ],
+   "3.14": [
+    1050,
+    690,
+    90
+   ],
+   "3.16": [
+    1050,
+    690,
+    90
+   ]
+  },
+  "cta": "The Arena \u00b7 @thearenahq",
+  "ctaEnd": true,
+  "track": "none",
+  "calls": [
+   [
+    2.18,
+    3.13,
+    ""
+   ]
+  ],
+  "src": "g67_fmouth.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": true,
+  "popMid": true
+ },
+ "fcount": {
+  "srcVol": 1,
+  "focus": {
+   "x": 723,
+   "y": 467,
+   "r": 210,
+   "dur": 14
+  },
+  "top": "The longest 3, 2, 1 EVER at The Arena",
+  "hl": {
+   "EVER": "#FF2A2A",
+   "Arena": "#58EE28"
+  },
+  "noSkull": false,
+  "sub": "The Arena \u00b7 Camp Flog Gnaw",
+  "music": [
+   "brega_n",
+   0
+  ],
+  "ask": [
+   {
+    "at": [
+     "hook"
+    ],
+    "text": "Could you hit harder?"
+   }
+  ],
+  "tints": [],
+  "rizz": [],
+  "punch": [
+   [
+    "hook",
+    "one"
+   ],
+   [
+    "c1",
+    "punching"
+   ],
+   [
+    "c1",
+    "strength"
+   ],
+   [
+    "c1",
+    "Three"
+   ],
+   [
+    "c1",
+    "two"
+   ],
+   [
+    "c1",
+    "one"
+   ],
+   [
+    "c1",
+    "hit"
+   ]
+  ],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "extras": [
+   {
+    "at": [
+     "c1",
+     "Three"
+    ],
+    "kind": "sfx",
+    "file": "s_tick.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "c1",
+     "two"
+    ],
+    "kind": "sfx",
+    "file": "s_tick.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "c1",
+     "two"
+    ],
+    "kind": "sfx",
+    "file": "s_loading.mp3",
+    "v": 0.4,
+    "off": 14
+   },
+   {
+    "at": [
+     "c1",
+     "one"
+    ],
+    "kind": "sfx",
+    "file": "s_tick.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "c1",
+     "one"
+    ],
+    "kind": "png",
+    "file": "e_sob.png",
+    "off": -20,
+    "sfx": "s_huh.mp3",
+    "sv": 0.45
+   }
+  ],
+  "trackData": {},
+  "cta": "The Arena \u00b7 @thearenahq",
+  "ctaEnd": true,
+  "track": "none",
+  "calls": [],
+  "src": "g67_fcount.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": true,
+  "popMid": true
+ },
+ "faura": {
+  "srcVol": 1,
+  "focus": {
+   "x": 357,
+   "y": 333,
+   "r": 200,
+   "dur": 14
+  },
+  "top": "The Arena asked him the REAL anime question",
+  "hl": {
+   "REAL": "#FF2A2A",
+   "Arena": "#58EE28"
+  },
+  "noSkull": false,
+  "sub": "The Arena \u00b7 Camp Flog Gnaw",
+  "music": [
+   "aura_n",
+   0
+  ],
+  "ask": [
+   {
+    "at": [
+     "hook"
+    ],
+    "text": "Who would you pick?"
+   }
+  ],
+  "tints": [],
+  "rizz": [
+   [
+    "c1",
+    "strongest"
+   ]
+  ],
+  "punch": [
+   [
+    "hook",
+    "girls"
+   ],
+   [
+    "c1",
+    "Yusuke"
+   ],
+   [
+    "c1",
+    "girls"
+   ],
+   [
+    "c1",
+    "strongest"
+   ],
+   [
+    "c2",
+    "hiding"
+   ]
+  ],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "extras": [
+   {
+    "at": [
+     "hook",
+     "girls"
+    ],
+    "kind": "sfx",
+    "file": "s_ayo.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c1",
+     "strongest"
+    ],
+    "kind": "sfx",
+    "file": "s_wow.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c1",
+     "show"
+    ],
+    "kind": "png",
+    "file": "e_mheart.png",
+    "off": 4,
+    "sfx": "s_popecho.mp3",
+    "sv": 0.45
+   },
+   {
+    "at": [
+     "c2",
+     "hiding"
+    ],
+    "kind": "sfx",
+    "file": "s_huh.mp3",
+    "v": 0.45,
+    "off": 0
+   }
+  ],
+  "trackData": {},
+  "cta": "The Arena \u00b7 @thearenahq",
+  "ctaEnd": true,
+  "track": "none",
+  "calls": [],
+  "src": "g67_faura.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": true,
+  "popMid": true
  }
 }

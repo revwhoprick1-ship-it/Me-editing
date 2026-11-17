@@ -112,30 +112,25 @@ E = {
    tints=[], rizz=[], punch=[['hook'], ['s2'], ['s3']], blowouts=[], blackFlash=[], streaks=[['s3']],
    extras=[sfx(['s3'], 's_whoosh.mp3', 0.5, off=205), pop(['s3'], 'e_laugh.png', 's_huh.mp3', off=215)]),
  'fmade': dict(scenes=[('hook', 'v20', 3.85, 4.40, 250), ('c1', 'v20', 2.55, 8.45, 250), ('c2', 'v20', 8.48, 12.20, 250), ('c3', 'v20', 26.05, 31.05, 250)], srcVol=1,
-   focus=dict(x=486, y=420, r=230, dur=14), circles=[],
-   top='"I made it" at The Arena... kinda', hl={'Arena': GR}, sub='The Arena · Camp Flog Gnaw', music=['funkabn_n', 0], ask=[[['hook'], 'Does this count as making it?']],
-   tints=[], rizz=[], punch=[['hook', 'made'], ['c1', 'made'], ['c1', 'Manufacturers'], ['c1', 'design.'], ['c2', 'hiding'], ['c3', 'strawberries.']], blowouts=[], blackFlash=[], streaks=[['c3']],
+   focus=dict(x=657, y=367, r=210, dur=14), circles=[],
+   top='He said he MADE IT at The Arena', hl={'MADE': RD, 'IT': RD, 'Arena': GR}, noSkull=False, sub='The Arena · Camp Flog Gnaw', music=['funkabn_n', 0], ask=[[['hook'], 'Does this count as making it?']],
+   tints=[], rizz=[], punch=[['hook', 'made'], ['c1', 'made'], ['c1', 'Manufacturers'], ['c1', 'design.'], ['c2', 'hiding'], ['c3', 'strawberries.']], blowouts=[], blackFlash=[], streaks=[],
    extras=[sfx(['c1', 'Manufacturers'], 's_huh.mp3', 0.55), pop(['c1', 'design.'], 'e_laugh.png', 's_awk.mp3', off=4), sfx(['c2', 'hiding'], 's_ayo.mp3', 0.45), pop(['c3', 'strawberries.'], 'e_sob.png', 's_fahhh.mp3', off=6)]),
- 'fmouth': dict(scenes=[('hook', 'v20', 22.85, 24.70, 250), ('c1', 'v20', 12.60, 24.70, 250), ('c2', 'v20', 24.70, 25.15, 250)], srcVol=1,
-   focus=dict(x=540, y=330, r=230, dur=14), circles=[('c1', 7.9, 1.3, 1050, 690, 90)],
-   top='He spun the gacha at The Arena and got...', hl={'Arena': GR}, sub='The Arena · Camp Flog Gnaw', music=['funkabn_n', 0], ask=[[['hook'], 'What would you pull?']],
-   tints=[], rizz=[], punch=[['hook', 'mouthpiece?'], ['c1', 'merch'], ['c1', 'way.'], ['c1', 'mouthpiece?']], blowouts=[], blackFlash=[], streaks=[['c2']],
-   extras=[sfx(['hook', 'mouthpiece?'], 's_huh.mp3', 0.5), sfx(['c1', 'way.'], 's_wow.mp3', 0.4), pop(['c1', 'mouthpiece?'], 'e_laugh.png', 's_fahhh.mp3', off=6)]),
- 'fnoodle': dict(scenes=[('c1', 'v20', 40.60, 44.40, 250), ('c2', 'v20', 12.60, 19.25, 250), ('c3', 'v20', 42.85, 44.40, 250), ('c4', 'v20', 44.40, 47.45, 250)], srcVol=1,
-   focus=dict(x=540, y=330, r=230, dur=14), circles=[],
-   top='The craziest thing he saw at The Arena', hl={'Arena': GR}, sub='The Arena · Camp Flog Gnaw', music=['funkabn_n', 0], ask=[[['c1'], 'Guess what it was']],
-   tints=[], rizz=[], punch=[['c1', 'Noodles'], ['c1', 'craziest'], ['c2', 'arcade'], ['c2', 'way.'], ['c3', 'craziest'], ['c3', 'life.'], ['c4', 'strength']], blowouts=[], blackFlash=[], streaks=[['c3']],
-   extras=[sfx(['c1', 'Noodles'], 's_huh.mp3', 0.5), sfx(['c3', 'craziest'], 's_awk.mp3', 0.45), pop(['c3', 'life.'], 'e_laugh.png', 's_fahhh.mp3', off=4)]),
+ 'fmouth': dict(scenes=[('hook', 'v20', 22.85, 24.70, 250), ('c1', 'v20', 20.15, 24.70, 250), ('c2', 'v20', 24.70, 25.15, 250)], srcVol=1,
+   focus=dict(x=557, y=450, r=210, dur=14), circles=[('c1', 0.35, 0.95, 1050, 690, 90)],
+   top='He pulled a MOUTHPIECE at The Arena', hl={'MOUTHPIECE': RD, 'Arena': GR}, noSkull=False, sub='The Arena · Camp Flog Gnaw', music=['funkabn_n', 0], ask=[[['hook'], 'What would you pull?']],
+   tints=[], rizz=[], punch=[['hook', 'mouthpiece?'], ['c1', 'mouthpiece?']], blowouts=[], blackFlash=[], streaks=[],
+   extras=[sfx(['hook', 'mouthpiece?'], 's_huh.mp3', 0.5), pop(['c1', 'mouthpiece?'], 'e_laugh.png', 's_fahhh.mp3', off=6)]),
  'fcount': dict(scenes=[('hook', 'v20', 49.30, 51.95, 250), ('c1', 'v20', 44.55, 52.90, 250), ('c2', 'v05', 6.20, 9.70, 250)], srcVol=1,
-   focus=dict(x=540, y=330, r=230, dur=14), circles=[],
-   top='The longest 3, 2, 1 ever at The Arena', hl={'Arena': GR}, sub='The Arena · Camp Flog Gnaw', music=['brega_n', 0], ask=[[['hook'], 'Could you hit harder?']],
-   tints=[], rizz=[], punch=[['hook', 'one'], ['c1', 'punching'], ['c1', 'strength'], ['c1', 'Three'], ['c1', 'two'], ['c1', 'one'], ['c1', 'hit']], blowouts=[], blackFlash=[], streaks=[['c2']],
+   focus=dict(x=723, y=467, r=210, dur=14), circles=[],
+   top='The longest 3, 2, 1 EVER at The Arena', hl={'EVER': RD, 'Arena': GR}, noSkull=False, sub='The Arena · Camp Flog Gnaw', music=['brega_n', 0], ask=[[['hook'], 'Could you hit harder?']],
+   tints=[], rizz=[], punch=[['hook', 'one'], ['c1', 'punching'], ['c1', 'strength'], ['c1', 'Three'], ['c1', 'two'], ['c1', 'one'], ['c1', 'hit']], blowouts=[], blackFlash=[], streaks=[],
    extras=[sfx(['c1', 'Three'], 's_tick.mp3', 0.5), sfx(['c1', 'two'], 's_tick.mp3', 0.5), sfx(['c1', 'two'], 's_loading.mp3', 0.4, off=14), sfx(['c1', 'one'], 's_tick.mp3', 0.5),
            pop(['c1', 'one'], 'e_sob.png', 's_huh.mp3', off=-20)]),
  'faura': dict(scenes=[('hook', 'v20', 36.60, 38.45, 250), ('c1', 'v20', 31.84, 40.30, 250), ('c2', 'v20', 8.48, 12.20, 250)], srcVol=1,
-   focus=dict(x=540, y=330, r=230, dur=14), circles=[],
-   top='Her anime pick at The Arena had too much aura', hl={'Arena': GR}, sub='The Arena · Camp Flog Gnaw', music=['aura_n', 0], ask=[[['hook'], 'Who would you pick?']],
-   tints=[], rizz=[['c1', 'strongest']], punch=[['hook', 'girls'], ['c1', 'Yusuke'], ['c1', 'girls'], ['c1', 'strongest'], ['c2', 'hiding']], blowouts=[], blackFlash=[], streaks=[['c2']],
+   focus=dict(x=357, y=333, r=200, dur=14), circles=[],
+   top='The Arena asked him the REAL anime question', hl={'REAL': RD, 'Arena': GR}, noSkull=False, sub='The Arena · Camp Flog Gnaw', music=['aura_n', 0], ask=[[['hook'], 'Who would you pick?']],
+   tints=[], rizz=[['c1', 'strongest']], punch=[['hook', 'girls'], ['c1', 'Yusuke'], ['c1', 'girls'], ['c1', 'strongest'], ['c2', 'hiding']], blowouts=[], blackFlash=[], streaks=[],
    extras=[sfx(['hook', 'girls'], 's_ayo.mp3', 0.45), sfx(['c1', 'strongest'], 's_wow.mp3', 0.45), pop(['c1', 'show'], 'e_mheart.png', 's_popecho.mp3', off=4), sfx(['c2', 'hiding'], 's_huh.mp3', 0.45)]),
 }
 W = {v: [w for s in json.load(open(f'{TX}/{v}.json')) for w in s['w']] for v in ('v20', 'v03', 'v04', 'v15', 'v16')}
@@ -176,7 +171,7 @@ for eid, spec in E.items():
     for e in c['extras']:
         if e.get('y') is None: e.pop('y', None)
     c.update(cta='The Arena · @thearenahq', ctaEnd=True, ask=[{'at': r, 'text': tx} for r, tx in c['ask']], track='none', calls=calls, src=f'g67_{eid}.mp4',
-             intro=False, hardcut=True, cutSfx='s_camflash.mp3', sat=1.1, progress=True, popMid=True, noSkull=True)
+             intro=False, hardcut=True, cutSfx='s_camflash.mp3', sat=1.1, progress=True, popMid=True, noSkull=True); c['noSkull'] = spec.get('noSkull', True)
     sc = {s['id']: s for s in scenes}
     for r in [r for r, _ in c['tints']] + [q['at'] for q in c['ask']] + [e['at'] for e in c['extras']] + sum((c[k] for k in ('rizz', 'punch', 'blowouts', 'blackFlash', 'streaks')), []):
         assert r[0] in sc, (eid, r)
