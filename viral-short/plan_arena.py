@@ -20,33 +20,33 @@ def sfx(at, f, v=0.5, off=0): return dict(at=at, kind='sfx', file=f, v=v, off=of
 # scene = (id, video, a, b, y0 for vertical crop)
 E = {
  'arfits': dict(scenes=[('hook', 'v20', 26.05, 28.40, 250), ('c1', 'v20', 0.00, 8.45, 250), ('c2', 'v20', 8.48, 12.20, 250), ('c3', 'v20', 28.70, 31.00, 0)], srcVol=1,
-   focus=dict(x=486, y=420, r=230, dur=22), circles=[('c1', 2.85, 1.3, 736, 330, 90)],
+   focus=dict(x=486, y=420, r=230, dur=22), circles=[('c1', 2.85, 1.3, 820, 370, 80)],
    top='The best fits at The Arena, Camp Flog Gnaw', hl={'Arena,': GR}, sub='The Arena · Camp Flog Gnaw', music=['xcool_n', 0], ask=[[['hook'], 'Which fit wins?']],
    tints=[[['c1', 'made'], G], [['c2', 'anime'], G]], rizz=[['c1', 'made']],
    punch=[['hook', 'video'], ['hook', 'fit'], ['c1', 'best'], ['c1', 'Arena'], ['c1', 'hat'], ['c1', 'made'], ['c1', 'design'], ['c2', 'pink'], ['c2', 'anime'], ['c3', 'strawberry']],
    blowouts=[], blackFlash=[], streaks=[['c1'], ['c3']],
    extras=[sfx(['c1', 'made'], 's_wow.mp3', 0.4), pop(['c2', 'character'], 'e_heart.png', 's_correct.mp3', off=10)]),
  'aranime': dict(scenes=[('hook', 'v20', 22.90, 25.10, 250), ('c1', 'v20', 31.84, 33.50, 250), ('c2', 'v20', 34.25, 40.30, 250), ('c3', 'v20', 17.20, 22.85, 250)], srcVol=1,
-   focus=dict(x=540, y=330, r=230, dur=22), circles=[('c3', 3.3, 1.3, 1000, 560, 120)],
+   focus=dict(x=540, y=330, r=230, dur=22), circles=[('c3', 3.3, 1.3, 1050, 690, 90)],
    top='The Arena asked the REAL anime questions', hl={'REAL': RD}, sub='The Arena · Camp Flog Gnaw', music=['aura_n', 0], ask=[[['hook'], 'Your anime pick for a day?']],
    tints=[[['c2', 'Yusuke'], G], [['c2', 'strongest'], G]], rizz=[['c2', 'Yusuke']],
    punch=[['hook', 'mouthpiece'], ['c1', 'anime'], ['c1', 'day'], ['c2', 'Yusuke'], ['c2', 'Hakusho'], ['c2', 'strongest'], ['c2', 'show'], ['c3', 'merch'], ['c3', 'blind'], ['c3', 'get']],
    blowouts=[], blackFlash=[], streaks=[['c1'], ['c3']],
    extras=[sfx(['hook', 'mouthpiece'], 's_huh.mp3'), pop(['c2', 'show'], 'e_laugh.png', 's_ahh.mp3', off=8)]),
  'arpunch': dict(scenes=[('hook', 'v20', 48.40, 49.35, 250), ('c1', 'v20', 44.55, 52.90, 250), ('c2', 'v05', 0.00, 3.30, 420), ('c3', 'v05', 6.20, 9.70, 420)], srcVol=1,
-   focus=dict(x=540, y=330, r=230, dur=22), circles=[('c1', 7.2, 1.2, 1086, 270, 110)],
+   focus=dict(x=540, y=330, r=230, dur=22), circles=[('c1', 7.2, 1.2, 1075, 560, 90)],
    top='Punching bag challenge at The Arena', hl={'Arena': GR}, sub='The Arena · Camp Flog Gnaw', music=['phonk_n', 40], ask=[[['hook'], 'Could you hit harder?']],
    tints=[[['c1', 'strength'], R]], rizz=[], punch=[['hook', 'see'], ['c1', 'punching'], ['c1', 'challenge'], ['c1', 'strength'], ['c1', 'three'], ['c1', 'two'], ['c1', 'one'], ['c1', 'hit']],
    blowouts=[['c1', 'hit']], blackFlash=[], streaks=[['c2'], ['c3']],
    extras=[sfx(['c1', 'hit'], 'hit.mp3', 0.6, off=10), sfx(['c2'], 's_whoosh.mp3', 0.4), sfx(['c2'], 'hit.mp3', 0.5, off=14), sfx(['c3'], 'hit.mp3', 0.5, off=26), pop(['c3'], 'e_laugh.png', 's_huh.mp3', off=60)]),
  'armerch': dict(scenes=[('hook', 'v09', 57.00, 58.00, 420), ('c1', 'v11', 0.00, 6.00, 0), ('c2', 'v09', 8.00, 9.00, 420), ('c3', 'v11', 6.00, 12.40, 0), ('c4', 'v09', 25.00, 27.00, 420)], srcVol=0.12,
-   focus=dict(x=490, y=440, r=230, dur=22), circles=[('c3', 2.6, 1.4, 1000, 420, 170)],
+   focus=dict(x=490, y=440, r=230, dur=22), circles=[('c3', 2.6, 0.7, 1553, 351, 150, 721, 621)],
    top="The Arena's first merch drop. Only at Camp Flog Gnaw", hl={"Arena's": GR}, sub='Limited edition · Fatal Fury', music=['montagem_n', 25], ask=[[['hook'], 'What are you copping first?']],
    tints=[[['c2'], G]], rizz=[['c2']], punch=[['hook'], ['c2'], ['c4']], blowouts=[], blackFlash=[], streaks=[['c1'], ['c2'], ['c3'], ['c4']],
    extras=[sfx(['hook'], 's_camflash.mp3', 0.45), sfx(['c1'], 's_ding.mp3', 0.35, off=10), pop(['c4'], 'e_heart.png', 's_wow.mp3', off=20)]),
  'ararcade': dict(scenes=[('hook', 'v09', 48.55, 49.35, 330), ('c1', 'v12', 0.00, 4.50, 0), ('c2', 'v09', 17.90, 19.00, 420), ('c3', 'v12', 8.00, 12.50, 0), ('c4', 'v09', 49.00, 50.00, 420),
                          ('c5', 'v09', 51.00, 52.20, 420), ('c6', 'v09', 53.00, 55.00, 420)], srcVol=0.12,
-   focus=dict(x=540, y=260, r=220, dur=20), circles=[('c3', 1.0, 1.4, 960, 330, 200)],
+   focus=dict(x=540, y=260, r=220, dur=20), circles=[('c3', 1.0, 1.4, 945, 450, 200)],
    top='The Arena turned Camp Flog Gnaw into an arcade', hl={'arcade': GR}, sub='Free arcade games · The Arena', music=['aura_n', 0], ask=[[['hook'], 'KOF or Metal Slug?']],
    tints=[[['c4'], G]], rizz=[['c4']], punch=[['hook'], ['c2'], ['c4'], ['c5'], ['c6']], blowouts=[], blackFlash=[], streaks=[['c1'], ['c2'], ['c3'], ['c4'], ['c5'], ['c6']],
    extras=[sfx(['hook'], 's_camflash.mp3', 0.45), sfx(['c1'], 'pop.mp3', 0.4, off=10), pop(['c4'], 'e_heart.png', 's_wow.mp3', off=16)]),
@@ -81,9 +81,9 @@ for eid, spec in E.items():
                               '-c:a', 'aac', '-b:a', '192k', '-map_metadata', '-1', f'public/g67_{eid}.mp4'], check=True)
     c = {k: v for k, v in spec.items() if k not in ('scenes', 'circles')}
     st = {s['id']: s['videoStartSec'] for s in scenes}; calls, trk = [], {}
-    for sid, o, d, x, y, r in spec.get('circles', []):
-        a = st[sid] + o; calls.append([round(a, 2), round(a + d, 2), ''])
-        for k in range(round(d * 50) + 2): trk[f'{a + k / 50:.2f}'] = [x, y, r]
+    for sid, o, d, x, y, r, *end in spec.get('circles', []):
+        a = st[sid] + o; calls.append([round(a, 2), round(a + d, 2), '']); x2, y2 = end if end else (x, y); n = round(d * 50) + 2
+        for k in range(n): u = min(1, k / (n - 2)); trk[f'{a + k / 50:.2f}'] = [round(x + (x2 - x) * u), round(y + (y2 - y) * u), r]
     c['trackData'] = trk
     for e in c['extras']:
         if e.get('y') is None: e.pop('y', None)
