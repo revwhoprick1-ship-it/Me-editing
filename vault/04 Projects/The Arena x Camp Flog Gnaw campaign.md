@@ -4,3 +4,4 @@
 - Facts: studio making game/anime/action worlds; first time at CFG; King of Fighters, Fatal Fury, Metal Slug; free arcade, top player wins a 1-of-1 NEO•GEO arcade; first merch drop, limited, Fatal Fury, only at CFG.
 - Batch 1 (plan_arena.py → src/arena.cfg.json): arfits, aranime, arpunch, armerch, ararcade. VverPaldo template, no skull, music 53%, cooler 67 grade.
 - Footage notes: most files are music b-roll; only the outfit reel (v20) has talk. v06 = vertical fit-walk montage (unused, good for a fit-check edit).
+- User feedback (re-edit): NO tilted big-text pops ("THEY MADE IT…", "PINK HAIR") — they look AI. Use red circles, but only 1 per clip. Start with a short blur-focus on a face (~0.7 s), and frame 1 must always show a face, not just a body.
