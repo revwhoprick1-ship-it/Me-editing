@@ -141,3 +141,8 @@
 - He's 100 Calories BEHIND… Can He Come Back? 💀 (R3born top10 tsmoked)
 - She Introduced Him and FUMBLED Hard 💀 (R3born top10 tpretty)
 - He Asked What a Lat Was… It Got WORSE 💀 (R3born top10 tlat)
+- The Best Fits at The Arena, Camp Flog Gnaw (Arena fits)
+- The Arena Asked the REAL Anime Questions (Arena anime)
+- Punching Bag Challenge at The Arena (Arena punch)
+- The Arena's First Merch Drop. Only at Camp Flog Gnaw (Arena merch)
+- The Arena Turned Camp Flog Gnaw Into an Arcade (Arena arcade)
