@@ -19,7 +19,7 @@ def ov(at, f, sfx, dur=34, op=0.5, off=0): return dict(at=at, kind='ov', file=f,
 def sfx(at, f, v=0.5, off=0): return dict(at=at, kind='sfx', file=f, v=v, off=off)
 # scene = (id, video, a, b, y0 for vertical crop)
 E = {
- 'arfits': dict(scenes=[('hook', 'v20', 26.05, 28.40, 250), ('c1', 'v20', 0.00, 8.45, 250), ('c2', 'v20', 8.48, 12.20, 250), ('c3', 'v20', 28.70, 31.00, 200)], srcVol=1,
+ 'arfits': dict(scenes=[('hook', 'v20', 26.05, 28.40, 250), ('c1', 'v20', 0.00, 8.45, 250), ('c2', 'v20', 8.48, 12.20, 250), ('c3', 'v20', 28.70, 31.00, 0)], srcVol=1,
    focus=dict(x=486, y=420, r=230, dur=22), circles=[('c1', 2.85, 1.3, 736, 330, 90)],
    top='The best fits at The Arena, Camp Flog Gnaw', hl={'Arena,': GR}, sub='The Arena · Camp Flog Gnaw', music=['xcool_n', 0], ask=[[['hook'], 'Which fit wins?']],
    tints=[[['c1', 'made'], G], [['c2', 'anime'], G]], rizz=[['c1', 'made']],
@@ -44,9 +44,9 @@ E = {
    top="The Arena's first merch drop. Only at Camp Flog Gnaw", hl={"Arena's": GR}, sub='Limited edition · Fatal Fury', music=['montagem_n', 25], ask=[[['hook'], 'What are you copping first?']],
    tints=[[['c2'], G]], rizz=[['c2']], punch=[['hook'], ['c2'], ['c4']], blowouts=[], blackFlash=[], streaks=[['c1'], ['c2'], ['c3'], ['c4']],
    extras=[sfx(['hook'], 's_camflash.mp3', 0.45), sfx(['c1'], 's_ding.mp3', 0.35, off=10), pop(['c4'], 'e_heart.png', 's_wow.mp3', off=20)]),
- 'ararcade': dict(scenes=[('hook', 'v09', 24.00, 25.00, 420), ('c1', 'v12', 0.00, 4.50, 0), ('c2', 'v09', 17.90, 19.00, 420), ('c3', 'v12', 8.00, 12.50, 0), ('c4', 'v09', 49.00, 50.00, 420),
+ 'ararcade': dict(scenes=[('hook', 'v09', 48.55, 49.35, 330), ('c1', 'v12', 0.00, 4.50, 0), ('c2', 'v09', 17.90, 19.00, 420), ('c3', 'v12', 8.00, 12.50, 0), ('c4', 'v09', 49.00, 50.00, 420),
                          ('c5', 'v09', 51.00, 52.20, 420), ('c6', 'v09', 53.00, 55.00, 420)], srcVol=0.12,
-   focus=dict(x=540, y=250, r=230, dur=22), circles=[('c3', 1.0, 1.4, 960, 330, 200)],
+   focus=dict(x=540, y=260, r=220, dur=20), circles=[('c3', 1.0, 1.4, 960, 330, 200)],
    top='The Arena turned Camp Flog Gnaw into an arcade', hl={'arcade': GR}, sub='Free arcade games · The Arena', music=['aura_n', 0], ask=[[['hook'], 'KOF or Metal Slug?']],
    tints=[[['c4'], G]], rizz=[['c4']], punch=[['hook'], ['c2'], ['c4'], ['c5'], ['c6']], blowouts=[], blackFlash=[], streaks=[['c1'], ['c2'], ['c3'], ['c4'], ['c5'], ['c6']],
    extras=[sfx(['hook'], 's_camflash.mp3', 0.45), sfx(['c1'], 'pop.mp3', 0.4, off=10), pop(['c4'], 'e_heart.png', 's_wow.mp3', off=16)]),
