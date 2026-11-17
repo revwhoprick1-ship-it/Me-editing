@@ -27,7 +27,7 @@ type Cfg = {top: string; cta: string; label: string; track: Record<string, numbe
   punch: Ref[]; blowouts: Ref[]; blackFlash: Ref[]; streaks: Ref[]; music: number; loop?: boolean; ctaAt?: Ref; musicVol?: number; subBand?: [number, number]; blurOff?: [number, number][]; musicFile?: string; hl?: Record<string, string>; pushIn?: boolean; src?: string;
   teaser?: {a: number; b: number; x: number; z: number; y: number; until: Ref}; hardcut?: boolean;
   extras?: {at: Ref; kind: 'png' | 'ov' | 'sfx' | 'txt'; file: string; off?: number; color?: string; op?: number; v?: number; dur?: number; x?: number; y?: number; size?: number; sfx?: string; sv?: number}[]; cutSfx?: string;
-  sat?: number; ask?: {at: Ref; text: string}[]; progress?: boolean; popMid?: boolean; sub?: string; ctaEnd?: boolean;
+  focus?: {x: number; y: number; r: number; dur: number}; sat?: number; ask?: {at: Ref; text: string}[]; progress?: boolean; popMid?: boolean; sub?: string; ctaEnd?: boolean;
   wm?: {file: string; x: number; y: number; w: number}; topY?: number; srcVol?: number; noSkull?: boolean; fxOff?: boolean};
 
 export const EDITS: Record<string, Cfg> = {
@@ -134,8 +134,8 @@ import T_CLOWN_SOL from './tracks/clown_sol.json';
 const V5_TRACKS: Record<string, Record<string, number[]>> = {iron: IRONREVEAL as Record<string, number[]>, gift: T_GIFT, merch: T_MERCH, pissed: T_PISSED, hulk: HULK,
   chant_iron: T_CHANT_IRON, solstice: T_CLOWN_SOL};
 Object.entries({...V5, ...V6, ...R3, ...TV, ...R3B, ...X, ...R3F, ...R3G, ...MJ, ...FP, ...R3Z, ...R3SUS, ...R3T, ...ARENA} as unknown as Record<string, {top: string; hl: Record<string, string>; cta: string; music: [string, number]; ctaAt: Ref; track: string; calls: [number, number, string][];
-  tints: [Ref, string][]; rizz: Ref[]; punch: Ref[]; blowouts: Ref[]; blackFlash: Ref[]; streaks: Ref[]; src?: string; teaser?: Cfg['teaser']; hardcut?: boolean; extras?: Cfg['extras']; cutSfx?: string; wm?: Cfg['wm']; topY?: number; srcVol?: number; noSkull?: boolean; fxOff?: boolean; trackData?: Record<string, number[]>; sat?: number; ask?: Cfg['ask']; progress?: boolean; popMid?: boolean; sub?: string; ctaEnd?: boolean}>).forEach(([id, a]) => {
-  EDITS[id] = {ctaEnd: a.ctaEnd, sub: a.sub, sat: a.sat, ask: a.ask, progress: a.progress, popMid: a.popMid, wm: a.wm, topY: a.topY, srcVol: a.srcVol, noSkull: a.noSkull, fxOff: a.fxOff, extras: a.extras, cutSfx: a.cutSfx, hardcut: a.hardcut, teaser: a.teaser, src: a.src, subBand: a.src ? [1, 0] : undefined, top: a.top, hl: a.hl, cta: a.cta, label: '', track: a.trackData ?? V5_TRACKS[a.track] ?? {}, music: a.music[1], musicFile: a.music[0], musicVol: 0.53, loop: !(a as {intro?: boolean}).intro, pushIn: true,
+  tints: [Ref, string][]; rizz: Ref[]; punch: Ref[]; blowouts: Ref[]; blackFlash: Ref[]; streaks: Ref[]; src?: string; teaser?: Cfg['teaser']; hardcut?: boolean; extras?: Cfg['extras']; cutSfx?: string; wm?: Cfg['wm']; topY?: number; srcVol?: number; noSkull?: boolean; fxOff?: boolean; trackData?: Record<string, number[]>; sat?: number; ask?: Cfg['ask']; progress?: boolean; popMid?: boolean; sub?: string; ctaEnd?: boolean; focus?: Cfg['focus']}>).forEach(([id, a]) => {
+  EDITS[id] = {focus: a.focus, ctaEnd: a.ctaEnd, sub: a.sub, sat: a.sat, ask: a.ask, progress: a.progress, popMid: a.popMid, wm: a.wm, topY: a.topY, srcVol: a.srcVol, noSkull: a.noSkull, fxOff: a.fxOff, extras: a.extras, cutSfx: a.cutSfx, hardcut: a.hardcut, teaser: a.teaser, src: a.src, subBand: a.src ? [1, 0] : undefined, top: a.top, hl: a.hl, cta: a.cta, label: '', track: a.trackData ?? V5_TRACKS[a.track] ?? {}, music: a.music[1], musicFile: a.music[0], musicVol: 0.53, loop: !(a as {intro?: boolean}).intro, pushIn: true,
     ctaAt: a.ctaAt, calls: a.calls, tints: a.tints.map(([r, c]) => [r, c === 'G' ? GREEN : RED] as [Ref, string]), rizz: a.rizz, punch: a.punch,
     blowouts: a.blowouts, blackFlash: a.blackFlash, streaks: a.streaks};
 });
@@ -259,6 +259,9 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
         {!(cfg.blurOff ?? []).some(([a, b]) => tSrc >= a && tSrc < b) && <div style={{position: 'absolute', left: -60, right: -60, maskImage: 'linear-gradient(to bottom, transparent, #000 18%)', WebkitMaskImage: 'linear-gradient(to bottom, transparent, #000 18%)', top: BOX_H * (cfg.subBand?.[0] ?? 0.9), height: BOX_H * (cfg.subBand?.[1] ?? 0.12), backdropFilter: 'blur(22px)', WebkitBackdropFilter: 'blur(22px)', background: 'rgba(0,0,0,0.08)'}} />}
         {call && cp && left + cp[0] * K < 1000 && <Callout x={left + cp[0] * K} y={cp[1] * K} r={Math.max(48, cp[2] * K * 1.35)} k={Math.min(1, (tSrc - call[0]) * 6)} label={call[2] ?? cfg.label} />}
       </AbsoluteFill>
+      {cfg.focus && f < cfg.focus.dur && (() => { const F = cfg.focus!, k = interpolate(f, [0, F.dur - 8, F.dur], [1, 1, 0], clamp);
+        const m = `radial-gradient(circle at ${F.x}px ${F.y}px, transparent ${F.r}px, #000 ${F.r + 90}px)`;
+        return <AbsoluteFill style={{backdropFilter: `blur(${14 * k}px) brightness(${1 - 0.25 * k})`, WebkitBackdropFilter: `blur(${14 * k}px) brightness(${1 - 0.25 * k})`, maskImage: m, WebkitMaskImage: m}} />; })()}
       {tint && <AbsoluteFill style={{background: tint[1], opacity: tint[0], mixBlendMode: 'multiply'}} />}
       {bfa > 0 && <AbsoluteFill style={{background: '#000', opacity: bfa}} />}
       {(cfg.extras ?? []).filter((e) => e.kind === 'ov').map((e, i) => { const t0 = xat(e), d = e.dur ?? 34; return f >= t0 && f < t0 + d ?
