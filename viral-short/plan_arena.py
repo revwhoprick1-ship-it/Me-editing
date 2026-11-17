@@ -11,7 +11,11 @@ G67 = ("split[ga][gb];[gb]gblur=sigma=14[gg];[ga][gg]blend=all_mode=softlight:al
 FIX = {('v20', 2.08): 'Gnaw.', ('v20', 1.94): 'Camp Flog', ('v20', 35.02): 'Hakusho.', ('v20', 35.2): '', ('v20', 38.02): 'want', ('v20', 41.28): 'Cup',
        ('v20', 31.1): '', ('v20', 31.2): '', ('v20', 31.34): '', ('v20', 31.62): ''}
 def src(v): return glob.glob(f'{DL}/{v}.*')[0]
-def vert(v): return json.loads(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'stream=width,height', '-select_streams', 'v:0', '-of', 'json', src(v)], capture_output=True, text=True).stdout)['streams'][0]['height'] > 1200
+def probe(v): return json.loads(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'stream=index,codec_type,codec_name,width,height:stream_side_data=rotation', '-of', 'json', src(v)], capture_output=True, text=True).stdout)['streams']
+def vert(v):
+    s = [x for x in probe(v) if x['codec_type'] == 'video'][0]; rot = abs(int(next((d.get('rotation', 0) for d in s.get('side_data_list', [])), 0)))
+    return (s['width'] if rot == 90 else s['height']) > 1200
+def aidx(v): return ([i for i, x in enumerate(x for x in probe(v) if x['codec_type'] == 'audio') if x.get('codec_name') not in (None, 'unknown', 'none')] or [None])[0]
 G, R = 'G', 'R'; Y = '#FFE14A'; W_ = '#FFFFFF'; RD = '#FF2A2A'; GR = '#58EE28'
 def txt(at, text, color=Y, size=100, off=0, y=560, dur=30): return dict(at=at, kind='txt', file=text, color=color, size=size, off=off, dur=dur, y=y)
 def pop(at, f, react=None, off=0): return dict(at=at, kind='png', file=f, off=off, **({'sfx': react, 'sv': 0.45} if react else {}))
@@ -81,8 +85,34 @@ E = {
    top='Fit check at The Arena, Camp Flog Gnaw', hl={'Arena,': GR}, sub='The Arena · Camp Flog Gnaw', music=['brega_n', 0], ask=[[['s1'], 'Which fit wins? 1-7']],
    tints=[[['s2'], G], [['s5'], G]], rizz=[['s2']], punch=[['s1'], ['s2'], ['s3'], ['s4'], ['s5'], ['s6'], ['s7']], blowouts=[], blackFlash=[], streaks=[['s2'], ['s3'], ['s4'], ['s5'], ['s6'], ['s7']],
    extras=[sfx(['s7'], 's_wow.mp3', 0.4)]),
+ 'artake': dict(scenes=[('hook', 'v03', 12.40, 13.70, 330), ('t1', 'v03', 8.60, 15.30, 400), ('t2', 'v03', 15.30, 22.40, 400)], srcVol=1,
+   focus=dict(x=540, y=330, r=210, dur=18), circles=[],
+   top='Take 1 vs Take 2 at The Arena', hl={'Arena': GR}, sub='The Arena · Camp Flog Gnaw · behind the scenes', music=['funkabn_n', 0], ask=[[['hook'], 'Take 1 or take 2?']],
+   tints=[], rizz=[], punch=[['hook'], ['t1', 'wait'], ['t1', 'back'], ['t2', 'go']], blowouts=[], blackFlash=[], streaks=[['t2']],
+   extras=[sfx(['t1', 'actually'], 's_awk.mp3', 0.5), pop(['t1', 'back'], 'e_laugh.png', 's_huh.mp3', off=6), sfx(['t2'], 's_whoosh.mp3', 0.45, off=170)]),
+ 'argo': dict(scenes=[('hook', 'v16', 5.60, 8.00, 330), ('g1', 'v15', 0.70, 2.70, 380), ('g2', 'v04', 9.70, 14.30, 420), ('g3', 'v16', 9.50, 13.60, 380), ('g4', 'v03', 4.70, 10.30, 400)], srcVol=1,
+   focus=dict(x=540, y=300, r=230, dur=18), circles=[],
+   top='The camera guy at The Arena has one line', hl={'Arena': GR}, sub='The Arena · Camp Flog Gnaw · behind the scenes', music=['brega_n', 0], ask=[[['hook'], 'Count the "go for it"s']],
+   tints=[], rizz=[], punch=[['hook', 'cool'], ['g2', 'Go'], ['g3', 'Go'], ['g4', 'go']], blowouts=[], blackFlash=[], streaks=[['g2'], ['g3'], ['g4']],
+   extras=[sfx(['g2', 'Go'], 's_ding.mp3', 0.4), sfx(['g3', 'Go'], 's_ding.mp3', 0.4), sfx(['g4', 'go'], 's_ding.mp3', 0.45), pop(['g4', 'go'], 'e_laugh.png', 's_huh.mp3', off=10)]),
+ 'arlens': dict(scenes=[('s1', 'v14', 21.30, 23.90, 250), ('s2', 'v04', 19.40, 22.40, 250), ('s3', 'v15', 17.30, 20.70, 250), ('s4', 'v16', 18.30, 21.20, 250), ('s5', 'v17', 17.40, 20.40, 250), ('s6', 'v03', 19.30, 22.20, 250)], srcVol=0.35,
+   focus=dict(x=540, y=300, r=230, dur=18), circles=[],
+   top='Every fit check at The Arena ends the same way', hl={'Arena': GR}, sub='The Arena · Camp Flog Gnaw · behind the scenes', music=['goodbye_n', 0], ask=[[['s1'], 'Wait for it']],
+   tints=[], rizz=[], punch=[['s2'], ['s3'], ['s4'], ['s5'], ['s6']], blowouts=[], blackFlash=[], streaks=[],
+   extras=[sfx(['s1'], 's_whoosh.mp3', 0.45, off=62), sfx(['s2'], 's_whoosh.mp3', 0.45, off=75), sfx(['s3'], 's_whoosh.mp3', 0.45, off=85), sfx(['s4'], 's_whoosh.mp3', 0.45, off=75),
+           sfx(['s5'], 's_whoosh.mp3', 0.45, off=75), pop(['s6'], 'e_sob.png', 's_fahhh.mp3', off=70)]),
+ 'arhost': dict(scenes=[('c1', 'v20', 2.55, 6.45, 250), ('c2', 'v20', 20.15, 24.65, 250), ('c3', 'v20', 40.50, 44.40, 250), ('c4', 'v20', 27.35, 30.65, 250)], srcVol=1,
+   focus=dict(x=540, y=330, r=230, dur=18), circles=[],
+   top='Our host at The Arena was not ready', hl={'Arena': GR}, sub='The Arena · Camp Flog Gnaw', music=['funkabn_n', 0], ask=[[['c1'], 'Funniest part?']],
+   tints=[], rizz=[], punch=[['c1', 'made'], ['c1', 'Manufacturers'], ['c2', 'mouthpiece?'], ['c3', 'craziest'], ['c4', 'strawberries.']], blowouts=[], blackFlash=[], streaks=[['c2'], ['c3']],
+   extras=[sfx(['c1', 'Manufacturers'], 's_huh.mp3', 0.5), sfx(['c2', 'mouthpiece?'], 's_ayo.mp3', 0.45), pop(['c3', 'life.'], 'e_laugh.png', 's_fahhh.mp3', off=6)]),
+ 'arsquad': dict(scenes=[('hook', 'v13', 44.40, 46.10, 250), ('s1', 'v13', 14.50, 19.30, 330), ('s2', 'v13', 21.50, 24.30, 330), ('s3', 'v13', 39.80, 47.80, 330)], srcVol=0.3,
+   focus=dict(x=540, y=330, r=230, dur=18), circles=[],
+   top='When the whole group chat pulls up to The Arena', hl={'Arena': GR}, sub='The Arena · Camp Flog Gnaw', music=['brega_n', 0], ask=[[['hook'], 'Tag your group chat']],
+   tints=[], rizz=[], punch=[['hook'], ['s2'], ['s3']], blowouts=[], blackFlash=[], streaks=[['s3']],
+   extras=[sfx(['s3'], 's_whoosh.mp3', 0.5, off=205), pop(['s3'], 'e_laugh.png', 's_huh.mp3', off=215)]),
 }
-W = {v: [w for s in json.load(open(f'{TX}/{v}.json')) for w in s['w']] for v in ('v20',)}
+W = {v: [w for s in json.load(open(f'{TX}/{v}.json')) for w in s['w']] for v in ('v20', 'v03', 'v04', 'v15', 'v16')}
 gen = json.load(open('src/edits.gen.json')); CFG = {}
 for eid, spec in E.items():
     scenes, t = [], 0.0
@@ -106,7 +136,7 @@ for eid, spec in E.items():
             cmd += ['-ss', f'{a:.3f}', '-t', f'{d:.4f}', '-i', src(v)]
             geo = (f'scale=1080:1920,crop=1080:1080:0:{y0},scale=1088:1088,crop=1088:1080:0:4,pad=1920:1080:416:0:black' if vert(v) else 'scale=1920:1080')
             fc.append(f'[{i}:v]fps=30,setpts=PTS-STARTPTS,{geo},setsar=1,format=yuv420p,trim=duration={d:.4f}[v{i}]')
-            fc.append(f'[{i}:a:0]asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo,apad,atrim=0:{d:.4f}[a{i}]')
+            fc.append(f'anullsrc=r=48000:cl=stereo,atrim=0:{d:.4f}[a{i}]' if aidx(v) is None else f'[{i}:a:{aidx(v)}]asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo,apad,atrim=0:{d:.4f}[a{i}]')
         k = len(spec['scenes'])
         fc.append(''.join(f'[v{i}][a{i}]' for i in range(k)) + f'concat=n={k}:v=1:a=1[cv][ca]'); fc.append('[cv]' + G67 + '[gv]')
         subprocess.run(cmd + ['-filter_complex', ';'.join(fc), '-map', '[gv]', '-map', '[ca]', '-c:v', 'libx264', '-preset', 'medium', '-crf', '19', '-g', '15',
