@@ -146,3 +146,8 @@
 - Punching Bag Challenge at The Arena (Arena punch)
 - The Arena's First Merch Drop. Only at Camp Flog Gnaw (Arena merch)
 - The Arena Turned Camp Flog Gnaw Into an Arcade (Arena arcade)
+- Walking Through The Arena at Camp Flog Gnaw (Arena walk)
+- Who Pulled Up to The Arena at Camp Flog Gnaw, Day 1 (Arena guests)
+- Day 2 at The Arena, Camp Flog Gnaw (Arena day2)
+- The Whole Weekend at The Arena in 15 Seconds (Arena recap)
+- Fit Check at The Arena, Camp Flog Gnaw. Pick 1-7 (Arena walkfit)

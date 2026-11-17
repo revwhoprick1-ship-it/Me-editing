@@ -5,3 +5,5 @@
 - Batch 1 (plan_arena.py → src/arena.cfg.json): arfits, aranime, arpunch, armerch, ararcade. VverPaldo template, no skull, music 53%, cooler 67 grade.
 - Footage notes: most files are music b-roll; only the outfit reel (v20) has talk. v06 = vertical fit-walk montage (unused, good for a fit-check edit).
 - User feedback (re-edit): NO tilted big-text pops ("THEY MADE IT…", "PINK HAIR") — they look AI. Use red circles, but only 1 per clip. Start with a short blur-focus on a face (~0.7 s), and frame 1 must always show a face, not just a body.
+- Batch 2: arwalk (v20 tour, opens on host face), arguests (v01 day 1 montage), arday2 (v02), arrecap (v09, circle on neon logo), arwalkfit (v06, circle on clown makeup). Every clip 15-16 s, opens on a face, 1 circle max (guests + day2 none).
+- QA lesson: check a rendered contact sheet (fps=2, tile 8x4) for a face at frame 0 and a circle on target; v20 42.85 "craziest thing" shot is the Cup Noodles fridge, so no face there.
