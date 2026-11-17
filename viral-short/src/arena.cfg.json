@@ -1,0 +1,943 @@
+{
+ "arfits": {
+  "srcVol": 1,
+  "top": "The best fits at The Arena, Camp Flog Gnaw",
+  "hl": {
+   "Arena,": "#58EE28"
+  },
+  "sub": "The Arena \u00b7 Camp Flog Gnaw",
+  "music": [
+   "xcool_n",
+   0
+  ],
+  "ask": [
+   {
+    "at": [
+     "hook"
+    ],
+    "text": "Which fit wins?"
+   }
+  ],
+  "tints": [
+   [
+    [
+     "c1",
+     "made"
+    ],
+    "G"
+   ],
+   [
+    [
+     "c2",
+     "anime"
+    ],
+    "G"
+   ]
+  ],
+  "rizz": [
+   [
+    "c1",
+    "made"
+   ]
+  ],
+  "punch": [
+   [
+    "hook",
+    "strawberry"
+   ],
+   [
+    "c1",
+    "best"
+   ],
+   [
+    "c1",
+    "Arena"
+   ],
+   [
+    "c1",
+    "hat"
+   ],
+   [
+    "c1",
+    "made"
+   ],
+   [
+    "c1",
+    "design"
+   ],
+   [
+    "c2",
+    "pink"
+   ],
+   [
+    "c2",
+    "anime"
+   ],
+   [
+    "c3",
+    "video"
+   ],
+   [
+    "c3",
+    "fit"
+   ]
+  ],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [
+   [
+    "c1"
+   ],
+   [
+    "c3"
+   ]
+  ],
+  "extras": [
+   {
+    "at": [
+     "c1",
+     "made"
+    ],
+    "kind": "txt",
+    "file": "THEY MADE IT THEMSELVES",
+    "color": "#FFE14A",
+    "size": 90,
+    "off": 0,
+    "dur": 40,
+    "y": 560
+   },
+   {
+    "at": [
+     "c1",
+     "made"
+    ],
+    "kind": "sfx",
+    "file": "s_wow.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2",
+     "pink"
+    ],
+    "kind": "txt",
+    "file": "PINK HAIR",
+    "color": "#FF6FB5",
+    "size": 120,
+    "off": 0,
+    "dur": 30,
+    "y": 560
+   },
+   {
+    "at": [
+     "c2",
+     "character"
+    ],
+    "kind": "png",
+    "file": "e_heart.png",
+    "off": 10,
+    "sfx": "s_correct.mp3",
+    "sv": 0.45
+   }
+  ],
+  "cta": "The Arena \u00b7 @thearenahq",
+  "ctaEnd": true,
+  "track": "none",
+  "calls": [],
+  "src": "g67_arfits.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": true,
+  "popMid": true,
+  "noSkull": true
+ },
+ "aranime": {
+  "srcVol": 1,
+  "top": "The Arena asked the REAL anime questions",
+  "hl": {
+   "REAL": "#FF2A2A"
+  },
+  "sub": "The Arena \u00b7 Camp Flog Gnaw",
+  "music": [
+   "aura_n",
+   0
+  ],
+  "ask": [
+   {
+    "at": [
+     "hook"
+    ],
+    "text": "Your anime pick for a day?"
+   }
+  ],
+  "tints": [
+   [
+    [
+     "c2",
+     "Yusuke"
+    ],
+    "G"
+   ],
+   [
+    [
+     "c2",
+     "strongest"
+    ],
+    "G"
+   ]
+  ],
+  "rizz": [
+   [
+    "c2",
+    "Yusuke"
+   ]
+  ],
+  "punch": [
+   [
+    "hook",
+    "mouthpiece"
+   ],
+   [
+    "c1",
+    "anime"
+   ],
+   [
+    "c1",
+    "day"
+   ],
+   [
+    "c2",
+    "Yusuke"
+   ],
+   [
+    "c2",
+    "Hakusho"
+   ],
+   [
+    "c2",
+    "strongest"
+   ],
+   [
+    "c2",
+    "show"
+   ],
+   [
+    "c3",
+    "merch"
+   ],
+   [
+    "c3",
+    "blind"
+   ],
+   [
+    "c3",
+    "get"
+   ]
+  ],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [
+   [
+    "c1"
+   ],
+   [
+    "c3"
+   ]
+  ],
+  "extras": [
+   {
+    "at": [
+     "hook",
+     "mouthpiece"
+    ],
+    "kind": "txt",
+    "file": "BLIND BOX PULL",
+    "color": "#FFFFFF",
+    "size": 90,
+    "off": 0,
+    "dur": 30,
+    "y": 560
+   },
+   {
+    "at": [
+     "hook",
+     "mouthpiece"
+    ],
+    "kind": "sfx",
+    "file": "s_huh.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2",
+     "Yusuke"
+    ],
+    "kind": "txt",
+    "file": "YUSUKE",
+    "color": "#58EE28",
+    "size": 140,
+    "off": 0,
+    "dur": 30,
+    "y": 560
+   },
+   {
+    "at": [
+     "c2",
+     "Yusuke"
+    ],
+    "kind": "sfx",
+    "file": "s_wow.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2",
+     "show"
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 8,
+    "sfx": "s_ahh.mp3",
+    "sv": 0.45
+   },
+   {
+    "at": [
+     "c3",
+     "Exclusive"
+    ],
+    "kind": "txt",
+    "file": "EXCLUSIVE MERCH",
+    "color": "#FFE14A",
+    "size": 90,
+    "off": 0,
+    "dur": 30,
+    "y": 560
+   },
+   {
+    "at": [
+     "c3",
+     "blind"
+    ],
+    "kind": "txt",
+    "file": "BLIND BOXES",
+    "color": "#FF2A2A",
+    "size": 110,
+    "off": 0,
+    "dur": 30,
+    "y": 560
+   },
+   {
+    "at": [
+     "c3",
+     "blind"
+    ],
+    "kind": "sfx",
+    "file": "s_ding.mp3",
+    "v": 0.4,
+    "off": 0
+   }
+  ],
+  "cta": "The Arena \u00b7 @thearenahq",
+  "ctaEnd": true,
+  "track": "none",
+  "calls": [],
+  "src": "g67_aranime.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": true,
+  "popMid": true,
+  "noSkull": true
+ },
+ "arpunch": {
+  "srcVol": 1,
+  "top": "Punching bag challenge at The Arena",
+  "hl": {
+   "Arena": "#58EE28"
+  },
+  "sub": "The Arena \u00b7 Camp Flog Gnaw",
+  "music": [
+   "phonk_n",
+   40
+  ],
+  "ask": [
+   {
+    "at": [
+     "hook"
+    ],
+    "text": "Could you hit harder?"
+   }
+  ],
+  "tints": [
+   [
+    [
+     "c1",
+     "strength"
+    ],
+    "R"
+   ]
+  ],
+  "rizz": [],
+  "punch": [
+   [
+    "c1",
+    "punching"
+   ],
+   [
+    "c1",
+    "challenge"
+   ],
+   [
+    "c1",
+    "strength"
+   ],
+   [
+    "c1",
+    "three"
+   ],
+   [
+    "c1",
+    "two"
+   ],
+   [
+    "c1",
+    "one"
+   ],
+   [
+    "c1",
+    "hit"
+   ]
+  ],
+  "blowouts": [
+   [
+    "c1",
+    "hit"
+   ]
+  ],
+  "blackFlash": [],
+  "streaks": [
+   [
+    "c2"
+   ],
+   [
+    "c3"
+   ]
+  ],
+  "extras": [
+   {
+    "at": [
+     "hook"
+    ],
+    "kind": "txt",
+    "file": "POW",
+    "color": "#FF2A2A",
+    "size": 170,
+    "off": 0,
+    "dur": 20
+   },
+   {
+    "at": [
+     "hook"
+    ],
+    "kind": "sfx",
+    "file": "hit.mp3",
+    "v": 0.6,
+    "off": 4
+   },
+   {
+    "at": [
+     "c1",
+     "three"
+    ],
+    "kind": "txt",
+    "file": "3\u2026",
+    "color": "#FFFFFF",
+    "size": 120,
+    "off": 0,
+    "dur": 14,
+    "y": 560
+   },
+   {
+    "at": [
+     "c1",
+     "two"
+    ],
+    "kind": "txt",
+    "file": "2\u2026",
+    "color": "#FFFFFF",
+    "size": 120,
+    "off": 0,
+    "dur": 14,
+    "y": 560
+   },
+   {
+    "at": [
+     "c1",
+     "hit"
+    ],
+    "kind": "txt",
+    "file": "HIT IT",
+    "color": "#FF2A2A",
+    "size": 140,
+    "off": 0,
+    "dur": 24,
+    "y": 560
+   },
+   {
+    "at": [
+     "c1",
+     "hit"
+    ],
+    "kind": "sfx",
+    "file": "hit.mp3",
+    "v": 0.6,
+    "off": 10
+   },
+   {
+    "at": [
+     "c2"
+    ],
+    "kind": "txt",
+    "file": "ROUND 2: NIGHT",
+    "color": "#FFE14A",
+    "size": 90,
+    "off": 0,
+    "dur": 30,
+    "y": 560
+   },
+   {
+    "at": [
+     "c2"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2"
+    ],
+    "kind": "sfx",
+    "file": "hit.mp3",
+    "v": 0.5,
+    "off": 14
+   },
+   {
+    "at": [
+     "c3"
+    ],
+    "kind": "sfx",
+    "file": "hit.mp3",
+    "v": 0.5,
+    "off": 26
+   },
+   {
+    "at": [
+     "c3"
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 60,
+    "sfx": "s_huh.mp3",
+    "sv": 0.45
+   }
+  ],
+  "cta": "The Arena \u00b7 @thearenahq",
+  "ctaEnd": true,
+  "track": "none",
+  "calls": [],
+  "src": "g67_arpunch.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": true,
+  "popMid": true,
+  "noSkull": true
+ },
+ "armerch": {
+  "srcVol": 0.12,
+  "top": "The Arena's first merch drop. Only at Camp Flog Gnaw",
+  "hl": {
+   "Arena's": "#58EE28"
+  },
+  "sub": "Limited edition \u00b7 Fatal Fury",
+  "music": [
+   "montagem_n",
+   25
+  ],
+  "ask": [
+   {
+    "at": [
+     "hook"
+    ],
+    "text": "What are you copping first?"
+   }
+  ],
+  "tints": [
+   [
+    [
+     "c2"
+    ],
+    "G"
+   ]
+  ],
+  "rizz": [
+   [
+    "c2"
+   ]
+  ],
+  "punch": [
+   [
+    "hook"
+   ],
+   [
+    "c2"
+   ],
+   [
+    "c4"
+   ]
+  ],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [
+   [
+    "c1"
+   ],
+   [
+    "c2"
+   ],
+   [
+    "c3"
+   ],
+   [
+    "c4"
+   ]
+  ],
+  "extras": [
+   {
+    "at": [
+     "hook"
+    ],
+    "kind": "txt",
+    "file": "FATAL FURY MERCH",
+    "color": "#FF2A2A",
+    "size": 110,
+    "off": 0,
+    "dur": 36,
+    "y": 560
+   },
+   {
+    "at": [
+     "hook"
+    ],
+    "kind": "sfx",
+    "file": "s_camflash.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c1"
+    ],
+    "kind": "txt",
+    "file": "THE ARENA MARKET",
+    "color": "#FFE14A",
+    "size": 100,
+    "off": 10,
+    "dur": 40,
+    "y": 560
+   },
+   {
+    "at": [
+     "c1"
+    ],
+    "kind": "sfx",
+    "file": "s_ding.mp3",
+    "v": 0.35,
+    "off": 10
+   },
+   {
+    "at": [
+     "c2"
+    ],
+    "kind": "txt",
+    "file": "FIRST DROP EVER",
+    "color": "#58EE28",
+    "size": 110,
+    "off": 0,
+    "dur": 26,
+    "y": 560
+   },
+   {
+    "at": [
+     "c3"
+    ],
+    "kind": "txt",
+    "file": "LIMITED EDITION",
+    "color": "#FFFFFF",
+    "size": 110,
+    "off": 30,
+    "dur": 36,
+    "y": 560
+   },
+   {
+    "at": [
+     "c3"
+    ],
+    "kind": "sfx",
+    "file": "s_correct.mp3",
+    "v": 0.4,
+    "off": 30
+   },
+   {
+    "at": [
+     "c4"
+    ],
+    "kind": "txt",
+    "file": "ONLY AT CAMP FLOG GNAW",
+    "color": "#FFE14A",
+    "size": 90,
+    "off": 0,
+    "dur": 50,
+    "y": 560
+   },
+   {
+    "at": [
+     "c4"
+    ],
+    "kind": "png",
+    "file": "e_heart.png",
+    "off": 20,
+    "sfx": "s_wow.mp3",
+    "sv": 0.45
+   }
+  ],
+  "cta": "The Arena \u00b7 @thearenahq",
+  "ctaEnd": true,
+  "track": "none",
+  "calls": [],
+  "src": "g67_armerch.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": true,
+  "popMid": true,
+  "noSkull": true
+ },
+ "ararcade": {
+  "srcVol": 0.12,
+  "top": "The Arena turned Camp Flog Gnaw into an arcade",
+  "hl": {
+   "arcade": "#58EE28"
+  },
+  "sub": "Free arcade games \u00b7 The Arena",
+  "music": [
+   "aura_n",
+   0
+  ],
+  "ask": [
+   {
+    "at": [
+     "hook"
+    ],
+    "text": "KOF or Metal Slug?"
+   }
+  ],
+  "tints": [
+   [
+    [
+     "c4"
+    ],
+    "G"
+   ]
+  ],
+  "rizz": [
+   [
+    "c4"
+   ]
+  ],
+  "punch": [
+   [
+    "hook"
+   ],
+   [
+    "c2"
+   ],
+   [
+    "c4"
+   ],
+   [
+    "c5"
+   ],
+   [
+    "c6"
+   ]
+  ],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [
+   [
+    "c1"
+   ],
+   [
+    "c2"
+   ],
+   [
+    "c3"
+   ],
+   [
+    "c4"
+   ],
+   [
+    "c5"
+   ],
+   [
+    "c6"
+   ]
+  ],
+  "extras": [
+   {
+    "at": [
+     "hook"
+    ],
+    "kind": "txt",
+    "file": "FIGHT FOR THIS ARCADE",
+    "color": "#FF2A2A",
+    "size": 100,
+    "off": 0,
+    "dur": 36,
+    "y": 560
+   },
+   {
+    "at": [
+     "hook"
+    ],
+    "kind": "sfx",
+    "file": "s_camflash.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c1"
+    ],
+    "kind": "txt",
+    "file": "METAL SLUG",
+    "color": "#FFE14A",
+    "size": 120,
+    "off": 10,
+    "dur": 36,
+    "y": 560
+   },
+   {
+    "at": [
+     "c1"
+    ],
+    "kind": "sfx",
+    "file": "pop.mp3",
+    "v": 0.4,
+    "off": 10
+   },
+   {
+    "at": [
+     "c2"
+    ],
+    "kind": "txt",
+    "file": "FREE ARCADE GAMES",
+    "color": "#58EE28",
+    "size": 100,
+    "off": 0,
+    "dur": 30,
+    "y": 560
+   },
+   {
+    "at": [
+     "c3"
+    ],
+    "kind": "txt",
+    "file": "TOP PLAYER WINS\u2026",
+    "color": "#FFFFFF",
+    "size": 100,
+    "off": 20,
+    "dur": 40,
+    "y": 560
+   },
+   {
+    "at": [
+     "c3"
+    ],
+    "kind": "sfx",
+    "file": "s_ding.mp3",
+    "v": 0.4,
+    "off": 20
+   },
+   {
+    "at": [
+     "c4"
+    ],
+    "kind": "txt",
+    "file": "A 1-OF-1 NEO\u2022GEO ARCADE",
+    "color": "#58EE28",
+    "size": 90,
+    "off": 0,
+    "dur": 28,
+    "y": 560
+   },
+   {
+    "at": [
+     "c4"
+    ],
+    "kind": "png",
+    "file": "e_heart.png",
+    "off": 16,
+    "sfx": "s_wow.mp3",
+    "sv": 0.45
+   },
+   {
+    "at": [
+     "c5"
+    ],
+    "kind": "txt",
+    "file": "THE KING OF FIGHTERS",
+    "color": "#FFE14A",
+    "size": 90,
+    "off": 0,
+    "dur": 30,
+    "y": 560
+   },
+   {
+    "at": [
+     "c6"
+    ],
+    "kind": "txt",
+    "file": "THE ARENA",
+    "color": "#FFFFFF",
+    "size": 150,
+    "off": 0,
+    "dur": 60,
+    "y": 560
+   }
+  ],
+  "cta": "The Arena \u00b7 @thearenahq",
+  "ctaEnd": true,
+  "track": "none",
+  "calls": [],
+  "src": "g67_ararcade.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": true,
+  "popMid": true,
+  "noSkull": true
+ }
+}
