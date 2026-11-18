@@ -155,3 +155,8 @@
 - He Pulled a MOUTHPIECE From the Gacha at The Arena ☠️ (Arena fmouth)
 - The Longest 3, 2, 1 EVER at The Arena ☠️ (Arena fcount)
 - The Arena Asked Him the REAL Anime Question ☠️ (Arena faura)
+- His Height Depends on the DAY OF THE WEEK ☠️ (CLASH chheight)
+- He Asked for a Snap Count and Got THIS ☠️ (CLASH chsnap)
+- His Heisman Moment Had a DIDDLY-DOO ☠️ (CLASH chdiddly)
+- The Most HEISMAN Speech Ever ☠️ (CLASH chspeech)
+- They Asked the Secret Heisman Winner His LUNCH ORDER ☠️ (CLASH chreveal)
