@@ -129,11 +129,12 @@ import R3Z from './r3z.cfg.json';
 import R3SUS from './r3sus.cfg.json';
 import R3T from './r3t.cfg.json';
 import ARENA from './arena.cfg.json';
+import CLASH from './clash.cfg.json';
 import T_CHANT_IRON from './tracks/chant_iron.json';
 import T_CLOWN_SOL from './tracks/clown_sol.json';
 const V5_TRACKS: Record<string, Record<string, number[]>> = {iron: IRONREVEAL as Record<string, number[]>, gift: T_GIFT, merch: T_MERCH, pissed: T_PISSED, hulk: HULK,
   chant_iron: T_CHANT_IRON, solstice: T_CLOWN_SOL};
-Object.entries({...V5, ...V6, ...R3, ...TV, ...R3B, ...X, ...R3F, ...R3G, ...MJ, ...FP, ...R3Z, ...R3SUS, ...R3T, ...ARENA} as unknown as Record<string, {top: string; hl: Record<string, string>; cta: string; music: [string, number]; ctaAt: Ref; track: string; calls: [number, number, string][];
+Object.entries({...V5, ...V6, ...R3, ...TV, ...R3B, ...X, ...R3F, ...R3G, ...MJ, ...FP, ...R3Z, ...R3SUS, ...R3T, ...ARENA, ...CLASH} as unknown as Record<string, {top: string; hl: Record<string, string>; cta: string; music: [string, number]; ctaAt: Ref; track: string; calls: [number, number, string][];
   tints: [Ref, string][]; rizz: Ref[]; punch: Ref[]; blowouts: Ref[]; blackFlash: Ref[]; streaks: Ref[]; src?: string; teaser?: Cfg['teaser']; hardcut?: boolean; extras?: Cfg['extras']; cutSfx?: string; wm?: Cfg['wm']; topY?: number; srcVol?: number; noSkull?: boolean; fxOff?: boolean; trackData?: Record<string, number[]>; sat?: number; ask?: Cfg['ask']; progress?: boolean; popMid?: boolean; sub?: string; ctaEnd?: boolean; focus?: Cfg['focus']}>).forEach(([id, a]) => {
   EDITS[id] = {focus: a.focus, ctaEnd: a.ctaEnd, sub: a.sub, sat: a.sat, ask: a.ask, progress: a.progress, popMid: a.popMid, wm: a.wm, topY: a.topY, srcVol: a.srcVol, noSkull: a.noSkull, fxOff: a.fxOff, extras: a.extras, cutSfx: a.cutSfx, hardcut: a.hardcut, teaser: a.teaser, src: a.src, subBand: a.src ? [1, 0] : undefined, top: a.top, hl: a.hl, cta: a.cta, label: '', track: a.trackData ?? V5_TRACKS[a.track] ?? {}, music: a.music[1], musicFile: a.music[0], musicVol: 0.53, loop: !(a as {intro?: boolean}).intro, pushIn: true,
     ctaAt: a.ctaAt, calls: a.calls, tints: a.tints.map(([r, c]) => [r, c === 'G' ? GREEN : RED] as [Ref, string]), rizz: a.rizz, punch: a.punch,
