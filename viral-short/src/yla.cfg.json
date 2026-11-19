@@ -915,5 +915,487 @@
   "popMid": true,
   "srcVol": 1,
   "musicVol": 0.4
+ },
+ "grant": {
+  "focus": {
+   "x": 830,
+   "y": 370,
+   "r": 190,
+   "dur": 20
+  },
+  "noSkull": true,
+  "top": "bro found out the drop date ON CAMERA and spiraled \ud83d\ude2d",
+  "hl": {
+   "ON": "#FF2A2A",
+   "CAMERA": "#FF2A2A"
+  },
+  "music": [
+   "goodbye_n",
+   0
+  ],
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "punch": [
+   [
+    "hook",
+    "people!"
+   ],
+   [
+    "c1",
+    "swear"
+   ],
+   [
+    "c2",
+    "profits"
+   ],
+   [
+    "c2",
+    "people!"
+   ],
+   [
+    "c2",
+    "wrong"
+   ],
+   [
+    "c3",
+    "never"
+   ],
+   [
+    "c3",
+    "Ever."
+   ],
+   [
+    "c3",
+    "shutting"
+   ]
+  ],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "extras": [
+   {
+    "at": [
+     "c1",
+     "swear"
+    ],
+    "kind": "sfx",
+    "file": "s_huh.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2",
+     "wrong"
+    ],
+    "kind": "sfx",
+    "file": "s_fahhh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c3",
+     "forever."
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 2,
+    "y": 800,
+    "size": 380,
+    "sfx": "s_ayo.mp3",
+    "sv": 0.45
+   }
+  ],
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_grant.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": false,
+  "popMid": true,
+  "srcVol": 1,
+  "musicVol": 0.4
+ },
+ "gpants": {
+  "focus": {
+   "x": 480,
+   "y": 250,
+   "r": 170,
+   "dur": 20
+  },
+  "noSkull": true,
+  "top": "bro felt his aura in his MID SECTION \ud83d\udc80",
+  "hl": {
+   "MID": "#FF2A2A",
+   "SECTION": "#FF2A2A"
+  },
+  "music": [
+   "mletme_n",
+   0
+  ],
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "punch": [
+   [
+    "hook",
+    "mid"
+   ],
+   [
+    "c1",
+    "pants."
+   ],
+   [
+    "c2",
+    "goosebumps."
+   ],
+   [
+    "c2",
+    "100"
+   ],
+   [
+    "c2",
+    "mid"
+   ],
+   [
+    "c2",
+    "knees"
+   ]
+  ],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "extras": [
+   {
+    "at": [
+     "c1",
+     "pants."
+    ],
+    "kind": "sfx",
+    "file": "s_huh.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2",
+     "mid"
+    ],
+    "kind": "sfx",
+    "file": "s_ayo.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2",
+     "toes."
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 2,
+    "y": 800,
+    "size": 380,
+    "sfx": "s_fahhh.mp3",
+    "sv": 0.45
+   }
+  ],
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_gpants.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": false,
+  "popMid": true,
+  "srcVol": 1,
+  "musicVol": 0.4
+ },
+ "gjay": {
+  "focus": {
+   "x": 550,
+   "y": 320,
+   "r": 180,
+   "dur": 20
+  },
+  "noSkull": true,
+  "top": "jay cutler said \"it's my first, OKAY?\" like a threat \ud83d\ude2d",
+  "hl": {
+   "OKAY?\"": "#FF2A2A"
+  },
+  "music": [
+   "chess_n",
+   0
+  ],
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "punch": [
+   [
+    "hook",
+    "first"
+   ],
+   [
+    "c1",
+    "applause"
+   ],
+   [
+    "c2",
+    "last"
+   ],
+   [
+    "c2",
+    "okay?"
+   ],
+   [
+    "c3",
+    "Ferrari."
+   ],
+   [
+    "c3",
+    "Robbie's"
+   ]
+  ],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "extras": [
+   {
+    "at": [
+     "c1",
+     "applause"
+    ],
+    "kind": "sfx",
+    "file": "s_ding.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2",
+     "last"
+    ],
+    "kind": "sfx",
+    "file": "s_huh.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "c3",
+     "Robbie's"
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 4,
+    "y": 800,
+    "size": 380,
+    "sfx": "s_fahhh.mp3",
+    "sv": 0.45
+   }
+  ],
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_gjay.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": false,
+  "popMid": true,
+  "srcVol": 1,
+  "musicVol": 0.4
+ },
+ "gwalk": {
+  "focus": {
+   "x": 765,
+   "y": 450,
+   "r": 170,
+   "dur": 20
+  },
+  "noSkull": true,
+  "top": "jay cutler had to RATE his runway walk \ud83d\udc80",
+  "hl": {
+   "RATE": "#FF2A2A"
+  },
+  "music": [
+   "mwalahi_n",
+   0
+  ],
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "punch": [
+   [
+    "hook",
+    "better"
+   ],
+   [
+    "c1",
+    "twinning."
+   ],
+   [
+    "c2",
+    "dance"
+   ],
+   [
+    "c3",
+    "Whoa!"
+   ],
+   [
+    "c3",
+    "better"
+   ],
+   [
+    "c4",
+    "home"
+   ]
+  ],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "extras": [
+   {
+    "at": [
+     "c3",
+     "Whoa!"
+    ],
+    "kind": "sfx",
+    "file": "s_wow.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c3",
+     "better"
+    ],
+    "kind": "sfx",
+    "file": "s_huh.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "c4",
+     "home"
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 2,
+    "y": 800,
+    "size": 380,
+    "sfx": "s_fahhh.mp3",
+    "sv": 0.45
+   }
+  ],
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_gwalk.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": false,
+  "popMid": true,
+  "srcVol": 1,
+  "musicVol": 0.4
+ },
+ "gvillain": {
+  "focus": {
+   "x": 485,
+   "y": 110,
+   "r": 150,
+   "dur": 20
+  },
+  "noSkull": true,
+  "top": "\"i thought he was a DISNEY VILLAIN\" \ud83d\udc80",
+  "hl": {
+   "DISNEY": "#FF2A2A",
+   "VILLAIN\"": "#FF2A2A"
+  },
+  "music": [
+   "mdubist_n",
+   0
+  ],
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "punch": [
+   [
+    "hook",
+    "Disney"
+   ],
+   [
+    "c1",
+    "supervillain."
+   ],
+   [
+    "c2",
+    "Disney"
+   ],
+   [
+    "c2",
+    "antagonist"
+   ],
+   [
+    "c2",
+    "evil"
+   ]
+  ],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "extras": [
+   {
+    "at": [
+     "c1",
+     "supervillain."
+    ],
+    "kind": "sfx",
+    "file": "s_huh.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2",
+     "evil"
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 2,
+    "y": 800,
+    "size": 380,
+    "sfx": "s_fahhh.mp3",
+    "sv": 0.45
+   }
+  ],
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_gvillain.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": false,
+  "popMid": true,
+  "srcVol": 1,
+  "musicVol": 0.4
  }
 }
