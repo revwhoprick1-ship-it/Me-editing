@@ -17,14 +17,7 @@
    "funkabn_n",
    0
   ],
-  "ask": [
-   {
-    "at": [
-     "hook"
-    ],
-    "text": "How tall is he really?"
-   }
-  ],
+  "ask": [],
   "tints": [],
   "rizz": [],
   "punch": [
@@ -403,7 +396,7 @@
     115
    ]
   },
-  "cta": "Full episode on CLASH",
+  "cta": "",
   "track": "none",
   "calls": [
    [
@@ -417,7 +410,7 @@
   "hardcut": true,
   "cutSfx": "s_camflash.mp3",
   "sat": 1.1,
-  "progress": true,
+  "progress": false,
   "popMid": true,
   "noSkull": false,
   "srcVol": 1
@@ -437,14 +430,7 @@
    "phonk_n",
    0
   ],
-  "ask": [
-   {
-    "at": [
-     "hook"
-    ],
-    "text": "Would you run this play?"
-   }
-  ],
+  "ask": [],
   "tints": [],
   "rizz": [],
   "punch": [
@@ -508,7 +494,7 @@
    }
   ],
   "trackData": {},
-  "cta": "Full episode on CLASH",
+  "cta": "",
   "track": "none",
   "calls": [],
   "src": "g67_chsnap.mp4",
@@ -516,7 +502,7 @@
   "hardcut": true,
   "cutSfx": "s_camflash.mp3",
   "sat": 1.1,
-  "progress": true,
+  "progress": false,
   "popMid": true,
   "noSkull": false,
   "srcVol": 1
@@ -536,14 +522,7 @@
    "chess_n",
    0
   ],
-  "ask": [
-   {
-    "at": [
-     "hook"
-    ],
-    "text": "Best play name ever?"
-   }
-  ],
+  "ask": [],
   "tints": [],
   "rizz": [],
   "punch": [
@@ -619,7 +598,7 @@
    }
   ],
   "trackData": {},
-  "cta": "Full episode on CLASH",
+  "cta": "",
   "track": "none",
   "calls": [],
   "src": "g67_chdiddly.mp4",
@@ -627,7 +606,7 @@
   "hardcut": true,
   "cutSfx": "s_camflash.mp3",
   "sat": 1.1,
-  "progress": true,
+  "progress": false,
   "popMid": true,
   "noSkull": false,
   "srcVol": 1
@@ -647,14 +626,7 @@
    "goodbye_n",
    0
   ],
-  "ask": [
-   {
-    "at": [
-     "hook"
-    ],
-    "text": "Real winner or acting?"
-   }
-  ],
+  "ask": [],
   "tints": [],
   "rizz": [
    [
@@ -727,7 +699,7 @@
    }
   ],
   "trackData": {},
-  "cta": "Full episode on CLASH",
+  "cta": "",
   "track": "none",
   "calls": [],
   "src": "g67_chspeech.mp4",
@@ -735,7 +707,7 @@
   "hardcut": true,
   "cutSfx": "s_camflash.mp3",
   "sat": 1.1,
-  "progress": true,
+  "progress": false,
   "popMid": true,
   "noSkull": false,
   "srcVol": 1
@@ -756,14 +728,7 @@
    "brega_n",
    0
   ],
-  "ask": [
-   {
-    "at": [
-     "hook"
-    ],
-    "text": "Who would you vote?"
-   }
-  ],
+  "ask": [],
   "tints": [],
   "rizz": [
    [
@@ -1007,7 +972,7 @@
     120
    ]
   },
-  "cta": "Full episode on CLASH",
+  "cta": "",
   "track": "none",
   "calls": [
    [
@@ -1021,7 +986,7 @@
   "hardcut": true,
   "cutSfx": "s_camflash.mp3",
   "sat": 1.1,
-  "progress": true,
+  "progress": false,
   "popMid": true,
   "noSkull": false,
   "srcVol": 1

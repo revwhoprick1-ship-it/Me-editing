@@ -1,0 +1,469 @@
+{
+ "ybath": {
+  "focus": {
+   "x": 900,
+   "y": 500,
+   "r": 180,
+   "dur": 20
+  },
+  "top": "He said give me 30 seconds and LEFT",
+  "hl": {
+   "LEFT": "#FF2A2A"
+  },
+  "music": [
+   "funkabn_n",
+   0
+  ],
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "punch": [
+   [
+    "c1",
+    "bathroom."
+   ],
+   [
+    "c1",
+    "coming"
+   ],
+   [
+    "c1",
+    "30"
+   ]
+  ],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "extras": [
+   {
+    "at": [
+     "c1",
+     "seconds."
+    ],
+    "kind": "sfx",
+    "file": "s_huh.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "c4"
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 150,
+    "y": 800,
+    "size": 380,
+    "sfx": "s_fahhh.mp3",
+    "sv": 0.45
+   }
+  ],
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_ybath.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": false,
+  "popMid": true,
+  "noSkull": false,
+  "srcVol": 1
+ },
+ "ylate": {
+  "focus": {
+   "x": 700,
+   "y": 340,
+   "r": 200,
+   "dur": 20
+  },
+  "top": "3 HOURS late and his first stop was the BATHROOM",
+  "hl": {
+   "3": "#FF2A2A",
+   "HOURS": "#FF2A2A",
+   "BATHROOM": "#FF2A2A"
+  },
+  "music": [
+   "chess_n",
+   0
+  ],
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "punch": [
+   [
+    "hook",
+    "pee"
+   ],
+   [
+    "c1",
+    "three"
+   ],
+   [
+    "c1",
+    "late."
+   ],
+   [
+    "c2",
+    "pee"
+   ],
+   [
+    "c2",
+    "Aaron"
+   ],
+   [
+    "c3",
+    "directly"
+   ]
+  ],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "extras": [
+   {
+    "at": [
+     "c1",
+     "late."
+    ],
+    "kind": "sfx",
+    "file": "s_huh.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2",
+     "would."
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 2,
+    "y": 800,
+    "size": 380,
+    "sfx": "s_fahhh.mp3",
+    "sv": 0.45
+   },
+   {
+    "at": [
+     "c3",
+     "bathroom."
+    ],
+    "kind": "sfx",
+    "file": "s_ding.mp3",
+    "v": 0.45,
+    "off": 0
+   }
+  ],
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_ylate.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": false,
+  "popMid": true,
+  "noSkull": false,
+  "srcVol": 1
+ },
+ "yaura": {
+  "focus": {
+   "x": 950,
+   "y": 400,
+   "r": 180,
+   "dur": 20
+  },
+  "top": "The most AURA at the fashion show went to the SOUND GUY",
+  "hl": {
+   "AURA": "#FF2A2A",
+   "SOUND": "#FF2A2A",
+   "GUY": "#FF2A2A"
+  },
+  "music": [
+   "goodbye_n",
+   0
+  ],
+  "ask": [],
+  "tints": [],
+  "rizz": [
+   [
+    "c4",
+    "aura"
+   ]
+  ],
+  "punch": [
+   [
+    "hook",
+    "noise"
+   ],
+   [
+    "c3",
+    "sound"
+   ],
+   [
+    "c4",
+    "awarded"
+   ],
+   [
+    "c5",
+    "speak"
+   ],
+   [
+    "c6",
+    "noise"
+   ],
+   [
+    "c6",
+    "Wow."
+   ]
+  ],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "extras": [
+   {
+    "at": [
+     "c3",
+     "sound"
+    ],
+    "kind": "sfx",
+    "file": "s_huh.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "c4",
+     "awarded"
+    ],
+    "kind": "sfx",
+    "file": "s_correct.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c6",
+     "Wow."
+    ],
+    "kind": "png",
+    "file": "e_sob.png",
+    "off": 2,
+    "y": 800,
+    "size": 380,
+    "sfx": "s_wow.mp3",
+    "sv": 0.45
+   }
+  ],
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_yaura.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": false,
+  "popMid": true,
+  "noSkull": false,
+  "srcVol": 1
+ },
+ "yquav": {
+  "focus": {
+   "x": 570,
+   "y": 150,
+   "r": 180,
+   "dur": 20
+  },
+  "top": "Guessing what he was listening to on the RUNWAY",
+  "hl": {
+   "RUNWAY": "#FF2A2A"
+  },
+  "music": [
+   "brega_n",
+   0
+  ],
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "punch": [
+   [
+    "hook",
+    "Gambino."
+   ],
+   [
+    "c1",
+    "headphones"
+   ],
+   [
+    "c2",
+    "Bieber"
+   ],
+   [
+    "c2",
+    "2008"
+   ],
+   [
+    "c3",
+    "intel."
+   ],
+   [
+    "c3",
+    "close."
+   ],
+   [
+    "c4",
+    "guess."
+   ]
+  ],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "extras": [
+   {
+    "at": [
+     "c2",
+     "Bieber"
+    ],
+    "kind": "sfx",
+    "file": "s_ding.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c3",
+     "Gambino."
+    ],
+    "kind": "sfx",
+    "file": "s_huh.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "c4",
+     "guess."
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 2,
+    "y": 800,
+    "size": 380,
+    "sfx": "s_fahhh.mp3",
+    "sv": 0.45
+   }
+  ],
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_yquav.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": false,
+  "popMid": true,
+  "noSkull": false,
+  "srcVol": 1
+ },
+ "ybank": {
+  "focus": {
+   "x": 940,
+   "y": 360,
+   "r": 180,
+   "dur": 20
+  },
+  "top": "His bank account hit NEGATIVE $152,000",
+  "hl": {
+   "NEGATIVE": "#FF2A2A",
+   "$152,000": "#FF2A2A"
+  },
+  "music": [
+   "phonk_n",
+   0
+  ],
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "punch": [
+   [
+    "hook",
+    "negative"
+   ],
+   [
+    "c1",
+    "zero."
+   ],
+   [
+    "c2",
+    "negative"
+   ],
+   [
+    "c3",
+    "robbed?"
+   ],
+   [
+    "c3",
+    "taxes"
+   ]
+  ],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "extras": [
+   {
+    "at": [
+     "c1",
+     "happened"
+    ],
+    "kind": "sfx",
+    "file": "s_huh.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2",
+     "negative"
+    ],
+    "kind": "sfx",
+    "file": "s_fahhh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c3",
+     "consent"
+    ],
+    "kind": "png",
+    "file": "e_sob.png",
+    "off": 2,
+    "y": 800,
+    "size": 380,
+    "sfx": "s_wow.mp3",
+    "sv": 0.45
+   }
+  ],
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_ybank.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": false,
+  "popMid": true,
+  "noSkull": false,
+  "srcVol": 1
+ }
+}
