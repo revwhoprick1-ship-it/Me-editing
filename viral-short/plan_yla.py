@@ -9,7 +9,7 @@ DL, TX = sys.argv[1], sys.argv[2]
 G67 = ("split[ga][gb];[gb]gblur=sigma=14[gg];[ga][gg]blend=all_mode=softlight:all_opacity=0.245,unsharp=5:5:1.74:5:5:0,"
        "eq=contrast=1.113:saturation=1.26:gamma=0.98,curves=all='0/0 0.25/0.21 0.75/0.81 1/1',unsharp=3:3:0.79,"
        "colortemperature=temperature=8000,eq=saturation=0.96,format=yuv420p")
-FIX = {('ep', 766.85): '152,000', ('ep', 767.47): '', ('ep', 837.27): '', ('ep', 460.12): 'Childish', ('ep', 460.6): 'Gambino.', ('ep', 460.78): '', ('ep', 467.94): 'Childish', ('ep', 468.1): 'Gambino.', ('ep', 468.2): '',
+FIX = {('ep', 50.43): '', ('ep', 293.21): 'H&M.', ('ep', 1031.61): '', ('ep', 1031.93): '', ('ep', 766.85): '152,000', ('ep', 767.47): '', ('ep', 837.27): '', ('ep', 460.12): 'Childish', ('ep', 460.6): 'Gambino.', ('ep', 460.78): '', ('ep', 467.94): 'Childish', ('ep', 468.1): 'Gambino.', ('ep', 468.2): '',
        ('ep', 361.76): 'Quavasaurus', ('ep', 837.41): '', ('ep', 524.06): 'stuff', ('ep', 330.92): '', ('ep', 332.24): '', ('ep', 335.72): ''}
 def src(v): return glob.glob(f'{DL}/{v}.*')[0]
 def probe(v): return json.loads(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'stream=index,codec_type,codec_name,width,height:stream_side_data=rotation', '-of', 'json', src(v)], capture_output=True, text=True).stdout)['streams']
@@ -53,6 +53,33 @@ E = {
    top='His bank account hit NEGATIVE $152,000', hl={'NEGATIVE': RD, '$152,000': RD}, music=['mchud_n', 0], ask=[],
    tints=[], rizz=[], punch=[['hook', 'negative'], ['c1', 'zero.'], ['c2', 'negative'], ['c3', 'robbed?'], ['c3', 'taxes']], blowouts=[], blackFlash=[], streaks=[],
    extras=[sfx(['c1', 'happened'], 's_huh.mp3', 0.5), sfx(['c2', 'negative'], 's_fahhh.mp3', 0.45), pop(['c3', 'consent'], 'e_sob.png', 's_wow.mp3', off=2)]),
+ 'fshoot': dict(scenes=[('hook', 'ep', 47.80, 51.30, 1080), ('c1', 'ep', 54.50, 69.40, 1080), ('c2', 'ep', 74.70, 77.50, 1080), ('c3', 'ep', 83.45, 87.00, 1300)],
+   mute=[(50.40, 51.05), (78.30, 78.90)],
+   focus=dict(x=480, y=380, r=190, dur=20), circles=[], noSkull=True,
+   top="his photographer's directions are NOT real 😭", hl={'NOT': RD, 'real': RD}, music=['chess_n', 0], ask=[],
+   tints=[], rizz=[], punch=[['hook', 'bald'], ['c1', 'wash'], ['c1', 'steam.'], ['c1', 'noodles.'], ['c2', 'none'], ['c3', 'home.']], blowouts=[], blackFlash=[], streaks=[],
+   extras=[sfx(['c1', 'steam.'], 's_huh.mp3', 0.5), pop(['c1', 'noodles.'], 'e_laugh.png', 's_fahhh.mp3', off=2), sfx(['c3', 'out.'], 's_ding.mp3', 0.4)]),
+ 'frunway': dict(scenes=[('hook', 'ep', 291.30, 296.60, 1250), ('c1', 'ep', 275.55, 284.40, 1150), ('c2', 'ep', 287.50, 297.00, 1100)],
+   focus=dict(x=730, y=360, r=180, dur=20), circles=[], noSkull=True,
+   top="bro said H&M like it's paris fashion week 😭", hl={'H&M': RD}, music=['mdubist_n', 0], ask=[],
+   tints=[], rizz=[], punch=[['hook', 'H'], ['c1', 'Burberry'], ['c1', 'comparison'], ['c2', 'Kevin'], ['c2', 'H'], ['c2', 'brag']], blowouts=[], blackFlash=[], streaks=[],
+   extras=[sfx(['c2', 'Larry'], 's_huh.mp3', 0.5), pop(['c2', 'brag'], 'e_laugh.png', 's_fahhh.mp3', off=4)]),
+ 'fstick': dict(scenes=[('hook', 'ep', 878.25, 882.05, 1000), ('c1', 'ep', 867.75, 873.10, 1000), ('c2', 'ep', 904.00, 909.60, 540), ('c3', 'ep', 909.60, 915.60, 950)],
+   focus=dict(x=620, y=380, r=180, dur=20), circles=[], noSkull=True,
+   top="bro made everyone wait cause he needs it for his IG 💀", hl={'IG': RD}, music=['mwalahi_n', 0], ask=[],
+   tints=[], rizz=[], punch=[['hook', 'slipped'], ['c1', 'No!'], ['c2', 'IG'], ['c3', 'frame'], ['c3', 'time']], blowouts=[], blackFlash=[], streaks=[],
+   extras=[sfx(['c1', 'No!'], 's_fahhh.mp3', 0.5), sfx(['c2', 'IG'], 's_huh.mp3', 0.5), pop(['c3', 'now.'], 'e_laugh.png', 's_ayo.mp3', off=2)]),
+ 'frun': dict(scenes=[('hook', 'ep', 1020.25, 1022.60, 830), ('c1', 'ep', 1015.00, 1020.25, 830), ('c2', 'ep', 1024.75, 1036.00, 900), ('c3', 'ep', 1040.00, 1044.50, 900)], mute=[(1031.55, 1032.45)],
+   focus=dict(x=570, y=230, r=200, dur=20), circles=[], noSkull=True,
+   top='"can i RUN down the runway?" 😭', hl={'RUN': RD}, music=['mchud_n', 0], ask=[],
+   tints=[], rizz=[], punch=[['hook', 'run?'], ['c1', 'swag'], ['c2', 'Bop'], ['c2', 'dare'], ['c2', 'fire']], blowouts=[], blackFlash=[], streaks=[],
+   extras=[sfx(['hook', 'No'], 's_huh.mp3', 0.5), pop(['c2', 'fire'], 'e_laugh.png', 's_fahhh.mp3', off=4)]),
+ 'fcar': dict(scenes=[('hook', 'ep', 329.55, 333.95, 1150), ('c1', 'ep', 307.05, 313.95, 1200), ('c2', 'ep', 314.60, 317.60, 960), ('c3', 'ep', 323.00, 324.60, 960), ('c4', 'ep', 333.85, 337.75, 1200)],
+   zoom={'hook': (462, 0, 1458, 820), 'c4': (462, 0, 1458, 820)}, mute=[(330.85, 331.20), (332.18, 332.80), (335.66, 335.98)],
+   focus=dict(x=390, y=560, r=170, dur=20), circles=[], noSkull=True,
+   top='"give me 30 seconds"… bro went HOME 😭', hl={'HOME': RD}, music=['mletme_n', 0], ask=[],
+   tints=[], rizz=[], punch=[['hook', 'paid'], ['c1', 'bathroom.'], ['c1', '30'], ['c4', 'sorry.'], ['c4', 'wait!']], blowouts=[], blackFlash=[], streaks=[],
+   extras=[sfx(['c1', 'seconds.'], 's_huh.mp3', 0.5), pop(['c4', 'sorry.'], 'e_laugh.png', 's_fahhh.mp3', off=2)]),
 }
 
 W = {v: [w for s in json.load(open(f'{TX}/{v}.json')) for w in s['w']] for v in ('ep',)}
@@ -66,6 +93,7 @@ for eid, spec in E.items():
                 tt = FIX.get((v, round(ws, 2)), tx.strip().strip(','))
                 if not tt: continue
                 f0 = max(0, round((ws - a) * 30)); f1 = min(n, max(f0 + 4, round((we - a) * 30) + 3))
+                if words and words[-1]['word'] == tt and words[-1]['startFrame'] == f0: continue
                 words.append({'word': tt, 'startFrame': f0, 'endFrame': f1})
         for i in range(len(words) - 1): words[i]['endFrame'] = min(words[i]['endFrame'], words[i + 1]['startFrame'])
         scenes.append({'id': sid, 'videoStartSec': round(t, 3), 'durationInFrames': n, 'cropX': cx, 'crops': [[0, cx]], 'words': words}); t += n / 30
@@ -99,7 +127,7 @@ for eid, spec in E.items():
     for e in c['extras']:
         if e.get('y') is None: e.pop('y', None)
     c.update(cta='', ask=[{'at': r, 'text': tx} for r, tx in c['ask']], track='none', calls=calls, src=f'g67_{eid}.mp4',
-             intro=False, hardcut=True, cutSfx='s_camflash.mp3', sat=1.1, progress=False, popMid=True, noSkull=False, srcVol=1)
+             intro=False, hardcut=True, cutSfx='s_camflash.mp3', sat=1.1, progress=False, popMid=True, noSkull=False, srcVol=1); c['noSkull'] = spec.get('noSkull', False); c['musicVol'] = 0.4
     sc = {s['id']: s for s in scenes}
     for r in [r for r, _ in c['tints']] + [q['at'] for q in c['ask']] + [e['at'] for e in c['extras']] + sum((c[k] for k in ('rizz', 'punch', 'blowouts', 'blackFlash', 'streaks')), []):
         assert r[0] in sc, (eid, r)
