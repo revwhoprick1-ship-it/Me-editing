@@ -24,12 +24,12 @@ def ov(at, f, sfx, dur=34, op=0.5, off=0): return dict(at=at, kind='ov', file=f,
 def sfx(at, f, v=0.5, off=0): return dict(at=at, kind='sfx', file=f, v=v, off=off)
 # scene = (id, video, a, b, cropX)   nocap = scenes whose source already has burned captions; mute = source-time ranges silenced (swears)
 E = {
- 'ybath': dict(scenes=[('hook', 'ep', 333.85, 336.45, 1060), ('c1', 'ep', 307.05, 313.95, 1200), ('c2', 'ep', 314.60, 317.60, 960), ('c3', 'ep', 323.00, 324.60, 960), ('c4', 'ep', 329.50, 337.75, 1060)],
-   nocap=['hook', 'c4'], mute=[(330.85, 331.20), (332.18, 332.80), (335.66, 335.98)],
-   focus=dict(x=900, y=500, r=180, dur=20), circles=[],
+ 'ybath': dict(scenes=[('hook', 'ep', 333.85, 336.45, 1380), ('c1', 'ep', 307.05, 313.95, 1200), ('c2', 'ep', 314.60, 317.60, 960), ('c3', 'ep', 323.00, 324.60, 960), ('c4', 'ep', 329.50, 337.75, 1380)],
+   zoom={'hook': (462, 0, 1458, 820), 'c4': (462, 0, 1458, 820)}, mute=[(330.85, 331.20), (332.18, 332.80), (335.66, 335.98)],
+   focus=dict(x=440, y=560, r=190, dur=20), circles=[],
    top='He said give me 30 seconds and LEFT', hl={'LEFT': RD}, music=['funkabn_n', 0], ask=[],
    tints=[], rizz=[], punch=[['c1', 'bathroom.'], ['c1', 'coming'], ['c1', '30']], blowouts=[], blackFlash=[], streaks=[],
-   extras=[sfx(['c1', 'seconds.'], 's_huh.mp3', 0.5), pop(['c4'], 'e_laugh.png', 's_fahhh.mp3', off=150)]),
+   extras=[sfx(['c1', 'seconds.'], 's_huh.mp3', 0.5), pop(['c4', 'sorry.'], 'e_laugh.png', 's_fahhh.mp3', off=2)]),
  'ylate': dict(scenes=[('hook', 'ep', 518.85, 519.70, 960), ('c1', 'ep', 504.10, 510.90, 960), ('c2', 'ep', 517.45, 526.30, 960), ('c3', 'ep', 527.35, 531.00, 960)],
    mute=[(524.02, 524.26)],
    focus=dict(x=700, y=340, r=200, dur=20), circles=[],
@@ -78,6 +78,11 @@ for eid, spec in E.items():
             d = round((b - a) * 30) / 30
             cmd += ['-ss', f'{a:.3f}', '-t', f'{d:.4f}', '-i', src(v)]
             geo = (f'scale=1080:1920,crop=1080:1080:0:{y0},scale=1088:1088,crop=1088:1080:0:4,pad=1920:1080:416:0:black' if vert(v) else 'scale=1920:1080')
+            zx = spec.get('zoom', {}).get(sid)
+            if zx: geo = f'crop={zx[2]}:{zx[3]}:{zx[0]}:{zx[1]},scale=1920:1080'
+            ya = float(subprocess.run(['ffmpeg', '-v', 'error', '-ss', f'{(a + b) / 2:.2f}', '-i', src(v), '-frames:v', '1', '-vf', 'crop=1080:1080:420:0,signalstats,metadata=print:key=lavfi.signalstats.YAVG:file=-', '-f', 'null', '-'],
+                                      capture_output=True, text=True).stdout.split('YAVG=')[1].split()[0])
+            if ya < 50: geo += ',eq=gamma=1.4:brightness=0.02:saturation=1.08'; print('  lift', sid, round(ya))
             fc.append(f'[{i}:v]fps=30,setpts=PTS-STARTPTS,{geo},setsar=1,format=yuv420p,trim=duration={d:.4f}[v{i}]')
             mt = ''.join(f",volume=0:enable='between(t,{max(0, m0 - a):.3f},{m1 - a:.3f})'" for m0, m1 in spec.get('mute', []) if m1 > a and m0 < b)
             fc.append(f'[{i}:a:{aidx(v)}]asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo,apad,atrim=0:{d:.4f}{mt}[a{i}]')
@@ -85,7 +90,7 @@ for eid, spec in E.items():
         fc.append(''.join(f'[v{i}][a{i}]' for i in range(k)) + f'concat=n={k}:v=1:a=1[cv][ca]'); fc.append('[cv]' + G67 + '[gv]')
         subprocess.run(cmd + ['-filter_complex', ';'.join(fc), '-map', '[gv]', '-map', '[ca]', '-c:v', 'libx264', '-preset', 'medium', '-crf', '19', '-g', '15',
                               '-c:a', 'aac', '-b:a', '192k', '-map_metadata', '-1', f'public/g67_{eid}.mp4'], check=True)
-    c = {k: v for k, v in spec.items() if k not in ('scenes', 'circles', 'nocap', 'mute')}
+    c = {k: v for k, v in spec.items() if k not in ('scenes', 'circles', 'nocap', 'mute', 'zoom')}
     st = {s['id']: s['videoStartSec'] for s in scenes}; calls, trk = [], {}
     for sid, o, d, x, y, r, *end in spec.get('circles', []):
         a = st[sid] + o; calls.append([round(a, 2), round(a + d, 2), '']); x2, y2 = end if end else (x, y); n = round(d * 50) + 2

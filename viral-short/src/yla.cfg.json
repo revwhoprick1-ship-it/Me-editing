@@ -1,9 +1,9 @@
 {
  "ybath": {
   "focus": {
-   "x": 900,
-   "y": 500,
-   "r": 180,
+   "x": 440,
+   "y": 560,
+   "r": 190,
    "dur": 20
   },
   "top": "He said give me 30 seconds and LEFT",
@@ -47,11 +47,12 @@
    },
    {
     "at": [
-     "c4"
+     "c4",
+     "sorry."
     ],
     "kind": "png",
     "file": "e_laugh.png",
-    "off": 150,
+    "off": 2,
     "y": 800,
     "size": 380,
     "sfx": "s_fahhh.mp3",
