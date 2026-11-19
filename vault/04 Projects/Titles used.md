@@ -170,3 +170,8 @@
 - bro made everyone wait cause he needs it for his IG 💀 (YoungLA fstick)
 - "can i RUN down the runway?" 😭 (YoungLA frun)
 - "give me 30 seconds"… bro went HOME 😭 (YoungLA fcar)
+- bro found out the drop date ON CAMERA and spiraled 😭 (YoungLA grant)
+- bro felt his aura in his MID SECTION 💀 (YoungLA gpants)
+- jay cutler said "it's my first, OKAY?" like a threat 😭 (YoungLA gjay)
+- jay cutler had to RATE his runway walk 💀 (YoungLA gwalk)
+- "i thought he was a DISNEY VILLAIN" 💀 (YoungLA gvillain)
