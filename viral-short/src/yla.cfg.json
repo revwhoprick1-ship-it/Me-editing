@@ -1397,5 +1397,461 @@
   "popMid": true,
   "srcVol": 1,
   "musicVol": 0.4
+ },
+ "hunser": {
+  "focus": {
+   "x": 540,
+   "y": 330,
+   "r": 190,
+   "dur": 20
+  },
+  "noSkull": true,
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "top": "the most UNSERIOUS fashion show ever \ud83d\ude2d",
+  "hl": {
+   "UNSERIOUS": "#FF2A2A"
+  },
+  "music": [
+   "mletme_n",
+   0
+  ],
+  "punch": [
+   [
+    "c1"
+   ],
+   [
+    "c2"
+   ],
+   [
+    "c3"
+   ],
+   [
+    "c4"
+   ]
+  ],
+  "extras": [
+   {
+    "at": [
+     "c1"
+    ],
+    "kind": "sfx",
+    "file": "s_huh.mp3",
+    "v": 0.5,
+    "off": 150
+   },
+   {
+    "at": [
+     "c2"
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 120,
+    "y": 800,
+    "size": 380,
+    "sfx": "s_fahhh.mp3",
+    "sv": 0.45
+   },
+   {
+    "at": [
+     "c4"
+    ],
+    "kind": "sfx",
+    "file": "s_ayo.mp3",
+    "v": 0.45,
+    "off": 20
+   }
+  ],
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_hunser.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": false,
+  "popMid": true,
+  "srcVol": 1,
+  "musicVol": 0.4
+ },
+ "hplanet": {
+  "focus": {
+   "x": 540,
+   "y": 330,
+   "r": 190,
+   "dur": 20
+  },
+  "noSkull": true,
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "top": "everybody at this fashion show was on their own PLANET \ud83d\ude2d",
+  "hl": {
+   "PLANET": "#FF2A2A"
+  },
+  "music": [
+   "mchud_n",
+   0
+  ],
+  "punch": [
+   [
+    "c1"
+   ],
+   [
+    "c2"
+   ],
+   [
+    "c3"
+   ],
+   [
+    "c4"
+   ]
+  ],
+  "extras": [
+   {
+    "at": [
+     "c1"
+    ],
+    "kind": "sfx",
+    "file": "s_ayo.mp3",
+    "v": 0.5,
+    "off": 60
+   },
+   {
+    "at": [
+     "c1"
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 200,
+    "y": 800,
+    "size": 380,
+    "sfx": "s_fahhh.mp3",
+    "sv": 0.45
+   },
+   {
+    "at": [
+     "c3"
+    ],
+    "kind": "sfx",
+    "file": "s_huh.mp3",
+    "v": 0.5,
+    "off": 60
+   },
+   {
+    "at": [
+     "c4"
+    ],
+    "kind": "png",
+    "file": "e_sob.png",
+    "off": 150,
+    "y": 800,
+    "size": 380,
+    "sfx": "s_wow.mp3",
+    "sv": 0.45
+   }
+  ],
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_hplanet.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": false,
+  "popMid": true,
+  "srcVol": 1,
+  "musicVol": 0.4
+ },
+ "hexcuse": {
+  "focus": {
+   "x": 540,
+   "y": 330,
+   "r": 190,
+   "dur": 20
+  },
+  "noSkull": true,
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "top": "the EXCUSES at this fashion show were crazy \ud83d\udc80",
+  "hl": {
+   "EXCUSES": "#FF2A2A"
+  },
+  "music": [
+   "mwalahi_n",
+   0
+  ],
+  "punch": [
+   [
+    "c1"
+   ],
+   [
+    "c2"
+   ],
+   [
+    "c3"
+   ],
+   [
+    "c5"
+   ]
+  ],
+  "extras": [
+   {
+    "at": [
+     "c1"
+    ],
+    "kind": "sfx",
+    "file": "s_fahhh.mp3",
+    "v": 0.5,
+    "off": 110
+   },
+   {
+    "at": [
+     "c2"
+    ],
+    "kind": "sfx",
+    "file": "s_huh.mp3",
+    "v": 0.5,
+    "off": 40
+   },
+   {
+    "at": [
+     "c4"
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 5,
+    "y": 800,
+    "size": 380,
+    "sfx": "s_ayo.mp3",
+    "sv": 0.45
+   },
+   {
+    "at": [
+     "c5"
+    ],
+    "kind": "png",
+    "file": "e_sob.png",
+    "off": 60,
+    "y": 800,
+    "size": 380,
+    "sfx": "s_fahhh.mp3",
+    "sv": 0.45
+   }
+  ],
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_hexcuse.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": false,
+  "popMid": true,
+  "srcVol": 1,
+  "musicVol": 0.4
+ },
+ "hcomm": {
+  "focus": {
+   "x": 540,
+   "y": 330,
+   "r": 190,
+   "dur": 20
+  },
+  "noSkull": true,
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "top": "the commentators were NOT okay \ud83d\ude2d",
+  "hl": {
+   "NOT": "#FF2A2A",
+   "okay": "#FF2A2A"
+  },
+  "music": [
+   "chess_n",
+   0
+  ],
+  "punch": [
+   [
+    "c1"
+   ],
+   [
+    "c2"
+   ],
+   [
+    "c3"
+   ],
+   [
+    "c4"
+   ]
+  ],
+  "extras": [
+   {
+    "at": [
+     "c1"
+    ],
+    "kind": "sfx",
+    "file": "s_ding.mp3",
+    "v": 0.45,
+    "off": 60
+   },
+   {
+    "at": [
+     "c2"
+    ],
+    "kind": "sfx",
+    "file": "s_correct.mp3",
+    "v": 0.45,
+    "off": 30
+   },
+   {
+    "at": [
+     "c3"
+    ],
+    "kind": "png",
+    "file": "e_sob.png",
+    "off": 110,
+    "y": 800,
+    "size": 380,
+    "sfx": "s_wow.mp3",
+    "sv": 0.45
+   },
+   {
+    "at": [
+     "c4"
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 80,
+    "y": 800,
+    "size": 380,
+    "sfx": "s_fahhh.mp3",
+    "sv": 0.45
+   }
+  ],
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_hcomm.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": false,
+  "popMid": true,
+  "srcVol": 1,
+  "musicVol": 0.4
+ },
+ "hreview": {
+  "focus": {
+   "x": 540,
+   "y": 330,
+   "r": 190,
+   "dur": 20
+  },
+  "noSkull": true,
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "top": "the runway reviews were BRUTAL \ud83d\udc80",
+  "hl": {
+   "BRUTAL": "#FF2A2A"
+  },
+  "music": [
+   "goodbye_n",
+   0
+  ],
+  "punch": [
+   [
+    "c1"
+   ],
+   [
+    "c3"
+   ],
+   [
+    "c4"
+   ]
+  ],
+  "extras": [
+   {
+    "at": [
+     "c1"
+    ],
+    "kind": "sfx",
+    "file": "s_huh.mp3",
+    "v": 0.5,
+    "off": 150
+   },
+   {
+    "at": [
+     "c1"
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 240,
+    "y": 800,
+    "size": 380,
+    "sfx": "s_fahhh.mp3",
+    "sv": 0.45
+   },
+   {
+    "at": [
+     "c3"
+    ],
+    "kind": "sfx",
+    "file": "s_wow.mp3",
+    "v": 0.45,
+    "off": 10
+   },
+   {
+    "at": [
+     "c4"
+    ],
+    "kind": "png",
+    "file": "e_sob.png",
+    "off": 30,
+    "y": 800,
+    "size": 380,
+    "sfx": "s_ayo.mp3",
+    "sv": 0.45
+   }
+  ],
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_hreview.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": false,
+  "popMid": true,
+  "srcVol": 1,
+  "musicVol": 0.4
  }
 }
