@@ -160,3 +160,8 @@
 - His Heisman Moment Had a DIDDLY-DOO ☠️ (CLASH chdiddly)
 - The Most HEISMAN Speech Ever ☠️ (CLASH chspeech)
 - They Asked the Secret Heisman Winner His LUNCH ORDER ☠️ (CLASH chreveal)
+- He Said Give Me 30 Seconds and LEFT 💀 (YoungLA ybath)
+- 3 Hours Late and His First Stop Was the BATHROOM 💀 (YoungLA ylate)
+- The Most Aura Went to the SOUND GUY 💀 (YoungLA yaura)
+- Guessing What He Was Listening to on the Runway 💀 (YoungLA yquav)
+- His Bank Account Hit NEGATIVE $152,000 💀 (YoungLA ybank)
