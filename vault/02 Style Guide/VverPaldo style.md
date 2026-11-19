@@ -45,3 +45,6 @@ The style used for the "Guess the fake millionaire" and Trevor stream edits (Nov
 ## Text hooks
 - Curiosity + specific number or twist, true to the footage: "$20,000 card… now worth $500?!", "They voted him the FAKE… he was REAL".
 - Campaign rules win (e.g. FOMO: "Guess the millionaire LARPER" variants + @fomo; HardScope: @HardScope + #r3born, no FaZe).
+
+- **User rule (2026-11-19): only MEME songs, never phonk** (no montagem/funk/brega/Ogryzek). Library: `res/m*_n.mp3` = mjeopardy, msubway, mmonkeys, mletme, mdubist, mduck, mwalahi, mmiles, msneaky, mchud (loudnorm -20, 60 s). One different song per clip.
+- **Nothing under the video** (no ask pill, promo line, sub line, progress bar): user said it looks AI generated.
