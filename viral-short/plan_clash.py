@@ -92,11 +92,12 @@ for eid, spec in E.items():
     c['trackData'] = trk
     for e in c['extras']:
         if e.get('y') is None: e.pop('y', None)
-    c.update(cta='Full episode on CLASH', ask=[{'at': r, 'text': tx} for r, tx in c['ask']], track='none', calls=calls, src=f'g67_{eid}.mp4',
-             intro=False, hardcut=True, cutSfx='s_camflash.mp3', sat=1.1, progress=True, popMid=True, noSkull=False, srcVol=1)
+    c.update(cta='', ask=[{'at': r, 'text': tx} for r, tx in c['ask']], track='none', calls=calls, src=f'g67_{eid}.mp4',
+             intro=False, hardcut=True, cutSfx='s_camflash.mp3', sat=1.1, progress=False, popMid=True, noSkull=False, srcVol=1)
     sc = {s['id']: s for s in scenes}
     for r in [r for r, _ in c['tints']] + [q['at'] for q in c['ask']] + [e['at'] for e in c['extras']] + sum((c[k] for k in ('rizz', 'punch', 'blowouts', 'blackFlash', 'streaks')), []):
         assert r[0] in sc, (eid, r)
         if len(r) > 1: assert [w for w in sc[r[0]]['words'] if w['word'].lower().startswith(r[1].lower())], (eid, r, [w['word'] for w in sc[r[0]]['words']])
+    c['ask'] = []  # user: nothing under the video (no ask pill / promo line / progress bar)
     CFG[eid] = c
 json.dump(gen, open('src/edits.gen.json', 'w')); json.dump(CFG, open('src/clash.cfg.json', 'w'), indent=1); print('cfg ok')
