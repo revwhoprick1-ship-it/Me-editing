@@ -165,3 +165,8 @@
 - The Most Aura Went to the SOUND GUY 💀 (YoungLA yaura)
 - Guessing What He Was Listening to on the Runway 💀 (YoungLA yquav)
 - His Bank Account Hit NEGATIVE $152,000 💀 (YoungLA ybank)
+- his photographer's directions are NOT real 😭 (YoungLA fshoot)
+- bro said H&M like it's paris fashion week 😭 (YoungLA frunway)
+- bro made everyone wait cause he needs it for his IG 💀 (YoungLA fstick)
+- "can i RUN down the runway?" 😭 (YoungLA frun)
+- "give me 30 seconds"… bro went HOME 😭 (YoungLA fcar)

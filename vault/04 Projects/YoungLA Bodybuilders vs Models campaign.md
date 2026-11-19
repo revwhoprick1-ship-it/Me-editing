@@ -4,3 +4,4 @@
 - User feedback (applies to ALL campaigns now): nothing under the video. No ask pill, no promo/CTA line, no progress bar, no sub line ("looks AI generated").
 - plan_yla.py → src/yla.cfg.json. Adds: mute=[(src s0, s1)] silences swears, zoom={sid: (x,y,w,h)} crops above burned-in source captions, auto lift (gamma 1.4) for shots with YAVG < 50 (dark judge desk).
 - Batch 1: ybath (Marlon "give me 30 seconds" then drives off), ylate (3 hrs late → bathroom), yaura (sound guy wins aura), yquav (Bieber vs Childish Gambino guess), ybank (negative $152k).
+- Batch 2 (user: batch 1 'ass, no hook'): fshoot, frunway, fstick, frun, fcar. Picked by watching frames for real interaction; slang hooks; 6-song whitelist; music 0.40.
