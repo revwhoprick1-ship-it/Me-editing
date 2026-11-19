@@ -6,3 +6,4 @@
 - Batch 1: ybath (Marlon "give me 30 seconds" then drives off), ylate (3 hrs late → bathroom), yaura (sound guy wins aura), yquav (Bieber vs Childish Gambino guess), ybank (negative $152k).
 - Batch 2 (user: batch 1 'ass, no hook'): fshoot, frunway, fstick, frun, fcar. Picked by watching frames for real interaction; slang hooks; 6-song whitelist; music 0.40.
 - Batch 3 (user: 'funnier clips, not just famous'): grant (Lexx end rant), gpants (aura mid section), gjay (first okay / Robbie's car), gwalk (Jay rates runway dance), gvillain (Disney villain). People: Jay Cutler, Johnny Lee (model), Lexx Little, TheLukeyMC host, Gurmer owner.
+- Batch 4 (user: batch 3 'just famous people, boring'): compilation format, 3-5 funniest beats per themed clip: hunser, hplanet, hexcuse, hcomm, hreview. Single-moment pool is exhausted after 15 clips.
