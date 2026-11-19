@@ -1,1 +1,390 @@
-{}
+{
+ "ksaint": {
+  "focus": {
+   "x": 507,
+   "y": 254,
+   "r": 180,
+   "dur": 20
+  },
+  "noSkull": true,
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "top": "nic from love island pulled up to his sister as SANTA \ud83d\ude2d",
+  "hl": {
+   "SANTA": "#FF2A2A"
+  },
+  "music": [
+   "mdubist_n",
+   0
+  ],
+  "punch": [
+   [
+    "hook"
+   ],
+   [
+    "c2"
+   ],
+   [
+    "c3"
+   ],
+   [
+    "c5"
+   ]
+  ],
+  "extras": [
+   {
+    "at": [
+     "c2"
+    ],
+    "kind": "sfx",
+    "file": "s_huh.mp3",
+    "v": 0.5,
+    "off": 5
+   },
+   {
+    "at": [
+     "c4"
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 20,
+    "y": 800,
+    "size": 380,
+    "sfx": "s_ayo.mp3",
+    "sv": 0.45
+   },
+   {
+    "at": [
+     "c5"
+    ],
+    "kind": "sfx",
+    "file": "s_wow.mp3",
+    "v": 0.45,
+    "off": 110
+   }
+  ],
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_ksaint.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": false,
+  "popMid": true,
+  "srcVol": 1,
+  "musicVol": 0.3
+ },
+ "ksister": {
+  "focus": {
+   "x": 507,
+   "y": 250,
+   "r": 180,
+   "dur": 20
+  },
+  "noSkull": true,
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "top": "his sister tried SO hard not to like the gift \ud83d\ude2d",
+  "hl": {
+   "SO": "#FF2A2A",
+   "hard": "#FF2A2A"
+  },
+  "music": [
+   "mchud_n",
+   0
+  ],
+  "punch": [
+   [
+    "hook"
+   ],
+   [
+    "c2"
+   ],
+   [
+    "c4"
+   ]
+  ],
+  "extras": [
+   {
+    "at": [
+     "c2"
+    ],
+    "kind": "sfx",
+    "file": "s_huh.mp3",
+    "v": 0.5,
+    "off": 50
+   },
+   {
+    "at": [
+     "c4"
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 20,
+    "y": 800,
+    "size": 380,
+    "sfx": "s_fahhh.mp3",
+    "sv": 0.45
+   }
+  ],
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_ksister.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": false,
+  "popMid": true,
+  "srcVol": 1,
+  "musicVol": 0.3
+ },
+ "kmom": {
+  "focus": {
+   "x": 272,
+   "y": 435,
+   "r": 170,
+   "dur": 20
+  },
+  "noSkull": true,
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "top": "he dumped a WHOLE TRUCK of gifts on his mom \ud83d\ude2d",
+  "hl": {
+   "WHOLE": "#FF2A2A",
+   "TRUCK": "#FF2A2A"
+  },
+  "music": [
+   "chess_n",
+   0
+  ],
+  "punch": [
+   [
+    "hook"
+   ],
+   [
+    "c1"
+   ],
+   [
+    "c3"
+   ],
+   [
+    "c4"
+   ]
+  ],
+  "extras": [
+   {
+    "at": [
+     "c3"
+    ],
+    "kind": "sfx",
+    "file": "s_wow.mp3",
+    "v": 0.5,
+    "off": 10
+   },
+   {
+    "at": [
+     "c4"
+    ],
+    "kind": "png",
+    "file": "e_sob.png",
+    "off": 10,
+    "y": 800,
+    "size": 380,
+    "sfx": "s_ayo.mp3",
+    "sv": 0.45
+   },
+   {
+    "at": [
+     "c6"
+    ],
+    "kind": "png",
+    "file": "e_heart.png",
+    "off": 20,
+    "y": 800,
+    "size": 380,
+    "sfx": "s_popecho.mp3",
+    "sv": 0.45
+   }
+  ],
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_kmom.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": false,
+  "popMid": true,
+  "srcVol": 1,
+  "musicVol": 0.3
+ },
+ "ktax": {
+  "focus": {
+   "x": 471,
+   "y": 480,
+   "r": 190,
+   "dur": 20
+  },
+  "noSkull": true,
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "top": "he gave his sister a gift then TAXED her \ud83d\udc80",
+  "hl": {
+   "TAXED": "#FF2A2A"
+  },
+  "music": [
+   "mwalahi_n",
+   0
+  ],
+  "punch": [
+   [
+    "hook"
+   ],
+   [
+    "c3"
+   ],
+   [
+    "c4"
+   ]
+  ],
+  "extras": [
+   {
+    "at": [
+     "c3"
+    ],
+    "kind": "sfx",
+    "file": "s_huh.mp3",
+    "v": 0.5,
+    "off": 20
+   },
+   {
+    "at": [
+     "c4"
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 10,
+    "y": 800,
+    "size": 380,
+    "sfx": "s_fahhh.mp3",
+    "sv": 0.45
+   }
+  ],
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_ktax.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": false,
+  "popMid": true,
+  "srcVol": 1,
+  "musicVol": 0.3
+ },
+ "kwho": {
+  "focus": {
+   "x": 471,
+   "y": 453,
+   "r": 180,
+   "dur": 20
+  },
+  "noSkull": true,
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "top": "who's nic's LAST gift for? \ud83d\udc40",
+  "hl": {
+   "LAST": "#FF2A2A"
+  },
+  "music": [
+   "goodbye_n",
+   0
+  ],
+  "punch": [
+   [
+    "hook"
+   ],
+   [
+    "c3"
+   ],
+   [
+    "c4"
+   ]
+  ],
+  "extras": [
+   {
+    "at": [
+     "c3"
+    ],
+    "kind": "sfx",
+    "file": "s_ding.mp3",
+    "v": 0.45,
+    "off": 10
+   },
+   {
+    "at": [
+     "c4"
+    ],
+    "kind": "sfx",
+    "file": "s_huh.mp3",
+    "v": 0.5,
+    "off": 3
+   },
+   {
+    "at": [
+     "c5"
+    ],
+    "kind": "png",
+    "file": "e_heart.png",
+    "off": 30,
+    "y": 800,
+    "size": 380,
+    "sfx": "s_popecho.mp3",
+    "sv": 0.45
+   }
+  ],
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_kwho.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_camflash.mp3",
+  "sat": 1.1,
+  "progress": false,
+  "popMid": true,
+  "srcVol": 1,
+  "musicVol": 0.3
+ }
+}

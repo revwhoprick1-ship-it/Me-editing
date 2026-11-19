@@ -96,7 +96,7 @@ E = {
    top='jay cutler said "it\'s my first, OKAY?" like a threat 😭', hl={'OKAY?"': RD}, music=['chess_n', 0], ask=[],
    tints=[], rizz=[], punch=[['hook', 'first'], ['c1', 'applause'], ['c2', 'last'], ['c2', 'okay?'], ['c3', 'Ferrari.'], ['c3', "Robbie's"]], blowouts=[], blackFlash=[], streaks=[],
    extras=[sfx(['c1', 'applause'], 's_ding.mp3', 0.45), sfx(['c2', 'last'], 's_huh.mp3', 0.5), pop(['c3', "Robbie's"], 'e_laugh.png', 's_fahhh.mp3', off=4)]),
- 'gwalk': dict(scenes=[('hook', 'ep', 654.15, 656.75, 760), ('c1', 'ep', 638.00, 641.00, 1150), ('c2', 'ep', 646.00, 652.40, 920), ('c3', 'ep', 652.40, 657.20, 760), ('c4', 'ep', 675.50, 678.20, 790)],
+ 'gwalk': dict(scenes=[('hook', 'ep', 654.15, 656.75, 760), ('c1', 'ep', 638.00, 641.00, 1150), ('c2', 'ep', 641.00, 652.40, 920), ('c3', 'ep', 652.40, 657.20, 760), ('c4', 'ep', 675.50, 678.20, 790)],
    focus=dict(x=812, y=330, r=170, dur=20), circles=[], noSkull=True,
    top='jay cutler had to RATE his runway walk 💀', hl={'RATE': RD}, music=['mwalahi_n', 0], ask=[],
    tints=[], rizz=[], punch=[['hook', 'better'], ['c1', 'twinning.'], ['c2', 'dance'], ['c3', 'Whoa!'], ['c3', 'better'], ['c4', 'home']], blowouts=[], blackFlash=[], streaks=[],
