@@ -60,3 +60,8 @@ The style used for the "Guess the fake millionaire" and Trevor stream edits (Nov
   - Captions: one word, ALL CAPS, weight 900, size 80, thick 10 px black stroke, colour cycles cyan #2EE8F2 → green #3BE83B → yellow #FFE14A → white per word (`capCycle` in Guess.tsx).
   - Then the raw moment plays with its real dialogue. Single moment per clip (not compilations).
   - Planner: `plan_nar.py` (intro scenes = ids starting with `i`; `vo` = narrator id).
+- **Cut rules (user, angry, 2026-11-20) — ALWAYS:**
+  1. Never cut a line: a scene starts before the first word and ends only when the speaker pauses (>= 0.35 s gap). `snap()` in plan_nar.py; pin with `fixed=[sid]` only where the run-on is a new topic.
+  2. No stray sub-0.5 s frames: detect the source's own camera cuts (`ffmpeg select='gt(scene,0.28)'` → cuts.txt) and move any cut point within 0.5 s of one onto it.
+  3. Every whoosh gets a visual: `whip` = zoom punch (1.12) + horizontal motion blur, -2..+5 frames around each cut.
+  4. Narrator intro: source audio fully muted (no chopped speech under the VO).

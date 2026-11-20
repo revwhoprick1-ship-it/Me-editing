@@ -96,6 +96,7 @@
    "vol": 1.0
   },
   "capCycle": true,
+  "whip": true,
   "trackData": {},
   "cta": "",
   "track": "none",
@@ -111,6 +112,9 @@
   "musicVol": 0.28
  },
  "nshoot": {
+  "fixed": [
+   "c1"
+  ],
   "focus": {
    "x": 558,
    "y": 300,
@@ -172,15 +176,6 @@
    },
    {
     "at": [
-     "c2"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   },
-   {
-    "at": [
      "c3"
     ],
     "kind": "sfx",
@@ -198,6 +193,7 @@
    "vol": 1.0
   },
   "capCycle": true,
+  "whip": true,
   "trackData": {},
   "cta": "",
   "track": "none",
@@ -213,6 +209,9 @@
   "musicVol": 0.28
  },
  "nstick": {
+  "fixed": [
+   "c4"
+  ],
   "focus": {
    "x": 666,
    "y": 430,
@@ -319,6 +318,7 @@
    "vol": 1.0
   },
   "capCycle": true,
+  "whip": true,
   "trackData": {},
   "cta": "",
   "track": "none",
@@ -334,6 +334,9 @@
   "musicVol": 0.28
  },
  "nmid": {
+  "fixed": [
+   "c2"
+  ],
   "focus": {
    "x": 255,
    "y": 290,
@@ -414,6 +417,7 @@
    "vol": 1.0
   },
   "capCycle": true,
+  "whip": true,
   "trackData": {},
   "cta": "",
   "track": "none",
@@ -498,6 +502,7 @@
    "vol": 1.0
   },
   "capCycle": true,
+  "whip": true,
   "trackData": {},
   "cta": "",
   "track": "none",

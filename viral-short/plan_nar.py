@@ -31,15 +31,15 @@ E = {
    focus=dict(x=860, y=380, r=170, dur=20), circles=[], noSkull=True, ask=[], tints=[], rizz=[], blowouts=[], blackFlash=[], streaks=[], punch=[],
    top='"give me 30 seconds"… he NEVER came back 😭', hl={'NEVER': RD}, extras=[pop(['c4', 'sorry.'], 'e_laugh.png', 's_fahhh.mp3', off=2)]),
  'nshoot': dict(vo='vshoot', scenes=[('i1', 'ep', 48.20, 49.10, 1080), ('i2', 'ep', 56.60, 57.50, 1080), ('i3', 'ep', 64.60, 65.50, 1080), ('i4', 'ep', 75.10, 76.10, 1080),
-                         ('c1', 'ep', 54.50, 69.40, 1080), ('c2', 'ep', 74.70, 77.50, 1080), ('c3', 'ep', 83.45, 87.00, 1300)],
+                         ('c1', 'ep', 54.50, 69.30, 1080), ('c3', 'ep', 83.45, 87.00, 1300)], fixed=['c1'],
    mute=[(78.30, 78.90)], focus=dict(x=558, y=300, r=150, dur=20), circles=[], noSkull=True, ask=[], tints=[], rizz=[], blowouts=[], blackFlash=[], streaks=[], punch=[],
    top='his photographer was speaking another LANGUAGE 😭', hl={'LANGUAGE': RD}, extras=[pop(['c1', 'noodles.'], 'e_laugh.png', 's_fahhh.mp3', off=2)]),
  'nstick': dict(vo='vstick', scenes=[('i1', 'ep', 869.30, 870.15, 1000), ('i2', 'ep', 872.30, 873.15, 1000), ('i3', 'ep', 906.30, 907.15, 540), ('i4', 'ep', 911.50, 912.40, 950),
-                         ('c1', 'ep', 867.75, 873.10, 1000), ('c2', 'ep', 878.25, 882.05, 1000), ('c3', 'ep', 904.00, 909.60, 540), ('c4', 'ep', 909.60, 915.60, 950)],
+                         ('c1', 'ep', 867.75, 873.10, 1000), ('c2', 'ep', 878.25, 882.05, 1000), ('c3', 'ep', 904.00, 909.60, 540), ('c4', 'ep', 909.60, 916.55, 950)], fixed=['c4'],
    focus=dict(x=666, y=430, r=150, dur=20), circles=[], noSkull=True, ask=[], tints=[], rizz=[], blowouts=[], blackFlash=[], streaks=[], punch=[],
    top='bro dropped the sticks then held everyone HOSTAGE 💀', hl={'HOSTAGE': RD}, extras=[sfx(['c1', 'No!'], 's_fahhh.mp3', 0.5), pop(['c4', 'now.'], 'e_laugh.png', 's_ayo.mp3', off=2)]),
  'nmid': dict(vo='vmid', scenes=[('i1', 'ep', 429.80, 430.80, 1050), ('i2', 'ep', 422.30, 423.30, 960), ('i3', 'ep', 440.20, 441.30, 1050),
-                         ('c1', 'ep', 413.20, 419.20, 960), ('c2', 'ep', 428.00, 445.30, 1050)],
+                         ('c1', 'ep', 413.20, 419.20, 960), ('c2', 'ep', 428.00, 445.45, 1050)], fixed=['c2'],
    focus=dict(x=255, y=290, r=160, dur=20), circles=[], noSkull=True, ask=[], tints=[], rizz=[], blowouts=[], blackFlash=[], streaks=[], punch=[],
    top='they felt his aura in their MID SECTION 💀', hl={'MID': RD, 'SECTION': RD}, extras=[sfx(['c1', 'pants.'], 's_huh.mp3', 0.5), pop(['c2', 'toes.'], 'e_laugh.png', 's_fahhh.mp3', off=2)]),
  'nrun': dict(vo='vrun', scenes=[('i1', 'ep', 1020.30, 1021.15, 830), ('i2', 'ep', 1030.80, 1031.65, 900), ('i3', 'ep', 1034.20, 1035.05, 900),
@@ -50,6 +50,38 @@ E = {
 VO = sys.argv[3]
 
 W = {v: [w for s in json.load(open(f'{TX}/{v}.json')) for w in s['w']] for v in ('ep',)}
+FIXED = []
+CUTS = [float(x) for x in open(os.path.join(os.path.dirname(DL.rstrip('/')), 'cuts.txt'))]
+def snap(sid, v, a, b):
+    """user rules: never cut a line mid-sentence (start before the first word, run until the speaker pauses),
+    and no sub-0.5 s slivers of another camera angle at either end (snap onto the show's own cut)."""
+    ws = W[v]; a0, b0 = a, b
+    for s, e, _ in ws:                       # don't start inside a word
+        if s < a < e: a = s - 0.08
+    if not sid.startswith('i') and sid not in FIXED:
+        for _ in range(40):                  # extend to the end of the phrase (next pause >= 0.35 s), max +4 s
+            nxt = [e for s, e, _ in ws if s < b + 0.35 and e > b - 0.02 and e > b - 0.15 + 0.15 and s >= a]
+            nxt = [e for s, e, _ in ws if (s < b < e) or (b <= s < b + 0.35)]
+            if not nxt or b - b0 > 4: break
+            b = max(nxt) + 0.15
+    c = [x for x in CUTS if a < x < a + 0.5]
+    if c: a = max(c) + 0.02
+    c = [x for x in CUTS if b - 0.5 < x < b]
+    if c:
+        cx = min(c); talking = [1 for s, e, _ in ws if s < cx + 0.1 and e > cx - 0.05 and not sid.startswith('i')]
+        if not talking: b = cx - 0.02
+        else:
+            later = [x for x in CUTS if b < x < b + 1.2]
+            b = later[0] - 0.02 if later else b
+    if (round(a, 2), round(b, 2)) != (round(a0, 2), round(b0, 2)): print(f'  snap {sid}: {a0:.2f}-{b0:.2f} -> {a:.2f}-{b:.2f}')
+    return round(a, 2), round(b, 2)
+for eid, spec in E.items():
+    FIXED = spec.get('fixed', [])
+    spec['scenes'] = [(sid, v, *snap(sid, v, a, b), cx) for sid, v, a, b, cx in spec['scenes']]
+    vd = json.load(open(f"{VO}/{spec['vo']}.json"))['dur']; intro = [s for s in spec['scenes'] if s[0].startswith('i')]
+    short = vd + 0.15 - sum(s[3] - s[2] for s in intro)
+    if short > 0:                            # intro must cover the narrator line
+        k = spec['scenes'].index(intro[-1]); sid, v, a, b, cx = intro[-1]; spec['scenes'][k] = (sid, v, a, round(b + short, 2), cx); print(f'  {eid}: intro +{short:.2f}s')
 gen = json.load(open('src/edits.gen.json')); CFG = {}
 for eid, spec in E.items():
     scenes, t = [], 0.0
@@ -87,13 +119,13 @@ for eid, spec in E.items():
             if ya < 50: geo += ',eq=gamma=1.4:brightness=0.02:saturation=1.08'; print('  lift', sid, round(ya))
             fc.append(f'[{i}:v]fps=30,setpts=PTS-STARTPTS,{geo},setsar=1,format=yuv420p,trim=duration={d:.4f}[v{i}]')
             mt = ''.join(f",volume=0:enable='between(t,{max(0, m0 - a):.3f},{m1 - a:.3f})'" for m0, m1 in spec.get('mute', []) if m1 > a and m0 < b)
-            fc.append(f'[{i}:a:{aidx(v)}]asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo,apad,atrim=0:{d:.4f}{mt}' + (',volume=0.12' if sid.startswith('i') else '') + f'[a{i}]')
+            fc.append(f'[{i}:a:{aidx(v)}]asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo,apad,atrim=0:{d:.4f}{mt}' + (',volume=0' if sid.startswith('i') else '') + f'[a{i}]')
         k = len(spec['scenes'])
         fc.append(''.join(f'[v{i}][a{i}]' for i in range(k)) + f'concat=n={k}:v=1:a=1[cv][ca]'); fc.append('[cv]' + G67 + '[gv]')
         subprocess.run(cmd + ['-filter_complex', ';'.join(fc), '-map', '[gv]', '-map', '[ca]', '-c:v', 'libx264', '-preset', 'medium', '-crf', '19', '-g', '15',
                               '-c:a', 'aac', '-b:a', '192k', '-map_metadata', '-1', f'public/g67_{eid}.mp4'], check=True)
     c = {k: v for k, v in spec.items() if k not in ('scenes', 'circles', 'nocap', 'mute', 'zoom', 'vo')}
-    c['music'] = ['goodbye_n', 0]; c['vo'] = {'file': spec['vo'] + '.wav', 'vol': 1.0}; c['capCycle'] = True
+    c['music'] = ['goodbye_n', 0]; c['vo'] = {'file': spec['vo'] + '.wav', 'vol': 1.0}; c['capCycle'] = True; c['whip'] = True
     c['extras'] = c['extras'] + [sfx([s['id']], 's_whoosh.mp3', 0.45) for s in scenes[2:]]
     st = {s['id']: s['videoStartSec'] for s in scenes}; calls, trk = [], {}
     for sid, o, d, x, y, r, *end in spec.get('circles', []):

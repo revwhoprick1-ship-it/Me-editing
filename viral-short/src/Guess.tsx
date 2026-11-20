@@ -28,7 +28,7 @@ type Cfg = {top: string; cta: string; label: string; track: Record<string, numbe
   teaser?: {a: number; b: number; x: number; z: number; y: number; until: Ref}; hardcut?: boolean;
   extras?: {at: Ref; kind: 'png' | 'ov' | 'sfx' | 'txt'; file: string; off?: number; color?: string; op?: number; v?: number; dur?: number; x?: number; y?: number; size?: number; sfx?: string; sv?: number}[]; cutSfx?: string;
   focus?: {x: number; y: number; r: number; dur: number}; sat?: number; ask?: {at: Ref; text: string}[]; progress?: boolean; popMid?: boolean; sub?: string; ctaEnd?: boolean;
-  wm?: {file: string; x: number; y: number; w: number}; topY?: number; srcVol?: number; noSkull?: boolean; fxOff?: boolean; capCycle?: boolean; vo?: {file: string; vol?: number}};
+  wm?: {file: string; x: number; y: number; w: number}; topY?: number; srcVol?: number; noSkull?: boolean; fxOff?: boolean; whip?: boolean; capCycle?: boolean; vo?: {file: string; vol?: number}};
 
 export const EDITS: Record<string, Cfg> = {
   bowling: {top: 'Guess the LARPER millionaire', cta: '*real millionaire or LARP?*', label: '*Hulk*', track: HULK, music: 20,
@@ -138,8 +138,8 @@ import T_CLOWN_SOL from './tracks/clown_sol.json';
 const V5_TRACKS: Record<string, Record<string, number[]>> = {iron: IRONREVEAL as Record<string, number[]>, gift: T_GIFT, merch: T_MERCH, pissed: T_PISSED, hulk: HULK,
   chant_iron: T_CHANT_IRON, solstice: T_CLOWN_SOL};
 Object.entries({...V5, ...V6, ...R3, ...TV, ...R3B, ...X, ...R3F, ...R3G, ...MJ, ...FP, ...R3Z, ...R3SUS, ...R3T, ...ARENA, ...CLASH, ...YLA, ...KITSCH, ...NAR} as unknown as Record<string, {top: string; hl: Record<string, string>; cta: string; music: [string, number]; ctaAt: Ref; track: string; calls: [number, number, string][];
-  tints: [Ref, string][]; rizz: Ref[]; punch: Ref[]; blowouts: Ref[]; blackFlash: Ref[]; streaks: Ref[]; src?: string; teaser?: Cfg['teaser']; hardcut?: boolean; extras?: Cfg['extras']; cutSfx?: string; wm?: Cfg['wm']; topY?: number; srcVol?: number; noSkull?: boolean; fxOff?: boolean; trackData?: Record<string, number[]>; sat?: number; ask?: Cfg['ask']; progress?: boolean; popMid?: boolean; sub?: string; ctaEnd?: boolean; focus?: Cfg['focus']; capCycle?: boolean; vo?: Cfg['vo']}>).forEach(([id, a]) => {
-  EDITS[id] = {capCycle: a.capCycle, vo: a.vo, focus: a.focus, ctaEnd: a.ctaEnd, sub: a.sub, sat: a.sat, ask: a.ask, progress: a.progress, popMid: a.popMid, wm: a.wm, topY: a.topY, srcVol: a.srcVol, noSkull: a.noSkull, fxOff: a.fxOff, extras: a.extras, cutSfx: a.cutSfx, hardcut: a.hardcut, teaser: a.teaser, src: a.src, subBand: a.src ? [1, 0] : undefined, top: a.top, hl: a.hl, cta: a.cta, label: '', track: a.trackData ?? V5_TRACKS[a.track] ?? {}, music: a.music[1], musicFile: a.music[0], musicVol: (a as {musicVol?: number}).musicVol ?? 0.53, loop: !(a as {intro?: boolean}).intro, pushIn: true,
+  tints: [Ref, string][]; rizz: Ref[]; punch: Ref[]; blowouts: Ref[]; blackFlash: Ref[]; streaks: Ref[]; src?: string; teaser?: Cfg['teaser']; hardcut?: boolean; extras?: Cfg['extras']; cutSfx?: string; wm?: Cfg['wm']; topY?: number; srcVol?: number; noSkull?: boolean; fxOff?: boolean; trackData?: Record<string, number[]>; sat?: number; ask?: Cfg['ask']; progress?: boolean; popMid?: boolean; sub?: string; ctaEnd?: boolean; focus?: Cfg['focus']; whip?: boolean; capCycle?: boolean; vo?: Cfg['vo']}>).forEach(([id, a]) => {
+  EDITS[id] = {whip: a.whip, capCycle: a.capCycle, vo: a.vo, focus: a.focus, ctaEnd: a.ctaEnd, sub: a.sub, sat: a.sat, ask: a.ask, progress: a.progress, popMid: a.popMid, wm: a.wm, topY: a.topY, srcVol: a.srcVol, noSkull: a.noSkull, fxOff: a.fxOff, extras: a.extras, cutSfx: a.cutSfx, hardcut: a.hardcut, teaser: a.teaser, src: a.src, subBand: a.src ? [1, 0] : undefined, top: a.top, hl: a.hl, cta: a.cta, label: '', track: a.trackData ?? V5_TRACKS[a.track] ?? {}, music: a.music[1], musicFile: a.music[0], musicVol: (a as {musicVol?: number}).musicVol ?? 0.53, loop: !(a as {intro?: boolean}).intro, pushIn: true,
     ctaAt: a.ctaAt, calls: a.calls, tints: a.tints.map(([r, c]) => [r, c === 'G' ? GREEN : RED] as [Ref, string]), rizz: a.rizz, punch: a.punch,
     blowouts: a.blowouts, blackFlash: a.blackFlash, streaks: a.streaks};
 });
@@ -188,7 +188,11 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
   const bfa = bd === 0 ? 0.04 : 0;   // constant 4 % every 0.1 s (user)
 
   const fi = cfg.loop ? 999 : f;   // loop edits skip the intro so the restart is invisible
-  const hblur = fi < 16 ? interpolate(f, [0, 16], [46, 0], clamp) : (() => { const d = near(STREAKS, f, 4); return d === undefined ? 0 : [70, 48, 26, 8][d]; })();
+  // whip transition on every cut (user: whoosh needs a visual): zoom punch + horizontal motion blur, -2..+5 frames around the cut
+  const WHD = cfg.whip ? SCENES.slice(1).map((s) => f - START[s.id]).find((d) => d >= -2 && d < 6) : undefined;
+  const WBL = [24, 44, 64, 44, 26, 12, 5, 0], WZM = [1.03, 1.07, 1.12, 1.08, 1.04, 1.02, 1.01, 1];
+  const hblur0 = fi < 16 ? interpolate(f, [0, 16], [46, 0], clamp) : (() => { const d = near(STREAKS, f, 4); return d === undefined ? 0 : [70, 48, 26, 8][d]; })();
+  const hblur = Math.max(hblur0, WHD === undefined ? 0 : WBL[WHD + 2]);
   const filter = (() => {
     const p = [`saturate(${cfg.sat ?? 1.3}) contrast(1.06)`];
     if (hblur > 0) p.push('url(#hblur)');
@@ -204,7 +208,7 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
   const si0 = SCENES.findIndex((s) => f >= START[s.id] && f < START[s.id] + s.durationInFrames), sc0 = SCENES[Math.max(0, si0)], lf0 = f - START[sc0.id];
   const cr0 = sc0.crops ?? [[0, 0]], ci = cr0.filter(([t]) => t <= lf0).length - 1, shotA = cr0[Math.max(0, ci)][0], shotB = cr0[ci + 1]?.[0] ?? sc0.durationInFrames;
   const push = cfg.pushIn ? 1 + 0.06 * Math.min(1, (lf0 - shotA) / Math.max(1, shotB - shotA)) : 1;
-  const zoom = (fi < 19 ? interpolate(f, [0, 18], [1.14, 1], clamp) : 1) * Math.max(punch, bfZoom) * push;
+  const zoom = (WHD === undefined ? 1 : WZM[WHD + 2]) * (fi < 19 ? interpolate(f, [0, 18], [1.14, 1], clamp) : 1) * Math.max(punch, bfZoom) * push;
   const shake = pu === 0 ? 8 : pu === 1 ? -5 : 0;
   const top = interpolate(fi, [0, 3, 6, 9, 12, 15, 18, 21, 24], [609, 573, 537, 504, 474, 450, 432, 420, BOX_TOP], clamp);
   const bot = interpolate(fi, [0, 3, 6, 9, 12, 15, 18, 21, 24], [1308, 1341, 1377, 1410, 1434, 1458, 1479, 1491, BOX_BOTTOM], clamp);
