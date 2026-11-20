@@ -51,7 +51,7 @@ CL = {
    A='"can i RUN down the runway?" 😭', B='he asked if he could RUN the runway 💀',
    sfx=[('c1', 'run?', 's_huh.mp3'), ('c2', 'Bop', 's_tick.mp3'), ('c2', 'dare', 's_ayo.mp3'), ('c2', 'fire', 's_fahhh.mp3', 'e_laugh.png')]),
  'rant': dict(vo='vrant', intro=[('i1', 1311.00, 1312.00, 900), ('i2', 1326.60, 1327.60, 1100), ('i3', 1342.00, 1343.00, 1000), ('i4', 1346.00, 1347.20, 1000)],
-   hook=(1326.60, 1328.40, 1100), body=[('c1', 1307.60, 1314.20, 900), ('c2', 1323.00, 1333.30, 1100), ('c3', 1340.40, 1348.60, 1000)],
+   hook=(1326.60, 1328.40, 1100), body=[('c1', 1310.20, 1314.20, 900), ('c2', 1323.00, 1333.30, 1100), ('c3', 1340.40, 1348.60, 1000)],
    mute=[(1315.38, 1315.80), (1321.42, 1321.82), (1322.86, 1323.10), (1330.64, 1330.94), (1339.02, 1339.22)],
    A='he found out the drop date LIVE and lost it 😭', B='"WE DO THIS TO THESE PEOPLE" 💀',
    sfx=[('c1', 'swear', 's_huh.mp3'), ('c2', 'profits', 's_awk.mp3'), ('c2', 'people!', 's_fahhh.mp3'), ('c2', 'wrong', 's_ayo.mp3'), ('c3', 'never', 's_tick.mp3'), ('c3', 'forever.', 's_rip.mp3', 'e_laugh.png')]),
@@ -60,7 +60,7 @@ CL = {
    A="bro said H&M like it's PARIS fashion week 😭", B='"yvette, kevin kline, larry, H&M" 💀',
    sfx=[('c1', 'Burberry', 's_ding.mp3'), ('c1', 'comparison', 's_ayo.mp3'), ('c2', 'Larry', 's_huh.mp3'), ('c2', 'H&M', 's_awk.mp3'), ('c2', 'brag', 's_fahhh.mp3', 'e_laugh.png')]),
  'jay': dict(vo='vjay', intro=[('i1', 640.00, 641.00, 1150), ('i2', 648.00, 649.00, 920), ('i3', 653.00, 654.10, 760)],
-   hook=(654.15, 656.75, 760), body=[('c1', 638.00, 641.00, 1150), ('c2', 641.00, 652.40, 920), ('c3', 652.40, 657.20, 760), ('c4', 675.50, 678.20, 790)],
+   hook=(654.15, 656.75, 760), body=[('c1', 638.00, 641.00, 1150), ('c2', 646.00, 652.40, 920), ('c3', 652.40, 657.20, 760), ('c4', 675.50, 678.20, 790)],
    A='jay cutler had to RATE his runway walk 💀', B='"i think he could do BETTER to be honest" 😭',
    sfx=[('c1', 'twinning.', 's_ding.mp3'), ('c2', 'dance', 's_tick.mp3'), ('c3', 'Whoa!', 's_wow.mp3'), ('c3', 'better', 's_huh.mp3'), ('c4', 'home', 's_fahhh.mp3', 'e_laugh.png')]),
  'late': dict(vo='vlate', intro=[('i1', 505.50, 506.50, 960), ('i2', 509.00, 510.00, 960), ('i3', 528.00, 529.00, 960)],
@@ -91,11 +91,11 @@ def snap(sid, v, a, b):
     ws = W[v]; a0, b0 = a, b
     for s, e, _ in ws:                       # don't start inside a word
         if s < a < e: a = s - 0.08
-    if not sid.startswith('i') and sid not in FIXED:
+    if not sid.startswith('i') and sid not in FIXED and sid != 'hook':
         for _ in range(40):                  # extend to the end of the phrase (next pause >= 0.35 s), max +4 s
             nxt = [e for s, e, _ in ws if s < b + 0.35 and e > b - 0.02 and e > b - 0.15 + 0.15 and s >= a]
             nxt = [e for s, e, _ in ws if (s < b < e) or (b <= s < b + 0.35)]
-            if not nxt or b - b0 > 4: break
+            if not nxt or b - b0 > 2: break
             b = max(nxt) + 0.15
     c = [x for x in CUTS if a < x < a + 0.5]
     if c: a = max(c) + 0.02
@@ -116,6 +116,9 @@ for eid, spec in E.items():
     short = vd + 0.15 - sum(s[3] - s[2] for s in intro)
     if short > 0:                            # intro must cover the narrator line
         k = spec['scenes'].index(intro[-1]); sid, v, a, b, cx = intro[-1]; spec['scenes'][k] = (sid, v, a, round(b + short, 2), cx); print(f'  {eid}: intro +{short:.2f}s')
+FOC = {'vcara': (860, 380, 170), 'vshoota': (558, 300, 150), 'vsticka': (666, 430, 150), 'vmida': (255, 290, 160), 'vruna': (414, 270, 170),
+       'vcarb': (830, 560, 170), 'vshootb': (480, 380, 190), 'vmidb': (210, 290, 170), 'vrunb': (570, 230, 200), 'vrantb': (690, 470, 190),
+       'vhmb': (730, 360, 180), 'vjayb': (812, 330, 170), 'vlateb': (700, 340, 200), 'vbankb': (940, 360, 180)}
 gen = json.load(open('src/edits.gen.json')); CFG = {}
 for eid, spec in E.items():
     scenes, t = [], 0.0
@@ -170,7 +173,9 @@ for eid, spec in E.items():
         a = st[sid] + o; calls.append([round(a, 2), round(a + d, 2), '']); x2, y2 = end if end else (x, y); n = round(d * 50) + 2
         for k in range(n): u = min(1, k / (n - 2)); trk[f'{a + k / 50:.2f}'] = [round(x + (x2 - x) * u), round(y + (y2 - y) * u), r]
     c['trackData'] = trk
+    if eid in FOC: c['focus'] = dict(zip(('x', 'y', 'r'), FOC[eid]), dur=20)
     try:
+        if eid in FOC: raise Exception('hand-set')
         import cv2
         fr = subprocess.run(['ffmpeg', '-v', 'error', '-ss', '0.1', '-i', f'public/g67_{eid}.mp4', '-frames:v', '1', '-f', 'rawvideo', '-pix_fmt', 'bgr24', '-'], capture_output=True).stdout
         img = np.frombuffer(fr, np.uint8).reshape(1080, 1920, 3)[:, 420:1500]
