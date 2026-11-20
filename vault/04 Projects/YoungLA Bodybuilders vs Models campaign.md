@@ -8,3 +8,4 @@
 - Batch 3 (user: 'funnier clips, not just famous'): grant (Lexx end rant), gpants (aura mid section), gjay (first okay / Robbie's car), gwalk (Jay rates runway dance), gvillain (Disney villain). People: Jay Cutler, Johnny Lee (model), Lexx Little, TheLukeyMC host, Gurmer owner.
 - Batch 4 (user: batch 3 'just famous people, boring'): compilation format, 3-5 funniest beats per themed clip: hunser, hplanet, hexcuse, hcomm, hreview. Single-moment pool is exhausted after 15 clips.
 - Batch 5 (narrator format from user's viral ref): ncar, nshoot, nstick, nmid, nrun.
+- Batch 6 (user: 10 best clips x 2 unique variants, more SFX): plan_v2.py → v2.cfg.json. A = narrator intro, B = punchline hook + hard cut, different top text; 4-6 reaction SFX per clip.
