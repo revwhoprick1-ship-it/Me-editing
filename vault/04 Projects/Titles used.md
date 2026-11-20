@@ -185,3 +185,8 @@
 - he dumped a WHOLE TRUCK of gifts on his mom 😭 (Kitsch kmom)
 - he gave his sister a gift then TAXED her 💀 (Kitsch ktax)
 - who's nic's LAST gift for? 👀 (Kitsch kwho)
+- "give me 30 seconds"… he NEVER came back 😭 (YoungLA narrator ncar)
+- his photographer was speaking another LANGUAGE 😭 (YoungLA narrator nshoot)
+- bro dropped the sticks then held everyone HOSTAGE 💀 (YoungLA narrator nstick)
+- they felt his aura in their MID SECTION 💀 (YoungLA narrator nmid)
+- "can i RUN down the runway?" 😭 (YoungLA narrator nrun)

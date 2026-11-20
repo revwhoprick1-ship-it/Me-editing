@@ -7,3 +7,4 @@
 - Batch 2 (user: batch 1 'ass, no hook'): fshoot, frunway, fstick, frun, fcar. Picked by watching frames for real interaction; slang hooks; 6-song whitelist; music 0.40.
 - Batch 3 (user: 'funnier clips, not just famous'): grant (Lexx end rant), gpants (aura mid section), gjay (first okay / Robbie's car), gwalk (Jay rates runway dance), gvillain (Disney villain). People: Jay Cutler, Johnny Lee (model), Lexx Little, TheLukeyMC host, Gurmer owner.
 - Batch 4 (user: batch 3 'just famous people, boring'): compilation format, 3-5 funniest beats per themed clip: hunser, hplanet, hexcuse, hcomm, hreview. Single-moment pool is exhausted after 15 clips.
+- Batch 5 (narrator format from user's viral ref): ncar, nshoot, nstick, nmid, nrun.
