@@ -9,9 +9,9 @@
   "streaks": [],
   "punch": [],
   "focus": {
-   "x": 540,
-   "y": 330,
-   "r": 180,
+   "x": 860,
+   "y": 380,
+   "r": 170,
    "dur": 20
   },
   "top": "\"give me 30 seconds\"\u2026 he NEVER came back \ud83d\ude2d",
@@ -161,9 +161,9 @@
   "streaks": [],
   "punch": [],
   "focus": {
-   "x": 540,
-   "y": 330,
-   "r": 180,
+   "x": 830,
+   "y": 560,
+   "r": 170,
    "dur": 20
   },
   "top": "bro said \"be right back\" and went HOME \ud83d\udc80",
@@ -283,9 +283,9 @@
   "streaks": [],
   "punch": [],
   "focus": {
-   "x": 540,
-   "y": 330,
-   "r": 180,
+   "x": 558,
+   "y": 300,
+   "r": 150,
    "dur": 20
   },
   "top": "his photographer was speaking another LANGUAGE \ud83d\ude2d",
@@ -417,9 +417,9 @@
   "streaks": [],
   "punch": [],
   "focus": {
-   "x": 540,
-   "y": 330,
-   "r": 180,
+   "x": 480,
+   "y": 380,
+   "r": 190,
    "dur": 20
   },
   "top": "\"a little wash the hands\u2026 a little STEAM\" \ud83d\udc80",
@@ -521,9 +521,9 @@
   "streaks": [],
   "punch": [],
   "focus": {
-   "x": 540,
-   "y": 330,
-   "r": 180,
+   "x": 700,
+   "y": 380,
+   "r": 150,
    "dur": 20
   },
   "top": "bro dropped the sticks then held everyone HOSTAGE \ud83d\udc80",
@@ -673,9 +673,9 @@
   "streaks": [],
   "punch": [],
   "focus": {
-   "x": 540,
-   "y": 330,
-   "r": 180,
+   "x": 160,
+   "y": 220,
+   "r": 200,
    "dur": 20
   },
   "top": "\"i need this for my IG bro\" \ud83d\ude2d",
@@ -795,9 +795,9 @@
   "streaks": [],
   "punch": [],
   "focus": {
-   "x": 540,
-   "y": 330,
-   "r": 180,
+   "x": 255,
+   "y": 290,
+   "r": 160,
    "dur": 20
   },
   "top": "they felt his aura in their MID SECTION \ud83d\udc80",
@@ -921,9 +921,9 @@
   "streaks": [],
   "punch": [],
   "focus": {
-   "x": 540,
-   "y": 330,
-   "r": 180,
+   "x": 210,
+   "y": 290,
+   "r": 170,
    "dur": 20
   },
   "top": "\"i felt it in my MID SECTION\" \ud83d\ude2d",
@@ -1026,9 +1026,9 @@
   "streaks": [],
   "punch": [],
   "focus": {
-   "x": 540,
-   "y": 330,
-   "r": 180,
+   "x": 414,
+   "y": 270,
+   "r": 170,
    "dur": 20
   },
   "top": "\"can i RUN down the runway?\" \ud83d\ude2d",
@@ -1141,9 +1141,9 @@
   "streaks": [],
   "punch": [],
   "focus": {
-   "x": 540,
-   "y": 330,
-   "r": 180,
+   "x": 570,
+   "y": 230,
+   "r": 200,
    "dur": 20
   },
   "top": "he asked if he could RUN the runway \ud83d\udc80",
@@ -1235,9 +1235,9 @@
   "streaks": [],
   "punch": [],
   "focus": {
-   "x": 540,
-   "y": 330,
-   "r": 180,
+   "x": 720,
+   "y": 440,
+   "r": 170,
    "dur": 20
   },
   "top": "he found out the drop date LIVE and lost it \ud83d\ude2d",
@@ -1388,9 +1388,9 @@
   "streaks": [],
   "punch": [],
   "focus": {
-   "x": 540,
-   "y": 330,
-   "r": 180,
+   "x": 690,
+   "y": 470,
+   "r": 190,
    "dur": 20
   },
   "top": "\"WE DO THIS TO THESE PEOPLE\" \ud83d\udc80",
@@ -1516,9 +1516,9 @@
   "streaks": [],
   "punch": [],
   "focus": {
-   "x": 540,
-   "y": 330,
-   "r": 180,
+   "x": 900,
+   "y": 520,
+   "r": 150,
    "dur": 20
   },
   "top": "bro said H&M like it's PARIS fashion week \ud83d\ude2d",
@@ -1651,9 +1651,9 @@
   "streaks": [],
   "punch": [],
   "focus": {
-   "x": 540,
-   "y": 330,
-   "r": 180,
+   "x": 990,
+   "y": 420,
+   "r": 150,
    "dur": 20
   },
   "top": "\"yvette, kevin kline, larry, H&M\" \ud83d\udc80",
@@ -1755,9 +1755,9 @@
   "streaks": [],
   "punch": [],
   "focus": {
-   "x": 540,
-   "y": 330,
-   "r": 180,
+   "x": 780,
+   "y": 380,
+   "r": 150,
    "dur": 20
   },
   "top": "jay cutler had to RATE his runway walk \ud83d\udc80",
@@ -1772,16 +1772,6 @@
     ],
     "kind": "sfx",
     "file": "s_ding.mp3",
-    "v": 0.5,
-    "off": 0
-   },
-   {
-    "at": [
-     "c2",
-     "dance"
-    ],
-    "kind": "sfx",
-    "file": "s_tick.mp3",
     "v": 0.5,
     "off": 0
    },
@@ -1898,9 +1888,9 @@
   "streaks": [],
   "punch": [],
   "focus": {
-   "x": 540,
-   "y": 330,
-   "r": 180,
+   "x": 640,
+   "y": 340,
+   "r": 170,
    "dur": 20
   },
   "top": "\"i think he could do BETTER to be honest\" \ud83d\ude2d",
@@ -1915,16 +1905,6 @@
     ],
     "kind": "sfx",
     "file": "s_ding.mp3",
-    "v": 0.5,
-    "off": 0
-   },
-   {
-    "at": [
-     "c2",
-     "dance"
-    ],
-    "kind": "sfx",
-    "file": "s_tick.mp3",
     "v": 0.5,
     "off": 0
    },
@@ -2020,9 +2000,9 @@
   "streaks": [],
   "punch": [],
   "focus": {
-   "x": 540,
-   "y": 330,
-   "r": 180,
+   "x": 680,
+   "y": 400,
+   "r": 130,
    "dur": 20
   },
   "top": "bro showed up 3 HOURS late and went straight to the BATHROOM \ud83d\ude2d",
@@ -2155,9 +2135,9 @@
   "streaks": [],
   "punch": [],
   "focus": {
-   "x": 540,
-   "y": 330,
-   "r": 180,
+   "x": 520,
+   "y": 110,
+   "r": 200,
    "dur": 20
   },
   "top": "\"i have to pee REALLY bad\" \ud83d\udc80",
@@ -2268,9 +2248,9 @@
   "streaks": [],
   "punch": [],
   "focus": {
-   "x": 540,
-   "y": 330,
-   "r": 180,
+   "x": 900,
+   "y": 420,
+   "r": 160,
    "dur": 20
   },
   "top": "his bank account hit NEGATIVE $152,000 \ud83d\udc80",
@@ -2402,8 +2382,8 @@
   "streaks": [],
   "punch": [],
   "focus": {
-   "x": 540,
-   "y": 330,
+   "x": 940,
+   "y": 360,
    "r": 180,
    "dur": 20
   },

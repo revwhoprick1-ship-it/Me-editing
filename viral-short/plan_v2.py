@@ -67,7 +67,7 @@ CL = {
    hook=(517.45, 519.75, 960), body=[('c1', 504.10, 510.90, 960), ('c2', 517.45, 526.30, 960), ('c3', 527.35, 531.00, 960)], mute=[(524.02, 524.26)],
    A='bro showed up 3 HOURS late and went straight to the BATHROOM 😭', B='"i have to pee REALLY bad" 💀',
    sfx=[('c1', 'late.', 's_huh.mp3'), ('c2', 'pee', 's_ayo.mp3'), ('c2', 'Aaron', 's_awk.mp3'), ('c3', 'directly', 's_tick.mp3'), ('c3', 'bathroom.', 's_fahhh.mp3', 'e_laugh.png')]),
- 'bank': dict(vo='vbank', intro=[('i1', 761.00, 762.00, 940), ('i2', 764.50, 765.50, 940), ('i3', 771.00, 772.00, 960)],
+ 'bank': dict(vo='vbank', intro=[('i1', 766.30, 767.30, 940), ('i2', 761.00, 762.00, 940), ('i3', 771.00, 772.00, 960)],
    hook=(766.25, 768.80, 940), body=[('c1', 760.20, 766.25, 940), ('c2', 766.25, 768.80, 940), ('c3', 769.75, 778.60, 960)], fixed=['c3'],
    A='his bank account hit NEGATIVE $152,000 💀', B='"try NEGATIVE 152,000" 😭',
    sfx=[('c1', 'zero.', 's_ding.mp3'), ('c2', 'negative', 's_fahhh.mp3'), ('c3', 'robbed?', 's_huh.mp3'), ('c3', 'taxes', 's_awk.mp3'), ('c3', 'consent', 's_rip.mp3', 'e_sob.png')]),
@@ -116,9 +116,9 @@ for eid, spec in E.items():
     short = vd + 0.15 - sum(s[3] - s[2] for s in intro)
     if short > 0:                            # intro must cover the narrator line
         k = spec['scenes'].index(intro[-1]); sid, v, a, b, cx = intro[-1]; spec['scenes'][k] = (sid, v, a, round(b + short, 2), cx); print(f'  {eid}: intro +{short:.2f}s')
-FOC = {'vcara': (860, 380, 170), 'vshoota': (558, 300, 150), 'vsticka': (666, 430, 150), 'vmida': (255, 290, 160), 'vruna': (414, 270, 170),
+FOC = {'vcara': (860, 380, 170), 'vshoota': (558, 300, 150), 'vsticka': (700, 380, 150), 'vstickb': (160, 220, 200), 'vranta': (720, 440, 170), 'vhma': (900, 520, 150), 'vjaya': (780, 380, 150), 'vlatea': (680, 400, 130), 'vbanka': (900, 420, 160), 'vmida': (255, 290, 160), 'vruna': (414, 270, 170),
        'vcarb': (830, 560, 170), 'vshootb': (480, 380, 190), 'vmidb': (210, 290, 170), 'vrunb': (570, 230, 200), 'vrantb': (690, 470, 190),
-       'vhmb': (730, 360, 180), 'vjayb': (812, 330, 170), 'vlateb': (700, 340, 200), 'vbankb': (940, 360, 180)}
+       'vhmb': (990, 420, 150), 'vjayb': (640, 340, 170), 'vlateb': (520, 110, 200), 'vbankb': (940, 360, 180)}
 gen = json.load(open('src/edits.gen.json')); CFG = {}
 for eid, spec in E.items():
     scenes, t = [], 0.0
