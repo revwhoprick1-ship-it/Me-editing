@@ -1,0 +1,515 @@
+{
+ "ncar": {
+  "focus": {
+   "x": 860,
+   "y": 380,
+   "r": 170,
+   "dur": 20
+  },
+  "noSkull": true,
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "punch": [],
+  "top": "\"give me 30 seconds\"\u2026 he NEVER came back \ud83d\ude2d",
+  "hl": {
+   "NEVER": "#FF2A2A"
+  },
+  "extras": [
+   {
+    "at": [
+     "c4",
+     "sorry."
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 2,
+    "y": 800,
+    "size": 380,
+    "sfx": "s_fahhh.mp3",
+    "sv": 0.45
+   },
+   {
+    "at": [
+     "i3"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "i4"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c1"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c3"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c4"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   }
+  ],
+  "music": [
+   "goodbye_n",
+   0
+  ],
+  "vo": {
+   "file": "vcar.wav",
+   "vol": 1.0
+  },
+  "capCycle": true,
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_ncar.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_whoosh.mp3",
+  "sat": 1.1,
+  "progress": false,
+  "popMid": true,
+  "srcVol": 1,
+  "musicVol": 0.28
+ },
+ "nshoot": {
+  "focus": {
+   "x": 558,
+   "y": 300,
+   "r": 150,
+   "dur": 20
+  },
+  "noSkull": true,
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "punch": [],
+  "top": "his photographer was speaking another LANGUAGE \ud83d\ude2d",
+  "hl": {
+   "LANGUAGE": "#FF2A2A"
+  },
+  "extras": [
+   {
+    "at": [
+     "c1",
+     "noodles."
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 2,
+    "y": 800,
+    "size": 380,
+    "sfx": "s_fahhh.mp3",
+    "sv": 0.45
+   },
+   {
+    "at": [
+     "i3"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "i4"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c1"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c3"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   }
+  ],
+  "music": [
+   "goodbye_n",
+   0
+  ],
+  "vo": {
+   "file": "vshoot.wav",
+   "vol": 1.0
+  },
+  "capCycle": true,
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_nshoot.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_whoosh.mp3",
+  "sat": 1.1,
+  "progress": false,
+  "popMid": true,
+  "srcVol": 1,
+  "musicVol": 0.28
+ },
+ "nstick": {
+  "focus": {
+   "x": 666,
+   "y": 430,
+   "r": 150,
+   "dur": 20
+  },
+  "noSkull": true,
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "punch": [],
+  "top": "bro dropped the sticks then held everyone HOSTAGE \ud83d\udc80",
+  "hl": {
+   "HOSTAGE": "#FF2A2A"
+  },
+  "extras": [
+   {
+    "at": [
+     "c1",
+     "No!"
+    ],
+    "kind": "sfx",
+    "file": "s_fahhh.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "c4",
+     "now."
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 2,
+    "y": 800,
+    "size": 380,
+    "sfx": "s_ayo.mp3",
+    "sv": 0.45
+   },
+   {
+    "at": [
+     "i3"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "i4"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c1"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c3"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c4"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   }
+  ],
+  "music": [
+   "goodbye_n",
+   0
+  ],
+  "vo": {
+   "file": "vstick.wav",
+   "vol": 1.0
+  },
+  "capCycle": true,
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_nstick.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_whoosh.mp3",
+  "sat": 1.1,
+  "progress": false,
+  "popMid": true,
+  "srcVol": 1,
+  "musicVol": 0.28
+ },
+ "nmid": {
+  "focus": {
+   "x": 255,
+   "y": 290,
+   "r": 160,
+   "dur": 20
+  },
+  "noSkull": true,
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "punch": [],
+  "top": "they felt his aura in their MID SECTION \ud83d\udc80",
+  "hl": {
+   "MID": "#FF2A2A",
+   "SECTION": "#FF2A2A"
+  },
+  "extras": [
+   {
+    "at": [
+     "c1",
+     "pants."
+    ],
+    "kind": "sfx",
+    "file": "s_huh.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2",
+     "toes."
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 2,
+    "y": 800,
+    "size": 380,
+    "sfx": "s_fahhh.mp3",
+    "sv": 0.45
+   },
+   {
+    "at": [
+     "i3"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c1"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   }
+  ],
+  "music": [
+   "goodbye_n",
+   0
+  ],
+  "vo": {
+   "file": "vmid.wav",
+   "vol": 1.0
+  },
+  "capCycle": true,
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_nmid.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_whoosh.mp3",
+  "sat": 1.1,
+  "progress": false,
+  "popMid": true,
+  "srcVol": 1,
+  "musicVol": 0.28
+ },
+ "nrun": {
+  "focus": {
+   "x": 414,
+   "y": 270,
+   "r": 170,
+   "dur": 20
+  },
+  "noSkull": true,
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "punch": [],
+  "top": "\"can i RUN down the runway?\" \ud83d\ude2d",
+  "hl": {
+   "RUN": "#FF2A2A"
+  },
+  "extras": [
+   {
+    "at": [
+     "c2",
+     "fire"
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 4,
+    "y": 800,
+    "size": 380,
+    "sfx": "s_fahhh.mp3",
+    "sv": 0.45
+   },
+   {
+    "at": [
+     "i3"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c1"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   }
+  ],
+  "music": [
+   "goodbye_n",
+   0
+  ],
+  "vo": {
+   "file": "vrun.wav",
+   "vol": 1.0
+  },
+  "capCycle": true,
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_nrun.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_whoosh.mp3",
+  "sat": 1.1,
+  "progress": false,
+  "popMid": true,
+  "srcVol": 1,
+  "musicVol": 0.28
+ }
+}

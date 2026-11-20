@@ -52,3 +52,11 @@ The style used for the "Guess the fake millionaire" and Trevor stream edits (Nov
 
 - **Clip picking > editing (user, 2026-11-19).** Spend the effort on finding moments people would actually stop for: real interaction, someone getting roasted/caught, awkward pauses, people breaking. Watch frames, not just the transcript. Avoid 'textbook funny' lines.
 - **Text hooks = 2026 TikTok shitpost voice:** lowercase, slang (bro, NOT real, cause, 💀😭), quote the line or react to it, e.g. "bro said H&M like it's paris fashion week 😭". Never formal/AI phrasing like 'His X had a Y'.
+
+- **Song (user, 2026-11-20): ALWAYS Say Goodbye (`goodbye_n`)** — overrides the 6-song list.
+- **Narrator format (user's viral reference, 2026-11-20)** — copy HIS edit mechanics, keep MY look:
+  - Pitched-up AI narrator opens the clip (one line, ~2.5–3.7 s: "Watch this guy …") over fast ~1 s cuts of the moment; source ducked to 12 % under it. Kokoro `am_michael` speed 1.12, `asetrate*1.18` pitch-up (local, free). `scratchpad/c6scripts/vo.py`.
+  - Whoosh (`s_whoosh.mp3`) on EVERY cut (the first cut keeps the white flash too).
+  - Captions: one word, ALL CAPS, weight 900, size 80, thick 10 px black stroke, colour cycles cyan #2EE8F2 → green #3BE83B → yellow #FFE14A → white per word (`capCycle` in Guess.tsx).
+  - Then the raw moment plays with its real dialogue. Single moment per clip (not compilations).
+  - Planner: `plan_nar.py` (intro scenes = ids starting with `i`; `vo` = narrator id).
