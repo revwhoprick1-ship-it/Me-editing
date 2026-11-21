@@ -52,7 +52,7 @@ for eid, d in E.items():
             _, ft, fx, fy, dd = sc; dd = round(dd * FPS) / FPS; n0 = round(dd * FPS)
             cmd += ['-ss', f'{ft:.3f}', '-i', SRC]; i = ni; ni += 1
             fc.append(f"[{i}:v]trim=end_frame=1,loop=loop={n0}:size=1:start=0,setpts=N/30/TB,scale=1920:1080,"
-                      f"zoompan=z='1+0.45*on/{n0}':x='max(0,min(iw-iw/zoom,{fx}-iw/zoom/2))':y='max(0,min(ih-ih/zoom,{fy}-ih/zoom/2))':d=1:s=1920x1080:fps=30,"
+                      f"zoompan=z='1.35+0.45*on/{n0}':x='max(0,min(iw-iw/zoom,{fx}-iw/zoom/2))':y='max(0,min(ih-ih/zoom,{fy}-ih/zoom/2))':d=1:s=1920x1080:fps=30,"
                       f"setsar=1,format=yuv420p,trim=duration={dd:.4f}[v{k}]")
             cx = 960 + max(-420, min(420, 0)); src_a = None; silent = True
         elif sc[0] == 'slow':
