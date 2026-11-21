@@ -1,0 +1,314 @@
+{
+ "jdoit": {
+  "noSkull": true,
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "punch": [],
+  "top": "his mom's answer to a $100,000 dentist bill \ud83e\udd79",
+  "hl": {
+   "$100,000": "#FF2A2A"
+  },
+  "extras": [
+   {
+    "at": [
+     "c1",
+     "Joseph.\""
+    ],
+    "kind": "png",
+    "file": "e_sob.png",
+    "off": 2,
+    "y": 800,
+    "size": 380
+   },
+   {
+    "at": [
+     "c1",
+     "turn."
+    ],
+    "kind": "png",
+    "file": "e_heart.png",
+    "off": 2,
+    "y": 800,
+    "size": 380
+   }
+  ],
+  "focus": {
+   "x": 540,
+   "y": 180,
+   "r": 120,
+   "dur": 20
+  },
+  "music": [
+   "goodbye_n",
+   0
+  ],
+  "origAudio": true,
+  "vo": null,
+  "capCycle": true,
+  "whip": true,
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_jdoit.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_whoosh.mp3",
+  "sat": 1.1,
+  "progress": false,
+  "popMid": true,
+  "srcVol": 1,
+  "musicVol": 0.28
+ },
+ "jcrack": {
+  "noSkull": true,
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "punch": [],
+  "top": "then his mom took the compliment RIGHT back \ud83d\ude2d",
+  "hl": {
+   "RIGHT": "#FF2A2A"
+  },
+  "extras": [
+   {
+    "at": [
+     "c1",
+     "cocaine?"
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 2,
+    "y": 800,
+    "size": 380
+   },
+   {
+    "at": [
+     "c1",
+     "Mom."
+    ],
+    "kind": "png",
+    "file": "e_sob.png",
+    "off": 2,
+    "y": 800,
+    "size": 380
+   }
+  ],
+  "focus": {
+   "x": 540,
+   "y": 200,
+   "r": 120,
+   "dur": 20
+  },
+  "music": [
+   "goodbye_n",
+   0
+  ],
+  "origAudio": true,
+  "vo": null,
+  "capCycle": true,
+  "whip": true,
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_jcrack.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_whoosh.mp3",
+  "sat": 1.1,
+  "progress": false,
+  "popMid": true,
+  "srcVol": 1,
+  "musicVol": 0.28
+ },
+ "jnugget": {
+  "noSkull": true,
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "punch": [],
+  "top": "his mom went to get his McDonald's job BACK \ud83d\ude2d",
+  "hl": {
+   "BACK": "#FF2A2A"
+  },
+  "extras": [
+   {
+    "at": [
+     "c2",
+     "Joseph!"
+    ],
+    "kind": "png",
+    "file": "e_sob.png",
+    "off": 2,
+    "y": 800,
+    "size": 380
+   },
+   {
+    "at": [
+     "c2",
+     "nugget!"
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 2,
+    "y": 800,
+    "size": 380
+   }
+  ],
+  "focus": {
+   "x": 540,
+   "y": 220,
+   "r": 110,
+   "dur": 20
+  },
+  "music": [
+   "goodbye_n",
+   0
+  ],
+  "origAudio": true,
+  "vo": null,
+  "capCycle": true,
+  "whip": true,
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_jnugget.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_whoosh.mp3",
+  "sat": 1.1,
+  "progress": false,
+  "popMid": true,
+  "srcVol": 1,
+  "musicVol": 0.28
+ },
+ "jrunaway": {
+  "noSkull": true,
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "punch": [],
+  "top": "the shelter waited until he SIGNED to tell him this \ud83d\udc80",
+  "hl": {
+   "SIGNED": "#FF2A2A"
+  },
+  "extras": [
+   {
+    "at": [
+     "c1",
+     "runaway."
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 2,
+    "y": 800,
+    "size": 380
+   },
+   {
+    "at": [
+     "c1",
+     "laughed."
+    ],
+    "kind": "png",
+    "file": "e_sob.png",
+    "off": 2,
+    "y": 800,
+    "size": 380
+   }
+  ],
+  "focus": {
+   "x": 560,
+   "y": 330,
+   "r": 170,
+   "dur": 20
+  },
+  "music": [
+   "goodbye_n",
+   0
+  ],
+  "origAudio": true,
+  "vo": null,
+  "capCycle": true,
+  "whip": true,
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_jrunaway.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_whoosh.mp3",
+  "sat": 1.1,
+  "progress": false,
+  "popMid": true,
+  "srcVol": 1,
+  "musicVol": 0.28
+ },
+ "jblue": {
+  "noSkull": true,
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "punch": [],
+  "top": "where the title \"Blue in the Face\" came from \ud83e\udd79",
+  "hl": {},
+  "extras": [
+   {
+    "at": [
+     "c2",
+     "face."
+    ],
+    "kind": "png",
+    "file": "e_heart.png",
+    "off": 2,
+    "y": 800,
+    "size": 380
+   }
+  ],
+  "focus": {
+   "x": 560,
+   "y": 300,
+   "r": 170,
+   "dur": 20
+  },
+  "music": [
+   "goodbye_n",
+   0
+  ],
+  "origAudio": true,
+  "vo": null,
+  "capCycle": true,
+  "whip": true,
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_jblue.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_whoosh.mp3",
+  "sat": 1.1,
+  "progress": false,
+  "popMid": true,
+  "srcVol": 1,
+  "musicVol": 0.28
+ }
+}
