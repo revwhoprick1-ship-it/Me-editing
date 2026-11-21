@@ -248,4 +248,8 @@
 - what your dog will do for ONE turkey treat 😭 (Jo Koy jturkey)
 - his war-hero stepdad's deepest confession 😭 (Jo Koy jmama)
 - why his stepdad lied to go to war at 17 😭 (Jo Koy jsnow)
-- Jo Koy batch 3 (loudest laughs): jwipe "the army told his stepdad "you can go home"… he said THIS 💀" | jwhiskey "his stepdad's idea of bonding at 18 😭" | jpay "Jo Koy did the math on his first McDonald's paycheck 💀" | jgucci ""dogs are expensive, Jo"… his answer 😭" | jtooth "he knocked out his front teeth as a kid… then Oprah 😭"
+- the army told his stepdad "you can go home"… he said THIS 💀 (Jo Koy jwipe)
+- his stepdad's idea of bonding at 18 😭 (Jo Koy jwhiskey)
+- Jo Koy did the math on his first McDonald's paycheck 💀 (Jo Koy jpay)
+- "dogs are expensive, Jo"… his answer 😭 (Jo Koy jgucci)
+- he knocked out his front teeth as a kid… then Oprah 😭 (Jo Koy jtooth)
