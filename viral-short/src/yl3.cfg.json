@@ -24,13 +24,22 @@
      "s0"
     ],
     "kind": "sfx",
+    "file": "m_bass-boosted-vine-boom.mp3",
+    "v": 0.5,
+    "off": 122
+   },
+   {
+    "at": [
+     "s0"
+    ],
+    "kind": "sfx",
     "file": "s_huh.mp3",
     "v": 0.5,
     "off": 86
    },
    {
     "at": [
-     "s2"
+     "s1"
     ],
     "kind": "sfx",
     "file": "m_crickets.mp3",
@@ -39,7 +48,7 @@
    },
    {
     "at": [
-     "s3"
+     "s2"
     ],
     "kind": "sfx",
     "file": "m_record-scratch.mp3",
@@ -48,7 +57,7 @@
    },
    {
     "at": [
-     "s5"
+     "s4"
     ],
     "kind": "png",
     "file": "e_laugh.png",
@@ -58,7 +67,7 @@
    },
    {
     "at": [
-     "s5"
+     "s4"
     ],
     "kind": "sfx",
     "file": "m_bruh.mp3",
@@ -76,57 +85,21 @@
    },
    {
     "at": [
-     "s3"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   },
-   {
-    "at": [
-     "s5"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   },
-   {
-    "at": [
      "s4"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "s3"
     ],
     "kind": "sfx",
     "file": "m_bass-boosted-vine-boom.mp3",
     "v": 0.6,
     "off": 0
-   },
-   {
-    "at": [
-     "s1"
-    ],
-    "kind": "sfx",
-    "file": "s_camflash.mp3",
-    "v": 0.35,
-    "off": 0
-   },
-   {
-    "at": [
-     "s1"
-    ],
-    "kind": "sfx",
-    "file": "s_camflash.mp3",
-    "v": 0.35,
-    "off": 18
-   },
-   {
-    "at": [
-     "s1"
-    ],
-    "kind": "sfx",
-    "file": "s_camflash.mp3",
-    "v": 0.35,
-    "off": 36
    }
   ],
   "music": [
@@ -192,13 +165,22 @@
      "s2"
     ],
     "kind": "sfx",
+    "file": "m_bass-boosted-vine-boom.mp3",
+    "v": 0.5,
+    "off": 55
+   },
+   {
+    "at": [
+     "s2"
+    ],
+    "kind": "sfx",
     "file": "m_meme-bonk.mp3",
     "v": 0.5,
     "off": 60
    },
    {
     "at": [
-     "s4"
+     "s3"
     ],
     "kind": "png",
     "file": "e_laugh.png",
@@ -208,7 +190,7 @@
    },
    {
     "at": [
-     "s5"
+     "s4"
     ],
     "kind": "sfx",
     "file": "m_spongebob-boowomp.mp3",
@@ -217,7 +199,7 @@
    },
    {
     "at": [
-     "s6"
+     "s5"
     ],
     "kind": "sfx",
     "file": "s_ding.mp3",
@@ -262,48 +244,12 @@
    },
    {
     "at": [
-     "s6"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   },
-   {
-    "at": [
      "s1"
     ],
     "kind": "sfx",
     "file": "m_bass-boosted-vine-boom.mp3",
     "v": 0.6,
     "off": 0
-   },
-   {
-    "at": [
-     "s3"
-    ],
-    "kind": "sfx",
-    "file": "s_camflash.mp3",
-    "v": 0.35,
-    "off": 0
-   },
-   {
-    "at": [
-     "s3"
-    ],
-    "kind": "sfx",
-    "file": "s_camflash.mp3",
-    "v": 0.35,
-    "off": 11
-   },
-   {
-    "at": [
-     "s3"
-    ],
-    "kind": "sfx",
-    "file": "s_camflash.mp3",
-    "v": 0.35,
-    "off": 22
    }
   ],
   "music": [
@@ -360,13 +306,13 @@
      "s0"
     ],
     "kind": "sfx",
-    "file": "m_huh-cat.mp3",
+    "file": "m_bass-boosted-vine-boom.mp3",
     "v": 0.5,
-    "off": 153
+    "off": 171
    },
    {
     "at": [
-     "s3"
+     "s2"
     ],
     "kind": "sfx",
     "file": "m_meme-trombone.mp3",
@@ -375,7 +321,7 @@
    },
    {
     "at": [
-     "s3"
+     "s2"
     ],
     "kind": "png",
     "file": "e_laugh.png",
@@ -385,7 +331,7 @@
    },
    {
     "at": [
-     "s3"
+     "s2"
     ],
     "kind": "sfx",
     "file": "s_whoosh.mp3",
@@ -394,39 +340,12 @@
    },
    {
     "at": [
-     "s2"
+     "s1"
     ],
     "kind": "sfx",
     "file": "m_bass-boosted-vine-boom.mp3",
     "v": 0.6,
     "off": 0
-   },
-   {
-    "at": [
-     "s1"
-    ],
-    "kind": "sfx",
-    "file": "s_camflash.mp3",
-    "v": 0.35,
-    "off": 0
-   },
-   {
-    "at": [
-     "s1"
-    ],
-    "kind": "sfx",
-    "file": "s_camflash.mp3",
-    "v": 0.35,
-    "off": 19
-   },
-   {
-    "at": [
-     "s1"
-    ],
-    "kind": "sfx",
-    "file": "s_camflash.mp3",
-    "v": 0.35,
-    "off": 38
    }
   ],
   "music": [
@@ -471,6 +390,15 @@
   "extras": [
    {
     "at": [
+     "s0"
+    ],
+    "kind": "sfx",
+    "file": "m_bass-boosted-vine-boom.mp3",
+    "v": 0.5,
+    "off": 4
+   },
+   {
+    "at": [
      "s1"
     ],
     "kind": "sfx",
@@ -480,12 +408,12 @@
    },
    {
     "at": [
-     "s1"
+     "s0"
     ],
     "kind": "sfx",
     "file": "m_huh-cat.mp3",
     "v": 0.5,
-    "off": 142
+    "off": 4
    },
    {
     "at": [
@@ -532,33 +460,6 @@
     "file": "m_bass-boosted-vine-boom.mp3",
     "v": 0.6,
     "off": 0
-   },
-   {
-    "at": [
-     "s0"
-    ],
-    "kind": "sfx",
-    "file": "s_camflash.mp3",
-    "v": 0.35,
-    "off": 0
-   },
-   {
-    "at": [
-     "s0"
-    ],
-    "kind": "sfx",
-    "file": "s_camflash.mp3",
-    "v": 0.35,
-    "off": 18
-   },
-   {
-    "at": [
-     "s0"
-    ],
-    "kind": "sfx",
-    "file": "s_camflash.mp3",
-    "v": 0.35,
-    "off": 36
    }
   ],
   "music": [
@@ -615,9 +516,9 @@
      "s0"
     ],
     "kind": "sfx",
-    "file": "m_huh-cat.mp3",
+    "file": "m_bass-boosted-vine-boom.mp3",
     "v": 0.5,
-    "off": 15
+    "off": 21
    },
    {
     "at": [
@@ -631,7 +532,16 @@
    },
    {
     "at": [
-     "s6"
+     "s5"
+    ],
+    "kind": "sfx",
+    "file": "m_bass-boosted-vine-boom.mp3",
+    "v": 0.5,
+    "off": 66
+   },
+   {
+    "at": [
+     "s5"
     ],
     "kind": "sfx",
     "file": "m_oh-hell-nah.mp3",
@@ -640,7 +550,7 @@
    },
    {
     "at": [
-     "s6"
+     "s5"
     ],
     "kind": "png",
     "file": "e_sob.png",
@@ -677,75 +587,12 @@
    },
    {
     "at": [
-     "s6"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   },
-   {
-    "at": [
-     "s7"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   },
-   {
-    "at": [
      "s3"
     ],
     "kind": "sfx",
     "file": "m_bass-boosted-vine-boom.mp3",
     "v": 0.6,
     "off": 0
-   },
-   {
-    "at": [
-     "s5"
-    ],
-    "kind": "sfx",
-    "file": "s_camflash.mp3",
-    "v": 0.35,
-    "off": 0
-   },
-   {
-    "at": [
-     "s5"
-    ],
-    "kind": "sfx",
-    "file": "s_camflash.mp3",
-    "v": 0.35,
-    "off": 11
-   },
-   {
-    "at": [
-     "s5"
-    ],
-    "kind": "sfx",
-    "file": "s_camflash.mp3",
-    "v": 0.35,
-    "off": 22
-   },
-   {
-    "at": [
-     "s7"
-    ],
-    "kind": "sfx",
-    "file": "s_camflash.mp3",
-    "v": 0.35,
-    "off": 0
-   },
-   {
-    "at": [
-     "s7"
-    ],
-    "kind": "sfx",
-    "file": "s_camflash.mp3",
-    "v": 0.35,
-    "off": 19
    }
   ],
   "music": [
