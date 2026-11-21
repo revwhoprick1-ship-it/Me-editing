@@ -228,3 +228,8 @@
 - the most POLITE criminal in gta 6 😭 (Kreek ksorry)
 - he almost got his stream BANNED 💀 (Kreek kban)
 - he ranked every shoe store in gta 6 and it went WRONG 😭 (Kreek kshoe)
+- his mom's answer to a $100,000 dentist bill 🥹 (Jo Koy jdoit)
+- then his mom took the compliment RIGHT back 😭 (Jo Koy jcrack)
+- his mom went to get his McDonald's job BACK 😭 (Jo Koy jnugget)
+- the shelter waited until he SIGNED to tell him this 💀 (Jo Koy jrunaway)
+- where the title "Blue in the Face" came from 🥹 (Jo Koy jblue)
