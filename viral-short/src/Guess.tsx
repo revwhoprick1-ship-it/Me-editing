@@ -27,7 +27,7 @@ type Cfg = {top: string; cta: string; label: string; track: Record<string, numbe
   punch: Ref[]; blowouts: Ref[]; blackFlash: Ref[]; streaks: Ref[]; music: number; loop?: boolean; ctaAt?: Ref; musicVol?: number; subBand?: [number, number]; blurOff?: [number, number][]; musicFile?: string; hl?: Record<string, string>; pushIn?: boolean; src?: string;
   teaser?: {a: number; b: number; x: number; z: number; y: number; until: Ref}; hardcut?: boolean;
   extras?: {at: Ref; kind: 'png' | 'ov' | 'sfx' | 'txt'; file: string; off?: number; color?: string; op?: number; v?: number; dur?: number; x?: number; y?: number; size?: number; sfx?: string; sv?: number}[]; cutSfx?: string;
-  focus?: {x: number; y: number; r: number; dur: number}; sat?: number; ask?: {at: Ref; text: string}[]; progress?: boolean; popMid?: boolean; sub?: string; ctaEnd?: boolean;
+  focus?: {x: number; y: number; r: number; dur: number}; sat?: number; raw?: boolean; ask?: {at: Ref; text: string}[]; progress?: boolean; popMid?: boolean; sub?: string; ctaEnd?: boolean;
   wm?: {file: string; x: number; y: number; w: number}; topY?: number; srcVol?: number; noSkull?: boolean; fxOff?: boolean; origAudio?: boolean; whip?: boolean; capCycle?: boolean; vo?: {file: string; vol?: number}};
 
 export const EDITS: Record<string, Cfg> = {
@@ -143,8 +143,8 @@ import T_CLOWN_SOL from './tracks/clown_sol.json';
 const V5_TRACKS: Record<string, Record<string, number[]>> = {iron: IRONREVEAL as Record<string, number[]>, gift: T_GIFT, merch: T_MERCH, pissed: T_PISSED, hulk: HULK,
   chant_iron: T_CHANT_IRON, solstice: T_CLOWN_SOL};
 Object.entries({...V5, ...V6, ...R3, ...TV, ...R3B, ...X, ...R3F, ...R3G, ...MJ, ...FP, ...R3Z, ...R3SUS, ...R3T, ...ARENA, ...CLASH, ...YLA, ...KITSCH, ...NAR, ...V2, ...TREN, ...JO, ...YL2, ...YL3} as unknown as Record<string, {top: string; hl: Record<string, string>; cta: string; music: [string, number]; ctaAt: Ref; track: string; calls: [number, number, string][];
-  tints: [Ref, string][]; rizz: Ref[]; punch: Ref[]; blowouts: Ref[]; blackFlash: Ref[]; streaks: Ref[]; src?: string; teaser?: Cfg['teaser']; hardcut?: boolean; extras?: Cfg['extras']; cutSfx?: string; wm?: Cfg['wm']; topY?: number; srcVol?: number; noSkull?: boolean; fxOff?: boolean; trackData?: Record<string, number[]>; sat?: number; ask?: Cfg['ask']; progress?: boolean; popMid?: boolean; sub?: string; ctaEnd?: boolean; focus?: Cfg['focus']; origAudio?: boolean; whip?: boolean; capCycle?: boolean; vo?: Cfg['vo']}>).forEach(([id, a]) => {
-  EDITS[id] = {origAudio: a.origAudio, whip: a.whip, capCycle: a.capCycle, vo: a.vo, focus: a.focus, ctaEnd: a.ctaEnd, sub: a.sub, sat: a.sat, ask: a.ask, progress: a.progress, popMid: a.popMid, wm: a.wm, topY: a.topY, srcVol: a.srcVol, noSkull: a.noSkull, fxOff: a.fxOff, extras: a.extras, cutSfx: a.cutSfx, hardcut: a.hardcut, teaser: a.teaser, src: a.src, subBand: a.src ? [1, 0] : undefined, top: a.top, hl: a.hl, cta: a.cta, label: '', track: a.trackData ?? V5_TRACKS[a.track] ?? {}, music: a.music[1], musicFile: a.music[0], musicVol: (a as {musicVol?: number}).musicVol ?? 0.53, loop: !(a as {intro?: boolean}).intro, pushIn: true,
+  tints: [Ref, string][]; rizz: Ref[]; punch: Ref[]; blowouts: Ref[]; blackFlash: Ref[]; streaks: Ref[]; src?: string; teaser?: Cfg['teaser']; hardcut?: boolean; extras?: Cfg['extras']; cutSfx?: string; wm?: Cfg['wm']; topY?: number; srcVol?: number; noSkull?: boolean; fxOff?: boolean; trackData?: Record<string, number[]>; sat?: number; raw?: boolean; ask?: Cfg['ask']; progress?: boolean; popMid?: boolean; sub?: string; ctaEnd?: boolean; focus?: Cfg['focus']; origAudio?: boolean; whip?: boolean; capCycle?: boolean; vo?: Cfg['vo']}>).forEach(([id, a]) => {
+  EDITS[id] = {origAudio: a.origAudio, whip: a.whip, capCycle: a.capCycle, vo: a.vo, focus: a.focus, ctaEnd: a.ctaEnd, sub: a.sub, sat: a.sat, raw: a.raw, ask: a.ask, progress: a.progress, popMid: a.popMid, wm: a.wm, topY: a.topY, srcVol: a.srcVol, noSkull: a.noSkull, fxOff: a.fxOff, extras: a.extras, cutSfx: a.cutSfx, hardcut: a.hardcut, teaser: a.teaser, src: a.src, subBand: a.src ? [1, 0] : undefined, top: a.top, hl: a.hl, cta: a.cta, label: '', track: a.trackData ?? V5_TRACKS[a.track] ?? {}, music: a.music[1], musicFile: a.music[0], musicVol: (a as {musicVol?: number}).musicVol ?? 0.53, loop: !(a as {intro?: boolean}).intro, pushIn: true,
     ctaAt: a.ctaAt, calls: a.calls, tints: a.tints.map(([r, c]) => [r, c === 'G' ? GREEN : RED] as [Ref, string]), rizz: a.rizz, punch: a.punch,
     blowouts: a.blowouts, blackFlash: a.blackFlash, streaks: a.streaks};
 });
@@ -199,7 +199,7 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
   const hblur0 = fi < 16 ? interpolate(f, [0, 16], [46, 0], clamp) : (() => { const d = near(STREAKS, f, 4); return d === undefined ? 0 : [70, 48, 26, 8][d]; })();
   const hblur = Math.max(hblur0, WHD === undefined ? 0 : WBL[WHD + 2]);
   const filter = (() => {
-    const p = [`saturate(${cfg.sat ?? 1.3}) contrast(1.06)`];
+    const p = cfg.raw ? [] as string[] : [`saturate(${cfg.sat ?? 1.3}) contrast(1.06)`];  // raw = no colour filters (effects only)
     if (hblur > 0) p.push('url(#hblur)');
     if (fi < 16) p.push(`brightness(${interpolate(f, [0, 5, 10, 16], [2.5, 1.9, 1.3, 1], clamp)}) contrast(${interpolate(f, [0, 16], [0.75, 1], clamp)})`);
     const s = near(STREAKS, f, 4); if (s !== undefined) p.push(`brightness(${[1.5, 1.3, 1.15, 1.05][s]})`);
