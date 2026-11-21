@@ -39,7 +39,7 @@ CL = {
    pops=[('c2', 'ass', 'e_laugh.png'), ('c2', '22', 'e_sob.png')]),
  'jwhiskey': dict(src='p10', body=[('c1', 90.45, 120.00, 960)], A='his stepdad\'s idea of bonding at 18 😭', hl=['18'],
    pops=[('c1', 'motherfucker', 'e_laugh.png'), ('c1', 'gout', 'e_sob.png')]),
- 'jpay': dict(src='p04', body=[('c1', 230.60, 246.05, 960), ('c2', 248.40, 259.35, 960), ('c3', 261.55, 291.30, 960)], A='Jo Koy did the math on his first McDonald\'s paycheck 💀', hl=['MATH'],
+ 'jpay': dict(src='p04', body=[('c1', 230.60, 246.05, 960), ('c2', 248.40, 259.35, 960), ('c3', 261.55, 291.30, 960)], A='Jo Koy did the math on his first McDonald\'s paycheck 💀', hl=['math'],
    pops=[('c1', 'sign?', 'e_laugh.png'), ('c3', 'clown', 'e_sob.png')]),
  'jgucci': dict(src='p07', body=[('c1', 1.20, 43.20, 960)], A='"dogs are expensive, Jo"… his answer 😭', hl=['expensive,'],
    pops=[('c1', 'Gucci', 'e_laugh.png'), ('c1', 'shelter.', 'e_sob.png')]),
