@@ -238,3 +238,8 @@
 - rate every runway walk 1-10 👇 (YoungLA xrate)
 - what would YOU buy first with $1,000,000? 👇 (YoungLA xbuy)
 - MODEL walk vs BODYBUILDER walk… who did it better? 👇 (YoungLA xmodel)
+- he said "30 SECONDS"… 💀 (YoungLA meme m30)
+- his photographer's directions made NO sense 😭 (YoungLA meme mshoot)
+- bro listed his runways like a RESUME 💀 (YoungLA meme mhm)
+- "what's the FIRST thing you'd buy?" 💀 (YoungLA meme mtoes)
+- jay cutler's review was BRUTAL 💀 (YoungLA meme mjay)
