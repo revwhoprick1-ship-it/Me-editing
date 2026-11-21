@@ -65,3 +65,5 @@ The style used for the "Guess the fake millionaire" and Trevor stream edits (Nov
   2. No stray sub-0.5 s frames: detect the source's own camera cuts (`ffmpeg select='gt(scene,0.28)'` → cuts.txt) and move any cut point within 0.5 s of one onto it.
   3. Every whoosh gets a visual: `whip` = zoom punch (1.12) + horizontal motion blur, -2..+5 frames around each cut.
   4. Narrator intro: source audio fully muted (no chopped speech under the VO).
+- **Meme manipulation (user, 2026-11-21): 'whatever makes me viral'.** plan_yl3.py scene kinds: `frz` freeze + zoompan push-in on a face + bass-boosted vine boom; stutter = repeat the punchline 2-3x (each repeat gets whip); `slow` slow-mo (muted). Meme SFX copied to res/m_*.mp3 (vine boom, bruh, crickets, huh-cat, record scratch, trombone, bonk, boowomp, oh hell nah). Never fake what anyone said.
+- **Caveman talk ON for every reply (user).**
