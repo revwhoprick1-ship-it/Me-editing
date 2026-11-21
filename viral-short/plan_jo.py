@@ -11,9 +11,7 @@ DL, TX = sys.argv[1], sys.argv[2]
 G67 = ("split[ga][gb];[gb]gblur=sigma=14[gg];[ga][gg]blend=all_mode=softlight:all_opacity=0.245,unsharp=5:5:1.74:5:5:0,"
        "eq=contrast=1.113:saturation=1.26:gamma=0.98,curves=all='0/0 0.25/0.21 0.75/0.81 1/1',unsharp=3:3:0.79,"
        "colortemperature=temperature=8000,eq=saturation=0.96,format=yuv420p")
-FIX = {('p04', 19.86): '', ('p04', 20.28): '', ('p04', 22.22): '$100,000', ('p04', 22.56): '', ('p04', 24.72): 'teeth.',
-       ('p05', 255.19): 'Joseph.', ('p05', 260.87): 'Joseph?', ('p05', 261.67): '', ('p05', 262.89): '', ('p05', 306.65): 'Joseph!', ('p05', 303.25): '', ('p05', 305.85): '',
-       ('p12', 197.15): 'Fred,', ('p12', 192.08): '', ('p12', 208.4): 'was', ('p12', 208.74): 'Dodger', ('p12', 209.18): 'blue', ('p12', 209.4): 'in the face.'}
+FIX = {('p06', 82.43): 'snitch', ('p06', 140.48): 'turkey', ('p06', 140.72): 'treats,', ('p06', 141.6): 'turkey', ('p06', 141.9): 'treats?', ('p10', 173.2): 'CIB'}
 def src(v): return glob.glob(f'{DL}/{v}.*')[0]
 def probe(v): return json.loads(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'stream=index,codec_type,codec_name,width,height:stream_side_data=rotation', '-of', 'json', src(v)], capture_output=True, text=True).stdout)['streams']
 def vert(v):
@@ -36,16 +34,16 @@ def sfx(at, f, v=0.5, off=0): return dict(at=at, kind='sfx', file=f, v=v, off=of
 # Visual style kept: top hook, colour-cycle caps captions, whip zoom-blur on cuts, centre emoji pops (silent), face blur.
 # Never change Jo's meaning: scenes are whole sentences, ends pinned after the laugh.
 CL = {
- 'jdoit': dict(src='p04', body=[('c1', 17.40, 58.60, 960)], A='his mom\'s answer to a $100,000 dentist bill 🥹', hl=['$100,000'],
-   pops=[('c1', 'Joseph."', 'e_sob.png'), ('c1', 'turn.', 'e_heart.png')]),
- 'jcrack': dict(src='p04', body=[('c1', 68.60, 114.20, 960)], A='then his mom took the compliment RIGHT back 😭', hl=['RIGHT'],
-   pops=[('c1', 'cocaine?', 'e_laugh.png'), ('c1', 'Mom.', 'e_sob.png')]),
- 'jnugget': dict(src='p05', body=[('c1', 253.50, 262.10, 960), ('c2', 266.30, 313.00, 960)], A='his mom went to get his McDonald\'s job BACK 😭', hl=['BACK'],
-   pops=[('c2', 'Joseph!', 'e_sob.png'), ('c2', 'nugget!', 'e_laugh.png')]),
- 'jrunaway': dict(src='p07', body=[('c1', 166.90, 216.00, 960)], A='the shelter waited until he SIGNED to tell him this 💀', hl=['SIGNED'],
-   pops=[('c1', 'runaway.', 'e_laugh.png'), ('c1', 'laughed.', 'e_sob.png')]),
- 'jblue': dict(src='p12', body=[('c1', 49.00, 61.00, 960), ('c2', 190.10, 214.80, 960)], A='where the title "Blue in the Face" came from 🥹', hl=[],
-   pops=[('c2', 'face.', 'e_heart.png')]),
+ 'jnug2': dict(src='p05', body=[('c1', 0.70, 34.00, 960), ('c2', 43.60, 69.80, 960)], A='why Jo Koy got FIRED from McDonald\'s 😭', hl=['FIRED'],
+   pops=[('c1', 'pocket', 'e_laugh.png'), ('c2', 'stealing', 'e_sob.png')]),
+ 'jdog': dict(src='p06', body=[('c1', 24.40, 31.90, 960), ('c2', 46.00, 97.80, 960)], A='if you don\'t like dogs, Jo Koy has a message for YOU 😭', hl=['YOU'],
+   pops=[('c2', 'huh?', 'e_laugh.png'), ('c2', 'you.', 'e_sob.png')]),
+ 'jturkey': dict(src='p06', body=[('c1', 114.62, 146.90, 960)], A='what your dog will do for ONE turkey treat 😭', hl=['ONE'],
+   pops=[('c1', 'body', 'e_laugh.png'), ('c1', 'enough?', 'e_sob.png')]),
+ 'jmama': dict(src='p10', body=[('c1', 141.40, 162.80, 1150), ('c2', 166.40, 203.50, 1150)], A='his war-hero stepdad\'s deepest confession 😭', hl=[],
+   pops=[('c2', 'mama.', 'e_sob.png')]),
+ 'jsnow': dict(src='p09', body=[('c1', 71.30, 130.30, 960)], A='why his stepdad lied to go to war at 17 😭', hl=['17'],
+   pops=[('c1', 'ass?', 'e_laugh.png'), ('c1', 'military.', 'e_sob.png')]),
 }
 E = {}
 for k, d in CL.items():
@@ -55,9 +53,9 @@ for k, d in CL.items():
                 extras=ex, focus=dict(x=540, y=330, r=180, dur=20))
 VO = sys.argv[3]
 
-W = {v: [w for s in json.load(open(f'{TX}/{v}.json')) for w in s['w']] for v in ('p04', 'p05', 'p07', 'p12')}
+W = {v: [w for s in json.load(open(f'{TX}/{v}.json')) for w in s['w']] for v in ('p05', 'p06', 'p09', 'p10')}
 FIXED = []
-CUTS = {v: [float(x) for x in open(os.path.join(os.path.dirname(DL.rstrip('/')), f'cuts_{v}.txt'))] for v in ('p04', 'p05', 'p07', 'p12')}
+CUTS = {v: [float(x) for x in open(os.path.join(os.path.dirname(DL.rstrip('/')), f'cuts_{v}.txt'))] for v in ('p05', 'p06', 'p09', 'p10')}
 def snap(sid, v, a, b):
     """user rules: never cut a line mid-sentence (start before the first word, run until the speaker pauses),
     and no sub-0.5 s slivers of another camera angle at either end (snap onto the show's own cut)."""
@@ -89,7 +87,7 @@ for eid, spec in E.items():
     short = vd + 0.15 - sum(s[3] - s[2] for s in intro)
     if short > 0:                            # intro must cover the narrator line
         k = spec['scenes'].index(intro[-1]); sid, v, a, b, cx = intro[-1]; spec['scenes'][k] = (sid, v, a, round(b + short, 2), cx); print(f'  {eid}: intro +{short:.2f}s')
-FOC = {'jdoit': (540, 180, 120), 'jcrack': (540, 200, 120), 'jnugget': (540, 220, 110), 'jrunaway': (560, 330, 170), 'jblue': (560, 300, 170)}
+FOC = {'jnug2': (540, 160, 130), 'jdog': (560, 230, 110), 'jturkey': (530, 230, 130), 'jmama': (620, 340, 120), 'jsnow': (560, 200, 120)}
 _FOC_OLD = {'tjump': (335, 190, 150), 'tmex': (340, 220, 150), 'tcomfy': (280, 240, 150), 'tbed': (280, 240, 150), 'tspend': (660, 200, 150), 'tnotyours': (620, 240, 150), 'tkid': (360, 300, 150), 'tfeels': (660, 240, 150), 'tnap': (280, 240, 150), 'tbiggest': (660, 200, 150)}
 gen = json.load(open('src/edits.gen.json')); CFG = {}
 for eid, spec in E.items():
