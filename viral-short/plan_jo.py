@@ -22,7 +22,7 @@ def vert(v):
 def aidx(v): return ([i for i, x in enumerate(x for x in probe(v) if x['codec_type'] == 'audio') if x.get('codec_name') not in (None, 'unknown', 'none')] or [None])[0]
 G, R = 'G', 'R'; Y = '#FFE14A'; W_ = '#FFFFFF'; RD = '#FF2A2A'; GR = '#58EE28'
 def txt(at, text, color=Y, size=100, off=0, y=560, dur=30): return dict(at=at, kind='txt', file=text, color=color, size=size, off=off, dur=dur, y=y)
-def pop(at, f, react=None, off=0): return dict(at=at, kind='png', file=f, off=off, y=800, size=380, **({'sfx': react, 'sv': 0.45} if react else {}))
+def pop(at, f, react=None, off=0, y=800, size=380): return dict(at=at, kind='png', file=f, off=off, y=y, size=size, **({'sfx': react, 'sv': 0.45} if react else {}))
 def ov(at, f, sfx, dur=34, op=0.5, off=0): return dict(at=at, kind='ov', file=f, dur=dur, sfx=sfx, sv=0.45, op=op, off=off)
 def sfx(at, f, v=0.5, off=0): return dict(at=at, kind='sfx', file=f, v=v, off=off)
 
@@ -39,7 +39,7 @@ CL = {
  'jsniff': dict(src='p06', body=[('c1', 166.10, 178.70, 960), ('c2', 196.40, 243.50, 960)], A='why you should ALWAYS trust your dog\'s first impression 🐶', hl=['ALWAYS'],
    pops=[('c1', 'Who', 'e_laugh.png'), ('c2', 'dude', 'e_sob.png')]),
  'jcamo': dict(src='p02', body=[('c1', 119.20, 135.60, 960), ('c2', 152.30, 162.10, 960), ('c3', 172.30, 176.75, 960), ('c4', 184.20, 213.20, 960)],
-   A='he knocked out 5 teeth and the ARMY dentist fixed it 💀', hl=['ARMY'], pops=[('c1', 'kill', 'e_sob.png'), ('c4', 'drill', 'e_laugh.png')]),
+   A='he knocked out 5 teeth and the ARMY dentist fixed it 💀', hl=['ARMY'], pops=[('c1', 'kill', 'e_sob.png'), ('c4', 'drill', 'e_laugh.png', dict(y=1320, size=300))]),
  'jrodeo': dict(src='p03', body=[('c1', 175.15, 216.00, 960)], A='his celebrity dentist\'s REACTION to his teeth 💀', hl=['REACTION'],
    pops=[('c1', 'punch', 'e_sob.png'), ('c1', 'Vicks', 'e_laugh.png')]),
  'jmix': dict(src='p07', body=[('c1', 61.45, 119.60, 960)], A='nobody knows what breed his shelter dog is 😭', hl=['breed'],
@@ -49,7 +49,7 @@ CL = {
 }
 E = {}
 for k, d in CL.items():
-    ex = [pop([s, w], e, None, off=2) for s, w, e in d['pops']]
+    ex = [pop([s, w], e, None, off=2, **(o[0] if o else {})) for s, w, e, *o in d['pops']]
     E[k] = dict(vo=None, scenes=[(s, d['src'], a, b, cx) for s, a, b, cx in d['body']], fixed=[s for s, *_ in d['body']], mute=[], zoom={},
                 circles=[], noSkull=True, ask=[], tints=[], rizz=[], blowouts=[], blackFlash=[], streaks=[], punch=[], top=d['A'], hl={w: RD for w in d['hl']},
                 extras=ex, focus=dict(x=540, y=330, r=180, dur=20))

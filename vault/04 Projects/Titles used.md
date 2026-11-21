@@ -253,3 +253,8 @@
 - Jo Koy did the math on his first McDonald's paycheck 💀 (Jo Koy jpay)
 - "dogs are expensive, Jo"… his answer 😭 (Jo Koy jgucci)
 - he knocked out his front teeth as a kid… then Oprah 😭 (Jo Koy jtooth)
+- his dog sniffed the new guy once and KNEW 🐶 (Jo Koy jsniff)
+- the army dentist's genius fix for 5 missing teeth 💀 (Jo Koy jcamo)
+- his celebrity dentist saw his teeth and said THIS 💀 (Jo Koy jrodeo)
+- the shelter swore his dog was a "labradoodle" 😭 (Jo Koy jmix)
+- "it will hold"… the army dentist's promise 💀 (Jo Koy jhold)
