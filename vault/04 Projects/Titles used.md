@@ -243,3 +243,8 @@
 - bro listed his runways like a RESUME 💀 (YoungLA meme mhm)
 - "what's the FIRST thing you'd buy?" 💀 (YoungLA meme mtoes)
 - jay cutler's review was BRUTAL 💀 (YoungLA meme mjay)
+- why Jo Koy got FIRED from McDonald's 😭 (Jo Koy jnug2)
+- if you don't like dogs, Jo Koy has a message for YOU 😭 (Jo Koy jdog)
+- what your dog will do for ONE turkey treat 😭 (Jo Koy jturkey)
+- his war-hero stepdad's deepest confession 😭 (Jo Koy jmama)
+- why his stepdad lied to go to war at 17 😭 (Jo Koy jsnow)
