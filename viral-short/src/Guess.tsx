@@ -28,7 +28,7 @@ type Cfg = {top: string; cta: string; label: string; track: Record<string, numbe
   teaser?: {a: number; b: number; x: number; z: number; y: number; until: Ref}; hardcut?: boolean;
   extras?: {at: Ref; kind: 'png' | 'ov' | 'sfx' | 'txt'; file: string; off?: number; color?: string; op?: number; v?: number; dur?: number; x?: number; y?: number; size?: number; sfx?: string; sv?: number}[]; cutSfx?: string;
   focus?: {x: number; y: number; r: number; dur: number}; sat?: number; ask?: {at: Ref; text: string}[]; progress?: boolean; popMid?: boolean; sub?: string; ctaEnd?: boolean;
-  wm?: {file: string; x: number; y: number; w: number}; topY?: number; srcVol?: number; noSkull?: boolean; fxOff?: boolean; whip?: boolean; capCycle?: boolean; vo?: {file: string; vol?: number}};
+  wm?: {file: string; x: number; y: number; w: number}; topY?: number; srcVol?: number; noSkull?: boolean; fxOff?: boolean; origAudio?: boolean; whip?: boolean; capCycle?: boolean; vo?: {file: string; vol?: number}};
 
 export const EDITS: Record<string, Cfg> = {
   bowling: {top: 'Guess the LARPER millionaire', cta: '*real millionaire or LARP?*', label: '*Hulk*', track: HULK, music: 20,
@@ -140,8 +140,8 @@ import T_CLOWN_SOL from './tracks/clown_sol.json';
 const V5_TRACKS: Record<string, Record<string, number[]>> = {iron: IRONREVEAL as Record<string, number[]>, gift: T_GIFT, merch: T_MERCH, pissed: T_PISSED, hulk: HULK,
   chant_iron: T_CHANT_IRON, solstice: T_CLOWN_SOL};
 Object.entries({...V5, ...V6, ...R3, ...TV, ...R3B, ...X, ...R3F, ...R3G, ...MJ, ...FP, ...R3Z, ...R3SUS, ...R3T, ...ARENA, ...CLASH, ...YLA, ...KITSCH, ...NAR, ...V2, ...TREN} as unknown as Record<string, {top: string; hl: Record<string, string>; cta: string; music: [string, number]; ctaAt: Ref; track: string; calls: [number, number, string][];
-  tints: [Ref, string][]; rizz: Ref[]; punch: Ref[]; blowouts: Ref[]; blackFlash: Ref[]; streaks: Ref[]; src?: string; teaser?: Cfg['teaser']; hardcut?: boolean; extras?: Cfg['extras']; cutSfx?: string; wm?: Cfg['wm']; topY?: number; srcVol?: number; noSkull?: boolean; fxOff?: boolean; trackData?: Record<string, number[]>; sat?: number; ask?: Cfg['ask']; progress?: boolean; popMid?: boolean; sub?: string; ctaEnd?: boolean; focus?: Cfg['focus']; whip?: boolean; capCycle?: boolean; vo?: Cfg['vo']}>).forEach(([id, a]) => {
-  EDITS[id] = {whip: a.whip, capCycle: a.capCycle, vo: a.vo, focus: a.focus, ctaEnd: a.ctaEnd, sub: a.sub, sat: a.sat, ask: a.ask, progress: a.progress, popMid: a.popMid, wm: a.wm, topY: a.topY, srcVol: a.srcVol, noSkull: a.noSkull, fxOff: a.fxOff, extras: a.extras, cutSfx: a.cutSfx, hardcut: a.hardcut, teaser: a.teaser, src: a.src, subBand: a.src ? [1, 0] : undefined, top: a.top, hl: a.hl, cta: a.cta, label: '', track: a.trackData ?? V5_TRACKS[a.track] ?? {}, music: a.music[1], musicFile: a.music[0], musicVol: (a as {musicVol?: number}).musicVol ?? 0.53, loop: !(a as {intro?: boolean}).intro, pushIn: true,
+  tints: [Ref, string][]; rizz: Ref[]; punch: Ref[]; blowouts: Ref[]; blackFlash: Ref[]; streaks: Ref[]; src?: string; teaser?: Cfg['teaser']; hardcut?: boolean; extras?: Cfg['extras']; cutSfx?: string; wm?: Cfg['wm']; topY?: number; srcVol?: number; noSkull?: boolean; fxOff?: boolean; trackData?: Record<string, number[]>; sat?: number; ask?: Cfg['ask']; progress?: boolean; popMid?: boolean; sub?: string; ctaEnd?: boolean; focus?: Cfg['focus']; origAudio?: boolean; whip?: boolean; capCycle?: boolean; vo?: Cfg['vo']}>).forEach(([id, a]) => {
+  EDITS[id] = {origAudio: a.origAudio, whip: a.whip, capCycle: a.capCycle, vo: a.vo, focus: a.focus, ctaEnd: a.ctaEnd, sub: a.sub, sat: a.sat, ask: a.ask, progress: a.progress, popMid: a.popMid, wm: a.wm, topY: a.topY, srcVol: a.srcVol, noSkull: a.noSkull, fxOff: a.fxOff, extras: a.extras, cutSfx: a.cutSfx, hardcut: a.hardcut, teaser: a.teaser, src: a.src, subBand: a.src ? [1, 0] : undefined, top: a.top, hl: a.hl, cta: a.cta, label: '', track: a.trackData ?? V5_TRACKS[a.track] ?? {}, music: a.music[1], musicFile: a.music[0], musicVol: (a as {musicVol?: number}).musicVol ?? 0.53, loop: !(a as {intro?: boolean}).intro, pushIn: true,
     ctaAt: a.ctaAt, calls: a.calls, tints: a.tints.map(([r, c]) => [r, c === 'G' ? GREEN : RED] as [Ref, string]), rizz: a.rizz, punch: a.punch,
     blowouts: a.blowouts, blackFlash: a.blackFlash, streaks: a.streaks};
 });
@@ -327,8 +327,9 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
         </div></div>; })()}
     {/* campaign watermark: whole video, drawn last so nothing ever covers it */}
     {cfg.wm && <Img src={staticFile(`res/${cfg.wm.file}`)} style={{position: 'absolute', left: cfg.wm.x, top: cfg.wm.y, width: cfg.wm.w}} />}
-    <Audio src={staticFile(`res/${cfg.musicFile ?? 'goodbye'}.mp3`)} startFrom={cfg.music * fps} volume={cfg.musicVol ?? 0.09} loop />
+    {/* origAudio: campaign allows original audio only (no music, no SFX) */}
+    {!cfg.origAudio && <Audio src={staticFile(`res/${cfg.musicFile ?? 'goodbye'}.mp3`)} startFrom={cfg.music * fps} volume={cfg.musicVol ?? 0.09} loop />}
     {cfg.vo && <Audio src={staticFile(`res/${cfg.vo.file}`)} volume={cfg.vo.vol ?? 1} />}
-    {FX.map(([file, t, v], i) => <Sequence key={i} from={Math.max(0, t)}><Audio src={staticFile(`res/${file}`)} volume={v} /></Sequence>)}
+    {!cfg.origAudio && FX.map(([file, t, v], i) => <Sequence key={i} from={Math.max(0, t)}><Audio src={staticFile(`res/${file}`)} volume={v} /></Sequence>)}
   </AbsoluteFill>;
 };
