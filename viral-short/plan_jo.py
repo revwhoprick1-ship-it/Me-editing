@@ -37,7 +37,7 @@ def sfx(at, f, v=0.5, off=0): return dict(at=at, kind='sfx', file=f, v=v, off=of
 CL = {
  'jwipe': dict(src='p10', body=[('c1', 2.95, 10.95, 1150), ('c2', 40.72, 56.85, 1150)], A='the army told his stepdad "you can go home"… he said THIS 💀', hl=['THIS'],
    pops=[('c2', 'ass', 'e_laugh.png'), ('c2', '22', 'e_sob.png')]),
- 'jwhiskey': dict(src='p10', body=[('c1', 90.45, 120.00, 1150)], A='his stepdad\'s idea of bonding at 18 😭', hl=['18'],
+ 'jwhiskey': dict(src='p10', body=[('c1', 90.45, 120.00, 960)], A='his stepdad\'s idea of bonding at 18 😭', hl=['18'],
    pops=[('c1', 'motherfucker', 'e_laugh.png'), ('c1', 'gout', 'e_sob.png')]),
  'jpay': dict(src='p04', body=[('c1', 230.60, 246.05, 960), ('c2', 248.40, 259.35, 960), ('c3', 261.55, 291.30, 960)], A='Jo Koy did the math on his first McDonald\'s paycheck 💀', hl=['MATH'],
    pops=[('c1', 'sign?', 'e_laugh.png'), ('c3', 'clown', 'e_sob.png')]),
