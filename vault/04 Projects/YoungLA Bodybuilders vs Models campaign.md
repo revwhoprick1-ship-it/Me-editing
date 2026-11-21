@@ -9,3 +9,4 @@
 - Batch 4 (user: batch 3 'just famous people, boring'): compilation format, 3-5 funniest beats per themed clip: hunser, hplanet, hexcuse, hcomm, hreview. Single-moment pool is exhausted after 15 clips.
 - Batch 5 (narrator format from user's viral ref): ncar, nshoot, nstick, nmid, nrun.
 - Batch 6 (user: 10 best clips x 2 unique variants, more SFX): plan_v2.py → v2.cfg.json. A = narrator intro, B = punchline hook + hard cut, different top text; 4-6 reaction SFX per clip.
+- Batch 7 (user: 'be creative, manipulate the clips'): FORMAT edits via plan_yl2.py → yl2.cfg.json — xvs (Marlon vs Jay split top/bottom + face card/aura line + vote), xcars (which car are you taking), xrate (rate every walk 1-10), xbuy (what would you buy first), xmodel (model vs bodybuilder split). Recut real moments into comment-bait formats; never fake what anyone said.
