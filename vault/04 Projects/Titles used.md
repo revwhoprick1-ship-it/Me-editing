@@ -233,3 +233,8 @@
 - his mom went to get his McDonald's job BACK 😭 (Jo Koy jnugget)
 - the shelter waited until he SIGNED to tell him this 💀 (Jo Koy jrunaway)
 - where the title "Blue in the Face" came from 🥹 (Jo Koy jblue)
+- MARLON or JAY CUTLER? top or bottom 👇 (YoungLA xvs)
+- which car are YOU taking? 👇 (YoungLA xcars)
+- rate every runway walk 1-10 👇 (YoungLA xrate)
+- what would YOU buy first with $1,000,000? 👇 (YoungLA xbuy)
+- MODEL walk vs BODYBUILDER walk… who did it better? 👇 (YoungLA xmodel)

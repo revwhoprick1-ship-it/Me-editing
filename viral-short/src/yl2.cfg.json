@@ -346,9 +346,9 @@
   "streaks": [],
   "punch": [],
   "focus": {
-   "x": 480,
+   "x": 880,
    "y": 380,
-   "r": 150,
+   "r": 130,
    "dur": 20
   },
   "top": "what would YOU buy first with $1,000,000? \ud83d\udc47",
@@ -434,9 +434,9 @@
   "streaks": [],
   "punch": [],
   "focus": {
-   "x": 540,
-   "y": 120,
-   "r": 110,
+   "x": 420,
+   "y": 90,
+   "r": 90,
    "dur": 20
   },
   "top": "MODEL walk vs BODYBUILDER walk\u2026 who did it better? \ud83d\udc47",
