@@ -273,3 +273,8 @@
 - Dentist saw his teeth 💀 (Jo Koy jrodv)
 - Army said go home… 💀 (Jo Koy jwipev)
 - Mom asked him THIS 😭 (Jo Koy jcrackv)
+- Mom didn't know WHY he got fired 😭 (Jo Koy jnugw)
+- His dentist almost PUNCHED him 💀 (Jo Koy jrodw)
+- Army sent him home… he said THIS 💀 (Jo Koy jwipew)
+- Mom thinks he's on CRACK 😭 (Jo Koy jcrackw)
+- He got $100K… and ONE plan 💀 (Jo Koy jburgw)

@@ -28,7 +28,7 @@ type Cfg = {top: string; cta: string; label: string; track: Record<string, numbe
   teaser?: {a: number; b: number; x: number; z: number; y: number; until: Ref}; hardcut?: boolean;
   extras?: {at: Ref; kind: 'png' | 'ov' | 'sfx' | 'txt'; file: string; off?: number; color?: string; op?: number; v?: number; dur?: number; x?: number; y?: number; size?: number; sfx?: string; sv?: number}[]; cutSfx?: string;
   focus?: {x: number; y: number; r: number; dur: number}; sat?: number; raw?: boolean; ask?: {at: Ref; text: string}[]; progress?: boolean; popMid?: boolean; sub?: string; ctaEnd?: boolean;
-  wm?: {file: string; x: number; y: number; w: number}; topY?: number; steady?: boolean; noFocus?: boolean; topPop?: Ref; topSize?: number; full?: boolean; bf?: number; capY?: number; srcVol?: number; noSkull?: boolean; fxOff?: boolean; origAudio?: boolean; whip?: boolean; capCycle?: boolean; vo?: {file: string; vol?: number}};
+  wm?: {file: string; x: number; y: number; w: number}; topY?: number; top2?: {text: string; at: number; dur: number}; steady?: boolean; noFocus?: boolean; topPop?: Ref; topSize?: number; full?: boolean; bf?: number; capY?: number; srcVol?: number; noSkull?: boolean; fxOff?: boolean; origAudio?: boolean; whip?: boolean; capCycle?: boolean; vo?: {file: string; vol?: number}};
 
 export const EDITS: Record<string, Cfg> = {
   bowling: {top: 'Guess the LARPER millionaire', cta: '*real millionaire or LARP?*', label: '*Hulk*', track: HULK, music: 20,
@@ -143,8 +143,8 @@ import T_CLOWN_SOL from './tracks/clown_sol.json';
 const V5_TRACKS: Record<string, Record<string, number[]>> = {iron: IRONREVEAL as Record<string, number[]>, gift: T_GIFT, merch: T_MERCH, pissed: T_PISSED, hulk: HULK,
   chant_iron: T_CHANT_IRON, solstice: T_CLOWN_SOL};
 Object.entries({...V5, ...V6, ...R3, ...TV, ...R3B, ...X, ...R3F, ...R3G, ...MJ, ...FP, ...R3Z, ...R3SUS, ...R3T, ...ARENA, ...CLASH, ...YLA, ...KITSCH, ...NAR, ...V2, ...TREN, ...JO, ...YL2, ...YL3} as unknown as Record<string, {top: string; hl: Record<string, string>; cta: string; music: [string, number]; ctaAt: Ref; track: string; calls: [number, number, string][];
-  tints: [Ref, string][]; rizz: Ref[]; punch: Ref[]; blowouts: Ref[]; blackFlash: Ref[]; streaks: Ref[]; src?: string; teaser?: Cfg['teaser']; hardcut?: boolean; extras?: Cfg['extras']; cutSfx?: string; wm?: Cfg['wm']; topY?: number; steady?: boolean; noFocus?: boolean; topPop?: Ref; topSize?: number; full?: boolean; bf?: number; capY?: number; srcVol?: number; noSkull?: boolean; fxOff?: boolean; trackData?: Record<string, number[]>; sat?: number; raw?: boolean; ask?: Cfg['ask']; progress?: boolean; popMid?: boolean; sub?: string; ctaEnd?: boolean; focus?: Cfg['focus']; origAudio?: boolean; whip?: boolean; capCycle?: boolean; vo?: Cfg['vo']}>).forEach(([id, a]) => {
-  EDITS[id] = {origAudio: a.origAudio, whip: a.whip, capCycle: a.capCycle, vo: a.vo, focus: a.focus, ctaEnd: a.ctaEnd, sub: a.sub, sat: a.sat, raw: a.raw, full: a.full, steady: a.steady, noFocus: a.noFocus, topPop: a.topPop, topSize: a.topSize, bf: a.bf, capY: a.capY, ask: a.ask, progress: a.progress, popMid: a.popMid, wm: a.wm, topY: a.topY, srcVol: a.srcVol, noSkull: a.noSkull, fxOff: a.fxOff, extras: a.extras, cutSfx: a.cutSfx, hardcut: a.hardcut, teaser: a.teaser, src: a.src, subBand: a.src ? [1, 0] : undefined, top: a.top, hl: a.hl, cta: a.cta, label: '', track: a.trackData ?? V5_TRACKS[a.track] ?? {}, music: a.music[1], musicFile: a.music[0], musicVol: (a as {musicVol?: number}).musicVol ?? 0.53, loop: !(a as {intro?: boolean}).intro, pushIn: true,
+  tints: [Ref, string][]; rizz: Ref[]; punch: Ref[]; blowouts: Ref[]; blackFlash: Ref[]; streaks: Ref[]; src?: string; teaser?: Cfg['teaser']; hardcut?: boolean; extras?: Cfg['extras']; cutSfx?: string; wm?: Cfg['wm']; topY?: number; top2?: {text: string; at: number; dur: number}; steady?: boolean; noFocus?: boolean; topPop?: Ref; topSize?: number; full?: boolean; bf?: number; capY?: number; srcVol?: number; noSkull?: boolean; fxOff?: boolean; trackData?: Record<string, number[]>; sat?: number; raw?: boolean; ask?: Cfg['ask']; progress?: boolean; popMid?: boolean; sub?: string; ctaEnd?: boolean; focus?: Cfg['focus']; origAudio?: boolean; whip?: boolean; capCycle?: boolean; vo?: Cfg['vo']}>).forEach(([id, a]) => {
+  EDITS[id] = {origAudio: a.origAudio, whip: a.whip, capCycle: a.capCycle, vo: a.vo, focus: a.focus, ctaEnd: a.ctaEnd, sub: a.sub, sat: a.sat, raw: a.raw, full: a.full, steady: a.steady, top2: a.top2, noFocus: a.noFocus, topPop: a.topPop, topSize: a.topSize, bf: a.bf, capY: a.capY, ask: a.ask, progress: a.progress, popMid: a.popMid, wm: a.wm, topY: a.topY, srcVol: a.srcVol, noSkull: a.noSkull, fxOff: a.fxOff, extras: a.extras, cutSfx: a.cutSfx, hardcut: a.hardcut, teaser: a.teaser, src: a.src, subBand: a.src ? [1, 0] : undefined, top: a.top, hl: a.hl, cta: a.cta, label: '', track: a.trackData ?? V5_TRACKS[a.track] ?? {}, music: a.music[1], musicFile: a.music[0], musicVol: (a as {musicVol?: number}).musicVol ?? 0.53, loop: !(a as {intro?: boolean}).intro, pushIn: true,
     ctaAt: a.ctaAt, calls: a.calls, tints: a.tints.map(([r, c]) => [r, c === 'G' ? GREEN : RED] as [Ref, string]), rizz: a.rizz, punch: a.punch,
     blowouts: a.blowouts, blackFlash: a.blackFlash, streaks: a.streaks};
 });
@@ -196,7 +196,7 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
 
   const fi = cfg.loop ? 999 : f;   // loop edits skip the intro so the restart is invisible
   // whip transition on every cut (user: whoosh needs a visual): zoom punch + horizontal motion blur, -2..+5 frames around the cut
-  const WHD = cfg.whip ? SCENES.slice(1).map((s) => f - START[s.id]).find((d) => d >= -2 && d < 6) : undefined;
+  const WHD = cfg.whip ? SCENES.slice(1).filter((s) => !s.id.includes('_')).map((s) => f - START[s.id]).find((d) => d >= -2 && d < 6) : undefined;
   const WBL = [24, 44, 64, 44, 26, 12, 5, 0], WZM = [1.03, 1.07, 1.12, 1.08, 1.04, 1.02, 1.01, 1];
   const hblur0 = fi < 16 && !cfg.noFocus ? interpolate(f, [0, 16], [46, 0], clamp) : (() => { const d = near(STREAKS, f, 4); return d === undefined ? 0 : [70, 48, 26, 8][d]; })();
   const hblur = Math.max(hblur0, WHD === undefined ? 0 : WBL[WHD + 2]);
@@ -218,7 +218,9 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
   // steady (user 2026-11-22: "it keeps zooming in and out… never let that happen"): no whip/intro/punch/push zoom, no shake
   const zoom = cfg.steady ? 1 : (WHD === undefined ? 1 : WZM[WHD + 2]) * (fi < 19 ? interpolate(f, [0, 18], [1.14, 1], clamp) : 1) * Math.max(punch, bfZoom) * push;
   // hook text pops (1.12x -> 1, stays inside the frame) on frame 0 and again on the hook's audio peak word (cfg.topPop)
-  const TP = [0, ...(cfg.topPop ? [at(cfg.topPop)] : [])], tpd = TP.map((t) => f - t).filter((d) => d >= 0 && d < 9).pop();
+  const T2 = cfg.top2 ? Math.round(cfg.top2.at * fps) : -1, T2E = cfg.top2 ? T2 + Math.round(cfg.top2.dur * fps) : -1;
+  const TOP = cfg.top2 && f >= T2 && f < T2E ? cfg.top2.text : cfg.top;
+  const TP = [0, ...(cfg.topPop ? [at(cfg.topPop)] : []), ...(cfg.top2 ? [T2, T2E] : [])], tpd = TP.map((t) => f - t).filter((d) => d >= 0 && d < 9).pop();
   const topPopK = tpd === undefined ? 1 : interpolate(tpd, [0, 3, 6, 8], [1.12, 0.98, 1.01, 1], clamp);
   const shake = cfg.steady ? 0 : pu === 0 ? 8 : pu === 1 ? -5 : 0;
   const top = cfg.full ? 0 : interpolate(fi, [0, 3, 6, 9, 12, 15, 18, 21, 24], [609, 573, 537, 504, 474, 450, 432, 420, BOX_TOP], clamp);
@@ -307,7 +309,7 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
     </div>
     <div style={{position: 'absolute', left: 0, width: 1080, ...(cfg.topY ? {top: cfg.topY} : {bottom: 1920 - top + 3}), display: 'flex', justifyContent: 'center'}}>
       <div style={{fontFamily: MONT, fontWeight: 700, fontSize: cfg.topSize ?? 58, lineHeight: `${Math.round((cfg.topSize ?? 58) * 1.12)}px`, color: 'white', textAlign: 'center', maxWidth: 940, transform: `scale(${topPopK})`, ...(cfg.topY ? {WebkitTextStroke: '7px #000', paintOrder: 'stroke fill', textShadow: '0 3px 8px rgba(0,0,0,0.7)'} : {})}}>
-        {cfg.top.split(' ').slice(0, -1).map((w, i) => <span key={i} style={{color: cfg.hl?.[w] ?? 'white'}}>{w} </span>)}<span style={{whiteSpace: 'nowrap', color: cfg.hl?.[cfg.top.split(' ').pop()!] ?? 'white'}}>{cfg.top.split(' ').pop()}{!cfg.noSkull && <Img src={staticFile('res/skull.png')} style={{width: 50, height: 50, verticalAlign: '-6px', marginLeft: 4}} />}</span>
+        {TOP.split(' ').slice(0, -1).map((w, i) => <span key={i} style={{color: cfg.hl?.[w] ?? (TOP === cfg.top ? 'white' : '#FFE14A')}}>{w} </span>)}<span style={{whiteSpace: 'nowrap', color: cfg.hl?.[TOP.split(' ').pop()!] ?? (TOP === cfg.top ? 'white' : '#FFE14A')}}>{TOP.split(' ').pop()}{!cfg.noSkull && <Img src={staticFile('res/skull.png')} style={{width: 50, height: 50, verticalAlign: '-6px', marginLeft: 4}} />}</span>
       </div>
     </div>
     {cfg.popMid && (cfg.extras ?? []).filter((e) => e.kind === 'png' || e.kind === 'txt').map((e, i) => { const t0 = xat(e), d = e.dur ?? 30, k = f - t0; if (k < 0 || k >= d) return null;

@@ -42,23 +42,26 @@ _CL_B5 = None  # batch 5 (jburger, jden, jbed, jcinna, jcoyote) is in git histor
 _CL_B6 = None  # batch 6 (jdenv, jliev, jcamov, jsniffv, jcoyotev) is in git history
 # batch 7 (user experiment 2026-11-22): hooks planned by Opus, scored by a Haiku sub-agent (rubric: pattern interrupt / curiosity / text-audio sync).
 # short hook text (<6 words) that pops on the hook's peak word (tp); full vertical, lighter grade/flash as batch 6.
+_CL_B7 = None  # batch 7 (jnugv, jburgv, jrodv, jwipev, jcrackv: cold open + rewind) is in git history
+# batch 8 (user 2026-11-22: "50% skipped at 5 s"): NO jump back (forward from the tension), 20-35 s, pauses tightened (tight=True),
+# stakes hook text, open-loop 2nd text line at 3.5 s (t2). steady / no face blur / no SFX as before.
 CL = {
- 'jnugv': dict(src='p05', body=[('hook', 308.85, 312.20, 960), ('c1', 210.90, 216.20, 960), ('c2', 242.05, 252.50, 960), ('c3', 266.35, 274.20, 960), ('c4', 297.60, 314.00, 960)],
-   A="Mom stormed his McDonald's 😭", hl=["McDonald's"], tp=['hook', 'nugget'], pops=[('c2', 'advantage', 'e_sob.png', dict(y=1020, size=260)), ('c4', 'nugget', 'e_laugh.png', dict(y=1020, size=260))]),
- 'jburgv': dict(src='p03', body=[('hook', 107.55, 111.47, 960), ('c1', 88.15, 137.60, 960)],
-   A='His $100K money plan 💀', hl=['$100K'], tp=['hook', "Carl's"], pin=[['hook', 'know']], pops=[('c1', 'cheeseburger', 'e_laugh.png', dict(y=1020, size=260)), ('c1', 'funny.', 'e_sob.png', dict(y=1020, size=260))]),
- 'jrodv': dict(src='p03', body=[('hook', 192.35, 194.20, 960), ('c1', 175.15, 216.00, 960)],
-   A='Dentist saw his teeth 💀', hl=['teeth'], tp=['hook', 'punch'], pops=[('c1', 'punch', 'e_sob.png', dict(y=1020, size=260)), ('c1', 'Vicks', 'e_laugh.png', dict(y=1020, size=260))]),
- 'jwipev': dict(src='p10', body=[('hook', 46.25, 49.20, 960), ('c1', 2.95, 10.95, 960), ('c2', 40.72, 56.85, 960)],
-   A='Army said go home… 💀', hl=['home…'], tp=['hook', 'wipe'], pin=[['hook', 'wipe']], pops=[('c1', 'dangled', 'e_sob.png', dict(y=1020, size=260)), ('c2', 'wipe', 'e_laugh.png', dict(y=1020, size=260))]),
- 'jcrackv': dict(src='p04', body=[('hook', 109.65, 112.65, 960), ('c1', 68.60, 115.20, 960)],
-   A='Mom asked him THIS 😭', hl=['THIS'], tp=['hook', 'crack'], pops=[('c1', 'cocaine?', 'e_laugh.png', dict(y=1020, size=260)), ('c1', 'Bye', 'e_sob.png', dict(y=1020, size=260))]),
+ 'jnugw': dict(src='p05', tight=True, body=[('c1', 210.90, 216.20, 960), ('c2', 242.05, 247.60, 960), ('c3', 266.35, 274.20, 960), ('c4', 297.60, 314.00, 960)],
+   A="Mom didn't know WHY he got fired 😭", hl=['WHY'], t2='wait for the drive-thru guy 💀', pops=[('c2', 'advantage', 'e_sob.png', dict(y=1020, size=260)), ('c4', 'nugget', 'e_laugh.png', dict(y=1020, size=260))]),
+ 'jrodw': dict(src='p03', tight=True, body=[('c1', 182.85, 216.00, 960)],
+   A='His dentist almost PUNCHED him 💀', hl=['PUNCHED'], t2='wait for the smell 😭', pops=[('c1', 'punch', 'e_sob.png', dict(y=1020, size=260)), ('c1', 'Vicks', 'e_laugh.png', dict(y=1020, size=260))]),
+ 'jwipew': dict(src='p10', tight=True, body=[('c1', 2.95, 10.95, 960), ('c2', 40.72, 56.85, 960)],
+   A='Army sent him home… he said THIS 💀', hl=['THIS'], t2='wait for his answer 😭', pops=[('c1', 'dangled', 'e_sob.png', dict(y=1020, size=260)), ('c2', 'wipe', 'e_laugh.png', dict(y=1020, size=260))]),
+ 'jcrackw': dict(src='p04', tight=True, body=[('c1', 80.30, 114.20, 960)],
+   A="Mom thinks he's on CRACK 😭", hl=['CRACK'], t2="wait for mom's question 😭", pops=[('c1', 'cocaine?', 'e_laugh.png', dict(y=1020, size=260)), ('c1', 'Bye', 'e_sob.png', dict(y=1020, size=260))]),
+ 'jburgw': dict(src='p03', tight=True, body=[('c1', 91.30, 97.40, 960), ('c2', 102.95, 137.60, 960)],
+   A='He got $100K… and ONE plan 💀', hl=['ONE'], t2='wait for the math 😭', pops=[('c2', 'cheeseburger', 'e_laugh.png', dict(y=1020, size=260)), ('c2', 'funny.', 'e_sob.png', dict(y=1020, size=260))]),
 }
 E = {}
 for k, d in CL.items():
     ex = [pop([s, w], e, None, off=2, **(o[0] if o else {})) for s, w, e, *o in d['pops']]
     E[k] = dict(vo=None, scenes=[(s, d['src'], a, b, cx) for s, a, b, cx in d['body']], fixed=[s for s, *_ in d['body']], mute=[], zoom={},
-                circles=[], noSkull=True, ask=[], tints=[], rizz=[], blowouts=[], blackFlash=[], streaks=[], punch=d.get('pin', []), top=d['A'], hl={w: RD for w in d['hl']}, topPop=d.get('tp'), topSize=d.get('ts', 64),
+                circles=[], noSkull=True, ask=[], tints=[], rizz=[], blowouts=[], blackFlash=[], streaks=[], punch=d.get('pin', []), top=d['A'], hl={w: RD for w in d['hl']}, topPop=d.get('tp'), topSize=d.get('ts', 64), top2=d.get('t2'), tight=d.get('tight', False),
                 extras=ex, focus=dict(x=540, y=330, r=180, dur=20))
 VO = sys.argv[3]
 FULL = '--full' in sys.argv
@@ -105,6 +108,47 @@ FOC = {k: (540, 700, 170) for k in CL}   # full mode: refined from the head trac
 _FOC_B3 = {'jwipe': (600, 300, 120), 'jwhiskey': (600, 300, 120), 'jpay': (540, 230, 120), 'jgucci': (540, 230, 120), 'jtooth': (540, 230, 120)}
 _FOC_B2 = {'jnug2': (540, 160, 130), 'jdog': (560, 230, 110), 'jturkey': (530, 230, 130), 'jmama': (620, 340, 120), 'jsnow': (560, 200, 120)}
 _FOC_OLD = {'tjump': (335, 190, 150), 'tmex': (340, 220, 150), 'tcomfy': (280, 240, 150), 'tbed': (280, 240, 150), 'tspend': (660, 200, 150), 'tnotyours': (620, 240, 150), 'tkid': (360, 300, 150), 'tfeels': (660, 240, 150), 'tnap': (280, 240, 150), 'tbiggest': (660, 200, 150)}
+# --- pause tightening (user: "tighten pauses"): silence > 0.6 s between Jo's words -> 0.3 s; crowd laugh gaps keep up to 2.2 s
+# (cut from the laugh's tail). Never inside a word; no sub-0.6 s pieces. Sub-scenes are '<sid>_<n>' (no whip/flash on them).
+_DB = {}
+def _db(v):
+    if v not in _DB:
+        x = np.frombuffer(subprocess.run(['ffmpeg', '-v', 'error', '-i', src(v), '-ac', '1', '-ar', '16000', '-f', 'f32le', '-'], capture_output=True).stdout, np.float32)
+        k = len(x) // 800; d = 20 * np.log10(np.sqrt((x[:k * 800].reshape(k, 800) ** 2).mean(1)) + 1e-6); _DB[v] = (d, np.percentile(d, 20))
+    return _DB[v]
+for eid, spec in E.items():
+    if not spec.get('tight'): continue
+    out, remap = [], {}
+    for sid, v, a, b, cx in spec['scenes']:
+        ws = [w for w in W[v] if w[0] >= a - 0.02 and w[0] < b]; d, fl = _db(v); cuts = []
+        for w1, w2 in zip(ws, ws[1:]):
+            g = w2[0] - w1[1]
+            if g < 0.6: continue
+            seg = d[int(w1[1] * 20):int(w2[0] * 20)]; laugh = len(seg) and float(np.mean(seg > fl + 9)) > 0.5
+            keep = 2.2 if laugh else 0.3
+            if g <= keep + 0.25: continue
+            cuts.append((w1[1] + keep - 0.15, w2[0] - 0.15) if laugh else (w1[1] + 0.15, w2[0] - 0.15))
+        segs, cur = [], a
+        for x, y in cuts: segs.append([cur, x]); cur = y
+        segs.append([cur, b])
+        i = 0
+        while i < len(segs) - 1:                      # merge slivers
+            if segs[i][1] - segs[i][0] < 0.6 or segs[i + 1][1] - segs[i + 1][0] < 0.6: segs[i][1] = segs[i + 1][1]; del segs[i + 1]
+            else: i += 1
+        for n, (x, y) in enumerate(segs):
+            nid = sid if n == 0 else f'{sid}_{n}'; out.append((nid, v, round(x, 2), round(y, 2), cx))
+            remap.setdefault(sid, []).append((nid, x, y))
+    before = sum(b - a for _, _, a, b, _ in spec['scenes']); spec['scenes'] = out; spec['fixed'] = [s for s, *_ in out]
+    print(f'  tight {eid}: {before:.1f}s -> {sum(b - a for _, _, a, b, _ in out):.1f}s in {len(out)} pieces')
+    def rm(r):
+        if not r or len(r) < 2 or r[0] not in remap: return r
+        v = spec['scenes'][0][1]
+        for nid, x, y in remap[r[0]]:
+            if any(x - 0.05 <= w[0] < y - 0.05 and w[2].strip().lower().startswith(r[1].lower()) for w in W[v]): return [nid, r[1], *r[2:]]
+        return r
+    for e in spec['extras']: e['at'] = rm(e['at'])
+    if spec.get('topPop'): spec['topPop'] = rm(spec['topPop'])
+
 gen = json.load(open('src/edits.gen.json')); CFG = {}
 for eid, spec in E.items():
     scenes, t = [], 0.0
@@ -183,6 +227,8 @@ for eid, spec in E.items():
         assert r[0] in sc, (eid, r)
         if len(r) > 1: assert [w for w in sc[r[0]]['words'] if w['word'].lower().startswith(r[1].lower())], (eid, r, [w['word'] for w in sc[r[0]]['words']])
     if FULL: c.update(full=True, bf=0.02, capY=1250, topY=1430, sat=1.0)
+    if spec.get('tight'): c.update(hardcut=False)
+    if spec.get('top2'): c['top2'] = dict(text=spec['top2'], at=3.5, dur=3.5)
     c['steady'] = True; c['punch'] = []   # user rule: never zoom in and out (no whip/punch/intro zoom)
     c['noFocus'] = True; c.pop('focus', None)   # user rule 2026-11-22: face blur removed, never use it again
     c['ask'] = []  # user: nothing under the video (no ask pill / promo line / progress bar)

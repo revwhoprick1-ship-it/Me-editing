@@ -1,5 +1,5 @@
 {
- "jnugv": {
+ "jnugw": {
   "noSkull": true,
   "ask": [],
   "tints": [],
@@ -8,15 +8,18 @@
   "blackFlash": [],
   "streaks": [],
   "punch": [],
-  "top": "Mom stormed his McDonald's \ud83d\ude2d",
+  "top": "Mom didn't know WHY he got fired \ud83d\ude2d",
   "hl": {
-   "McDonald's": "#FF2A2A"
+   "WHY": "#FF2A2A"
   },
-  "topPop": [
-   "hook",
-   "nugget"
-  ],
+  "topPop": null,
   "topSize": 64,
+  "top2": {
+   "text": "wait for the drive-thru guy \ud83d\udc80",
+   "at": 3.5,
+   "dur": 3.5
+  },
+  "tight": true,
   "extras": [
    {
     "at": [
@@ -31,7 +34,7 @@
    },
    {
     "at": [
-     "c4",
+     "c4_2",
      "nugget"
     ],
     "kind": "png",
@@ -42,7 +45,7 @@
    },
    {
     "at": [
-     "c2"
+     "c3"
     ],
     "kind": "sfx",
     "file": "s_whoosh.mp3",
@@ -51,7 +54,16 @@
    },
    {
     "at": [
-     "c3"
+     "c3_1"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c3_2"
     ],
     "kind": "sfx",
     "file": "s_whoosh.mp3",
@@ -66,76 +78,24 @@
     "file": "s_whoosh.mp3",
     "v": 0.45,
     "off": 0
-   }
-  ],
-  "music": [
-   "goodbye_n",
-   0
-  ],
-  "origAudio": true,
-  "vo": null,
-  "capCycle": true,
-  "whip": true,
-  "trackData": {},
-  "cta": "",
-  "track": "none",
-  "calls": [],
-  "src": "g67_jnugv.mp4",
-  "intro": false,
-  "hardcut": true,
-  "cutSfx": "s_whoosh.mp3",
-  "sat": 1.0,
-  "progress": false,
-  "popMid": true,
-  "srcVol": 1,
-  "musicVol": 0.28,
-  "full": true,
-  "bf": 0.02,
-  "capY": 1250,
-  "topY": 1430,
-  "steady": true,
-  "noFocus": true
- },
- "jburgv": {
-  "noSkull": true,
-  "ask": [],
-  "tints": [],
-  "rizz": [],
-  "blowouts": [],
-  "blackFlash": [],
-  "streaks": [],
-  "punch": [],
-  "top": "His $100K money plan \ud83d\udc80",
-  "hl": {
-   "$100K": "#FF2A2A"
-  },
-  "topPop": [
-   "hook",
-   "Carl's"
-  ],
-  "topSize": 64,
-  "extras": [
-   {
-    "at": [
-     "c1",
-     "cheeseburger"
-    ],
-    "kind": "png",
-    "file": "e_laugh.png",
-    "off": 2,
-    "y": 1020,
-    "size": 260
    },
    {
     "at": [
-     "c1",
-     "funny."
+     "c4_1"
     ],
-    "kind": "png",
-    "file": "e_sob.png",
-    "off": 2,
-    "y": 1020,
-    "size": 260
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c4_2"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
    }
   ],
   "music": [
@@ -150,9 +110,9 @@
   "cta": "",
   "track": "none",
   "calls": [],
-  "src": "g67_jburgv.mp4",
+  "src": "g67_jnugw.mp4",
   "intro": false,
-  "hardcut": true,
+  "hardcut": false,
   "cutSfx": "s_whoosh.mp3",
   "sat": 1.0,
   "progress": false,
@@ -166,7 +126,7 @@
   "steady": true,
   "noFocus": true
  },
- "jrodv": {
+ "jrodw": {
   "noSkull": true,
   "ask": [],
   "tints": [],
@@ -175,15 +135,18 @@
   "blackFlash": [],
   "streaks": [],
   "punch": [],
-  "top": "Dentist saw his teeth \ud83d\udc80",
+  "top": "His dentist almost PUNCHED him \ud83d\udc80",
   "hl": {
-   "teeth": "#FF2A2A"
+   "PUNCHED": "#FF2A2A"
   },
-  "topPop": [
-   "hook",
-   "punch"
-  ],
+  "topPop": null,
   "topSize": 64,
+  "top2": {
+   "text": "wait for the smell \ud83d\ude2d",
+   "at": 3.5,
+   "dur": 3.5
+  },
+  "tight": true,
   "extras": [
    {
     "at": [
@@ -206,6 +169,15 @@
     "off": 2,
     "y": 1020,
     "size": 260
+   },
+   {
+    "at": [
+     "c1_2"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
    }
   ],
   "music": [
@@ -220,9 +192,9 @@
   "cta": "",
   "track": "none",
   "calls": [],
-  "src": "g67_jrodv.mp4",
+  "src": "g67_jrodw.mp4",
   "intro": false,
-  "hardcut": true,
+  "hardcut": false,
   "cutSfx": "s_whoosh.mp3",
   "sat": 1.0,
   "progress": false,
@@ -236,7 +208,7 @@
   "steady": true,
   "noFocus": true
  },
- "jwipev": {
+ "jwipew": {
   "noSkull": true,
   "ask": [],
   "tints": [],
@@ -245,15 +217,18 @@
   "blackFlash": [],
   "streaks": [],
   "punch": [],
-  "top": "Army said go home\u2026 \ud83d\udc80",
+  "top": "Army sent him home\u2026 he said THIS \ud83d\udc80",
   "hl": {
-   "home\u2026": "#FF2A2A"
+   "THIS": "#FF2A2A"
   },
-  "topPop": [
-   "hook",
-   "wipe"
-  ],
+  "topPop": null,
   "topSize": 64,
+  "top2": {
+   "text": "wait for his answer \ud83d\ude2d",
+   "at": 3.5,
+   "dur": 3.5
+  },
+  "tight": true,
   "extras": [
    {
     "at": [
@@ -285,6 +260,15 @@
     "file": "s_whoosh.mp3",
     "v": 0.45,
     "off": 0
+   },
+   {
+    "at": [
+     "c2_1"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
    }
   ],
   "music": [
@@ -299,9 +283,9 @@
   "cta": "",
   "track": "none",
   "calls": [],
-  "src": "g67_jwipev.mp4",
+  "src": "g67_jwipew.mp4",
   "intro": false,
-  "hardcut": true,
+  "hardcut": false,
   "cutSfx": "s_whoosh.mp3",
   "sat": 1.0,
   "progress": false,
@@ -315,7 +299,7 @@
   "steady": true,
   "noFocus": true
  },
- "jcrackv": {
+ "jcrackw": {
   "noSkull": true,
   "ask": [],
   "tints": [],
@@ -324,19 +308,22 @@
   "blackFlash": [],
   "streaks": [],
   "punch": [],
-  "top": "Mom asked him THIS \ud83d\ude2d",
+  "top": "Mom thinks he's on CRACK \ud83d\ude2d",
   "hl": {
-   "THIS": "#FF2A2A"
+   "CRACK": "#FF2A2A"
   },
-  "topPop": [
-   "hook",
-   "crack"
-  ],
+  "topPop": null,
   "topSize": 64,
+  "top2": {
+   "text": "wait for mom's question \ud83d\ude2d",
+   "at": 3.5,
+   "dur": 3.5
+  },
+  "tight": true,
   "extras": [
    {
     "at": [
-     "c1",
+     "c1_1",
      "cocaine?"
     ],
     "kind": "png",
@@ -347,7 +334,7 @@
    },
    {
     "at": [
-     "c1",
+     "c1_1",
      "Bye"
     ],
     "kind": "png",
@@ -369,9 +356,136 @@
   "cta": "",
   "track": "none",
   "calls": [],
-  "src": "g67_jcrackv.mp4",
+  "src": "g67_jcrackw.mp4",
   "intro": false,
-  "hardcut": true,
+  "hardcut": false,
+  "cutSfx": "s_whoosh.mp3",
+  "sat": 1.0,
+  "progress": false,
+  "popMid": true,
+  "srcVol": 1,
+  "musicVol": 0.28,
+  "full": true,
+  "bf": 0.02,
+  "capY": 1250,
+  "topY": 1430,
+  "steady": true,
+  "noFocus": true
+ },
+ "jburgw": {
+  "noSkull": true,
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "punch": [],
+  "top": "He got $100K\u2026 and ONE plan \ud83d\udc80",
+  "hl": {
+   "ONE": "#FF2A2A"
+  },
+  "topPop": null,
+  "topSize": 64,
+  "top2": {
+   "text": "wait for the math \ud83d\ude2d",
+   "at": 3.5,
+   "dur": 3.5
+  },
+  "tight": true,
+  "extras": [
+   {
+    "at": [
+     "c2",
+     "cheeseburger"
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 2,
+    "y": 1020,
+    "size": 260
+   },
+   {
+    "at": [
+     "c2_2",
+     "funny."
+    ],
+    "kind": "png",
+    "file": "e_sob.png",
+    "off": 2,
+    "y": 1020,
+    "size": 260
+   },
+   {
+    "at": [
+     "c1_2"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2_1"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2_2"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2_3"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2_4"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   }
+  ],
+  "music": [
+   "goodbye_n",
+   0
+  ],
+  "origAudio": true,
+  "vo": null,
+  "capCycle": true,
+  "whip": true,
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_jburgw.mp4",
+  "intro": false,
+  "hardcut": false,
   "cutSfx": "s_whoosh.mp3",
   "sat": 1.0,
   "progress": false,
