@@ -43,6 +43,6 @@ for eid in sys.argv[1:]:
     i0 = 0; q = det[i0] or next((q for q in det if q), None)
     if q:
         z, cy = Z[i0], Y[i0]; fx = 540 + (q[0] - X[i0]) * KF * z; fy = 960 + (q[1] + 60 - cy) * KF * z
-        cfg[eid]['focus'] = dict(x=int(fx), y=int(fy), r=int(170 * z), dur=20)
+        pass   # face-focus blur retired (user rule): nothing written
     print(eid, 'frames', T, 'shots', len(bounds) - 1, 'wide', round(float((Z > 1).mean()), 2), 'focus', cfg[eid].get('focus'))
 json.dump(gen, open('src/edits.gen.json', 'w')); json.dump(cfg, open('src/jo.cfg.json', 'w'), indent=1)

@@ -68,12 +68,6 @@
     "off": 0
    }
   ],
-  "focus": {
-   "x": 558,
-   "y": 405,
-   "r": 170,
-   "dur": 20
-  },
   "music": [
    "goodbye_n",
    0
@@ -99,7 +93,8 @@
   "bf": 0.02,
   "capY": 1250,
   "topY": 1430,
-  "steady": true
+  "steady": true,
+  "noFocus": true
  },
  "jburgv": {
   "noSkull": true,
@@ -143,12 +138,6 @@
     "size": 260
    }
   ],
-  "focus": {
-   "x": 467,
-   "y": 284,
-   "r": 170,
-   "dur": 20
-  },
   "music": [
    "goodbye_n",
    0
@@ -174,7 +163,8 @@
   "bf": 0.02,
   "capY": 1250,
   "topY": 1430,
-  "steady": true
+  "steady": true,
+  "noFocus": true
  },
  "jrodv": {
   "noSkull": true,
@@ -218,12 +208,6 @@
     "size": 260
    }
   ],
-  "focus": {
-   "x": 548,
-   "y": 248,
-   "r": 170,
-   "dur": 20
-  },
   "music": [
    "goodbye_n",
    0
@@ -249,7 +233,8 @@
   "bf": 0.02,
   "capY": 1250,
   "topY": 1430,
-  "steady": true
+  "steady": true,
+  "noFocus": true
  },
  "jwipev": {
   "noSkull": true,
@@ -302,12 +287,6 @@
     "off": 0
    }
   ],
-  "focus": {
-   "x": 539,
-   "y": 504,
-   "r": 170,
-   "dur": 20
-  },
   "music": [
    "goodbye_n",
    0
@@ -333,7 +312,8 @@
   "bf": 0.02,
   "capY": 1250,
   "topY": 1430,
-  "steady": true
+  "steady": true,
+  "noFocus": true
  },
  "jcrackv": {
   "noSkull": true,
@@ -377,12 +357,6 @@
     "size": 260
    }
   ],
-  "focus": {
-   "x": 481,
-   "y": 284,
-   "r": 170,
-   "dur": 20
-  },
   "music": [
    "goodbye_n",
    0
@@ -408,6 +382,7 @@
   "bf": 0.02,
   "capY": 1250,
   "topY": 1430,
-  "steady": true
+  "steady": true,
+  "noFocus": true
  }
 }
