@@ -217,9 +217,9 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
   const push = cfg.pushIn ? 1 + 0.06 * Math.min(1, (lf0 - shotA) / Math.max(1, shotB - shotA)) : 1;
   // steady (user 2026-11-22: "it keeps zooming in and out… never let that happen"): no whip/intro/punch/push zoom, no shake
   const zoom = cfg.steady ? 1 : (WHD === undefined ? 1 : WZM[WHD + 2]) * (fi < 19 ? interpolate(f, [0, 18], [1.14, 1], clamp) : 1) * Math.max(punch, bfZoom) * push;
-  // hook text pops (1.3x -> 1) on frame 0 and again on the hook's audio peak word (cfg.topPop)
+  // hook text pops (1.12x -> 1, stays inside the frame) on frame 0 and again on the hook's audio peak word (cfg.topPop)
   const TP = [0, ...(cfg.topPop ? [at(cfg.topPop)] : [])], tpd = TP.map((t) => f - t).filter((d) => d >= 0 && d < 9).pop();
-  const topPopK = tpd === undefined ? 1 : interpolate(tpd, [0, 3, 6, 8], [1.3, 0.96, 1.02, 1], clamp);
+  const topPopK = tpd === undefined ? 1 : interpolate(tpd, [0, 3, 6, 8], [1.12, 0.98, 1.01, 1], clamp);
   const shake = cfg.steady ? 0 : pu === 0 ? 8 : pu === 1 ? -5 : 0;
   const top = cfg.full ? 0 : interpolate(fi, [0, 3, 6, 9, 12, 15, 18, 21, 24], [609, 573, 537, 504, 474, 450, 432, 420, BOX_TOP], clamp);
   const bot = cfg.full ? 1920 : interpolate(fi, [0, 3, 6, 9, 12, 15, 18, 21, 24], [1308, 1341, 1377, 1410, 1434, 1458, 1479, 1491, BOX_BOTTOM], clamp);
