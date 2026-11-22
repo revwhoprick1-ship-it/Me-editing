@@ -1,5 +1,5 @@
 # full-vertical crops for Jo Koy edits: track Jo's head (skin blob vs blue stage) in public/g67_<id>.mp4, lazy-follow camera per shot,
-# zoom wide shots 1.15x, write per-frame crops [frame, cx, zoom, cy] into src/edits.gen.json and the face-focus spot into src/jo.cfg.json.
+# no zoom (constant 1.0, user rule), write per-frame crops [frame, cx, zoom, cy] into src/edits.gen.json and the face-focus spot into src/jo.cfg.json.
 # usage: python3 fulltrack.py id1 id2 ...
 import json, re, subprocess, sys, numpy as np, cv2
 W, H, FPS, S = 480, 270, 15, 4.0; KF = 1920 / 1080
@@ -26,7 +26,7 @@ for eid in sys.argv[1:]:
         if b <= a: continue
         d = [det[i] for i in range(a, b)]; ok = [q for q in d if q]
         if not ok: X[a:b] = 960; continue
-        area = np.median([q[2] for q in ok]); wide = area < 900; z = 1.15 if wide else 1.0
+        area = np.median([q[2] for q in ok]); wide = False; z = 1.0   # user rule: constant framing, never zoom between shots
         xs = np.array([q[0] if q else np.nan for q in d]); idx = np.arange(len(xs)); good = ~np.isnan(xs)
         xs = np.interp(idx, idx[good], xs[good]); xs = np.array([np.median(xs[max(0, i - 3):i + 4]) for i in range(len(xs))])
         hy = float(np.median([q[1] for q in ok])); half = 304 / z; dz = 0.2 * half; p = xs[0]; out = []

@@ -98,7 +98,8 @@
   "full": true,
   "bf": 0.02,
   "capY": 1250,
-  "topY": 1430
+  "topY": 1430,
+  "steady": true
  },
  "jburgv": {
   "noSkull": true,
@@ -108,12 +109,7 @@
   "blowouts": [],
   "blackFlash": [],
   "streaks": [],
-  "punch": [
-   [
-    "hook",
-    "know"
-   ]
-  ],
+  "punch": [],
   "top": "His $100K money plan \ud83d\udc80",
   "hl": {
    "$100K": "#FF2A2A"
@@ -177,7 +173,8 @@
   "full": true,
   "bf": 0.02,
   "capY": 1250,
-  "topY": 1430
+  "topY": 1430,
+  "steady": true
  },
  "jrodv": {
   "noSkull": true,
@@ -251,7 +248,8 @@
   "full": true,
   "bf": 0.02,
   "capY": 1250,
-  "topY": 1430
+  "topY": 1430,
+  "steady": true
  },
  "jwipev": {
   "noSkull": true,
@@ -261,12 +259,7 @@
   "blowouts": [],
   "blackFlash": [],
   "streaks": [],
-  "punch": [
-   [
-    "hook",
-    "wipe"
-   ]
-  ],
+  "punch": [],
   "top": "Army said go home\u2026 \ud83d\udc80",
   "hl": {
    "home\u2026": "#FF2A2A"
@@ -310,9 +303,9 @@
    }
   ],
   "focus": {
-   "x": 538,
-   "y": 580,
-   "r": 195,
+   "x": 539,
+   "y": 504,
+   "r": 170,
    "dur": 20
   },
   "music": [
@@ -339,7 +332,8 @@
   "full": true,
   "bf": 0.02,
   "capY": 1250,
-  "topY": 1430
+  "topY": 1430,
+  "steady": true
  },
  "jcrackv": {
   "noSkull": true,
@@ -413,6 +407,7 @@
   "full": true,
   "bf": 0.02,
   "capY": 1250,
-  "topY": 1430
+  "topY": 1430,
+  "steady": true
  }
 }

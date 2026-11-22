@@ -1,6 +1,7 @@
 # Eclipse x Jo Koy — Blue in the Face (Netflix) (Nov 21)
 - Brief: Google Doc 1JFoRI0fTW76CZ-BmlegrwO-jUH6twKiA-n_AauW7yEM. Drive folder 1iN45R_UoW0PPpBEmhjkpnt6GxhdtSwf_ (01 Full Special = 12 pieces; 00 Variety interview).
 - Rules: Instagram Reels ONLY; 70%+ US; ORIGINAL AUDIO ONLY (no music, no AI voices — so no Say Goodbye, no narrator, no SFX → `origAudio` flag in Guess.tsx); never change Jo's meaning / no made-up quotes; positive about Jo; no NSFW/political/mocking; no comparisons to other comedians; caption must name "Blue in the Face, on Netflix", own words; 15-60 s.
+- HARD RULE (user 2026-11-22): NEVER zoom in and out. `steady: true` on every Jo edit = no whip zoom, no intro zoom, no punch-in, no shake; fulltrack.py keeps zoom 1.0 on every shot. Pan-to-follow only.
 - Batch 3 (laugh-loudness picks): jwipe p10, jwhiskey p10, jpay p04, jgucci p07, jtooth p03.
 - Batch 4 (laugh-length picks, joke quality checked, full setup kept): jsniff p06, jcamo p02, jrodeo p03, jmix p07, jhold p02. Each also made as a no-colour-filter version (id + r, e.g. jsniffr).
 - Batch 5 (new jokes, filter on): jburger p03, jden p12, jbed p09, jcinna p05, jcoyote p07. (User posted the batch 4 no-filter set.)

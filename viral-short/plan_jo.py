@@ -183,6 +183,7 @@ for eid, spec in E.items():
         assert r[0] in sc, (eid, r)
         if len(r) > 1: assert [w for w in sc[r[0]]['words'] if w['word'].lower().startswith(r[1].lower())], (eid, r, [w['word'] for w in sc[r[0]]['words']])
     if FULL: c.update(full=True, bf=0.02, capY=1250, topY=1430, sat=1.0)
+    c['steady'] = True; c['punch'] = []   # user rule: never zoom in and out (no whip/punch/intro zoom)
     c['ask'] = []  # user: nothing under the video (no ask pill / promo line / progress bar)
     CFG[eid] = c
 if '--raw' in sys.argv:
