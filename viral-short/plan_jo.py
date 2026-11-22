@@ -12,7 +12,8 @@ G67 = ("split[ga][gb];[gb]gblur=sigma=14[gg];[ga][gg]blend=all_mode=softlight:al
        "eq=contrast=1.113:saturation=1.26:gamma=0.98,curves=all='0/0 0.25/0.21 0.75/0.81 1/1',unsharp=3:3:0.79,"
        "colortemperature=temperature=8000,eq=saturation=0.96,format=yuv420p")
 FIX = {('p06', 82.43): 'snitch', ('p06', 140.48): 'turkey', ('p06', 140.72): 'treats,', ('p06', 141.6): 'turkey', ('p06', 141.9): 'treats?', ('p10', 173.2): 'CIB', ('p10', 10.33): 'CIB', ('p10', 106.31): 'fought', ('p10', 106.65): 'war.', ('p10', 117.01): '',
-       ('p07', 12.4): 'labra-', ('p07', 12.6): '', ('p07', 12.8): 'toodle-', ('p07', 13.22): '', ('p07', 13.58): '', ('p07', 15.82): 'labra-', ('p07', 16.06): '', ('p07', 16.2): 'boodle', ('p07', 19.64): 'hypoallergenic', ('p07', 20.12): '', ('p07', 3.94): 'Jo.', ('p07', 9.08): 'name-brand', ('p07', 9.4): '', ('p07', 22.6): '$4,000', ('p07', 22.88): '', ('p03', 185.3): "Madahi's"}
+       ('p07', 12.4): 'labra-', ('p07', 12.6): '', ('p07', 12.8): 'toodle-', ('p07', 13.22): '', ('p07', 13.58): '', ('p07', 15.82): 'labra-', ('p07', 16.06): '', ('p07', 16.2): 'boodle', ('p07', 19.64): 'hypoallergenic', ('p07', 20.12): '', ('p07', 3.94): 'Jo.', ('p07', 9.08): 'name-brand', ('p07', 9.4): '', ('p07', 22.6): '$4,000', ('p07', 22.88): '', ('p03', 185.3): "Madahi's",
+       ('p12', 110.8): "Dodgers'", ('p12', 111.42): 'den!', ('p03', 87.28): '', ('p03', 87.5): '', ('p07', 303.29): 'food', ('p07', 308.02): 'deer', ('p07', 309.16): 'deer', ('p09', 37.63): 'CIB', ('p09', 37.77): '', ('p09', 37.87): ''}
 LIFT = ',eq=gamma=1.4:brightness=0.02:saturation=1.08'
 def src(v): return glob.glob(f'{DL}/{v}.*')[0]
 def probe(v): return json.loads(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'stream=index,codec_type,codec_name,width,height:stream_side_data=rotation', '-of', 'json', src(v)], capture_output=True, text=True).stdout)['streams']
@@ -36,16 +37,16 @@ def sfx(at, f, v=0.5, off=0): return dict(at=at, kind='sfx', file=f, v=v, off=of
 # Visual style kept: top hook, colour-cycle caps captions, whip zoom-blur on cuts, centre emoji pops (silent), face blur.
 # Never change Jo's meaning: scenes are whole sentences, ends pinned after the laugh.
 CL = {
- 'jsniff': dict(src='p06', body=[('c1', 166.10, 178.70, 960), ('c2', 196.40, 243.50, 960)], A='why you should ALWAYS trust your dog\'s first impression 🐶', hl=['ALWAYS'],
-   pops=[('c1', 'Who', 'e_laugh.png'), ('c2', 'dude', 'e_sob.png')]),
- 'jcamo': dict(src='p02', body=[('c1', 119.20, 135.60, 960), ('c2', 152.30, 162.10, 960), ('c3', 172.30, 176.75, 960), ('c4', 184.20, 213.20, 960)],
-   A='he knocked out 5 teeth and the ARMY dentist fixed it 💀', hl=['ARMY'], pops=[('c1', 'kill', 'e_sob.png'), ('c4', 'drill', 'e_laugh.png', dict(y=1320, size=300))]),
- 'jrodeo': dict(src='p03', body=[('c1', 175.15, 216.00, 960)], A='his celebrity dentist\'s REACTION to his teeth 💀', hl=['REACTION'],
-   pops=[('c1', 'punch', 'e_sob.png'), ('c1', 'Vicks', 'e_laugh.png')]),
- 'jmix': dict(src='p07', body=[('c1', 61.45, 119.60, 960)], A='nobody knows what breed his shelter dog is 😭', hl=['breed'],
-   pops=[('c1', 'wolf', 'e_laugh.png'), ('c1', 'rider', 'e_sob.png')]),
- 'jhold': dict(src='p02', body=[('c1', 226.80, 256.00, 960)], A='the army dentist\'s fix for his 5 knocked-out teeth 💀', hl=['fix'],
-   pops=[('c1', 'hold.', 'e_sob.png'), ('c1', 'Vicks', 'e_laugh.png')]),
+ 'jburger': dict(src='p03', body=[('c1', 80.25, 137.60, 960)], A='his plan for his first $100,000 check 💀', hl=['$100,000'],
+   pops=[('c1', 'cheeseburger', 'e_laugh.png'), ('c1', 'funny.', 'e_sob.png')]),
+ 'jden': dict(src='p12', body=[('c1', 48.40, 61.00, 960), ('c2', 79.10, 119.00, 960)], A='his stepdad REFUSED to leave an 18-inning Dodgers game 💀', hl=['REFUSED'],
+   pops=[('c1', 'blue', 'e_sob.png'), ('c2', "Dodgers'", 'e_laugh.png')]),
+ 'jbed': dict(src='p09', body=[('c1', 4.45, 13.00, 960), ('c2', 22.80, 65.50, 960)], A='why Jo Koy STILL makes his bed every day 🥹', hl=['STILL'],
+   pops=[('c2', 'Stars', 'e_laugh.png'), ('c2', 'love', 'e_sob.png')]),
+ 'jcinna': dict(src='p05', body=[('c1', 70.05, 88.00, 960), ('c2', 103.40, 131.00, 960)], A='he got fired from McDonald\'s… his backup plan 😭', hl=['plan'],
+   pops=[('c1', 'where?', 'e_laugh.png'), ('c2', 'buns.', 'e_sob.png')]),
+ 'jcoyote': dict(src='p07', body=[('c1', 218.55, 228.40, 960), ('c2', 245.30, 267.50, 960), ('c3', 298.90, 325.00, 960)], A='his dog keeps running off with the COYOTES 😭', hl=['COYOTES'],
+   pops=[('c2', 'coyotes', 'e_sob.png'), ('c3', 'salon', 'e_laugh.png')]),
 }
 E = {}
 for k, d in CL.items():
@@ -55,9 +56,9 @@ for k, d in CL.items():
                 extras=ex, focus=dict(x=540, y=330, r=180, dur=20))
 VO = sys.argv[3]
 
-W = {v: [w for s in json.load(open(f'{TX}/{v}.json')) for w in s['w']] for v in ('p02', 'p03', 'p06', 'p07')}
+W = {v: [w for s in json.load(open(f'{TX}/{v}.json')) for w in s['w']] for v in ('p03', 'p05', 'p07', 'p09', 'p12')}
 FIXED = []
-CUTS = {v: [float(x) for x in open(os.path.join(os.path.dirname(DL.rstrip('/')), f'cuts_{v}.txt'))] for v in ('p02', 'p03', 'p06', 'p07')}
+CUTS = {v: [float(x) for x in open(os.path.join(os.path.dirname(DL.rstrip('/')), f'cuts_{v}.txt'))] for v in ('p03', 'p05', 'p07', 'p09', 'p12')}
 def snap(sid, v, a, b):
     """user rules: never cut a line mid-sentence (start before the first word, run until the speaker pauses),
     and no sub-0.5 s slivers of another camera angle at either end (snap onto the show's own cut)."""
@@ -89,7 +90,8 @@ for eid, spec in E.items():
     short = vd + 0.15 - sum(s[3] - s[2] for s in intro)
     if short > 0:                            # intro must cover the narrator line
         k = spec['scenes'].index(intro[-1]); sid, v, a, b, cx = intro[-1]; spec['scenes'][k] = (sid, v, a, round(b + short, 2), cx); print(f'  {eid}: intro +{short:.2f}s')
-FOC = {'jsniff': (540, 230, 120), 'jcamo': (540, 230, 120), 'jrodeo': (540, 230, 120), 'jmix': (540, 230, 120), 'jhold': (540, 230, 120)}
+_FOC_B4 = {'jsniff': (540, 230, 120), 'jcamo': (540, 230, 120), 'jrodeo': (540, 230, 120), 'jmix': (540, 230, 120), 'jhold': (540, 230, 120)}
+FOC = {k: (540, 230, 120) for k in ('jburger', 'jden', 'jbed', 'jcinna', 'jcoyote')}
 _FOC_B3 = {'jwipe': (600, 300, 120), 'jwhiskey': (600, 300, 120), 'jpay': (540, 230, 120), 'jgucci': (540, 230, 120), 'jtooth': (540, 230, 120)}
 _FOC_B2 = {'jnug2': (540, 160, 130), 'jdog': (560, 230, 110), 'jturkey': (530, 230, 130), 'jmama': (620, 340, 120), 'jsnow': (560, 200, 120)}
 _FOC_OLD = {'tjump': (335, 190, 150), 'tmex': (340, 220, 150), 'tcomfy': (280, 240, 150), 'tbed': (280, 240, 150), 'tspend': (660, 200, 150), 'tnotyours': (620, 240, 150), 'tkid': (360, 300, 150), 'tfeels': (660, 240, 150), 'tnap': (280, 240, 150), 'tbiggest': (660, 200, 150)}

@@ -258,3 +258,8 @@
 - his celebrity dentist saw his teeth and said THIS 💀 (Jo Koy jrodeo)
 - the shelter swore his dog was a "labradoodle" 😭 (Jo Koy jmix)
 - "it will hold"… the army dentist's promise 💀 (Jo Koy jhold)
+- his plan for his first $100,000 check 💀 (Jo Koy jburger)
+- his stepdad REFUSED to leave an 18-inning Dodgers game 💀 (Jo Koy jden)
+- why Jo Koy STILL makes his bed every day 🥹 (Jo Koy jbed)
+- he got fired from McDonald's… his backup plan 😭 (Jo Koy jcinna)
+- his dog keeps running off with the COYOTES 😭 (Jo Koy jcoyote)

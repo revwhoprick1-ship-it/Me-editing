@@ -3,6 +3,7 @@
 - Rules: Instagram Reels ONLY; 70%+ US; ORIGINAL AUDIO ONLY (no music, no AI voices — so no Say Goodbye, no narrator, no SFX → `origAudio` flag in Guess.tsx); never change Jo's meaning / no made-up quotes; positive about Jo; no NSFW/political/mocking; no comparisons to other comedians; caption must name "Blue in the Face, on Netflix", own words; 15-60 s.
 - Batch 3 (laugh-loudness picks): jwipe p10, jwhiskey p10, jpay p04, jgucci p07, jtooth p03.
 - Batch 4 (laugh-length picks, joke quality checked, full setup kept): jsniff p06, jcamo p02, jrodeo p03, jmix p07, jhold p02. Each also made as a no-colour-filter version (id + r, e.g. jsniffr).
+- Batch 5 (new jokes, filter on): jburger p03, jden p12, jbed p09, jcinna p05, jcoyote p07. (User posted the batch 4 no-filter set.)
 - plan_jo.py → src/jo.cfg.json. Batch 1: jdoit (Do it, Joseph), jcrack (mom takes it back), jnugget (McDonald's comeback), jrunaway (Kingston disclaimer), jblue (title line).
 - Caption fixes: team→teeth, Josef/Josep→Joseph, friend→Fred, final line "I was Dodger blue in the face" (2 whisper models with prompt agree); dentist's name dropped from captions (uncertain spelling).
 - Batch 2 (user: funnier, never start mid-joke, picking > editing): jnug2 (fired from McDonald's), jdog (don't like dogs → I don't like you), jturkey (bury a body for a turkey treat), jmama (living with your mama), jsnow (shit in the snow → joined the military). Found via audience-laugh scan (laugh2.py) + full setup read; each starts at the setup line, ends after the laugh.
