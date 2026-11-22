@@ -268,3 +268,8 @@
 - the ARMY dentist fixed his 5 knocked-out teeth 💀 (Jo Koy jcamov)
 - why you should ALWAYS trust your dog's first impression 🐶 (Jo Koy jsniffv)
 - his dog keeps running off with the COYOTES 😭 (Jo Koy jcoyotev)
+- Mom stormed his McDonald's 😭 (Jo Koy jnugv)
+- His $100K money plan 💀 (Jo Koy jburgv)
+- Dentist saw his teeth 💀 (Jo Koy jrodv)
+- Army said go home… 💀 (Jo Koy jwipev)
+- Mom asked him THIS 😭 (Jo Koy jcrackv)
