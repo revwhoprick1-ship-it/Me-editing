@@ -90,6 +90,8 @@ CL = {
 E = {}
 for k, d in CL.items():
     ex = [pop([s, w], e, None, off=2, **(o[0] if o else {})) for s, w, e, *o in d['pops']]
+    # curiosity pop (user 2026-11-22): before 5 s, same safe spot as the other pop-ups, flat + italic
+    if d.get('face'): ex.append(dict(at=['face'], kind='txt', file='wait for the reason 👀', color='#FFFFFF', size=50, y=930, dur=102, off=30, flat=True, italic=True))
     if d.get('share'): ex.append(dict(at=[d['share'][0], d['share'][1]], kind='txt', file=d['share'][2], color='#FFE14A', size=50, y=930, dur=75, off=10, flat=True))
     for sid_, w_, f_ in d.get('ovs', []): ex.append(dict(ov([sid_, w_], f_, None, dur=34 if 'flash' in f_ else 54, op=0.55 if 'flash' in f_ else 0.9, off=2), **({'fit': 'contain'} if 'afml' in f_ else {})))
     body = ([('face', *d['face'], 960)] if d.get('face') else []) + list(d['body'])
