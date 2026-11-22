@@ -151,8 +151,8 @@
     "kind": "png",
     "file": "e_laugh.png",
     "off": 2,
-    "y": 800,
-    "size": 380
+    "y": 1320,
+    "size": 300
    },
    {
     "at": [
@@ -162,8 +162,8 @@
     "kind": "png",
     "file": "e_sob.png",
     "off": 2,
-    "y": 800,
-    "size": 380
+    "y": 1320,
+    "size": 300
    }
   ],
   "focus": {
