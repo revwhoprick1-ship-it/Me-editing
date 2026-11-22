@@ -13,7 +13,7 @@ G67 = ("split[ga][gb];[gb]gblur=sigma=14[gg];[ga][gg]blend=all_mode=softlight:al
        "colortemperature=temperature=8000,eq=saturation=0.96,format=yuv420p")
 FIX = {('p06', 82.43): 'snitch', ('p06', 140.48): 'turkey', ('p06', 140.72): 'treats,', ('p06', 141.6): 'turkey', ('p06', 141.9): 'treats?', ('p10', 173.2): 'CIB', ('p10', 10.33): 'CIB', ('p10', 106.31): 'fought', ('p10', 106.65): 'war.', ('p10', 117.01): '',
        ('p07', 12.4): 'labra-', ('p07', 12.6): '', ('p07', 12.8): 'toodle-', ('p07', 13.22): '', ('p07', 13.58): '', ('p07', 15.82): 'labra-', ('p07', 16.06): '', ('p07', 16.2): 'boodle', ('p07', 19.64): 'hypoallergenic', ('p07', 20.12): '', ('p07', 3.94): 'Jo.', ('p07', 9.08): 'name-brand', ('p07', 9.4): '', ('p07', 22.6): '$4,000', ('p07', 22.88): '', ('p03', 185.3): "Madahi's",
-       ('p12', 110.8): "Dodgers'", ('p12', 111.42): 'den!', ('p03', 87.28): '', ('p03', 87.5): '', ('p07', 303.29): 'food', ('p07', 308.02): 'deer', ('p07', 309.16): 'deer', ('p09', 37.63): 'CIB', ('p09', 37.77): '', ('p09', 37.87): ''}
+       ('p12', 110.8): "Dodgers'", ('p12', 111.42): 'den!', ('p03', 87.28): '', ('p03', 87.5): '', ('p07', 303.29): 'food', ('p07', 308.02): 'deer', ('p07', 309.16): 'deer', ('p09', 37.63): 'CIB', ('p09', 37.77): '', ('p09', 37.87): '', ('p05', 210.95): 'Put'}
 LIFT = ',eq=gamma=1.4:brightness=0.02:saturation=1.08'
 def src(v): return glob.glob(f'{DL}/{v}.*')[0]
 def probe(v): return json.loads(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'stream=index,codec_type,codec_name,width,height:stream_side_data=rotation', '-of', 'json', src(v)], capture_output=True, text=True).stdout)['streams']
@@ -36,17 +36,20 @@ def sfx(at, f, v=0.5, off=0): return dict(at=at, kind='sfx', file=f, v=v, off=of
 # Eclipse x Jo Koy "Blue in the Face" (Netflix): 5 edits, Instagram Reels. ORIGINAL AUDIO ONLY (no music, no SFX, no AI voice) -> origAudio.
 # Visual style kept: top hook, colour-cycle caps captions, whip zoom-blur on cuts, centre emoji pops (silent), face blur.
 # Never change Jo's meaning: scenes are whole sentences, ends pinned after the laugh.
+_CL_B5 = None  # batch 5 (jburger, jden, jbed, jcinna, jcoyote) is in git history
+# batch 6 (user 2026-11-22): 5 funniest, full vertical (no bars) + text hook, lighter grade, lighter black flash,
+# each opens cold on Jo's best line ('hook' scene), hard cut, then the story from its start.
 CL = {
- 'jburger': dict(src='p03', body=[('c1', 80.25, 137.60, 960)], A='his plan for his first $100,000 check 💀', hl=['$100,000'],
-   pops=[('c1', 'cheeseburger', 'e_laugh.png'), ('c1', 'funny.', 'e_sob.png')]),
- 'jden': dict(src='p12', body=[('c1', 48.40, 61.00, 960), ('c2', 79.10, 119.00, 960)], A='his stepdad REFUSED to leave an 18-inning Dodgers game 💀', hl=['REFUSED'],
-   pops=[('c1', 'blue', 'e_sob.png'), ('c2', "Dodgers'", 'e_laugh.png')]),
- 'jbed': dict(src='p09', body=[('c1', 6.36, 13.00, 960), ('c2', 22.80, 65.50, 960)], A='why Jo Koy STILL makes his bed every day 🥹', hl=['STILL'],
-   pops=[('c2', 'Stars', 'e_laugh.png', dict(y=1320, size=300)), ('c2', 'love', 'e_sob.png', dict(y=1320, size=300))]),
- 'jcinna': dict(src='p05', body=[('c1', 70.05, 88.00, 960), ('c2', 103.40, 131.00, 960)], A='he got fired from McDonald\'s… his backup plan 😭', hl=['plan'],
-   pops=[('c1', 'where?', 'e_laugh.png'), ('c2', 'buns.', 'e_sob.png')]),
- 'jcoyote': dict(src='p07', body=[('c1', 218.55, 228.40, 960), ('c2', 245.30, 267.50, 960), ('c3', 298.90, 325.00, 960)], A='his dog keeps running off with the COYOTES 😭', hl=['COYOTES'],
-   pops=[('c2', 'coyotes', 'e_sob.png'), ('c3', 'salon', 'e_laugh.png')]),
+ 'jdenv': dict(src='p12', body=[('hook', 107.80, 113.60, 960), ('c1', 48.40, 61.00, 960), ('c2', 79.10, 119.00, 960)],
+   A="his stepdad's oxygen was running out… he REFUSED to leave 💀", hl=['REFUSED'], pops=[('c1', 'blue', 'e_sob.png', dict(y=1020, size=260)), ('c2', "Dodgers'", 'e_laugh.png', dict(y=1020, size=260))]),
+ 'jliev': dict(src='p05', body=[('hook', 209.15, 213.50, 960), ('c1', 140.50, 149.00, 960), ('c2', 152.25, 171.50, 960), ('c3', 177.00, 188.50, 960), ('c4', 202.75, 217.00, 960)],
+   A='his mom found out he got FIRED from McDonald\'s 😭', hl=['FIRED'], pops=[('c2', 'fired', 'e_sob.png', dict(y=1020, size=260)), ('c4', 'illegal', 'e_laugh.png', dict(y=1020, size=260))]),
+ 'jcamov': dict(src='p02', body=[('hook', 192.30, 193.70, 960), ('c1', 123.85, 135.60, 960), ('c2', 152.30, 162.10, 960), ('c3', 172.30, 176.75, 960), ('c4', 184.20, 213.20, 960)],
+   A='the ARMY dentist fixed his 5 knocked-out teeth 💀', hl=['ARMY'], pops=[('c1', 'kill', 'e_sob.png', dict(y=1020, size=260)), ('c4', 'drill', 'e_laugh.png', dict(y=1020, size=260))]),
+ 'jsniffv': dict(src='p06', body=[('hook', 189.10, 191.40, 960), ('c1', 166.10, 178.70, 960), ('c2', 199.00, 243.50, 960)],
+   A="why you should ALWAYS trust your dog's first impression 🐶", hl=['ALWAYS'], pops=[('c1', 'Who', 'e_laugh.png', dict(y=1020, size=260)), ('c2', 'dude', 'e_sob.png', dict(y=1020, size=260))]),
+ 'jcoyotev': dict(src='p07', body=[('hook', 298.90, 300.70, 960), ('c1', 218.55, 228.40, 960), ('c2', 245.30, 266.60, 960), ('c3', 298.90, 325.00, 960)],
+   A='his dog keeps running off with the COYOTES 😭', hl=['COYOTES'], pops=[('c2', 'coyotes', 'e_sob.png', dict(y=1020, size=260)), ('c3', 'salon', 'e_laugh.png', dict(y=1020, size=260))]),
 }
 E = {}
 for k, d in CL.items():
@@ -55,10 +58,14 @@ for k, d in CL.items():
                 circles=[], noSkull=True, ask=[], tints=[], rizz=[], blowouts=[], blackFlash=[], streaks=[], punch=[], top=d['A'], hl={w: RD for w in d['hl']},
                 extras=ex, focus=dict(x=540, y=330, r=180, dur=20))
 VO = sys.argv[3]
+FULL = '--full' in sys.argv
+# lighter look for batch 6 (user: "lessen the video filter"): about half of G67
+G_LITE = ("split[ga][gb];[gb]gblur=sigma=14[gg];[ga][gg]blend=all_mode=softlight:all_opacity=0.12,unsharp=5:5:0.9:5:5:0,"
+          "eq=contrast=1.05:saturation=1.1:gamma=0.99,curves=all='0/0 0.25/0.23 0.75/0.78 1/1',colortemperature=temperature=7200,format=yuv420p")
 
-W = {v: [w for s in json.load(open(f'{TX}/{v}.json')) for w in s['w']] for v in ('p03', 'p05', 'p07', 'p09', 'p12')}
+W = {v: [w for s in json.load(open(f'{TX}/{v}.json')) for w in s['w']] for v in ('p02', 'p05', 'p06', 'p07', 'p12')}
 FIXED = []
-CUTS = {v: [float(x) for x in open(os.path.join(os.path.dirname(DL.rstrip('/')), f'cuts_{v}.txt'))] for v in ('p03', 'p05', 'p07', 'p09', 'p12')}
+CUTS = {v: [float(x) for x in open(os.path.join(os.path.dirname(DL.rstrip('/')), f'cuts_{v}.txt'))] for v in ('p02', 'p05', 'p06', 'p07', 'p12')}
 def snap(sid, v, a, b):
     """user rules: never cut a line mid-sentence (start before the first word, run until the speaker pauses),
     and no sub-0.5 s slivers of another camera angle at either end (snap onto the show's own cut)."""
@@ -91,7 +98,7 @@ for eid, spec in E.items():
     if short > 0:                            # intro must cover the narrator line
         k = spec['scenes'].index(intro[-1]); sid, v, a, b, cx = intro[-1]; spec['scenes'][k] = (sid, v, a, round(b + short, 2), cx); print(f'  {eid}: intro +{short:.2f}s')
 _FOC_B4 = {'jsniff': (540, 230, 120), 'jcamo': (540, 230, 120), 'jrodeo': (540, 230, 120), 'jmix': (540, 230, 120), 'jhold': (540, 230, 120)}
-FOC = {k: (540, 230, 120) for k in ('jburger', 'jden', 'jbed', 'jcinna', 'jcoyote')}
+FOC = {k: (540, 700, 170) for k in CL}   # full mode: refined from the head track (fulltrack.py)
 _FOC_B3 = {'jwipe': (600, 300, 120), 'jwhiskey': (600, 300, 120), 'jpay': (540, 230, 120), 'jgucci': (540, 230, 120), 'jtooth': (540, 230, 120)}
 _FOC_B2 = {'jnug2': (540, 160, 130), 'jdog': (560, 230, 110), 'jturkey': (530, 230, 130), 'jmama': (620, 340, 120), 'jsnow': (560, 200, 120)}
 _FOC_OLD = {'tjump': (335, 190, 150), 'tmex': (340, 220, 150), 'tcomfy': (280, 240, 150), 'tbed': (280, 240, 150), 'tspend': (660, 200, 150), 'tnotyours': (620, 240, 150), 'tkid': (360, 300, 150), 'tfeels': (660, 240, 150), 'tnap': (280, 240, 150), 'tbiggest': (660, 200, 150)}
@@ -134,7 +141,7 @@ for eid, spec in E.items():
             mt = ''.join(f",volume=0:enable='between(t,{max(0, m0 - a):.3f},{m1 - a:.3f})'" for m0, m1 in spec.get('mute', []) if m1 > a and m0 < b)
             fc.append(f'[{i}:a:{aidx(v)}]asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo,apad,atrim=0:{d:.4f}{mt}' + (',volume=0' if sid.startswith('i') else '') + f'[a{i}]')
         k = len(spec['scenes'])
-        fc.append(''.join(f'[v{i}][a{i}]' for i in range(k)) + f'concat=n={k}:v=1:a=1[cv][ca]'); fc.append('[cv]' + G67 + '[gv]')
+        fc.append(''.join(f'[v{i}][a{i}]' for i in range(k)) + f'concat=n={k}:v=1:a=1[cv][ca]'); fc.append('[cv]' + (G_LITE if FULL else G67) + '[gv]')
         subprocess.run(cmd + ['-filter_complex', ';'.join(fc), '-map', '[gv]', '-map', '[ca]', '-c:v', 'libx264', '-preset', 'medium', '-crf', '19', '-g', '15',
                               '-c:a', 'aac', '-b:a', '192k', '-map_metadata', '-1', f'public/g67_{eid}.mp4'], check=True)
         if '--raw' in sys.argv:   # same cut, no colour grade / lift (user: "without the video filters")
@@ -172,6 +179,7 @@ for eid, spec in E.items():
     for r in [r for r, _ in c['tints']] + [q['at'] for q in c['ask']] + [e['at'] for e in c['extras']] + sum((c[k] for k in ('rizz', 'punch', 'blowouts', 'blackFlash', 'streaks')), []):
         assert r[0] in sc, (eid, r)
         if len(r) > 1: assert [w for w in sc[r[0]]['words'] if w['word'].lower().startswith(r[1].lower())], (eid, r, [w['word'] for w in sc[r[0]]['words']])
+    if FULL: c.update(full=True, bf=0.02, capY=1250, topY=1430, sat=1.0)
     c['ask'] = []  # user: nothing under the video (no ask pill / promo line / progress bar)
     CFG[eid] = c
 if '--raw' in sys.argv:

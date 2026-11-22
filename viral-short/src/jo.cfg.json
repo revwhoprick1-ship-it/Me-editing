@@ -1,5 +1,5 @@
 {
- "jburger": {
+ "jdenv": {
   "noSkull": true,
   "ask": [],
   "tints": [],
@@ -8,72 +8,7 @@
   "blackFlash": [],
   "streaks": [],
   "punch": [],
-  "top": "his plan for his first $100,000 check \ud83d\udc80",
-  "hl": {
-   "$100,000": "#FF2A2A"
-  },
-  "extras": [
-   {
-    "at": [
-     "c1",
-     "cheeseburger"
-    ],
-    "kind": "png",
-    "file": "e_laugh.png",
-    "off": 2,
-    "y": 800,
-    "size": 380
-   },
-   {
-    "at": [
-     "c1",
-     "funny."
-    ],
-    "kind": "png",
-    "file": "e_sob.png",
-    "off": 2,
-    "y": 800,
-    "size": 380
-   }
-  ],
-  "focus": {
-   "x": 540,
-   "y": 230,
-   "r": 120,
-   "dur": 20
-  },
-  "music": [
-   "goodbye_n",
-   0
-  ],
-  "origAudio": true,
-  "vo": null,
-  "capCycle": true,
-  "whip": true,
-  "trackData": {},
-  "cta": "",
-  "track": "none",
-  "calls": [],
-  "src": "g67_jburger.mp4",
-  "intro": false,
-  "hardcut": true,
-  "cutSfx": "s_whoosh.mp3",
-  "sat": 1.1,
-  "progress": false,
-  "popMid": true,
-  "srcVol": 1,
-  "musicVol": 0.28
- },
- "jden": {
-  "noSkull": true,
-  "ask": [],
-  "tints": [],
-  "rizz": [],
-  "blowouts": [],
-  "blackFlash": [],
-  "streaks": [],
-  "punch": [],
-  "top": "his stepdad REFUSED to leave an 18-inning Dodgers game \ud83d\udc80",
+  "top": "his stepdad's oxygen was running out\u2026 he REFUSED to leave \ud83d\udc80",
   "hl": {
    "REFUSED": "#FF2A2A"
   },
@@ -86,8 +21,8 @@
     "kind": "png",
     "file": "e_sob.png",
     "off": 2,
-    "y": 800,
-    "size": 380
+    "y": 1020,
+    "size": 260
    },
    {
     "at": [
@@ -97,14 +32,23 @@
     "kind": "png",
     "file": "e_laugh.png",
     "off": 2,
-    "y": 800,
-    "size": 380
+    "y": 1020,
+    "size": 260
+   },
+   {
+    "at": [
+     "c2"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
    }
   ],
   "focus": {
-   "x": 540,
-   "y": 230,
-   "r": 120,
+   "x": 521,
+   "y": 476,
+   "r": 170,
    "dur": 20
   },
   "music": [
@@ -119,17 +63,21 @@
   "cta": "",
   "track": "none",
   "calls": [],
-  "src": "g67_jden.mp4",
+  "src": "g67_jdenv.mp4",
   "intro": false,
   "hardcut": true,
   "cutSfx": "s_whoosh.mp3",
-  "sat": 1.1,
+  "sat": 1.0,
   "progress": false,
   "popMid": true,
   "srcVol": 1,
-  "musicVol": 0.28
+  "musicVol": 0.28,
+  "full": true,
+  "bf": 0.02,
+  "capY": 1250,
+  "topY": 1430
  },
- "jbed": {
+ "jliev": {
   "noSkull": true,
   "ask": [],
   "tints": [],
@@ -138,38 +86,65 @@
   "blackFlash": [],
   "streaks": [],
   "punch": [],
-  "top": "why Jo Koy STILL makes his bed every day \ud83e\udd79",
+  "top": "his mom found out he got FIRED from McDonald's \ud83d\ude2d",
   "hl": {
-   "STILL": "#FF2A2A"
+   "FIRED": "#FF2A2A"
   },
   "extras": [
    {
     "at": [
      "c2",
-     "Stars"
-    ],
-    "kind": "png",
-    "file": "e_laugh.png",
-    "off": 2,
-    "y": 1320,
-    "size": 300
-   },
-   {
-    "at": [
-     "c2",
-     "love"
+     "fired"
     ],
     "kind": "png",
     "file": "e_sob.png",
     "off": 2,
-    "y": 1320,
-    "size": 300
+    "y": 1020,
+    "size": 260
+   },
+   {
+    "at": [
+     "c4",
+     "illegal"
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 2,
+    "y": 1020,
+    "size": 260
+   },
+   {
+    "at": [
+     "c2"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c3"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c4"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
    }
   ],
   "focus": {
-   "x": 540,
-   "y": 230,
-   "r": 120,
+   "x": 537,
+   "y": 291,
+   "r": 170,
    "dur": 20
   },
   "music": [
@@ -184,17 +159,21 @@
   "cta": "",
   "track": "none",
   "calls": [],
-  "src": "g67_jbed.mp4",
+  "src": "g67_jliev.mp4",
   "intro": false,
   "hardcut": true,
   "cutSfx": "s_whoosh.mp3",
-  "sat": 1.1,
+  "sat": 1.0,
   "progress": false,
   "popMid": true,
   "srcVol": 1,
-  "musicVol": 0.28
+  "musicVol": 0.28,
+  "full": true,
+  "bf": 0.02,
+  "capY": 1250,
+  "topY": 1430
  },
- "jcinna": {
+ "jcamov": {
   "noSkull": true,
   "ask": [],
   "tints": [],
@@ -203,38 +182,65 @@
   "blackFlash": [],
   "streaks": [],
   "punch": [],
-  "top": "he got fired from McDonald's\u2026 his backup plan \ud83d\ude2d",
+  "top": "the ARMY dentist fixed his 5 knocked-out teeth \ud83d\udc80",
   "hl": {
-   "plan": "#FF2A2A"
+   "ARMY": "#FF2A2A"
   },
   "extras": [
    {
     "at": [
      "c1",
-     "where?"
-    ],
-    "kind": "png",
-    "file": "e_laugh.png",
-    "off": 2,
-    "y": 800,
-    "size": 380
-   },
-   {
-    "at": [
-     "c2",
-     "buns."
+     "kill"
     ],
     "kind": "png",
     "file": "e_sob.png",
     "off": 2,
-    "y": 800,
-    "size": 380
+    "y": 1020,
+    "size": 260
+   },
+   {
+    "at": [
+     "c4",
+     "drill"
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 2,
+    "y": 1020,
+    "size": 260
+   },
+   {
+    "at": [
+     "c2"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c3"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c4"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
    }
   ],
   "focus": {
-   "x": 540,
-   "y": 230,
-   "r": 120,
+   "x": 570,
+   "y": 637,
+   "r": 195,
    "dur": 20
   },
   "music": [
@@ -249,17 +255,99 @@
   "cta": "",
   "track": "none",
   "calls": [],
-  "src": "g67_jcinna.mp4",
+  "src": "g67_jcamov.mp4",
   "intro": false,
   "hardcut": true,
   "cutSfx": "s_whoosh.mp3",
-  "sat": 1.1,
+  "sat": 1.0,
   "progress": false,
   "popMid": true,
   "srcVol": 1,
-  "musicVol": 0.28
+  "musicVol": 0.28,
+  "full": true,
+  "bf": 0.02,
+  "capY": 1250,
+  "topY": 1430
  },
- "jcoyote": {
+ "jsniffv": {
+  "noSkull": true,
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "punch": [],
+  "top": "why you should ALWAYS trust your dog's first impression \ud83d\udc36",
+  "hl": {
+   "ALWAYS": "#FF2A2A"
+  },
+  "extras": [
+   {
+    "at": [
+     "c1",
+     "Who"
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 2,
+    "y": 1020,
+    "size": 260
+   },
+   {
+    "at": [
+     "c2",
+     "dude"
+    ],
+    "kind": "png",
+    "file": "e_sob.png",
+    "off": 2,
+    "y": 1020,
+    "size": 260
+   },
+   {
+    "at": [
+     "c2"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   }
+  ],
+  "focus": {
+   "x": 541,
+   "y": 392,
+   "r": 195,
+   "dur": 20
+  },
+  "music": [
+   "goodbye_n",
+   0
+  ],
+  "origAudio": true,
+  "vo": null,
+  "capCycle": true,
+  "whip": true,
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_jsniffv.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_whoosh.mp3",
+  "sat": 1.0,
+  "progress": false,
+  "popMid": true,
+  "srcVol": 1,
+  "musicVol": 0.28,
+  "full": true,
+  "bf": 0.02,
+  "capY": 1250,
+  "topY": 1430
+ },
+ "jcoyotev": {
   "noSkull": true,
   "ask": [],
   "tints": [],
@@ -281,8 +369,8 @@
     "kind": "png",
     "file": "e_sob.png",
     "off": 2,
-    "y": 800,
-    "size": 380
+    "y": 1020,
+    "size": 260
    },
    {
     "at": [
@@ -292,8 +380,17 @@
     "kind": "png",
     "file": "e_laugh.png",
     "off": 2,
-    "y": 800,
-    "size": 380
+    "y": 1020,
+    "size": 260
+   },
+   {
+    "at": [
+     "c2"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
    },
    {
     "at": [
@@ -306,9 +403,9 @@
    }
   ],
   "focus": {
-   "x": 540,
-   "y": 230,
-   "r": 120,
+   "x": 558,
+   "y": 523,
+   "r": 195,
    "dur": 20
   },
   "music": [
@@ -323,14 +420,18 @@
   "cta": "",
   "track": "none",
   "calls": [],
-  "src": "g67_jcoyote.mp4",
+  "src": "g67_jcoyotev.mp4",
   "intro": false,
   "hardcut": true,
   "cutSfx": "s_whoosh.mp3",
-  "sat": 1.1,
+  "sat": 1.0,
   "progress": false,
   "popMid": true,
   "srcVol": 1,
-  "musicVol": 0.28
+  "musicVol": 0.28,
+  "full": true,
+  "bf": 0.02,
+  "capY": 1250,
+  "topY": 1430
  }
 }
