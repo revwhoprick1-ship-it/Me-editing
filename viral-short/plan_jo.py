@@ -13,7 +13,7 @@ G67 = ("split[ga][gb];[gb]gblur=sigma=14[gg];[ga][gg]blend=all_mode=softlight:al
        "colortemperature=temperature=8000,eq=saturation=0.96,format=yuv420p")
 FIX = {('p06', 82.43): 'snitch', ('p06', 140.48): 'turkey', ('p06', 140.72): 'treats,', ('p06', 141.6): 'turkey', ('p06', 141.9): 'treats?', ('p10', 173.2): 'CIB', ('p10', 10.33): 'CIB', ('p10', 106.31): 'fought', ('p10', 106.65): 'war.', ('p10', 117.01): '',
        ('p07', 12.4): 'labra-', ('p07', 12.6): '', ('p07', 12.8): 'toodle-', ('p07', 13.22): '', ('p07', 13.58): '', ('p07', 15.82): 'labra-', ('p07', 16.06): '', ('p07', 16.2): 'boodle', ('p07', 19.64): 'hypoallergenic', ('p07', 20.12): '', ('p07', 3.94): 'Jo.', ('p07', 9.08): 'name-brand', ('p07', 9.4): '', ('p07', 22.6): '$4,000', ('p07', 22.88): '', ('p03', 185.3): "Madahi's",
-       ('p12', 110.8): "Dodgers'", ('p12', 111.42): 'den!', ('p03', 87.28): '', ('p03', 87.5): '', ('p07', 303.29): 'food', ('p07', 308.02): 'deer', ('p07', 309.16): 'deer', ('p09', 37.63): 'CIB', ('p09', 37.77): '', ('p09', 37.87): '', ('p05', 210.95): 'Put', ('p03', 107.44): '', ('p03', 107.56): ''}
+       ('p12', 110.8): "Dodgers'", ('p12', 111.42): 'den!', ('p03', 87.28): '', ('p03', 87.5): '', ('p07', 303.29): 'food', ('p07', 308.02): 'deer', ('p07', 309.16): 'deer', ('p09', 37.63): 'CIB', ('p09', 37.77): '', ('p09', 37.87): '', ('p05', 210.95): 'Put', ('p03', 107.44): '', ('p03', 107.56): '', ('p11', 39.88): 'broke', ('p09', 174.36): 'Have', ('p09', 174.52): 'you', ('p09', 174.6): 'ever', ('p09', 175.02): 'snow?', ('p09', 175.28): '', ('p09', 175.36): '', ('p12', 129.4): 'Eighteenth', ('p12', 129.96): '', ('p03', 246.85): '', ('p03', 247.17): '', ('p03', 247.25): '', ('p03', 247.39): '', ('p03', 247.55): '', ('p03', 247.77): '', ('p03', 248.07): ''}
 LIFT = ',eq=gamma=1.4:brightness=0.02:saturation=1.08'
 def src(v): return glob.glob(f'{DL}/{v}.*')[0]
 def probe(v): return json.loads(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'stream=index,codec_type,codec_name,width,height:stream_side_data=rotation', '-of', 'json', src(v)], capture_output=True, text=True).stdout)['streams']
@@ -48,27 +48,20 @@ _CL_B7 = None  # batch 7 (jnugv, jburgv, jrodv, jwipev, jcrackv: cold open + rew
 _CL_B8 = None  # batch 8 (jnugw, jrodw, jwipew, jcrackw, jburgw) is in git history
 # batch 9 (user 2026-11-22, 3 viral reels analysed): Jo's FIRST sentence is the premise, comment-bait topic (dog people / Filipino moms),
 # ALL-CAPS hook quoting the viewer, 2-3 word phrase captions (capChunk) with the spoken word in green. Keeps batch 8 rules.
+_CL_B9 = None  # batch 9 (jdogsx..jnugx, full vertical + phrase captions) is in git history
+# batch 10 (user 2026-11-22): back to the ORIGINAL VverPaldo look (boxed 16:9, G67 grade, top hook line with skull, colour-cycle one-word caps,
+# whip blur on story cuts) but NO face blur and still steady (no zoom), no SFX, pauses tightened. Run WITHOUT --full.
 CL = {
- 'jdogsx': dict(src='p06', tight=False, body=[('c1', 86.75, 107.20, 960)], A="IF YOU DON'T LIKE DOGS, WATCH THIS 🐶", hl=['DOGS,'], t2='he said what we all think 😭',
-   pops=[('c1', 'you.', 'e_laugh.png', dict(y=1020, size=260)), ('c1', 'hi.', 'e_sob.png', dict(y=1020, size=260))]),
- 'jdmx': dict(src='p02', tight=False, body=[('c1', 12.05, 34.00, 960)], A='WHEN THEY SAY YOU LAUGH AT YOUR OWN JOKES 😭', hl=['OWN'], t2='wait for his reply 💀',
-   pops=[('c1', 'bitch.', 'e_laugh.png', dict(y=1020, size=260))]),
- 'jsniffx': dict(src='p06', tight=True, body=[('c1', 166.75, 178.70, 960), ('c2', 220.55, 243.50, 960)], A="YOUR DOG KNOWS WHO'S FAKE 🐶", hl=['FAKE'], t2='every dog owner knows 😭',
-   pops=[('c1', 'Who', 'e_laugh.png', dict(y=1020, size=260)), ('c2', 'dude', 'e_sob.png', dict(y=1020, size=260))]),
- 'jcoyotex': dict(src='p07', tight=True, body=[('c1', 218.57, 228.40, 960), ('c3', 298.90, 324.60, 960)], A='WHEN YOUR DOG KEEPS RUNNING AWAY 😭', hl=['AWAY'], t2='wait for the carrots 💀',
-   pops=[('c3', 'carrots?', 'e_laugh.png', dict(y=1020, size=260)), ('c3', 'salon', 'e_sob.png', dict(y=1020, size=260))]),
- 'jdenx': dict(src='p12', tight=True, body=[('c2', 48.40, 58.30, 960), ('c3', 79.10, 115.50, 960)], A='HE REFUSED TO LEAVE THIS GAME 💀', hl=['REFUSED'], t2='his oxygen was running out 😭',
-   pops=[('c2', 'blue', 'e_sob.png', dict(y=1020, size=260)), ('c3', 'Vietnam', 'e_laugh.png', dict(y=1020, size=260))]),
- 'jpayx': dict(src='p04', tight=True, body=[('c1', 230.70, 236.40, 960), ('c1b', 240.87, 243.70, 960), ('c2', 256.00, 286.80, 960)], A='HIS FIRST PAYCHECK AT 15 💀', hl=['15'], t2='wait for the math 😭',
-   pops=[('c1b', 'sign?', 'e_laugh.png', dict(y=1020, size=260)), ('c2', 'clown', 'e_sob.png', dict(y=1020, size=260))]),
- 'jcrackx': dict(src='p04', tight=True, body=[('c1', 80.30, 114.20, 960)], A='FILIPINO MOMS WILL ASK YOU THIS 😭', hl=['THIS'], t2="wait for mom's question 😭",
-   pops=[('c1', 'cocaine?', 'e_laugh.png', dict(y=1020, size=260)), ('c1', 'Bye', 'e_sob.png', dict(y=1020, size=260))]),
- 'jrodx': dict(src='p03', tight=True, body=[('c1', 182.85, 216.00, 960)], A='WHEN THE DENTIST SEES YOUR TEETH 💀', hl=['TEETH'], t2='wait for the smell 😭',
-   pops=[('c1', 'punch', 'e_sob.png', dict(y=1020, size=260)), ('c1', 'Vicks', 'e_laugh.png', dict(y=1020, size=260))]),
- 'jwipex': dict(src='p10', tight=True, body=[('c1', 2.95, 10.95, 960), ('c2', 40.72, 56.85, 960)], A='VETERANS ARE BUILT DIFFERENT 💀', hl=['DIFFERENT'], t2='wait for his answer 😭',
-   pops=[('c1', 'dangled', 'e_sob.png', dict(y=1020, size=260)), ('c2', 'wipe', 'e_laugh.png', dict(y=1020, size=260))]),
- 'jnugx': dict(src='p05', tight=True, body=[('c1', 210.90, 216.20, 960), ('c2', 242.05, 247.60, 960), ('c3', 266.35, 274.20, 960), ('c4', 297.60, 314.00, 960)],
-   A='FILIPINO MOMS WILL FIGHT FOR YOU 😭', hl=['FIGHT'], t2='wait for the drive-thru guy 💀', pops=[('c2', 'advantage', 'e_sob.png', dict(y=1020, size=260)), ('c4', 'nugget', 'e_laugh.png', dict(y=1020, size=260))]),
+ 'jmailo': dict(src='p11', tight=True, body=[('c1', 9.25, 47.50, 960)], A='his mom made a war hero become a MAILMAN 💀', hl=['MAILMAN'],
+   pops=[('c1', 'Christmas', 'e_sob.png', dict(y=1320, size=300)), ('c1', 'motherfucking', 'e_laugh.png', dict(y=1320, size=300))]),
+ 'jsnowo': dict(src='p09', tight=True, body=[('c1', 137.80, 190.80, 960)], A='the army sent him home… his reply 💀', hl=['reply'],
+   pops=[('c1', 'scarred', 'e_sob.png', dict(y=1320, size=300)), ('c1', 'Put', 'e_laugh.png', dict(y=1320, size=300))]),
+ 'jwalko': dict(src='p12', tight=True, body=[('c1', 129.30, 181.00, 960)], A='they all FORGOT about Fred at the game 💀', hl=['FORGOT'],
+   pops=[('c1', 'Fred', 'e_sob.png', dict(y=1320, size=300)), ('c1', 'killed', 'e_laugh.png', dict(y=1320, size=300))]),
+ 'jptsdo': dict(src='p06', tight=True, body=[('c1', 0.95, 41.60, 960)], A='if you have TRAUMA, Jo Koy has advice 😭', hl=['TRAUMA,'],
+   pops=[('c1', 'bitch', 'e_laugh.png', dict(y=1320, size=300)), ('c1', 'dog', 'e_sob.png', dict(y=1320, size=300))]),
+ 'jideao': dict(src='p03', tight=True, body=[('c1', 230.40, 253.30, 960), ('c2', 267.30, 284.00, 960)], A='his dentist quoted him $100,000 💀', hl=['$100,000'],
+   pops=[('c1', 'chiclets', 'e_laugh.png', dict(y=1320, size=300)), ('c2', 'destroy', 'e_sob.png', dict(y=1320, size=300))]),
 }
 E = {}
 for k, d in CL.items():
@@ -82,9 +75,9 @@ FULL = '--full' in sys.argv
 G_LITE = ("split[ga][gb];[gb]gblur=sigma=14[gg];[ga][gg]blend=all_mode=softlight:all_opacity=0.12,unsharp=5:5:0.9:5:5:0,"
           "eq=contrast=1.05:saturation=1.1:gamma=0.99,curves=all='0/0 0.25/0.23 0.75/0.78 1/1',colortemperature=temperature=7200,format=yuv420p")
 
-W = {v: [w for s in json.load(open(f'{TX}/{v}.json')) for w in s['w']] for v in ('p02', 'p03', 'p04', 'p05', 'p06', 'p07', 'p10', 'p12')}
+W = {v: [w for s in json.load(open(f'{TX}/{v}.json')) for w in s['w']] for v in ('p03', 'p06', 'p09', 'p11', 'p12')}
 FIXED = []
-CUTS = {v: [float(x) for x in open(os.path.join(os.path.dirname(DL.rstrip('/')), f'cuts_{v}.txt'))] for v in ('p02', 'p03', 'p04', 'p05', 'p06', 'p07', 'p10', 'p12')}
+CUTS = {v: [float(x) for x in open(os.path.join(os.path.dirname(DL.rstrip('/')), f'cuts_{v}.txt'))] for v in ('p03', 'p06', 'p09', 'p11', 'p12')}
 def snap(sid, v, a, b):
     """user rules: never cut a line mid-sentence (start before the first word, run until the speaker pauses),
     and no sub-0.5 s slivers of another camera angle at either end (snap onto the show's own cut)."""

@@ -288,3 +288,8 @@
 - WHEN THE DENTIST SEES YOUR TEETH 💀 (Jo Koy jrodx)
 - VETERANS ARE BUILT DIFFERENT 💀 (Jo Koy jwipex)
 - FILIPINO MOMS WILL FIGHT FOR YOU 😭 (Jo Koy jnugx)
+- his mom made a war hero become a MAILMAN 💀 (Jo Koy jmailo)
+- the army sent him home… his reply 💀 (Jo Koy jsnowo)
+- they all FORGOT about Fred at the game 💀 (Jo Koy jwalko)
+- if you have TRAUMA, Jo Koy has advice 😭 (Jo Koy jptsdo)
+- his dentist quoted him $100,000 💀 (Jo Koy jideao)
