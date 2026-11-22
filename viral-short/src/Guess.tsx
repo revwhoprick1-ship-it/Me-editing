@@ -321,9 +321,9 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
       const grow = (q: number) => interpolate(q, [0, 7, 10, 13], [0.15, 1.12, 0.96, 1], clamp), sz = e.size ?? 300, fade = k > d - 7 ? (d - k) / 7 : 1;
       const cx = e.x ?? 540, cy = e.y ?? (e.kind === 'txt' ? 800 : 1280);
       const img = (q: number, s: number, o: number, key: string) => e.kind === 'txt'
-        ? <div key={key} style={{position: 'absolute', left: 0, width: 1080, top: cy - (e.size ?? 150) / 2, textAlign: 'center', fontFamily: MONT, fontWeight: 900, fontSize: e.size ?? 150, lineHeight: 1, color: e.color ?? '#58EE28', WebkitTextStroke: '10px #000', paintOrder: 'stroke fill', opacity: key === 'm' ? 1 : o, transform: `scale(${s}) rotate(-4deg)`}}>{e.file}</div>
+        ? <div key={key} style={{position: 'absolute', left: (e as {flat?: boolean}).flat ? 90 : 0, width: (e as {flat?: boolean}).flat ? 840 : 1080, top: cy - (e.size ?? 150) / 2, textAlign: 'center', fontFamily: MONT, fontWeight: 900, fontSize: e.size ?? 150, lineHeight: 1, color: e.color ?? '#58EE28', WebkitTextStroke: '10px #000', paintOrder: 'stroke fill', opacity: key === 'm' ? 1 : o, transform: (e as {flat?: boolean}).flat ? `scale(${Math.min(1, s)})` : `scale(${s}) rotate(-4deg)`, ...((e as {flat?: boolean}).flat ? {lineHeight: 1.15, WebkitTextStroke: '8px #000'} : {})}}>{e.file}</div>
         : <Img key={key} src={staticFile(`res/${e.file}`)} style={{position: 'absolute', left: cx - sz / 2, top: cy - sz / 2, width: sz, height: sz, objectFit: 'contain', opacity: o, transform: `scale(${s})`}} />;
-      return <React.Fragment key={'pm' + i}>{[3, 2, 1].map((j) => { const q = k - 2 * j; if (q < 0) return null; const ek = Math.min(1, (k - 2 * j) / 12);
+      return <React.Fragment key={'pm' + i}>{((e as {flat?: boolean}).flat ? [] : [3, 2, 1]).map((j) => { const q = k - 2 * j; if (q < 0) return null; const ek = Math.min(1, (k - 2 * j) / 12);
         return img(q, grow(q) * (1 + 0.3 * j * ek), [0, 0.6, 0.42, 0.28][j] * (1 - ek) * fade, 'e' + j); })}
         {img(k, grow(k) * (1 + 0.03 * Math.sin(k / 2.5)), 0.82 * fade, 'm')}</React.Fragment>; })}
     {!cfg.popMid && (cfg.extras ?? []).filter((e) => e.kind === 'png').map((e, i) => { const t0 = xat(e), d = e.dur ?? 36, k = f - t0; if (k < 0 || k >= d) return null;

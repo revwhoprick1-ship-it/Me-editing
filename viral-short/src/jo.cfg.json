@@ -47,10 +47,11 @@
     "kind": "txt",
     "file": "TAG SOMEONE'S FILIPINO MOM \ud83d\ude2d",
     "color": "#FFE14A",
-    "size": 56,
-    "y": 1575,
-    "dur": 80,
-    "off": 10
+    "size": 50,
+    "y": 930,
+    "dur": 75,
+    "off": 10,
+    "flat": true
    },
    {
     "at": [
@@ -108,22 +109,11 @@
     "kind": "txt",
     "file": "WHAT JOB DID YOUR MOM PICK FOR YOU? \ud83d\udc47",
     "color": "#FFFFFF",
-    "size": 52,
-    "y": 1575,
+    "size": 50,
+    "y": 930,
     "dur": 84,
-    "off": 64
-   },
-   {
-    "at": [
-     "c1_4"
-    ],
-    "kind": "png",
-    "file": "arrow.png",
-    "x": 980,
-    "y": 1361,
-    "size": 220,
-    "dur": 84,
-    "off": 64
+    "off": 64,
+    "flat": true
    }
   ],
   "music": [
@@ -198,10 +188,11 @@
     "kind": "txt",
     "file": "SEND THIS TO A VETERAN \ud83c\uddfa\ud83c\uddf8",
     "color": "#FFE14A",
-    "size": 56,
-    "y": 1575,
-    "dur": 80,
-    "off": 10
+    "size": 50,
+    "y": 930,
+    "dur": 75,
+    "off": 10,
+    "flat": true
    },
    {
     "at": [
@@ -304,22 +295,11 @@
     "kind": "txt",
     "file": "WOULD YOU HAVE GONE BACK IN? \ud83d\udc47",
     "color": "#FFFFFF",
-    "size": 52,
-    "y": 1575,
+    "size": 50,
+    "y": 930,
     "dur": 84,
-    "off": 15
-   },
-   {
-    "at": [
-     "c1_9"
-    ],
-    "kind": "png",
-    "file": "arrow.png",
-    "x": 980,
-    "y": 1361,
-    "size": 220,
-    "dur": 84,
-    "off": 15
+    "off": 15,
+    "flat": true
    }
   ],
   "music": [
@@ -394,10 +374,11 @@
     "kind": "txt",
     "file": "TAG A DODGERS FAN \u26be",
     "color": "#FFE14A",
-    "size": 56,
-    "y": 1575,
-    "dur": 80,
-    "off": 10
+    "size": 50,
+    "y": 930,
+    "dur": 75,
+    "off": 10,
+    "flat": true
    },
    {
     "at": [
@@ -446,22 +427,11 @@
     "kind": "txt",
     "file": "LONGEST GAME YOU'VE EVER STAYED FOR? \ud83d\udc47",
     "color": "#FFFFFF",
-    "size": 52,
-    "y": 1575,
+    "size": 50,
+    "y": 930,
     "dur": 84,
-    "off": 276
-   },
-   {
-    "at": [
-     "c1_3"
-    ],
-    "kind": "png",
-    "file": "arrow.png",
-    "x": 980,
-    "y": 1361,
-    "size": 220,
-    "dur": 84,
-    "off": 276
+    "off": 276,
+    "flat": true
    }
   ],
   "music": [
@@ -536,10 +506,11 @@
     "kind": "txt",
     "file": "SEND THIS TO YOUR COWORKER \ud83d\udc80",
     "color": "#FFE14A",
-    "size": 56,
-    "y": 1575,
-    "dur": 80,
-    "off": 10
+    "size": 50,
+    "y": 930,
+    "dur": 75,
+    "off": 10,
+    "flat": true
    },
    {
     "at": [
@@ -597,22 +568,11 @@
     "kind": "txt",
     "file": "DOG OR THERAPIST? \ud83d\udc47",
     "color": "#FFFFFF",
-    "size": 52,
-    "y": 1575,
+    "size": 50,
+    "y": 930,
     "dur": 84,
-    "off": 322
-   },
-   {
-    "at": [
-     "c1_4"
-    ],
-    "kind": "png",
-    "file": "arrow.png",
-    "x": 980,
-    "y": 1361,
-    "size": 220,
-    "dur": 84,
-    "off": 322
+    "off": 322,
+    "flat": true
    }
   ],
   "music": [
@@ -687,10 +647,11 @@
     "kind": "txt",
     "file": "SEND THIS TO SOMEONE WITH BRACES \ud83d\ude2d",
     "color": "#FFE14A",
-    "size": 56,
-    "y": 1575,
-    "dur": 80,
-    "off": 10
+    "size": 50,
+    "y": 930,
+    "dur": 75,
+    "off": 10,
+    "flat": true
    },
    {
     "at": [
@@ -762,22 +723,11 @@
     "kind": "txt",
     "file": "WHAT WOULD YOUR MOM SAY? \ud83d\udc47",
     "color": "#FFFFFF",
-    "size": 52,
-    "y": 1575,
+    "size": 50,
+    "y": 930,
     "dur": 84,
-    "off": 417
-   },
-   {
-    "at": [
-     "c2"
-    ],
-    "kind": "png",
-    "file": "arrow.png",
-    "x": 980,
-    "y": 1361,
-    "size": 220,
-    "dur": 84,
-    "off": 417
+    "off": 417,
+    "flat": true
    }
   ],
   "music": [
@@ -852,10 +802,11 @@
     "kind": "txt",
     "file": "SEND THIS TO YOUR DAD \u26be",
     "color": "#FFE14A",
-    "size": 56,
-    "y": 1575,
-    "dur": 80,
-    "off": 10
+    "size": 50,
+    "y": 930,
+    "dur": 75,
+    "off": 10,
+    "flat": true
    },
    {
     "at": [
@@ -940,22 +891,11 @@
     "kind": "txt",
     "file": "WOULD YOU HAVE LEFT THE GAME? \ud83d\udc47",
     "color": "#FFFFFF",
-    "size": 52,
-    "y": 1575,
+    "size": 50,
+    "y": 930,
     "dur": 84,
-    "off": 17
-   },
-   {
-    "at": [
-     "c3_6"
-    ],
-    "kind": "png",
-    "file": "arrow.png",
-    "x": 980,
-    "y": 1361,
-    "size": 220,
-    "dur": 84,
-    "off": 17
+    "off": 17,
+    "flat": true
    }
   ],
   "music": [
@@ -1030,10 +970,11 @@
     "kind": "txt",
     "file": "SEND THIS TO YOUR MOM \ud83d\ude2d",
     "color": "#FFE14A",
-    "size": 56,
-    "y": 1575,
-    "dur": 80,
-    "off": 10
+    "size": 50,
+    "y": 930,
+    "dur": 75,
+    "off": 10,
+    "flat": true
    },
    {
     "at": [
@@ -1118,22 +1059,11 @@
     "kind": "txt",
     "file": "DID YOUR MOM EVER DO THIS? \ud83d\udc47",
     "color": "#FFFFFF",
-    "size": 52,
-    "y": 1575,
+    "size": 50,
+    "y": 930,
     "dur": 84,
-    "off": 72
-   },
-   {
-    "at": [
-     "c4_2"
-    ],
-    "kind": "png",
-    "file": "arrow.png",
-    "x": 980,
-    "y": 1361,
-    "size": 220,
-    "dur": 84,
-    "off": 72
+    "off": 72,
+    "flat": true
    }
   ],
   "music": [
@@ -1208,10 +1138,11 @@
     "kind": "txt",
     "file": "TAG SOMEONE WHO HATES DOGS \ud83d\udc36",
     "color": "#FFE14A",
-    "size": 56,
-    "y": 1575,
-    "dur": 80,
-    "off": 10
+    "size": 50,
+    "y": 930,
+    "dur": 75,
+    "off": 10,
+    "flat": true
    },
    {
     "at": [
@@ -1233,22 +1164,11 @@
     "kind": "txt",
     "file": "DOG PEOPLE, AGREE? \ud83d\udc47",
     "color": "#FFFFFF",
-    "size": 52,
-    "y": 1575,
+    "size": 50,
+    "y": 930,
     "dur": 84,
-    "off": 531
-   },
-   {
-    "at": [
-     "c1"
-    ],
-    "kind": "png",
-    "file": "arrow.png",
-    "x": 980,
-    "y": 1361,
-    "size": 220,
-    "dur": 84,
-    "off": 531
+    "off": 531,
+    "flat": true
    }
   ],
   "music": [
@@ -1323,10 +1243,11 @@
     "kind": "txt",
     "file": "SEND THIS TO YOUR FILIPINO MOM \ud83d\ude2d",
     "color": "#FFE14A",
-    "size": 56,
-    "y": 1575,
-    "dur": 80,
-    "off": 10
+    "size": 50,
+    "y": 930,
+    "dur": 75,
+    "off": 10,
+    "flat": true
    },
    {
     "at": [
@@ -1348,22 +1269,11 @@
     "kind": "txt",
     "file": "WHAT DID YOUR MOM ACCUSE YOU OF? \ud83d\udc47",
     "color": "#FFFFFF",
-    "size": 52,
-    "y": 1575,
+    "size": 50,
+    "y": 930,
     "dur": 84,
-    "off": 707
-   },
-   {
-    "at": [
-     "c1"
-    ],
-    "kind": "png",
-    "file": "arrow.png",
-    "x": 980,
-    "y": 1361,
-    "size": 220,
-    "dur": 84,
-    "off": 707
+    "off": 707,
+    "flat": true
    }
   ],
   "music": [
@@ -1438,10 +1348,11 @@
     "kind": "txt",
     "file": "TAG SOMEONE WHO NEEDS A DENTIST \ud83d\udc80",
     "color": "#FFE14A",
-    "size": 56,
-    "y": 1575,
-    "dur": 80,
-    "off": 10
+    "size": 50,
+    "y": 930,
+    "dur": 75,
+    "off": 10,
+    "flat": true
    },
    {
     "at": [
@@ -1481,22 +1392,11 @@
     "kind": "txt",
     "file": "WORST DENTIST STORY? \ud83d\udc47",
     "color": "#FFFFFF",
-    "size": 52,
-    "y": 1575,
+    "size": 50,
+    "y": 930,
     "dur": 84,
-    "off": 22
-   },
-   {
-    "at": [
-     "c1_2"
-    ],
-    "kind": "png",
-    "file": "arrow.png",
-    "x": 980,
-    "y": 1361,
-    "size": 220,
-    "dur": 84,
-    "off": 22
+    "off": 22,
+    "flat": true
    }
   ],
   "music": [

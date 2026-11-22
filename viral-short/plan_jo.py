@@ -90,7 +90,7 @@ CL = {
 E = {}
 for k, d in CL.items():
     ex = [pop([s, w], e, None, off=2, **(o[0] if o else {})) for s, w, e, *o in d['pops']]
-    if d.get('share'): ex.append(dict(at=[d['share'][0], d['share'][1]], kind='txt', file=d['share'][2], color='#FFE14A', size=56, y=1575, dur=80, off=10))
+    if d.get('share'): ex.append(dict(at=[d['share'][0], d['share'][1]], kind='txt', file=d['share'][2], color='#FFE14A', size=50, y=930, dur=75, off=10, flat=True))
     for sid_, w_, f_ in d.get('ovs', []): ex.append(dict(ov([sid_, w_], f_, None, dur=34 if 'flash' in f_ else 54, op=0.55 if 'flash' in f_ else 0.9, off=2), **({'fit': 'contain'} if 'afml' in f_ else {})))
     body = ([('face', *d['face'], 960)] if d.get('face') else []) + list(d['body'])
     E[k] = dict(vo=None, scenes=[(s, d['src'], a, b, cx) for s, a, b, cx in body], fixed=[s for s, *_ in body], nocap=['face'], face=bool(d.get('face')), ask2=d.get('ask'), mute=[], zoom={},
@@ -265,8 +265,8 @@ for eid, spec in E.items():
     if spec.get('face'): c.update(hardcut=True)
     if spec.get('ask2'):
         last = scenes[-1]; o = max(0, last['durationInFrames'] - 84)
-        c['extras'] += [dict(at=[last['id']], kind='txt', file=spec['ask2'], color='#FFFFFF', size=52, y=1575, dur=84, off=o),
-                        dict(at=[last['id']], kind='png', file='arrow.png', x=980, y=1361, size=220, dur=84, off=o)]
+        # safe zone (user 2026-11-22): inside the video box just above the captions, clear of IG's right-side buttons; no arrow (it pointed at nothing)
+        c['extras'] += [dict(at=[last['id']], kind='txt', file=spec['ask2'], color='#FFFFFF', size=50, y=930, dur=84, off=o, flat=True)]
     for k_ in ('face', 'ask2', 'share', 'ovs'): c.pop(k_, None)
     if spec.get('top2'): c['top2'] = dict(text=spec['top2'], at=3.5, dur=3.5)
     if FULL: c['capChunk'] = 3

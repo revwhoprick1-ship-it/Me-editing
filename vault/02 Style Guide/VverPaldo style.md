@@ -33,6 +33,7 @@ The style used for the "Guess the fake millionaire" and Trevor stream edits (Nov
 ## Anti-dupe re-edits (Nov 15)
 - **Always change the text hook** on every re-edit/repost; never reuse a hook (check `04 Projects/Titles used.md`).
 - **Extra effects only from the editing-resources Drive folder:** emoji PNG pops (😂 e_laugh / 😭 e_sob / ❤️ e_heart, scale-pop + wobble), greenflash2 / cashfall overlays (screen blend), meme SFX (huh, fahhh, wow, awk, ding, correct, camera flash on the hard cut).
+- **Safe zones for every pop-up text (user 2026-11-22):** no tilt, no ghost copies, never in the black bar under the video and never at the very bottom; place it inside the video, just above the captions (box layout y≈930, x 90-930), where the eyes already are, clear of IG's right-side buttons (last ~150 px) and bottom UI. **Never draw arrows/circles at Instagram UI** (like/comment buttons are not in the export, so it points at nothing).
 - **Change the song per video, only from the resources' BGSONGS:** suspense, sentamento, montagem, funk ABN, empire, brevis (`res/*_n.mp3`, loudness-matched, energetic start offset, looped if short).
 - Pipeline: `viral-short/planX.py` clones an edit under a new id with new hook/song/extras (`src/x.cfg.json`).
 
