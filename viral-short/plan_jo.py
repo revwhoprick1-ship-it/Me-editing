@@ -46,19 +46,19 @@ CL = {
  'jnugv': dict(src='p05', body=[('hook', 308.85, 312.20, 960), ('c1', 210.90, 216.20, 960), ('c2', 242.05, 252.50, 960), ('c3', 266.35, 274.20, 960), ('c4', 297.60, 314.00, 960)],
    A="Mom stormed his McDonald's 😭", hl=["McDonald's"], tp=['hook', 'nugget'], pops=[('c2', 'advantage', 'e_sob.png', dict(y=1020, size=260)), ('c4', 'nugget', 'e_laugh.png', dict(y=1020, size=260))]),
  'jburgv': dict(src='p03', body=[('hook', 107.55, 111.47, 960), ('c1', 88.15, 137.60, 960)],
-   A='His $100K money plan 💀', hl=['$100K'], tp=['hook', "Carl's"], pops=[('c1', 'cheeseburger', 'e_laugh.png', dict(y=1020, size=260)), ('c1', 'funny.', 'e_sob.png', dict(y=1020, size=260))]),
+   A='His $100K money plan 💀', hl=['$100K'], tp=['hook', "Carl's"], pin=[['hook', 'know']], pops=[('c1', 'cheeseburger', 'e_laugh.png', dict(y=1020, size=260)), ('c1', 'funny.', 'e_sob.png', dict(y=1020, size=260))]),
  'jrodv': dict(src='p03', body=[('hook', 192.35, 194.20, 960), ('c1', 175.15, 216.00, 960)],
    A='Dentist saw his teeth 💀', hl=['teeth'], tp=['hook', 'punch'], pops=[('c1', 'punch', 'e_sob.png', dict(y=1020, size=260)), ('c1', 'Vicks', 'e_laugh.png', dict(y=1020, size=260))]),
- 'jwipev': dict(src='p10', body=[('hook', 46.08, 49.20, 960), ('c1', 2.95, 10.95, 960), ('c2', 40.72, 56.85, 960)],
-   A='Army said go home… 💀', hl=['home…'], tp=['hook', 'wipe'], pops=[('c1', 'dangled', 'e_sob.png', dict(y=1020, size=260)), ('c2', 'wipe', 'e_laugh.png', dict(y=1020, size=260))]),
- 'jcrackv': dict(src='p04', body=[('hook', 98.32, 100.90, 960), ('c1', 68.60, 115.20, 960)],
-   A="Mom's friend asked THIS 😭", hl=['THIS'], tp=['hook', 'crack'], pops=[('c1', 'cocaine?', 'e_laugh.png', dict(y=1020, size=260)), ('c1', 'Bye', 'e_sob.png', dict(y=1020, size=260))]),
+ 'jwipev': dict(src='p10', body=[('hook', 46.25, 49.20, 960), ('c1', 2.95, 10.95, 960), ('c2', 40.72, 56.85, 960)],
+   A='Army said go home… 💀', hl=['home…'], tp=['hook', 'wipe'], pin=[['hook', 'wipe']], pops=[('c1', 'dangled', 'e_sob.png', dict(y=1020, size=260)), ('c2', 'wipe', 'e_laugh.png', dict(y=1020, size=260))]),
+ 'jcrackv': dict(src='p04', body=[('hook', 109.65, 112.65, 960), ('c1', 68.60, 115.20, 960)],
+   A='Mom asked him THIS 😭', hl=['THIS'], tp=['hook', 'crack'], pops=[('c1', 'cocaine?', 'e_laugh.png', dict(y=1020, size=260)), ('c1', 'Bye', 'e_sob.png', dict(y=1020, size=260))]),
 }
 E = {}
 for k, d in CL.items():
     ex = [pop([s, w], e, None, off=2, **(o[0] if o else {})) for s, w, e, *o in d['pops']]
     E[k] = dict(vo=None, scenes=[(s, d['src'], a, b, cx) for s, a, b, cx in d['body']], fixed=[s for s, *_ in d['body']], mute=[], zoom={},
-                circles=[], noSkull=True, ask=[], tints=[], rizz=[], blowouts=[], blackFlash=[], streaks=[], punch=[], top=d['A'], hl={w: RD for w in d['hl']}, topPop=d.get('tp'), topSize=d.get('ts', 72),
+                circles=[], noSkull=True, ask=[], tints=[], rizz=[], blowouts=[], blackFlash=[], streaks=[], punch=d.get('pin', []), top=d['A'], hl={w: RD for w in d['hl']}, topPop=d.get('tp'), topSize=d.get('ts', 72),
                 extras=ex, focus=dict(x=540, y=330, r=180, dur=20))
 VO = sys.argv[3]
 FULL = '--full' in sys.argv

@@ -108,7 +108,12 @@
   "blowouts": [],
   "blackFlash": [],
   "streaks": [],
-  "punch": [],
+  "punch": [
+   [
+    "hook",
+    "know"
+   ]
+  ],
   "top": "His $100K money plan \ud83d\udc80",
   "hl": {
    "$100K": "#FF2A2A"
@@ -256,7 +261,12 @@
   "blowouts": [],
   "blackFlash": [],
   "streaks": [],
-  "punch": [],
+  "punch": [
+   [
+    "hook",
+    "wipe"
+   ]
+  ],
   "top": "Army said go home\u2026 \ud83d\udc80",
   "hl": {
    "home\u2026": "#FF2A2A"
@@ -300,7 +310,7 @@
    }
   ],
   "focus": {
-   "x": 536,
+   "x": 538,
    "y": 580,
    "r": 195,
    "dur": 20
@@ -340,7 +350,7 @@
   "blackFlash": [],
   "streaks": [],
   "punch": [],
-  "top": "Mom's friend asked THIS \ud83d\ude2d",
+  "top": "Mom asked him THIS \ud83d\ude2d",
   "hl": {
    "THIS": "#FF2A2A"
   },
@@ -374,8 +384,8 @@
    }
   ],
   "focus": {
-   "x": 560,
-   "y": 106,
+   "x": 481,
+   "y": 284,
    "r": 170,
    "dur": 20
   },
