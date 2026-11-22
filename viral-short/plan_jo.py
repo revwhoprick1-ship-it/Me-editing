@@ -45,17 +45,30 @@ _CL_B6 = None  # batch 6 (jdenv, jliev, jcamov, jsniffv, jcoyotev) is in git his
 _CL_B7 = None  # batch 7 (jnugv, jburgv, jrodv, jwipev, jcrackv: cold open + rewind) is in git history
 # batch 8 (user 2026-11-22: "50% skipped at 5 s"): NO jump back (forward from the tension), 20-35 s, pauses tightened (tight=True),
 # stakes hook text, open-loop 2nd text line at 3.5 s (t2). steady / no face blur / no SFX as before.
+_CL_B8 = None  # batch 8 (jnugw, jrodw, jwipew, jcrackw, jburgw) is in git history
+# batch 9 (user 2026-11-22, 3 viral reels analysed): Jo's FIRST sentence is the premise, comment-bait topic (dog people / Filipino moms),
+# ALL-CAPS hook quoting the viewer, 2-3 word phrase captions (capChunk) with the spoken word in green. Keeps batch 8 rules.
 CL = {
- 'jnugw': dict(src='p05', tight=True, body=[('c1', 210.90, 216.20, 960), ('c2', 242.05, 247.60, 960), ('c3', 266.35, 274.20, 960), ('c4', 297.60, 314.00, 960)],
-   A="Mom didn't know WHY he got fired 😭", hl=['WHY'], t2='wait for the drive-thru guy 💀', pops=[('c2', 'advantage', 'e_sob.png', dict(y=1020, size=260)), ('c4', 'nugget', 'e_laugh.png', dict(y=1020, size=260))]),
- 'jrodw': dict(src='p03', tight=True, body=[('c1', 182.85, 216.00, 960)],
-   A='His dentist almost PUNCHED him 💀', hl=['PUNCHED'], t2='wait for the smell 😭', pops=[('c1', 'punch', 'e_sob.png', dict(y=1020, size=260)), ('c1', 'Vicks', 'e_laugh.png', dict(y=1020, size=260))]),
- 'jwipew': dict(src='p10', tight=True, body=[('c1', 2.95, 10.95, 960), ('c2', 40.72, 56.85, 960)],
-   A='Army sent him home… he said THIS 💀', hl=['THIS'], t2='wait for his answer 😭', pops=[('c1', 'dangled', 'e_sob.png', dict(y=1020, size=260)), ('c2', 'wipe', 'e_laugh.png', dict(y=1020, size=260))]),
- 'jcrackw': dict(src='p04', tight=True, body=[('c1', 80.30, 114.20, 960)],
-   A="Mom thinks he's on CRACK 😭", hl=['CRACK'], t2="wait for mom's question 😭", pops=[('c1', 'cocaine?', 'e_laugh.png', dict(y=1020, size=260)), ('c1', 'Bye', 'e_sob.png', dict(y=1020, size=260))]),
- 'jburgw': dict(src='p03', tight=True, body=[('c1', 91.30, 97.40, 960), ('c2', 102.95, 137.60, 960)],
-   A='He got $100K… and ONE plan 💀', hl=['ONE'], t2='wait for the math 😭', pops=[('c2', 'cheeseburger', 'e_laugh.png', dict(y=1020, size=260)), ('c2', 'funny.', 'e_sob.png', dict(y=1020, size=260))]),
+ 'jdogsx': dict(src='p06', tight=False, body=[('c1', 86.75, 107.20, 960)], A="IF YOU DON'T LIKE DOGS, WATCH THIS 🐶", hl=['DOGS,'], t2='he said what we all think 😭',
+   pops=[('c1', 'you.', 'e_laugh.png', dict(y=1020, size=260)), ('c1', 'hi.', 'e_sob.png', dict(y=1020, size=260))]),
+ 'jdmx': dict(src='p02', tight=False, body=[('c1', 12.05, 34.00, 960)], A='WHEN THEY SAY YOU LAUGH AT YOUR OWN JOKES 😭', hl=['OWN'], t2='wait for his reply 💀',
+   pops=[('c1', 'bitch.', 'e_laugh.png', dict(y=1020, size=260))]),
+ 'jsniffx': dict(src='p06', tight=True, body=[('c1', 166.75, 178.70, 960), ('c2', 220.55, 243.50, 960)], A="YOUR DOG KNOWS WHO'S FAKE 🐶", hl=['FAKE'], t2='every dog owner knows 😭',
+   pops=[('c1', 'Who', 'e_laugh.png', dict(y=1020, size=260)), ('c2', 'dude', 'e_sob.png', dict(y=1020, size=260))]),
+ 'jcoyotex': dict(src='p07', tight=True, body=[('c1', 218.57, 228.40, 960), ('c3', 298.90, 324.60, 960)], A='WHEN YOUR DOG KEEPS RUNNING AWAY 😭', hl=['AWAY'], t2='wait for the carrots 💀',
+   pops=[('c3', 'carrots?', 'e_laugh.png', dict(y=1020, size=260)), ('c3', 'salon', 'e_sob.png', dict(y=1020, size=260))]),
+ 'jdenx': dict(src='p12', tight=True, body=[('c2', 48.40, 58.30, 960), ('c3', 79.10, 115.50, 960)], A='HE REFUSED TO LEAVE THIS GAME 💀', hl=['REFUSED'], t2='his oxygen was running out 😭',
+   pops=[('c2', 'blue', 'e_sob.png', dict(y=1020, size=260)), ('c3', 'Vietnam', 'e_laugh.png', dict(y=1020, size=260))]),
+ 'jpayx': dict(src='p04', tight=True, body=[('c1', 230.70, 236.40, 960), ('c1b', 240.87, 243.70, 960), ('c2', 256.00, 286.80, 960)], A='HIS FIRST PAYCHECK AT 15 💀', hl=['15'], t2='wait for the math 😭',
+   pops=[('c1b', 'sign?', 'e_laugh.png', dict(y=1020, size=260)), ('c2', 'clown', 'e_sob.png', dict(y=1020, size=260))]),
+ 'jcrackx': dict(src='p04', tight=True, body=[('c1', 80.30, 114.20, 960)], A='FILIPINO MOMS WILL ASK YOU THIS 😭', hl=['THIS'], t2="wait for mom's question 😭",
+   pops=[('c1', 'cocaine?', 'e_laugh.png', dict(y=1020, size=260)), ('c1', 'Bye', 'e_sob.png', dict(y=1020, size=260))]),
+ 'jrodx': dict(src='p03', tight=True, body=[('c1', 182.85, 216.00, 960)], A='WHEN THE DENTIST SEES YOUR TEETH 💀', hl=['TEETH'], t2='wait for the smell 😭',
+   pops=[('c1', 'punch', 'e_sob.png', dict(y=1020, size=260)), ('c1', 'Vicks', 'e_laugh.png', dict(y=1020, size=260))]),
+ 'jwipex': dict(src='p10', tight=True, body=[('c1', 2.95, 10.95, 960), ('c2', 40.72, 56.85, 960)], A='VETERANS ARE BUILT DIFFERENT 💀', hl=['DIFFERENT'], t2='wait for his answer 😭',
+   pops=[('c1', 'dangled', 'e_sob.png', dict(y=1020, size=260)), ('c2', 'wipe', 'e_laugh.png', dict(y=1020, size=260))]),
+ 'jnugx': dict(src='p05', tight=True, body=[('c1', 210.90, 216.20, 960), ('c2', 242.05, 247.60, 960), ('c3', 266.35, 274.20, 960), ('c4', 297.60, 314.00, 960)],
+   A='FILIPINO MOMS WILL FIGHT FOR YOU 😭', hl=['FIGHT'], t2='wait for the drive-thru guy 💀', pops=[('c2', 'advantage', 'e_sob.png', dict(y=1020, size=260)), ('c4', 'nugget', 'e_laugh.png', dict(y=1020, size=260))]),
 }
 E = {}
 for k, d in CL.items():
@@ -69,9 +82,9 @@ FULL = '--full' in sys.argv
 G_LITE = ("split[ga][gb];[gb]gblur=sigma=14[gg];[ga][gg]blend=all_mode=softlight:all_opacity=0.12,unsharp=5:5:0.9:5:5:0,"
           "eq=contrast=1.05:saturation=1.1:gamma=0.99,curves=all='0/0 0.25/0.23 0.75/0.78 1/1',colortemperature=temperature=7200,format=yuv420p")
 
-W = {v: [w for s in json.load(open(f'{TX}/{v}.json')) for w in s['w']] for v in ('p03', 'p04', 'p05', 'p10')}
+W = {v: [w for s in json.load(open(f'{TX}/{v}.json')) for w in s['w']] for v in ('p02', 'p03', 'p04', 'p05', 'p06', 'p07', 'p10', 'p12')}
 FIXED = []
-CUTS = {v: [float(x) for x in open(os.path.join(os.path.dirname(DL.rstrip('/')), f'cuts_{v}.txt'))] for v in ('p03', 'p04', 'p05', 'p10')}
+CUTS = {v: [float(x) for x in open(os.path.join(os.path.dirname(DL.rstrip('/')), f'cuts_{v}.txt'))] for v in ('p02', 'p03', 'p04', 'p05', 'p06', 'p07', 'p10', 'p12')}
 def snap(sid, v, a, b):
     """user rules: never cut a line mid-sentence (start before the first word, run until the speaker pauses),
     and no sub-0.5 s slivers of another camera angle at either end (snap onto the show's own cut)."""
@@ -229,6 +242,7 @@ for eid, spec in E.items():
     if FULL: c.update(full=True, bf=0.02, capY=1250, topY=1430, sat=1.0)
     if spec.get('tight'): c.update(hardcut=False)
     if spec.get('top2'): c['top2'] = dict(text=spec['top2'], at=3.5, dur=3.5)
+    if FULL: c['capChunk'] = 3
     c['steady'] = True; c['punch'] = []   # user rule: never zoom in and out (no whip/punch/intro zoom)
     c['noFocus'] = True; c.pop('focus', None)   # user rule 2026-11-22: face blur removed, never use it again
     c['ask'] = []  # user: nothing under the video (no ask pill / promo line / progress bar)
