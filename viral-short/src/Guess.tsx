@@ -290,7 +290,7 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
       {tint && <AbsoluteFill style={{background: tint[1], opacity: tint[0], mixBlendMode: 'multiply'}} />}
       {bfa > 0 && <AbsoluteFill style={{background: '#000', opacity: bfa}} />}
       {(cfg.extras ?? []).filter((e) => e.kind === 'ov').map((e, i) => { const t0 = xat(e), d = e.dur ?? 34; return f >= t0 && f < t0 + d ?
-        <AbsoluteFill key={'ov' + i} style={{mixBlendMode: 'screen', opacity: e.op ?? 1}}><Sequence from={t0} durationInFrames={d} layout="none"><OffthreadVideo src={staticFile(`res/${e.file}`)} muted style={{width: 1080, height: BOX_H, objectFit: 'cover'}} /></Sequence></AbsoluteFill> : null; })}
+        <AbsoluteFill key={'ov' + i} style={{mixBlendMode: 'screen', opacity: e.op ?? 1}}><Sequence from={t0} durationInFrames={d} layout="none"><OffthreadVideo src={staticFile(`res/${e.file}`)} muted style={{width: 1080, height: BOX_H, objectFit: (e as {fit?: 'cover' | 'contain'}).fit ?? 'cover'}} /></Sequence></AbsoluteFill> : null; })}
       {/* "WAIT FOR IT" teaser (replaces hook+rewind): payoff loops muted in a PiP from frame 0, then blasts full-screen into the real moment */}
       {cfg.teaser && (() => {
         const T = cfg.teaser!, until = at(T.until), len = Math.max(6, Math.round((T.b - T.a) * fps));

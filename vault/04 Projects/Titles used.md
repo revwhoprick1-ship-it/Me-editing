@@ -293,3 +293,8 @@
 - they all FORGOT about Fred at the game 💀 (Jo Koy jwalko)
 - if you have TRAUMA, Jo Koy has advice 😭 (Jo Koy jptsdo)
 - his dentist quoted him $100,000 💀 (Jo Koy jideao)
+- Jo Koy's message to people who hate DOGS 🐶 (Jo Koy jdogsb)
+- his stepdad's oxygen was running out… and he STAYED 💀 (Jo Koy jdenb)
+- mom marched into McDonald's for him… big MISTAKE 😭 (Jo Koy jnugb)
+- what his mom's friend whispered about his TEETH 😭 (Jo Koy jcrackb)
+- the dentist opened his mouth and FLINCHED 💀 (Jo Koy jrodb)

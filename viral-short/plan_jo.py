@@ -56,21 +56,21 @@ _CL_B9 = None  # batch 9 (jdogsx..jnugx, full vertical + phrase captions) is in 
 #  share = share/tag line under the box at the first payoff; ask = comment question + resources arrow.png circling the comment button (last 2.8 s);
 #  ovs = editing-resources overlays (cashfall on money, afml on a time skip, greenflash2 on the punchline). Visual elements ONLY from public/res.
 CL = {
- 'jmailo': dict(src='p11', tight=True, face=(44.50, 45.50), body=[('c1', 12.93, 47.50, 960)], A='his mom made a war hero become a MAILMAN 💀', hl=['MAILMAN'],
+ 'jmailo': dict(src='p11', tight=True, face=(44.50, 45.50), body=[('c1', 12.62, 47.50, 960)], A='his mom made a war hero become a MAILMAN 💀', hl=['MAILMAN'],
    share=('c1', 'broken.', "TAG SOMEONE'S FILIPINO MOM 😭"), ask='WHAT JOB DID YOUR MOM PICK FOR YOU? 👇',
    ovs=[('c1', 'motherfucking', 'greenflash2.mp4')], pops=[('c1', 'Christmas', 'e_sob.png', dict(y=1320, size=300)), ('c1', 'motherfucking', 'e_laugh.png', dict(y=1320, size=300))]),
  'jsnowo': dict(src='p09', tight=True, face=(177.00, 178.00), body=[('c1', 167.70, 210.60, 960)], A='the army sent him home… his reply 💀', hl=['reply'],
    share=('c1', 'Put', 'SEND THIS TO A VETERAN 🇺🇸'), ask='WOULD YOU HAVE GONE BACK IN? 👇',
-   ovs=[('c1', 'teeth.', 'greenflash2.mp4')], pops=[('c1', 'snow?', 'e_laugh.png', dict(y=1320, size=300)), ('c1', 'teeth.', 'e_sob.png', dict(y=1320, size=300))]),
- 'jwalko': dict(src='p12', tight=True, face=(150.00, 151.00), body=[('c1', 142.22, 181.00, 960)], A='they all FORGOT about Fred at the game 💀', hl=['FORGOT'],
+   ovs=[('c1', 'teeth.', 'greenflash2.mp4')], pops=[('c1', 'snow', 'e_laugh.png', dict(y=1320, size=300)), ('c1', 'teeth.', 'e_sob.png', dict(y=1320, size=300))]),
+ 'jwalko': dict(src='p12', tight=True, face=(150.00, 151.00), body=[('c1', 142.28, 181.00, 960)], A='they all FORGOT about Fred at the game 💀', hl=['FORGOT'],
    share=('c1', "Fred's", 'TAG A DODGERS FAN ⚾'), ask="LONGEST GAME YOU'VE EVER STAYED FOR? 👇",
-   ovs=[('c1', 'killed', 'greenflash2.mp4')], pops=[('c1', 'Fred,', 'e_sob.png', dict(y=1320, size=300)), ('c1', 'killed', 'e_laugh.png', dict(y=1320, size=300))]),
+   ovs=[('c1', 'killed', 'greenflash2.mp4')], pops=[('c1', 'Fred', 'e_sob.png', dict(y=1320, size=300)), ('c1', 'killed', 'e_laugh.png', dict(y=1320, size=300))]),
  'jptsdo': dict(src='p06', tight=True, face=(21.30, 22.30), body=[('c1', 4.90, 41.60, 960)], A='if you have TRAUMA, Jo Koy has advice 😭', hl=['TRAUMA,'],
    share=('c1', 'yourself.', 'SEND THIS TO YOUR COWORKER 💀'), ask='DOG OR THERAPIST? 👇',
    ovs=[('c1', 'bitch', 'greenflash2.mp4')], pops=[('c1', 'bitch', 'e_laugh.png', dict(y=1320, size=300)), ('c1', 'dog', 'e_sob.png', dict(y=1320, size=300))]),
- 'jideao': dict(src='p03', tight=True, face=(238.20, 239.20), body=[('c1', 232.48, 253.30, 960), ('c2', 267.30, 284.00, 960)], A='his dentist quoted him $100,000 💀', hl=['$100,000'],
+ 'jideao': dict(src='p03', tight=True, face=(238.20, 239.20), body=[('c1', 232.52, 253.30, 960), ('c2', 267.30, 284.00, 960)], A='his dentist quoted him $100,000 💀', hl=['$100,000'],
    share=('c1', 'man?', 'SEND THIS TO SOMEONE WITH BRACES 😭'), ask='WHAT WOULD YOUR MOM SAY? 👇',
-   ovs=[('c1', '$100', 'cashfall.mp4'), ('c2', 'Well,', 'afml.mp4')], pops=[('c1', 'chiclets', 'e_laugh.png', dict(y=1320, size=300)), ('c2', 'destroy', 'e_sob.png', dict(y=1320, size=300))]),
+   ovs=[('c1', '$100', 'cash_trim.mp4'), ('c2', 'Well', 'afml.mp4')], pops=[('c1', 'chiclets', 'e_laugh.png', dict(y=1320, size=300)), ('c2', 'destroy', 'e_sob.png', dict(y=1320, size=300))]),
  'jdenb': dict(src='p12', tight=True, face=(113.60, 114.60), body=[('c2', 52.40, 61.00, 960), ('c3', 79.10, 115.50, 960)], A="his stepdad's oxygen was running out… and he STAYED 💀", hl=['STAYED'],
    share=('c3', 'Vietnam', 'SEND THIS TO YOUR DAD ⚾'), ask='WOULD YOU HAVE LEFT THE GAME? 👇',
    ovs=[('c3', 'Vietnam', 'greenflash2.mp4')], pops=[('c2', 'blue', 'e_sob.png', dict(y=1320, size=300)), ('c3', 'Vietnam', 'e_laugh.png', dict(y=1320, size=300))]),
@@ -91,7 +91,7 @@ E = {}
 for k, d in CL.items():
     ex = [pop([s, w], e, None, off=2, **(o[0] if o else {})) for s, w, e, *o in d['pops']]
     if d.get('share'): ex.append(dict(at=[d['share'][0], d['share'][1]], kind='txt', file=d['share'][2], color='#FFE14A', size=56, y=1575, dur=80, off=10))
-    for sid_, w_, f_ in d.get('ovs', []): ex.append(ov([sid_, w_], f_, None, dur=34 if 'flash' in f_ else 54, op=0.55 if 'flash' in f_ else 0.9, off=2))
+    for sid_, w_, f_ in d.get('ovs', []): ex.append(dict(ov([sid_, w_], f_, None, dur=34 if 'flash' in f_ else 54, op=0.55 if 'flash' in f_ else 0.9, off=2), **({'fit': 'contain'} if 'afml' in f_ else {})))
     body = ([('face', *d['face'], 960)] if d.get('face') else []) + list(d['body'])
     E[k] = dict(vo=None, scenes=[(s, d['src'], a, b, cx) for s, a, b, cx in body], fixed=[s for s, *_ in body], nocap=['face'], face=bool(d.get('face')), ask2=d.get('ask'), mute=[], zoom={},
                 circles=[], noSkull=True, ask=[], tints=[], rizz=[], blowouts=[], blackFlash=[], streaks=[], punch=d.get('pin', []), top=d['A'], hl={w: RD for w in d['hl']}, topPop=d.get('tp'), topSize=d.get('ts', 64), top2=d.get('t2'), tight=d.get('tight', False),
@@ -266,7 +266,7 @@ for eid, spec in E.items():
     if spec.get('ask2'):
         last = scenes[-1]; o = max(0, last['durationInFrames'] - 84)
         c['extras'] += [dict(at=[last['id']], kind='txt', file=spec['ask2'], color='#FFFFFF', size=52, y=1575, dur=84, off=o),
-                        dict(at=[last['id']], kind='png', file='arrow.png', x=1029, y=1361, size=260, dur=84, off=o)]
+                        dict(at=[last['id']], kind='png', file='arrow.png', x=980, y=1361, size=220, dur=84, off=o)]
     for k_ in ('face', 'ask2', 'share', 'ovs'): c.pop(k_, None)
     if spec.get('top2'): c['top2'] = dict(text=spec['top2'], at=3.5, dur=3.5)
     if FULL: c['capChunk'] = 3
