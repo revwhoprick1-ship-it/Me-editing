@@ -180,8 +180,6 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
     if (!w) throw new Error(`no word ${id}/${word}/${nth}`);
     return START[id] + w.startFrame;
   };
-  // hook text pops (1.3x -> 1) on frame 0 and again on the hook's audio peak word (cfg.topPop)
-  const TP = [0, ...(cfg.topPop ? [at(cfg.topPop)] : [])], tpd = TP.map((t) => f - t).filter((d) => d >= 0 && d < 9).pop();
   const TINTS = cfg.tints.map(([r, c]) => [at(r), c] as const), RIZZ = cfg.rizz.map(at), PUNCH = cfg.punch.map(at), BLOW = cfg.blowouts.map(at),
     BLACK = cfg.blackFlash.map(at), STREAKS = cfg.streaks.map(at);
   const TK = Object.keys(cfg.track).map(Number);
@@ -218,6 +216,8 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
   const cr0 = sc0.crops ?? [[0, 0]], ci = cr0.filter(([t]) => t <= lf0).length - 1, shotA = cr0[Math.max(0, ci)][0], shotB = cr0[ci + 1]?.[0] ?? sc0.durationInFrames;
   const push = cfg.pushIn ? 1 + 0.06 * Math.min(1, (lf0 - shotA) / Math.max(1, shotB - shotA)) : 1;
   const zoom = (WHD === undefined ? 1 : WZM[WHD + 2]) * (fi < 19 ? interpolate(f, [0, 18], [1.14, 1], clamp) : 1) * Math.max(punch, bfZoom) * push;
+  // hook text pops (1.3x -> 1) on frame 0 and again on the hook's audio peak word (cfg.topPop)
+  const TP = [0, ...(cfg.topPop ? [at(cfg.topPop)] : [])], tpd = TP.map((t) => f - t).filter((d) => d >= 0 && d < 9).pop();
   const topPopK = tpd === undefined ? 1 : interpolate(tpd, [0, 3, 6, 8], [1.3, 0.96, 1.02, 1], clamp);
   const shake = pu === 0 ? 8 : pu === 1 ? -5 : 0;
   const top = cfg.full ? 0 : interpolate(fi, [0, 3, 6, 9, 12, 15, 18, 21, 24], [609, 573, 537, 504, 474, 450, 432, 420, BOX_TOP], clamp);
