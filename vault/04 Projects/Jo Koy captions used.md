@@ -12,3 +12,15 @@ Log every posted description here so new ones never repeat (dupe-flag risk).
 - jrodx: When your Beverly Hills dentist looks in your mouth and loses it 💀 Jo Koy at his best in Blue in the Face on Netflix. #JoKoyStandup #BlueInTheFaceNetflix #dentistlife #teethproblems #funnystories
 - jwipex: Purple Hearts, Bronze Stars, and the most honest answer ever given to the Army 🇺🇸😂 Jo Koy honors his stepdad in Blue in the Face, now on Netflix. #JoKoy #BlueInTheFace #veteranstories #armylife #standupcomedy
 - jnugx: Filipino moms will march into any McDonald's for their kids… until the truth comes out 🍗😭 Jo Koy's Blue in the Face, streaming on Netflix. #JoKoyFunny #BlueInTheFaceNetflix #filipinofamily #momstories #netflixstandup
+
+## Batch 10b (2026-11-22)
+- jmailo: A Purple Heart veteran turned mailman because mom said so 📬😂 Jo Koy tells the story of his stepdad Fred in his Netflix special Blue in the Face. Who's the boss in your family? #JoKoyNetflix #BlueInTheFace #mailman #filipinomoms #standupclip
+- jsnowo: The Army offered him a ticket home after his first Purple Heart. His answer is the most veteran thing ever 🇺🇸💀 Jo Koy, Blue in the Face, streaming on Netflix. #JoKoy #BlueInTheFaceNetflix #veteranlife #militaryhumor #comedyvideo
+- jwalko: 18 innings, a walk-off win, and everybody forgot about Fred 😭⚾ Jo Koy's wildest Dodgers story from Blue in the Face on Netflix. #JoKoyComedy #BlueInTheFace #Dodgersbaseball #walkoff #funnyfamily
+- jptsdo: Everybody's got trauma, so Jo Koy has one piece of advice: get a dog 🐶 From his Netflix stand-up special Blue in the Face. Dog or therapist, which one are you picking? #JoKoyStandup #BlueInTheFaceNetflix #mentalhealthhumor #dogtherapy #relatablecomedy
+- jideao: A $100,000 dentist quote vs. a $3,000 Little Caesars coupon deal 💀🦷 Then Jo Koy called his mom for advice. Blue in the Face, now on Netflix. #JoKoy #BlueInTheFace #dentistfunny #filipinomom #netflixjokes
+- jdenb: His oxygen was blinking, his face was turning blue, and he still would not leave the ballpark 💀 Jo Koy's stepdad Fred in Blue in the Face on Netflix. #JoKoyNetflix #BlueInTheFace #baseballdads #Dodgersfans #trueStory
+- jnugb: Mom drove him back to McDonald's to fight for his job. The drive-thru guy had other plans 😭🍗 Jo Koy's Blue in the Face, streaming on Netflix. #JoKoyFunny #BlueInTheFace #mcdonaldsstories #filipinomoms #momlogic
+- jdogsb: "I don't like dogs." Jo Koy's comeback is undefeated 🐶😂 From the Netflix stand-up special Blue in the Face. Dog people, sound off. #JoKoyComedy #BlueInTheFaceNetflix #doglover #dogsofinsta #comebacks
+- jcrackb: When your mom's friend sees your teeth and gets the wrong idea 😭🦷 Jo Koy at his funniest in Blue in the Face on Netflix. What did your mom ever accuse you of? #JoKoy #BlueInTheFace #pinoymoms #teethstory #standupcomedyclips
+- jrodb: He opened his mouth and the Beverly Hills dentist backed up 💀 Jo Koy's dentist story from Blue in the Face, streaming on Netflix. Worst dentist visit you've had? #JoKoyStandup #BlueInTheFaceNetflix #dentistvisit #beverlyhills #funnystory
