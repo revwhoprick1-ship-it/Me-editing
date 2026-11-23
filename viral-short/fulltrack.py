@@ -29,9 +29,10 @@ for eid in sys.argv[1:]:
         area = np.median([q[2] for q in ok]); wide = False; z = 1.0   # user rule: constant framing, never zoom between shots
         xs = np.array([q[0] if q else np.nan for q in d]); idx = np.arange(len(xs)); good = ~np.isnan(xs)
         xs = np.interp(idx, idx[good], xs[good]); xs = np.array([np.median(xs[max(0, i - 3):i + 4]) for i in range(len(xs))])
-        hy = float(np.median([q[1] for q in ok])); half = 304 / z; dz = 0.2 * half; p = xs[0]; out = []
+        hy = float(np.median([q[1] for q in ok])); half = 304 / z; dz = 0.45 * half; p = xs[0]; out = []
         for x in xs:
-            if abs(x - p) > dz: p += 0.4 * (x - p - np.sign(x - p) * dz)
+            if abs(x - p) > 0.8 * half: p += 0.5 * (x - p - np.sign(x - p) * 0.6 * half)   # Jo near the edge: catch up
+            elif abs(x - p) > dz: p += 0.12 * (x - p - np.sign(x - p) * dz)   # gentle (user: don't follow too much)
             out.append(min(1920 - half, max(half, p)))
         X[a:b] = out; Z[a:b] = z; Y[a:b] = (min(1080 - 540 / z, max(540 / z, hy + 225)) if wide else 540); HY[a:b] = hy
     for s in gen[eid]:

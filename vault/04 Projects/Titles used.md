@@ -298,3 +298,8 @@
 - mom marched into McDonald's for him… big MISTAKE 😭 (Jo Koy jnugb)
 - what his mom's friend whispered about his TEETH 😭 (Jo Koy jcrackb)
 - the dentist opened his mouth and FLINCHED 💀 (Jo Koy jrodb)
+- POV: you told Jo Koy you don't like dogs 💀 (Jo Koy jdogs11)
+- Tell me your mom is Filipino without telling me 😭 (Jo Koy jnug11)
+- Name a more loyal Dodgers fan… I'll wait ⚾💀 (Jo Koy jden11)
+- Army healthcare hits different 💀 (Jo Koy jcamo11)
+- When your dog meets your new man 🐶💀 (Jo Koy jsniff11)

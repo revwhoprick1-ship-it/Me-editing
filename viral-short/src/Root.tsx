@@ -19,6 +19,9 @@ export const RemotionRoot: React.FC = () => {
       {Object.keys(EDITS).map((id) => (
         <Composition key={id} id={`Guess-${id}`} component={Guess} defaultProps={{edit: id}} durationInFrames={framesOf(id)} fps={30} width={1080} height={1920} />
       ))}
+      {Object.keys(EDITS).map((id) => (
+        <Composition key={'g60' + id} id={`Guess60-${id}`} component={Guess} defaultProps={{edit: id}} durationInFrames={framesOf(id) * 2} fps={60} width={1080} height={1920} />
+      ))}
       {Object.keys(KREEK).map((id) => (
         <Composition key={id} id={`Kreek-${id}`} component={Kreek} defaultProps={{edit: id}} durationInFrames={KREEK[id].dur} fps={30} width={1080} height={1920} />
       ))}

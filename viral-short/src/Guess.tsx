@@ -186,7 +186,8 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
   const track = (t: number) => { let best = -1, bd = 0.02; TK.forEach((k) => { const d = Math.abs(k - t); if (d < bd) { bd = d; best = k; } }); return best < 0 ? null : cfg.track[best.toFixed(2)]; };
   const callStarts = SCENES.flatMap((s) => cfg.calls.filter(([a]) => a >= s.videoStartSec - 0.01 && a < s.videoStartSec + s.durationInFrames / 30).map(([a]) => START[s.id] + Math.max(0, Math.round((a - s.videoStartSec) * 30)) + 2));
 
-  const f = useCurrentFrame(), {fps} = useVideoConfig();
+  // 60 fps renders (user 2026-11-23): all edit timing stays on a 30 fps grid (f), only playback/Sequences use real frames (x R)
+  const {fps} = useVideoConfig(), R = fps / 30, f = Math.floor(useCurrentFrame() / R);
   // Black flash 2 on EVERY music beat for the whole video (goodbye.mp3: 89.1 BPM, first beat 0.139 s — scratchpad beats.py):
   // beat frame = pure black, +1 = hard B&W, then a 1.08x punch that settles in 6 frames. Big 22-frame version on key moments.
   // Black flash 2 (v3, per user): a see-through black flash every 0.2 s (6 frames) for the whole video, no zoom/shake.
@@ -273,7 +274,7 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
     <svg width="0" height="0" style={{position: 'absolute'}}><filter id="hblur" x="-10%" y="0" width="120%" height="100%"><feGaussianBlur stdDeviation={`${hblur} 1.5`} /></filter></svg>
     <div style={{position: 'absolute', left: 0, top: BOX_TOP, width: 1080, height: BOX_H, overflow: 'hidden', clipPath: `inset(${top - BOX_TOP}px 0 ${BOX_BOTTOM - bot}px 0)`}}>
       <AbsoluteFill style={{transform: `translateX(${shake}px) scale(${zoom})`, filter}}>
-        <Series>{SCENES.map((s) => <Series.Sequence key={s.id} durationInFrames={s.durationInFrames}>
+        <Series>{SCENES.map((s) => <Series.Sequence key={s.id} durationInFrames={s.durationInFrames * R}>
           {(s as SceneConfig & {rewind?: [number, number]}).rewind ? Array.from({length: s.durationInFrames}, (_, i) => {
             // rewind scrub: one frame per output frame, sampled backwards from the hook's end to the story's start
             const [ra, rb] = (s as SceneConfig & {rewind: [number, number]}).rewind, t = ra + (rb - ra) * (i / Math.max(1, s.durationInFrames - 1));
@@ -290,7 +291,7 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
       {tint && <AbsoluteFill style={{background: tint[1], opacity: tint[0], mixBlendMode: 'multiply'}} />}
       {bfa > 0 && <AbsoluteFill style={{background: '#000', opacity: bfa}} />}
       {(cfg.extras ?? []).filter((e) => e.kind === 'ov').map((e, i) => { const t0 = xat(e), d = e.dur ?? 34; return f >= t0 && f < t0 + d ?
-        <AbsoluteFill key={'ov' + i} style={{mixBlendMode: 'screen', opacity: e.op ?? 1}}><Sequence from={t0} durationInFrames={d} layout="none"><OffthreadVideo src={staticFile(`res/${e.file}`)} muted style={{width: 1080, height: BOX_H, objectFit: (e as {fit?: 'cover' | 'contain'}).fit ?? 'cover'}} /></Sequence></AbsoluteFill> : null; })}
+        <AbsoluteFill key={'ov' + i} style={{mixBlendMode: 'screen', opacity: e.op ?? 1}}><Sequence from={t0 * R} durationInFrames={d * R} layout="none"><OffthreadVideo src={staticFile(`res/${e.file}`)} muted style={{width: 1080, height: BOX_H, objectFit: (e as {fit?: 'cover' | 'contain'}).fit ?? 'cover'}} /></Sequence></AbsoluteFill> : null; })}
       {/* "WAIT FOR IT" teaser (replaces hook+rewind): payoff loops muted in a PiP from frame 0, then blasts full-screen into the real moment */}
       {cfg.teaser && (() => {
         const T = cfg.teaser!, until = at(T.until), len = Math.max(6, Math.round((T.b - T.a) * fps));
@@ -345,6 +346,6 @@ export const Guess: React.FC<{edit: string}> = ({edit}) => {
     {/* origAudio: campaign allows original audio only (no music, no SFX) */}
     {!cfg.origAudio && <Audio src={staticFile(`res/${cfg.musicFile ?? 'goodbye'}.mp3`)} startFrom={cfg.music * fps} volume={cfg.musicVol ?? 0.09} loop />}
     {cfg.vo && <Audio src={staticFile(`res/${cfg.vo.file}`)} volume={cfg.vo.vol ?? 1} />}
-    {!cfg.origAudio && FX.map(([file, t, v], i) => <Sequence key={i} from={Math.max(0, t)}><Audio src={staticFile(`res/${file}`)} volume={v} /></Sequence>)}
+    {!cfg.origAudio && FX.map(([file, t, v], i) => <Sequence key={i} from={Math.max(0, t) * R}><Audio src={staticFile(`res/${file}`)} volume={v} /></Sequence>)}
   </AbsoluteFill>;
 };
