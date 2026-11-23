@@ -10,13 +10,13 @@ W = [w for s in json.load(open(TXJ)) for w in s['w']]
 CL = {
  'ylbow': dict(body=[(2144.75, 2163.0), (2163.0, 2166.4)], A='He did NOT sign up for this 😭', hl={},
    red=['knees', 'bows', 'Bow.', 'lowest']),
- 'ylscar': dict(body=[(1840.35, 1873.4)], A='The most gamer compliment ever 💀', hl={},
+ 'ylscar': dict(body=[(1840.45, 1873.4)], A='The most gamer compliment ever 💀', hl={},
    red=['gold', 'grey', 'scar.', 'love']),
  'ylkiki': dict(body=[(2047.7, 2080.6)], A='He sang to her… then walked out 💀', hl={},
    red=['Kiki,', 'sing', 'hate', 'leaving.']),
  'ylamazon': dict(body=[(449.65, 466.0), (590.0, 601.0)], A='Worst compliment in dating history 😭', hl={},
    red=['lasted', 'day', 'compliment', 'seconds']),
- 'ylslam': dict(body=[(938.55, 958.6), (977.45, 990.2)], A='When she keeps looking at your boy 💀', hl={},
+ 'ylslam': dict(body=[(938.55, 958.6), (977.45, 990.2)], A='When she keeps eyeing your boy 💀', hl={},
    red=['looking', 'obsessed', 'slam', 'forceful.']),
 }
 ONLY = [x for a in sys.argv if a.startswith('--only=') for x in a[7:].split(',')]

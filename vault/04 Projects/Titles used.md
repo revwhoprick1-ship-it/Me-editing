@@ -324,3 +324,8 @@
 - His mom thought he was on crack because of ONE thing 😭 (Jo Koy jpump12 v3)
 - Why our dog vanished for 3 days after Halloween 🐶 (Jo Koy jjockey12 v3)
 - Why Filipinos built 'Little Manila' in Stockton 🇵🇭 (Jo Koy jmanila12 v3)
+- He did NOT sign up for this 😭 (YoungLA ylbow)
+- The most gamer compliment ever 💀 (YoungLA ylscar)
+- He sang to her… then walked out 💀 (YoungLA ylkiki)
+- Worst compliment in dating history 😭 (YoungLA ylamazon)
+- When she keeps eyeing your boy 💀 (YoungLA ylslam)
