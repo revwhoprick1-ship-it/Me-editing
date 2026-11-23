@@ -24,3 +24,10 @@ Log every posted description here so new ones never repeat (dupe-flag risk).
 - jdogsb: "I don't like dogs." Jo Koy's comeback is undefeated 🐶😂 From the Netflix stand-up special Blue in the Face. Dog people, sound off. #JoKoyComedy #BlueInTheFaceNetflix #doglover #dogsofinsta #comebacks
 - jcrackb: When your mom's friend sees your teeth and gets the wrong idea 😭🦷 Jo Koy at his funniest in Blue in the Face on Netflix. What did your mom ever accuse you of? #JoKoy #BlueInTheFace #pinoymoms #teethstory #standupcomedyclips
 - jrodb: He opened his mouth and the Beverly Hills dentist backed up 💀 Jo Koy's dentist story from Blue in the Face, streaming on Netflix. Worst dentist visit you've had? #JoKoyStandup #BlueInTheFaceNetflix #dentistvisit #beverlyhills #funnystory
+
+## Batch 11 (2026-11-23)
+- jdogs11: Say "I don't like dogs" around Jo Koy and see what happens 🐶💀 Funniest dog take from his Netflix special Blue in the Face. Send it to the dog hater in your group chat. #JoKoyClips #BlueInTheFaceNetflix #doglife #petlovers #standupnetflix
+- jnug11: Getting fired as a teen + a Filipino mom who refuses to accept it = this 😭🍗 Jo Koy's Blue in the Face, now streaming on Netflix. #JoKoyNetflixSpecial #BlueInTheFace #filipinomomsbelike #teenjob #funnymoms
+- jden11: Oxygen low, game tied, 18th inning… and Fred is NOT leaving 💀⚾ Jo Koy's story behind Blue in the Face, streaming on Netflix. Tag the most loyal fan you know. #JoKoyClips #BlueInTheFace #Dodgersnation #baseballlife #loyalfan
+- jcamo11: Five knocked-out teeth, zero cosmetic surgery, and one soldier with a drill 💀🦷 Jo Koy grew up on a military base and it shows. Blue in the Face on Netflix. #JoKoyNetflixSpecial #BlueInTheFaceNetflix #militarybrat #armylife #dentalhumor
+- jsniff11: Your dog knows before you do 🐶 Jo Koy on the dog test every new boyfriend has to pass, from Blue in the Face on Netflix. #JoKoyClips #BlueInTheFace #dogsknow #newboyfriend #relatablecomedy
