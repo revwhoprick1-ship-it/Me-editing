@@ -38,3 +38,11 @@ Log every posted description here so new ones never repeat (dupe-flag risk).
 - jden11: Loyalty level: refusing to leave the ballpark no matter what ⚾😂 Jo Koy remembers his stepdad Fred in Blue in the Face on Netflix. Send to the biggest Dodgers fan you know. #JoKoyFunny #BlueInTheFace #LAdodgers #baseballstories #netflixcomedyspecial
 - jcamo11: Growing up on an army base meant your dentist was... a soldier 🪖🦷 Jo Koy's childhood teeth story from Blue in the Face, now on Netflix. #JoKoyStandup #BlueInTheFace #armykids #dentistdrama #funnychildhood
 - jsniff11: The real background check is how your dog reacts 🐶 Jo Koy explains it best in Blue in the Face, streaming on Netflix. Drop a 🐾 if your dog has ever done this. #JoKoyNetflix #BlueInTheFaceNetflix #doglovers #dogtest #comedytok
+
+## Batch 12 (2026-11-23)
+- jyo12: He finally got his stepdad Fred four rows from the dugout… and Fred's answer had the whole crowd losing it 😭⚾ Jo Koy in Blue in the Face, streaming on Netflix. #JoKoyStandUp #BlueInTheFaceNetflix #stepdadlove #dodgerstickets #funnyandsweet
+- jbatt12: One battery is fine, two is "excessive" 💀 Every dad who refuses help, this is for you. Jo Koy's Blue in the Face, now on Netflix. #JoKoyClips #BlueInTheFace #dadsbelike #stubborndad #comedynetflix
+- jtiktok12: "I started a TikTok channel" is not a job, according to Jo Koy 💀 Gen Z vs. the old-school hustle, from his Netflix special Blue in the Face. Agree or disagree? #JoKoy #BlueInTheFace #genz #hustleculture #standupjokes
+- jpump12: His mom's friend carved a jack-o'-lantern and said it looked like him 😭🎃 Jo Koy roasting himself in Blue in the Face on Netflix. #JoKoyFunny #BlueInTheFaceNetflix #filipinofamilies #halloweenfunny #selfroast
+- jjockey12: A dog, a tiny jockey costume, and three days missing on the mountain 🐶🏇 Jo Koy's wildest Halloween story from Blue in the Face, streaming on Netflix. #JoKoyComedy #BlueInTheFace #doghalloweencostume #runawaydog #funnypets
+- jmanila12: Stockton, California was home to the first Filipinos in America, and Jo Koy is proud of it 🇵🇭 From Blue in the Face, filmed in Stockton, now on Netflix. #JoKoy #BlueInTheFace #Stockton #FilipinoAmerican #pinoypride
