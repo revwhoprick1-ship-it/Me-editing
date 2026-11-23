@@ -66,17 +66,17 @@ _CL_B11 = None  # batch 11 (jdogs11 jnug11 jden11 jcamo11 jsniff11) is in git hi
 # visual (Jo talking), first 6 words of the description; instant clarity (who/what) + one open question by 2-3 s.
 CL = {
  'jyo12': dict(src='p11', tight=True, static=True, body=[('c1', 89.50, 97.50, 960), ('c2', 101.70, 134.30, 960)],
-   A='He got his stepdad 4th-row Dodgers seats… his answer? 😭', hl=['Dodgers'], pops=[]),
- 'jbatt12': dict(src='p11', tight=True, static=True, body=[('c0', 159.50, 171.00, 960), ('c1', 184.24, 202.95, 960), ('c3', 266.30, 281.70, 960)],
+   A="The saddest 'no' to free Dodgers tickets 😭", hl=['Dodgers'], pops=[]),
+ 'jbatt12': dict(src='p11', tight=True, static=True, ty=1400, body=[('c0', 159.50, 171.00, 960), ('c1', 184.24, 202.95, 960), ('c3', 266.30, 281.70, 960)],
    A='His oxygen lasts 90 min. The game lasts 3 hours 💀', hl=['90', '3'], pops=[]),
  'jtiktok12': dict(src='p04', tight=True, static=True, body=[('c1', 166.60, 201.60, 960)],
    A='Is starting a TikTok channel a real job? 🤔', hl=['TikTok'], pops=[]),
- 'jpump12': dict(src='p04', tight=True, static=True, body=[('c1', 109.70, 114.60, 960), ('c2', 115.65, 149.60, 960)],
-   A='When your Filipino mom thinks you do drugs 😭', hl=['Filipino'], pops=[]),
+ 'jpump12': dict(src='p04', tight=True, static=True, ty=1400, body=[('c1', 109.70, 114.60, 960), ('c2', 115.65, 149.60, 960)],
+   A='His mom thought he was on crack because of ONE thing 😭', hl=['ONE'], pops=[]),
  'jjockey12': dict(src='p08', tight=True, static=True, body=[('c1', 109.55, 134.00, 960), ('c2', 134.85, 150.30, 960), ('c3', 150.35, 167.00, 960), ('c4', 188.65, 198.50, 960)],
-   A='Dog owners: never put THIS costume on your dog 🐶', hl=['THIS'], pops=[]),
+   A='Why our dog vanished for 3 days after Halloween 🐶', hl=['3'], pops=[]),
  'jmanila12': dict(src='p01', tight=True, static=True, body=[('c1', 84.15, 108.40, 960), ('c2', 109.90, 114.30, 960)],
-   A='Why Stockton is special to Filipinos 🇵🇭', hl=['Stockton'], pops=[]),
+   A="Why Filipinos built 'Little Manila' in Stockton 🇵🇭", hl=['Stockton'], pops=[]),
 }
 E = {}
 for k, d in CL.items():
@@ -87,7 +87,7 @@ for k, d in CL.items():
     for sid_, w_, f_ in d.get('ovs', []): ex.append(dict(ov([sid_, w_], f_, None, dur=34 if 'flash' in f_ else 54, op=0.55 if 'flash' in f_ else 0.9, off=2), **({'fit': 'contain'} if 'afml' in f_ else {})))
     body = ([('face', *d['face'], 960)] if d.get('face') else []) + list(d['body'])
     E[k] = dict(vo=None, scenes=[(s, d['src'], a, b, cx) for s, a, b, cx in body], fixed=[s for s, *_ in body], nocap=['face'], face=bool(d.get('face')), ask2=d.get('ask'), mute=[], zoom={},
-                circles=[], noSkull=True, ask=[], tints=[], rizz=[], blowouts=[], blackFlash=[], streaks=[], punch=d.get('pin', []), top=d['A'], hl={w: RD for w in d['hl']}, topPop=d.get('tp'), topSize=d.get('ts', 64), top2=d.get('t2'), tight=d.get('tight', False), topStatic=d.get('static', False),
+                circles=[], noSkull=True, ask=[], tints=[], rizz=[], blowouts=[], blackFlash=[], streaks=[], punch=d.get('pin', []), top=d['A'], hl={w: RD for w in d['hl']}, topPop=d.get('tp'), topSize=d.get('ts', 64), top2=d.get('t2'), tight=d.get('tight', False), topStatic=d.get('static', False), ty=d.get('ty'),
                 extras=ex, focus=dict(x=540, y=330, r=180, dur=20))
 VO = sys.argv[3]
 FULL = '--full' in sys.argv
@@ -259,7 +259,7 @@ for eid, spec in E.items():
         assert r[0] in sc, (eid, r)
         if len(r) > 1: assert [w for w in sc[r[0]]['words'] if w['word'].lower().startswith(r[1].lower())], (eid, r, [w['word'] for w in sc[r[0]]['words']])
     if FULL: c.update(full=True, bf=0.02, capY=1250, topY=1430, sat=1.0)
-    if FULL and '--g67' in sys.argv: c.update(topY=380, sat=1.3, topFade=2.5, capChunk=3, capPill=True)
+    if FULL and '--g67' in sys.argv: c.update(topY=spec.get('ty') or 380, sat=1.3, topFade=2.5, capChunk=3, capPill=True)   # ty: per-clip hook height so it never covers Jo's face on frame 1
     if spec.get('tight'): c.update(hardcut=False)
     if spec.get('face'): c.update(hardcut=True)
     if spec.get('ask2'):

@@ -320,3 +320,7 @@
 - When your Filipino mom thinks you do drugs 😭 (Jo Koy jpump12 v2)
 - Dog owners: never put THIS costume on your dog 🐶 (Jo Koy jjockey12 v2)
 - Why Stockton is special to Filipinos 🇵🇭 (Jo Koy jmanila12 v2)
+- The saddest 'no' to free Dodgers tickets 😭 (Jo Koy jyo12 v3)
+- His mom thought he was on crack because of ONE thing 😭 (Jo Koy jpump12 v3)
+- Why our dog vanished for 3 days after Halloween 🐶 (Jo Koy jjockey12 v3)
+- Why Filipinos built 'Little Manila' in Stockton 🇵🇭 (Jo Koy jmanila12 v3)

@@ -46,3 +46,11 @@ Log every posted description here so new ones never repeat (dupe-flag risk).
 - jpump12: A jack-o'-lantern that looked a little too much like Jo Koy 😭🎃 Mom had no mercy. Blue in the Face, streaming on Netflix. #JoKoyFunny #BlueInTheFaceNetflix #filipinofamilies #halloweenfunny #selfroast
 - jjockey12: A dog, a tiny jockey costume, and three days missing on the mountain 🐶🏇 Jo Koy's wildest Halloween story from Blue in the Face, streaming on Netflix. #JoKoyComedy #BlueInTheFace #doghalloweencostume #runawaydog #funnypets
 - jmanila12: Stockton, California was home to the first Filipinos in America, and Jo Koy is proud of it 🇵🇭 From Blue in the Face, filmed in Stockton, now on Netflix. #JoKoy #BlueInTheFace #Stockton #FilipinoAmerican #pinoypride
+
+## Batch 12 v3 (2026-11-23, heyDominik rule: first 6 words of the description = the hook's who/what)
+- jyo12: The saddest "no" to free Dodgers tickets came from Jo Koy's stepdad Fred 😭⚾ Four rows from the dugout, and still. Blue in the Face, streaming on Netflix. #JoKoy #BlueInTheFace #Dodgers #stepdad #standupcomedy
+- jbatt12: His oxygen lasts 90 minutes. The game lasts 3 hours 💀 Jo Koy's stepdad Fred still had a plan. Blue in the Face, now on Netflix. #JoKoyClips #BlueInTheFaceNetflix #stubborndad #baseballdad #netflixcomedy
+- jtiktok12: Is starting a TikTok channel a real job? Jo Koy has thoughts 🤔💀 From his Netflix stand-up special Blue in the Face. Gen Z, defend yourselves below. #JoKoy #BlueInTheFace #genzhumor #firstjob #comedyclips
+- jpump12: His mom thought he was on crack, and the reason is his teeth 😭 Jo Koy roasting himself in Blue in the Face, streaming on Netflix. #JoKoyFunny #BlueInTheFace #filipinomom #teethproblems #selfroast
+- jjockey12: Why our dog vanished for 3 days after Halloween: a tiny jockey costume 🐶🏇 Jo Koy's wildest dog story from Blue in the Face on Netflix. #JoKoyComedy #BlueInTheFaceNetflix #doghalloween #runawaydog #dogowners
+- jmanila12: Why Filipinos built "Little Manila" in Stockton, according to Jo Koy 🇵🇭😂 From Blue in the Face, filmed in Stockton, now on Netflix. #JoKoy #BlueInTheFace #LittleManila #FilipinoAmerican #Stockton

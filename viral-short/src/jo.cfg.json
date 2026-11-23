@@ -8,7 +8,7 @@
   "blackFlash": [],
   "streaks": [],
   "punch": [],
-  "top": "He got his stepdad 4th-row Dodgers seats\u2026 his answer? \ud83d\ude2d",
+  "top": "The saddest 'no' to free Dodgers tickets \ud83d\ude2d",
   "hl": {
    "Dodgers": "#FF2A2A"
   },
@@ -17,6 +17,7 @@
   "top2": null,
   "tight": true,
   "topStatic": true,
+  "ty": null,
   "extras": [
    {
     "at": [
@@ -123,6 +124,7 @@
   "top2": null,
   "tight": true,
   "topStatic": true,
+  "ty": 1400,
   "extras": [
    {
     "at": [
@@ -185,7 +187,7 @@
   "full": true,
   "bf": 0.02,
   "capY": 1250,
-  "topY": 380,
+  "topY": 1400,
   "topFade": 2.5,
   "capChunk": 3,
   "capPill": true,
@@ -210,6 +212,7 @@
   "top2": null,
   "tight": true,
   "topStatic": true,
+  "ty": null,
   "extras": [
    {
     "at": [
@@ -279,15 +282,16 @@
   "blackFlash": [],
   "streaks": [],
   "punch": [],
-  "top": "When your Filipino mom thinks you do drugs \ud83d\ude2d",
+  "top": "His mom thought he was on crack because of ONE thing \ud83d\ude2d",
   "hl": {
-   "Filipino": "#FF2A2A"
+   "ONE": "#FF2A2A"
   },
   "topPop": null,
   "topSize": 64,
   "top2": null,
   "tight": true,
   "topStatic": true,
+  "ty": 1400,
   "extras": [
    {
     "at": [
@@ -359,7 +363,7 @@
   "full": true,
   "bf": 0.02,
   "capY": 1250,
-  "topY": 380,
+  "topY": 1400,
   "topFade": 2.5,
   "capChunk": 3,
   "capPill": true,
@@ -375,15 +379,16 @@
   "blackFlash": [],
   "streaks": [],
   "punch": [],
-  "top": "Dog owners: never put THIS costume on your dog \ud83d\udc36",
+  "top": "Why our dog vanished for 3 days after Halloween \ud83d\udc36",
   "hl": {
-   "THIS": "#FF2A2A"
+   "3": "#FF2A2A"
   },
   "topPop": null,
   "topSize": 64,
   "top2": null,
   "tight": true,
   "topStatic": true,
+  "ty": null,
   "extras": [
    {
     "at": [
@@ -534,7 +539,7 @@
   "blackFlash": [],
   "streaks": [],
   "punch": [],
-  "top": "Why Stockton is special to Filipinos \ud83c\uddf5\ud83c\udded",
+  "top": "Why Filipinos built 'Little Manila' in Stockton \ud83c\uddf5\ud83c\udded",
   "hl": {
    "Stockton": "#FF2A2A"
   },
@@ -543,6 +548,7 @@
   "top2": null,
   "tight": true,
   "topStatic": true,
+  "ty": null,
   "extras": [
    {
     "at": [
