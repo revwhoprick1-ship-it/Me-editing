@@ -1,5 +1,5 @@
 {
- "jdogs11": {
+ "jyo12": {
   "noSkull": true,
   "ask": [],
   "tints": [],
@@ -8,413 +8,15 @@
   "blackFlash": [],
   "streaks": [],
   "punch": [],
-  "top": "Jo Koy has ZERO tolerance for these people \ud83d\udc80",
+  "top": "Wait for Fred's reaction \ud83d\ude2d",
   "hl": {
-   "ZERO": "#FF2A2A"
+   "reaction": "#FF2A2A"
   },
   "topPop": null,
   "topSize": 64,
   "top2": null,
   "tight": true,
   "extras": [
-   {
-    "at": [
-     "c1_1"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   }
-  ],
-  "music": [
-   "goodbye_n",
-   0
-  ],
-  "origAudio": true,
-  "vo": null,
-  "capCycle": true,
-  "whip": true,
-  "trackData": {},
-  "cta": "",
-  "track": "none",
-  "calls": [],
-  "src": "g67_jdogs11.mp4",
-  "intro": false,
-  "hardcut": true,
-  "cutSfx": "s_whoosh.mp3",
-  "sat": 1.3,
-  "progress": false,
-  "popMid": true,
-  "srcVol": 1,
-  "musicVol": 0.28,
-  "full": true,
-  "bf": 0.02,
-  "capY": 1250,
-  "topY": 380,
-  "topFade": 2.5,
-  "capChunk": 3,
-  "capPill": true,
-  "steady": true,
-  "noFocus": true
- },
- "jnug11": {
-  "noSkull": true,
-  "ask": [],
-  "tints": [],
-  "rizz": [],
-  "blowouts": [],
-  "blackFlash": [],
-  "streaks": [],
-  "punch": [],
-  "top": "Never lie to a Filipino mom \ud83d\ude2d",
-  "hl": {
-   "lie": "#FF2A2A"
-  },
-  "topPop": null,
-  "topSize": 64,
-  "top2": null,
-  "tight": true,
-  "extras": [
-   {
-    "at": [
-     "c2"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   },
-   {
-    "at": [
-     "c3"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   },
-   {
-    "at": [
-     "c3_1"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   },
-   {
-    "at": [
-     "c3_2"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   },
-   {
-    "at": [
-     "c4"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   },
-   {
-    "at": [
-     "c4_1"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   },
-   {
-    "at": [
-     "c4_2"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   }
-  ],
-  "music": [
-   "goodbye_n",
-   0
-  ],
-  "origAudio": true,
-  "vo": null,
-  "capCycle": true,
-  "whip": true,
-  "trackData": {},
-  "cta": "",
-  "track": "none",
-  "calls": [],
-  "src": "g67_jnug11.mp4",
-  "intro": false,
-  "hardcut": true,
-  "cutSfx": "s_whoosh.mp3",
-  "sat": 1.3,
-  "progress": false,
-  "popMid": true,
-  "srcVol": 1,
-  "musicVol": 0.28,
-  "full": true,
-  "bf": 0.02,
-  "capY": 1250,
-  "topY": 380,
-  "topFade": 2.5,
-  "capChunk": 3,
-  "capPill": true,
-  "steady": true,
-  "noFocus": true
- },
- "jden11": {
-  "noSkull": true,
-  "ask": [],
-  "tints": [],
-  "rizz": [],
-  "blowouts": [],
-  "blackFlash": [],
-  "streaks": [],
-  "punch": [],
-  "top": "The most loyal fan alive? \u26be\ud83d\udc80",
-  "hl": {
-   "loyal": "#FF2A2A"
-  },
-  "topPop": null,
-  "topSize": 64,
-  "top2": null,
-  "tight": true,
-  "extras": [
-   {
-    "at": [
-     "c3"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   },
-   {
-    "at": [
-     "c3_1"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   },
-   {
-    "at": [
-     "c3_2"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   },
-   {
-    "at": [
-     "c3_3"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   },
-   {
-    "at": [
-     "c3_4"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   },
-   {
-    "at": [
-     "c3_5"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   },
-   {
-    "at": [
-     "c3_6"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   }
-  ],
-  "music": [
-   "goodbye_n",
-   0
-  ],
-  "origAudio": true,
-  "vo": null,
-  "capCycle": true,
-  "whip": true,
-  "trackData": {},
-  "cta": "",
-  "track": "none",
-  "calls": [],
-  "src": "g67_jden11.mp4",
-  "intro": false,
-  "hardcut": true,
-  "cutSfx": "s_whoosh.mp3",
-  "sat": 1.3,
-  "progress": false,
-  "popMid": true,
-  "srcVol": 1,
-  "musicVol": 0.28,
-  "full": true,
-  "bf": 0.02,
-  "capY": 1250,
-  "topY": 380,
-  "topFade": 2.5,
-  "capChunk": 3,
-  "capPill": true,
-  "steady": true,
-  "noFocus": true
- },
- "jcamo11": {
-  "noSkull": true,
-  "ask": [],
-  "tints": [],
-  "rizz": [],
-  "blowouts": [],
-  "blackFlash": [],
-  "streaks": [],
-  "punch": [],
-  "top": "This is what 'free' healthcare got him \ud83d\udc80",
-  "hl": {
-   "free": "#FF2A2A"
-  },
-  "topPop": null,
-  "topSize": 64,
-  "top2": null,
-  "tight": true,
-  "extras": [
-   {
-    "at": [
-     "c2"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   },
-   {
-    "at": [
-     "c3"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   },
-   {
-    "at": [
-     "c4"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   },
-   {
-    "at": [
-     "c4_1"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   },
-   {
-    "at": [
-     "c4_2"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   }
-  ],
-  "music": [
-   "goodbye_n",
-   0
-  ],
-  "origAudio": true,
-  "vo": null,
-  "capCycle": true,
-  "whip": true,
-  "trackData": {},
-  "cta": "",
-  "track": "none",
-  "calls": [],
-  "src": "g67_jcamo11.mp4",
-  "intro": false,
-  "hardcut": true,
-  "cutSfx": "s_whoosh.mp3",
-  "sat": 1.3,
-  "progress": false,
-  "popMid": true,
-  "srcVol": 1,
-  "musicVol": 0.28,
-  "full": true,
-  "bf": 0.02,
-  "capY": 1250,
-  "topY": 380,
-  "topFade": 2.5,
-  "capChunk": 3,
-  "capPill": true,
-  "steady": true,
-  "noFocus": true
- },
- "jsniff11": {
-  "noSkull": true,
-  "ask": [],
-  "tints": [],
-  "rizz": [],
-  "blowouts": [],
-  "blackFlash": [],
-  "streaks": [],
-  "punch": [],
-  "top": "Never ignore your dog's reaction \ud83d\udc36",
-  "hl": {
-   "ignore": "#FF2A2A"
-  },
-  "topPop": null,
-  "topSize": 64,
-  "top2": null,
-  "tight": true,
-  "extras": [
-   {
-    "at": [
-     "c1_1"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   },
-   {
-    "at": [
-     "c1_2"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   },
    {
     "at": [
      "c2"
@@ -450,6 +52,33 @@
     "file": "s_whoosh.mp3",
     "v": 0.45,
     "off": 0
+   },
+   {
+    "at": [
+     "c2_4"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2_5"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2_6"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
    }
   ],
   "music": [
@@ -464,7 +93,546 @@
   "cta": "",
   "track": "none",
   "calls": [],
-  "src": "g67_jsniff11.mp4",
+  "src": "g67_jyo12.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_whoosh.mp3",
+  "sat": 1.3,
+  "progress": false,
+  "popMid": true,
+  "srcVol": 1,
+  "musicVol": 0.28,
+  "full": true,
+  "bf": 0.02,
+  "capY": 1250,
+  "topY": 380,
+  "topFade": 2.5,
+  "capChunk": 3,
+  "capPill": true,
+  "steady": true,
+  "noFocus": true
+ },
+ "jbatt12": {
+  "noSkull": true,
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "punch": [],
+  "top": "Dads will refuse ANY help \ud83d\udc80",
+  "hl": {
+   "ANY": "#FF2A2A"
+  },
+  "topPop": null,
+  "topSize": 64,
+  "top2": null,
+  "tight": true,
+  "extras": [
+   {
+    "at": [
+     "c0_1"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c0_2"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c1"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c1_1"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c3"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   }
+  ],
+  "music": [
+   "goodbye_n",
+   0
+  ],
+  "origAudio": true,
+  "vo": null,
+  "capCycle": true,
+  "whip": true,
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_jbatt12.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_whoosh.mp3",
+  "sat": 1.3,
+  "progress": false,
+  "popMid": true,
+  "srcVol": 1,
+  "musicVol": 0.28,
+  "full": true,
+  "bf": 0.02,
+  "capY": 1250,
+  "topY": 380,
+  "topFade": 2.5,
+  "capChunk": 3,
+  "capPill": true,
+  "steady": true,
+  "noFocus": true
+ },
+ "jtiktok12": {
+  "noSkull": true,
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "punch": [],
+  "top": "Gen Z won't like this one \ud83d\udc80",
+  "hl": {
+   "Gen": "#FF2A2A",
+   "Z": "#FF2A2A"
+  },
+  "topPop": null,
+  "topSize": 64,
+  "top2": null,
+  "tight": true,
+  "extras": [
+   {
+    "at": [
+     "c1_1"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c1_2"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c1_3"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c1_4"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   }
+  ],
+  "music": [
+   "goodbye_n",
+   0
+  ],
+  "origAudio": true,
+  "vo": null,
+  "capCycle": true,
+  "whip": true,
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_jtiktok12.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_whoosh.mp3",
+  "sat": 1.3,
+  "progress": false,
+  "popMid": true,
+  "srcVol": 1,
+  "musicVol": 0.28,
+  "full": true,
+  "bf": 0.02,
+  "capY": 1250,
+  "topY": 380,
+  "topFade": 2.5,
+  "capChunk": 3,
+  "capPill": true,
+  "steady": true,
+  "noFocus": true
+ },
+ "jpump12": {
+  "noSkull": true,
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "punch": [],
+  "top": "Filipino moms don't hold back \ud83d\ude2d",
+  "hl": {
+   "don't": "#FF2A2A"
+  },
+  "topPop": null,
+  "topSize": 64,
+  "top2": null,
+  "tight": true,
+  "extras": [
+   {
+    "at": [
+     "c2"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2_1"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2_2"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2_3"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2_4"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2_5"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   }
+  ],
+  "music": [
+   "goodbye_n",
+   0
+  ],
+  "origAudio": true,
+  "vo": null,
+  "capCycle": true,
+  "whip": true,
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_jpump12.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_whoosh.mp3",
+  "sat": 1.3,
+  "progress": false,
+  "popMid": true,
+  "srcVol": 1,
+  "musicVol": 0.28,
+  "full": true,
+  "bf": 0.02,
+  "capY": 1250,
+  "topY": 380,
+  "topFade": 2.5,
+  "capChunk": 3,
+  "capPill": true,
+  "steady": true,
+  "noFocus": true
+ },
+ "jjockey12": {
+  "noSkull": true,
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "punch": [],
+  "top": "Never dress your dog up for Halloween \ud83d\udc36\ud83d\udc80",
+  "hl": {
+   "Never": "#FF2A2A"
+  },
+  "topPop": null,
+  "topSize": 64,
+  "top2": null,
+  "tight": true,
+  "extras": [
+   {
+    "at": [
+     "c1_1"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c1_2"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c1_3"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c1_4"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c1_5"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2_1"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c3"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c3_1"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c3_2"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c4"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c4_1"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c4_2"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   }
+  ],
+  "music": [
+   "goodbye_n",
+   0
+  ],
+  "origAudio": true,
+  "vo": null,
+  "capCycle": true,
+  "whip": true,
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_jjockey12.mp4",
+  "intro": false,
+  "hardcut": true,
+  "cutSfx": "s_whoosh.mp3",
+  "sat": 1.3,
+  "progress": false,
+  "popMid": true,
+  "srcVol": 1,
+  "musicVol": 0.28,
+  "full": true,
+  "bf": 0.02,
+  "capY": 1250,
+  "topY": 380,
+  "topFade": 2.5,
+  "capChunk": 3,
+  "capPill": true,
+  "steady": true,
+  "noFocus": true
+ },
+ "jmanila12": {
+  "noSkull": true,
+  "ask": [],
+  "tints": [],
+  "rizz": [],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "punch": [],
+  "top": "Filipinos, did you know this? \ud83c\uddf5\ud83c\udded",
+  "hl": {
+   "Filipinos,": "#FF2A2A"
+  },
+  "topPop": null,
+  "topSize": 64,
+  "top2": null,
+  "tight": true,
+  "extras": [
+   {
+    "at": [
+     "c1_1"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c1_2"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c1_3"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c1_4"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   }
+  ],
+  "music": [
+   "goodbye_n",
+   0
+  ],
+  "origAudio": true,
+  "vo": null,
+  "capCycle": true,
+  "whip": true,
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_jmanila12.mp4",
   "intro": false,
   "hardcut": true,
   "cutSfx": "s_whoosh.mp3",
