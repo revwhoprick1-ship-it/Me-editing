@@ -59,16 +59,16 @@ _CL_B10 = None  # batch 10/10b (jmailo..jrodb, VverPaldo box + boosters) is in g
 # batch 11 (user 2026-11-23, plan approved): full vertical, G67 VverPaldo grade (--g67), gentle tracking, hook text at eye level (y 580) in this
 # month's hook formats, NO mid-video pop-ups, 1-2 small low emoji only, 0.8 s funny-visual open + flash cut into the premise, -12 LUFS, 60 fps.
 CL = {
- 'jdogs11': dict(src='p06', tight=False, face=(91.00, 91.80), body=[('c1', 86.75, 107.20, 960)], A="POV: you told Jo Koy you don't like dogs 💀", hl=['dogs'],
+ 'jdogs11': dict(src='p06', tight=True, face=(91.40, 92.20), body=[('c1', 86.80, 107.20, 960)], A='Jo Koy has ZERO tolerance for these people 💀', hl=['ZERO'],
    pops=[('c1', 'you.', 'e_laugh.png', dict(y=1490, size=200))]),
  'jnug11': dict(src='p05', tight=True, face=(311.80, 312.60), body=[('c1', 210.90, 216.20, 960), ('c2', 242.05, 247.60, 960), ('c3', 266.35, 274.20, 960), ('c4', 297.60, 314.00, 960)],
-   A='Tell me your mom is Filipino without telling me 😭', hl=['Filipino'], pops=[('c4', 'nugget', 'e_laugh.png', dict(y=1490, size=200))]),
- 'jden11': dict(src='p12', tight=True, face=(113.60, 114.40), body=[('c2', 52.40, 61.00, 960), ('c3', 79.10, 115.50, 960)],
-   A='Name a more loyal Dodgers fan… I\'ll wait ⚾💀', hl=['loyal'], pops=[('c3', 'Vietnam', 'e_laugh.png', dict(y=1490, size=200))]),
+   A='Never lie to a Filipino mom 😭', hl=['lie'], pops=[('c4', 'nugget', 'e_laugh.png', dict(y=1490, size=200))]),
+ 'jden11': dict(src='p12', tight=True, face=(113.60, 114.40), body=[('c2', 52.40, 59.40, 960), ('c3', 82.15, 115.50, 960)],
+   A='The most loyal fan alive? ⚾💀', hl=['loyal'], pops=[('c3', 'Vietnam', 'e_laugh.png', dict(y=1490, size=200))]),
  'jcamo11': dict(src='p02', tight=True, face=(191.00, 191.80), body=[('c1', 123.85, 127.20, 960), ('c2', 157.30, 162.10, 960), ('c3', 172.30, 173.35, 960), ('c4', 184.20, 213.20, 960)],
-   A='Army healthcare hits different 💀', hl=['different'], pops=[('c4', 'drill', 'e_laugh.png', dict(y=1490, size=200))]),
+   A="This is what 'free' healthcare got him 💀", hl=['free'], pops=[('c4', 'drill', 'e_laugh.png', dict(y=1490, size=200))]),
  'jsniff11': dict(src='p06', tight=True, face=(213.80, 214.60), body=[('c1', 171.17, 178.70, 960), ('c2', 220.55, 243.50, 960)],
-   A='When your dog meets your new man 🐶💀', hl=['new'], pops=[('c2', 'dude', 'e_laugh.png', dict(y=1490, size=200))]),
+   A="Never ignore your dog's reaction 🐶", hl=['ignore'], pops=[('c2', 'dude', 'e_laugh.png', dict(y=1490, size=200))]),
 }
 E = {}
 for k, d in CL.items():
@@ -144,7 +144,7 @@ for eid, spec in E.items():
             g = w2[0] - w1[1]
             if g < 0.6: continue
             seg = d[int(w1[1] * 20):int(w2[0] * 20)]; laugh = len(seg) and float(np.mean(seg > fl + 9)) > 0.5
-            keep = 2.2 if laugh else 0.3
+            keep = (1.5 if '--g67' in sys.argv else 2.2) if laugh else 0.3   # batch 11b: max 1.5 s of laugh (user: dead air)
             if g <= keep + 0.25: continue
             cuts.append((w1[1] + keep - 0.2, w2[0] - 0.2) if laugh else (w1[1] + 0.2, w2[0] - 0.2))
         segs, cur = [], a
@@ -251,7 +251,7 @@ for eid, spec in E.items():
         assert r[0] in sc, (eid, r)
         if len(r) > 1: assert [w for w in sc[r[0]]['words'] if w['word'].lower().startswith(r[1].lower())], (eid, r, [w['word'] for w in sc[r[0]]['words']])
     if FULL: c.update(full=True, bf=0.02, capY=1250, topY=1430, sat=1.0)
-    if FULL and '--g67' in sys.argv: c.update(topY=720, sat=1.3)
+    if FULL and '--g67' in sys.argv: c.update(topY=380, sat=1.3, topFade=2.5, capChunk=3, capPill=True)
     if spec.get('tight'): c.update(hardcut=False)
     if spec.get('face'): c.update(hardcut=True)
     if spec.get('ask2'):
@@ -261,6 +261,7 @@ for eid, spec in E.items():
     for k_ in ('face', 'ask2', 'share', 'ovs'): c.pop(k_, None)
     if spec.get('top2'): c['top2'] = dict(text=spec['top2'], at=3.5, dur=3.5)
     if FULL and '--g67' not in sys.argv: c['capChunk'] = 3
+    if '--g67' in sys.argv: c['extras'] = [e for e in c['extras'] if e['kind'] != 'png']   # user: no emoji pops
     c['steady'] = True; c['punch'] = []   # user rule: never zoom in and out (no whip/punch/intro zoom)
     c['noFocus'] = True; c.pop('focus', None)   # user rule 2026-11-22: face blur removed, never use it again
     c['ask'] = []  # user: nothing under the video (no ask pill / promo line / progress bar)

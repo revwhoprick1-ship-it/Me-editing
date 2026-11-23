@@ -8,25 +8,23 @@
   "blackFlash": [],
   "streaks": [],
   "punch": [],
-  "top": "POV: you told Jo Koy you don't like dogs \ud83d\udc80",
+  "top": "Jo Koy has ZERO tolerance for these people \ud83d\udc80",
   "hl": {
-   "dogs": "#FF2A2A"
+   "ZERO": "#FF2A2A"
   },
   "topPop": null,
   "topSize": 64,
   "top2": null,
-  "tight": false,
+  "tight": true,
   "extras": [
    {
     "at": [
-     "c1",
-     "you."
+     "c1_1"
     ],
-    "kind": "png",
-    "file": "e_laugh.png",
-    "off": 2,
-    "y": 1490,
-    "size": 200
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
    }
   ],
   "music": [
@@ -53,7 +51,10 @@
   "full": true,
   "bf": 0.02,
   "capY": 1250,
-  "topY": 720,
+  "topY": 380,
+  "topFade": 2.5,
+  "capChunk": 3,
+  "capPill": true,
   "steady": true,
   "noFocus": true
  },
@@ -66,26 +67,15 @@
   "blackFlash": [],
   "streaks": [],
   "punch": [],
-  "top": "Tell me your mom is Filipino without telling me \ud83d\ude2d",
+  "top": "Never lie to a Filipino mom \ud83d\ude2d",
   "hl": {
-   "Filipino": "#FF2A2A"
+   "lie": "#FF2A2A"
   },
   "topPop": null,
   "topSize": 64,
   "top2": null,
   "tight": true,
   "extras": [
-   {
-    "at": [
-     "c4_2",
-     "nugget"
-    ],
-    "kind": "png",
-    "file": "e_laugh.png",
-    "off": 2,
-    "y": 1490,
-    "size": 200
-   },
    {
     "at": [
      "c2"
@@ -174,7 +164,10 @@
   "full": true,
   "bf": 0.02,
   "capY": 1250,
-  "topY": 720,
+  "topY": 380,
+  "topFade": 2.5,
+  "capChunk": 3,
+  "capPill": true,
   "steady": true,
   "noFocus": true
  },
@@ -187,7 +180,7 @@
   "blackFlash": [],
   "streaks": [],
   "punch": [],
-  "top": "Name a more loyal Dodgers fan\u2026 I'll wait \u26be\ud83d\udc80",
+  "top": "The most loyal fan alive? \u26be\ud83d\udc80",
   "hl": {
    "loyal": "#FF2A2A"
   },
@@ -196,17 +189,6 @@
   "top2": null,
   "tight": true,
   "extras": [
-   {
-    "at": [
-     "c3_5",
-     "Vietnam"
-    ],
-    "kind": "png",
-    "file": "e_laugh.png",
-    "off": 2,
-    "y": 1490,
-    "size": 200
-   },
    {
     "at": [
      "c3"
@@ -295,7 +277,10 @@
   "full": true,
   "bf": 0.02,
   "capY": 1250,
-  "topY": 720,
+  "topY": 380,
+  "topFade": 2.5,
+  "capChunk": 3,
+  "capPill": true,
   "steady": true,
   "noFocus": true
  },
@@ -308,26 +293,15 @@
   "blackFlash": [],
   "streaks": [],
   "punch": [],
-  "top": "Army healthcare hits different \ud83d\udc80",
+  "top": "This is what 'free' healthcare got him \ud83d\udc80",
   "hl": {
-   "different": "#FF2A2A"
+   "free": "#FF2A2A"
   },
   "topPop": null,
   "topSize": 64,
   "top2": null,
   "tight": true,
   "extras": [
-   {
-    "at": [
-     "c4_1",
-     "drill"
-    ],
-    "kind": "png",
-    "file": "e_laugh.png",
-    "off": 2,
-    "y": 1490,
-    "size": 200
-   },
    {
     "at": [
      "c2"
@@ -398,7 +372,10 @@
   "full": true,
   "bf": 0.02,
   "capY": 1250,
-  "topY": 720,
+  "topY": 380,
+  "topFade": 2.5,
+  "capChunk": 3,
+  "capPill": true,
   "steady": true,
   "noFocus": true
  },
@@ -411,26 +388,15 @@
   "blackFlash": [],
   "streaks": [],
   "punch": [],
-  "top": "When your dog meets your new man \ud83d\udc36\ud83d\udc80",
+  "top": "Never ignore your dog's reaction \ud83d\udc36",
   "hl": {
-   "new": "#FF2A2A"
+   "ignore": "#FF2A2A"
   },
   "topPop": null,
   "topSize": 64,
   "top2": null,
   "tight": true,
   "extras": [
-   {
-    "at": [
-     "c2_3",
-     "dude"
-    ],
-    "kind": "png",
-    "file": "e_laugh.png",
-    "off": 2,
-    "y": 1490,
-    "size": 200
-   },
    {
     "at": [
      "c1_1"
@@ -510,7 +476,10 @@
   "full": true,
   "bf": 0.02,
   "capY": 1250,
-  "topY": 720,
+  "topY": 380,
+  "topFade": 2.5,
+  "capChunk": 3,
+  "capPill": true,
   "steady": true,
   "noFocus": true
  }
