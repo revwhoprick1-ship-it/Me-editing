@@ -1,8 +1,8 @@
 {
- "ylbow": {
-  "top": "He did NOT sign up for this \ud83d\ude2d",
+ "ylcurtain": {
+  "top": "He roasted her dress so politely \ud83d\ude2d",
   "hl": {},
-  "src": "yl4_ylbow.mp4",
+  "src": "yl4_ylcurtain.mp4",
   "cta": "",
   "ask": [],
   "track": "none",
@@ -12,380 +12,28 @@
    [
     [
      "s0",
-     "knees"
-    ],
-    "R"
-   ],
-   [
-    [
-     "s2",
-     "bows"
-    ],
-    "R"
-   ],
-   [
-    [
-     "s4",
-     "Bow."
+     "curtain"
     ],
     "R"
    ],
    [
     [
      "s5",
-     "lowest"
-    ],
-    "R"
-   ]
-  ],
-  "rizz": [],
-  "punch": [],
-  "blowouts": [],
-  "blackFlash": [],
-  "streaks": [],
-  "extras": [
-   {
-    "at": [
-     "s0"
-    ],
-    "kind": "sfx",
-    "file": "riser.mp3",
-    "v": 0.35,
-    "off": 0
-   },
-   {
-    "at": [
-     "s1"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   },
-   {
-    "at": [
-     "s2"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   },
-   {
-    "at": [
-     "s3"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   },
-   {
-    "at": [
-     "s4"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   },
-   {
-    "at": [
-     "s5"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   },
-   {
-    "at": [
-     "s6"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   },
-   {
-    "at": [
-     "s7"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   },
-   {
-    "at": [
-     "s8"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   }
-  ],
-  "music": [
-   "goodbye",
-   12
-  ],
-  "musicVol": 0.16,
-  "origAudio": false,
-  "capCycle": true,
-  "capPill": true,
-  "capSize": 50,
-  "capY": 1150,
-  "whip": false,
-  "hardcut": false,
-  "popMid": false,
-  "steady": true,
-  "noFocus": true,
-  "noSkull": true,
-  "topStatic": true,
-  "loop": true,
-  "bg": "#EEF2F2",
-  "topColor": "#111111",
-  "topFont": "Inter",
-  "topSize": 50,
-  "bf": 0,
-  "fadeWhite": 6,
-  "intro": false,
-  "progress": false,
-  "srcVol": 1,
-  "sat": 1.0,
-  "vo": null
- },
- "ylscar": {
-  "top": "The most gamer compliment ever \ud83d\udc80",
-  "hl": {},
-  "src": "yl4_ylscar.mp4",
-  "cta": "",
-  "ask": [],
-  "track": "none",
-  "calls": [],
-  "trackData": {},
-  "tints": [
-   [
-    [
-     "s2",
-     "gold"
+     "complimentary"
     ],
     "R"
    ],
    [
     [
-     "s8",
-     "grey"
-    ],
-    "R"
-   ],
-   [
-    [
-     "s2",
-     "scar."
-    ],
-    "R"
-   ],
-   [
-    [
-     "s13",
-     "love"
-    ],
-    "R"
-   ]
-  ],
-  "rizz": [],
-  "punch": [],
-  "blowouts": [],
-  "blackFlash": [],
-  "streaks": [],
-  "extras": [
-   {
-    "at": [
-     "s0"
-    ],
-    "kind": "sfx",
-    "file": "riser.mp3",
-    "v": 0.35,
-    "off": 0
-   },
-   {
-    "at": [
-     "s1"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   },
-   {
-    "at": [
-     "s2"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   },
-   {
-    "at": [
-     "s3"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   },
-   {
-    "at": [
-     "s4"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   },
-   {
-    "at": [
-     "s5"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   },
-   {
-    "at": [
-     "s6"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   },
-   {
-    "at": [
-     "s7"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   },
-   {
-    "at": [
-     "s8"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   },
-   {
-    "at": [
-     "s9"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   },
-   {
-    "at": [
-     "s10"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   },
-   {
-    "at": [
-     "s11"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   },
-   {
-    "at": [
-     "s12"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   },
-   {
-    "at": [
-     "s13"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   }
-  ],
-  "music": [
-   "goodbye",
-   12
-  ],
-  "musicVol": 0.16,
-  "origAudio": false,
-  "capCycle": true,
-  "capPill": true,
-  "capSize": 50,
-  "capY": 1150,
-  "whip": false,
-  "hardcut": false,
-  "popMid": false,
-  "steady": true,
-  "noFocus": true,
-  "noSkull": true,
-  "topStatic": true,
-  "loop": true,
-  "bg": "#EEF2F2",
-  "topColor": "#111111",
-  "topFont": "Inter",
-  "topSize": 50,
-  "bf": 0,
-  "fadeWhite": 6,
-  "intro": false,
-  "progress": false,
-  "srcVol": 1,
-  "sat": 1.0,
-  "vo": null
- },
- "ylkiki": {
-  "top": "He sang to her\u2026 then walked out \ud83d\udc80",
-  "hl": {},
-  "src": "yl4_ylkiki.mp4",
-  "cta": "",
-  "ask": [],
-  "track": "none",
-  "calls": [],
-  "trackData": {},
-  "tints": [
-   [
-    [
-     "s3",
-     "sing"
-    ],
-    "R"
-   ],
-   [
-    [
-     "s15",
-     "hate"
+     "s9",
+     "Lady."
     ],
     "R"
    ],
    [
     [
      "s16",
-     "leaving."
+     "School."
     ],
     "R"
    ]
@@ -557,6 +205,15 @@
     "file": "s_whoosh.mp3",
     "v": 0.4,
     "off": 0
+   },
+   {
+    "at": [
+     "s18"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
    }
   ],
   "music": [
@@ -589,10 +246,10 @@
   "sat": 1.0,
   "vo": null
  },
- "ylamazon": {
-  "top": "Worst compliment in dating history \ud83d\ude2d",
+ "ylwahey": {
+  "top": "The trick was SUPPOSED to fail \ud83d\udc80",
   "hl": {},
-  "src": "yl4_ylamazon.mp4",
+  "src": "yl4_ylwahey.mp4",
   "cta": "",
   "ask": [],
   "track": "none",
@@ -601,240 +258,29 @@
   "tints": [
    [
     [
-     "s4",
-     "lasted"
-    ],
-    "R"
-   ],
-   [
-    [
-     "s4",
-     "day"
-    ],
-    "R"
-   ],
-   [
-    [
-     "s8",
-     "compliment"
+     "s3",
+     "wrong."
     ],
     "R"
    ],
    [
     [
      "s11",
-     "seconds"
-    ],
-    "R"
-   ]
-  ],
-  "rizz": [],
-  "punch": [],
-  "blowouts": [],
-  "blackFlash": [],
-  "streaks": [],
-  "extras": [
-   {
-    "at": [
-     "s0"
-    ],
-    "kind": "sfx",
-    "file": "riser.mp3",
-    "v": 0.35,
-    "off": 0
-   },
-   {
-    "at": [
-     "s1"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   },
-   {
-    "at": [
-     "s2"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   },
-   {
-    "at": [
-     "s3"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   },
-   {
-    "at": [
-     "s4"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   },
-   {
-    "at": [
-     "s5"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   },
-   {
-    "at": [
-     "s6"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   },
-   {
-    "at": [
-     "s7"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   },
-   {
-    "at": [
-     "s8"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   },
-   {
-    "at": [
-     "s9"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   },
-   {
-    "at": [
-     "s10"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   },
-   {
-    "at": [
-     "s11"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   },
-   {
-    "at": [
-     "s12"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   },
-   {
-    "at": [
-     "s13"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   },
-   {
-    "at": [
-     "s14"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.4,
-    "off": 0
-   }
-  ],
-  "music": [
-   "goodbye",
-   12
-  ],
-  "musicVol": 0.16,
-  "origAudio": false,
-  "capCycle": true,
-  "capPill": true,
-  "capSize": 50,
-  "capY": 1150,
-  "whip": false,
-  "hardcut": false,
-  "popMid": false,
-  "steady": true,
-  "noFocus": true,
-  "noSkull": true,
-  "topStatic": true,
-  "loop": true,
-  "bg": "#EEF2F2",
-  "topColor": "#111111",
-  "topFont": "Inter",
-  "topSize": 50,
-  "bf": 0,
-  "fadeWhite": 6,
-  "intro": false,
-  "progress": false,
-  "srcVol": 1,
-  "sat": 1.0,
-  "vo": null
- },
- "ylslam": {
-  "top": "When she keeps eyeing your boy \ud83d\udc80",
-  "hl": {},
-  "src": "yl4_ylslam.mp4",
-  "cta": "",
-  "ask": [],
-  "track": "none",
-  "calls": [],
-  "trackData": {},
-  "tints": [
-   [
-    [
-     "s1",
-     "looking"
+     "spades."
     ],
     "R"
    ],
    [
     [
-     "s7",
-     "obsessed"
-    ],
-    "R"
-   ],
-   [
-    [
-     "s13",
-     "slam"
+     "s15",
+     "What?"
     ],
     "R"
    ],
    [
     [
      "s19",
-     "forceful."
+     "right."
     ],
     "R"
    ]
@@ -1033,10 +479,95 @@
     "file": "s_whoosh.mp3",
     "v": 0.4,
     "off": 0
+   }
+  ],
+  "music": [
+   "goodbye",
+   12
+  ],
+  "musicVol": 0.16,
+  "origAudio": false,
+  "capCycle": true,
+  "capPill": true,
+  "capSize": 50,
+  "capY": 1150,
+  "whip": false,
+  "hardcut": false,
+  "popMid": false,
+  "steady": true,
+  "noFocus": true,
+  "noSkull": true,
+  "topStatic": true,
+  "loop": true,
+  "bg": "#EEF2F2",
+  "topColor": "#111111",
+  "topFont": "Inter",
+  "topSize": 50,
+  "bf": 0,
+  "fadeWhite": 6,
+  "intro": false,
+  "progress": false,
+  "srcVol": 1,
+  "sat": 1.0,
+  "vo": null
+ },
+ "ylbuzz": {
+  "top": "Bro could NOT open the drink \ud83d\udc80",
+  "hl": {},
+  "src": "yl4_ylbuzz.mp4",
+  "cta": "",
+  "ask": [],
+  "track": "none",
+  "calls": [],
+  "trackData": {},
+  "tints": [
+   [
+    [
+     "s1",
+     "hell."
+    ],
+    "R"
+   ],
+   [
+    [
+     "s5",
+     "slap"
+    ],
+    "R"
+   ],
+   [
+    [
+     "s9",
+     "body."
+    ],
+    "R"
+   ],
+   [
+    [
+     "s12",
+     "forget"
+    ],
+    "R"
+   ]
+  ],
+  "rizz": [],
+  "punch": [],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "extras": [
+   {
+    "at": [
+     "s0"
+    ],
+    "kind": "sfx",
+    "file": "riser.mp3",
+    "v": 0.35,
+    "off": 0
    },
    {
     "at": [
-     "s21"
+     "s1"
     ],
     "kind": "sfx",
     "file": "s_whoosh.mp3",
@@ -1045,7 +576,7 @@
    },
    {
     "at": [
-     "s22"
+     "s2"
     ],
     "kind": "sfx",
     "file": "s_whoosh.mp3",
@@ -1054,7 +585,501 @@
    },
    {
     "at": [
-     "s23"
+     "s3"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s4"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s5"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s6"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s7"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s8"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s9"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s10"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s11"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s12"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s13"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s14"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   }
+  ],
+  "music": [
+   "goodbye",
+   12
+  ],
+  "musicVol": 0.16,
+  "origAudio": false,
+  "capCycle": true,
+  "capPill": true,
+  "capSize": 50,
+  "capY": 1150,
+  "whip": false,
+  "hardcut": false,
+  "popMid": false,
+  "steady": true,
+  "noFocus": true,
+  "noSkull": true,
+  "topStatic": true,
+  "loop": true,
+  "bg": "#EEF2F2",
+  "topColor": "#111111",
+  "topFont": "Inter",
+  "topSize": 50,
+  "bf": 0,
+  "fadeWhite": 6,
+  "intro": false,
+  "progress": false,
+  "srcVol": 1,
+  "sat": 1.0,
+  "vo": null
+ },
+ "ylthanks": {
+  "top": "The worst first-date workout ever \ud83d\ude2d",
+  "hl": {},
+  "src": "yl4_ylthanks.mp4",
+  "cta": "",
+  "ask": [],
+  "track": "none",
+  "calls": [],
+  "trackData": {},
+  "tints": [
+   [
+    [
+     "s0",
+     "Squats."
+    ],
+    "R"
+   ],
+   [
+    [
+     "s8",
+     "presence."
+    ],
+    "R"
+   ],
+   [
+    [
+     "s9",
+     "Star"
+    ],
+    "R"
+   ],
+   [
+    [
+     "s16",
+     "jumping?"
+    ],
+    "R"
+   ]
+  ],
+  "rizz": [],
+  "punch": [],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "extras": [
+   {
+    "at": [
+     "s0"
+    ],
+    "kind": "sfx",
+    "file": "riser.mp3",
+    "v": 0.35,
+    "off": 0
+   },
+   {
+    "at": [
+     "s1"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s2"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s3"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s4"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s5"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s6"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s7"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s8"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s9"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s10"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s11"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s12"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s13"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s14"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s15"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s16"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   }
+  ],
+  "music": [
+   "goodbye",
+   12
+  ],
+  "musicVol": 0.16,
+  "origAudio": false,
+  "capCycle": true,
+  "capPill": true,
+  "capSize": 50,
+  "capY": 1150,
+  "whip": false,
+  "hardcut": false,
+  "popMid": false,
+  "steady": true,
+  "noFocus": true,
+  "noSkull": true,
+  "topStatic": true,
+  "loop": true,
+  "bg": "#EEF2F2",
+  "topColor": "#111111",
+  "topFont": "Inter",
+  "topSize": 50,
+  "bf": 0,
+  "fadeWhite": 6,
+  "intro": false,
+  "progress": false,
+  "srcVol": 1,
+  "sat": 1.0,
+  "vo": null
+ },
+ "ylpick": {
+  "top": "She begged him to pick her\u2026 \ud83d\udc80",
+  "hl": {},
+  "src": "yl4_ylpick.mp4",
+  "cta": "",
+  "ask": [],
+  "track": "none",
+  "calls": [],
+  "trackData": {},
+  "tints": [
+   [
+    [
+     "s4",
+     "embarrassing"
+    ],
+    "R"
+   ],
+   [
+    [
+     "s5",
+     "eliminated."
+    ],
+    "R"
+   ],
+   [
+    [
+     "s8",
+     "lying."
+    ],
+    "R"
+   ],
+   [
+    [
+     "s9",
+     "gorgeous"
+    ],
+    "R"
+   ]
+  ],
+  "rizz": [],
+  "punch": [],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "extras": [
+   {
+    "at": [
+     "s0"
+    ],
+    "kind": "sfx",
+    "file": "riser.mp3",
+    "v": 0.35,
+    "off": 0
+   },
+   {
+    "at": [
+     "s1"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s2"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s3"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s4"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s5"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s6"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s7"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s8"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s9"
     ],
     "kind": "sfx",
     "file": "s_whoosh.mp3",

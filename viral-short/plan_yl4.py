@@ -7,17 +7,20 @@ import json, re, subprocess, sys
 import numpy as np, cv2
 SRC, TXJ = sys.argv[1], sys.argv[2]
 W = [w for s in json.load(open(TXJ)) for w in s['w']]
+FIX = {1950.8: '', 1951.0: '', 1951.2: '', 1951.3: '', 1952.9: 'buzz'}   # ASR fixes keyed by word start (rounded to 0.1 s); '' = no caption
+REPL = {'Curtin': 'curtain'}
+_CL_B1 = None  # batch 1 (ylbow ylscar ylkiki ylamazon ylslam) is in git history
 CL = {
- 'ylbow': dict(body=[(2144.75, 2163.0), (2163.0, 2166.4)], A='He did NOT sign up for this 😭', hl={},
-   red=['knees', 'bows', 'Bow.', 'lowest']),
- 'ylscar': dict(body=[(1840.45, 1873.4)], A='The most gamer compliment ever 💀', hl={},
-   red=['gold', 'grey', 'scar.', 'love']),
- 'ylkiki': dict(body=[(2047.7, 2080.6)], A='He sang to her… then walked out 💀', hl={},
-   red=['Kiki,', 'sing', 'hate', 'leaving.']),
- 'ylamazon': dict(body=[(449.65, 466.0), (590.0, 601.0)], A='Worst compliment in dating history 😭', hl={},
-   red=['lasted', 'day', 'compliment', 'seconds']),
- 'ylslam': dict(body=[(938.55, 958.6), (977.45, 990.2)], A='When she keeps eyeing your boy 💀', hl={},
-   red=['looking', 'obsessed', 'slam', 'forceful.']),
+ 'ylcurtain': dict(body=[(1261.6, 1279.0), (1338.3, 1358.4)], A='He roasted her dress so politely 😭', hl={},
+   red=['curtain', 'complimentary', 'Lady.', 'School.']),
+ 'ylwahey': dict(body=[(506.3, 547.0)], A='The trick was SUPPOSED to fail 💀', hl={},
+   red=['wrong.', 'spades.', 'What?', 'right.']),
+ 'ylbuzz': dict(body=[(1945.7, 1955.7), (1990.8, 2016.8)], A='Bro could NOT open the drink 💀', hl={},
+   red=['hell.', 'slap', 'body.', 'forget']),
+ 'ylthanks': dict(body=[(2194.2, 2215.0), (2223.8, 2240.0)], A='The worst first-date workout ever 😭', hl={},
+   red=['Squats.', 'presence.', 'Star', 'jumping?']),
+ 'ylpick': dict(body=[(3090.7, 3109.9)], A='She begged him to pick her… 💀', hl={},
+   red=['embarrassing', 'eliminated.', 'lying.', 'gorgeous']),
 }
 ONLY = [x for a in sys.argv if a.startswith('--only=') for x in a[7:].split(',')]
 
@@ -65,6 +68,7 @@ for eid, d in CL.items():
     for i, (a, b) in enumerate(shots):
         n = round((b - a) * 30); words = []
         for ws, we, tx in W:
+            tx = FIX.get(round(ws, 1), REPL.get(tx.strip(), tx.strip()))
             if a - 0.05 <= ws < b - 0.05 and tx.strip():
                 f0 = max(0, round((ws - a) * 30)); words.append({'word': tx.strip().strip(','), 'startFrame': f0, 'endFrame': min(n, max(f0 + 4, round((we - a) * 30) + 3))})
         for k in range(len(words) - 1): words[k]['endFrame'] = min(words[k]['endFrame'], words[k + 1]['startFrame'])

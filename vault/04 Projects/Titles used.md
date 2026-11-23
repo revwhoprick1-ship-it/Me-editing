@@ -329,3 +329,8 @@
 - He sang to her… then walked out 💀 (YoungLA ylkiki)
 - Worst compliment in dating history 😭 (YoungLA ylamazon)
 - When she keeps eyeing your boy 💀 (YoungLA ylslam)
+- He roasted her dress so politely 😭 (YoungLA ylcurtain)
+- The trick was SUPPOSED to fail 💀 (YoungLA ylwahey)
+- Bro could NOT open the drink 💀 (YoungLA ylbuzz)
+- The worst first-date workout ever 😭 (YoungLA ylthanks)
+- She begged him to pick her… 💀 (YoungLA ylpick)
