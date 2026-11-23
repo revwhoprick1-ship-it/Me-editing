@@ -61,19 +61,22 @@ _CL_B10 = None  # batch 10/10b (jmailo..jrodb, VverPaldo box + boosters) is in g
 _CL_B11 = None  # batch 11 (jdogs11 jnug11 jden11 jcamo11 jsniff11) is in git history
 # batch 12 (user 2026-11-23): 6 unused bits, batch 11 v2 rules (run with --full --g67): fading tension hook in the upper safe zone,
 # pill phrase captions, laughs capped at 1.5 s, no emoji / pop-ups, 0.8 s funny-visual open + flash cut.
+# batch 12 v2 (user 2026-11-23, heyDominik "hooks 89% better" applied): the 4 hook elements aligned to ONE viewer -
+# text hook (static from frame 1, no animation / intro flash), spoken hook (clip opens on the clearest premise line, no silent face open),
+# visual (Jo talking), first 6 words of the description; instant clarity (who/what) + one open question by 2-3 s.
 CL = {
- 'jyo12': dict(src='p11', tight=True, face=(127.30, 128.10), body=[('c1', 89.50, 97.50, 960), ('c2', 101.70, 134.30, 960)],
-   A="Wait for Fred's reaction 😭", hl=['reaction'], pops=[]),
- 'jbatt12': dict(src='p11', tight=True, face=(269.30, 270.10), body=[('c0', 159.50, 171.00, 960), ('c1', 184.24, 202.95, 960), ('c3', 266.30, 281.70, 960)],
-   A='Dads will refuse ANY help 💀', hl=['ANY'], pops=[]),
- 'jtiktok12': dict(src='p04', tight=True, face=(179.20, 180.00), body=[('c1', 166.60, 201.60, 960)],
-   A="Gen Z won't like this one 💀", hl=['Gen', 'Z'], pops=[]),
- 'jpump12': dict(src='p04', tight=True, face=(123.80, 124.60), body=[('c1', 109.70, 114.60, 960), ('c2', 115.65, 149.60, 960)],
-   A="Filipino moms don't hold back 😭", hl=["don't"], pops=[]),
- 'jjockey12': dict(src='p08', tight=True, face=(155.80, 156.60), body=[('c1', 109.55, 134.00, 960), ('c2', 134.85, 150.30, 960), ('c3', 150.35, 167.00, 960), ('c4', 188.65, 198.50, 960)],
-   A='Never dress your dog up for Halloween 🐶💀', hl=['Never'], pops=[]),
- 'jmanila12': dict(src='p01', tight=True, face=(106.30, 107.10), body=[('c1', 75.95, 108.40, 960)],
-   A='Filipinos, did you know this? 🇵🇭', hl=['Filipinos,'], pops=[]),
+ 'jyo12': dict(src='p11', tight=True, static=True, body=[('c1', 89.50, 97.50, 960), ('c2', 101.70, 134.30, 960)],
+   A='He got his stepdad 4th-row Dodgers seats… his answer? 😭', hl=['Dodgers'], pops=[]),
+ 'jbatt12': dict(src='p11', tight=True, static=True, body=[('c0', 159.50, 171.00, 960), ('c1', 184.24, 202.95, 960), ('c3', 266.30, 281.70, 960)],
+   A='His oxygen lasts 90 min. The game lasts 3 hours 💀', hl=['90', '3'], pops=[]),
+ 'jtiktok12': dict(src='p04', tight=True, static=True, body=[('c1', 166.60, 201.60, 960)],
+   A='Is starting a TikTok channel a real job? 🤔', hl=['TikTok'], pops=[]),
+ 'jpump12': dict(src='p04', tight=True, static=True, body=[('c1', 109.70, 114.60, 960), ('c2', 115.65, 149.60, 960)],
+   A='When your Filipino mom thinks you do drugs 😭', hl=['Filipino'], pops=[]),
+ 'jjockey12': dict(src='p08', tight=True, static=True, body=[('c1', 109.55, 134.00, 960), ('c2', 134.85, 150.30, 960), ('c3', 150.35, 167.00, 960), ('c4', 188.65, 198.50, 960)],
+   A='Dog owners: never put THIS costume on your dog 🐶', hl=['THIS'], pops=[]),
+ 'jmanila12': dict(src='p01', tight=True, static=True, body=[('c1', 84.15, 108.40, 960), ('c2', 109.90, 114.30, 960)],
+   A='Why Stockton is special to Filipinos 🇵🇭', hl=['Stockton'], pops=[]),
 }
 E = {}
 for k, d in CL.items():
@@ -84,7 +87,7 @@ for k, d in CL.items():
     for sid_, w_, f_ in d.get('ovs', []): ex.append(dict(ov([sid_, w_], f_, None, dur=34 if 'flash' in f_ else 54, op=0.55 if 'flash' in f_ else 0.9, off=2), **({'fit': 'contain'} if 'afml' in f_ else {})))
     body = ([('face', *d['face'], 960)] if d.get('face') else []) + list(d['body'])
     E[k] = dict(vo=None, scenes=[(s, d['src'], a, b, cx) for s, a, b, cx in body], fixed=[s for s, *_ in body], nocap=['face'], face=bool(d.get('face')), ask2=d.get('ask'), mute=[], zoom={},
-                circles=[], noSkull=True, ask=[], tints=[], rizz=[], blowouts=[], blackFlash=[], streaks=[], punch=d.get('pin', []), top=d['A'], hl={w: RD for w in d['hl']}, topPop=d.get('tp'), topSize=d.get('ts', 64), top2=d.get('t2'), tight=d.get('tight', False),
+                circles=[], noSkull=True, ask=[], tints=[], rizz=[], blowouts=[], blackFlash=[], streaks=[], punch=d.get('pin', []), top=d['A'], hl={w: RD for w in d['hl']}, topPop=d.get('tp'), topSize=d.get('ts', 64), top2=d.get('t2'), tight=d.get('tight', False), topStatic=d.get('static', False),
                 extras=ex, focus=dict(x=540, y=330, r=180, dur=20))
 VO = sys.argv[3]
 FULL = '--full' in sys.argv

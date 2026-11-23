@@ -8,24 +8,16 @@
   "blackFlash": [],
   "streaks": [],
   "punch": [],
-  "top": "Wait for Fred's reaction \ud83d\ude2d",
+  "top": "He got his stepdad 4th-row Dodgers seats\u2026 his answer? \ud83d\ude2d",
   "hl": {
-   "reaction": "#FF2A2A"
+   "Dodgers": "#FF2A2A"
   },
   "topPop": null,
   "topSize": 64,
   "top2": null,
   "tight": true,
+  "topStatic": true,
   "extras": [
-   {
-    "at": [
-     "c2"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   },
    {
     "at": [
      "c2_1"
@@ -95,7 +87,7 @@
   "calls": [],
   "src": "g67_jyo12.mp4",
   "intro": false,
-  "hardcut": true,
+  "hardcut": false,
   "cutSfx": "s_whoosh.mp3",
   "sat": 1.3,
   "progress": false,
@@ -121,24 +113,17 @@
   "blackFlash": [],
   "streaks": [],
   "punch": [],
-  "top": "Dads will refuse ANY help \ud83d\udc80",
+  "top": "His oxygen lasts 90 min. The game lasts 3 hours \ud83d\udc80",
   "hl": {
-   "ANY": "#FF2A2A"
+   "90": "#FF2A2A",
+   "3": "#FF2A2A"
   },
   "topPop": null,
   "topSize": 64,
   "top2": null,
   "tight": true,
+  "topStatic": true,
   "extras": [
-   {
-    "at": [
-     "c0_1"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   },
    {
     "at": [
      "c0_2"
@@ -190,7 +175,7 @@
   "calls": [],
   "src": "g67_jbatt12.mp4",
   "intro": false,
-  "hardcut": true,
+  "hardcut": false,
   "cutSfx": "s_whoosh.mp3",
   "sat": 1.3,
   "progress": false,
@@ -216,25 +201,16 @@
   "blackFlash": [],
   "streaks": [],
   "punch": [],
-  "top": "Gen Z won't like this one \ud83d\udc80",
+  "top": "Is starting a TikTok channel a real job? \ud83e\udd14",
   "hl": {
-   "Gen": "#FF2A2A",
-   "Z": "#FF2A2A"
+   "TikTok": "#FF2A2A"
   },
   "topPop": null,
   "topSize": 64,
   "top2": null,
   "tight": true,
+  "topStatic": true,
   "extras": [
-   {
-    "at": [
-     "c1_1"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   },
    {
     "at": [
      "c1_2"
@@ -277,7 +253,7 @@
   "calls": [],
   "src": "g67_jtiktok12.mp4",
   "intro": false,
-  "hardcut": true,
+  "hardcut": false,
   "cutSfx": "s_whoosh.mp3",
   "sat": 1.3,
   "progress": false,
@@ -303,24 +279,16 @@
   "blackFlash": [],
   "streaks": [],
   "punch": [],
-  "top": "Filipino moms don't hold back \ud83d\ude2d",
+  "top": "When your Filipino mom thinks you do drugs \ud83d\ude2d",
   "hl": {
-   "don't": "#FF2A2A"
+   "Filipino": "#FF2A2A"
   },
   "topPop": null,
   "topSize": 64,
   "top2": null,
   "tight": true,
+  "topStatic": true,
   "extras": [
-   {
-    "at": [
-     "c2"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   },
    {
     "at": [
      "c2_1"
@@ -381,7 +349,7 @@
   "calls": [],
   "src": "g67_jpump12.mp4",
   "intro": false,
-  "hardcut": true,
+  "hardcut": false,
   "cutSfx": "s_whoosh.mp3",
   "sat": 1.3,
   "progress": false,
@@ -407,24 +375,16 @@
   "blackFlash": [],
   "streaks": [],
   "punch": [],
-  "top": "Never dress your dog up for Halloween \ud83d\udc36\ud83d\udc80",
+  "top": "Dog owners: never put THIS costume on your dog \ud83d\udc36",
   "hl": {
-   "Never": "#FF2A2A"
+   "THIS": "#FF2A2A"
   },
   "topPop": null,
   "topSize": 64,
   "top2": null,
   "tight": true,
+  "topStatic": true,
   "extras": [
-   {
-    "at": [
-     "c1_1"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   },
    {
     "at": [
      "c1_2"
@@ -548,7 +508,7 @@
   "calls": [],
   "src": "g67_jjockey12.mp4",
   "intro": false,
-  "hardcut": true,
+  "hardcut": false,
   "cutSfx": "s_whoosh.mp3",
   "sat": 1.3,
   "progress": false,
@@ -574,24 +534,16 @@
   "blackFlash": [],
   "streaks": [],
   "punch": [],
-  "top": "Filipinos, did you know this? \ud83c\uddf5\ud83c\udded",
+  "top": "Why Stockton is special to Filipinos \ud83c\uddf5\ud83c\udded",
   "hl": {
-   "Filipinos,": "#FF2A2A"
+   "Stockton": "#FF2A2A"
   },
   "topPop": null,
   "topSize": 64,
   "top2": null,
   "tight": true,
+  "topStatic": true,
   "extras": [
-   {
-    "at": [
-     "c1_1"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   },
    {
     "at": [
      "c1_2"
@@ -612,7 +564,7 @@
    },
    {
     "at": [
-     "c1_4"
+     "c2"
     ],
     "kind": "sfx",
     "file": "s_whoosh.mp3",
@@ -634,7 +586,7 @@
   "calls": [],
   "src": "g67_jmanila12.mp4",
   "intro": false,
-  "hardcut": true,
+  "hardcut": false,
   "cutSfx": "s_whoosh.mp3",
   "sat": 1.3,
   "progress": false,
