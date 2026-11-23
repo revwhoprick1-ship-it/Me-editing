@@ -31,3 +31,10 @@ Log every posted description here so new ones never repeat (dupe-flag risk).
 - jden11: Oxygen low, game tied, 18th inning… and Fred is NOT leaving 💀⚾ Jo Koy's story behind Blue in the Face, streaming on Netflix. Tag the most loyal fan you know. #JoKoyClips #BlueInTheFace #Dodgersnation #baseballlife #loyalfan
 - jcamo11: Five knocked-out teeth, zero cosmetic surgery, and one soldier with a drill 💀🦷 Jo Koy grew up on a military base and it shows. Blue in the Face on Netflix. #JoKoyNetflixSpecial #BlueInTheFaceNetflix #militarybrat #armylife #dentalhumor
 - jsniff11: Your dog knows before you do 🐶 Jo Koy on the dog test every new boyfriend has to pass, from Blue in the Face on Netflix. #JoKoyClips #BlueInTheFace #dogsknow #newboyfriend #relatablecomedy
+
+## Batch 11 v2 (2026-11-23, replaces batch 11 set)
+- jdogs11: Some people just can't be trusted, and Jo Koy found out how to spot them 🐶👀 Stand-up from his Netflix special Blue in the Face. Tag a friend who'd fail this test. #JoKoy #BlueInTheFace #netflixstandup #dogowners #comedyreels
+- jnug11: Lesson learned: you can't fool a Filipino mom 😭 Jo Koy's McDonald's story from Blue in the Face, streaming now on Netflix. Whose mom would do this? #JoKoyComedy #BlueInTheFaceNetflix #pinoyhumor #momsbelike #standupclips
+- jden11: Loyalty level: refusing to leave the ballpark no matter what ⚾😂 Jo Koy remembers his stepdad Fred in Blue in the Face on Netflix. Send to the biggest Dodgers fan you know. #JoKoyFunny #BlueInTheFace #LAdodgers #baseballstories #netflixcomedyspecial
+- jcamo11: Growing up on an army base meant your dentist was... a soldier 🪖🦷 Jo Koy's childhood teeth story from Blue in the Face, now on Netflix. #JoKoyStandup #BlueInTheFace #armykids #dentistdrama #funnychildhood
+- jsniff11: The real background check is how your dog reacts 🐶 Jo Koy explains it best in Blue in the Face, streaming on Netflix. Drop a 🐾 if your dog has ever done this. #JoKoyNetflix #BlueInTheFaceNetflix #doglovers #dogtest #comedytok
