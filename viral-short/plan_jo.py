@@ -65,7 +65,7 @@ _CL_B11 = None  # batch 11 (jdogs11 jnug11 jden11 jcamo11 jsniff11) is in git hi
 # text hook (static from frame 1, no animation / intro flash), spoken hook (clip opens on the clearest premise line, no silent face open),
 # visual (Jo talking), first 6 words of the description; instant clarity (who/what) + one open question by 2-3 s.
 CL = {
- 'jyo12': dict(src='p11', tight=True, static=True, body=[('c1', 89.50, 97.50, 960), ('c2', 101.70, 134.30, 960)],
+ 'jyo12': dict(src='p11', tight=True, static=True, ty=1400, body=[('c1', 89.50, 97.50, 960), ('c2', 101.70, 134.30, 960)],
    A="The saddest 'no' to free Dodgers tickets 😭", hl=['Dodgers'], pops=[]),
  'jbatt12': dict(src='p11', tight=True, static=True, ty=1400, body=[('c0', 159.50, 171.00, 960), ('c1', 184.24, 202.95, 960), ('c3', 266.30, 281.70, 960)],
    A='His oxygen lasts 90 min. The game lasts 3 hours 💀', hl=['90', '3'], pops=[]),
@@ -75,7 +75,7 @@ CL = {
    A='His mom thought he was on crack because of ONE thing 😭', hl=['ONE'], pops=[]),
  'jjockey12': dict(src='p08', tight=True, static=True, body=[('c1', 109.55, 134.00, 960), ('c2', 134.85, 150.30, 960), ('c3', 150.35, 167.00, 960), ('c4', 188.65, 198.50, 960)],
    A='Why our dog vanished for 3 days after Halloween 🐶', hl=['3'], pops=[]),
- 'jmanila12': dict(src='p01', tight=True, static=True, body=[('c1', 84.15, 108.40, 960), ('c2', 109.90, 114.30, 960)],
+ 'jmanila12': dict(src='p01', tight=True, static=True, ty=1400, body=[('c1', 84.15, 108.40, 960), ('c2', 109.90, 114.30, 960)],
    A="Why Filipinos built 'Little Manila' in Stockton 🇵🇭", hl=['Stockton'], pops=[]),
 }
 E = {}
