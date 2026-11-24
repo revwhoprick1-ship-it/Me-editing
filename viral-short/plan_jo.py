@@ -13,7 +13,7 @@ G67 = ("split[ga][gb];[gb]gblur=sigma=14[gg];[ga][gg]blend=all_mode=softlight:al
        "colortemperature=temperature=8000,eq=saturation=0.96,format=yuv420p")
 FIX = {('p06', 82.43): 'snitch', ('p06', 140.48): 'turkey', ('p06', 140.72): 'treats,', ('p06', 141.6): 'turkey', ('p06', 141.9): 'treats?', ('p10', 173.2): 'CIB', ('p10', 10.33): 'CIB', ('p10', 106.31): 'fought', ('p10', 106.65): 'war.', ('p10', 117.01): '',
        ('p07', 12.4): 'labra-', ('p07', 12.6): '', ('p07', 12.8): 'toodle-', ('p07', 13.22): '', ('p07', 13.58): '', ('p07', 15.82): 'labra-', ('p07', 16.06): '', ('p07', 16.2): 'boodle', ('p07', 19.64): 'hypoallergenic', ('p07', 20.12): '', ('p07', 3.94): 'Jo.', ('p07', 9.08): 'name-brand', ('p07', 9.4): '', ('p07', 22.6): '$4,000', ('p07', 22.88): '', ('p03', 185.3): "Madahi's",
-       ('p12', 110.8): "Dodgers'", ('p12', 111.42): 'den!', ('p03', 87.28): '', ('p03', 87.5): '', ('p07', 303.29): 'food', ('p07', 308.02): 'deer', ('p07', 309.16): 'deer', ('p09', 37.63): 'CIB', ('p09', 37.77): '', ('p09', 37.87): '', ('p05', 210.95): 'Put', ('p03', 107.44): '', ('p03', 107.56): '', ('p11', 39.88): 'broke', ('p09', 174.36): 'Have', ('p09', 174.52): 'you', ('p09', 174.6): 'ever', ('p09', 175.02): 'snow?', ('p09', 175.28): '', ('p09', 175.36): '', ('p12', 129.4): 'Eighteenth', ('p12', 129.96): '', ('p03', 246.85): '', ('p03', 247.17): '', ('p03', 247.25): '', ('p03', 247.39): '', ('p03', 247.55): '', ('p03', 247.77): '', ('p03', 248.07): '', ('p08', 149.0): '', ('p08', 149.5): '', ('p12', 21.3): 'brother.', ('p12', 31.32): 'Fred', ('p13', 40.67): 'Pryor', ('p13', 345.6): 'Fred'}
+       ('p12', 110.8): "Dodgers'", ('p12', 111.42): 'den!', ('p03', 87.28): '', ('p03', 87.5): '', ('p07', 303.29): 'food', ('p07', 308.02): 'deer', ('p07', 309.16): 'deer', ('p09', 37.63): 'CIB', ('p09', 37.77): '', ('p09', 37.87): '', ('p05', 210.95): 'Put', ('p03', 107.44): '', ('p03', 107.56): '', ('p11', 39.88): 'broke', ('p09', 174.36): 'Have', ('p09', 174.52): 'you', ('p09', 174.6): 'ever', ('p09', 175.02): 'snow?', ('p09', 175.28): '', ('p09', 175.36): '', ('p12', 129.4): 'Eighteenth', ('p12', 129.96): '', ('p03', 246.85): '', ('p03', 247.17): '', ('p03', 247.25): '', ('p03', 247.39): '', ('p03', 247.55): '', ('p03', 247.77): '', ('p03', 248.07): '', ('p08', 149.0): '', ('p08', 149.5): '', ('p12', 21.3): 'brother.', ('p12', 31.32): 'Fred', ('p13', 40.67): 'Pryor', ('p13', 345.6): 'Fred', ('p04', 20.26): '', ('p04', 22.22): '$100,000', ('p04', 22.54): '', ('p04', 24.72): 'teeth.', ('p05', 236.07): 'Joseph.', ('p05', 247.26): 'Joseph?', ('p05', 255.22): 'Joseph.', ('p05', 260.76): 'Joseph?'}
 LIFT = ',eq=gamma=1.4:brightness=0.02:saturation=1.08'
 def src(v): return glob.glob(f'{DL}/{v}.*')[0]
 def probe(v): return json.loads(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'stream=index,codec_type,codec_name,width,height:stream_side_data=rotation', '-of', 'json', src(v)], capture_output=True, text=True).stdout)['streams']
@@ -67,14 +67,16 @@ _CL_B11 = None  # batch 11 (jdogs11 jnug11 jden11 jcamo11 jsniff11) is in git hi
 # visual (Jo talking), first 6 words of the description; instant clarity (who/what) + one open question by 2-3 s.
 _CL_B12 = None  # batch 12 (jyo12 jbatt12 jtiktok12 jpump12 jjockey12 jmanila12) is in git history
 _CL_B13 = None  # batch 13 (jvorigin jvmom jvteal jkage13 jstadium13) is in git history
-# batch 14 (user 2026-11-24): "YoungLA-style creative hooks" on the 5 funniest never-clipped bits (--ylstyle). Short punchy hook,
-# one CAPS word, curiosity not spoiler; 2 red flash words; fresh audio (jshelter14 overlaps jgucci (batch 3) by 11 s, nothing else reused).
+_CL_B14 = None  # batch 14 (jteeth14 jmahjong14 jwinston14 jdeer14 jshelter14) is in git history
+# batch 15 (user 2026-11-24): the FIRST 5 Jo clips (jdoit jcrack jnugget jrunaway jblue) re-made in the --ylstyle look with niche hooks for a
+# US audience that doesn't know Jo Koy: the hook names the viewer's group (Filipino kids, Asian moms, rescue-dog owners, Dodgers fans) and
+# the relatable moment they'll laugh at - "this is for me" in 0.5 s. Not advice, not "who is this comedian".
 CL = {
- 'jteeth14': dict(src='p02', tight=True, body=[('c1', 41.05, 76.90, 960)], A='He answered the teeth comments 💀', hl={}, red=[('c1', 'fake.'), ('c1', 'toilet')], pops=[]),
- 'jmahjong14': dict(src='p02', tight=True, body=[('c1', 89.72, 116.90, 960)], A='Where was his MOM?? 💀', hl={}, red=[('c1', 'mahjong'), ('c1', 'six')], pops=[]),
- 'jwinston14': dict(src='p08', tight=True, body=[('c1', 4.90, 62.00, 960)], A='His other dog was NOT having it 😭', hl={}, red=[('c1', 'vicious.'), ('c1', 'reason')], pops=[]),
- 'jdeer14': dict(src='p07', tight=True, body=[('c1', 271.55, 298.00, 960), ('c2', 326.36, 352.90, 960)], A="He told his dog DON'T come back 😭", hl={}, red=[('c1', 'Don\'t'), ('c2', 'deer')], pops=[]),
- 'jshelter14': dict(src='p07', tight=True, body=[('c1', 32.15, 54.10, 960)], A='Shelter dogs when you pick them 😭', hl={}, red=[('c1', 'here.'), ('c1', 'turkey')], pops=[]),
+ 'jdoit15': dict(src='p04', tight=True, body=[('c1', 17.40, 58.60, 960)], A='Filipino kids: when mom says YES 🥹', hl={}, red=[('c1', 'emotional'), ('c1', 'deserve')], pops=[]),
+ 'jcrack15': dict(src='p04', tight=True, body=[('c1', 68.60, 114.20, 960)], A='Asian moms after one compliment 💀', hl={}, red=[('c1', 'compliment'), ('c1', 'crack')], pops=[]),
+ 'jnugget15': dict(src='p05', tight=True, body=[('c1', 253.50, 262.10, 960), ('c2', 266.30, 313.00, 960)], A="Moms who 'talk to the manager' 💀", hl={}, red=[('c1', 'promise'), ('c2', 'nugget')], pops=[]),
+ 'jrunaway15': dict(src='p07', tight=True, body=[('c1', 166.90, 216.00, 960)], A='Rescue dog owners know this 💀', hl={}, red=[('c1', 'signed'), ('c1', 'runaway')], pops=[]),
+ 'jblue15': dict(src='p12', tight=True, body=[('c1', 49.00, 58.30, 960), ('c2', 190.10, 214.80, 960)], A='Dodgers fans will feel this ⚾', hl={}, red=[('c1', 'blue'), ('c2', 'sixth')], pops=[]),
 }
 E = {}
 for k, d in CL.items():
@@ -94,9 +96,9 @@ YLS = '--ylstyle' in sys.argv   # batch 13 (user 2026-11-24): Jo clips in the Yo
 G_LITE = ("split[ga][gb];[gb]gblur=sigma=14[gg];[ga][gg]blend=all_mode=softlight:all_opacity=0.12,unsharp=5:5:0.9:5:5:0,"
           "eq=contrast=1.05:saturation=1.1:gamma=0.99,curves=all='0/0 0.25/0.23 0.75/0.78 1/1',colortemperature=temperature=7200,format=yuv420p")
 
-W = {v: [w for s in json.load(open(f'{TX}/{v}.json')) for w in s['w']] for v in ('p02', 'p07', 'p08')}
+W = {v: [w for s in json.load(open(f'{TX}/{v}.json')) for w in s['w']] for v in ('p04', 'p05', 'p07', 'p12')}
 FIXED = []
-CUTS = {v: [float(x) for x in open(os.path.join(os.path.dirname(DL.rstrip('/')), f'cuts_{v}.txt'))] for v in ('p02', 'p07', 'p08')}
+CUTS = {v: [float(x) for x in open(os.path.join(os.path.dirname(DL.rstrip('/')), f'cuts_{v}.txt'))] for v in ('p04', 'p05', 'p07', 'p12')}
 def snap(sid, v, a, b):
     """user rules: never cut a line mid-sentence (start before the first word, run until the speaker pauses),
     and no sub-0.5 s slivers of another camera angle at either end (snap onto the show's own cut)."""

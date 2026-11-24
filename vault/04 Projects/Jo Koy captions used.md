@@ -68,3 +68,10 @@ Log every posted description here so new ones never repeat (dupe-flag risk).
 - jwinston14: His other dog was NOT having it when Kingston came home after three days 🐶😭 "Where have you been?!" Jo Koy acting out his dogs in Blue in the Face on Netflix. #JoKoyFunny #BlueInTheFace #dogsiblings #dogsoftiktok #runawaydog
 - jdeer14: He told his dog "don't come back," and three days later Kingston returned with a wild story 🦌💀 Jo Koy in Blue in the Face, now on Netflix. Tag the dog owner who needs this. #JoKoyClips #BlueInTheFaceNetflix #dogdad #escapeartist #funnydogs
 - jshelter14: Shelter dogs when you pick them be like "let's GO" 🐶🏃 300 dogs are waiting, so go to the shelter tonight. Jo Koy says it best in Blue in the Face on Netflix. #JoKoyNetflix #BlueInTheFace #adoptdontshop #shelterdog #rescuedog
+
+## Batch 15 (2026-11-24, first 5 clips re-made, niche hooks for viewers who don't know Jo Koy)
+- jdoit15: Filipino kids, you know the feeling when your mom actually says YES 🥹 A $100,000 dentist quote and his mom didn't even blink. From Jo Koy's Blue in the Face, now on Netflix. #FilipinoMom #AsianParents #JoKoy #BlueInTheFace #momlove
+- jcrack15: Asian moms can give you one compliment… for about three seconds 💀 Tag someone whose mom does this. Jo Koy in Blue in the Face, streaming on Netflix. #AsianMoms #FilipinoHumor #JoKoy #BlueInTheFaceNetflix #relatable
+- jnugget15: Every mom who "talks to the manager" needs to see how this one ended 💀🍗 Jo Koy's McDonald's story from Blue in the Face on Netflix. #MomsBeLike #FirstJob #JoKoyClips #BlueInTheFace #fastfoodstories
+- jrunaway15: Rescue dog owners know this one: the shelter always has "one more thing" to tell you 🐶💀 Jo Koy in Blue in the Face, now on Netflix. #RescueDog #AdoptDontShop #DogOwners #JoKoy #BlueInTheFace
+- jblue15: Dodgers fans, this is what loyalty looks like ⚾💙 18 innings and his stepdad was NOT leaving. Jo Koy in Blue in the Face, streaming on Netflix. #Dodgers #DodgerBlue #BaseballFans #JoKoy #BlueInTheFaceNetflix

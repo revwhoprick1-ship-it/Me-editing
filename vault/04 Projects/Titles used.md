@@ -344,3 +344,8 @@
 - His other dog was NOT having it 😭 (jwinston14, batch 14)
 - He told his dog DON'T come back 😭 (jdeer14, batch 14)
 - Shelter dogs when you pick them 😭 (jshelter14, batch 14)
+- Filipino kids: when mom says YES 🥹 (jdoit15, batch 15 niche hooks)
+- Asian moms after one compliment 💀 (jcrack15)
+- Moms who 'talk to the manager' 💀 (jnugget15)
+- Rescue dog owners know this 💀 (jrunaway15)
+- Dodgers fans will feel this ⚾ (jblue15)

@@ -1,19 +1,19 @@
 {
- "jteeth14": {
+ "jdoit15": {
   "noSkull": true,
   "ask": [],
   "tints": [
    [
     [
-     "c1_3",
-     "fake."
+     "c1_2",
+     "emotional"
     ],
     "R"
    ],
    [
     [
-     "c1_4",
-     "toilet"
+     "c1_5",
+     "deserve"
     ],
     "R"
    ]
@@ -23,7 +23,7 @@
   "blackFlash": [],
   "streaks": [],
   "punch": [],
-  "top": "He answered the teeth comments \ud83d\udc80",
+  "top": "Filipino kids: when mom says YES \ud83e\udd79",
   "hl": {},
   "topPop": null,
   "topSize": 50,
@@ -33,12 +33,12 @@
   "ty": null,
   "red": [
    [
-    "c1_3",
-    "fake."
+    "c1_2",
+    "emotional"
    ],
    [
-    "c1_4",
-    "toilet"
+    "c1_5",
+    "deserve"
    ]
   ],
   "extras": [
@@ -77,6 +77,15 @@
     "file": "s_whoosh.mp3",
     "v": 0.45,
     "off": 0
+   },
+   {
+    "at": [
+     "c1_6"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
    }
   ],
   "music": [
@@ -91,7 +100,7 @@
   "cta": "",
   "track": "none",
   "calls": [],
-  "src": "g67_jteeth14.mp4",
+  "src": "g67_jdoit15.mp4",
   "intro": false,
   "hardcut": false,
   "cutSfx": "s_whoosh.mp3",
@@ -115,21 +124,21 @@
   "bf": 0,
   "fadeWhite": null
  },
- "jmahjong14": {
+ "jcrack15": {
   "noSkull": true,
   "ask": [],
   "tints": [
    [
     [
-     "c1_2",
-     "mahjong"
+     "c1",
+     "compliment"
     ],
     "R"
    ],
    [
     [
-     "c1_2",
-     "six"
+     "c1_4",
+     "crack"
     ],
     "R"
    ]
@@ -139,7 +148,7 @@
   "blackFlash": [],
   "streaks": [],
   "punch": [],
-  "top": "Where was his MOM?? \ud83d\udc80",
+  "top": "Asian moms after one compliment \ud83d\udc80",
   "hl": {},
   "topPop": null,
   "topSize": 50,
@@ -149,12 +158,12 @@
   "ty": null,
   "red": [
    [
-    "c1_2",
-    "mahjong"
+    "c1",
+    "compliment"
    ],
    [
-    "c1_2",
-    "six"
+    "c1_4",
+    "crack"
    ]
   ],
   "extras": [
@@ -175,6 +184,15 @@
     "file": "s_whoosh.mp3",
     "v": 0.45,
     "off": 0
+   },
+   {
+    "at": [
+     "c1_4"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
    }
   ],
   "music": [
@@ -189,7 +207,7 @@
   "cta": "",
   "track": "none",
   "calls": [],
-  "src": "g67_jmahjong14.mp4",
+  "src": "g67_jcrack15.mp4",
   "intro": false,
   "hardcut": false,
   "cutSfx": "s_whoosh.mp3",
@@ -213,21 +231,21 @@
   "bf": 0,
   "fadeWhite": null
  },
- "jwinston14": {
+ "jnugget15": {
   "noSkull": true,
   "ask": [],
   "tints": [
    [
     [
-     "c1_3",
-     "vicious."
+     "c1",
+     "promise"
     ],
     "R"
    ],
    [
     [
-     "c1_8",
-     "reason"
+     "c2_5",
+     "nugget"
     ],
     "R"
    ]
@@ -237,7 +255,7 @@
   "blackFlash": [],
   "streaks": [],
   "punch": [],
-  "top": "His other dog was NOT having it \ud83d\ude2d",
+  "top": "Moms who 'talk to the manager' \ud83d\udc80",
   "hl": {},
   "topPop": null,
   "topSize": 50,
@@ -247,12 +265,146 @@
   "ty": null,
   "red": [
    [
-    "c1_3",
-    "vicious."
+    "c1",
+    "promise"
    ],
    [
-    "c1_8",
-    "reason"
+    "c2_5",
+    "nugget"
+   ]
+  ],
+  "extras": [
+   {
+    "at": [
+     "c2"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2_1"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2_2"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2_3"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2_4"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2_5"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   }
+  ],
+  "music": [
+   "goodbye_n",
+   0
+  ],
+  "origAudio": true,
+  "vo": null,
+  "capCycle": true,
+  "whip": false,
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_jnugget15.mp4",
+  "intro": false,
+  "hardcut": false,
+  "cutSfx": "s_whoosh.mp3",
+  "sat": 1.0,
+  "progress": false,
+  "popMid": false,
+  "srcVol": 1,
+  "musicVol": 0.28,
+  "steady": true,
+  "noFocus": true,
+  "full": false,
+  "bg": "#EEF2F2",
+  "topColor": "#111111",
+  "topFont": "Inter",
+  "topY": null,
+  "topFade": null,
+  "capPill": false,
+  "capChunk": null,
+  "capSize": 58,
+  "capY": 1150,
+  "bf": 0,
+  "fadeWhite": null
+ },
+ "jrunaway15": {
+  "noSkull": true,
+  "ask": [],
+  "tints": [
+   [
+    [
+     "c1_2",
+     "signed"
+    ],
+    "R"
+   ],
+   [
+    [
+     "c1_4",
+     "runaway"
+    ],
+    "R"
+   ]
+  ],
+  "rizz": [],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "punch": [],
+  "top": "Rescue dog owners know this \ud83d\udc80",
+  "hl": {},
+  "topPop": null,
+  "topSize": 50,
+  "top2": null,
+  "tight": true,
+  "topStatic": true,
+  "ty": null,
+  "red": [
+   [
+    "c1_2",
+    "signed"
+   ],
+   [
+    "c1_4",
+    "runaway"
    ]
   ],
   "extras": [
@@ -318,6 +470,15 @@
     "file": "s_whoosh.mp3",
     "v": 0.45,
     "off": 0
+   },
+   {
+    "at": [
+     "c1_9"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
    }
   ],
   "music": [
@@ -332,7 +493,7 @@
   "cta": "",
   "track": "none",
   "calls": [],
-  "src": "g67_jwinston14.mp4",
+  "src": "g67_jrunaway15.mp4",
   "intro": false,
   "hardcut": false,
   "cutSfx": "s_whoosh.mp3",
@@ -356,21 +517,21 @@
   "bf": 0,
   "fadeWhite": null
  },
- "jdeer14": {
+ "jblue15": {
   "noSkull": true,
   "ask": [],
   "tints": [
    [
     [
-     "c1_2",
-     "Don't"
+     "c1_1",
+     "blue"
     ],
     "R"
    ],
    [
     [
      "c2_4",
-     "deer"
+     "sixth"
     ],
     "R"
    ]
@@ -380,7 +541,7 @@
   "blackFlash": [],
   "streaks": [],
   "punch": [],
-  "top": "He told his dog DON'T come back \ud83d\ude2d",
+  "top": "Dodgers fans will feel this \u26be",
   "hl": {},
   "topPop": null,
   "topSize": 50,
@@ -390,33 +551,15 @@
   "ty": null,
   "red": [
    [
-    "c1_2",
-    "Don't"
+    "c1_1",
+    "blue"
    ],
    [
     "c2_4",
-    "deer"
+    "sixth"
    ]
   ],
   "extras": [
-   {
-    "at": [
-     "c1_2"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   },
-   {
-    "at": [
-     "c1_3"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   },
    {
     "at": [
      "c2"
@@ -475,96 +618,7 @@
   "cta": "",
   "track": "none",
   "calls": [],
-  "src": "g67_jdeer14.mp4",
-  "intro": false,
-  "hardcut": false,
-  "cutSfx": "s_whoosh.mp3",
-  "sat": 1.0,
-  "progress": false,
-  "popMid": false,
-  "srcVol": 1,
-  "musicVol": 0.28,
-  "steady": true,
-  "noFocus": true,
-  "full": false,
-  "bg": "#EEF2F2",
-  "topColor": "#111111",
-  "topFont": "Inter",
-  "topY": null,
-  "topFade": null,
-  "capPill": false,
-  "capChunk": null,
-  "capSize": 58,
-  "capY": 1150,
-  "bf": 0,
-  "fadeWhite": null
- },
- "jshelter14": {
-  "noSkull": true,
-  "ask": [],
-  "tints": [
-   [
-    [
-     "c1_1",
-     "here."
-    ],
-    "R"
-   ],
-   [
-    [
-     "c1_2",
-     "turkey"
-    ],
-    "R"
-   ]
-  ],
-  "rizz": [],
-  "blowouts": [],
-  "blackFlash": [],
-  "streaks": [],
-  "punch": [],
-  "top": "Shelter dogs when you pick them \ud83d\ude2d",
-  "hl": {},
-  "topPop": null,
-  "topSize": 50,
-  "top2": null,
-  "tight": true,
-  "topStatic": true,
-  "ty": null,
-  "red": [
-   [
-    "c1_1",
-    "here."
-   ],
-   [
-    "c1_2",
-    "turkey"
-   ]
-  ],
-  "extras": [
-   {
-    "at": [
-     "c1_2"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   }
-  ],
-  "music": [
-   "goodbye_n",
-   0
-  ],
-  "origAudio": true,
-  "vo": null,
-  "capCycle": true,
-  "whip": false,
-  "trackData": {},
-  "cta": "",
-  "track": "none",
-  "calls": [],
-  "src": "g67_jshelter14.mp4",
+  "src": "g67_jblue15.mp4",
   "intro": false,
   "hardcut": false,
   "cutSfx": "s_whoosh.mp3",
