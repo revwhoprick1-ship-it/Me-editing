@@ -94,3 +94,10 @@ Log every posted description here so new ones never repeat (dupe-flag risk).
 - jsnow17: Why did his stepdad lie his way into Vietnam at 17? The answer involves snow and a shovel 💀 Jo Koy in Blue in the Face, now on Netflix. #VeteranStories #WestVirginia #JoKoy #BlueInTheFace #funnystories
 - jcoyote17: Twelve years of a dog who keeps escaping, and he always comes back skinny 🐶💀 Jo Koy's runaway-dog saga from Blue in the Face on Netflix. #RunawayDog #DogOwnerLife #JoKoy #BlueInTheFaceNetflix #funnydogs
 - jwalk17: Eighteenth-inning walk-off, everyone celebrating… and they forgot about Fred ⚾😭 Jo Koy in Blue in the Face, streaming on Netflix. #DodgersWin #WalkOff #JoKoy #BlueInTheFace #baseballstories
+
+## Batch 18 (2026-11-24, plain vertical: no effects, no hook)
+- jmama18: Two Purple Hearts, two Bronze Stars, and he still says the hardest thing he ever did was live with Jo Koy's mom 😭 From Blue in the Face, now on Netflix. #MilitaryDad #StepdadLove #JoKoy #BlueInTheFace #momjokes
+- jburger18: A $100K check and his plan was a Carl's Jr. burger every day for 100,000 days 🍔💀 Jo Koy in Blue in the Face, streaming on Netflix. #FirstBigCheck #RoadComic #JoKoy #BlueInTheFaceNetflix #standupclips
+- jmix18: A shelter dog with a gray goatee, a lion's mane and the body of a low rider 🐶😂 Jo Koy describing Kingston in Blue in the Face on Netflix. #ShelterDog #MixedBreed #JoKoy #BlueInTheFace #dogsofinstagram
+- jturkey18: Give a dog one turkey treat and he'll keep any secret 🐶🤫 Jo Koy on why dogs are the real ride-or-die, from Blue in the Face on Netflix. #DogLoyalty #DogTreats #JoKoy #BlueInTheFaceNetflix #dogpeople
+- jmail18: His mom made a retired Army sergeant become a mailman, and every Christmas he got his revenge 📦💀 Jo Koy in Blue in the Face, streaming on Netflix. #Mailman #ChristmasPackages #JoKoy #BlueInTheFace #stepdadstories

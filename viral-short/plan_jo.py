@@ -70,14 +70,14 @@ _CL_B13 = None  # batch 13 (jvorigin jvmom jvteal jkage13 jstadium13) is in git 
 _CL_B14 = None  # batch 14 (jteeth14 jmahjong14 jwinston14 jdeer14 jshelter14) is in git history
 _CL_B15 = None  # batch 15 (jdoit15 jcrack15 jnugget15 jrunaway15 jblue15) is in git history
 _CL_B16 = None  # batch 16 (jdogtrust16 jcpap16 jfree16 jact16 jtitle16 jspecial16 jlie16 jcamo16 jrodeo16 jpay16) is in git history
-# batch 17 (user 2026-11-24): "no effects, no text hook, vertical" -> run with --full --plain: full 9:16 head-tracked frame, NO grade/lift,
-# no hook text, no red flashes, no flash cuts / whip / pops / SFX, plain captions only. 5 best proven jokes not used in batches 15-16.
+_CL_B17 = None  # batch 17 (jnug17 jden17 jsnow17 jcoyote17 jwalk17) is in git history
+# batch 18 (user 2026-11-24, "5 more any"): same --full --plain look as batch 17. Proven jokes not used in batches 15-17.
 CL = {
- 'jnug17': dict(src='p05', tight=True, body=[('c1', 0.70, 34.00, 960), ('c2', 43.60, 69.80, 960)], A='', hl={}, red=[], pops=[]),
- 'jden17': dict(src='p12', tight=True, body=[('c1', 49.00, 58.30, 960), ('c2', 82.70, 119.00, 960)], A='', hl={}, red=[], pops=[]),
- 'jsnow17': dict(src='p09', tight=True, body=[('c1', 69.80, 130.30, 960)], A='', hl={}, red=[], pops=[]),
- 'jcoyote17': dict(src='p07', tight=True, body=[('c1', 218.55, 228.40, 960), ('c2', 245.30, 267.50, 960), ('c3', 298.90, 325.00, 960)], A='', hl={}, red=[], pops=[]),
- 'jwalk17': dict(src='p12', tight=True, body=[('c1', 129.30, 181.00, 960)], A='', hl={}, red=[], pops=[]),
+ 'jmama18': dict(src='p10', tight=True, body=[('c1', 131.62, 162.80, 960), ('c2', 166.40, 203.50, 960)], A='', hl={}, red=[], pops=[]),
+ 'jburger18': dict(src='p03', tight=True, body=[('c1', 88.15, 137.60, 960)], A='', hl={}, red=[], pops=[]),
+ 'jmix18': dict(src='p07', tight=True, body=[('c1', 59.45, 119.60, 960)], A='', hl={}, red=[], pops=[]),
+ 'jturkey18': dict(src='p06', tight=True, body=[('c1', 114.62, 146.90, 960)], A='', hl={}, red=[], pops=[]),
+ 'jmail18': dict(src='p11', tight=True, body=[('c1', 9.30, 47.50, 960)], A='', hl={}, red=[], pops=[]),
 }
 E = {}
 for k, d in CL.items():
@@ -98,9 +98,9 @@ YLS = '--ylstyle' in sys.argv   # batch 13 (user 2026-11-24): Jo clips in the Yo
 G_LITE = ("split[ga][gb];[gb]gblur=sigma=14[gg];[ga][gg]blend=all_mode=softlight:all_opacity=0.12,unsharp=5:5:0.9:5:5:0,"
           "eq=contrast=1.05:saturation=1.1:gamma=0.99,curves=all='0/0 0.25/0.23 0.75/0.78 1/1',colortemperature=temperature=7200,format=yuv420p")
 
-W = {v: [w for s in json.load(open(f'{TX}/{v}.json')) for w in s['w']] for v in ('p05', 'p07', 'p09', 'p12')}
+W = {v: [w for s in json.load(open(f'{TX}/{v}.json')) for w in s['w']] for v in ('p03', 'p06', 'p07', 'p10', 'p11')}
 FIXED = []
-CUTS = {v: [float(x) for x in open(os.path.join(os.path.dirname(DL.rstrip('/')), f'cuts_{v}.txt'))] for v in ('p05', 'p07', 'p09', 'p12')}
+CUTS = {v: [float(x) for x in open(os.path.join(os.path.dirname(DL.rstrip('/')), f'cuts_{v}.txt'))] for v in ('p03', 'p06', 'p07', 'p10', 'p11')}
 def snap(sid, v, a, b):
     """user rules: never cut a line mid-sentence (start before the first word, run until the speaker pauses),
     and no sub-0.5 s slivers of another camera angle at either end (snap onto the show's own cut)."""

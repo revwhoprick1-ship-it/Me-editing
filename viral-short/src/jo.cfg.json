@@ -1,5 +1,5 @@
 {
- "jnug17": {
+ "jmama18": {
   "noSkull": true,
   "ask": [],
   "tints": [],
@@ -30,7 +30,7 @@
   "cta": "",
   "track": "none",
   "calls": [],
-  "src": "g67_jnug17.mp4",
+  "src": "g67_jmama18.mp4",
   "intro": false,
   "hardcut": false,
   "cutSfx": "s_whoosh.mp3",
@@ -50,7 +50,7 @@
   "topFade": null,
   "fadeWhite": null
  },
- "jden17": {
+ "jburger18": {
   "noSkull": true,
   "ask": [],
   "tints": [],
@@ -81,7 +81,7 @@
   "cta": "",
   "track": "none",
   "calls": [],
-  "src": "g67_jden17.mp4",
+  "src": "g67_jburger18.mp4",
   "intro": false,
   "hardcut": false,
   "cutSfx": "s_whoosh.mp3",
@@ -101,7 +101,7 @@
   "topFade": null,
   "fadeWhite": null
  },
- "jsnow17": {
+ "jmix18": {
   "noSkull": true,
   "ask": [],
   "tints": [],
@@ -132,7 +132,7 @@
   "cta": "",
   "track": "none",
   "calls": [],
-  "src": "g67_jsnow17.mp4",
+  "src": "g67_jmix18.mp4",
   "intro": false,
   "hardcut": false,
   "cutSfx": "s_whoosh.mp3",
@@ -152,7 +152,7 @@
   "topFade": null,
   "fadeWhite": null
  },
- "jcoyote17": {
+ "jturkey18": {
   "noSkull": true,
   "ask": [],
   "tints": [],
@@ -183,7 +183,7 @@
   "cta": "",
   "track": "none",
   "calls": [],
-  "src": "g67_jcoyote17.mp4",
+  "src": "g67_jturkey18.mp4",
   "intro": false,
   "hardcut": false,
   "cutSfx": "s_whoosh.mp3",
@@ -203,7 +203,7 @@
   "topFade": null,
   "fadeWhite": null
  },
- "jwalk17": {
+ "jmail18": {
   "noSkull": true,
   "ask": [],
   "tints": [],
@@ -234,7 +234,7 @@
   "cta": "",
   "track": "none",
   "calls": [],
-  "src": "g67_jwalk17.mp4",
+  "src": "g67_jmail18.mp4",
   "intro": false,
   "hardcut": false,
   "cutSfx": "s_whoosh.mp3",
