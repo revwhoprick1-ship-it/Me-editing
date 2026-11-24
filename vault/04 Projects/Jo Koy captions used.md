@@ -61,3 +61,10 @@ Log every posted description here so new ones never repeat (dupe-flag risk).
 - jvteal: Jo Koy almost said no to that bright blue set 😭💙 Teal and turquoise were "not on his pie chart" until his director showed it on camera. See how it turned out in Blue in the Face on Netflix. #JoKoyNetflix #BlueInTheFace #behindthescenes #comedyspecial #standupset
 - jkage13: How old is the shelter dog? Jo Koy just wanted to know before his son got attached 🐶💀 The answer he got was something else. Blue in the Face, streaming on Netflix. #JoKoyFunny #BlueInTheFace #adoptdontshop #seniordog #dogdadlife
 - jstadium13: His stepdad's first Dodgers game ever, and it turned into an 18-inning NLCS ⚾😭 Jo Koy's story about Fred from Blue in the Face on Netflix. Tag a baseball dad. #JoKoyStandUp #BlueInTheFaceNetflix #NLCS #stepdadstory #baseballfamily
+
+## Batch 14 (2026-11-24, YoungLA-style creative hooks, never-clipped bits)
+- jteeth14: He answered the teeth comments once and for all 😭 "Porcelain. Every single one." Do your research before you comment, people. Jo Koy in Blue in the Face, now on Netflix. #JoKoy #BlueInTheFace #veneers #smilemakeover #standupcomedy
+- jmahjong14: Where was his mom while the kids ran wild in the woods? In the garage, six hours of mahjong 🀄😂 Every Filipino kid knows. Jo Koy's Blue in the Face, streaming on Netflix. #JoKoyComedy #BlueInTheFaceNetflix #mahjong #filipinokids #90skids
+- jwinston14: His other dog was NOT having it when Kingston came home after three days 🐶😭 "Where have you been?!" Jo Koy acting out his dogs in Blue in the Face on Netflix. #JoKoyFunny #BlueInTheFace #dogsiblings #dogsoftiktok #runawaydog
+- jdeer14: He told his dog "don't come back," and three days later Kingston returned with a wild story 🦌💀 Jo Koy in Blue in the Face, now on Netflix. Tag the dog owner who needs this. #JoKoyClips #BlueInTheFaceNetflix #dogdad #escapeartist #funnydogs
+- jshelter14: Shelter dogs when you pick them be like "let's GO" 🐶🏃 300 dogs are waiting, so go to the shelter tonight. Jo Koy says it best in Blue in the Face on Netflix. #JoKoyNetflix #BlueInTheFace #adoptdontshop #shelterdog #rescuedog

@@ -1,12 +1,19 @@
 {
- "jvorigin": {
+ "jteeth14": {
   "noSkull": true,
   "ask": [],
   "tints": [
    [
     [
-     "c1_2",
-     "bombed"
+     "c1_3",
+     "fake."
+    ],
+    "R"
+   ],
+   [
+    [
+     "c1_4",
+     "toilet"
     ],
     "R"
    ]
@@ -16,7 +23,123 @@
   "blackFlash": [],
   "streaks": [],
   "punch": [],
-  "top": "Jo Koy's first time on stage went\u2026 \ud83d\udc80",
+  "top": "He answered the teeth comments \ud83d\udc80",
+  "hl": {},
+  "topPop": null,
+  "topSize": 50,
+  "top2": null,
+  "tight": true,
+  "topStatic": true,
+  "ty": null,
+  "red": [
+   [
+    "c1_3",
+    "fake."
+   ],
+   [
+    "c1_4",
+    "toilet"
+   ]
+  ],
+  "extras": [
+   {
+    "at": [
+     "c1_2"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c1_3"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c1_4"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c1_5"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   }
+  ],
+  "music": [
+   "goodbye_n",
+   0
+  ],
+  "origAudio": true,
+  "vo": null,
+  "capCycle": true,
+  "whip": false,
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_jteeth14.mp4",
+  "intro": false,
+  "hardcut": false,
+  "cutSfx": "s_whoosh.mp3",
+  "sat": 1.0,
+  "progress": false,
+  "popMid": false,
+  "srcVol": 1,
+  "musicVol": 0.28,
+  "steady": true,
+  "noFocus": true,
+  "full": false,
+  "bg": "#EEF2F2",
+  "topColor": "#111111",
+  "topFont": "Inter",
+  "topY": null,
+  "topFade": null,
+  "capPill": false,
+  "capChunk": null,
+  "capSize": 58,
+  "capY": 1150,
+  "bf": 0,
+  "fadeWhite": null
+ },
+ "jmahjong14": {
+  "noSkull": true,
+  "ask": [],
+  "tints": [
+   [
+    [
+     "c1_2",
+     "mahjong"
+    ],
+    "R"
+   ],
+   [
+    [
+     "c1_2",
+     "six"
+    ],
+    "R"
+   ]
+  ],
+  "rizz": [],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "punch": [],
+  "top": "Where was his MOM?? \ud83d\udc80",
   "hl": {},
   "topPop": null,
   "topSize": 50,
@@ -27,153 +150,11 @@
   "red": [
    [
     "c1_2",
-    "bombed"
-   ]
-  ],
-  "extras": [
-   {
-    "at": [
-     "c1_2"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
-   }
-  ],
-  "music": [
-   "goodbye_n",
-   0
-  ],
-  "origAudio": true,
-  "vo": null,
-  "capCycle": true,
-  "whip": false,
-  "trackData": {},
-  "cta": "",
-  "track": "none",
-  "calls": [],
-  "src": "g67_jvorigin.mp4",
-  "intro": false,
-  "hardcut": false,
-  "cutSfx": "s_whoosh.mp3",
-  "sat": 1.0,
-  "progress": false,
-  "popMid": false,
-  "srcVol": 1,
-  "musicVol": 0.28,
-  "steady": true,
-  "noFocus": true,
-  "full": false,
-  "bg": "#EEF2F2",
-  "topColor": "#111111",
-  "topFont": "Inter",
-  "topY": null,
-  "topFade": null,
-  "capPill": false,
-  "capChunk": null,
-  "capSize": 58,
-  "capY": 1150,
-  "bf": 0,
-  "fadeWhite": null
- },
- "jvmom": {
-  "noSkull": true,
-  "ask": [],
-  "tints": [
+    "mahjong"
+   ],
    [
-    [
-     "c1_1",
-     "dying."
-    ],
-    "R"
-   ]
-  ],
-  "rizz": [],
-  "blowouts": [],
-  "blackFlash": [],
-  "streaks": [],
-  "punch": [],
-  "top": "The Dodgers joke really happened \u26be",
-  "hl": {},
-  "topPop": null,
-  "topSize": 50,
-  "top2": null,
-  "tight": true,
-  "topStatic": true,
-  "ty": null,
-  "red": [
-   [
-    "c1_1",
-    "dying."
-   ]
-  ],
-  "extras": [],
-  "music": [
-   "goodbye_n",
-   0
-  ],
-  "origAudio": true,
-  "vo": null,
-  "capCycle": true,
-  "whip": false,
-  "trackData": {},
-  "cta": "",
-  "track": "none",
-  "calls": [],
-  "src": "g67_jvmom.mp4",
-  "intro": false,
-  "hardcut": false,
-  "cutSfx": "s_whoosh.mp3",
-  "sat": 1.0,
-  "progress": false,
-  "popMid": false,
-  "srcVol": 1,
-  "musicVol": 0.28,
-  "steady": true,
-  "noFocus": true,
-  "full": false,
-  "bg": "#EEF2F2",
-  "topColor": "#111111",
-  "topFont": "Inter",
-  "topY": null,
-  "topFade": null,
-  "capPill": false,
-  "capChunk": null,
-  "capSize": 58,
-  "capY": 1150,
-  "bf": 0,
-  "fadeWhite": null
- },
- "jvteal": {
-  "noSkull": true,
-  "ask": [],
-  "tints": [
-   [
-    [
-     "c1",
-     "pie"
-    ],
-    "R"
-   ]
-  ],
-  "rizz": [],
-  "blowouts": [],
-  "blackFlash": [],
-  "streaks": [],
-  "punch": [],
-  "top": "Jo Koy almost said NO to the blue \ud83d\ude2d",
-  "hl": {},
-  "topPop": null,
-  "topSize": 50,
-  "top2": null,
-  "tight": true,
-  "topStatic": true,
-  "ty": null,
-  "red": [
-   [
-    "c1",
-    "pie"
+    "c1_2",
+    "six"
    ]
   ],
   "extras": [
@@ -194,15 +175,6 @@
     "file": "s_whoosh.mp3",
     "v": 0.45,
     "off": 0
-   },
-   {
-    "at": [
-     "c1_4"
-    ],
-    "kind": "sfx",
-    "file": "s_whoosh.mp3",
-    "v": 0.45,
-    "off": 0
    }
   ],
   "music": [
@@ -217,7 +189,7 @@
   "cta": "",
   "track": "none",
   "calls": [],
-  "src": "g67_jvteal.mp4",
+  "src": "g67_jmahjong14.mp4",
   "intro": false,
   "hardcut": false,
   "cutSfx": "s_whoosh.mp3",
@@ -241,14 +213,21 @@
   "bf": 0,
   "fadeWhite": null
  },
- "jkage13": {
+ "jwinston14": {
   "noSkull": true,
   "ask": [],
   "tints": [
    [
     [
-     "c1_1",
-     "dead."
+     "c1_3",
+     "vicious."
+    ],
+    "R"
+   ],
+   [
+    [
+     "c1_8",
+     "reason"
     ],
     "R"
    ]
@@ -258,7 +237,7 @@
   "blackFlash": [],
   "streaks": [],
   "punch": [],
-  "top": "How old is the shelter dog?\u2026 \ud83d\udc80",
+  "top": "His other dog was NOT having it \ud83d\ude2d",
   "hl": {},
   "topPop": null,
   "topSize": 50,
@@ -268,8 +247,12 @@
   "ty": null,
   "red": [
    [
-    "c1_1",
-    "dead."
+    "c1_3",
+    "vicious."
+   ],
+   [
+    "c1_8",
+    "reason"
    ]
   ],
   "extras": [
@@ -326,6 +309,15 @@
     "file": "s_whoosh.mp3",
     "v": 0.45,
     "off": 0
+   },
+   {
+    "at": [
+     "c1_8"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
    }
   ],
   "music": [
@@ -340,7 +332,7 @@
   "cta": "",
   "track": "none",
   "calls": [],
-  "src": "g67_jkage13.mp4",
+  "src": "g67_jwinston14.mp4",
   "intro": false,
   "hardcut": false,
   "cutSfx": "s_whoosh.mp3",
@@ -364,14 +356,21 @@
   "bf": 0,
   "fadeWhite": null
  },
- "jstadium13": {
+ "jdeer14": {
   "noSkull": true,
   "ask": [],
   "tints": [
    [
     [
-     "c1_4",
-     "beautiful"
+     "c1_2",
+     "Don't"
+    ],
+    "R"
+   ],
+   [
+    [
+     "c2_4",
+     "deer"
     ],
     "R"
    ]
@@ -381,7 +380,7 @@
   "blackFlash": [],
   "streaks": [],
   "punch": [],
-  "top": "His stepdad's first Dodgers game \u26be",
+  "top": "He told his dog DON'T come back \ud83d\ude2d",
   "hl": {},
   "topPop": null,
   "topSize": 50,
@@ -391,8 +390,12 @@
   "ty": null,
   "red": [
    [
-    "c1_4",
-    "beautiful"
+    "c1_2",
+    "Don't"
+   ],
+   [
+    "c2_4",
+    "deer"
    ]
   ],
   "extras": [
@@ -416,7 +419,7 @@
    },
    {
     "at": [
-     "c1_4"
+     "c2"
     ],
     "kind": "sfx",
     "file": "s_whoosh.mp3",
@@ -425,7 +428,7 @@
    },
    {
     "at": [
-     "c1_5"
+     "c2_1"
     ],
     "kind": "sfx",
     "file": "s_whoosh.mp3",
@@ -434,7 +437,7 @@
    },
    {
     "at": [
-     "c1_6"
+     "c2_2"
     ],
     "kind": "sfx",
     "file": "s_whoosh.mp3",
@@ -443,7 +446,16 @@
    },
    {
     "at": [
-     "c1_7"
+     "c2_3"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "c2_4"
     ],
     "kind": "sfx",
     "file": "s_whoosh.mp3",
@@ -463,7 +475,96 @@
   "cta": "",
   "track": "none",
   "calls": [],
-  "src": "g67_jstadium13.mp4",
+  "src": "g67_jdeer14.mp4",
+  "intro": false,
+  "hardcut": false,
+  "cutSfx": "s_whoosh.mp3",
+  "sat": 1.0,
+  "progress": false,
+  "popMid": false,
+  "srcVol": 1,
+  "musicVol": 0.28,
+  "steady": true,
+  "noFocus": true,
+  "full": false,
+  "bg": "#EEF2F2",
+  "topColor": "#111111",
+  "topFont": "Inter",
+  "topY": null,
+  "topFade": null,
+  "capPill": false,
+  "capChunk": null,
+  "capSize": 58,
+  "capY": 1150,
+  "bf": 0,
+  "fadeWhite": null
+ },
+ "jshelter14": {
+  "noSkull": true,
+  "ask": [],
+  "tints": [
+   [
+    [
+     "c1_1",
+     "here."
+    ],
+    "R"
+   ],
+   [
+    [
+     "c1_2",
+     "turkey"
+    ],
+    "R"
+   ]
+  ],
+  "rizz": [],
+  "blowouts": [],
+  "blackFlash": [],
+  "streaks": [],
+  "punch": [],
+  "top": "Shelter dogs when you pick them \ud83d\ude2d",
+  "hl": {},
+  "topPop": null,
+  "topSize": 50,
+  "top2": null,
+  "tight": true,
+  "topStatic": true,
+  "ty": null,
+  "red": [
+   [
+    "c1_1",
+    "here."
+   ],
+   [
+    "c1_2",
+    "turkey"
+   ]
+  ],
+  "extras": [
+   {
+    "at": [
+     "c1_2"
+    ],
+    "kind": "sfx",
+    "file": "s_whoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   }
+  ],
+  "music": [
+   "goodbye_n",
+   0
+  ],
+  "origAudio": true,
+  "vo": null,
+  "capCycle": true,
+  "whip": false,
+  "trackData": {},
+  "cta": "",
+  "track": "none",
+  "calls": [],
+  "src": "g67_jshelter14.mp4",
   "intro": false,
   "hardcut": false,
   "cutSfx": "s_whoosh.mp3",

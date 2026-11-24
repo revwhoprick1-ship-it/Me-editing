@@ -339,3 +339,8 @@
 - Jo Koy almost said NO to the blue 😭 (jvteal, batch 13)
 - How old is the shelter dog?… 💀 (jkage13, batch 13)
 - His stepdad's first Dodgers game ⚾ (jstadium13, batch 13)
+- He answered the teeth comments 💀 (jteeth14, batch 14)
+- Where was his MOM?? 💀 (jmahjong14, batch 14)
+- His other dog was NOT having it 😭 (jwinston14, batch 14)
+- He told his dog DON'T come back 😭 (jdeer14, batch 14)
+- Shelter dogs when you pick them 😭 (jshelter14, batch 14)

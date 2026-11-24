@@ -66,14 +66,15 @@ _CL_B11 = None  # batch 11 (jdogs11 jnug11 jden11 jcamo11 jsniff11) is in git hi
 # text hook (static from frame 1, no animation / intro flash), spoken hook (clip opens on the clearest premise line, no silent face open),
 # visual (Jo talking), first 6 words of the description; instant clarity (who/what) + one open question by 2-3 s.
 _CL_B12 = None  # batch 12 (jyo12 jbatt12 jtiktok12 jpump12 jjockey12 jmanila12) is in git history
-# batch 13 (user 2026-11-24, Reddit 0-view fixes): FRESH audio only (Variety interview p13 + never-clipped special bits), --ylstyle look,
-# speech from frame 1, no fade/pop-ups, plain coloured captions, red flash on one key word, Variety logo kept out of the square box (cx <= 1000).
+_CL_B13 = None  # batch 13 (jvorigin jvmom jvteal jkage13 jstadium13) is in git history
+# batch 14 (user 2026-11-24): "YoungLA-style creative hooks" on the 5 funniest never-clipped bits (--ylstyle). Short punchy hook,
+# one CAPS word, curiosity not spoiler; 2 red flash words; fresh audio (jshelter14 overlaps jgucci (batch 3) by 11 s, nothing else reused).
 CL = {
- 'jvorigin': dict(src='p13', tight=True, body=[('c1', 37.15, 65.50, 880)], A="Jo Koy's first time on stage went… 💀", hl={}, red=[('c1', 'bombed')], pops=[]),
- 'jvmom': dict(src='p13', tight=True, body=[('c1', 336.00, 379.00, 880)], A='The Dodgers joke really happened ⚾', hl={}, red=[('c1', 'dying.')], pops=[]),
- 'jvteal': dict(src='p13', tight=True, body=[('c1', 532.70, 561.45, 880)], A='Jo Koy almost said NO to the blue 😭', hl={}, red=[('c1', 'pie')], pops=[]),
- 'jkage13': dict(src='p07', tight=True, body=[('c1', 130.90, 164.30, 960)], A='How old is the shelter dog?… 💀', hl={}, red=[('c1', 'dead.')], pops=[]),
- 'jstadium13': dict(src='p12', tight=True, body=[('c1', 0.60, 40.60, 960)], A="His stepdad's first Dodgers game ⚾", hl={}, red=[('c1', 'beautiful')], pops=[]),
+ 'jteeth14': dict(src='p02', tight=True, body=[('c1', 41.05, 76.90, 960)], A='He answered the teeth comments 💀', hl={}, red=[('c1', 'fake.'), ('c1', 'toilet')], pops=[]),
+ 'jmahjong14': dict(src='p02', tight=True, body=[('c1', 89.72, 116.90, 960)], A='Where was his MOM?? 💀', hl={}, red=[('c1', 'mahjong'), ('c1', 'six')], pops=[]),
+ 'jwinston14': dict(src='p08', tight=True, body=[('c1', 4.90, 62.00, 960)], A='His other dog was NOT having it 😭', hl={}, red=[('c1', 'vicious.'), ('c1', 'reason')], pops=[]),
+ 'jdeer14': dict(src='p07', tight=True, body=[('c1', 271.55, 298.00, 960), ('c2', 326.36, 352.90, 960)], A="He told his dog DON'T come back 😭", hl={}, red=[('c1', 'Don\'t'), ('c2', 'deer')], pops=[]),
+ 'jshelter14': dict(src='p07', tight=True, body=[('c1', 32.15, 54.10, 960)], A='Shelter dogs when you pick them 😭', hl={}, red=[('c1', 'here.'), ('c1', 'turkey')], pops=[]),
 }
 E = {}
 for k, d in CL.items():
@@ -93,9 +94,9 @@ YLS = '--ylstyle' in sys.argv   # batch 13 (user 2026-11-24): Jo clips in the Yo
 G_LITE = ("split[ga][gb];[gb]gblur=sigma=14[gg];[ga][gg]blend=all_mode=softlight:all_opacity=0.12,unsharp=5:5:0.9:5:5:0,"
           "eq=contrast=1.05:saturation=1.1:gamma=0.99,curves=all='0/0 0.25/0.23 0.75/0.78 1/1',colortemperature=temperature=7200,format=yuv420p")
 
-W = {v: [w for s in json.load(open(f'{TX}/{v}.json')) for w in s['w']] for v in ('p07', 'p12', 'p13')}
+W = {v: [w for s in json.load(open(f'{TX}/{v}.json')) for w in s['w']] for v in ('p02', 'p07', 'p08')}
 FIXED = []
-CUTS = {v: [float(x) for x in open(os.path.join(os.path.dirname(DL.rstrip('/')), f'cuts_{v}.txt'))] for v in ('p07', 'p12', 'p13')}
+CUTS = {v: [float(x) for x in open(os.path.join(os.path.dirname(DL.rstrip('/')), f'cuts_{v}.txt'))] for v in ('p02', 'p07', 'p08')}
 def snap(sid, v, a, b):
     """user rules: never cut a line mid-sentence (start before the first word, run until the speaker pauses),
     and no sub-0.5 s slivers of another camera angle at either end (snap onto the show's own cut)."""
