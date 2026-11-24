@@ -87,3 +87,10 @@ Log every posted description here so new ones never repeat (dupe-flag risk).
 - jcamo16: Military kids, you remember the base dentist 💀🦷 Five teeth knocked out, no insurance, and one soldier with a wire. Jo Koy in Blue in the Face, now on Netflix. #MilitaryKids #ArmyBrat #DentistStories #JoKoy #BlueInTheFaceNetflix
 - jrodeo16: That face your dentist makes when you finally open your mouth 💀 Jo Koy's trip to a Rodeo Drive dentist, from Blue in the Face on Netflix. #DentistVisit #BadTeeth #SmileMakeover #JoKoy #BlueInTheFace
 - jpay16: Your first paycheck be like: $3.85 an hour, 4 hours a day, and you still had to pay for your food 💀 Jo Koy does the math in Blue in the Face on Netflix. #FirstJob #FirstPaycheck #McDonalds #JoKoy #BlueInTheFaceNetflix
+
+## Batch 17 (2026-11-24, plain vertical: no effects, no hook)
+- jnug17: Stealing two nuggets from every basket and a Louisiana-shaped stain on his khakis 🍗😭 Jo Koy's first-job confession from Blue in the Face, now on Netflix. #FirstJob #McDonaldsStories #JoKoy #BlueInTheFace #standupcomedy
+- jden17: Batteries blinking at inning 10 and his stepdad still refused to leave the Dodgers game ⚾😭 Jo Koy in Blue in the Face, streaming on Netflix. #Dodgers #BaseballDad #JoKoy #BlueInTheFaceNetflix #comedyclips
+- jsnow17: Why did his stepdad lie his way into Vietnam at 17? The answer involves snow and a shovel 💀 Jo Koy in Blue in the Face, now on Netflix. #VeteranStories #WestVirginia #JoKoy #BlueInTheFace #funnystories
+- jcoyote17: Twelve years of a dog who keeps escaping, and he always comes back skinny 🐶💀 Jo Koy's runaway-dog saga from Blue in the Face on Netflix. #RunawayDog #DogOwnerLife #JoKoy #BlueInTheFaceNetflix #funnydogs
+- jwalk17: Eighteenth-inning walk-off, everyone celebrating… and they forgot about Fred ⚾😭 Jo Koy in Blue in the Face, streaming on Netflix. #DodgersWin #WalkOff #JoKoy #BlueInTheFace #baseballstories
