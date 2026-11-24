@@ -334,3 +334,8 @@
 - Bro could NOT open the drink 💀 (YoungLA ylbuzz)
 - The worst first-date workout ever 😭 (YoungLA ylthanks)
 - She begged him to pick her… 💀 (YoungLA ylpick)
+- Jo Koy's first time on stage went… 💀 (jvorigin, batch 13)
+- The Dodgers joke really happened ⚾ (jvmom, batch 13)
+- Jo Koy almost said NO to the blue 😭 (jvteal, batch 13)
+- How old is the shelter dog?… 💀 (jkage13, batch 13)
+- His stepdad's first Dodgers game ⚾ (jstadium13, batch 13)

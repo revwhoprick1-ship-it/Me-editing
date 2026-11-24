@@ -13,13 +13,14 @@ G67 = ("split[ga][gb];[gb]gblur=sigma=14[gg];[ga][gg]blend=all_mode=softlight:al
        "colortemperature=temperature=8000,eq=saturation=0.96,format=yuv420p")
 FIX = {('p06', 82.43): 'snitch', ('p06', 140.48): 'turkey', ('p06', 140.72): 'treats,', ('p06', 141.6): 'turkey', ('p06', 141.9): 'treats?', ('p10', 173.2): 'CIB', ('p10', 10.33): 'CIB', ('p10', 106.31): 'fought', ('p10', 106.65): 'war.', ('p10', 117.01): '',
        ('p07', 12.4): 'labra-', ('p07', 12.6): '', ('p07', 12.8): 'toodle-', ('p07', 13.22): '', ('p07', 13.58): '', ('p07', 15.82): 'labra-', ('p07', 16.06): '', ('p07', 16.2): 'boodle', ('p07', 19.64): 'hypoallergenic', ('p07', 20.12): '', ('p07', 3.94): 'Jo.', ('p07', 9.08): 'name-brand', ('p07', 9.4): '', ('p07', 22.6): '$4,000', ('p07', 22.88): '', ('p03', 185.3): "Madahi's",
-       ('p12', 110.8): "Dodgers'", ('p12', 111.42): 'den!', ('p03', 87.28): '', ('p03', 87.5): '', ('p07', 303.29): 'food', ('p07', 308.02): 'deer', ('p07', 309.16): 'deer', ('p09', 37.63): 'CIB', ('p09', 37.77): '', ('p09', 37.87): '', ('p05', 210.95): 'Put', ('p03', 107.44): '', ('p03', 107.56): '', ('p11', 39.88): 'broke', ('p09', 174.36): 'Have', ('p09', 174.52): 'you', ('p09', 174.6): 'ever', ('p09', 175.02): 'snow?', ('p09', 175.28): '', ('p09', 175.36): '', ('p12', 129.4): 'Eighteenth', ('p12', 129.96): '', ('p03', 246.85): '', ('p03', 247.17): '', ('p03', 247.25): '', ('p03', 247.39): '', ('p03', 247.55): '', ('p03', 247.77): '', ('p03', 248.07): '', ('p08', 149.0): '', ('p08', 149.5): ''}
+       ('p12', 110.8): "Dodgers'", ('p12', 111.42): 'den!', ('p03', 87.28): '', ('p03', 87.5): '', ('p07', 303.29): 'food', ('p07', 308.02): 'deer', ('p07', 309.16): 'deer', ('p09', 37.63): 'CIB', ('p09', 37.77): '', ('p09', 37.87): '', ('p05', 210.95): 'Put', ('p03', 107.44): '', ('p03', 107.56): '', ('p11', 39.88): 'broke', ('p09', 174.36): 'Have', ('p09', 174.52): 'you', ('p09', 174.6): 'ever', ('p09', 175.02): 'snow?', ('p09', 175.28): '', ('p09', 175.36): '', ('p12', 129.4): 'Eighteenth', ('p12', 129.96): '', ('p03', 246.85): '', ('p03', 247.17): '', ('p03', 247.25): '', ('p03', 247.39): '', ('p03', 247.55): '', ('p03', 247.77): '', ('p03', 248.07): '', ('p08', 149.0): '', ('p08', 149.5): '', ('p12', 21.3): 'brother.', ('p12', 31.32): 'Fred', ('p13', 40.67): 'Pryor', ('p13', 345.6): 'Fred'}
 LIFT = ',eq=gamma=1.4:brightness=0.02:saturation=1.08'
 def src(v): return glob.glob(f'{DL}/{v}.*')[0]
 def probe(v): return json.loads(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'stream=index,codec_type,codec_name,width,height:stream_side_data=rotation', '-of', 'json', src(v)], capture_output=True, text=True).stdout)['streams']
 def vert(v):
     s = [x for x in probe(v) if x['codec_type'] == 'video'][0]; rot = abs(int(next((d.get('rotation', 0) for d in s.get('side_data_list', [])), 0)))
-    return (s['width'] if rot == 90 else s['height']) > 1200
+    w, h = (s['height'], s['width']) if rot == 90 else (s['width'], s['height'])
+    return h > w   # portrait only (a 2560x1440 interview is still landscape)
 def aidx(v): return ([i for i, x in enumerate(x for x in probe(v) if x['codec_type'] == 'audio') if x.get('codec_name') not in (None, 'unknown', 'none')] or [None])[0]
 G, R = 'G', 'R'; Y = '#FFE14A'; W_ = '#FFFFFF'; RD = '#FF2A2A'; GR = '#58EE28'
 def txt(at, text, color=Y, size=100, off=0, y=560, dur=30): return dict(at=at, kind='txt', file=text, color=color, size=size, off=off, dur=dur, y=y)
@@ -64,19 +65,15 @@ _CL_B11 = None  # batch 11 (jdogs11 jnug11 jden11 jcamo11 jsniff11) is in git hi
 # batch 12 v2 (user 2026-11-23, heyDominik "hooks 89% better" applied): the 4 hook elements aligned to ONE viewer -
 # text hook (static from frame 1, no animation / intro flash), spoken hook (clip opens on the clearest premise line, no silent face open),
 # visual (Jo talking), first 6 words of the description; instant clarity (who/what) + one open question by 2-3 s.
+_CL_B12 = None  # batch 12 (jyo12 jbatt12 jtiktok12 jpump12 jjockey12 jmanila12) is in git history
+# batch 13 (user 2026-11-24, Reddit 0-view fixes): FRESH audio only (Variety interview p13 + never-clipped special bits), --ylstyle look,
+# speech from frame 1, no fade/pop-ups, plain coloured captions, red flash on one key word, Variety logo kept out of the square box (cx <= 1000).
 CL = {
- 'jyo12': dict(src='p11', tight=True, static=True, ty=1400, body=[('c1', 89.50, 97.50, 960), ('c2', 101.70, 134.30, 960)],
-   A="The saddest 'no' to free Dodgers tickets 😭", hl=['Dodgers'], pops=[]),
- 'jbatt12': dict(src='p11', tight=True, static=True, ty=1400, body=[('c0', 159.50, 171.00, 960), ('c1', 184.24, 202.95, 960), ('c3', 266.30, 281.70, 960)],
-   A='His oxygen lasts 90 min. The game lasts 3 hours 💀', hl=['90', '3'], pops=[]),
- 'jtiktok12': dict(src='p04', tight=True, static=True, body=[('c1', 166.60, 201.60, 960)],
-   A='Is starting a TikTok channel a real job? 🤔', hl=['TikTok'], pops=[]),
- 'jpump12': dict(src='p04', tight=True, static=True, ty=1400, body=[('c1', 109.70, 114.60, 960), ('c2', 115.65, 149.60, 960)],
-   A='His mom thought he was on crack because of ONE thing 😭', hl=['ONE'], pops=[]),
- 'jjockey12': dict(src='p08', tight=True, static=True, body=[('c1', 109.55, 134.00, 960), ('c2', 134.85, 150.30, 960), ('c3', 150.35, 167.00, 960), ('c4', 188.65, 198.50, 960)],
-   A='Why our dog vanished for 3 days after Halloween 🐶', hl=['3'], pops=[]),
- 'jmanila12': dict(src='p01', tight=True, static=True, ty=1400, body=[('c1', 84.15, 108.40, 960), ('c2', 109.90, 114.30, 960)],
-   A="Why Filipinos built 'Little Manila' in Stockton 🇵🇭", hl=['Stockton'], pops=[]),
+ 'jvorigin': dict(src='p13', tight=True, body=[('c1', 37.15, 65.50, 880)], A="Jo Koy's first time on stage went… 💀", hl={}, red=[('c1', 'bombed')], pops=[]),
+ 'jvmom': dict(src='p13', tight=True, body=[('c1', 336.00, 379.00, 880)], A='The Dodgers joke really happened ⚾', hl={}, red=[('c1', 'dying.')], pops=[]),
+ 'jvteal': dict(src='p13', tight=True, body=[('c1', 532.70, 561.45, 880)], A='Jo Koy almost said NO to the blue 😭', hl={}, red=[('c1', 'pie')], pops=[]),
+ 'jkage13': dict(src='p07', tight=True, body=[('c1', 130.90, 164.30, 960)], A='How old is the shelter dog?… 💀', hl={}, red=[('c1', 'dead.')], pops=[]),
+ 'jstadium13': dict(src='p12', tight=True, body=[('c1', 0.60, 40.60, 960)], A="His stepdad's first Dodgers game ⚾", hl={}, red=[('c1', 'beautiful')], pops=[]),
 }
 E = {}
 for k, d in CL.items():
@@ -96,9 +93,9 @@ YLS = '--ylstyle' in sys.argv   # batch 13 (user 2026-11-24): Jo clips in the Yo
 G_LITE = ("split[ga][gb];[gb]gblur=sigma=14[gg];[ga][gg]blend=all_mode=softlight:all_opacity=0.12,unsharp=5:5:0.9:5:5:0,"
           "eq=contrast=1.05:saturation=1.1:gamma=0.99,curves=all='0/0 0.25/0.23 0.75/0.78 1/1',colortemperature=temperature=7200,format=yuv420p")
 
-W = {v: [w for s in json.load(open(f'{TX}/{v}.json')) for w in s['w']] for v in ('p01', 'p04', 'p08', 'p11')}
+W = {v: [w for s in json.load(open(f'{TX}/{v}.json')) for w in s['w']] for v in ('p07', 'p12', 'p13')}
 FIXED = []
-CUTS = {v: [float(x) for x in open(os.path.join(os.path.dirname(DL.rstrip('/')), f'cuts_{v}.txt'))] for v in ('p01', 'p04', 'p08', 'p11')}
+CUTS = {v: [float(x) for x in open(os.path.join(os.path.dirname(DL.rstrip('/')), f'cuts_{v}.txt'))] for v in ('p07', 'p12', 'p13')}
 def snap(sid, v, a, b):
     """user rules: never cut a line mid-sentence (start before the first word, run until the speaker pauses),
     and no sub-0.5 s slivers of another camera angle at either end (snap onto the show's own cut)."""

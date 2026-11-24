@@ -54,3 +54,10 @@ Log every posted description here so new ones never repeat (dupe-flag risk).
 - jpump12: His mom thought he was on crack, and the reason is his teeth 😭 Jo Koy roasting himself in Blue in the Face, streaming on Netflix. #JoKoyFunny #BlueInTheFace #filipinomom #teethproblems #selfroast
 - jjockey12: Why our dog vanished for 3 days after Halloween: a tiny jockey costume 🐶🏇 Jo Koy's wildest dog story from Blue in the Face on Netflix. #JoKoyComedy #BlueInTheFaceNetflix #doghalloween #runawaydog #dogowners
 - jmanila12: Why Filipinos built "Little Manila" in Stockton, according to Jo Koy 🇵🇭😂 From Blue in the Face, filmed in Stockton, now on Netflix. #JoKoy #BlueInTheFace #LittleManila #FilipinoAmerican #Stockton
+
+## Batch 13 (2026-11-24, YoungLA-reference style, plain captions, IG export spec)
+- jvorigin: Jo Koy's first time on stage was in front of 500 people at the Tropicana… in a red leather outfit 😭 Richard Pryor and Eddie Murphy made him want to try. He's come a long way since, see Blue in the Face on Netflix. #JoKoy #BlueInTheFace #comedyorigins #firstgig #netflixstandup
+- jvmom: The Dodgers story Jo Koy tells on stage? It really happened ⚾ His mom kept texting "come home" during extra innings while Fred refused to leave. The full bit is in Blue in the Face on Netflix. #JoKoyClips #BlueInTheFaceNetflix #Dodgers #behindthejoke #filipinomom
+- jvteal: Jo Koy almost said no to that bright blue set 😭💙 Teal and turquoise were "not on his pie chart" until his director showed it on camera. See how it turned out in Blue in the Face on Netflix. #JoKoyNetflix #BlueInTheFace #behindthescenes #comedyspecial #standupset
+- jkage13: How old is the shelter dog? Jo Koy just wanted to know before his son got attached 🐶💀 The answer he got was something else. Blue in the Face, streaming on Netflix. #JoKoyFunny #BlueInTheFace #adoptdontshop #seniordog #dogdadlife
+- jstadium13: His stepdad's first Dodgers game ever, and it turned into an 18-inning NLCS ⚾😭 Jo Koy's story about Fred from Blue in the Face on Netflix. Tag a baseball dad. #JoKoyStandUp #BlueInTheFaceNetflix #NLCS #stepdadstory #baseballfamily
