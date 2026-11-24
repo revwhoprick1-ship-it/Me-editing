@@ -87,10 +87,11 @@ for k, d in CL.items():
     for sid_, w_, f_ in d.get('ovs', []): ex.append(dict(ov([sid_, w_], f_, None, dur=34 if 'flash' in f_ else 54, op=0.55 if 'flash' in f_ else 0.9, off=2), **({'fit': 'contain'} if 'afml' in f_ else {})))
     body = ([('face', *d['face'], 960)] if d.get('face') else []) + list(d['body'])
     E[k] = dict(vo=None, scenes=[(s, d['src'], a, b, cx) for s, a, b, cx in body], fixed=[s for s, *_ in body], nocap=['face'], face=bool(d.get('face')), ask2=d.get('ask'), mute=[], zoom={},
-                circles=[], noSkull=True, ask=[], tints=[], rizz=[], blowouts=[], blackFlash=[], streaks=[], punch=d.get('pin', []), top=d['A'], hl={w: RD for w in d['hl']}, topPop=d.get('tp'), topSize=d.get('ts', 64), top2=d.get('t2'), tight=d.get('tight', False), topStatic=d.get('static', False), ty=d.get('ty'),
+                circles=[], noSkull=True, ask=[], tints=[], rizz=[], blowouts=[], blackFlash=[], streaks=[], punch=d.get('pin', []), top=d['A'], hl={w: RD for w in d['hl']}, topPop=d.get('tp'), topSize=d.get('ts', 64), top2=d.get('t2'), tight=d.get('tight', False), topStatic=d.get('static', False), ty=d.get('ty'), red=d.get('red', []),
                 extras=ex, focus=dict(x=540, y=330, r=180, dur=20))
 VO = sys.argv[3]
 FULL = '--full' in sys.argv
+YLS = '--ylstyle' in sys.argv   # batch 13 (user 2026-11-24): Jo clips in the YoungLA-reference look (light frame, square box, black Inter hook, plain coloured words, red flashes)
 # lighter look for batch 6 (user: "lessen the video filter"): about half of G67
 G_LITE = ("split[ga][gb];[gb]gblur=sigma=14[gg];[ga][gg]blend=all_mode=softlight:all_opacity=0.12,unsharp=5:5:0.9:5:5:0,"
           "eq=contrast=1.05:saturation=1.1:gamma=0.99,curves=all='0/0 0.25/0.23 0.75/0.78 1/1',colortemperature=temperature=7200,format=yuv420p")
@@ -180,6 +181,7 @@ for eid, spec in E.items():
         return r
     for e in spec['extras']: e['at'] = rm(e['at'])
     if spec.get('topPop'): spec['topPop'] = rm(spec['topPop'])
+    spec['red'] = [rm(list(r)) for r in spec.get('red', [])]
 
 gen = json.load(open('src/edits.gen.json')); CFG = {}
 for eid, spec in E.items():
@@ -220,7 +222,7 @@ for eid, spec in E.items():
             mt = ''.join(f",volume=0:enable='between(t,{max(0, m0 - a):.3f},{m1 - a:.3f})'" for m0, m1 in spec.get('mute', []) if m1 > a and m0 < b)
             fc.append(f'[{i}:a:{aidx(v)}]asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo,apad,atrim=0:{d:.4f}{mt}' + (',volume=0' if sid.startswith('i') else '') + f'[a{i}]')
         k = len(spec['scenes'])
-        fc.append(''.join(f'[v{i}][a{i}]' for i in range(k)) + f'concat=n={k}:v=1:a=1[cv][ca]'); fc.append('[cv]' + (G_LITE if FULL and '--g67' not in sys.argv else G67) + '[gv]')
+        fc.append(''.join(f'[v{i}][a{i}]' for i in range(k)) + f'concat=n={k}:v=1:a=1[cv][ca]'); fc.append('[cv]' + ('eq=contrast=1.04:saturation=1.08,format=yuv420p' if YLS else (G_LITE if FULL and '--g67' not in sys.argv else G67)) + '[gv]')
         subprocess.run(cmd + ['-filter_complex', ';'.join(fc), '-map', '[gv]', '-map', '[ca]', '-c:v', 'libx264', '-preset', 'medium', '-crf', '19', '-g', '15',
                               '-c:a', 'aac', '-b:a', '192k', '-map_metadata', '-1', f'public/g67_{eid}.mp4'], check=True)
         if '--raw' in sys.argv:   # same cut, no colour grade / lift (user: "without the video filters")
@@ -272,6 +274,10 @@ for eid, spec in E.items():
     if '--g67' in sys.argv: c['extras'] = [e for e in c['extras'] if e['kind'] != 'png']   # user: no emoji pops
     c['steady'] = True; c['punch'] = []   # user rule: never zoom in and out (no whip/punch/intro zoom)
     c['noFocus'] = True; c.pop('focus', None)   # user rule 2026-11-22: face blur removed, never use it again
+    if YLS:   # Reddit 0-view fixes: no fade / no intro / no pop-ups / speech from frame 1; captions plain (no pill), inside the box, away from IG's bottom/right UI
+        c.update(full=False, bg='#EEF2F2', topColor='#111111', topFont='Inter', topSize=50, noSkull=True, topStatic=True, topY=None, topFade=None, capPill=False, capChunk=None,
+                 capCycle=True, capSize=58, capY=1150, bf=0, fadeWhite=None, hardcut=False, popMid=False, whip=False, steady=True, sat=1.0, extras=[e for e in c['extras'] if e['kind'] not in ('png', 'txt', 'ov')])
+        c['tints'] = [[r, 'R'] for r in spec.get('red', [])]
     c['ask'] = []  # user: nothing under the video (no ask pill / promo line / progress bar)
     CFG[eid] = c
 if '--raw' in sys.argv:
