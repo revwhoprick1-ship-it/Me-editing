@@ -359,3 +359,8 @@
 - Military kids: the base dentist 💀 (jcamo16)
 - Your dentist's face when you open 💀 (jrodeo16)
 - Your first paycheck be like 💀 (jpay16)
+- Emma Roberts' break just pulled THIS Mahomes (sbmahomes, Summer Breaks b2) | post title: Emma Roberts' Card Break Pulled a Mahomes Ultra Violet /99
+- Emma Roberts' break just hit a 1 of 1 (sbjudy2) | post title: Emma Roberts' Card Break Hit a 1 of 1 Texas Star Patch
+- Emma Roberts learned about taxes the hard way (sbtax2) | post title: Emma Roberts' 99-Cent Store Tax Lesson
+- Emma Roberts has her own trading card now 💀 (sbwoman2) | post title: Emma Roberts Has Her Own Trading Card
+- Emma Roberts is trying to make 'Kitty Cat' happen 😭 (sbkitty) | post title: Emma Roberts Wants George Kittle to Be "Kitty Cat"
