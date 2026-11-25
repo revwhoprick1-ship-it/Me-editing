@@ -542,7 +542,7 @@
   "rizz": [],
   "punch": [
    [
-    "hook",
+    "h2",
     "Huge"
    ],
    [
@@ -560,7 +560,7 @@
   ],
   "blowouts": [
    [
-    "hook",
+    "h2",
     "Huge"
    ]
   ],
@@ -582,6 +582,15 @@
   "srcVol": 1,
   "origAudio": false,
   "extras": [
+   {
+    "at": [
+     "s1"
+    ],
+    "kind": "sfx",
+    "file": "r_swoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
    {
     "at": [
      "s2"
@@ -651,7 +660,7 @@
    },
    {
     "at": [
-     "hook",
+     "h2",
      "Huge"
     ],
     "kind": "ov",
@@ -662,7 +671,7 @@
    },
    {
     "at": [
-     "hook",
+     "h2",
      "Huge"
     ],
     "kind": "sfx",
