@@ -1,0 +1,510 @@
+{
+ "sbskenes": {
+  "top": "Emma Roberts' break: last pack\u2026 Skenes auto?!",
+  "hl": {
+   "Skenes": "#58EE28",
+   "last": "#FF2A2A"
+  },
+  "src": "sb_sbskenes.mp4",
+  "cta": "",
+  "ask": [],
+  "track": "none",
+  "calls": [],
+  "trackData": {},
+  "music": [
+   "goodbye",
+   0
+  ],
+  "musicVol": 0.4,
+  "tints": [
+   [
+    [
+     "h2",
+     "auto"
+    ],
+    "G"
+   ],
+   [
+    [
+     "s3",
+     "stop"
+    ],
+    "R"
+   ],
+   [
+    [
+     "s4",
+     "god"
+    ],
+    "G"
+   ]
+  ],
+  "rizz": [
+   [
+    "hook",
+    "Skenes"
+   ]
+  ],
+  "punch": [
+   [
+    "h2",
+    "last"
+   ],
+   [
+    "h2",
+    "mojo"
+   ],
+   [
+    "s2",
+    "No"
+   ],
+   [
+    "s3",
+    "Emma"
+   ],
+   [
+    "s3",
+    "lying"
+   ],
+   [
+    "s4",
+    "Five"
+   ],
+   [
+    "s4",
+    "god"
+   ]
+  ],
+  "blowouts": [
+   [
+    "h2",
+    "mojo"
+   ],
+   [
+    "s1",
+    "Paul"
+   ]
+  ],
+  "blackFlash": [
+   [
+    "s2"
+   ]
+  ],
+  "streaks": [
+   [
+    "s4"
+   ]
+  ],
+  "intro": true,
+  "hardcut": true,
+  "capCycle": false,
+  "sat": 1.3,
+  "noFocus": true,
+  "noSkull": false,
+  "loop": true,
+  "progress": false,
+  "srcVol": 1,
+  "origAudio": false,
+  "extras": [],
+  "vo": null
+ },
+ "sbwoman": {
+  "top": "Emma Roberts has her own trading card now \ud83d\udc80",
+  "hl": {},
+  "src": "sb_sbwoman.mp4",
+  "cta": "",
+  "ask": [],
+  "track": "none",
+  "calls": [],
+  "trackData": {},
+  "music": [
+   "blue",
+   0
+  ],
+  "musicVol": 0.3,
+  "tints": [
+   [
+    [
+     "s1",
+     "Allen"
+    ],
+    "G"
+   ],
+   [
+    [
+     "s1",
+     "color"
+    ],
+    "G"
+   ],
+   [
+    [
+     "s3",
+     "woman"
+    ],
+    "R"
+   ],
+   [
+    [
+     "s5",
+     "died"
+    ],
+    "R"
+   ]
+  ],
+  "rizz": [],
+  "punch": [],
+  "blowouts": [
+   [
+    "s3",
+    "me"
+   ]
+  ],
+  "blackFlash": [],
+  "streaks": [],
+  "intro": true,
+  "hardcut": false,
+  "capCycle": true,
+  "sat": 1.0,
+  "noFocus": true,
+  "noSkull": true,
+  "loop": true,
+  "progress": false,
+  "srcVol": 1,
+  "origAudio": false,
+  "extras": [
+   {
+    "at": [
+     "s1"
+    ],
+    "kind": "sfx",
+    "file": "jorho-ting.mp3",
+    "v": 0.5,
+    "off": 0
+   }
+  ],
+  "vo": null,
+  "sfxSwap": {
+   "rizz.mp3": "jorho-swish.mp3",
+   "riser.mp3": "",
+   "shock.mp3": "",
+   "flash.mp3": "jorho-flash.mp3",
+   "pop.mp3": ""
+  },
+  "steady": true,
+  "whip": false
+ },
+ "sbspidey": {
+  "top": "Emma Roberts when the card is numbered \ud83d\ude2d",
+  "hl": {},
+  "src": "sb_sbspidey.mp4",
+  "cta": "",
+  "ask": [],
+  "track": "none",
+  "calls": [],
+  "trackData": {},
+  "music": [
+   "blue",
+   0
+  ],
+  "musicVol": 0.3,
+  "tints": [
+   [
+    [
+     "s1b",
+     "50"
+    ],
+    "G"
+   ],
+   [
+    [
+     "s1b",
+     "numbered"
+    ],
+    "G"
+   ],
+   [
+    [
+     "s2",
+     "favorite"
+    ],
+    "R"
+   ],
+   [
+    [
+     "s3",
+     "hot"
+    ],
+    "G"
+   ]
+  ],
+  "rizz": [],
+  "punch": [],
+  "blowouts": [
+   [
+    "s1c",
+    "Spidey"
+   ]
+  ],
+  "blackFlash": [],
+  "streaks": [],
+  "intro": true,
+  "hardcut": false,
+  "capCycle": true,
+  "sat": 1.0,
+  "noFocus": true,
+  "noSkull": true,
+  "loop": true,
+  "progress": false,
+  "srcVol": 1,
+  "origAudio": false,
+  "extras": [
+   {
+    "at": [
+     "s1"
+    ],
+    "kind": "sfx",
+    "file": "jorho-ting.mp3",
+    "v": 0.5,
+    "off": 0
+   }
+  ],
+  "vo": null,
+  "sfxSwap": {
+   "rizz.mp3": "jorho-swish.mp3",
+   "riser.mp3": "",
+   "shock.mp3": "",
+   "flash.mp3": "jorho-flash.mp3",
+   "pop.mp3": ""
+  },
+  "steady": true,
+  "whip": false
+ },
+ "sbjudy": {
+  "top": "Emma Roberts' break just hit a 1 of 1",
+  "hl": {
+   "1": "#FF2A2A",
+   "of": "#FF2A2A"
+  },
+  "src": "sb_sbjudy.mp4",
+  "cta": "",
+  "ask": [],
+  "track": "none",
+  "calls": [],
+  "trackData": {},
+  "music": [
+   "goodbye",
+   0
+  ],
+  "musicVol": 0.4,
+  "tints": [
+   [
+    [
+     "hook",
+     "One"
+    ],
+    "G"
+   ],
+   [
+    [
+     "h2",
+     "nasty"
+    ],
+    "R"
+   ],
+   [
+    [
+     "s1",
+     "Stop"
+    ],
+    "R"
+   ],
+   [
+    [
+     "s3",
+     "charm"
+    ],
+    "G"
+   ]
+  ],
+  "rizz": [
+   [
+    "hook",
+    "One"
+   ]
+  ],
+  "punch": [
+   [
+    "hook",
+    "One"
+   ],
+   [
+    "h2",
+    "Star"
+   ],
+   [
+    "h2",
+    "nasty"
+   ],
+   [
+    "s1",
+    "Stop"
+   ],
+   [
+    "s1",
+    "patch"
+   ],
+   [
+    "s3",
+    "One"
+   ],
+   [
+    "s3",
+    "charm"
+   ]
+  ],
+  "blowouts": [
+   [
+    "h2",
+    "Patch"
+   ],
+   [
+    "s1",
+    "And"
+   ]
+  ],
+  "blackFlash": [
+   [
+    "s2"
+   ]
+  ],
+  "streaks": [
+   [
+    "s3"
+   ]
+  ],
+  "intro": true,
+  "hardcut": true,
+  "capCycle": false,
+  "sat": 1.3,
+  "noFocus": true,
+  "noSkull": false,
+  "loop": true,
+  "progress": false,
+  "srcVol": 1,
+  "origAudio": false,
+  "extras": [],
+  "vo": null
+ },
+ "sbtax": {
+  "top": "Emma Roberts learned about taxes the hard way",
+  "hl": {
+   "taxes": "#FF2A2A"
+  },
+  "src": "sb_sbtax.mp4",
+  "cta": "",
+  "ask": [],
+  "track": "none",
+  "calls": [],
+  "trackData": {},
+  "music": [
+   "goodbye",
+   0
+  ],
+  "musicVol": 0.4,
+  "tints": [
+   [
+    [
+     "hook",
+     "taxes"
+    ],
+    "R"
+   ],
+   [
+    [
+     "s1",
+     "99"
+    ],
+    "G"
+   ],
+   [
+    [
+     "s3",
+     "tax"
+    ],
+    "R"
+   ],
+   [
+    [
+     "s4",
+     "confused"
+    ],
+    "R"
+   ]
+  ],
+  "rizz": [
+   [
+    "s1",
+    "99"
+   ]
+  ],
+  "punch": [
+   [
+    "hook",
+    "young"
+   ],
+   [
+    "hook",
+    "taxes"
+   ],
+   [
+    "s1",
+    "rudest"
+   ],
+   [
+    "s2",
+    "Ziploc"
+   ],
+   [
+    "s3",
+    "tax"
+   ],
+   [
+    "s3",
+    "whoa"
+   ],
+   [
+    "s4",
+    "confused"
+   ]
+  ],
+  "blowouts": [
+   [
+    "hook",
+    "taxes"
+   ]
+  ],
+  "blackFlash": [
+   [
+    "s3"
+   ]
+  ],
+  "streaks": [
+   [
+    "s3"
+   ]
+  ],
+  "intro": true,
+  "hardcut": true,
+  "capCycle": false,
+  "sat": 1.3,
+  "noFocus": true,
+  "noSkull": false,
+  "loop": true,
+  "progress": false,
+  "srcVol": 1,
+  "origAudio": false,
+  "extras": [],
+  "vo": null
+ }
+}
