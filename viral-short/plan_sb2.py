@@ -15,11 +15,12 @@ BOXT, BOXB = 250, 1900
 AR = 1080 / ((BOXB - BOXT) / 1080) / 1080          # visible src window aspect (w/h) inside the box = 0.6545
 EXTRA = {'51': [[28.20, 28.70, ' I'], [28.76, 28.94, ' remember'], [28.96, 29.20, ' the'], [29.24, 29.66, ' rudest'], [29.70, 30.04, ' awakening']]}
 FIX = {('01', 0.42): 'Skenes.', ('01', 1.18): 'Skenes,', ('01', 2.22): 'Skenes,', ('01', 53.41, 'Skeens'): 'Skenes', ('52', 19.14): 'Allen', ('03', 43.80): 'one',
-       ('03', 43.92): 'of', ('03', 45.40): 'one', ('03', 45.52): 'of', ('03', 50.96): 'One', ('03', 51.04): 'of', ('03', 51.76): 'One', ('03', 51.78): 'of', ('01', 63.45): '', ('01', 64.23): ''}
+       ('03', 43.92): 'of', ('03', 45.40): 'one', ('03', 45.52): 'of', ('03', 50.96): 'One', ('03', 51.04): 'of', ('03', 51.76): 'One', ('03', 51.78): 'of', ('01', 63.45): '', ('01', 64.23): '', ('40', 46.91): '', ('40', 77.24): 'Ultra', ('40', 77.54): 'Ultra', ('40', 77.74): 'Violet?', ('40', 78.14): 'Ultra', ('40', 78.38): 'Violet.', ('40', 78.56): 'Ultra', ('40', 78.76): 'Violet'}
 
 def crop(kind, c):
     """source px crop (w, h, x, y) with the box aspect; c = (cx, cy) card/subject centre"""
     if kind == 'wide': h = 855; w = round(h * AR); return w, h, 72 + (560 - w) // 2, 186
+    if kind == 'people': h = 642; w = round(h * AR); cx = (c or (352,))[0]; return w, h, int(min(632 - w, max(72, cx - w / 2))), 186   # 1.33x, hosts bigger
     h = 523 if kind == 'card' else 680
     w = round(h * AR); cx, cy = c or (352, 790)
     return w, h, int(min(632 - w, max(72, cx - w / 2))), int(min(1130 - h, max(186, cy - h / 2)))
@@ -55,7 +56,7 @@ for eid, d in CL.items():
         cmd = ['ffmpeg', '-v', 'error', '-y']; fc = []
         bw = round(1080 * AR)
         for i, (sid, a, b, kind, *c) in enumerate(d['scenes']):
-            w, h, x, y = crop(kind, c[0] if c else d.get('card')); dd = round((b - a) * 30) / 30
+            w, h, x, y = crop(kind, c[0] if c else (d.get('emma') if kind == 'people' else d.get('card'))); dd = round((b - a) * 30) / 30
             cmd += ['-ss', f'{a:.3f}', '-t', f'{dd:.4f}', '-i', f]
             fc.append(f'[{i}:v]fps=30,setpts=PTS-STARTPTS,crop={w}:{h}:{x}:{y},scale={bw}:1080:flags=lanczos,pad=1920:1080:{(1920 - bw) // 2}:0:color=black,setsar=1,format=yuv420p,trim=duration={dd:.4f}[v{i}]')
             fc.append(f'[{i}:a]asetpts=PTS-STARTPTS,aresample=48000,aformat=channel_layouts=stereo,apad,atrim=0:{dd:.4f}[a{i}]')

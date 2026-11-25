@@ -506,5 +506,1423 @@
   "origAudio": false,
   "extras": [],
   "vo": null
+ },
+ "sbmahomes": {
+  "top": "Emma Roberts' break just pulled THIS Mahomes",
+  "hl": {
+   "THIS": "#FF2A2A"
+  },
+  "src": "sb_sbmahomes.mp4",
+  "cta": "",
+  "ask": [],
+  "track": "none",
+  "calls": [],
+  "trackData": {},
+  "music": [
+   "r_goodbye",
+   0
+  ],
+  "musicVol": 0.24,
+  "tints": [
+   [
+    [
+     "s1",
+     "gold"
+    ],
+    "G"
+   ],
+   [
+    [
+     "s5",
+     "Violet"
+    ],
+    "G"
+   ]
+  ],
+  "rizz": [],
+  "punch": [
+   [
+    "hook",
+    "Huge"
+   ],
+   [
+    "s3",
+    "ultra"
+   ],
+   [
+    "s4",
+    "incredible"
+   ],
+   [
+    "s5",
+    "99"
+   ]
+  ],
+  "blowouts": [
+   [
+    "hook",
+    "Huge"
+   ]
+  ],
+  "blackFlash": [],
+  "streaks": [
+   [
+    "s4"
+   ]
+  ],
+  "intro": true,
+  "hardcut": true,
+  "cutSfx": "r_flash.mp3",
+  "capCycle": false,
+  "sat": 1.0,
+  "noFocus": true,
+  "noSkull": false,
+  "loop": true,
+  "progress": false,
+  "srcVol": 1,
+  "origAudio": false,
+  "extras": [
+   {
+    "at": [
+     "s2"
+    ],
+    "kind": "sfx",
+    "file": "r_swoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "s3"
+    ],
+    "kind": "sfx",
+    "file": "r_swoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "s4"
+    ],
+    "kind": "sfx",
+    "file": "r_swoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "s5"
+    ],
+    "kind": "sfx",
+    "file": "r_swoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "hook",
+     "Wow"
+    ],
+    "kind": "ov",
+    "file": "r_gflash.mp4",
+    "dur": 34,
+    "op": 0.6,
+    "off": 0
+   },
+   {
+    "at": [
+     "hook",
+     "Wow"
+    ],
+    "kind": "sfx",
+    "file": "r_money.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "hook",
+     "Wow"
+    ],
+    "kind": "sfx",
+    "file": "r_ding.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "hook",
+     "Huge"
+    ],
+    "kind": "ov",
+    "file": "r_cash.mp4",
+    "dur": 54,
+    "op": 0.9,
+    "off": 0
+   },
+   {
+    "at": [
+     "hook",
+     "Huge"
+    ],
+    "kind": "sfx",
+    "file": "r_money.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s1",
+     "good"
+    ],
+    "kind": "sfx",
+    "file": "r_correct.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s2",
+     "saw"
+    ],
+    "kind": "sfx",
+    "file": "r_suspense.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s3",
+     "ultra"
+    ],
+    "kind": "sfx",
+    "file": "r_riser.mp3",
+    "v": 0.45,
+    "off": -40
+   },
+   {
+    "at": [
+     "s3",
+     "ultra"
+    ],
+    "kind": "ov",
+    "file": "r_gflash.mp4",
+    "dur": 34,
+    "op": 0.6,
+    "off": 0
+   },
+   {
+    "at": [
+     "s3",
+     "ultra"
+    ],
+    "kind": "sfx",
+    "file": "r_money.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s3",
+     "ultra"
+    ],
+    "kind": "sfx",
+    "file": "r_ding.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s3",
+     "weird"
+    ],
+    "kind": "sfx",
+    "file": "r_huh.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s4",
+     "incredible"
+    ],
+    "kind": "sfx",
+    "file": "r_wow.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s4",
+     "lord"
+    ],
+    "kind": "png",
+    "file": "e_heart.png",
+    "off": 0,
+    "y": 760,
+    "size": 300
+   },
+   {
+    "at": [
+     "s4",
+     "stunning"
+    ],
+    "kind": "sfx",
+    "file": "r_ding.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s5",
+     "99"
+    ],
+    "kind": "ov",
+    "file": "r_gflash.mp4",
+    "dur": 34,
+    "op": 0.6,
+    "off": 0
+   },
+   {
+    "at": [
+     "s5",
+     "99"
+    ],
+    "kind": "sfx",
+    "file": "r_money.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s5",
+     "99"
+    ],
+    "kind": "sfx",
+    "file": "r_ding.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s5",
+     "first"
+    ],
+    "kind": "txt",
+    "file": "Keep it or sell it? \ud83e\udd14",
+    "color": "#FFFFFF",
+    "size": 54,
+    "y": 1430,
+    "dur": 75,
+    "off": 0,
+    "flat": true
+   },
+   {
+    "at": [
+     "s5",
+     "first"
+    ],
+    "kind": "png",
+    "file": "e_think.png",
+    "off": 0,
+    "y": 1300,
+    "size": 150
+   },
+   {
+    "at": [
+     "s5",
+     "first"
+    ],
+    "kind": "sfx",
+    "file": "r_ding.mp3",
+    "v": 0.45,
+    "off": 0
+   }
+  ],
+  "vo": null,
+  "boxTop": 250,
+  "boxBottom": 1900,
+  "capY": 860,
+  "steady": false,
+  "whip": false,
+  "sfxSwap": {
+   "rizz.mp3": "r_rizz.mp3",
+   "riser.mp3": "",
+   "shock.mp3": "r_shock.mp3",
+   "flash.mp3": "r_flash.mp3",
+   "pop.mp3": "r_pop.mp3"
+  }
+ },
+ "sbjudy2": {
+  "top": "Emma Roberts' break just hit a 1 of 1",
+  "hl": {
+   "1": "#FF2A2A",
+   "of": "#FF2A2A"
+  },
+  "src": "sb_sbjudy2.mp4",
+  "cta": "",
+  "ask": [],
+  "track": "none",
+  "calls": [],
+  "trackData": {},
+  "music": [
+   "r_goodbye",
+   0
+  ],
+  "musicVol": 0.24,
+  "tints": [],
+  "rizz": [],
+  "punch": [
+   [
+    "hook",
+    "One"
+   ],
+   [
+    "h2",
+    "Star"
+   ],
+   [
+    "h2",
+    "nasty"
+   ],
+   [
+    "s1",
+    "Stop"
+   ],
+   [
+    "s3",
+    "charm"
+   ]
+  ],
+  "blowouts": [
+   [
+    "h2",
+    "Patch"
+   ]
+  ],
+  "blackFlash": [],
+  "streaks": [
+   [
+    "s3"
+   ]
+  ],
+  "intro": true,
+  "hardcut": true,
+  "cutSfx": "r_flash.mp3",
+  "capCycle": false,
+  "sat": 1.0,
+  "noFocus": true,
+  "noSkull": false,
+  "loop": true,
+  "progress": false,
+  "srcVol": 1,
+  "origAudio": false,
+  "extras": [
+   {
+    "at": [
+     "s1"
+    ],
+    "kind": "sfx",
+    "file": "r_swoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "s2"
+    ],
+    "kind": "sfx",
+    "file": "r_swoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "s3"
+    ],
+    "kind": "sfx",
+    "file": "r_swoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "hook",
+     "One"
+    ],
+    "kind": "ov",
+    "file": "r_gflash.mp4",
+    "dur": 34,
+    "op": 0.6,
+    "off": 0
+   },
+   {
+    "at": [
+     "hook",
+     "One"
+    ],
+    "kind": "sfx",
+    "file": "r_money.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "hook",
+     "One"
+    ],
+    "kind": "sfx",
+    "file": "r_ding.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "h2",
+     "Patch"
+    ],
+    "kind": "ov",
+    "file": "r_cash.mp4",
+    "dur": 54,
+    "op": 0.9,
+    "off": 0
+   },
+   {
+    "at": [
+     "h2",
+     "Patch"
+    ],
+    "kind": "sfx",
+    "file": "r_money.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "h2",
+     "nasty"
+    ],
+    "kind": "sfx",
+    "file": "r_wow.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s1",
+     "Stop"
+    ],
+    "kind": "sfx",
+    "file": "r_riser.mp3",
+    "v": 0.45,
+    "off": -30
+   },
+   {
+    "at": [
+     "s1",
+     "Stop"
+    ],
+    "kind": "sfx",
+    "file": "r_huh.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s1",
+     "patch"
+    ],
+    "kind": "sfx",
+    "file": "r_ding.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s2",
+     "Judy"
+    ],
+    "kind": "sfx",
+    "file": "r_correct.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s2",
+     "congrats"
+    ],
+    "kind": "png",
+    "file": "e_heart.png",
+    "off": 0,
+    "y": 760,
+    "size": 300
+   },
+   {
+    "at": [
+     "s3",
+     "One"
+    ],
+    "kind": "ov",
+    "file": "r_gflash.mp4",
+    "dur": 34,
+    "op": 0.6,
+    "off": 0
+   },
+   {
+    "at": [
+     "s3",
+     "One"
+    ],
+    "kind": "sfx",
+    "file": "r_money.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s3",
+     "One"
+    ],
+    "kind": "sfx",
+    "file": "r_ding.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s3",
+     "charm"
+    ],
+    "kind": "sfx",
+    "file": "r_aww.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s3",
+     "Wow"
+    ],
+    "kind": "txt",
+    "file": "Keep it or sell it? \ud83e\udd14",
+    "color": "#FFFFFF",
+    "size": 54,
+    "y": 1430,
+    "dur": 75,
+    "off": 0,
+    "flat": true
+   },
+   {
+    "at": [
+     "s3",
+     "Wow"
+    ],
+    "kind": "png",
+    "file": "e_think.png",
+    "off": 0,
+    "y": 1300,
+    "size": 150
+   },
+   {
+    "at": [
+     "s3",
+     "Wow"
+    ],
+    "kind": "sfx",
+    "file": "r_ding.mp3",
+    "v": 0.45,
+    "off": 0
+   }
+  ],
+  "vo": null,
+  "boxTop": 250,
+  "boxBottom": 1900,
+  "capY": 860,
+  "steady": false,
+  "whip": false,
+  "sfxSwap": {
+   "rizz.mp3": "r_rizz.mp3",
+   "riser.mp3": "",
+   "shock.mp3": "r_shock.mp3",
+   "flash.mp3": "r_flash.mp3",
+   "pop.mp3": "r_pop.mp3"
+  }
+ },
+ "sbtax2": {
+  "top": "Emma Roberts learned about taxes the hard way",
+  "hl": {
+   "taxes": "#FF2A2A"
+  },
+  "src": "sb_sbtax2.mp4",
+  "cta": "",
+  "ask": [],
+  "track": "none",
+  "calls": [],
+  "trackData": {},
+  "music": [
+   "r_goodbye",
+   0
+  ],
+  "musicVol": 0.22,
+  "tints": [
+   [
+    [
+     "hook",
+     "taxes"
+    ],
+    "R"
+   ]
+  ],
+  "rizz": [],
+  "punch": [
+   [
+    "hook",
+    "taxes"
+   ],
+   [
+    "s1",
+    "rudest"
+   ],
+   [
+    "s3",
+    "tax"
+   ],
+   [
+    "s3",
+    "whoa"
+   ],
+   [
+    "s4",
+    "confused"
+   ]
+  ],
+  "blowouts": [
+   [
+    "hook",
+    "taxes"
+   ]
+  ],
+  "blackFlash": [],
+  "streaks": [
+   [
+    "s3"
+   ]
+  ],
+  "intro": true,
+  "hardcut": true,
+  "cutSfx": "r_flash.mp3",
+  "capCycle": false,
+  "sat": 1.0,
+  "noFocus": true,
+  "noSkull": false,
+  "loop": true,
+  "progress": false,
+  "srcVol": 1,
+  "origAudio": false,
+  "extras": [
+   {
+    "at": [
+     "s2"
+    ],
+    "kind": "sfx",
+    "file": "r_swoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "s3"
+    ],
+    "kind": "sfx",
+    "file": "r_swoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "s4"
+    ],
+    "kind": "sfx",
+    "file": "r_swoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "hook",
+     "taxes"
+    ],
+    "kind": "sfx",
+    "file": "r_fah.mp3",
+    "v": 0.55,
+    "off": 0
+   },
+   {
+    "at": [
+     "hook",
+     "taxes"
+    ],
+    "kind": "sfx",
+    "file": "r_shock.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "hook",
+     "Poor"
+    ],
+    "kind": "sfx",
+    "file": "r_aww.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s1",
+     "rudest"
+    ],
+    "kind": "sfx",
+    "file": "r_suspense.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s1",
+     "99"
+    ],
+    "kind": "sfx",
+    "file": "r_ding.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s2",
+     "Ziploc"
+    ],
+    "kind": "sfx",
+    "file": "r_huh.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s2",
+     "item"
+    ],
+    "kind": "png",
+    "file": "e_think.png",
+    "off": 0,
+    "y": 760,
+    "size": 300
+   },
+   {
+    "at": [
+     "s3",
+     "tax"
+    ],
+    "kind": "sfx",
+    "file": "r_awk.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s3",
+     "whoa"
+    ],
+    "kind": "sfx",
+    "file": "r_ayo.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s4",
+     "confused"
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 0,
+    "y": 760,
+    "size": 300
+   },
+   {
+    "at": [
+     "s4",
+     "confused"
+    ],
+    "kind": "sfx",
+    "file": "r_fah.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s4",
+     "Ziploc"
+    ],
+    "kind": "txt",
+    "file": "Did you do this as a kid? \ud83d\ude2d",
+    "color": "#FFFFFF",
+    "size": 54,
+    "y": 1430,
+    "dur": 75,
+    "off": 0,
+    "flat": true
+   },
+   {
+    "at": [
+     "s4",
+     "Ziploc"
+    ],
+    "kind": "png",
+    "file": "e_think.png",
+    "off": 0,
+    "y": 1300,
+    "size": 150
+   },
+   {
+    "at": [
+     "s4",
+     "Ziploc"
+    ],
+    "kind": "sfx",
+    "file": "r_ding.mp3",
+    "v": 0.45,
+    "off": 0
+   }
+  ],
+  "vo": null,
+  "boxTop": 250,
+  "boxBottom": 1900,
+  "capY": 860,
+  "steady": false,
+  "whip": false,
+  "sfxSwap": {
+   "rizz.mp3": "r_rizz.mp3",
+   "riser.mp3": "",
+   "shock.mp3": "r_shock.mp3",
+   "flash.mp3": "r_flash.mp3",
+   "pop.mp3": "r_pop.mp3"
+  }
+ },
+ "sbwoman2": {
+  "top": "Emma Roberts has her own trading card now \ud83d\udc80",
+  "hl": {},
+  "src": "sb_sbwoman2.mp4",
+  "cta": "",
+  "ask": [],
+  "track": "none",
+  "calls": [],
+  "trackData": {},
+  "music": [
+   "r_blue",
+   0
+  ],
+  "musicVol": 0.24,
+  "tints": [
+   [
+    [
+     "s1",
+     "Allen"
+    ],
+    "G"
+   ],
+   [
+    [
+     "s3",
+     "woman"
+    ],
+    "R"
+   ],
+   [
+    [
+     "s5",
+     "died"
+    ],
+    "R"
+   ]
+  ],
+  "rizz": [],
+  "punch": [],
+  "blowouts": [
+   [
+    "s3",
+    "woman"
+   ]
+  ],
+  "blackFlash": [],
+  "streaks": [],
+  "intro": true,
+  "hardcut": false,
+  "cutSfx": "r_flash.mp3",
+  "capCycle": true,
+  "sat": 1.0,
+  "noFocus": true,
+  "noSkull": true,
+  "loop": true,
+  "progress": false,
+  "srcVol": 1,
+  "origAudio": false,
+  "extras": [
+   {
+    "at": [
+     "s2"
+    ],
+    "kind": "sfx",
+    "file": "r_swoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "s3"
+    ],
+    "kind": "sfx",
+    "file": "r_swoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "s4"
+    ],
+    "kind": "sfx",
+    "file": "r_swoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "s5"
+    ],
+    "kind": "sfx",
+    "file": "r_swoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "s1"
+    ],
+    "kind": "sfx",
+    "file": "jorho-ting.mp3",
+    "v": 0.55,
+    "off": 0
+   },
+   {
+    "at": [
+     "s1",
+     "card"
+    ],
+    "kind": "sfx",
+    "file": "r_ding.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s1",
+     "color"
+    ],
+    "kind": "sfx",
+    "file": "r_rizz.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s2",
+     "sick"
+    ],
+    "kind": "sfx",
+    "file": "r_wow.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s3",
+     "who"
+    ],
+    "kind": "sfx",
+    "file": "r_suspense.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s3",
+     "woman"
+    ],
+    "kind": "sfx",
+    "file": "r_fah.mp3",
+    "v": 0.55,
+    "off": 0
+   },
+   {
+    "at": [
+     "s3",
+     "woman"
+    ],
+    "kind": "sfx",
+    "file": "r_shock.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s3",
+     "me"
+    ],
+    "kind": "png",
+    "file": "e_skull.png",
+    "off": 0,
+    "y": 760,
+    "size": 300
+   },
+   {
+    "at": [
+     "s4",
+     "idea"
+    ],
+    "kind": "sfx",
+    "file": "r_huh.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s4",
+     "woman"
+    ],
+    "kind": "png",
+    "file": "e_laugh.png",
+    "off": 0,
+    "y": 760,
+    "size": 300
+   },
+   {
+    "at": [
+     "s5",
+     "died"
+    ],
+    "kind": "sfx",
+    "file": "r_fah.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s5",
+     "respectful"
+    ],
+    "kind": "sfx",
+    "file": "r_awk.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s5",
+     "respectful"
+    ],
+    "kind": "txt",
+    "file": "Would you pull her card? \ud83c\udccf",
+    "color": "#FFFFFF",
+    "size": 54,
+    "y": 1430,
+    "dur": 75,
+    "off": 0,
+    "flat": true
+   },
+   {
+    "at": [
+     "s5",
+     "respectful"
+    ],
+    "kind": "png",
+    "file": "e_think.png",
+    "off": 0,
+    "y": 1300,
+    "size": 150
+   },
+   {
+    "at": [
+     "s5",
+     "respectful"
+    ],
+    "kind": "sfx",
+    "file": "r_ding.mp3",
+    "v": 0.45,
+    "off": 0
+   }
+  ],
+  "vo": null,
+  "boxTop": 250,
+  "boxBottom": 1900,
+  "capY": 860,
+  "steady": true,
+  "whip": false,
+  "sfxSwap": {
+   "rizz.mp3": "jorho-swish.mp3",
+   "riser.mp3": "",
+   "shock.mp3": "",
+   "flash.mp3": "jorho-flash.mp3",
+   "pop.mp3": ""
+  }
+ },
+ "sbkitty": {
+  "top": "Emma Roberts is trying to make 'Kitty Cat' happen \ud83d\ude2d",
+  "hl": {},
+  "src": "sb_sbkitty.mp4",
+  "cta": "",
+  "ask": [],
+  "track": "none",
+  "calls": [],
+  "trackData": {},
+  "music": [
+   "r_blue",
+   0
+  ],
+  "musicVol": 0.24,
+  "tints": [
+   [
+    [
+     "s2",
+     "Kittle"
+    ],
+    "G"
+   ],
+   [
+    [
+     "s4",
+     "taken"
+    ],
+    "R"
+   ]
+  ],
+  "rizz": [],
+  "punch": [],
+  "blowouts": [
+   [
+    "s2",
+    "Kitty"
+   ]
+  ],
+  "blackFlash": [],
+  "streaks": [],
+  "intro": true,
+  "hardcut": false,
+  "cutSfx": "r_flash.mp3",
+  "capCycle": true,
+  "sat": 1.0,
+  "noFocus": true,
+  "noSkull": true,
+  "loop": true,
+  "progress": false,
+  "srcVol": 1,
+  "origAudio": false,
+  "extras": [
+   {
+    "at": [
+     "s2"
+    ],
+    "kind": "sfx",
+    "file": "r_swoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "s3"
+    ],
+    "kind": "sfx",
+    "file": "r_swoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "s4"
+    ],
+    "kind": "sfx",
+    "file": "r_swoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "s5"
+    ],
+    "kind": "sfx",
+    "file": "r_swoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "s1"
+    ],
+    "kind": "sfx",
+    "file": "jorho-ting.mp3",
+    "v": 0.55,
+    "off": 0
+   },
+   {
+    "at": [
+     "s1",
+     "Niners"
+    ],
+    "kind": "sfx",
+    "file": "r_hit.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s2",
+     "Kitty"
+    ],
+    "kind": "sfx",
+    "file": "r_rizz.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s2",
+     "Kitty"
+    ],
+    "kind": "png",
+    "file": "e_rizz.png",
+    "off": 0,
+    "y": 760,
+    "size": 300
+   },
+   {
+    "at": [
+     "s3",
+     "happen"
+    ],
+    "kind": "sfx",
+    "file": "r_huh.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s3",
+     "Kitty"
+    ],
+    "kind": "sfx",
+    "file": "r_ding.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s4",
+     "taken"
+    ],
+    "kind": "sfx",
+    "file": "r_fah.mp3",
+    "v": 0.55,
+    "off": 0
+   },
+   {
+    "at": [
+     "s4",
+     "taken"
+    ],
+    "kind": "sfx",
+    "file": "r_shock.mp3",
+    "v": 0.4,
+    "off": 0
+   },
+   {
+    "at": [
+     "s4",
+     "taken"
+    ],
+    "kind": "png",
+    "file": "e_sob.png",
+    "off": 0,
+    "y": 760,
+    "size": 300
+   },
+   {
+    "at": [
+     "s4",
+     "Kitty"
+    ],
+    "kind": "sfx",
+    "file": "r_awk.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s5",
+     "Pokemon"
+    ],
+    "kind": "sfx",
+    "file": "r_wow.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s5",
+     "heard"
+    ],
+    "kind": "txt",
+    "file": "Should Kitty Cat catch on? \ud83d\udc31",
+    "color": "#FFFFFF",
+    "size": 54,
+    "y": 1430,
+    "dur": 75,
+    "off": 0,
+    "flat": true
+   },
+   {
+    "at": [
+     "s5",
+     "heard"
+    ],
+    "kind": "png",
+    "file": "e_think.png",
+    "off": 0,
+    "y": 1300,
+    "size": 150
+   },
+   {
+    "at": [
+     "s5",
+     "heard"
+    ],
+    "kind": "sfx",
+    "file": "r_ding.mp3",
+    "v": 0.45,
+    "off": 0
+   }
+  ],
+  "vo": null,
+  "boxTop": 250,
+  "boxBottom": 1900,
+  "capY": 860,
+  "steady": true,
+  "whip": false,
+  "sfxSwap": {
+   "rizz.mp3": "jorho-swish.mp3",
+   "riser.mp3": "",
+   "shock.mp3": "",
+   "flash.mp3": "jorho-flash.mp3",
+   "pop.mp3": ""
+  }
  }
 }
