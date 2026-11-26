@@ -15,7 +15,7 @@ BOXT, BOXB = 250, 1900
 AR = 1080 / ((BOXB - BOXT) / 1080) / 1080          # visible src window aspect (w/h) inside the box = 0.6545
 EXTRA = {'51': [[28.20, 28.70, ' I'], [28.76, 28.94, ' remember'], [28.96, 29.20, ' the'], [29.24, 29.66, ' rudest'], [29.70, 30.04, ' awakening']]}
 FIX = {('01', 0.42): 'Skenes.', ('01', 1.18): 'Skenes,', ('01', 2.22): 'Skenes,', ('01', 53.41, 'Skeens'): 'Skenes', ('52', 19.14): 'Allen', ('03', 43.80): 'one',
-       ('03', 43.92): 'of', ('03', 45.40): 'one', ('03', 45.52): 'of', ('03', 50.96): 'One', ('03', 51.04): 'of', ('03', 51.76): 'One', ('03', 51.78): 'of', ('01', 63.45): '', ('01', 64.23): '', ('40', 46.91): '', ('40', 77.24): 'Ultra', ('40', 77.54): 'Ultra', ('40', 77.74): 'Violet?', ('40', 78.14): 'Ultra', ('40', 78.38): 'Violet.', ('40', 78.56): 'Ultra', ('40', 78.76): 'Violet'}
+       ('03', 43.92): 'of', ('03', 45.40): 'one', ('03', 45.52): 'of', ('03', 50.96): 'One', ('03', 51.04): 'of', ('03', 51.76): 'One', ('03', 51.78): 'of', ('01', 63.45): '', ('01', 64.23): '', ('40', 46.91): '', ('n69', 41.43): 'one', ('n69', 41.51): 'of', ('n69', 41.63): 'one', ('n69', 41.77): 'auto.', ('n69', 43.47): '', ('n69', 45.75): 'last', ('n69', 45.99): 'box.', ('n69', 47.15): 'teary-eyed.', ('n69', 47.67): '', ('n37', 54.14): 'Raj,', ('n37', 0.96, 'it.'): '', ('n37', 66.30): 'Joan', ('n37', 67.58): '', ('n37', 68.24): '', ('40', 77.24): 'Ultra', ('40', 77.54): 'Ultra', ('40', 77.74): 'Violet?', ('40', 78.14): 'Ultra', ('40', 78.38): 'Violet.', ('40', 78.56): 'Ultra', ('40', 78.76): 'Violet'}
 
 def crop(kind, c):
     """source px crop (w, h, x, y) with the box aspect; c = (cx, cy) card/subject centre"""
@@ -39,13 +39,14 @@ exec(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'plan_sb2_cli
 
 gen = json.load(open('src/edits.gen.json')); CFG = json.load(open('src/sb.cfg.json'))
 for eid, d in CL.items():
-    f = glob.glob(os.path.join(SRC, d['n'] + ' - *.mp4'))[0]
-    W = sorted([w for s in json.load(open(glob.glob(os.path.join(TX, d['n'] + ' - *.json'))[0])) for w in s['w']] + EXTRA.get(d['n'], []), key=lambda w: w[0])
+    SD, TD = (SRC.replace('src1', 'src2'), TX.rstrip('/') + '2') if d.get('nov5') else (SRC, TX)   # Nov 5 (Star Wars) stream folder
+    f = glob.glob(os.path.join(SD, d['n'] + ' - *.mp4'))[0]
+    W = sorted([w for s in json.load(open(glob.glob(os.path.join(TD, d['n'] + ' - *.json'))[0])) for w in s['w']] + EXTRA.get(d['n'], []), key=lambda w: w[0])
     scenes, t = [], 0.0
     for sid, a, b, kind, *c in d['scenes']:
         n = round((b - a) * 30); words = []
         for ws, we, tx in W:
-            tx = FIX.get((d['n'], round(ws, 2), tx.strip()), FIX.get((d['n'], round(ws, 2)), tx.strip()))
+            tx = FIX.get((d.get('fk', d['n']), round(ws, 2), tx.strip()), FIX.get((d.get('fk', d['n']), round(ws, 2)), tx.strip()))
             if a - 0.05 <= ws < b - 0.05 and tx.strip():
                 f0 = max(0, round((ws - a) * 30)); words.append({'word': tx.strip().strip(','), 'startFrame': f0, 'endFrame': min(n, max(f0 + 4, round((we - a) * 30) + 3))})
         for k in range(len(words) - 1): words[k]['endFrame'] = min(words[k]['endFrame'], words[k + 1]['startFrame'])   # caption leaves when the word ends (guideline)

@@ -19,4 +19,17 @@ CL = {
    fx=[(('s1', 'god'), 'good'), (('s2', 'Cody'), 'hit'), (('s3', 'way'), 'wow'), (('s3', 'huge'), 'cash'), (('s4', 'same'), 'huh'), (('s4', 'crazy'), 'ding'),
        (('s5', 'variation'), 'correct'), (('s5', 'variation'), 'q:' + Q)],
    blow=[('s1', 'god')]),
+
+ # Nov 5 Star Wars stream: last-pack Kylo Ren 1/1 Adam Driver auto (Emma ripping, "my hands are shaking… teary-eyed")
+ 'sbkylo': dict(n='69', fk='n69', nov5=True, sty='vp', music=GB, mv=0.20, card=(300, 720), emma=(520,), top="Emma Roberts ripped THIS in the last pack", hl={'THIS': '#FF2A2A'},
+   scenes=[('hook', 33.85, 37.85, 'wide'), ('h2', 37.85, 48.10, 'card'), ('s1', 14.25, 20.60, 'wide'), ('s2', 22.55, 26.60, 'people'), ('s3', 29.35, 33.80, 'cardm')],
+   fx=[(('hook', 'god'), 'good'), (('hook', 'Kylo'), 'wow'), (('h2', 'Kylo'), 'cash'), (('h2', 'one'), 'ding'), (('h2', 'way'), 'green'), (('h2', 'teary'), 'e:sob'),
+       (('h2', 'teary'), 'aww'), (('h2', 'last'), 'q:' + Q), (('s1', 'crazy'), 'suspense'), (('s2', 'silent'), 'awk'), (('s3', 'Come'), 'riser', 0)],
+   punch=[('hook', 'Kylo'), ('h2', 'Driver'), ('h2', 'one'), ('h2', 'teary'), ('s2', 'nervous')], blow=[('hook', 'god')], streaks=[('s3',)]),
+ # Nov 5: Disney vault Toy Story triple auto (Woody / Jessie / Stinky Pete)
+ 'sbtoy': dict(n='37', fk='n37', nov5=True, sty='vp', music=GB, mv=0.20, card=(300, 766), emma=(520,), top="Emma Roberts opened a Disney pack and got THIS", hl={'THIS': '#FF2A2A'},
+   scenes=[('hook', 56.55, 59.45, 'wide'), ('h2', 59.45, 64.85, 'card'), ('h3', 64.85, 67.50, 'card'), ('s0', 0.95, 4.25, 'wide'), ('s1', 49.95, 53.60, 'cardm'), ('s2', 53.60, 56.50, 'people')],
+   fx=[(('hook', 'triple'), 'good'), (('hook', 'God'), 'wow'), (('h2', 'Woody'), 'cash'), (('h2', 'Pete'), 'ding'), (('h3', 'Hanks'), 'e:heart'), (('h3', 'Hanks'), 'correct'),
+       (('h3', 'Grammer'), 'q:' + Q), (('s0', 'insane'), 'suspense'), (('s1', 'Stop'), 'huh'), (('s1', 'Stop'), 'red'), (('s2', 'friend'), 'riser', 0)],
+   punch=[('hook', 'triple'), ('h2', 'Woody'), ('h2', 'Pete'), ('h3', 'Hanks'), ('s1', 'Stop')], blow=[('hook', 'triple')], streaks=[('s1',)]),
 }

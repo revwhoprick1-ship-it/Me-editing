@@ -2674,5 +2674,558 @@
    "flash.mp3": "jorho-flash.mp3",
    "pop.mp3": ""
   }
+ },
+ "sbkylo": {
+  "top": "Emma Roberts ripped THIS in the last pack",
+  "hl": {
+   "THIS": "#FF2A2A"
+  },
+  "src": "sb_sbkylo.mp4",
+  "cta": "",
+  "ask": [],
+  "track": "none",
+  "calls": [],
+  "trackData": {},
+  "music": [
+   "r_goodbye",
+   0
+  ],
+  "musicVol": 0.2,
+  "tints": [
+   [
+    [
+     "h2",
+     "way"
+    ],
+    "G"
+   ]
+  ],
+  "rizz": [],
+  "punch": [
+   [
+    "hook",
+    "Kylo"
+   ],
+   [
+    "h2",
+    "Driver"
+   ],
+   [
+    "h2",
+    "one"
+   ],
+   [
+    "h2",
+    "teary"
+   ],
+   [
+    "s2",
+    "nervous"
+   ]
+  ],
+  "blowouts": [
+   [
+    "hook",
+    "god"
+   ]
+  ],
+  "blackFlash": [],
+  "streaks": [
+   [
+    "s3"
+   ]
+  ],
+  "intro": true,
+  "hardcut": true,
+  "cutSfx": "r_flash.mp3",
+  "capCycle": false,
+  "sat": 1.0,
+  "noFocus": true,
+  "noSkull": false,
+  "loop": true,
+  "progress": false,
+  "srcVol": 1,
+  "origAudio": false,
+  "extras": [
+   {
+    "at": [
+     "s1"
+    ],
+    "kind": "sfx",
+    "file": "r_swoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "s2"
+    ],
+    "kind": "sfx",
+    "file": "r_swoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "s3"
+    ],
+    "kind": "sfx",
+    "file": "r_swoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "hook",
+     "god"
+    ],
+    "kind": "ov",
+    "file": "r_gflash.mp4",
+    "dur": 34,
+    "op": 0.6,
+    "off": 0
+   },
+   {
+    "at": [
+     "hook",
+     "god"
+    ],
+    "kind": "sfx",
+    "file": "r_money.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "hook",
+     "god"
+    ],
+    "kind": "sfx",
+    "file": "r_ding.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "hook",
+     "Kylo"
+    ],
+    "kind": "sfx",
+    "file": "r_wow.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "h2",
+     "Kylo"
+    ],
+    "kind": "ov",
+    "file": "r_cash.mp4",
+    "dur": 54,
+    "op": 0.9,
+    "off": 0
+   },
+   {
+    "at": [
+     "h2",
+     "Kylo"
+    ],
+    "kind": "sfx",
+    "file": "r_money.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "h2",
+     "one"
+    ],
+    "kind": "sfx",
+    "file": "r_ding.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "h2",
+     "teary"
+    ],
+    "kind": "png",
+    "file": "e_sob.png",
+    "off": 0,
+    "y": 760,
+    "size": 300
+   },
+   {
+    "at": [
+     "h2",
+     "teary"
+    ],
+    "kind": "sfx",
+    "file": "r_aww.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "h2",
+     "last"
+    ],
+    "kind": "txt",
+    "file": "Keep it or sell it? \ud83e\udd14",
+    "color": "#FFFFFF",
+    "size": 54,
+    "y": 1430,
+    "dur": 75,
+    "off": 0,
+    "flat": true
+   },
+   {
+    "at": [
+     "h2",
+     "last"
+    ],
+    "kind": "png",
+    "file": "e_think.png",
+    "off": 0,
+    "y": 1300,
+    "size": 150
+   },
+   {
+    "at": [
+     "h2",
+     "last"
+    ],
+    "kind": "sfx",
+    "file": "r_ding.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "s1",
+     "crazy"
+    ],
+    "kind": "sfx",
+    "file": "r_suspense.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s2",
+     "silent"
+    ],
+    "kind": "sfx",
+    "file": "r_awk.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s3",
+     "Come"
+    ],
+    "kind": "sfx",
+    "file": "r_riser.mp3",
+    "v": 0.45,
+    "off": -45
+   }
+  ],
+  "vo": null,
+  "boxTop": 250,
+  "boxBottom": 1900,
+  "capY": 860,
+  "steady": false,
+  "whip": false,
+  "sfxSwap": {
+   "rizz.mp3": "r_rizz.mp3",
+   "riser.mp3": "",
+   "shock.mp3": "r_shock.mp3",
+   "flash.mp3": "r_flash.mp3",
+   "pop.mp3": "r_pop.mp3"
+  }
+ },
+ "sbtoy": {
+  "top": "Emma Roberts opened a Disney pack and got THIS",
+  "hl": {
+   "THIS": "#FF2A2A"
+  },
+  "src": "sb_sbtoy.mp4",
+  "cta": "",
+  "ask": [],
+  "track": "none",
+  "calls": [],
+  "trackData": {},
+  "music": [
+   "r_goodbye",
+   0
+  ],
+  "musicVol": 0.2,
+  "tints": [
+   [
+    [
+     "s1",
+     "Stop"
+    ],
+    "R"
+   ]
+  ],
+  "rizz": [],
+  "punch": [
+   [
+    "hook",
+    "triple"
+   ],
+   [
+    "h2",
+    "Woody"
+   ],
+   [
+    "h2",
+    "Pete"
+   ],
+   [
+    "h3",
+    "Hanks"
+   ],
+   [
+    "s1",
+    "Stop"
+   ]
+  ],
+  "blowouts": [
+   [
+    "hook",
+    "triple"
+   ]
+  ],
+  "blackFlash": [],
+  "streaks": [
+   [
+    "s1"
+   ]
+  ],
+  "intro": true,
+  "hardcut": true,
+  "cutSfx": "r_flash.mp3",
+  "capCycle": false,
+  "sat": 1.0,
+  "noFocus": true,
+  "noSkull": false,
+  "loop": true,
+  "progress": false,
+  "srcVol": 1,
+  "origAudio": false,
+  "extras": [
+   {
+    "at": [
+     "h3"
+    ],
+    "kind": "sfx",
+    "file": "r_swoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "s0"
+    ],
+    "kind": "sfx",
+    "file": "r_swoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "s1"
+    ],
+    "kind": "sfx",
+    "file": "r_swoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "s2"
+    ],
+    "kind": "sfx",
+    "file": "r_swoosh.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "hook",
+     "triple"
+    ],
+    "kind": "ov",
+    "file": "r_gflash.mp4",
+    "dur": 34,
+    "op": 0.6,
+    "off": 0
+   },
+   {
+    "at": [
+     "hook",
+     "triple"
+    ],
+    "kind": "sfx",
+    "file": "r_money.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "hook",
+     "triple"
+    ],
+    "kind": "sfx",
+    "file": "r_ding.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "hook",
+     "God"
+    ],
+    "kind": "sfx",
+    "file": "r_wow.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "h2",
+     "Woody"
+    ],
+    "kind": "ov",
+    "file": "r_cash.mp4",
+    "dur": 54,
+    "op": 0.9,
+    "off": 0
+   },
+   {
+    "at": [
+     "h2",
+     "Woody"
+    ],
+    "kind": "sfx",
+    "file": "r_money.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "h2",
+     "Pete"
+    ],
+    "kind": "sfx",
+    "file": "r_ding.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "h3",
+     "Hanks"
+    ],
+    "kind": "png",
+    "file": "e_heart.png",
+    "off": 0,
+    "y": 760,
+    "size": 300
+   },
+   {
+    "at": [
+     "h3",
+     "Hanks"
+    ],
+    "kind": "sfx",
+    "file": "r_correct.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "h3",
+     "Grammer"
+    ],
+    "kind": "txt",
+    "file": "Keep it or sell it? \ud83e\udd14",
+    "color": "#FFFFFF",
+    "size": 54,
+    "y": 1430,
+    "dur": 75,
+    "off": 0,
+    "flat": true
+   },
+   {
+    "at": [
+     "h3",
+     "Grammer"
+    ],
+    "kind": "png",
+    "file": "e_think.png",
+    "off": 0,
+    "y": 1300,
+    "size": 150
+   },
+   {
+    "at": [
+     "h3",
+     "Grammer"
+    ],
+    "kind": "sfx",
+    "file": "r_ding.mp3",
+    "v": 0.45,
+    "off": 0
+   },
+   {
+    "at": [
+     "s0",
+     "insane"
+    ],
+    "kind": "sfx",
+    "file": "r_suspense.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s1",
+     "Stop"
+    ],
+    "kind": "sfx",
+    "file": "r_huh.mp3",
+    "v": 0.5,
+    "off": 0
+   },
+   {
+    "at": [
+     "s2",
+     "friend"
+    ],
+    "kind": "sfx",
+    "file": "r_riser.mp3",
+    "v": 0.45,
+    "off": -45
+   }
+  ],
+  "vo": null,
+  "boxTop": 250,
+  "boxBottom": 1900,
+  "capY": 860,
+  "steady": false,
+  "whip": false,
+  "sfxSwap": {
+   "rizz.mp3": "r_rizz.mp3",
+   "riser.mp3": "",
+   "shock.mp3": "r_shock.mp3",
+   "flash.mp3": "r_flash.mp3",
+   "pop.mp3": "r_pop.mp3"
+  }
  }
 }
