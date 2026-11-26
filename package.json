@@ -1,45 +1,33 @@
 {
   "name": "me-editing",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Video editing system: Remotion (React) for compositions + Python/ffmpeg tools for transcripts, cuts and export.",
   "scripts": {
-    "transcribe": "node scripts/transcribe.mjs",
     "studio": "remotion studio src/index.ts",
-    "render": "remotion render src/index.ts ShortEdit out/raw.mp4 && npm run limit",
-    "limit": "ffmpeg -y -v error -i out/raw.mp4 -c:v copy -af alimiter=limit=0.89:level=disabled -c:a aac -b:a 192k out/edited.mp4",
-    "render:card": "remotion render src/index.ts CardPull out/card_raw.mp4 && ffmpeg -y -v error -i out/card_raw.mp4 -c:v copy -af alimiter=limit=0.89:level=disabled -c:a aac -b:a 192k out/flagg_edit.mp4"
+    "render": "remotion render src/index.ts",
+    "still": "remotion still src/index.ts",
+    "typecheck": "tsc --noEmit"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/revwhoprick1-ship-it/Me-editing.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/revwhoprick1-ship-it/Me-editing/issues"
-  },
-  "homepage": "https://github.com/revwhoprick1-ship-it/Me-editing#readme",
   "dependencies": {
     "@react-three/drei": "9.122.0",
     "@react-three/fiber": "8.18.0",
-    "@react-three/postprocessing": "^2.16.6",
-    "@remotion/captions": "^4.0.538",
-    "@remotion/cli": "^4.0.538",
-    "@remotion/fonts": "^4.0.538",
-    "@remotion/install-whisper-cpp": "^4.0.538",
-    "@remotion/media-utils": "^4.0.538",
+    "@react-three/postprocessing": "2.16.6",
+    "@remotion/captions": "4.0.538",
+    "@remotion/cli": "4.0.538",
+    "@remotion/fonts": "4.0.538",
+    "@remotion/install-whisper-cpp": "4.0.538",
+    "@remotion/media-utils": "4.0.538",
     "@remotion/three": "4.0.538",
-    "@types/three": "0.169.0",
-    "postprocessing": "^6.39.6",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "remotion": "^4.0.538",
+    "postprocessing": "6.39.6",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.538",
     "three": "0.169.0"
   },
   "devDependencies": {
-    "@types/react": "^19.3.0",
-    "typescript": "^7.0.2"
+    "@types/react": "19.3.0",
+    "@types/three": "0.169.0",
+    "typescript": "7.0.2"
   }
 }

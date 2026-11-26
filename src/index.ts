@@ -1,3 +1,4 @@
 import {registerRoot} from 'remotion';
-import {RemotionRoot} from './Root';
-registerRoot(RemotionRoot);
+import {Root} from './Root';
+
+registerRoot(Root);
