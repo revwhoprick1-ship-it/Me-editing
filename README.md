@@ -14,6 +14,8 @@ Clean video-editing setup: **Remotion** (React) for building edits, **ffmpeg + P
   - `peaks.py`: loudest moments, for finding reactions.
   - `export.sh`: final 1080x1920 H.264 / AAC encode at -14 LUFS.
   - `get_resources.sh`: re-download the resources folder.
+  - `sheet.py`, `timeline.py`, `vismetrics.py`, `audonsets.py`, `shotcheck.py`: reference-video analysis (contact sheets, frame+spectrogram timelines, zoom/flash metrics, audio onsets, punch-in detection).
+- `analysis/`: editing-style breakdown of the reference Shorts and the master style guide.
 - `footage/` and `out/` are local only (gitignored).
 
 ## Commands
