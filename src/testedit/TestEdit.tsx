@@ -12,20 +12,38 @@ const C = {red: '#FF3B3B', green: '#3DFF6E', cyan: '#3DE7FF', yellow: '#FFE53D',
 type Col = keyof typeof C;
 const VID = staticFile('test/selects.mp4');
 const BOX_TOP = 240, BOX_H = 1440; // 3:4 picture box inside 9:16, blurred self-fill around it
-const shot = (id: string) => edl.shots.find((s) => s.id === id)!;
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
 
-// ---------- picture ----------
-const zoomRamp: Record<string, [number, number]> = {e6: [1.0, 1.08], m4: [1.0, 1.14], c2: [1.2, 1.3], f1: [1.0, 1.06]};
-const Shot: React.FC<{s: (typeof edl.shots)[number]}> = ({s}) => {
+// ---------- picture: tracked virtual camera ----------
+// edl.json (from tools/testedit/track.py) holds per-frame camera centre `cam` [x, y] in 1280x720 source px,
+// a fixed zoom `z` per shot, and smoothed subject tracks `track[name]` = [cx, cy, w, h] per frame.
+type ShotT = (typeof edl.shots)[number] & {cam: number[][]; track: Record<string, number[][]>};
+const SHOTS = edl.shots as ShotT[];
+const FREEZE_AT: Record<string, number> = {hf: 21};
+const zoomRamp: Record<string, [number, number]> = {e6: [1.0, 1.08], m4: [1.0, 1.14], c2: [1.0, 1.08], f1: [1.0, 1.06]}; // multipliers
+const localFrame = (s: ShotT, f: number) => FREEZE_AT[s.id] ?? Math.max(0, Math.min(s.dur - 1, f));
+// camera transform for shot s at local frame f: output px per source px (k) and the picture offset inside the box
+const camAt = (s: ShotT, f: number) => {
+  const lf = localFrame(s, f);
+  const r = zoomRamp[s.id];
+  const z = s.z * (r ? interpolate(f, [0, s.dur], r, {...clamp, easing: Easing.inOut(Easing.cubic)}) : 1);
+  const k = 2 * z, w = 1280 * k, h = 720 * k;
+  const [cx, cy] = s.cam[lf];
+  const left = w >= 1080 ? Math.min(0, Math.max(1080 - w, 540 - cx * k)) : (1080 - w) / 2;
+  const top = h >= BOX_H ? Math.min(0, Math.max(BOX_H - h, BOX_H / 2 - cy * k)) : (BOX_H - h) / 2;
+  return {k, w, h, left, top};
+};
+// where a tracked subject is on the 1080x1920 output at local frame f
+const subjectAt = (s: ShotT, name: string, f: number) => {
+  const c = camAt(s, f); const [x, y, w, h] = s.track[name][localFrame(s, f)];
+  return {x: c.left + x * c.k, y: BOX_TOP + c.top + y * c.k, w: w * c.k, h: h * c.k};
+};
+const Shot: React.FC<{s: ShotT}> = ({s}) => {
   const f = useCurrentFrame();
-  const ramp = zoomRamp[s.id];
-  const z = ramp ? interpolate(f, [0, s.dur], ramp, {...clamp, easing: Easing.inOut(Easing.cubic)}) : s.z;
-  const w = 2560 * z, h = 1440 * z;
-  const left = w >= 1080 ? Math.min(0, Math.max(1080 - w, 540 - s.fx * w)) : (1080 - w) / 2;
-  const isFreeze = s.id === 'hf';
+  const c = camAt(s, f);
+  const isFreeze = s.id in FREEZE_AT;
   const video = <OffthreadVideo src={VID} trimBefore={s.sel} muted style={{width: '100%', height: '100%'}} />;
-  const body = isFreeze ? <Freeze frame={21}>{video}</Freeze> : video;
+  const body = isFreeze ? <Freeze frame={FREEZE_AT[s.id]}>{video}</Freeze> : video;
   return (
     <AbsoluteFill>
       {/* blurred self-fill */}
@@ -33,7 +51,7 @@ const Shot: React.FC<{s: (typeof edl.shots)[number]}> = ({s}) => {
         <div style={{position: 'absolute', left: (1080 - 3413) / 2, top: 0, width: 3413, height: 1920}}>{body}</div>
       </AbsoluteFill>
       <div style={{position: 'absolute', top: BOX_TOP, left: 0, width: 1080, height: BOX_H, overflow: 'hidden'}}>
-        <div style={{position: 'absolute', left, top: (BOX_H - h) / 2, width: w, height: h, filter: isFreeze ? 'brightness(0.6)' : undefined, transform: isFreeze ? 'scale(1.05)' : undefined}}>{body}</div>
+        <div style={{position: 'absolute', left: c.left, top: c.top, width: c.w, height: c.h, filter: isFreeze ? 'brightness(0.6)' : undefined}}>{body}</div>
       </div>
     </AbsoluteFill>
   );
@@ -112,28 +130,40 @@ const WhiteFlash: React.FC = () => {
   const f = useCurrentFrame(); // 4 up, 1 hold, 4 down; centred on the cut at local frame 4
   return <AbsoluteFill style={{background: '#fff', opacity: interpolate(f, [0, 4, 5, 9], [0, 1, 1, 0], clamp)}} />;
 };
-const Pointer: React.FC<{x: number; y: number}> = ({x, y}) => {
-  const f = useCurrentFrame();
-  const bob = Math.sin(f * 0.85) * 10; const s = interpolate(f, [0, 3, 5], [0.4, 1.12, 1], clamp);
+// Tracked overlays: they sit inside a <Sequence> that starts `delay` frames into shot `shot`,
+// and re-read the smoothed subject track + camera every frame, so they ride with the character.
+type Tracked = {shot: string; subj: string; delay?: number};
+const useSubject = ({shot, subj, delay = 0}: Tracked) => {
+  const f = useCurrentFrame(); const s = SHOTS.find((x) => x.id === shot)!;
+  return {f, p: subjectAt(s, subj, f + delay)};
+};
+const Pointer: React.FC<Tracked & {side?: 'top' | 'right' | 'left'; at?: number}> = ({side = 'top', at = 0.5, ...t}) => {
+  const {f, p} = useSubject(t);
+  const bob = Math.sin(f * 0.85) * 10; const sc = interpolate(f, [0, 3, 5], [0.4, 1.12, 1], clamp);
+  const S = 150, gap = 14;
+  // tip position + rotation (arrow artwork points down)
+  const [tx, ty, rot] = side === 'top' ? [p.x, p.y - p.h / 2 - gap - bob, 0]
+    : side === 'right' ? [p.x + p.w / 2 + gap + bob, p.y - p.h / 2 + p.h * at, 90] : [p.x - p.w / 2 - gap - bob, p.y - p.h / 2 + p.h * at, -90];
   return (
-    <svg width={170} height={170} viewBox="0 0 100 100" style={{position: 'absolute', left: x - 85, top: y - 170 + bob, transform: `scale(${s})`, filter: 'drop-shadow(0 4px 6px rgba(0,0,0,.6))'}}>
+    <svg width={S} height={S} viewBox="0 0 100 100" style={{position: 'absolute', left: tx - S / 2, top: ty - S, transformOrigin: '50% 100%', transform: `rotate(${rot}deg) scale(${sc})`, filter: 'drop-shadow(0 4px 6px rgba(0,0,0,.6))'}}>
       <path d="M50 96 L14 50 L36 50 L36 6 L64 6 L64 50 L86 50 Z" fill={C.red} stroke="#fff" strokeWidth={5} strokeLinejoin="round" />
     </svg>
   );
 };
-const Circle: React.FC<{x: number; y: number; r: number}> = ({x, y, r}) => {
-  const f = useCurrentFrame(); const len = 2 * Math.PI * r;
-  const p = interpolate(f, [0, 6], [0, 1], clamp);
+const Circle: React.FC<Tracked> = (t) => {
+  const {f, p} = useSubject(t);
+  const rx = p.w * 0.72, ry = p.h * 0.72; const len = Math.PI * (rx + ry);
+  const pr = interpolate(f, [0, 6], [0, 1], clamp);
   return (
     <svg width={1080} height={1920} style={{position: 'absolute', left: 0, top: 0}}>
-      <ellipse cx={x} cy={y} rx={r} ry={r * 0.9} fill="none" stroke={C.red} strokeWidth={9} strokeLinecap="round" strokeDasharray={len} strokeDashoffset={len * (1 - p)} transform={`rotate(-80 ${x} ${y})`} style={{filter: 'drop-shadow(0 0 6px rgba(0,0,0,.7))'}} />
+      <ellipse cx={p.x} cy={p.y} rx={rx} ry={ry} fill="none" stroke={C.red} strokeWidth={9} strokeLinecap="round" strokeDasharray={len} strokeDashoffset={len * (1 - pr)} transform={`rotate(-80 ${p.x} ${p.y})`} style={{filter: 'drop-shadow(0 0 6px rgba(0,0,0,.7))'}} />
     </svg>
   );
 };
-const Spotlight: React.FC<{x: number; y: number; dur: number}> = ({x, y, dur}) => {
-  const f = useCurrentFrame();
+const Spotlight: React.FC<Tracked & {dur: number}> = ({dur, ...t}) => {
+  const {f, p} = useSubject(t);
   const a = interpolate(f, [0, 3, dur - 3, dur], [0, 1, 1, 0], clamp);
-  return <AbsoluteFill style={{opacity: a, background: `radial-gradient(ellipse 300px 340px at ${x}px ${y}px, rgba(0,0,0,0) 55%, rgba(0,0,0,0.62) 100%)`}} />;
+  return <AbsoluteFill style={{opacity: a, background: `radial-gradient(ellipse ${p.w * 1.1}px ${p.h * 1.1}px at ${p.x}px ${p.y}px, rgba(0,0,0,0) 55%, rgba(0,0,0,0.65) 100%)`}} />;
 };
 const Sticker: React.FC<{src: string; x: number; y: number; size: number; dur: number}> = ({src, x, y, size, dur}) => {
   const f = useCurrentFrame();
@@ -156,6 +186,9 @@ const SFX: Snd[] = [
   {at: 38, src: 'sfx/rev-whoosh.mp3', vol: 0.8},
   {at: 75, src: 'sfx/meme-impact.mp3', vol: 0.6},
   {at: 159, src: 'sfx/vine-boom.mp3', vol: 0.45},
+  {at: 162, src: 'sfx/jorho-pop.mp3', vol: 0.5},
+  {at: 167, src: 'sfx/jorho-pop.mp3', vol: 0.5},
+  {at: 172, src: 'sfx/jorho-pop.mp3', vol: 0.5},
   {at: 250, src: 'sfx/meme-bonk.mp3', vol: 0.8},
   {at: 303, src: 'sfx/fast-whoosh.mp3', vol: 0.45},
   {at: 330, src: 'sfx/meme-impact.mp3', vol: 0.55},
@@ -188,23 +221,45 @@ const MUSIC: Snd[] = [
   {at: 820, src: URA, vol: 0.32, from: uraB + 385, dur: 196},                  // payoff: filter opens
 ];
 
+// Caption placement: test the caption band against every tracked subject's head (top 45% of its box,
+// or the whole box for face/eyes tracks) at the caption's first, middle and last frame; use the first clear slot.
+const SLOTS = [1150, 1480, 1320, 880];
+const placeCaption = (c: (typeof CAPS)[number]) => {
+  const size = c.size ?? 72; const bandH = c.lines.length * size * 1.12;
+  const pref = c.y ?? 1150; if (pref < 700) return pref; // hook titles keep their spot
+  const heads: {x0: number; x1: number; y0: number; y1: number}[] = [];
+  for (const g of [c.from, Math.floor((c.from + c.to) / 2), c.to - 1]) {
+    const s = SHOTS.find((x) => g >= x.from && g < x.from + x.dur); if (!s) continue;
+    for (const name of Object.keys(s.track)) {
+      const p = subjectAt(s, name, g - s.from); const full = /face|eyes/.test(name);
+      heads.push({x0: p.x - p.w / 2, x1: p.x + p.w / 2, y0: p.y - p.h / 2, y1: p.y - p.h / 2 + p.h * (full ? 1 : 0.45)});
+    }
+  }
+  const clear = (y: number) => heads.every((h) => h.x1 < 140 || h.x0 > 940 || h.y1 < y - 10 || h.y0 > y + bandH + 10);
+  return [pref, ...SLOTS].find(clear) ?? pref;
+};
+const CAP_Y = CAPS.map(placeCaption);
+
 export const TEST_EDIT_FRAMES = edl.total;
 export const TestEdit: React.FC = () => {
   const f = useCurrentFrame();
   const [sx, sy] = shakeAt(f);
   const gray = interpolate(f, [369, 372, 410, 435], [0, 1, 1, 0], clamp);
-  const c5 = shot('c5');
+  const at = (id: string) => SHOTS.find((x) => x.id === id)!;
+  const c5 = at('c5'), s3 = at('s3'), f2 = at('f2');
   return (
     <AbsoluteFill style={{backgroundColor: '#000'}}>
       <AbsoluteFill style={{transform: `translate(${sx}px, ${sy}px) scale(${sx || sy ? 1.03 : 1})`, filter: gray ? `grayscale(${gray})` : undefined}}>
-        {edl.shots.map((s) => <Sequence key={s.id} from={s.from} durationInFrames={s.dur} layout="none"><Shot s={s} /></Sequence>)}
-        <Sequence from={c5.from} durationInFrames={c5.dur}><Spotlight x={590} y={470} dur={c5.dur} /></Sequence>
+        {SHOTS.map((s) => <Sequence key={s.id} from={s.from} durationInFrames={s.dur} layout="none"><Shot s={s} /></Sequence>)}
+        <Sequence from={c5.from} durationInFrames={c5.dur}><Spotlight shot="c5" subj="frank" dur={c5.dur} /></Sequence>
       </AbsoluteFill>
       {/* graphics */}
-      <Sequence from={0} durationInFrames={33}><Pointer x={540} y={420} /></Sequence>
-      <Sequence from={c5.from + 6} durationInFrames={c5.dur - 6}><Circle x={590} y={470} r={150} /></Sequence>
+      <Sequence from={0} durationInFrames={33}><Pointer shot="h1" subj="face" side="right" /></Sequence>
+      {(['frank', 'rinky', 'chin'] as const).map((n, i) => <Sequence key={n} from={s3.from + 3 + i * 5} durationInFrames={s3.dur - 3 - i * 5}><Pointer shot="s3" subj={n} delay={3 + i * 5} /></Sequence>)}
+      <Sequence from={c5.from + 6} durationInFrames={c5.dur - 6}><Circle shot="c5" subj="frank" delay={6} /></Sequence>
+      <Sequence from={f2.from + 8} durationInFrames={f2.dur - 8}><Pointer shot="f2" subj="frank" delay={8} side="left" at={0.3} /></Sequence>
       <Sequence from={910} durationInFrames={54}><Sticker src="emoji/2764-fe0f-200d-1fa79.png" x={540} y={760} size={330} dur={54} /></Sequence>
-      {CAPS.map((c, i) => <Sequence key={i} from={c.from} durationInFrames={c.to - c.from}><Caption lines={c.lines} y={c.y ?? 1150} size={c.size} italic={c.italic} mode={c.mode} dur={c.to - c.from} /></Sequence>)}
+      {CAPS.map((c, i) => <Sequence key={i} from={c.from} durationInFrames={c.to - c.from}><Caption lines={c.lines} y={CAP_Y[i]} size={c.size} italic={c.italic} mode={c.mode} dur={c.to - c.from} /></Sequence>)}
       {/* flashes and washes */}
       <Sequence from={71} durationInFrames={10}><WhiteFlash /></Sequence>
       <Sequence from={330} durationInFrames={20}><Flash color={C.red} peak={0.55} decay={18} /></Sequence>
