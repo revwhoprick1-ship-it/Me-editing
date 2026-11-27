@@ -69,6 +69,13 @@ Rules: text on screen ≤ 0.5 s in; subject visible on frame 0; problem stated b
 - Emoji/heart sticker pop on the payoff (70 → 108 → 100% scale, dissolve 0.6 s).
 - Meme stickers only for comedy formats, in a corner, 1–3 s.
 
+### Framing and tracking rules (always)
+- **Frame every shot on its characters.** A virtual camera follows the subjects. Zoom is fixed per shot so it never "breathes", and is set to fit every character that matters with ~18% margin. Keep headroom when zoomed in. The picture never shows an empty edge.
+- **Camera motion must be smooth:** zero-phase smoothing (σ ≈ 8 frames) plus a speed limit, so there's no jitter and no whip.
+- **Anything that points at a character must follow it:** arrows, circles, spotlights and labels read the same smoothed track every frame (σ ≈ 3 frames). They are never placed at fixed coordinates.
+- **Captions never cover a face.** Each caption tries slots in order (55% → 77% → 69% → 46% of the height) and takes the first one that clears every tracked head over its whole duration.
+- Implementation: `tools/testedit/track.py` (OpenCV ViT tracker, forward + backward from a seed box) → `edl.json` → `camAt()` / `subjectAt()` in `src/testedit/TestEdit.tsx`.
+
 ## 8. Pacing formula
 - **Something new on screen at least every 1.0 s:** a cut, punch-in, caption swap, sticker or wash.
 - **Average shot 1.3–2.5 s.** Use the shorter end for narrated/silent stories, the longer for dialogue (let the line land).
