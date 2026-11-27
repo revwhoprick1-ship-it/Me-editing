@@ -8,3 +8,4 @@ whisper.cpp
 .DS_Store
 public/test/
 public/lj/
+__pycache__/
