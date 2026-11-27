@@ -167,7 +167,7 @@ def captions(c, words, hook_frames):
         if k + 1 < len(chunks): f1 = min(f1, round(chunks[k + 1][0][0] * FPS))
         if out and out[-1]['f1'] > f0: out[-1]['f1'] = f0
         out.append(dict(f0=f0, f1=max(f1, f0 + 1), words=ws))
-    return out
+    return [o for o in out if o['f1'] > o['f0']]
 
 def build(c):
     os.makedirs('public/lj', exist_ok=True); os.makedirs('src/lj', exist_ok=True)
