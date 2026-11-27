@@ -7,3 +7,4 @@ whisper.cpp
 *.log
 .DS_Store
 public/test/
+public/lj/
