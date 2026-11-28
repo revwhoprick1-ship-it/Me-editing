@@ -19,8 +19,9 @@ type Cap = {f0: number; f1: number; words: {t: string; f: number; col: string | 
 export type ClipData = {
   id: string; frames: number; hook: number; title: string[][]; shots: Shot[]; captions: Cap[];
   actions: {f: number; n: number; text: string}[]; washes: {f: number; color: string}[]; punches: {f: number; scale: number}[]; shakes: number[]; tension: number[][];
+  music: {src: string; muffled: string; start: number; vol: number; drop_src?: number; drop_f?: number; drop_mul?: number};
 };
-export const CLIPS: Record<string, ClipData> = {c1, c2, c3, c4, c5} as unknown as Record<string, ClipData>;
+export const CLIPS: Record<string, ClipData> = Object.fromEntries(([c1, c2, c3, c4, c5] as unknown as ClipData[]).map((c) => [c.id, c]));
 
 export const FZ = 27; // freeze-frame length (0.9 s)
 export const outFrames = (d: ClipData) => d.frames + FZ;
@@ -28,7 +29,6 @@ const o = (d: ClipData, v: number) => (v < d.hook ? v : v + FZ); // video frame 
 const C: Record<string, string> = {red: '#FF3B3B', green: '#3DFF6E', cyan: '#3DE7FF', yellow: '#FFE53D', magenta: '#FF4FD8', white: '#FFFFFF'};
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
 const W = 1080, H = 1920;
-const MUSIC = 'music/Investigations.mp3', MUSIC_M = 'lj/investigations-muffled.mp3';
 
 const shotAtV = (d: ClipData, v: number) => d.shots.find((s) => v >= s.f0 && v < s.f0 + s.n) ?? d.shots[d.shots.length - 1];
 const faceAtV = (d: ClipData, v: number) => { const s = shotAtV(d, v); return s.face ? s.face[Math.min(s.n - 1, Math.max(0, v - s.f0))] : null; };
@@ -184,6 +184,8 @@ export const LJClip: React.FC<{id: string}> = ({id}) => {
   for (const v of d.shakes) { const a = o(d, v); if (g >= a && g < a + 12) { const k = 10 * (1 - (g - a) / 12); sx = Math.sin(g * 2.7) * k; sy = Math.cos(g * 3.9) * k; } }
   // music bed: open / muffled intervals in output frames
   const muffled: number[][] = [[d.hook, d.hook + FZ], ...d.tension.map(([a, b]) => [o(d, a), o(d, b)])].sort((x, y) => x[0] - y[0]);
+  const dropOut = d.music.drop_f !== undefined ? o(d, d.music.drop_f) : null;
+  const musicStart = Math.max(0, Math.round(30 * (dropOut !== null && d.music.drop_src !== undefined ? d.music.drop_src - dropOut / 30 : d.music.start)));
   const bed: {a: number; b: number; m: boolean}[] = []; let cur = 0;
   for (const [a, b] of muffled) { if (a > cur) bed.push({a: cur, b: a, m: false}); bed.push({a: Math.max(a, cur), b, m: true}); cur = Math.max(cur, b); }
   if (cur < N) bed.push({a: cur, b: N, m: false});
@@ -206,10 +208,15 @@ export const LJClip: React.FC<{id: string}> = ({id}) => {
       {/* dialogue: hook part, silence on the freeze, main part */}
       <Sequence from={0} durationInFrames={d.hook}><Audio src={src} /></Sequence>
       <Sequence from={d.hook + FZ}><Audio src={src} trimBefore={d.hook} /></Sequence>
-      {/* music bed (Investigations, Kevin MacLeod, CC-BY) under dialogue; muffled on freeze + tension; lifts on the last 1.5 s */}
+      {/* music bed (song from EDITING RESOURCES) under dialogue; muffled on freeze + tension; lifts on the last 1.5 s.
+          If the song has a drop, it is lined up with drop_f and turned down after it so dialogue stays on top. */}
       {bed.map((s, i) => (
         <Sequence key={`b${i}`} from={s.a} durationInFrames={s.b - s.a}>
-          <Audio src={staticFile(s.m ? MUSIC_M : MUSIC)} trimBefore={s.a} volume={(f) => (s.m ? 0.22 : s.a + f >= N - 45 ? 0.3 : 0.12)} />
+          <Audio src={staticFile(s.m ? d.music.muffled : d.music.src)} trimBefore={musicStart + s.a} volume={(f) => {
+            const g2 = s.a + f; let v = d.music.vol * (s.m ? 1.8 : g2 >= N - 45 ? 2.5 : 1);
+            if (dropOut !== null && g2 >= dropOut) v *= d.music.drop_mul ?? 1;
+            return v;
+          }} />
         </Sequence>
       ))}
       {/* sfx */}

@@ -1,7 +1,8 @@
 """Love & Justice campaign clips: cut, analyse and lay out 5 vertical clips for Remotion (src/lj/LJClip.tsx).
-usage: python3 tools/lj/build.py [clip_id ...]
+usage: python3 tools/lj/build.py [--ep=tools/lj/ep6.py] [clip_id ...]
 needs: footage/lj/ep.mp4, footage/lj/ep.words.json (tools/transcribe.py), models/yunet.onnx
 
+Episode config (source, transcript, clips, music) lives in tools/lj/ep6.py.
 Per clip: flash-forward hook + main scene -> public/lj/<id>.mp4 (30 fps, 1080p, original audio)
 Per shot the layout is chosen from the faces actually on screen:
   split : the show's own side-by-side split screen (gold divider) -> stacked top/bottom, each panel follows its face
@@ -12,46 +13,11 @@ import json, os, re, subprocess, sys
 import cv2, numpy as np
 
 FPS = 30
-SRC = 'footage/lj/ep.mp4'
-# Style per analysis/06_master_style_guide.md. All times are SOURCE seconds.
-#   title   : hook title (typewriter on the freeze frame), [text, colour]
-#   actions : *ACTION* captions (cyan italic)            (t, seconds, text)
-#   washes  : colour wash + ding on reaction beats (>=5 s apart)   (t, colour)
-#   punches : eased zoom ramp on a key line, held to the end of the shot   (t, scale)
-#   shakes  : camera shake on the biggest hits           t
-#   tension : music bed low-passed (muffled) between a and b, opens at b   (a, b)
-CLIPS = [
-    dict(id='c1', hook=(1046.25, 1048.95), main=(1022.45, 1061.30),
-         title=[['*HIS PHONE RANG'], ['MID-VERDICT*', 'red']],
-         actions=[(1029.0, 1.6, '*PHONE RINGING*'), (1034.4, 1.9, '*JUDGE TAKES HIS PHONE*'), (1049.4, 1.7, '*FACEPALM*')],
-         washes=[(1038.78, 'yellow'), (1046.36, 'red'), (1053.86, 'yellow'), (1058.40, 'green')],
-         punches=[(1038.78, 1.12), (1046.36, 1.15), (1056.40, 1.12), (1059.30, 1.10)], shakes=[1046.36], tension=[(1029.2, 1046.3)],
-         red=['SETTINGS', 'BABY', 'KNEW'], green=['VERDICT', 'JURY', 'RIGHT']),
-    dict(id='c2', hook=(1094.40, 1097.90), main=(1072.50, 1111.10),
-         title=[['*SHE'], ['SNAPPED', 'red'], ['IN COURT*']],
-         actions=[(1074.3, 1.6, '*LUNGES AT HIM*'), (1077.2, 1.7, '*BERT HOLDS HER BACK*'), (1100.4, 1.6, '*JURY LOSING IT*')],
-         washes=[(1075.60, 'red'), (1082.85, 'yellow'), (1094.50, 'red'), (1103.74, 'magenta')],
-         punches=[(1082.88, 1.12), (1094.50, 1.15), (1103.74, 1.15)], shakes=[1075.60, 1094.50], tension=[(1084.5, 1094.45)],
-         red=['HATE', 'AFFAIR', 'COWORKER', "BROTHER'S", 'BIGGER'], green=[]),
-    dict(id='c3', hook=(671.40, 674.10), main=(655.00, 689.95),
-         title=[['*WHERE DOES HE GO'], ['EVERY WEEK?*', 'yellow']],
-         actions=[(659.25, 1.8, '*BERT IS READY*'), (677.8, 1.8, '*HE FINALLY CRACKS*')],
-         washes=[(658.60, 'red'), (671.45, 'red'), (683.20, 'green'), (688.40, 'red')],
-         punches=[(659.25, 1.12), (671.45, 1.12), (683.20, 1.15), (688.10, 1.10)], shakes=[671.45], tension=[(676.7, 683.2)],
-         red=['EYES', 'SOCKETS', 'JAW', 'SKULL', 'LYING'], green=['DANCE']),
-    dict(id='c4', hook=(741.55, 743.25), main=(697.70, 741.20),
-         title=[['*JUDGE MADE HIM'], ['PROVE IT*', 'yellow']],
-         actions=[(700.0, 1.8, '*HIP HOP EXPERT STANDS*'), (713.5, 2.8, '*DANCING*'), (717.3, 1.6, "*BERT CAN'T WATCH*"), (721.8, 2.6, '*STILL DANCING*'), (726.3, 1.4, '*JUROR IN PAIN*')],
-         washes=[(713.40, 'cyan'), (728.95, 'red'), (734.20, 'magenta')],
-         punches=[(705.20, 1.10), (729.00, 1.15), (734.20, 1.12), (739.80, 1.10)], shakes=[729.0], tension=[(707.4, 713.4)],
-         red=['AWFUL', 'SEIZURE'], green=['DANCE', 'LEARNING'], magenta=['CHEATING']),
-    dict(id='c5', hook=(477.15, 479.35), main=(460.60, 487.95),
-         title=[['*HIS BROTHER'], ['SAID TOO MUCH*', 'red']],
-         actions=[(483.1, 1.8, '*WIFE HEARING THIS*')],
-         washes=[(464.80, 'yellow'), (473.90, 'magenta'), (479.50, 'yellow'), (485.70, 'red')],
-         punches=[(465.00, 1.12), (474.00, 1.15), (478.10, 1.12), (486.30, 1.10)], shakes=[473.9], tension=[(470.5, 473.9)],
-         red=['GAY', 'BISEXUAL'], green=['GOOD'], magenta=['ACCIDENT']),
-]
+import importlib.util
+_ep = next((a.split('=', 1)[1] for a in sys.argv[1:] if a.startswith('--ep=')), 'tools/lj/ep6.py')
+_spec = importlib.util.spec_from_file_location('epcfg', _ep); EP = importlib.util.module_from_spec(_spec); _spec.loader.exec_module(EP)
+SRC, CLIPS = EP.SRC, EP.CLIPS
+
 CENSOR = {'fucking': 'F**KING', 'fuck': 'F**K', 'motherfucker': 'MOTHERF**KER', 'dick': 'D**K', 'shit': 'SH*T', 'ass': 'A**', 'f***ing': 'F**KING', 'f***': 'F**K'}
 VW_FULL = 1080 * 1080 / 1920  # source px visible across a full-bleed 9:16 frame (607.5)
 
@@ -199,7 +165,7 @@ def captions(c, words, hook_frames):
         ws = []
         for s, e, w, _ in ch:
             t = censor(w); key = re.sub(r'[^A-Z\']', '', t)
-            col = 'red' if key in c['red'] else 'green' if key in c['green'] else 'magenta' if key in c.get('magenta', []) else None
+            col = 'red' if key in c['red'] else 'green' if key in c['green'] else 'magenta' if key in c.get('magenta', []) else 'yellow' if key in c.get('yellow', []) else None
             ws.append(dict(t=t.strip(' ,'), f=round(s * FPS), col=col))
         if not any(x['col'] for x in ws) and ws[-1]['t'].endswith('?'): ws[-1]['col'] = 'yellow'
         f0 = round(start * FPS); f1 = max(f0 + 8, round(end * FPS))
@@ -219,7 +185,7 @@ def build(c):
     shots = []
     for a, b in zip(cuts[:-1], cuts[1:]):
         L = layout_shot(faces, split, a, b); L.update(f0=a, n=b - a); shots.append(L)
-    words = [w for s in json.load(open('footage/lj/ep.words.json')) for w in s['w']]
+    words = [w for s in json.load(open(EP.WORDS)) for w in s['w']]
     (ha, hb), (ma, mb) = c['hook'], c['main']
     vf = lambda t: round((hook_frames / FPS + t - ma) * FPS)  # source seconds (main part) -> video frame
     style = dict(
@@ -229,11 +195,14 @@ def build(c):
         shakes=[vf(t) for t in c['shakes']],
         tension=[[vf(a), vf(b)] for a, b in c['tension']],
     )
-    data = dict(id=c['id'], frames=n, hook=hook_frames, title=c['title'], shots=shots, captions=captions(c, words, hook_frames), **style)
-    json.dump(data, open(f"src/lj/{c['id']}.json", 'w'))
+    music = dict(c.get('music', EP.MUSIC))
+    if 'drop_at' in music:  # line the song's drop up with a source moment
+        music['drop_f'] = vf(music.pop('drop_at'))
+    data = dict(id=c['id'], frames=n, hook=hook_frames, title=c['title'], shots=shots, captions=captions(c, words, hook_frames), music=music, **style)
+    json.dump(data, open(f"src/lj/{c.get('slot', c['id'])}.json", 'w'))
     print(c['id'], 'frames', n, 'shots', len(shots), {m: sum(s['n'] for s in shots if s['mode'] == m) for m in ('split', 'full', 'wide')})
 
 if __name__ == '__main__':
-    want = sys.argv[1:]
+    want = [a for a in sys.argv[1:] if not a.startswith('--')]
     for c in CLIPS:
         if not want or c['id'] in want: build(c)
