@@ -200,6 +200,8 @@ def build(c):
         music['drop_f'] = vf(music.pop('drop_at'))
     data = dict(id=c['id'], frames=n, hook=hook_frames, title=c['title'], shots=shots, captions=captions(c, words, hook_frames), music=music, **style)
     json.dump(data, open(f"src/lj/{c.get('slot', c['id'])}.json", 'w'))
+    if getattr(EP, 'LAYOUT', None) == '169':  # whole 16:9 frame in a centred box (no vertical crop)
+        run(['python3', 'tools/lj/to169.py', c.get('slot', c['id'])])
     print(c['id'], 'frames', n, 'shots', len(shots), {m: sum(s['n'] for s in shots if s['mode'] == m) for m in ('split', 'full', 'wide')})
 
 if __name__ == '__main__':

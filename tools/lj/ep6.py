@@ -2,6 +2,7 @@
 Fields: see tools/lj/ep5.py header. music: background song from the EDITING RESOURCES BGSONGS folder (public/bg/)."""
 SRC = 'footage/lj6/ep6.mp4'
 WORDS = 'footage/lj6/ep6.words.json'
+LAYOUT = '169'  # keep the whole 16:9 frame (user: no vertical crop)
 # vol: bed level under dialogue, matched per song loudness (songs are -9..-16 LUFS)
 LMK = dict(src='bg/let-me-know.mp3', muffled='bg/let-me-know-muffled.mp3', start=3.0, vol=0.05)
 CHESS = dict(src='bg/chess-slowed.mp3', muffled='bg/chess-slowed-muffled.mp3', start=0.0, vol=0.045)

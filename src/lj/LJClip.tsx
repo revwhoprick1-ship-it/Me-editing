@@ -23,7 +23,8 @@ export type ClipData = {
 };
 export const CLIPS: Record<string, ClipData> = Object.fromEntries(([c1, c2, c3, c4, c5] as unknown as ClipData[]).map((c) => [c.id, c]));
 
-export const FZ = 27; // freeze-frame length (0.9 s)
+export const FZ = 27;
+const BOX_CY = 900; // centre of the 16:9 picture box (layout '169': whole frame, blurred fill above/below) // freeze-frame length (0.9 s)
 export const outFrames = (d: ClipData) => d.frames + FZ;
 const o = (d: ClipData, v: number) => (v < d.hook ? v : v + FZ); // video frame -> output frame
 const C: Record<string, string> = {red: '#FF3B3B', green: '#3DFF6E', cyan: '#3DE7FF', yellow: '#FFE53D', magenta: '#FF4FD8', white: '#FFFFFF'};
@@ -67,7 +68,7 @@ const Frame: React.FC<{d: ClipData; s: Shot; dim?: boolean}> = ({d, s, dim}) => 
     body = (<>{panel('top', 0, 0)}{panel('bottom', 960, 965)}<div style={{position: 'absolute', left: 0, top: 956, width: W, height: 8, background: 'linear-gradient(90deg,#8a6a1c,#f4d27a,#8a6a1c)'}} /></>);
   } else {
     const vw = s.vw!; const k = W / vw; const cx = s.cx![lf];
-    const boxH = s.mode === 'full' ? H : 1080 * k; const top = s.mode === 'full' ? 0 : 760 - boxH / 2;
+    const boxH = s.mode === 'full' ? H : 1080 * k; const top = s.mode === 'full' ? 0 : BOX_CY - boxH / 2;
     body = (<>
       {s.mode === 'wide' && <AbsoluteFill style={{filter: 'blur(45px) brightness(0.5)', transform: 'scale(1.2)'}}>{vid({left: (W - 3413) / 2, top: 0, width: 3413, height: H})}</AbsoluteFill>}
       <div style={{position: 'absolute', left: 0, top, width: W, height: boxH, overflow: 'hidden'}}>
@@ -90,7 +91,7 @@ const txt = (size: number, color: string, glow: boolean, italic = false, weight 
 const captionTop = (d: ClipData, v: number, lines = 1) => {
   const s = shotAtV(d, v); const fc = faceAtV(d, v); const h = 82 * lines;
   if (s.mode === 'split') return 960 - h / 2;
-  if (s.mode === 'wide') return Math.max(1240, 760 + (1080 * W) / s.vw! / 2 + 50);
+  if (s.mode === 'wide') return Math.max(1300, BOX_CY + (1080 * W) / s.vw! / 2 + 150);
   const clear = (y: number) => !fc || fc[1] + fc[3] * 0.75 < y - 20 || fc[1] - fc[3] * 0.6 > y + h + 20;
   return [1056, 1300, 1480].find(clear) ?? 1300;
 };
@@ -113,7 +114,8 @@ const Caption: React.FC<{d: ClipData; cap: Cap}> = ({d, cap}) => {
 const Action: React.FC<{d: ClipData; f0: number; n: number; text: string}> = ({d, f0, n, text}) => {
   const f = useCurrentFrame();
   const a = interpolate(f, [0, 3], [0, 1], clamp); const out = interpolate(f, [n - 3, n], [1, 0], clamp);
-  const y = captionTop(d, f0) - 92;
+  const s0 = shotAtV(d, f0);
+  const y = s0.mode === 'wide' ? BOX_CY + (1080 * W) / s0.vw! / 2 + 40 : captionTop(d, f0) - 92;
   return <div style={{position: 'absolute', top: y, width: W, textAlign: 'center', opacity: Math.min(a, out), transform: `scale(${0.85 + 0.15 * a})`}}><span style={txt(60, C.cyan, true, true)}>{text}</span></div>;
 };
 
@@ -123,7 +125,7 @@ const titleTop = (d: ClipData, lines: number) => {
   const h = lines * 95; let limit = 330 + h;
   for (let v = 0; v < d.hook; v++) {
     const s = shotAtV(d, v);
-    if (s.mode === 'wide') limit = Math.min(limit, 760 - (1080 * W) / s.vw! / 2 - 10);
+    if (s.mode === 'wide') limit = Math.min(limit, BOX_CY - (1080 * W) / s.vw! / 2 - 10);
     const fc = faceAtV(d, v); if (fc && s.mode !== 'wide') limit = Math.min(limit, fc[1] - fc[3] * 0.2 - 20);
   }
   return Math.max(70, Math.min(330, limit - h));
@@ -165,10 +167,6 @@ const WhiteFlash: React.FC = () => {
   const f = useCurrentFrame();
   return <AbsoluteFill style={{background: '#fff', opacity: interpolate(f, [0, 4, 5, 9], [0, 1, 1, 0], clamp)}} />;
 };
-const EndCard: React.FC = () => {
-  const f = useCurrentFrame(); const s = interpolate(f, [0, 3, 6], [0.6, 1.08, 1], clamp);
-  return <div style={{position: 'absolute', top: 1640, width: W, textAlign: 'center', transform: `scale(${s})`}}><span style={{...txt(46, C.white, false, false, 800), background: C.red, padding: '12px 24px', borderRadius: 12}}>FULL EPISODE ON @HARDSCOPE</span></div>;
-};
 
 const Snd: React.FC<{at: number; src: string; vol: number; dur?: number}> = ({at, src, vol, dur = 60}) => (
   <Sequence from={at} durationInFrames={dur}><Audio src={staticFile(src)} volume={vol} /></Sequence>
@@ -204,7 +202,6 @@ export const LJClip: React.FC<{id: string}> = ({id}) => {
       {freezeFace && <Sequence from={d.hook} durationInFrames={FZ}><Pointer face={freezeFace} /></Sequence>}
       <Sequence from={d.hook + FZ - 4} durationInFrames={10}><WhiteFlash /></Sequence>
       {d.washes.map((w, i) => <Sequence key={`w${i}`} from={o(d, w.f)} durationInFrames={18}><Wash color={C[w.color]} peak={0.75} decay={15} /></Sequence>)}
-      <Sequence from={N - 45}><EndCard /></Sequence>
       {/* dialogue: hook part, silence on the freeze, main part */}
       <Sequence from={0} durationInFrames={d.hook}><Audio src={src} /></Sequence>
       <Sequence from={d.hook + FZ}><Audio src={src} trimBefore={d.hook} /></Sequence>
@@ -213,20 +210,37 @@ export const LJClip: React.FC<{id: string}> = ({id}) => {
       {bed.map((s, i) => (
         <Sequence key={`b${i}`} from={s.a} durationInFrames={s.b - s.a}>
           <Audio src={staticFile(s.m ? d.music.muffled : d.music.src)} trimBefore={musicStart + s.a} volume={(f) => {
-            const g2 = s.a + f; let v = d.music.vol * (s.m ? 1.8 : g2 >= N - 45 ? 2.5 : 1);
+            const g2 = s.a + f; let v = d.music.vol * 2.2 * (s.m ? 1.8 : g2 >= N - 45 ? 1.5 : 1);
             if (dropOut !== null && g2 >= dropOut) v *= d.music.drop_mul ?? 1;
             return v;
           }} />
         </Sequence>
       ))}
       {/* sfx */}
+      {/* hook: bass hit, typing under the typewriter title, pop as the pointer lands, scratch + muffle on the freeze,
+          riser ending on the rewind cut, impact on the cut */}
       <Snd at={0} src="sfx/808-boom.mp3" vol={0.5} />
+      <Snd at={1} src="sfx/keyboard-typing.mp3" vol={0.22} dur={Math.min(d.hook + FZ, d.title.reduce((n, [t]) => n + t.length + 1, 0))} />
       <Snd at={d.hook} src="sfx/record-scratch.mp3" vol={0.5} />
+      {freezeFace && <Snd at={d.hook + 2} src="sfx/jorho-pop.mp3" vol={0.45} />}
       <Snd at={d.hook + FZ - 37} src="sfx/rev-whoosh.mp3" vol={0.6} dur={40} />
       <Snd at={d.hook + FZ} src="sfx/meme-impact.mp3" vol={0.45} />
-      {d.washes.map((w, i) => <React.Fragment key={`s${i}`}><Snd at={o(d, w.f)} src="sfx/ding.mp3" vol={0.35} />{w.color === 'red' && <Snd at={o(d, w.f)} src="sfx/meme-impact.mp3" vol={0.3} />}</React.Fragment>)}
-      {d.actions.map((a, i) => <Snd key={`p${i}`} at={o(d, a.f)} src="sfx/jorho-pop.mp3" vol={0.35} />)}
-      {d.punches.map((p, i) => <Snd key={`z${i}`} at={o(d, p.f)} src="sfx/jorho-swish.mp3" vol={0.2} />)}
+      {/* colour washes: real bells / tones (no voice samples). green/cyan = success bell (2.6 kHz), yellow = shine,
+          magenta = dun-dun twist, red = impact + boom */}
+      {d.washes.map((w, i) => {
+        const at = o(d, w.f);
+        return <React.Fragment key={`s${i}`}>
+          {(w.color === 'green' || w.color === 'cyan') && <Snd at={at} src="sfx/jorho-ting.mp3" vol={0.45} />}
+          {w.color === 'yellow' && <Snd at={at} src="sfx/mg-shimmer.mp3" vol={0.4} dur={24} />}
+          {w.color === 'magenta' && <Snd at={at} src="sfx/meme-dundun.mp3" vol={0.4} />}
+          {w.color === 'red' && <><Snd at={at} src="sfx/meme-impact.mp3" vol={0.4} /><Snd at={at} src="sfx/vine-boom.mp3" vol={0.25} /></>}
+        </React.Fragment>;
+      })}
+      {d.actions.map((a, i) => <Snd key={`p${i}`} at={o(d, a.f)} src="sfx/jorho-pop.mp3" vol={0.4} />)}
+      {d.punches.map((p, i) => <Snd key={`z${i}`} at={o(d, p.f)} src="sfx/jorho-swish.mp3" vol={0.35} />)}
+      {d.shakes.map((v, i) => <Snd key={`k${i}`} at={o(d, v)} src="sfx/808-boom.mp3" vol={0.35} />)}
+      {/* soft click on every colour-coded keyword */}
+      {d.captions.flatMap((c) => c.words.filter((w) => w.col)).map((w, i) => <Snd key={`c${i}`} at={o(d, w.f)} src="sfx/mg-click.mp3" vol={0.22} dur={15} />)}
     </AbsoluteFill>
   );
 };
