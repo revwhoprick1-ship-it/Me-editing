@@ -76,6 +76,19 @@ Rules: text on screen ≤ 0.5 s in; subject visible on frame 0; problem stated b
 - **Captions never cover a face.** Each caption tries slots in order (55% → 77% → 69% → 46% of the height) and takes the first one that clears every tracked head over its whole duration.
 - Implementation: `tools/testedit/track.py` (OpenCV ViT tracker, forward + backward from a seed box) → `edl.json` → `camAt()` / `subjectAt()` in `src/testedit/TestEdit.tsx`.
 
+### Standing rules from review
+- **Only use elements from this guide.** No extra cards, banners or "watch the full episode" overlays. They look AI-made.
+- **No voice samples as dings.** `sfx/ding.mp3` is a person saying "ding", so never use it. Use `jorho-ting` / `ding-2` (pure 2.6 kHz bell) for success, `mg-shimmer` (short) for the yellow "shine", `meme-dundun` for twists, and `meme-impact` + `vine-boom` for red hits.
+- **Landscape sources (shows, podcasts):** keep the **whole 16:9 frame** in a centred box (centre y = 900) with a blurred fill. Don't crop to vertical. The hook title goes above the box, and the `*action*` + dialogue captions go below it.
+- **Music bed** should be clearly audible under dialogue (roughly +7 dB over the first pass), louder still when muffled, and lift at the end.
+- **Plenty of SFX:**
+  - bass hit on frame 0 and typing under the typewriter title
+  - pop when the pointer lands, scratch on the freeze, riser into the cut, impact on the cut
+  - a tone on each colour wash
+  - a pop on each `*action*` caption, a swish on each punch-in, a boom on each shake
+  - a soft click on each colour-coded keyword
+- Render with `tools/render.sh` (fastest settings).
+
 ## 8. Pacing formula
 - **Something new on screen at least every 1.0 s:** a cut, punch-in, caption swap, sticker or wash.
 - **Average shot 1.3–2.5 s.** Use the shorter end for narrated/silent stories, the longer for dialogue (let the line land).
