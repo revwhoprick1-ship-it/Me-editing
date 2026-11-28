@@ -28,6 +28,7 @@ python3 tools/cuts.py footage/clip.mp4 > footage/clip.cuts.txt
 python3 tools/lag.py footage/clip.mp4 [start end]
 python3 tools/peaks.py footage/clip.mp4 5
 tools/export.sh out/main.mp4 out/final.mp4
+tools/render.sh <CompositionId> out/final.mp4    # fastest render + export in one step
 ```
 
 Chromium for rendering is pre-installed at `/opt/pw-browsers` (pass `--browser-executable` if Remotion can't find one).
